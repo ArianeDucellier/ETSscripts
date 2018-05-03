@@ -32,6 +32,8 @@ for ksta = 1 : length(staCodes)
 end
 D5 = coralFilter(D4, filt, 'bandpass');
 D6 = coralResample(D5, struct('sintr_target', .05));
+D7 = coralResample(D5, struct('sintr_target', .01));
+D8 = coralResample(D7, struct('sintr_target', .05));
 
 % Save data into mat files
 for ksta = 1 : length(staCodes)
@@ -59,4 +61,12 @@ for ksta = 1 : length(staCodes)
     time = - TDUR + D6(ksta).recSampInt * (0 : (size(D6(ksta).data, 1) - 1))';
     data = D6(ksta).data;
     save(filename6, 'time', 'data');
+    filename7 = sprintf('matlab/%s%s_7.mat', arrayName, staCodes{ksta});
+    time = - TDUR + D7(ksta).recSampInt * (0 : (size(D7(ksta).data, 1) - 1))';
+    data = D7(ksta).data;
+    save(filename7, 'time', 'data');
+    filename8 = sprintf('matlab/%s%s_8.mat', arrayName, staCodes{ksta});
+    time = - TDUR + D8(ksta).recSampInt * (0 : (size(D8(ksta).data, 1) - 1))';
+    data = D8(ksta).data;
+    save(filename8, 'time', 'data');
 end
