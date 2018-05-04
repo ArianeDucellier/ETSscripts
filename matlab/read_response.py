@@ -1,5 +1,6 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+Script to download instrument response from IRIS DMC
+"""
 
 from obspy import UTCDateTime
 import obspy.clients.fdsn.client as fdsn

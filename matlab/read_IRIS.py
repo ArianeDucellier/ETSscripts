@@ -1,17 +1,20 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+Script to compare preprocessing done with Matlab or Python
+Waveforms are download from IRIS DMC
+"""
 
 from obspy import UTCDateTime
 import obspy.clients.fdsn.client as fdsn
 
-from math import sqrt
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.io import loadmat
 
 # Function to compute error
-def error(d1, d2):
-    res = np.abs(d1 - d2) / sqrt(np.mean(np.power(d1, 2.0)))
+def error(d1, d2, TDUR, dt):
+    i1 = int(TDUR / nt)
+    i2 = len(d1) - i1
+    res = np.abs(d1[i1 : i2] - d2[i1 : i2]) / np.max(np.abs(d1[i1 : i2]))
     return res
 
 # Parameters
@@ -56,89 +59,90 @@ D8 = D7.copy()
 D8.decimate(5, no_filter=True)
 
 # Plot seismograms
-for ksta in range(0, len(D1)):
+for ksta in range(0, 1):
     plt.figure(1, figsize=(24, 20))
 
     plt.subplot(321)
     dt = 1.0 / D1[ksta].stats.sampling_rate
     nt = D1[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename1 = 'matlab/' + str(D1[ksta].stats.station) + '_1.mat'
     data = loadmat(filename1)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D1[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0, 60.0)
     plt.title('obspy.clients.fdsn.client.Client.get_waveforms')
     plt.legend()
 
     plt.subplot(322)
     dt = 1.0 / D2[ksta].stats.sampling_rate
     nt = D2[ksta].stats.npts
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename2 = 'matlab/' + str(D2[ksta].stats.station) + '_2.mat'
     data = loadmat(filename2)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D2[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0.0, 60.0)
     plt.title('obspy.core.stream.Stream.detrend')
     plt.legend()
 
     plt.subplot(323)
     dt = 1.0 / D3[ksta].stats.sampling_rate
     nt = D3[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename3 = 'matlab/' + str(D3[ksta].stats.station) + '_3.mat'
     data = loadmat(filename3)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D3[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0.0, 60.0)
     plt.title('obspy.core.stream.Stream.taper')
     plt.legend()
 
     plt.subplot(324)
     dt = 1.0 / D4[ksta].stats.sampling_rate
     nt = D4[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename4 = 'matlab/' + str(D4[ksta].stats.station) + '_4.mat'
     data = loadmat(filename4)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D4[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0.0, 60.0)
     plt.title('obspy.core.stream.Stream.remove_response')
     plt.legend()
 
     plt.subplot(325)
     dt = 1.0 / D5[ksta].stats.sampling_rate
     nt = D5[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename5 = 'matlab/' + str(D5[ksta].stats.station) + '_5.mat'
     data = loadmat(filename5)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D5[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0.0, 60.0)
     plt.title('obspy.core.stream.Stream.filter')
     plt.legend()
 
     plt.subplot(326)
     dt = 1.0 / D8[ksta].stats.sampling_rate
     nt = D8[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename8 = 'matlab/' + str(D8[ksta].stats.station) + '_8.mat'
     data = loadmat(filename8)
     time_m = data['time']
     data_m = data['data']
     plt.plot(time_m, data_m, 'r-', label='Matlab')
     plt.plot(time, D8[ksta].data, 'k-', label='Python')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.xlim(0.0, 60.0)
     plt.title('obspy.core.stream.Stream.interpolate + decimate')
     plt.legend()
 
@@ -147,79 +151,98 @@ for ksta in range(0, len(D1)):
     plt.close()
 
 # Plot differences
-for ksta in range(0, len(D1)):
+for ksta in range(0, 1):
     plt.figure(1, figsize=(24, 20))
 
     plt.subplot(321)
     dt = 1.0 / D1[ksta].stats.sampling_rate
     nt = D1[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename1 = 'matlab/' + str(D1[ksta].stats.station) + '_1.mat'
     data = loadmat(filename1)
     time_m = data['time']
     data_m = data['data']
-    plt.plot(time_m, error(data_m, D1[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D1[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D1[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.clients.fdsn.client.Client.get_waveforms')
 
     plt.subplot(322)
     dt = 1.0 / D2[ksta].stats.sampling_rate
     nt = D2[ksta].stats.npts
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename2 = 'matlab/' + str(D2[ksta].stats.station) + '_2.mat'
     data = loadmat(filename2)
     time_m = data['time']
     data_m = data['data']
-    plt.plot(time_m, error(data_m, D2[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D2[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D2[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.core.stream.Stream.detrend')
 
     plt.subplot(323)
     dt = 1.0 / D3[ksta].stats.sampling_rate
     nt = D3[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename3 = 'matlab/' + str(D3[ksta].stats.station) + '_3.mat'
     data = loadmat(filename3)
     time_m = data['time']
     data_m = data['data']
-    plt.plot(time_m, error(data_m, D3[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D3[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D3[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.core.stream.Stream.taper')
 
     plt.subplot(324)
     dt = 1.0 / D4[ksta].stats.sampling_rate
     nt = D4[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename4 = 'matlab/' + str(D4[ksta].stats.station) + '_4.mat'
     data = loadmat(filename4)
     time_m = data['time']
     data_m = data['data']
-    plt.plot(time_m, error(data_m, D4[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D4[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D4[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.core.stream.Stream.remove_response')
 
     plt.subplot(325)
     dt = 1.0 / D5[ksta].stats.sampling_rate
     nt = D5[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename5 = 'matlab/' + str(D5[ksta].stats.station) + '_5.mat'
     data = loadmat(filename5)
     time_m = data['time']
     data_m = data['data']
     maxv = np.max(np.abs(data_m))
-    plt.plot(time_m, error(data_m, D5[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D5[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D5[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.core.stream.Stream.filter')
 
     plt.subplot(326)
     dt = 1.0 / D8[ksta].stats.sampling_rate
     nt = D8[ksta].stats.npts
-    time = np.linspace(- TDUR, -TDUR + nt * dt, nt, endpoint=False)
+    time = np.linspace(- TDUR, - TDUR + nt * dt, nt, endpoint=False)
     filename6 = 'matlab/' + str(D8[ksta].stats.station) + '_6.mat'
     data = loadmat(filename6)
     time_m = data['time']
     data_m = data['data']
-    plt.plot(time_m, error(data_m, D8[ksta].data.reshape(nt, 1)), 'k-')
-    plt.xlim(- TDUR, 60.0 + TDUR)
+    plt.plot(time_m, error(data_m, D8[ksta].data.reshape(nt, 1), TDUR, dt), \
+        'k-')
+    plt.xlim(0.0, 60.0)
+    plt.ylim(0.0, np.max(error(data_m, D8[ksta].data.reshape(nt, 1), TDUR, \
+        dt)))
     plt.title('obspy.core.stream.Stream.interpolate + decimate')
 
     plt.suptitle('Station {}'.format(str(D1[ksta].stats.station)))
@@ -227,7 +250,7 @@ for ksta in range(0, len(D1)):
     plt.close()
 
 # Plot Fourier transform
-    for ksta in range(0, len(D1)):
+    for ksta in range(0, 1):
         plt.figure(3, figsize=(24, 20))
 
         # FFT before interpolation

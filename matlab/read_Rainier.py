@@ -1,5 +1,7 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+Script to compare preprocessing done with Matlab or Python
+Waveforms are download from Rainier
+"""
 
 from obspy import UTCDateTime
 import obspy.clients.earthworm.client as earthworm
