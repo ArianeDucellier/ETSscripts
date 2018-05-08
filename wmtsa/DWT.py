@@ -22,6 +22,52 @@ def get_scaling(name):
         g = np.loadtxt('../data/scalingcoeff/Haar.dat')
     elif (name == 'D4'):
         g = np.loadtxt('../data/scalingcoeff/D4.dat')
+    elif (name == 'D6'):
+        g = np.loadtxt('../data/scalingcoeff/D6.dat')
+    elif (name == 'D8'):
+        g = np.loadtxt('../data/scalingcoeff/D8.dat')
+    elif (name == 'D10'):
+        g = np.loadtxt('../data/scalingcoeff/D10.dat')
+    elif (name == 'D12'):
+        g = np.loadtxt('../data/scalingcoeff/D12.dat')
+    elif (name == 'D14'):
+        g = np.loadtxt('../data/scalingcoeff/D14.dat')
+    elif (name == 'D16'):
+        g = np.loadtxt('../data/scalingcoeff/D16.dat')
+    elif (name == 'D18'):
+        g = np.loadtxt('../data/scalingcoeff/D18.dat')
+    elif (name == 'D20'):
+        g = np.loadtxt('../data/scalingcoeff/D20.dat')
+    elif (name == 'LA8'):
+        g = np.loadtxt('../data/scalingcoeff/LA8.dat')
+    elif (name == 'LA10'):
+        g = np.loadtxt('../data/scalingcoeff/LA10.dat')
+    elif (name == 'LA12'):
+        g = np.loadtxt('../data/scalingcoeff/LA12.dat')
+    elif (name == 'LA14'):
+        g = np.loadtxt('../data/scalingcoeff/LA14.dat')
+    elif (name == 'LA16'):
+        g = np.loadtxt('../data/scalingcoeff/LA16.dat')
+    elif (name == 'LA18'):
+        g = np.loadtxt('../data/scalingcoeff/LA18.dat')
+    elif (name == 'LA20'):
+        g = np.loadtxt('../data/scalingcoeff/LA20.dat')
+    elif (name == 'C6'):
+        g = np.loadtxt('../data/scalingcoeff/C6.dat')
+    elif (name == 'C12'):
+        g = np.loadtxt('../data/scalingcoeff/C12.dat')
+    elif (name == 'C18'):
+        g = np.loadtxt('../data/scalingcoeff/C18.dat')
+    elif (name == 'C24'):
+        g = np.loadtxt('../data/scalingcoeff/C24.dat')
+    elif (name == 'C30'):
+        g = np.loadtxt('../data/scalingcoeff/C30.dat')
+    elif (name == 'BL14'):
+        g = np.loadtxt('../data/scalingcoeff/BL14.dat')
+    elif (name == 'BL18'):
+        g = np.loadtxt('../data/scalingcoeff/BL18.dat')
+    elif (name == 'BL20'):
+        g = np.loadtxt('../data/scalingcoeff/BL20.dat')
     else:
         raise ValueError('{} has not been implemented yet'.format(name))
     return g

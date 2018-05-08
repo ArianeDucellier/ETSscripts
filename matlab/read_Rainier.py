@@ -1,6 +1,6 @@
 """
 Script to compare preprocessing done with Matlab or Python
-Waveforms are download from Rainier
+Waveforms are downloaded from Rainier
 """
 
 from obspy import UTCDateTime
@@ -293,7 +293,7 @@ for ksta in range(0, len(D1)):
         df7 = 1.0 / (dt7 * nt7)
         nf7 = int((nt7 + 1) / 2)
         fft7 = np.fft.rfft(D7[ksta].data)
-        # FFT after decimation
+        # FFT after interpolation and decimation
         dt8 = 1.0 / D8[ksta].stats.sampling_rate
         nt8 = D8[ksta].stats.npts
         df8 = 1.0 / (dt8 * nt8)
@@ -362,7 +362,7 @@ for ksta in range(0, len(D1)):
         plt.xlim(0.0, 10.0)
         plt.title('Fourier transform after interpolation')
         plt.legend()
-        # Plot values after decimation
+        # Plot values after interpolation and decimation
         plt.subplot(224)
         freqm8 = np.linspace(0, nfm8 * dfm8, nfm8, endpoint=False)
         plt.plot(freqm8, dt8 * np.abs(fftm8), 'r-', label='Matlab')

@@ -1,4 +1,6 @@
 .DS_Store
 data/PANGA/*
 data/.DS_Store
+notebooks/.ipynb_checkpoints
+wmtsa/__pycache__/*
 
