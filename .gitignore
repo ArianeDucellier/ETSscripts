@@ -2,6 +2,7 @@
 data/PANGA/*
 data/.DS_Store
 notebooks/.ipynb_checkpoints
+timelags/cc/*
 timelags/plot_cc/*
 utils/__pycache__/*
 wmtsa/__pycache__/*

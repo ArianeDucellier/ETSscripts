@@ -22,11 +22,11 @@ def stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
         network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
         type_stack, offset, w, ncor, Tmax, scal, client):
     """
-    This function download 2 hours of data, stack the signal over the stations,
-    cross correlate 30-second-long time windows, and plot
+    This function downloads 2 hours of data, stack the signal over the
+    stations, cross correlate 30-second-long time windows, and plot
     
     Input:
-        type arrayName = sting
+        type arrayName = string
         arrayName = Name of seismic array
         type staName = list of strings
         staNames = Names of the seismic stations
@@ -277,7 +277,7 @@ if __name__ == '__main__':
 #    network = 'XG'
 
     arrayName = 'BS'
-    staNames = ['BS01', 'BS02', 'BS03','BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
+    staNames = ['BS01', 'BS02', 'BS03', 'BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
     staCodes = 'BS01,BS02,BS03,BS04,BS05,BS06,BS11,BS20,BS21,BS22,BS23,BS24,BS25,BS26,BS27'
     chaNames = ['SHE', 'SHN', 'SHZ']
     chans = 'SHE,SHN,SHZ'
