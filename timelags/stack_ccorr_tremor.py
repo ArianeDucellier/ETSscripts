@@ -116,7 +116,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         (YY2, MM2, DD2, HH2, mm2, ss2) = matlab2ymdhms(tremor[i, 1])
         t2 = UTCDateTime(str(YY2) + '-' + str(MM2) + '-' + str(DD2) + 'T' + \
             str(HH2) + ':' + str(mm2) + ':' + str(ss2))
-        Tend = t2 - TDUR
+        Tend = t2 + TDUR
         # Get data from server
         try:
             if client == 'IRIS':
