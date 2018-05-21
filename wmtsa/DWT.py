@@ -263,7 +263,49 @@ def get_DS(X, W, name, J):
         Sj = S[-1] - D[j]
         S.append(Sj)
     return (D, S)
-        
+
+def NPES(W):
+    """ Compute the normalized partial energy sequence
+    of a time series
+
+    Input:
+        type W = 1D numpy array
+        W = Time series (or wavelet coefficients)
+    Output:
+        type C = 1D numpy array
+        C = NPES
+    """
+    N = np.shape(W)[0]
+    U = np.flip(np.sort(np.power(np.abs(W), 2.0)), 0)
+    C = np.zeros(N)
+    for i in range(0, N):
+        C[i] = np.sum(U[0 : i + 1]) / np.sum(U)
+    return C
+
+def plot_W(X, name, J):
+    """Plot the wavelet coefficients and the data
+    
+    Input:
+        type X = 1D numpy array
+        X = Time series which length is a multiple of 2**J
+        type name = string
+        name = Name of the wavelet filter
+        type J = integer
+        J = Level of partial DWT
+    """
+    W = pyramid(X, name, J)
+    N = np.shape(X)[0]
+    plt.figure(1, figsize=(3 * (J + 2), 15))
+    plt.subplot2grid((J + 2, 1), (0, 0))
+    plt.plot(np.arange(0, N), X, 'k')
+    for j in range(1, J + 1):
+        Wj = W[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)]
+        plt.subplot2grid((J + 2, 1), (j + 1, 0))
+        plt.plot(np.arange(0, int(N / 2 ** j), Wj, 'k')
+    Vj = W[-int(N / (2 ** J)) : ]
+    plt.subplot2grid((J + 2, 1), (J + 1, 0))
+    plt.plot(np.arange(0, int(N / 2 ** J), Vj, 'k')
+
 if __name__ == '__main__':
 
     # Test 1
