@@ -296,15 +296,16 @@ def plot_W(X, name, J):
     W = pyramid(X, name, J)
     N = np.shape(X)[0]
     plt.figure(1, figsize=(3 * (J + 2), 15))
-    plt.subplot2grid((J + 2, 1), (0, 0))
+    plt.subplot2grid((J + 2, 1), (J + 1, 0))
     plt.plot(np.arange(0, N), X, 'k')
     for j in range(1, J + 1):
         Wj = W[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)]
-        plt.subplot2grid((J + 2, 1), (j + 1, 0))
-        plt.plot(np.arange(0, int(N / 2 ** j), Wj, 'k')
+        plt.subplot2grid((J + 2, 1), (J - j + 1, 0))
+        for i in range(0, int(N / 2 ** j)):
+            plt.plot((i * 2 ** j, i * 2 ** j), (0.0, Wj[i]), 'k')
     Vj = W[-int(N / (2 ** J)) : ]
-    plt.subplot2grid((J + 2, 1), (J + 1, 0))
-    plt.plot(np.arange(0, int(N / 2 ** J), Vj, 'k')
+    plt.subplot2grid((J + 2, 1), (0, 0))
+    plt.plot((2 ** J) * np.arange(0, int(N / 2 ** J)), Vj, 'k')
 
 if __name__ == '__main__':
 
