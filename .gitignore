@@ -1,5 +1,6 @@
 .DS_Store
 data/PANGA/*
+data/timelags/*
 data/.DS_Store
 figures/AoA/gmt.history
 notebooks/.ipynb_checkpoints

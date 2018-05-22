@@ -282,6 +282,37 @@ def NPES(W):
         C[i] = np.sum(U[0 : i + 1]) / np.sum(U)
     return C
 
+def get_nu(name, J):
+    """ Compute the phase shift for LA filters
+
+    Input:
+        type name = string
+        name = Name of the wavelet filter
+        type J = integer
+        J = maximum level for DWT
+    Output:
+        type nuH = list of J values
+        nuH = Shifts for the wavelet filter
+        type nuG = list of J values
+        nuG = Shifts for the scaling filter
+    """
+    assert (name[0 : 2] == 'LA'), \
+        'Wavelet filter must be Daubechies least asymmetric'
+    L = int(name[2 : ])
+    if (L == 14):
+        nu = int(- L / 2 + 2)
+    elif (int(L / 2) % 2 == 0):
+        nu = int(- L / 2 + 1)
+    else:
+        nu = int(- L / 2)
+    nuH = []
+    nuG = []
+    for j in range(1, J + 1):
+        Lj = int((2 ** j - 1) * (L - 1) + 1)
+        nuH.append(- int(Lj / 2 + L / 2 + nu - 1))
+        nuG.append(- int((Lj - 1) * nu / (L - 1)))
+    return (nuH, nuG)
+
 def plot_W(X, name, J):
     """Plot the wavelet coefficients and the data
     
