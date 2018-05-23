@@ -155,7 +155,7 @@ def get_X(h, g, W, V):
             if (index1 % 2 == 1):
                 index2 = int((index1 - 1) / 2)
                 X[t] = X[t] + h[l] * W[index2] + g[l] * V[index2]
-    return X    
+    return X
    
 def pyramid(X, name, J):
     """
@@ -172,8 +172,10 @@ def pyramid(X, name, J):
         type W = 1D numpy array
         W = Vector of DWT coefficients
     """
-    assert (type(J) == int), 'Level of DWT must be an integer'
-    assert (J >= 1), 'level of DWT must be higher or equal to 1'
+    assert (type(J) == int), \
+        'Level of DWT must be an integer'
+    assert (J >= 1), \
+        'Level of DWT must be higher or equal to 1'
     N = np.shape(X)[0]
     assert (N % (2 ** J) == 0), \
         'Length of time series is not a multiple of 2**J'
@@ -215,9 +217,9 @@ def inv_pyramid(W, name, J):
         'Length of vector of DWT coefficients is not a multiple of 2**J'
     g = get_scaling(name)
     h = get_wavelet(g)
-    Vj = W[-int(N / (2 ** J)) : ]
+    Vj = W[- int(N / (2 ** J)) : ]
     for j in range(J, 0, -1):
-        Wj = W[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)]
+        Wj = W[- int(N / (2 ** (j - 1))) : - int(N / 2 ** j)]
         Vj = get_X(h, g, Wj, Vj)
     X = Vj
     return X
@@ -237,24 +239,26 @@ def get_DS(X, W, name, J):
         type J = integer
         J = Level of partial DWT
     Output:
-        type D = list of 1D numpy arrays
+        type D = list of 1D numpy arrays (length J)
         D = List of details [D1, D2, ... , DJ]
-        type S = list of 1D numpy arrays
+        type S = list of 1D numpy arrays (length J+1)
         S = List of smooths [S0, S1, S2, ... , SJ]
     """
     assert (type(J) == int), \
         'Level of DWT must be an integer'
     assert (J >= 1), \
         'Level of DWT must be higher or equal to 1'
-    N = np.shape(W)[0]
+    assert (np.shape(X)[0] == np.shape(W)[0]), \
+        'Time series and vector of DWT coefficients have different length'
+    N = np.shape(X)[0]
     assert (N % (2 ** J) == 0), \
-        'Length of vector of DWT coefficients is not a multiple of 2**J'
+        'Length of time series is not a multiple of 2**J'
     # Compute details
     D = []
     for j in range(1, J + 1):
         Wj = np.zeros(N)
-        Wj[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)] = \
-            W[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)]
+        Wj[- int(N / (2 ** (j - 1))) : - int(N / 2 ** j)] = \
+            W[- int(N / (2 ** (j - 1))) : - int(N / 2 ** j)]
         Dj = inv_pyramid(Wj, name, J)
         D.append(Dj)
     # Compute smooths
@@ -265,8 +269,7 @@ def get_DS(X, W, name, J):
     return (D, S)
 
 def NPES(W):
-    """ Compute the normalized partial energy sequence
-    of a time series
+    """ Compute the normalized partial energy sequence of a time series
 
     Input:
         type W = 1D numpy array
@@ -310,33 +313,8 @@ def get_nu(name, J):
     for j in range(1, J + 1):
         Lj = int((2 ** j - 1) * (L - 1) + 1)
         nuH.append(- int(Lj / 2 + L / 2 + nu - 1))
-        nuG.append(- int((Lj - 1) * nu / (L - 1)))
+        nuG.append(int((Lj - 1) * nu / (L - 1)))
     return (nuH, nuG)
-
-def plot_W(X, name, J):
-    """Plot the wavelet coefficients and the data
-    
-    Input:
-        type X = 1D numpy array
-        X = Time series which length is a multiple of 2**J
-        type name = string
-        name = Name of the wavelet filter
-        type J = integer
-        J = Level of partial DWT
-    """
-    W = pyramid(X, name, J)
-    N = np.shape(X)[0]
-    plt.figure(1, figsize=(3 * (J + 2), 15))
-    plt.subplot2grid((J + 2, 1), (J + 1, 0))
-    plt.plot(np.arange(0, N), X, 'k')
-    for j in range(1, J + 1):
-        Wj = W[-int(N / (2 ** (j - 1))) : -int(N / 2 ** j)]
-        plt.subplot2grid((J + 2, 1), (J - j + 1, 0))
-        for i in range(0, int(N / 2 ** j)):
-            plt.plot((i * 2 ** j, i * 2 ** j), (0.0, Wj[i]), 'k')
-    Vj = W[-int(N / (2 ** J)) : ]
-    plt.subplot2grid((J + 2, 1), (0, 0))
-    plt.plot((2 ** J) * np.arange(0, int(N / 2 ** J)), Vj, 'k')
 
 if __name__ == '__main__':
 
@@ -355,7 +333,7 @@ if __name__ == '__main__':
         Output:
             None
         """
-        X = np.loadtxt('../tests/' + name_input)
+        X = np.loadtxt('../tests/data/' + name_input)
         N = np.shape(X)[0]
         W = pyramid(X, 'Haar', 4)
         plt.figure(1, figsize=(10, 5))
@@ -368,9 +346,9 @@ if __name__ == '__main__':
         for i in range(0, N):
             xticks_labels.append(str(i))
         plt.xticks(np.arange(0, N), xticks_labels)
-        plt.ylim([-2, 2])
+        plt.ylim([- 2.0, 2.0])
         plt.title(title)
-        plt.savefig('../tests/' + name_output, format='eps')
+        plt.savefig('../tests/DWT/' + name_output, format='eps')
         plt.close()
 
     # Compute DWT of the first time series from WMTSA
@@ -400,14 +378,14 @@ if __name__ == '__main__':
         Output:
             None
         """
-        X = np.loadtxt('../tests/' + name_input)
+        X = np.loadtxt('../tests/data/' + name_input)
         N = np.shape(X)[0]
         W = pyramid(X, name_filter, 4)
         (D, S) = get_DS(X, W, name_filter, 4)
         xticks_labels = []
         for i in range(0, N):
             xticks_labels.append(str(i))
-        plt.figure(3, figsize=(30, 25))
+        plt.figure(1, figsize=(30, 25))
         # Plot details
         for j in range(1, 5):
             plt.subplot2grid((5, 3), (j, 0))
@@ -416,7 +394,7 @@ if __name__ == '__main__':
                 plt.plot(i, D[j - 1][i], 'ko')
             plt.axhline(0, color='k')
             plt.xticks(np.arange(0, N), xticks_labels)
-            plt.ylim([-2, 2])
+            plt.ylim([- 2.0, 2.0])
             if (j == 4):
                 plt.xlabel('n', fontsize=24)
         # Plot smooths
@@ -427,7 +405,7 @@ if __name__ == '__main__':
                 plt.plot(i, S[j][i], 'ko')
             plt.axhline(0, color='k')
             plt.xticks(np.arange(0, N), xticks_labels)
-            plt.ylim([-2, 2])
+            plt.ylim([- 2.0, 2.0])
             if (j == 4):
                 plt.xlabel('n', fontsize=24)
         # Plot roughs
@@ -439,11 +417,11 @@ if __name__ == '__main__':
                 plt.plot(i, X[i] - S[j][i], 'ko')
             plt.axhline(0, color='k')
             plt.xticks(np.arange(0, N), xticks_labels)
-            plt.ylim([-2, 2])
+            plt.ylim([- 2.0, 2.0])
             if (j == 4):
                 plt.xlabel('n', fontsize=24)
         plt.suptitle(title, fontsize=30)
-        plt.savefig('../tests/' + name_output, format='eps')
+        plt.savefig('../tests/DWT/' + name_output, format='eps')
         plt.close() 
 
     # Compute details, smooths and roughs of the first time series
