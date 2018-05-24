@@ -35,4 +35,43 @@ def matlab2ymdhms(time):
         day = day + 1
         hour = 0
     return (year, month, day, hour, minute, rsecond)
-    
+
+def string2day(day, hour):
+    """
+    Convert strings to number of years since 0 AD
+
+    Input:
+        type day = string
+        day = 'YYYY-MM-DD'
+        type hour = string
+        hour = 'HH:mm:ss'
+    Output:
+        type date = float
+        date = Nubers of years since 0 AD
+    """
+    YY = int(day[0 : 4])
+    MM = int(day[5 : 7])
+    DD = int(day[8 : 10])
+    HH = int(hour[0 : 2])
+    mm = int(hour[3 : 5])
+    ss = int(hour[6 : 8])
+    ndays = 0.0
+    for i in range(1, MM):
+        if (i in [1, 3, 5, 7, 8, 10, 12]):
+            ndays = ndays + 31.0
+        elif (i in [4, 6, 9, 11]):
+            ndays = ndays + 30.0
+        else:
+            if (YY % 4 == 0):
+                ndays = ndays + 29.0
+            else:
+                ndays = ndays + 28.0
+    ndays = ndays + DD - 1
+    fracday = ((HH - 1) * 3600.0 + (mm - 1) * 60.0 + ss) / 86400.0
+    ndays = ndays + fracday
+    if (YY % 4 == 0):
+        fracyear = ndays / 366.0
+    else:
+        fracyear = ndays / 365.0
+    date = YY + fracyear
+    return date
