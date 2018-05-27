@@ -20,6 +20,10 @@ Then, go to the directory ETSscripts and create an environment:
 
 conda env create -f environment.yml
 
+You can learn more about Anaconda environments here:
+
+[Anaconda environments](https://conda.io/docs/user-guide/tasks/manage-environments.html)
+
 Finally, you need to add these lines in your .bash_profile
 
 export PYTHONPATH="${PYTHONPATH}:/Users/your_name/your_path/ETSscripts/utils"

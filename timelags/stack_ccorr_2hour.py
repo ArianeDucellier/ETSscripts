@@ -139,16 +139,6 @@ def stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
                 envelope.decimate(10, no_filter=True)
                 tstack = (1.0 / envelope[0].stats.sampling_rate) * \
                     np.arange(0, envelope[0].stats.npts)
-                # Count number of stations with all components present
-                nSta = 0
-                for ksta in range(0, len(staNames)):
-                    if (D.select(station=staNames[ksta], \
-                                 channel=chaNames[0]) and \
-                        D.select(station=staNames[ksta], \
-                                 channel=chaNames[1]) and \
-                        D.select(station=staNames[ksta], \
-                                 channel=chaNames[2])):
-                        nSta = nSta + 1
                 # Create figure
                 plt.figure(1, figsize=(20, 15))
                 # EW - UD cross correlation

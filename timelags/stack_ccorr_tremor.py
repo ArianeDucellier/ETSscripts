@@ -1,7 +1,7 @@
 """
 This module contains a function to download every one-minute time window
 where there is a tremor at a given location, stack the signal over the
- stations, cross correlate, and plot
+stations, cross correlate, and plot
 """
 
 import obspy
@@ -72,7 +72,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         None
     """
 
-    # earth's radius and ellipticity
+    # Earth's radius and ellipticity
     a = 6378.136
     e = 0.006694470
 
@@ -104,8 +104,8 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     nt = np.shape(tremor)[0]
 
     # Initialize streams to store cross correlations
-    EW = Stream()
-    NS = Stream()
+    EW_UD = Stream()
+    NS_UD = Stream()
 
     # Loop on tremor windows
     for i in range(0, nt):
@@ -167,15 +167,9 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             EW = D.select(component='E').slice(t1, t2)
             NS = D.select(component='N').slice(t1, t2)
             UD = D.select(component='Z').slice(t1, t2)
-            # Count number of stations with all components present
-            nSta = 0
-            for ksta in range(0, len(staNames)):
-                if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[1]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[2])):
-                    nSta = nSta + 1
             # Time vector
             t = (1.0 / EW[0].stats.sampling_rate) * np.arange(- ncor, ncor + 1)
+            # Create figure
             if (draw_plot == True):
                 plt.figure(1, figsize=(30, 15))
             # EW - UD cross correlation
@@ -204,7 +198,8 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             else:
                 raise ValueError( \
                     'Type of stack must be lin, pow, or PWS')
-            EW.append(stack)
+            # Keep value of stack
+            EW_UD.append(stack)
             if (draw_plot == True):
                 plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
                 plt.xlim(0, Tmax)
@@ -241,7 +236,8 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             else:
                 raise ValueError( \
                     'Type of stack must be lin, pow, or PWS')
-            NS.append(stack)
+            # keep value of stack
+            NS_UD.append(stack)
             if (draw_plot == True):
                 plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
                 plt.xlim(0, Tmax)
@@ -265,7 +261,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     if nt > 0:
         filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
             int(y0), type_stack)
-        pickle.dump([t, EW, NS], open(filename, 'wb'))
+        pickle.dump([t, EW_UD, NS_UD], open(filename, 'wb'))
 
 if __name__ == '__main__':
 
@@ -353,7 +349,6 @@ if __name__ == '__main__':
     filt = (2, 8)
     w = 2.0
     ncor = 400
-    w = 2.0
     Tmax = 15.0
     draw_plot = False
 
