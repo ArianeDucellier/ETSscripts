@@ -7,6 +7,8 @@ and that the length of the time series is a multiple of 2**J
 import matplotlib.pyplot as plt
 import numpy as np
 
+from math import ceil, floor
+
 def get_scaling(name):
     """
     Return the coefficients of the scaling filter
@@ -286,36 +288,111 @@ def NPES(W):
     return C
 
 def get_nu(name, J):
-    """ Compute the phase shift for LA filters
+    """ Compute the phase shift for LA or coiflet filters
 
     Input:
         type name = string
         name = Name of the wavelet filter
         type J = integer
-        J = maximum level for DWT
+        J = Maximum level for DWT
     Output:
         type nuH = list of J values
         nuH = Shifts for the wavelet filter
         type nuG = list of J values
         nuG = Shifts for the scaling filter
     """
-    assert (name[0 : 2] == 'LA'), \
-        'Wavelet filter must be Daubechies least asymmetric'
-    L = int(name[2 : ])
-    if (L == 14):
-        nu = int(- L / 2 + 2)
-    elif (int(L / 2) % 2 == 0):
-        nu = int(- L / 2 + 1)
-    else:
-        nu = int(- L / 2)
+    assert (name[0 : 2] == 'LA' or name[0 : 1] == 'C'), \
+        'Wavelet filter must be Daubechies least asymmetric or Coiflet'
     nuH = []
     nuG = []
-    for j in range(1, J + 1):
-        Lj = int((2 ** j - 1) * (L - 1) + 1)
-        nuH.append(- int(Lj / 2 + L / 2 + nu - 1))
-        nuG.append(int((Lj - 1) * nu / (L - 1)))
+    # Least asymmetric
+    if (name[0 : 2] == 'LA'):
+        L = int(name[2 : ])
+        if (L == 14):
+            nu = int(- L / 2 + 2)
+        elif (int(L / 2) % 2 == 0):
+            nu = int(- L / 2 + 1)
+        else:
+            nu = int(- L / 2)
+        for j in range(1, J + 1):
+            Lj = int((2 ** j - 1) * (L - 1) + 1)
+            nuH.append(- int(Lj / 2 + L / 2 + nu - 1))
+            nuG.append(int((Lj - 1) * nu / (L - 1)))
+    # Coiflet
+    else:
+        L = int(name[1 :])
+        for j in range(1, J + 1):
+            Lj = int((2 ** j - 1) * (L - 1) + 1)
+            nuH.append(int(- Lj / 2 + L / 6))
+            nuG.append(int(- (Lj - 1) * (2 * L - 3) / (3 * (L -1))))
     return (nuH, nuG)
 
+def get_gamma(name, J, N):
+    """ Compute the indices of the last boundary coefficient on the left-side
+    and of the last boundary coefficient on the right-side (that is the
+    coefficients that are affected by circularity)
+
+    Input:
+        type name = string
+        name = Name of the wavelet filter
+        type J = integer
+        J = Maximum level for DWT
+        type N = integer
+        N = Length of the time series
+    Output:
+        type gamHb = List of J values
+        gamHb = Indices of the last left-side boundary coefficients (wavelet)
+        type gamHe = List of J values
+        gamHe = Indices of the first right-side boundary coefficients (wavelet)
+        type gamGb = List of J values
+        gamGb = Indices of the last left-side boundary coefficients (scaling)
+        type gamGe = List of J values
+        gamGe = Indices of the firts right-side boundary coefficients (scaling)
+    """
+    (nuH, nuG) = get_nu(name, J)
+    if (name[0 : 2] == 'LA'):
+        L = int(name[2 : ])
+    else:
+        L = int(name[1 :])
+    gamHb = []
+    gamHe = []
+    gamGb = []
+    gamGe = []
+    for j in range(1, J + 1):
+        t = int(floor((L - 2) * (1 - 1.0 / (2 ** j))))
+        gamHb.append((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N)
+        gamGb.append((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N)
+        t = 0
+        gamHe.append((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N)
+        gamGe.append((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N)
+    return (gamHb, gamHe, gamGb, gamGe)
+
+def get_indices(L, J, N):
+    """ Compute the indices of the values of the details and smooths that
+    are affected by circularity
+
+    Input:
+        type L = integer
+        L = Length of the wavelet filter
+        type J = integer
+        J = Maximum level for DWT
+        type N = integer
+        N = Length of the time series
+    Output:
+        type indb = list of J integers
+        indb = Index of last coefficient affected by circularity on the left
+        type inde = list of J integers
+        inde = Index of last coefficient affected by circularity on the right
+    """
+    indb = []
+    inde = []
+    for j in range(1, J + 1):
+        Lj = int((2 ** j - 1) * (L - 1) + 1)
+        Ljp = int(ceil((L - 2) * (1 - 1 / 2 ** j)))
+        indb.append(max(2 ** j - 1, (2 ** j) * Ljp - 1, - 1))
+        inde.append(min(N + 2 ** j - Lj, N + (2 ** j) * Ljp - Lj, N))
+    return (indb, inde)
+    
 if __name__ == '__main__':
 
     # Test 1
@@ -447,3 +524,155 @@ if __name__ == '__main__':
     # See lower plot of Figure 65 in WMTSA
     test2('ts16b.dat', 'ts16b_DSR_D4.eps', \
           'D(4) DWT of second time series', 'D4')
+
+    # Test 3
+    def test3():
+        """
+        Reproduce plot of Figure 126 from WMTSA
+
+        Input:
+            None
+        Output:
+            None
+        """
+        X = np.loadtxt('../tests/data/heart.dat')
+        N = np.shape(X)[0]
+        wavelet_filters = ['Haar', 'D4', 'C6', 'LA8']
+        plt.figure(1, figsize=(10, 20))
+        for k in range(0, 4):
+            plt.subplot2grid((4, 1), (k, 0))
+            W = pyramid(X, wavelet_filters[k], 6)
+            for i in range(0, N):
+                plt.plot(np.array([i, i]), np.array([0.0, W[i]]), 'k-')
+            plt.axhline(0, color='k')
+            plt.xlim([0, N - 1])
+            plt.ylim([- 4.0, 4.0])
+            plt.title(wavelet_filters[k])
+        plt.savefig('../tests/DWT/ECG_W.eps', format='eps')
+        plt.close()
+
+    # Compute DWT of the ECG time series from WMTSA
+    # See Figure 126 in WMTSA
+    test3()
+
+    # Test 4
+    def test4():
+        """
+        Reproduce plots of Figures 127 and 138 from WMTSA
+
+        Input:
+            None
+        Output:
+            None
+        """
+        X = np.loadtxt('../tests/data/heart.dat')
+        N = np.shape(X)[0]
+        W = pyramid(X, 'LA8', 6)
+        (nuH, nuG) = get_nu('LA8', 6)
+        (gamHb, gamHe, gamGb, gamGe) = get_gamma('LA8', 6, N)
+        dt = 1.0 / 180.0
+        plt.figure(1, figsize=(15, 24))
+        # Plot data
+        plt.subplot2grid((8, 1), (7, 0))
+        plt.plot(dt * np.arange(0, N), X, 'k', label='X')
+        plt.xlim([0, dt * (N - 1)])
+        plt.xlabel('t (seconds)')
+        plt.legend(loc=1)
+        # Plot wavelet coefficients at each level
+        for j in range(1, 7):
+            Wj = W[- int(N / (2 ** (j - 1))) : - int(N / 2 ** j)]
+            plt.subplot2grid((8, 1), (7 - j, 0))
+            for t in range(0, int(N / 2 ** j)):
+                tshift = dt * ((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N)
+                if (t == 0):
+                    plt.plot((tshift, tshift), (0.0, Wj[t]), 'k', \
+                        label='T' + str(nuH[j - 1]) + 'W' + str(j))
+                else:
+                    plt.plot((tshift, tshift), (0.0, Wj[t]), 'k')
+            plt.axvline(dt * gamHb[j - 1], linewidth=1, color='red')
+            plt.axvline(dt * gamHe[j - 1], linewidth=1, color='red')
+            plt.xlim([0, dt * (N - 1)])
+            plt.legend(loc=1)
+        # Plot scaling coefficients for the last level
+        Vj = W[- int(N / (2 ** 6)) : ]
+        plt.subplot2grid((8, 1), (0, 0))
+        for t in range(0, int(N / 2 ** 6)):
+            tshift = dt * ((2 ** 6 * (t + 1) - 1 - abs(nuG[5])) % N)
+            if (t == 0):
+                plt.plot((tshift, tshift), (0.0, Vj[t]), 'k', \
+                    label='T' + str(nuG[5]) + 'V' + str(j))
+            else:
+                plt.plot((tshift, tshift), (0.0, Vj[t]), 'k')
+        plt.axvline(dt * gamGb[5], linewidth=1, color='red')
+        plt.axvline(dt * gamGe[5], linewidth=1, color='red')
+        plt.xlim([0, dt * (N - 1)])
+        plt.legend(loc=1)
+        plt.savefig('../tests/DWT/ECG_W_LA8.eps', format='eps')
+        plt.close()
+
+    # Compute LA8 DWT of the ECG time series from WMTSA
+    # See Figures 127 and 138 in WMTSA
+    test4()
+
+    # Test 5
+    def test5(name_filter):
+        """
+        Reproduce plots of Figures 130 to 133 from WMTSA
+
+        Input:
+            type name_filter = string
+            name_filter = Name of the wavelet filter
+        Output:
+            None
+        """
+
+        X = np.loadtxt('../tests/data/heart.dat')
+        N = np.shape(X)[0]
+        W = pyramid(X, name_filter, 6)
+        (D, S) = get_DS(X, W, name_filter, 6)
+        L = np.shape(get_scaling(name_filter))[0]
+        (indb, inde) = get_indices(L, 6, N)
+        if (name_filter[0 : 2] == 'LA' or name_filter[0 : 1] == 'C'):
+            (nuH, nuG) = get_nu('LA8', 6)
+        dt = 1.0 / 180.0
+        plt.figure(1, figsize=(15, 24))
+        # Plot data
+        plt.subplot2grid((8, 1), (7, 0))
+        plt.plot(dt * np.arange(0, N), X, 'k', label='X')
+        plt.xlim([0, dt * (N - 1)])
+        plt.xlabel('t (seconds)')
+        plt.legend(loc=1)
+        # Plot details at each level
+        for j in range(0, 6):
+            plt.subplot2grid((8, 1), (6 - j, 0))
+            plt.plot(dt * np.arange(0, N), D[j], 'k', label='D' + str(j + 1))
+            plt.axvline(dt * indb[j], linewidth=1, color='red')
+            plt.axvline(dt * inde[j], linewidth=1, color='red')
+            plt.xlim([0, dt * (N - 1)])
+            plt.legend(loc=1)
+        # Plot smooth for the last level
+        plt.subplot2grid((8, 1), (0, 0))
+        plt.plot(dt * np.arange(0, N), S[6], 'k', label='S' + str(6))
+        plt.axvline(dt * indb[5], linewidth=1, color='red')
+        plt.axvline(dt * inde[5], linewidth=1, color='red')
+        plt.xlim([0, dt * (N - 1)])
+        plt.legend(loc=1)
+        plt.savefig('../tests/DWT/ECG_DS_' + name_filter + '.eps', \
+            format='eps')
+        plt.close()
+
+    # Compute Haar DWT MRA of the ECG time series from WMTSA
+    # See Figure 130 in WMTSA
+    test5('Haar')
+
+    # Compute D4 DWT MRA of the ECG time series from WMTSA
+    # See Figure 131 in WMTSA
+    test5('D4')
+
+    # Compute C6 DWT MRA of the ECG time series from WMTSA
+    # See Figure 132 in WMTSA
+    test5('C6')
+
+    # Compute LA8 DWT MRA of the ECG time series from WMTSA
+    # See Figures 133 and 140 in WMTSA
+    test5('LA8')

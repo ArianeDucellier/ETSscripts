@@ -317,8 +317,8 @@ if __name__ == '__main__':
 
     myYear = 2010
     myMonth = 8
-    dStarts = np.array([17])
-    hStarts = np.array([6])
+    dStarts = np.arange(14, 23, 1)
+    hStarts = np.arange(0, 24, 2)
     TDUR = 2 * 3600.0
     tdur = 30.0
     filt = (2, 8)
@@ -335,15 +335,15 @@ if __name__ == '__main__':
         type_stack, offset, w, ncor, Tmax, scal, client)
         
     # Power stack
-    type_stack = 'pow'
-    offset = 0.5
-    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
-        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
-        type_stack, offset, w, ncor, Tmax, scal, client)
+#    type_stack = 'pow'
+#    offset = 0.5
+#    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
+#        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
+#        type_stack, offset, w, ncor, Tmax, scal, client)
 
     # Phase-weighted stack
-    type_stack = 'PWS'
-    offset = 0.05
-    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
-        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
-        type_stack, offset, w, ncor, Tmax, scal, client)
+#    type_stack = 'PWS'
+#    offset = 0.05
+#    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
+#        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
+#        type_stack, offset, w, ncor, Tmax, scal, client)
