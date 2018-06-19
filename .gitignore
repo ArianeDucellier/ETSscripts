@@ -1,4 +1,6 @@
 .DS_Store
+catalog/waveforms/*
+data/LFEcatalog/*
 data/PANGA/*
 data/timelags/*
 data/.DS_Store

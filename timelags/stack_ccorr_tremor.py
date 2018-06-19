@@ -106,6 +106,12 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     # Initialize streams to store cross correlations
     EW_UD = Stream()
     NS_UD = Stream()
+    Year = []
+    Month = []
+    Day = []
+    Hour = []
+    Minute = []
+    Second = []
 
     # Loop on tremor windows
     for i in range(0, nt):
@@ -236,7 +242,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             else:
                 raise ValueError( \
                     'Type of stack must be lin, pow, or PWS')
-            # keep value of stack
+            # Keep value of stack
             NS_UD.append(stack)
             if (draw_plot == True):
                 plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
@@ -256,12 +262,20 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                 plt.savefig(filename, format='eps')
                 ax.clear()
                 plt.close(1)
+            # Keep values of tremor time
+            Year.append(YY1)
+            Month.append(MM1)
+            Day.append(DD1)
+            Hour.append(HH1)
+            Minute.append(mm1)
+            Second.append(ss1)
 
     # Save stacked cross correlations into file
     if nt > 0:
         filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
             int(y0), type_stack)
-        pickle.dump([t, EW_UD, NS_UD], open(filename, 'wb'))
+        pickle.dump([Year, Month, Day, Hour, Minute, Second, EW_UD, NS_UD], \
+            open(filename, 'wb'))
 
 if __name__ == '__main__':
 
