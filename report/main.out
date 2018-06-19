@@ -7,17 +7,35 @@
 \BOOKMARK [0][-]{chapter.5}{Subduction}{part.2}% 7
 \BOOKMARK [-1][-]{part.3}{III Data}{}% 8
 \BOOKMARK [0][-]{chapter.6}{Time lags}{part.3}% 9
-\BOOKMARK [1][-]{section.6.1}{Description of dataset}{chapter.6}% 10
+\BOOKMARK [1][-]{section.6.1}{Description of the dataset}{chapter.6}% 10
 \BOOKMARK [1][-]{section.6.2}{Websites to access the data}{chapter.6}% 11
-\BOOKMARK [0][-]{chapter.7}{LFE catalog}{part.3}% 12
-\BOOKMARK [1][-]{section.7.1}{Description of dataset}{chapter.7}% 13
-\BOOKMARK [1][-]{section.7.2}{Websites to access the data}{chapter.7}% 14
-\BOOKMARK [0][-]{chapter.8}{Slow slip}{part.3}% 15
-\BOOKMARK [1][-]{section.8.1}{Time lags}{chapter.8}% 16
-\BOOKMARK [2][-]{subsection.8.1.1}{Method}{section.8.1}% 17
-\BOOKMARK [2][-]{subsection.8.1.2}{Cross-correlation of tremor recordings}{section.8.1}% 18
-\BOOKMARK [2][-]{subsection.8.1.3}{Computation of amplitudes for P-, SV- and SH-waves}{section.8.1}% 19
-\BOOKMARK [2][-]{subsection.8.1.4}{P-wave}{section.8.1}% 20
-\BOOKMARK [2][-]{subsection.8.1.5}{Ray tracing}{section.8.1}% 21
-\BOOKMARK [1][-]{section.8.2}{LFE catalog}{chapter.8}% 22
-\BOOKMARK [1][-]{section.8.3}{Slow slip}{chapter.8}% 23
+\BOOKMARK [2][-]{subsection.6.2.1}{FDSN}{section.6.2}% 12
+\BOOKMARK [2][-]{subsection.6.2.2}{IRIS}{section.6.2}% 13
+\BOOKMARK [2][-]{subsection.6.2.3}{PNSN}{section.6.2}% 14
+\BOOKMARK [0][-]{chapter.7}{LFE catalog}{part.3}% 15
+\BOOKMARK [1][-]{section.7.1}{Description of dataset}{chapter.7}% 16
+\BOOKMARK [1][-]{section.7.2}{Websites to access the data}{chapter.7}% 17
+\BOOKMARK [0][-]{chapter.8}{Slow slip}{part.3}% 18
+\BOOKMARK [-1][-]{part.4}{IV Time lags}{}% 19
+\BOOKMARK [0][-]{chapter.9}{Method}{part.4}% 20
+\BOOKMARK [0][-]{chapter.10}{Cross-correlation of tremor recordings}{part.4}% 21
+\BOOKMARK [1][-]{section.10.1}{Definitions}{chapter.10}% 22
+\BOOKMARK [1][-]{section.10.2}{Change of coordinates}{chapter.10}% 23
+\BOOKMARK [2][-]{subsection.10.2.1}{Point source}{section.10.2}% 24
+\BOOKMARK [2][-]{subsection.10.2.2}{Moment tensor}{section.10.2}% 25
+\BOOKMARK [1][-]{section.10.3}{Stacking}{chapter.10}% 26
+\BOOKMARK [0][-]{chapter.11}{Computation of amplitudes for P-, SV- and SH-waves}{part.4}% 27
+\BOOKMARK [1][-]{section.11.1}{Changes of coordinates}{chapter.11}% 28
+\BOOKMARK [1][-]{section.11.2}{Getting the reflection, conversion and transmission coefficients}{chapter.11}% 29
+\BOOKMARK [2][-]{subsection.11.2.1}{SH-wave}{section.11.2}% 30
+\BOOKMARK [2][-]{subsection.11.2.2}{P-wave}{section.11.2}% 31
+\BOOKMARK [2][-]{subsection.11.2.3}{SV-wave}{section.11.2}% 32
+\BOOKMARK [0][-]{chapter.12}{Ray tracing}{part.4}% 33
+\BOOKMARK [1][-]{section.12.1}{Eikonal equation}{chapter.12}% 34
+\BOOKMARK [2][-]{subsection.12.1.1}{Constant velocity}{section.12.1}% 35
+\BOOKMARK [2][-]{subsection.12.1.2}{Constant gradient of velocity}{section.12.1}% 36
+\BOOKMARK [1][-]{section.12.2}{Transport equation}{chapter.12}% 37
+\BOOKMARK [2][-]{subsection.12.2.1}{Constant velocity}{section.12.2}% 38
+\BOOKMARK [2][-]{subsection.12.2.2}{Constant gradient of velocity}{section.12.2}% 39
+\BOOKMARK [-1][-]{part.5}{V LFE catalog}{}% 40
+\BOOKMARK [-1][-]{part.6}{VI Slow slip}{}% 41

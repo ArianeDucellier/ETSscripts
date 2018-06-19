@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUN 2018 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  19 JUN 2018 15:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -460,10 +460,8 @@ LaTeX Info: Redefining \nameref on input line 15.
 
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `DRA_2001' on page 2 undefined on input line 7.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -477,15 +475,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
  []
 
 
-LaTeX Warning: Citation `OBA_2002' on page 2 undefined on input line 9.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
-
-
-LaTeX Warning: Citation `PRE_2003' on page 2 undefined on input line 11.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
@@ -493,15 +485,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
  []
 
 
-LaTeX Warning: Citation `ROG_2003' on page 2 undefined on input line 13.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
-
-
-LaTeX Warning: Citation `OBA_2004' on page 2 undefined on input line 15.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
@@ -509,16 +495,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
  []
 
 
-LaTeX Warning: Citation `SHE_2006' on page 2 undefined on input line 17.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
-
-
-LaTeX Warning: Citation `IDE_2007_nature' on page 2 undefined on input line 19.
-
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 19--20
@@ -526,25 +505,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
  []
 
 
-LaTeX Warning: Citation `IDE_2007_GRL' on page 2 undefined on input line 21.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
 [2]
-
-LaTeX Warning: Citation `SHE_2007_nature' on page 3 undefined on input line 23.
-
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
-
-
-LaTeX Warning: Citation `WEC_2008' on page 3 undefined on input line 25.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 25--26
@@ -552,15 +520,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
  []
 
 
-LaTeX Warning: Citation `AUD_2009' on page 3 undefined on input line 27.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
-
-
-LaTeX Warning: Citation `LAR_2009' on page 3 undefined on input line 29.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 29--30
@@ -568,18 +530,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
  []
 
 
-LaTeX Warning: Citation `GHO_2010_G3' on page 3 undefined on input line 31.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
-
-
-LaTeX Warning: Citation `WEC_2011' on page 3 undefined on input line 33.
-
-
-LaTeX Warning: Citation `WEC_2008' on page 3 undefined on input line 33.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
@@ -587,16 +540,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
  []
 
 [3]
-
-LaTeX Warning: Citation `BOS_2012' on page 4 undefined on input line 35.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
-
-
-LaTeX Warning: Citation `GHO_2012' on page 4 undefined on input line 37.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
@@ -604,15 +550,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
  []
 
 
-LaTeX Warning: Citation `BOS_2013' on page 4 undefined on input line 39.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
-
-
-LaTeX Warning: Citation `NOW_2013' on page 4 undefined on input line 41.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 41--42
@@ -620,15 +560,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--42
  []
 
 
-LaTeX Warning: Citation `ARM_2014' on page 4 undefined on input line 43.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
-
-
-LaTeX Warning: Citation `ROY_2014' on page 4 undefined on input line 45.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
@@ -636,24 +570,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--46
  []
 
 [4]
-
-LaTeX Warning: Citation `THU_2014' on page 5 undefined on input line 47.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 
-LaTeX Warning: Citation `BOS_2015' on page 5 undefined on input line 49.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
-
-
-LaTeX Warning: Citation `HOU_2015' on page 5 undefined on input line 51.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 51--52
@@ -666,18 +590,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
  []
 
 
-LaTeX Warning: Citation `PLO_2015' on page 5 undefined on input line 55.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 55--56
 
  []
 
-[5]
-
-LaTeX Warning: Citation `GOM_2016_GRL' on page 6 undefined on input line 57.
-
-) (./ETS.tex [6] [7
+[5]) (./ETS.tex [6] [7
 
 ]
 Chapter 1.
@@ -687,33 +604,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 11.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 11.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 8 undefined on input line 11.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 11.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
-
-
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 13.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 8 undefined on input line 13.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 13.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 8 undefined on input line 13.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
@@ -721,33 +614,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 15.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 8 undefined on input line 15.
-
-
-LaTeX Warning: Citation `GAO_2012' on page 8 undefined on input line 15.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 15.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 15.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 8 undefined on input line 15.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
-
-
-LaTeX Warning: Citation `MIL_2002' on page 8 undefined on input line 17.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 17.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
@@ -755,51 +624,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `MEL_2005' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `WEC_2008' on page 8 undefined on input line 19.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 8 undefined on input line 19.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
-
-
-LaTeX Warning: Citation `DRA_2001' on page 8 undefined on input line 21.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 8 undefined on input line 21.
-
-
-LaTeX Warning: Citation `MEL_2005' on page 8 undefined on input line 21.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 8 undefined on input line 21.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 8 undefined on input line 21.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
@@ -808,48 +635,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
 [8
 
-]
-
-LaTeX Warning: Citation `SCH_2010' on page 9 undefined on input line 23.
-
-[9]
+] [9]
 Chapter 2.
-
-LaTeX Warning: Citation `OBA_2002' on page 10 undefined on input line 27.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 27.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 29.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 10 undefined on input line 33.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 33.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 35.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 10 undefined on input line 40.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 42.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 10 undefined on input line 44.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 45.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 10 undefined on input line 47.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 10 undefined on input line 53.
-
 [10
 
 ]
@@ -869,115 +656,122 @@ Chapter 5.
 ]
 Chapter 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 [15
 
-] [16]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+[16]
 Chapter 7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
 [17
 
 ]
 Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
 ) (./timelags.tex [18
 
-] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28])
-(./catalog.tex) (./slowslip.tex)
-No file main.bbl.
+] [19
+
+]
+Chapter 9.
+[20
+
+]
+Chapter 10.
+[21
+
+] [22] [23] [24] [25]
+Chapter 11.
+[26
+
+] [27] [28] [29] [30] [31]
+Chapter 12.
+[32
+
+] [33]) (./catalog.tex [34] [35
+
+]) (./slowslip.tex [36] [37
+
+]) (./main.bbl
+[38] [39
+
+])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
-[29]
+ [40]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 32.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 32.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 32.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: D95B54137B0268FC848565CF1F511723;1161
-(rerunfilecheck)             After:  B1DDDF60B2045EDFAF07A09CD5ACCB0B;1402.
-
-LaTeX Warning: There were undefined references.
-
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: DCB12C3C7DA38B6B48EDAB59B12B9F91;2588.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 32.
  ) 
 Here is how much of TeX's memory you used:
- 6930 strings out of 493014
- 99993 string characters out of 6133351
- 204262 words of memory out of 5000000
- 10205 multiletter control sequences out of 15000+600000
- 9129 words of font info for 34 fonts, out of 8000000 for 9000
+ 6997 strings out of 493014
+ 100916 string characters out of 6133351
+ 203301 words of memory out of 5000000
+ 10230 multiletter control sequences out of 15000+600000
+ 9428 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,18n,32p,2614b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.5.4} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.5.3} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2.5} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2.4} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.2.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.5.2} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.1.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.1.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.1.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.5.1} has been referenced but does not exist
-, replaced by a fixed one
-
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (29 pages, 235836 bytes).
+ 29i,18n,32p,2634b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (40 pages, 260305 bytes).
 PDF statistics:
- 439 PDF objects out of 1000 (max. 8388607)
- 391 compressed objects within 4 object streams
- 185 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 611 compressed objects within 7 object streams
+ 225 named destinations out of 1000 (max. 500000)
+ 329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

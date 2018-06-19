@@ -2,15 +2,15 @@
  
 \begin{document}
 
-\section{Time lags}
+\part{Time lags}
 
-\subsection{Method}
+\chapter{Method}
 
 Some bla bla about cross correlaion and stacking
 
-\subsection{Cross-correlation of tremor recordings}
+\chapter{Cross-correlation of tremor recordings}
 
-\subsubsection{Definitions}
+\section{Definitions}
 
 We define the Fourier transform $\hat{f}$ of the function $f$ by:
 
@@ -104,9 +104,9 @@ In the Fourier domain, we have:
 \end{split}
 \end{equation}
 
-\subsubsection{Change of coordinates}
+\section{Change of coordinates}
 
-\paragraph{Point source}
+\subsection{Point source}
 
 Equation (15) can be written as:
 
@@ -318,7 +318,7 @@ u_3 \otimes u_1 & u_3 \otimes u_2 & u_3 \otimes u_3
 \end{pmatrix}
 \end{equation}
 
-\paragraph{Moment tensor}
+\subsection{Moment tensor}
 
 We have:
 
@@ -440,11 +440,11 @@ We define the source time function $F (t_i) = A_i$ and we compute the autocorrel
 
 The expectancy of the term $F^* (\tau) F (t + \tau)$ is $m^2 + \sigma^2$ if $t = 0$ and $m^2$ if $t \neq 0$.
 
-\paragraph{Stacking}
+\section{Stacking}
 
-\subsection{Computation of amplitudes for P-, SV- and SH-waves}
+\chapter{Computation of amplitudes for P-, SV- and SH-waves}
 
-\subsubsection{Changes of coordinates}
+\section{Changes of coordinates}
 
 We denote $(x, y)$ the coordinates of the receiver array, $(x_0, y_0)$ the coordinates of the tremor source, and $d$ the depth of the tremor source.
 
@@ -678,11 +678,11 @@ M_{SHP}
 \end{pmatrix}
 \end{equation}
 
-\subsubsection{Getting the reflection, conversion and transmission coefficients}
+\section{Getting the reflection, conversion and transmission coefficients}
 
 We compute the reflection, conversion and transmission coefficients at the interface between two homogeneous media, following Aki and Richards (2002, ch. 5.2).
 
-\subsubsection{SH-wave}
+\subsection{SH-wave}
 
 We have $u_x = 0$, $u_z = 0$ and $\frac{\partial}{\partial y} = 0$. Thus the wave equations become:
 
@@ -844,7 +844,7 @@ N = \begin{pmatrix}
 \end{pmatrix}
 \end{equation}
 
-\subsubsection{SV-wave}
+\subsection{SV-wave}
 
 We have $u_y = 0$ and $\frac{\partial}{\partial y} = 0$. Thus the wave equations become:
 
@@ -967,11 +967,11 @@ N = \begin{pmatrix}
 \end{pmatrix}
 \end{equation}
 
-\subsection{Ray tracing}
+\chapter{Ray tracing}
 
 We solve the eikonal and the transport equations following \v Cevern\'y (2001, ch. 3.1).
 
-\subsubsection{Eikonal equation}
+\section{Eikonal equation}
 
 Following \v Cevern\'y (2001, ch. 2.4), the eikonal equation is:
 
@@ -1005,7 +1005,7 @@ thus we have:
 T = T_0 + \frac{1}{V^2} \sigma \text{ and } \sigma = V^2 (T - T_0)
 \end{equation}
 
-\paragraph{Constant velocity}
+\subsection{Constant velocity}
 
 We have:
 
@@ -1039,7 +1039,7 @@ x_3 & = x_{30} + p_{30} V^2 (T - T_0)
 \end{split}
 \end{equation}
 
-\paragraph{Constant gradient of velocity}
+\subsection{Constant gradient of velocity}
 
 We write the velocity as $V = a z + b$.
 
@@ -1079,7 +1079,7 @@ x_3 & = x_{30} + p_{30} (a z + b)^2 (T - T_0) - \frac{1}{2} a (a z + b) (T - T_0
 \end{split}
 \end{equation}
 
-\subsubsection{Transport equation}
+\section{Transport equation}
 
 Following \v Cevern\'y (2001, ch. 2.4), the transport equation is:
 
@@ -1089,7 +1089,7 @@ Following \v Cevern\'y (2001, ch. 2.4), the transport equation is:
 
 with $V = \alpha$ or $V= \beta$ and $A$ is the amplitude of the P-wave or one of the two components of the S-wave.
 
-\paragraph{Constant velocity}
+\subsection{Constant velocity}
 
 We have $(\nabla T)_i = p_i = p_{i0}$ thus $\nabla^2 T = 0$ and the wave equation becomes:
 
@@ -1115,7 +1115,7 @@ Thus:
 \frac{\partial A}{\partial \sigma} = 0 \text{ that is } A = A_0
 \end{equation}
 
-\paragraph{Constant gradient of velocity}
+\subsection{Constant gradient of velocity}
 
 We have:
 

@@ -6,11 +6,13 @@
 
 \chapter{Time lags}
 
-\section{Description of dataset}
+\section{Description of the dataset}
 
-Bla bla about Ghosh et al. (2010)
+The available data come from eight small-aperture arrays installed in the eastern part of the Olympic Peninsula. The aperture of the arrays is about 1 km, and station spacing is a few hundred meters. The arrays are around 5 to 10 km apart from each other. Most of the arrays were installed for nearly a year and were able to record the main August 2010 ETS event, and some of the stations were able to record the August 2011 ETS event. The time and locations of the tremor sources were all computed by Ghosh \textit{et al.} ~\cite{GHO_2012}.
 
 \section{Websites to access the data}
+
+\subsection{FDSN}
 
 \href{http://www.fdsn.org/networks/}{\textbf{International Federation of Digital Seismograph Networks}} \\
 
@@ -32,6 +34,8 @@ The stations are the following:
 	\item Blyn XU - BS01 to BS06, BS11, BS20 to BS27
 \end{itemize}
 
+\subsection{IRIS}
+
 \href{http://ds.iris.edu/mda}{\textbf{IRIS DMC MetaData Aggregator}} \\
 
 This website gives for each station:
@@ -42,25 +46,71 @@ This website gives for each station:
 	\item Channels
 \end{itemize}
 
+The data can be downloaded from the IRIS DMC using the Python package obspy, and the subpackage obspy.clients.fdsn, or alternatively, they can be downloaded from the ESS server Rainier, using the subpackage obspy.clients.earthworm.
+
+\subsection{PNSN}
+
 \href{https://www.pnsn.org/tremor}{\textbf{Pacific Northwest Seismic Network tremor catalog}} \\
 
 This website gives the dates and locations of tremor activity in Cascadia. Following Ghosh \textit{et al.} (2012), the selected periods of tremors are:
 \begin{itemize}
 	\item From November 9th 2009 to November 13th 2009,
-	\item From March 16th 2010 to March 19th 2010,
-	\item From August 16th 2010 to August 20th 2010.
+	\item From March 16th 2010 to March 21st 2010,
+	\item From August 14th 2010 to August 22nd 2010.
 \end{itemize}
 
 \chapter{LFE catalog}
 
 \section{Description of dataset}
 
-Bla bla about Plourde et al. (2015)
+The template waveforms are the ones obtained by Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). Alexandre Plourde has kindly provided us his template files. \\
+
+The folder waveforms contains 91 Matlab files, which contain the template waveforms for the three channels of each of the stations. The folder detection contains 89 files, which contain the names of the stations that were used by the network matched filter, and the time of each LFE detection. 66 of these templates have then been grouped into 34 families. The names of the template
 
 \section{Websites to access the data}
 
+The waveforms from the FAME experiment can be accessed from the IRIS DMC using the Python package obspy, and the subpackage obspy.clients.fdsn. \\
+
+The waveforms for the permanent stations of the Northern California Seismic Network can be downloaded from the website of the Northern California Earthquake Data Center (\href{http://ncedc.org/}{NCEDC}). Queries for downloading the data in the miniSEED format must be formated as explained here: \\
+
+\href{http://service.ncedc.org/fdsnws/dataselect/1/#description-box}{FDSN Dataselect} \\
+
+The instrument response can be obtained from here: \\
+
+\href{http://service.ncedc.org/fdsnws/station/1/#description-box}{FDSN Station}
+
 \chapter{Slow slip}
 
-Bla bla about PANGA
+The data are available on the website of the Pacific Northwest Geodetic Array (\href{http://www.geodesy.cwu.edu/}{PANGA}), from Central Washington University. Three types of time series are available:
+
+\begin{itemize}
+\item Raw data recorded by the GPS stations, after GIPSY postprocessing.
+\item Detrended data, for which a linear trend corresponding to the secular plate motion has been removed from the data.
+\item Cleaned data, for which the linear trend, steps due to earthquakes or hardware upgrades, and annual and semi-annual sinusoids signals have been simultaneously estimated and removed following Szeliga \textit{et al.} (2004 ~\cite{SZE_2004}).
+\end{itemize}
+
+For each GPS station, the website provides a file for the three components of the displacement (latitude, longitude, and vertical), and each file contains three columns, corresponding to the time, the displacement (in millimetres), and the error. The data are recorded once a day. \\
+
+The data are filter with the function $f (t)$:
+
+\begin{equation}
+f (t) = \textrm{line} (t) + \textrm{annual} (t) + \textrm{jumps} (t)
+\end{equation}
+
+with:
+
+\begin{equation}
+\textrm{line} (t) = p_1 + p_2 t
+\end{equation}
+
+\begin{equation}
+\textrm{annual} (t) = p_3 \sin (2 \pi t + p_4)
+\end{equation}
+
+\begin{equation}
+\textrm{jumps} (t) = \sum_{i = 1}^{n} p_i \textrm{Heaviside} (t - t_i)
+\end{equation}
+
+The values of the $p_i$ and $t_i$ are given at the beginning of each file.
 
 \end{document}
