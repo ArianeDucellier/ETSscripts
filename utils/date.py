@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 def matlab2ymdhms(time):
     """
-    Convert Matlab format to year/month/dat/hour/minute/second
+    Convert Matlab format to year/month/day/hour/minute/second
 
     Input:
         type time =  float
@@ -36,6 +36,23 @@ def matlab2ymdhms(time):
         hour = 0
     return (year, month, day, hour, minute, rsecond)
 
+def ymdhms2matlab(year, month, day, hour, minute, second):
+    """
+    Convert year/month/day/hour/minute/second to Matlab format
+
+    Input:
+        type intput = 6 integers
+        input = year, month, day, hour, minute, second
+    Output:
+        type time = float
+        time = Number of days since January 1, 0000 (Matlab format)
+    """
+    myday = datetime(year, month, day, hour, minute, second)
+    myday = myday + timedelta(days=366)
+    frac = (myday - datetime(year, month, day, 0, 0, 0)).seconds / 86400.0
+    myday = myday.toordinal() + frac
+    return(myday) 
+
 def string2day(day, hour):
     """
     Convert strings to number of years since 0 AD
@@ -47,7 +64,7 @@ def string2day(day, hour):
         hour = 'HH:mm:ss'
     Output:
         type date = float
-        date = Nubers of years since 0 AD
+        date = Numbers of years since 0 AD
     """
     YY = int(day[0 : 4])
     MM = int(day[5 : 7])

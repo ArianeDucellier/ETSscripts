@@ -69,7 +69,6 @@ def stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
     Output:
         None
     """
-
     # Create client
     if client == 'IRIS':
         fdsn_client = fdsn.Client('IRIS')

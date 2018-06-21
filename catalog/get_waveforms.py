@@ -15,13 +15,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+from fractions import Fraction
 from scipy.io import loadmat
 
 from stacking import linstack
 
-def get_from_IRIS(station, Tstart, Tend, filt):
+def get_from_IRIS(station, Tstart, Tend, filt, dt):
     """
-    Function to get the waveform from IRIS
+    Function to get the waveform from IRIS for a given station and LFE
 
     Input:
         type station = string
@@ -32,10 +33,12 @@ def get_from_IRIS(station, Tstart, Tend, filt):
         Tend = Time when to end downloading
         type filt = tuple of floats
         filt = Lower and upper frequencies of the filter
+        type dt = float
+        dt = Time step for resampling
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
-        deconvolved, and filtered
+        deconvolved, filtered, and resampled
     """
     # Create client
     fdsn_client = fdsn.Client('IRIS')
@@ -46,7 +49,7 @@ def get_from_IRIS(station, Tstart, Tend, filt):
             endtime=Tend, attach_response=True)
     except:
         message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month,\
+            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
             Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
         print(message)
         return(0)
@@ -60,11 +63,15 @@ def get_from_IRIS(station, Tstart, Tend, filt):
             pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
         D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
             zerophase=True)
+        freq = D[0].stats.sampling_rate
+        ratio = Fraction(int(freq), int(1.0 / dt))
+        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
+        D.decimate(ratio.numerator, no_filter=True)
         return(D)
 
-def get_from_NCEDC(station, Tstart, Tend, filt):
+def get_from_NCEDC(station, Tstart, Tend, filt, dt):
     """
-    Function to get the waveform from NCEDC
+    Function to get the waveform from NCEDC for a given station and LFE
 
     Input:
         type station = string
@@ -75,10 +82,12 @@ def get_from_NCEDC(station, Tstart, Tend, filt):
         Tend = Time when to end downloading
         type filt = tuple of floats
         filt = Lower and upper frequencies of the filter
+        type dt = float
+        dt = Time step for resampling
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
-        deconvolved, and filtered
+        deconvolved, filtered, and resampled
     """
     # Define network and channels
     if (station == 'B039'):
@@ -108,7 +117,7 @@ def get_from_NCEDC(station, Tstart, Tend, filt):
         D = read('station.miniseed')
     except:
         message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month,\
+            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
             Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
         print(message)
         return(0)
@@ -125,9 +134,13 @@ def get_from_NCEDC(station, Tstart, Tend, filt):
             pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
         D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
             zerophase=True)
+        freq = D[0].stats.sampling_rate
+        ratio = Fraction(int(freq), int(1.0 / dt))
+        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
+        D.decimate(ratio.numerator, no_filter=True)
         return(D)
 
-def get_waveform(filename, TDUR, filt):
+def get_waveform(filename, TDUR, filt, method='RMS'):
     """
     This function computes the waveform for each template and compare it to
     the waveform from Plourde et al. (2015)
@@ -139,6 +152,8 @@ def get_waveform(filename, TDUR, filt):
         TDUR = Time to add before and after the time window for tapering
         type filt = tuple of floats
         filt = Lower and upper frequencies of the filter
+        type method = string
+        method = Normalization method for linear stack (RMS or Max)
     Output:
         None
     """
@@ -192,10 +207,10 @@ def get_waveform(filename, TDUR, filt):
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
             if (station[0 : 2] == 'ME'):
-                D = get_from_IRIS(station, Tstart, Tend, filt)
+                D = get_from_IRIS(station, Tstart, Tend, filt, ndt)
             # Second case: we get the data from NCEDC
             else:
-                D = get_from_NCEDC(station, Tstart, Tend, filt)
+                D = get_from_NCEDC(station, Tstart, Tend, filt, ndt)
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
                 if (station == 'B039'):
@@ -217,12 +232,12 @@ def get_waveform(filename, TDUR, filt):
         # Stack and plot
         if (len(EW) > 0 and len(NS) > 0 and len(UD) > 0):
             # Stack waveforms
-            EWstack = linstack([EW], normalize=True) 
-            NSstack = linstack([NS], normalize=True)
-            UDstack = linstack([UD], normalize=True)
+            EWstack = linstack([EW], normalize=True, method=method) 
+            NSstack = linstack([NS], normalize=True, method=method)
+            UDstack = linstack([UD], normalize=True, method=method)
             # First figure
             # Comparison with the waveforms from Plourde et al. (2015)
-            plt.figure(1, figsize=(10, 15))
+            plt.figure(1, figsize=(20, 15))
             station4 = station
             if (len(station4) < 4):
                 for j in range(len(station), 4):
@@ -339,8 +354,9 @@ def get_waveform(filename, TDUR, filt):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080326.07.004'
+    filename = '080401.05.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
+    method = 'RMS'
 
-    get_waveform(filename, TDUR, filt)
+    get_waveform(filename, TDUR, filt, method)

@@ -17,8 +17,8 @@ import numpy as np
 import pickle
 import sys
 
-from scipy.io import loadmat
 from math import pi, cos, sin, sqrt
+from scipy.io import loadmat
 
 from date import matlab2ymdhms
 from stacking import linstack, powstack, PWstack
@@ -48,6 +48,12 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         lat0 = Latitude of the center of the array
         type lon0 = float
         lon0 = Longitude of the center of the array
+        type ds = float
+        ds = Size of the cell where we look for tremor
+        type x0 = float
+        x0 = Distance of the center of the cell from the array (east)
+        type y0 = float
+        y0 = Distance of the center of the cell from the array (north)
         type TDUR = float
         TDUR = Duration of data downloaded before and after window of interest
         type filt = tuple of floats
@@ -61,7 +67,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         type Tmax = float
         Tmax = Maximum time lag for cross correlation plot
         type amp = float
-        offset = Amplification factor of cross correlation for plotting
+        amp = Amplification factor of cross correlation for plotting
         type amp_stack = float
         amp_stack = Amplification factor of stack for plotting
         type draw_plot = boolean
@@ -71,7 +77,6 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     Output:
         None
     """
-
     # Earth's radius and ellipticity
     a = 6378.136
     e = 0.006694470
@@ -357,8 +362,8 @@ if __name__ == '__main__':
 #    lon0 = -123.138492857143
 
     ds = 5.0
-    x0 = 0.0
-    y0 = 0.0
+    x0 = -25.0
+    y0 = -20.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0
@@ -371,21 +376,21 @@ if __name__ == '__main__':
     amp = 3.0
     amp_stack = 10.0
     stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, Tmax, \
-        amp, amp_stack, draw_plot, client)
+        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+        Tmax, amp, amp_stack, draw_plot, client)
         
     # Power stack
     type_stack = 'pow'
     amp = 3.0
     amp_stack = 2.0
     stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, Tmax, \
-        amp, amp_stack, draw_plot, client)
+        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+        Tmax, amp, amp_stack, draw_plot, client)
 
     # Phase-weighted stack
     type_stack = 'PWS'
     amp = 3.0
     amp_stack = 30.0
     stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, Tmax, \
-        amp, amp_stack, draw_plot, client)
+        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+        Tmax, amp, amp_stack, draw_plot, client)

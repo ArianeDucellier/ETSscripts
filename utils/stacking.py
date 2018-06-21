@@ -6,9 +6,10 @@ from obspy.core.stream import Stream
 from obspy.signal.filter import envelope
 
 import numpy as np
+
 from scipy.signal import hilbert
 
-def linstack(streams, normalize=True):
+def linstack(streams, normalize=True, method='RMS'):
     """
     Compute the linear stack of a list of streams
     Several streams -> returns a stack for each station and each channel
@@ -56,8 +57,15 @@ def linstack(streams, normalize=True):
                 ntr[k] = ntr[k] + 1
                 # Normalize the data before stacking
                 if normalize:
-                    norm = matchtr[j].data / \
-                        np.sqrt(np.mean(np.square(matchtr[j].data)))
+                    if (method == 'RMS'):
+                        norm = matchtr[j].data / \
+                            np.sqrt(np.mean(np.square(matchtr[j].data)))
+                    elif (method == 'Max'):
+                        norm = matchtr[j].data / \
+                            np.max(np.abs(matchtr[j].data))
+                    else:
+                        raise ValueError( \
+                            'Method must be RMS or Max')
                     norm = np.nan_to_num(norm)
                 else:
                     norm = matchtr[j].data

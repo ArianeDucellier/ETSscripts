@@ -211,6 +211,11 @@ if __name__ == '__main__':
     def test1():
         """
         Reproduce plot of Figure 183 from WMTSA
+
+        Input:
+            None
+        Output:
+            None
         """
         X = np.loadtxt('../tests/data/heart.dat')
         N = np.shape(X)[0]
@@ -237,7 +242,7 @@ if __name__ == '__main__':
         plt.savefig('../tests/MODWT/ECG_WV.eps')
         plt.close()
 
-    # Compute MODWT of the ECG time series from WMTSA
+    # Compute MODWT coefficients of the ECG time series from WMTSA
     # See Figure 183 in WMTSA
     test1()
 
@@ -245,6 +250,11 @@ if __name__ == '__main__':
     def test2():
         """
         Reproduce plot of Figure 184 from WMTSA
+
+        Input:
+            None
+        Output:
+            None
         """
         X = np.loadtxt('../tests/data/heart.dat')
         N = np.shape(X)[0]
@@ -269,6 +279,6 @@ if __name__ == '__main__':
         plt.savefig('../tests/MODWT/ECG_DS.eps')
         plt.close()
 
-    # Compute MODWT of the ECG time series from WMTSA
+    # Compute MODWT MRA of the ECG time series from WMTSA
     # See Figure 184 in WMTSA
     test2()

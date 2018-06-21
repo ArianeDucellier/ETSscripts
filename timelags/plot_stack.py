@@ -1,6 +1,6 @@
 """
 This module contains a function to plot the stack of the cross correlations
-compute with stack_ccorr_tremor
+computed with stack_ccorr_tremor
 """
 
 import obspy
@@ -11,9 +11,37 @@ import pickle
 
 from stacking import linstack, powstack, PWstack
 
-def plot_stack_ccorr(arrayName, x0, y0, type_stack, Tmax, amp, amp_lin, \
+def plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2):
     """
+    This function stacks the cross correlation over all the tremor windows
+    and plot the stack
+
+    Input:
+        type arrayName = string
+        arrayName = Name of seismic array
+        type x0 = float
+        x0 = Distance of the center of the cell from the array (east)
+        type y0 = float
+        y0 = Distance of the center of the cell from the array (north)
+        type type_stack = string
+        type_stack = Type of stack ('lin', 'pow', 'PWS')
+        type w = float
+        w = Power of the stack (for 'pow' and 'PWS')
+        type Tmax = float
+        Tmax = Maximum time lag for cross correlation plot
+        type amp = float
+        amp = Amplification factor of cross correlation for plotting
+        type amp_lin = float
+        amp_lin = Amplification factor of linear stack for plotting
+        type amp_pow = float
+        amp_pow = Amplification factor of power stack for plotting
+        type amp_PWS = float
+        amp_PWS = Amplification factor of phase-weighted stack for plotting
+        type n1 = integer
+        n1 = Index of first tremor to be plotted
+        type n2 = integer
+        n2 = Index of last tremor to be plotted
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
@@ -23,11 +51,11 @@ def plot_stack_ccorr(arrayName, x0, y0, type_stack, Tmax, amp, amp_lin, \
     NS_UD = data[7]
     # Stack over all tremor windows
     EW_lin = linstack([EW_UD], normalize=False)[0]
-    EW_pow = powstack([EW_UD], normalize=False)[0]
-    EW_PWS = PWstack([EW_UD], normalize=False)[0]
+    EW_pow = powstack([EW_UD], w, normalize=False)[0]
+    EW_PWS = PWstack([EW_UD], w, normalize=False)[0]
     NS_lin = linstack([NS_UD], normalize=False)[0]
-    NS_pow = powstack([NS_UD], normalize=False)[0]
-    NS_PWS = PWstack([NS_UD], normalize=False)[0]   
+    NS_pow = powstack([NS_UD], w, normalize=False)[0]
+    NS_PWS = PWstack([NS_UD], w, normalize=False)[0]   
     # Plot
     plt.figure(1, figsize=(20, 15))
     # EW - UD cross correlation
@@ -76,11 +104,12 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = 0.0
-    y0 = 0.0
+    x0 = -25.0
+    y0 = -20.0
+    w = 2.0
     Tmax = 15.0
     n1 = 0
-    n2 = 70
+    n2 = 107
 
     # Linear stack
     type_stack = 'lin'
@@ -88,7 +117,7 @@ if __name__ == '__main__':
     amp_lin = 100.0
     amp_pow = 2.0
     amp_PWS = 200.0
-    plot_stack_ccorr(arrayName, x0, y0, type_stack, Tmax, amp, amp_lin, \
+    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)
 
     # Power stack
@@ -97,7 +126,7 @@ if __name__ == '__main__':
     amp_lin = 15.0
     amp_pow = 1.0
     amp_PWS = 100.0
-    plot_stack_ccorr(arrayName, x0, y0, type_stack, Tmax, amp, amp_lin, \
+    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)
 
     # Phase-weighted stack
@@ -106,5 +135,5 @@ if __name__ == '__main__':
     amp_lin = 200.0
     amp_pow = 10.0
     amp_PWS = 1000.0
-    plot_stack_ccorr(arrayName, x0, y0, type_stack, Tmax, amp, amp_lin, \
+    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)

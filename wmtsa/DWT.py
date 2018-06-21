@@ -271,7 +271,8 @@ def get_DS(X, W, name, J):
     return (D, S)
 
 def NPES(W):
-    """ Compute the normalized partial energy sequence of a time series
+    """
+    Compute the normalized partial energy sequence of a time series
 
     Input:
         type W = 1D numpy array
@@ -288,7 +289,8 @@ def NPES(W):
     return C
 
 def get_nu(name, J):
-    """ Compute the phase shift for LA or coiflet filters
+    """
+    Compute the phase shift for LA or coiflet filters
 
     Input:
         type name = string
@@ -301,6 +303,10 @@ def get_nu(name, J):
         type nuG = list of J values
         nuG = Shifts for the scaling filter
     """
+    assert (type(J) == int), \
+        'Level of DWT must be an integer'
+    assert (J >= 1), \
+        'Level of DWT must be higher or equal to 1'
     assert (name[0 : 2] == 'LA' or name[0 : 1] == 'C'), \
         'Wavelet filter must be Daubechies least asymmetric or Coiflet'
     nuH = []
@@ -328,7 +334,8 @@ def get_nu(name, J):
     return (nuH, nuG)
 
 def get_gamma(name, J, N):
-    """ Compute the indices of the last boundary coefficient on the left-side
+    """
+    Compute the indices of the last boundary coefficient on the left-side
     and of the last boundary coefficient on the right-side (that is the
     coefficients that are affected by circularity)
 
@@ -340,14 +347,14 @@ def get_gamma(name, J, N):
         type N = integer
         N = Length of the time series
     Output:
-        type gamHb = List of J values
+        type gamHb = list of J values
         gamHb = Indices of the last left-side boundary coefficients (wavelet)
-        type gamHe = List of J values
+        type gamHe = list of J values
         gamHe = Indices of the first right-side boundary coefficients (wavelet)
-        type gamGb = List of J values
+        type gamGb = list of J values
         gamGb = Indices of the last left-side boundary coefficients (scaling)
-        type gamGe = List of J values
-        gamGe = Indices of the firts right-side boundary coefficients (scaling)
+        type gamGe = list of J values
+        gamGe = Indices of the first right-side boundary coefficients (scaling)
     """
     (nuH, nuG) = get_nu(name, J)
     if (name[0 : 2] == 'LA'):
@@ -368,7 +375,8 @@ def get_gamma(name, J, N):
     return (gamHb, gamHe, gamGb, gamGe)
 
 def get_indices(L, J, N):
-    """ Compute the indices of the values of the details and smooths that
+    """
+    Compute the indices of the values of the details and smooths that
     are affected by circularity
 
     Input:
@@ -430,13 +438,11 @@ if __name__ == '__main__':
 
     # Compute DWT of the first time series from WMTSA
     # See upper plot of Figure 62 in WMTSA
-    test1('ts16a.dat', 'ts16a_W.eps', \
-        'Haar DWT of first time series')
+    test1('ts16a.dat', 'ts16a_W.eps', 'Haar DWT of first time series')
 
     # Compute DWT of the second time series from WMTSA
     # See lower plot of Figure 62 in WMTSA
-    test1('ts16b.dat', 'ts16b_W.eps', \
-        'Haar DWT of second time series')
+    test1('ts16b.dat', 'ts16b_W.eps', 'Haar DWT of second time series')
 
     # Test 2
     def test2(name_input, name_output, title, name_filter):
@@ -505,25 +511,25 @@ if __name__ == '__main__':
     # from WMTSA using the Haar wavelet filter
     # See upper plot of Figure 64 in WMTSA
     test2('ts16a.dat', 'ts16a_DSR_Haar.eps', \
-          'Haar DWT of first time series', 'Haar')
+        'Haar DWT of first time series', 'Haar')
 
     # Compute details, smooths and roughs of the second time series
     # from WMTSA using the Haar wavelet filter
     # See lower plot of Figure 64 in WMTSA
     test2('ts16b.dat', 'ts16b_DSR_Haar.eps', \
-          'Haar DWT of second time series', 'Haar')
+        'Haar DWT of second time series', 'Haar')
 
     # Compute details, smooths and roughs of the first time series
     # from WMTSA using the D(4) wavelet filter
     # See upper plot of Figure 65 in WMTSA
     test2('ts16a.dat', 'ts16a_DSR_D4.eps', \
-          'D(4) DWT of first time series', 'D4')
+        'D(4) DWT of first time series', 'D4')
 
     # Compute details, smooths and roughs of the second time series
     # from WMTSA using the D(4) wavelet filter
     # See lower plot of Figure 65 in WMTSA
     test2('ts16b.dat', 'ts16b_DSR_D4.eps', \
-          'D(4) DWT of second time series', 'D4')
+        'D(4) DWT of second time series', 'D4')
 
     # Test 3
     def test3():
