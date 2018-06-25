@@ -103,6 +103,7 @@ dependencies:
   - readline=7.0=0
   - requests=2.18.4=py36_1
   - rope=0.10.7=py36_0
+  - scikit-learn=0.19.1=py36_blas_openblas_201
   - scipy=1.0.1=py36_blas_openblas_200
   - send2trash=1.5.0=py_0
   - setuptools=39.1.0=py36_0

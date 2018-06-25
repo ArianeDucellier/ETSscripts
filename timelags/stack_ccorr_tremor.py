@@ -145,9 +145,10 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                         if len(trace) > 0:
                             Dtmp.append(trace[0])
         except:
-            message = 'Cannot open waveform file for tremor {} ' + \
+            message = 'Cannot open waveform file for tremor {} '. \
+                format(i + 1) + \
                 '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d})'. \
-                format(i + 1, YY1, MM1, DD1, HH1, mm1, ss1)
+                format(YY1, MM1, DD1, HH1, mm1, ss1)
             print(message)
         else:
             # Remove stations that have different amounts of data
@@ -362,8 +363,8 @@ if __name__ == '__main__':
 #    lon0 = -123.138492857143
 
     ds = 5.0
-    x0 = -25.0
-    y0 = -20.0
+    x0 = -20.0
+    y0 = 20.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0

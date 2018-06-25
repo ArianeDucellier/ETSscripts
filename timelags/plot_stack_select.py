@@ -7,6 +7,7 @@ import obspy
 from obspy.core.stream import Stream
 from obspy.signal.cross_correlation import correlate
 
+import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
@@ -42,19 +43,25 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
         xmax = Horizontal axis limit for plot
         type ymax = float
         ymax = Vertical axis limit for plot
-        type Emax = float
-        Emax = Minimum value of max cross correlation (east)
-        type Nmax = float
-        Nmax = Minimum value of max cross correlation (north)
-        type E0 = float
-        E0 = Minimum value of cross correlation at zeros time lag (east)
-        type N0 = float
-        N0 = Minimum value of cross correlation at zeros time lag (north)
-        type Et = float
-        Et = Minimum value of time delay (east)
-        type Nt = float
-        Nt = Minimum value of time delay (north)
+        type Emax = list of floats
+        Emax = Minimum values of max cross correlation (east)
+        type Nmax = list of floats
+        Nmax = Minimum values of max cross correlation (north)
+        type E0 = list of floats
+        E0 = Minimum values of cross correlation at zeros time lag (east)
+        type N0 = list of floats
+        N0 = Minimum values of cross correlation at zeros time lag (north)
+        type Et = list of floats
+        Et = Minimum values of time delay (east)
+        type Nt = list of floats
+        Nt = Minimum values of time delay (north)
     """
+    assert (len(Emax) == len(Nmax)), \
+        'Emax and Nmax must have the same length'
+    assert (len(E0) == len(N0)), \
+        'E0 and N0 must have the same length'
+    assert (len(Et) == len(Nt)), \
+        'Et and Nt must have the same length'
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
         int(y0), type_stack)
@@ -82,13 +89,6 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
     ccmaxNS = np.zeros(nt)
     cc0NS = np.zeros(nt)
     timedelayNS = np.zeros(nt)
-    # Initialize streams of selected traces
-    EW1 = Stream()
-    EW2 = Stream()
-    EW3 = Stream()
-    NS1 = Stream()
-    NS2 = Stream()
-    NS3 = Stream()
     # Windows of the cross correlation to look at
     i0 = int((len(EW) - 1) / 2)
     ibegin = i0 + int(Tmin / EW.stats.delta)
@@ -104,95 +104,165 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
         ccmaxNS[i] = np.max(cc_NS)
         cc0NS[i] = cc_NS[ncor]
         timedelayNS[i] = (np.argmax(cc_NS) - ncor) * NS.stats.delta
-        # Keep only selected traces
-        if ((ccmaxEW[i] > Emax) and (ccmaxNS[i] > Nmax)):
-            EW1.append(EW_UD[i])
-            NS1.append(NS_UD[i])
-        if ((cc0EW[i] > E0) and (cc0NS[i] > N0)):
-            EW2.append(EW_UD[i])
-            NS2.append(NS_UD[i])
-        if ((abs(timedelayEW[i]) <= Et) and (abs(timedelayNS[i]) <= Nt)):
-            EW3.append(EW_UD[i])
-            NS3.append(NS_UD[i])
-    # Stack over selected tremor windows
-    if (cc_stack == 'lin'):
-        EW1stack = linstack([EW1], normalize=False)[0]
-        EW2stack = linstack([EW2], normalize=False)[0]
-        EW3stack = linstack([EW3], normalize=False)[0]
-        NS1stack = linstack([NS1], normalize=False)[0]
-        NS2stack = linstack([NS2], normalize=False)[0]
-        NS3stack = linstack([NS3], normalize=False)[0]
-    elif (cc_stack == 'pow'):
-        EW1stack = powstack([EW1], w, normalize=False)[0]
-        EW2stack = powstack([EW2], w, normalize=False)[0]
-        EW3stack = powstack([EW3], w, normalize=False)[0]
-        NS1stack = powstack([NS1], w, normalize=False)[0]
-        NS2stack = powstack([NS2], w, normalize=False)[0]
-        NS3stack = powstack([NS3], w, normalize=False)[0]
-    elif (cc_stack == 'PWS'):
-        EW1stack = PWstack([EW1], w, normalize=False)[0]
-        EW2stack = PWstack([EW2], w, normalize=False)[0]
-        EW3stack = PWstack([EW3], w, normalize=False)[0]
-        NS1stack = PWstack([NS1], w, normalize=False)[0]
-        NS2stack = PWstack([NS2], w, normalize=False)[0]
-        NS3stack = PWstack([NS3], w, normalize=False)[0]
-    else:
-        raise ValueError( \
-            'Type of stack must be lin, pow, or PWS')
     # Plot
     plt.figure(1, figsize=(45, 20))
     npts = int((EW.stats.npts - 1) / 2)
     dt = EW.stats.delta
     t = dt * np.arange(- npts, npts + 1)
-    # Select with max cross correlation
+    # EW / Vertical. Select with max cross correlation
     ax1 = plt.subplot(231)
     plt.plot(t, EW.data, 'k-', label='All')
-    plt.plot(t, EW1stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(Emax)))
+    for j in range(0, len(Emax)):
+        EWselect = Stream()
+        for i in range(0, nt):
+            if ((ccmaxEW[i] >= Emax[j]) and (ccmaxNS[i] >= Nmax[j])):
+                EWselect.append(EW_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            EWstack = linstack([EWselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            EWstack = powstack([EWselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            EWstack = PWstack([EWselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, EWstack.data, color = colors[j], \
+            label='Emax = {:3.2f}, Nmax = {:3.2f}'.format(Emax[j], Nmax[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Max cross correlation (east)', fontsize=24)
+    plt.title('EW / Vertical (Max cross correlation)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
+    # NS/ Vertical. Select with max cross correlation
     ax2 = plt.subplot(234)
     plt.plot(t, NS.data, 'k-', label='All')
-    plt.plot(t, NS1stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(Nmax)))
+    for j in range(0, len(Nmax)):
+        NSselect = Stream()
+        for i in range(0, nt):
+            if ((ccmaxEW[i] >= Emax[j]) and (ccmaxNS[i] >= Nmax[j])):
+                NSselect.append(NS_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            NSstack = linstack([NSselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            NSstack = powstack([NSselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            NSstack = PWstack([NSselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, NSstack.data, color = colors[j], \
+            label='Emax = {:3.2f}, Nmax = {:3.2f}'.format(Emax[j], Nmax[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Max cross correlation (north)', fontsize=24)
+    plt.title('NS / Vertical (Max cross correlation)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
-    # Select with cross correlation at zero time lag
+    # EW / Vertical. Select with cross correlation at zero time lag
     ax3 = plt.subplot(232)
     plt.plot(t, EW.data, 'k-', label='All')
-    plt.plot(t, EW2stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(E0)))
+    for j in range(0, len(E0)):
+        EWselect = Stream()
+        for i in range(0, nt):
+            if ((cc0EW[i] >= E0[j]) and (cc0NS[i] >= N0[j])):
+                EWselect.append(EW_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            EWstack = linstack([EWselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            EWstack = powstack([EWselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            EWstack = PWstack([EWselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, EWstack.data, color = colors[j], \
+            label='E0 = {:3.2f}, N0 = {:3.2f}'.format(E0[j], N0[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Cross correlation at 0 (east)', fontsize=24)
+    plt.title('EW / Vertical (Cross correlation at 0)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
+    # NS / Vertical. Select with cross correlation at zero time lag
     ax4 = plt.subplot(235)
     plt.plot(t, NS.data, 'k-', label='All')
-    plt.plot(t, NS2stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(N0)))
+    for j in range(0, len(N0)):
+        NSselect = Stream()
+        for i in range(0, nt):
+            if ((cc0EW[i] >= E0[j]) and (cc0NS[i] >= N0[j])):
+                NSselect.append(NS_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            NSstack = linstack([NSselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            NSstack = powstack([NSselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            NSstack = PWstack([NSselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, NSstack.data, color = colors[j], \
+            label='E0 = {:3.2f}, N0 = {:3.2f}'.format(E0[j], N0[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Cross correlation at 0 (north)', fontsize=24)
+    plt.title('NS / Vertical (Cross correlation at 0)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
-    # Select with time delay
+    # EW / Vertical. Select with time delay
     ax5 = plt.subplot(233)
     plt.plot(t, EW.data, 'k-', label='All')
-    plt.plot(t, EW3stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(Et)))
+    for j in range(0, len(Et)):
+        EWselect = Stream()
+        for i in range(0, nt):
+            if ((timedelayEW[i] <= Et[j]) and (timedelayNS[i] <= Nt[j])):
+                EWselect.append(EW_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            EWstack = linstack([EWselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            EWstack = powstack([EWselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            EWstack = PWstack([EWselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, EWstack.data, color = colors[j], \
+            label='Et = {:3.2f}, Nt = {:3.2f}'.format(Et[j], Nt[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Time delay (east)', fontsize=24)
+    plt.title('EW / Vertical (Time delay)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
+    # NS / Vertical. Select with time delay
     ax6 = plt.subplot(236)
     plt.plot(t, NS.data, 'k-', label='All')
-    plt.plot(t, NS3stack.data, 'r-', label='Selected')
+    colors = cm.rainbow(np.linspace(0, 1, len(Nt)))
+    for j in range(0, len(Nt)):
+        NSselect = Stream()
+        for i in range(0, nt):
+            if ((timedelayEW[i] <= Et[j]) and (timedelayNS[i] <= Nt[j])):
+                NSselect.append(NS_UD[i])
+        # Stack over selected tremor windows
+        if (cc_stack == 'lin'):
+            NSstack = linstack([NSselect], normalize=False)[0]
+        elif (cc_stack == 'pow'):
+            NSstack = powstack([NSselect], w, normalize=False)[0]
+        elif (cc_stack == 'PWS'):
+            NSstack = PWstack([NSselect], w, normalize=False)[0]
+        else:
+            raise ValueError( \
+                'Type of stack must be lin, pow, or PWS')
+        plt.plot(t, NSstack.data, color = colors[j], \
+            label='Et = {:3.2f}, Nt = {:3.2f}'.format(Et[j], Nt[j]))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
-    plt.title('Time delay (north)', fontsize=24)
+    plt.title('NS / Vertical (Time delay)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
    # End figure
@@ -219,12 +289,12 @@ if __name__ == '__main__':
     Tmin = 2.0
     Tmax = 8.0
     xmax = 15.0
-    Emax = 0.5
-    Nmax = 0.5
-    E0 = 0.4
-    N0 = 0.4
-    Et = 0.1
-    Nt = 0.1
+    Emax = [0.3, 0.4, 0.5, 0.6]
+    Nmax = [0.3, 0.4, 0.5, 0.6]
+    E0 = [0.2, 0.3, 0.4, 0.5]
+    N0 = [0.2, 0.3, 0.4, 0.5]
+    Et = [0.0, 0.05, 0.1, 0.15, 0.2]
+    Nt = [0.0, 0.05, 0.1, 0.15, 0.2]
 
     plot_stack(arrayName, x0, y0, 'lin', w, 'lin', ncor, Tmin, Tmax, \
         xmax, 0.1, Emax, Nmax, E0, N0, Et, Nt)

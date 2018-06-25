@@ -11,13 +11,41 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error, r2_score
 from scipy.io import loadmat
 
 from date import ymdhms2matlab
 from stacking import linstack, powstack, PWstack
 
+def linear(x, y):
+    """
+    Compute the linear regression y = a x + b
+
+    Input:
+        type x = Numpy array
+        x = Training data set
+        type y = Numpy array
+        y = Target set
+    Output:
+        type y_pred = Numpy array
+        y_pred = Predicted target values
+        type error= float
+        error = Mean squared error
+        type R2 = float
+        R2 = Variance score
+    """
+    x = np.reshape(x, (np.shape(x)[0], 1))
+    y = np.reshape(y, (np.shape(y)[0], 1))
+    regr = linear_model.LinearRegression(normalize=True)
+    regr.fit(x, y)
+    y_pred = regr.predict(x)
+    error = mean_squared_error(y, y_pred)
+    R2 = r2_score(y, y_pred)
+    return (y_pred, error, R2)
+
 def compare_ccorr_location(arrayName, x0, y0, type_stack, w, cc_stack, ncor, \
-        Tmin, Tmax):
+        Tmin, Tmax, depthPB):
     """
     This function compare each individual cross correlation  with the stack
     and compare the result with the depth and uncertainty on the location of
@@ -42,6 +70,8 @@ def compare_ccorr_location(arrayName, x0, y0, type_stack, w, cc_stack, ncor, \
         Tmin = Minimum time lag for comparing cross correlation with the stack
         type Tmax = float
         Tmax = Maximum time lag for comparing cross correlation with the stack
+        type depthPB = positive float
+        depthPB = Depth of the plate boundary at x0, y0 (in km)
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
@@ -113,67 +143,145 @@ def compare_ccorr_location(arrayName, x0, y0, type_stack, w, cc_stack, ncor, \
     ax1 = plt.subplot(331)
     plt.plot(dx, ccmaxEW, 'ro', label='East')
     plt.plot(dx, ccmaxNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Max cross correlation')
-    plt.title('East direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dx, ccmaxEW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dx, ccmaxNS)
+    plt.plot(dx, cc_pred_EW, 'r-')
+    plt.plot(dx, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dx), 0.9 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dx), 0.8 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Max cross correlation', fontsize=20)
+    plt.title('East direction', fontsize=20)
     plt.legend(loc=1)
     ax2 = plt.subplot(332)
     plt.plot(dy, ccmaxEW, 'ro', label='East')
     plt.plot(dy, ccmaxNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Max cross correlation')
-    plt.title('North direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dy, ccmaxEW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dy, ccmaxNS)
+    plt.plot(dy, cc_pred_EW, 'r-')
+    plt.plot(dy, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dy), 0.9 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dy), 0.8 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Max cross correlation', fontsize=20)
+    plt.title('North direction', fontsize=20)
     plt.legend(loc=1)
     ax3 = plt.subplot(333)
     plt.plot(dz, ccmaxEW, 'ro', label='East')
     plt.plot(dz, ccmaxNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Max cross correlation')
-    plt.title('Vertical direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dz, ccmaxEW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dz, ccmaxNS)
+    plt.plot(dz, cc_pred_EW, 'r-')
+    plt.plot(dz, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dz), 0.9 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dz), 0.8 * max(np.max(ccmaxEW), np.max(ccmaxNS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Max cross correlation', fontsize=20)
+    plt.title('Vertical direction', fontsize=20)
     plt.legend(loc=1)
     # Location uncertainty with cross correlation at zero time lag
     ax4 = plt.subplot(334)
     plt.plot(dx, cc0EW, 'ro', label='East')
     plt.plot(dx, cc0NS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Cross correlation at 0')
-    plt.title('East direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dx, cc0EW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dx, cc0NS)
+    plt.plot(dx, cc_pred_EW, 'r-')
+    plt.plot(dx, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dx), 0.9 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dx), 0.8 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Cross correlation at 0', fontsize=20)
+    plt.title('East direction', fontsize=20)
     plt.legend(loc=1)
     ax5 = plt.subplot(335)
     plt.plot(dy, cc0EW, 'ro', label='East')
     plt.plot(dy, cc0NS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Cross correlation at 0')
-    plt.title('North direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dy, cc0EW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dy, cc0NS)
+    plt.plot(dy, cc_pred_EW, 'r-')
+    plt.plot(dy, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dy), 0.9 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dy), 0.8 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Cross correlation at 0', fontsize=20)
+    plt.title('North direction', fontsize=20)
     plt.legend(loc=1)
     ax6 = plt.subplot(336)
     plt.plot(dz, cc0EW, 'ro', label='East')
     plt.plot(dz, cc0NS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Cross correlation at 0')
-    plt.title('Vertical direction')
+    (cc_pred_EW, error_EW, R2_EW) = linear(dz, cc0EW)
+    (cc_pred_NS, error_NS, R2_NS) = linear(dz, cc0NS)
+    plt.plot(dz, cc_pred_EW, 'r-')
+    plt.plot(dz, cc_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dz), 0.9 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'East: {:6.4f} / {:6.4f}'.format(error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dz), 0.8 * max(np.max(cc0EW), np.max(cc0NS)), \
+        'North: {:6.4f} / {:6.4f}'.format(error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Cross correlation at 0', fontsize=20)
+    plt.title('Vertical direction', fontsize=20)
     plt.legend(loc=1)
     # Location uncertainty with time delay
     ax7 = plt.subplot(337)
-    plt.plot(dx, timedelayEW, 'ro', label='East')
-    plt.plot(dx, timedelayNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Time delay (s)')
-    plt.title('East direction')
+    plt.plot(dx, np.fabs(timedelayEW), 'ro', label='East')
+    plt.plot(dx, np.fabs(timedelayNS), 'bo', label='North')
+    (td_pred_EW, error_EW, R2_EW) = linear(dx, np.fabs(timedelayEW))
+    (td_pred_NS, error_NS, R2_NS) = linear(dx, np.fabs(timedelayNS))
+    plt.plot(dx, td_pred_EW, 'r-')
+    plt.plot(dx, td_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dx), 0.9 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'East: {:6.4f} / {:6.4f}'.format \
+        (error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dx), 0.8 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'North: {:6.4f} / {:6.4f}'.format \
+        (error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Time delay (s)', fontsize=20)
+    plt.title('East direction', fontsize=20)
     plt.legend(loc=1)
     ax8 = plt.subplot(338)
-    plt.plot(dy, timedelayEW, 'ro', label='East')
-    plt.plot(dy, timedelayNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Time delay (s)')
-    plt.title('North direction')
+    plt.plot(dy, np.fabs(timedelayEW), 'ro', label='East')
+    plt.plot(dy, np.fabs(timedelayNS), 'bo', label='North')
+    (td_pred_EW, error_EW, R2_EW) = linear(dy, np.fabs(timedelayEW))
+    (td_pred_NS, error_NS, R2_NS) = linear(dy, np.fabs(timedelayNS))
+    plt.plot(dy, td_pred_EW, 'r-')
+    plt.plot(dy, td_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dy), 0.9 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'East: {:6.4f} / {:6.4f}'.format \
+        (error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dy), 0.8 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'North: {:6.4f} / {:6.4f}'.format \
+        (error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Time delay (s)', fontsize=20)
+    plt.title('North direction', fontsize=20)
     plt.legend(loc=1)
     ax9 = plt.subplot(339)
-    plt.plot(dz, timedelayEW, 'ro', label='East')
-    plt.plot(dz, timedelayNS, 'bo', label='North')
-    plt.xlabel('Error (km)')
-    plt.ylabel('Time delay (s)')
-    plt.title('Vertical direction')
+    plt.plot(dz, np.fabs(timedelayEW), 'ro', label='East')
+    plt.plot(dz, np.fabs(timedelayNS), 'bo', label='North')
+    (td_pred_EW, error_EW, R2_EW) = linear(dz, np.fabs(timedelayEW))
+    (td_pred_NS, error_NS, R2_NS) = linear(dz, np.fabs(timedelayNS))
+    plt.plot(dz, td_pred_EW, 'r-')
+    plt.plot(dz, td_pred_NS, 'b-')
+    plt.text(0.5 * np.max(dz), 0.9 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'East: {:6.4f} / {:6.4f}'.format \
+        (error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(dz), 0.8 * max(np.max(np.fabs(timedelayEW)), \
+        np.max(np.fabs(timedelayNS))), 'North: {:6.4f} / {:6.4f}'.format \
+        (error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Error (km)', fontsize=20)
+    plt.ylabel('Time delay (s)', fontsize=20)
+    plt.title('Vertical direction', fontsize=20)
     plt.legend(loc=1)
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
@@ -196,22 +304,80 @@ def compare_ccorr_location(arrayName, x0, y0, type_stack, w, cc_stack, ncor, \
     # Depth with max cross correlation
     plt.plot(depth, ccmaxEW, 'ro', label='East')
     plt.plot(depth, ccmaxNS, 'bo', label='North')
-    plt.xlabel('Depth (km)')
-    plt.ylabel('Max cross correlation')
+    (cc_pred_EW1, error_EW1, R2_EW1) = linear( \
+        depth[np.where(depth >= depthPB)], ccmaxEW[np.where(depth >= depthPB)])
+    (cc_pred_EW2, error_EW2, R2_EW2) = linear( \
+        depth[np.where(depth <= depthPB)], ccmaxEW[np.where(depth <= depthPB)])
+    (cc_pred_NS1, error_NS1, R2_NS1) = linear( \
+        depth[np.where(depth >= depthPB)], ccmaxNS[np.where(depth >= depthPB)])
+    (cc_pred_NS2, error_NS2, R2_NS2) = linear( \
+        depth[np.where(depth <= depthPB)], ccmaxNS[np.where(depth <= depthPB)])
+    plt.plot(depth[np.where(depth >= depthPB)], cc_pred_EW1, 'r-')
+    plt.plot(depth[np.where(depth <= depthPB)], cc_pred_EW2, 'r-')
+    plt.plot(depth[np.where(depth >= depthPB)], cc_pred_NS1, 'b-')
+    plt.plot(depth[np.where(depth <= depthPB)], cc_pred_NS2, 'b-')
+    plt.text(0.5 * np.max(depth), 0.9 * max(np.max(ccmaxEW), \
+        np.max(ccmaxNS)), 'East (+): {:6.4f} / {:6.4f}'.format(error_EW1, \
+        R2_EW1), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.85 * max(np.max(ccmaxEW), \
+        np.max(ccmaxNS)), 'East (-): {:6.4f} / {:6.4f}'.format(error_EW2, \
+        R2_EW2), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.8 * max(np.max(ccmaxEW), \
+        np.max(ccmaxNS)), 'North (+): {:6.4f} / {:6.4f}'.format(error_NS1, \
+        R2_NS1), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.75 * max(np.max(ccmaxEW), \
+        np.max(ccmaxNS)), 'North (-): {:6.4f} / {:6.4f}'.format(error_NS2, \
+        R2_NS2), fontsize=20)
+    plt.xlabel('Depth (km)', fontsize=20)
+    plt.ylabel('Max cross correlation', fontsize=20)
     plt.legend(loc=1)
     ax2 = plt.subplot(132)
     # Depth with cross correlation at zero time lag
     plt.plot(depth, cc0EW, 'ro', label='East')
     plt.plot(depth, cc0NS, 'bo', label='North')
-    plt.xlabel('Depth (km)')
-    plt.ylabel('Cross correlation at 0')
+    (cc_pred_EW1, error_EW1, R2_EW1) = linear( \
+        depth[np.where(depth >= depthPB)], cc0EW[np.where(depth >= depthPB)])
+    (cc_pred_EW2, error_EW2, R2_EW2) = linear( \
+        depth[np.where(depth <= depthPB)], cc0EW[np.where(depth <= depthPB)])
+    (cc_pred_NS1, error_NS1, R2_NS1) = linear( \
+        depth[np.where(depth >= depthPB)], cc0NS[np.where(depth >= depthPB)])
+    (cc_pred_NS2, error_NS2, R2_NS2) = linear( \
+        depth[np.where(depth <= depthPB)], cc0NS[np.where(depth <= depthPB)])
+    plt.plot(depth[np.where(depth >= depthPB)], cc_pred_EW1, 'r-')
+    plt.plot(depth[np.where(depth <= depthPB)], cc_pred_EW2, 'r-')
+    plt.plot(depth[np.where(depth >= depthPB)], cc_pred_NS1, 'b-')
+    plt.plot(depth[np.where(depth <= depthPB)], cc_pred_NS2, 'b-')
+    plt.text(0.5 * np.max(depth), 0.9 * max(np.max(cc0EW), \
+        np.max(cc0NS)), 'East (+): {:6.4f} / {:6.4f}'.format(error_EW1, \
+        R2_EW1), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.85 * max(np.max(cc0EW), \
+        np.max(cc0NS)), 'East (-): {:6.4f} / {:6.4f}'.format(error_EW2, \
+        R2_EW2), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.8 * max(np.max(cc0EW), \
+        np.max(cc0NS)), 'North (+): {:6.4f} / {:6.4f}'.format(error_NS1, \
+        R2_NS1), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.75 * max(np.max(cc0EW), \
+        np.max(cc0NS)), 'North (-): {:6.4f} / {:6.4f}'.format(error_NS2, \
+        R2_NS2), fontsize=20)
+    plt.xlabel('Depth (km)', fontsize=20)
+    plt.ylabel('Cross correlation at 0', fontsize=20)
     plt.legend(loc=1)
     ax3 = plt.subplot(133)
     # Depth with time delay
     plt.plot(depth, timedelayEW, 'ro', label='East')
     plt.plot(depth, timedelayNS, 'bo', label='North')
-    plt.xlabel('Depth (km)')
-    plt.ylabel('Time delay (s)')
+    (td_pred_EW, error_EW, R2_EW) = linear(depth, timedelayEW)
+    (td_pred_NS, error_NS, R2_NS) = linear(depth, timedelayNS)
+    plt.plot(depth, td_pred_EW, 'r-')
+    plt.plot(depth, td_pred_NS, 'b-')
+    plt.text(0.5 * np.max(depth), 0.9 * max(np.max(timedelayEW), \
+        np.max(timedelayNS)), 'East: {:6.4f} / {:6.4f}'.format \
+        (error_EW, R2_EW), fontsize=20)
+    plt.text(0.5 * np.max(depth), 0.8 * max(np.max(timedelayEW), \
+        np.max(timedelayNS)), 'North: {:6.4f} / {:6.4f}'.format \
+        (error_NS, R2_NS), fontsize=20)
+    plt.xlabel('Depth (km)', fontsize=20)
+    plt.ylabel('Time delay (s)', fontsize=20)
     plt.legend(loc=1)
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
@@ -233,22 +399,23 @@ if __name__ == '__main__':
     ncor = 120
     Tmin = 2.0
     Tmax = 8.0
+    depthPB = 41.4877
 
     compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
     compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
-        Tmin, Tmax)
+        Tmin, Tmax, depthPB)
