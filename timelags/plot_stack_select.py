@@ -14,8 +14,8 @@ import pickle
 
 from stacking import linstack, powstack, PWstack
 
-def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
-        xmax, ymax, Emax, Nmax, E0, N0, Et, Nt):
+def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
+        Tmax, xmax, ymax, Emax, Nmax, E0, N0, Et, Nt):
     """
     This function stacks the cross correlation over selected tremor windows
     and plot the stack
@@ -129,7 +129,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, EWstack.data, color = colors[j], \
-            label='Emax = {:3.2f}, Nmax = {:3.2f}'.format(Emax[j], Nmax[j]))
+            label='Emax = {:3.2f}, Nmax = {:3.2f} ({:d})'.format(Emax[j], \
+            Nmax[j], len(EWselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('EW / Vertical (Max cross correlation)', fontsize=24)
@@ -155,7 +156,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, NSstack.data, color = colors[j], \
-            label='Emax = {:3.2f}, Nmax = {:3.2f}'.format(Emax[j], Nmax[j]))
+            label='Emax = {:3.2f}, Nmax = {:3.2f} ({:d})'.format(Emax[j], \
+            Nmax[j], len(NSselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('NS / Vertical (Max cross correlation)', fontsize=24)
@@ -181,7 +183,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, EWstack.data, color = colors[j], \
-            label='E0 = {:3.2f}, N0 = {:3.2f}'.format(E0[j], N0[j]))
+            label='E0 = {:3.2f}, N0 = {:3.2f} ({:d})'.format(E0[j], N0[j], \
+            len(EWselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('EW / Vertical (Cross correlation at 0)', fontsize=24)
@@ -207,7 +210,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, NSstack.data, color = colors[j], \
-            label='E0 = {:3.2f}, N0 = {:3.2f}'.format(E0[j], N0[j]))
+            label='E0 = {:3.2f}, N0 = {:3.2f} ({:d})'.format(E0[j], N0[j], \
+            len(NSselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('NS / Vertical (Cross correlation at 0)', fontsize=24)
@@ -233,7 +237,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, EWstack.data, color = colors[j], \
-            label='Et = {:3.2f}, Nt = {:3.2f}'.format(Et[j], Nt[j]))
+            label='Et = {:3.2f}, Nt = {:3.2f} ({:d})'.format(Et[j], Nt[j], \
+            len(EWselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('EW / Vertical (Time delay)', fontsize=24)
@@ -259,7 +264,8 @@ def plot_stack(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, Tmax, \
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
         plt.plot(t, NSstack.data, color = colors[j], \
-            label='Et = {:3.2f}, Nt = {:3.2f}'.format(Et[j], Nt[j]))
+            label='Et = {:3.2f}, Nt = {:3.2f} ({:d})'.format(Et[j], Nt[j], \
+            len(NSselect)))
     plt.xlim(0, xmax)
     plt.ylim(- ymax, ymax)
     plt.title('NS / Vertical (Time delay)', fontsize=24)
@@ -296,21 +302,21 @@ if __name__ == '__main__':
     Et = [0.0, 0.05, 0.1, 0.15, 0.2]
     Nt = [0.0, 0.05, 0.1, 0.15, 0.2]
 
-    plot_stack(arrayName, x0, y0, 'lin', w, 'lin', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'lin', w, 'lin', ncor, Tmin, Tmax, \
         xmax, 0.1, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'lin', w, 'pow', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, Tmin, Tmax, \
         xmax, 0.2, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'lin', w, 'PWS', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, Tmin, Tmax, \
         xmax, 0.05, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'pow', w, 'lin', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, Tmin, Tmax, \
         xmax, 0.2, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'pow', w, 'pow', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, Tmin, Tmax, \
         xmax, 1.0, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'pow', w, 'PWS', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, Tmin, Tmax, \
         xmax, 0.15, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'PWS', w, 'lin', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, Tmin, Tmax, \
         xmax, 0.02, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'PWS', w, 'pow', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, Tmin, Tmax, \
         xmax, 0.2, Emax, Nmax, E0, N0, Et, Nt)
-    plot_stack(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, Tmin, Tmax, \
+    plot_stack_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, Tmin, Tmax, \
         xmax, 0.01, Emax, Nmax, E0, N0, Et, Nt)

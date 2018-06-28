@@ -44,8 +44,8 @@ def linear(x, y):
     R2 = r2_score(y, y_pred)
     return (y_pred, error, R2)
 
-def compare_ccorr_location(arrayName, x0, y0, type_stack, w, cc_stack, ncor, \
-        Tmin, Tmax, depthPB):
+def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
+        Tmax, depthPB):
     """
     This function compare each individual cross correlation  with the stack
     and compare the result with the depth and uncertainty on the location of
@@ -401,21 +401,21 @@ if __name__ == '__main__':
     Tmax = 8.0
     depthPB = 41.4877
 
-    compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
         Tmin, Tmax, depthPB)
-    compare_ccorr_location(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
+    compare_ccorr(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
         Tmin, Tmax, depthPB)

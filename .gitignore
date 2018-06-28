@@ -6,6 +6,7 @@ data/timelags/*
 data/.DS_Store
 figures/AoA/gmt.history
 notebooks/.ipynb_checkpoints
+timelags/ac/*
 timelags/cc/*
 timelags/plot_cc/*
 utils/__pycache__/*
