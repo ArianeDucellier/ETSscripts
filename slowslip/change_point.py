@@ -1,6 +1,8 @@
 """
-This module contains a function to compute the MODWT of the slow slip
-every day, and see whether there are changes from one day to another
+This module contains a function to compute the MODWT of the slow slip,
+and see whether there are changes from one day to another:
+    - 1. Look at the maxima and minima of the wavelet coefficient
+    - 2. Look at inflexion points in the variance
 """
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
@@ -8,10 +10,11 @@ import numpy as np
 
 from math import cos, pi, sin, sqrt
 
+import DWT
 import MODWT
 import date
 
-# Preprocessing
+# Preprocessing of the GPS data
 # Choose the station
 station = 'PGC5'
 direction = 'lon'
@@ -44,6 +47,7 @@ for i in range(0, len(gap)):
         0.5 * (disp_sub[gap[i]] + disp_sub[gap[i] + 1]))
     gap[i : ] = gap[i : ] + 1
 
+# Preprocessing of the tremor data
 # Load tremor data from the catalog downloaded from the PNSN
 filename = '../data/timelags/08_01_2009_11_26_2014.txt'
 day = np.loadtxt(filename, dtype=np.str, usecols=[0], skiprows=16)
@@ -56,7 +60,7 @@ location = np.loadtxt('../data/timelags/08_01_2009_11_26_2014.txt', \
     usecols=[2, 3], skiprows=16)
 lat_tremor = location[:, 0]
 lon_tremor = location[:, 1]
-# Compute the tremor tme for different distances from the GPS station
+# Compute the tremor time for different distances from the GPS station
 a = 6378.136
 e = 0.006694470
 lat0 = 48.65
@@ -73,142 +77,53 @@ for i in range(0, len(dists)):
     k = dist <= dists[i]
     times.append(time_tremor[k])
 
-def compute_last_coeff(time, disp, J, name, time_ETS, times, dists):
+def compute_var(time, disp, J, name, time_ETS, times, dists):
     """
-    Add one value to the time series at each time step, then compute and plot
-    the last wavelet coefficient of the MODWT for each time step.
-
-    Input:
-        type time = Numpy 1D array
-        time = Day when data was recorded
-        type disp = Numpy 1D array
-        disp = Displacement measured at the GPS station
-        type J = integer
-        J = Level of the MODWT
-        type name = string
-        name = Wavelet filter (use extremal phase D4 to D20)
-        type time_ETS = list of floats
-        time_ETS = Time of main ETS events
-        type times = list of 1D Numpy arrays
-        times = Time at which there is a tremor at less than a given distance
-        type dists = list of floats
-        dists = Maximum distance from tremor to GPS station
-    Output:
-        None
     """
     # Initialization
-    N = np.shape(disp)[0]
-    L = int(name[1 :])
-    t0 = time[0]
+    g = DWT.get_scaling(name)
+    L = len(g)
     dt = 1.0 / 365.0
-    Wlast = np.zeros((N - 2, J))
+    N = len(disp)
     # Compute MODWT
-    for i in range(2, N):
-        (W0, V0) = MODWT.pyramid(disp[0 : i], name, J)
-        for j in range(0, J):
-            Wlast[i - 2, j] = W0[j][-1]
-    # Plot figure
-    plt.figure(1, figsize=(15, (J + 2) * 4))
-    # Plot tremor
-    plt.subplot2grid((J + 2, 1), (J + 1, 0))
-    for i in range(0, len(time_ETS)):
-        plt.axvline(time_ETS[i], linewidth=2, color='grey')
-    colors = cm.rainbow(np.linspace(0, 1, len(dists)))
-    for time_dist, distance, c in zip(times, dists, colors):
-        nt = np.shape(time_dist)[0]
-        plt.plot(np.sort(time_dist), (1.0 / nt) * \
-            np.arange(0, len(time_dist)), color=c, \
-            label='distance <= {:2.0f} km'.format(distance))
-    plt.xlim(np.min(time), np.max(time))
-    plt.xlabel('Time (year)')
-    plt.title('Cumulative number of tremor')
-    plt.legend(loc=4)   
-    # Plot data
-    plt.subplot2grid((J + 2, 1), (J, 0))
-    for i in range(0, len(time_ETS)):
-        plt.axvline(time_ETS[i], linewidth=2, color='grey')
-    plt.plot(t0 + dt * np.arange(0, N), disp, 'k', label='Data')
-    plt.xlim(np.min(time), np.max(time))
-    plt.legend(loc=1)
-    # Plot last wavelet coefficient at each level
-    for j in range(0, J):
-        plt.subplot2grid((J + 2, 1), (J - j - 1, 0))
-        for i in range(0, len(time_ETS)):
-            plt.axvline(time_ETS[i], linewidth=2, color='grey')
-        plt.plot(t0 + dt * np.arange(2, N), Wlast[:, j], 'k', \
-            label = 'Level ' + str(j + 1))
-        i0 = (2 ** (j + 1) - 1) * (L - 1)
-        if (i0 < N):
-            plt.axvline(t0 + dt * i0, linewidth=2, color='red')
-        plt.xlim(np.min(time), np.max(time))
-        plt.legend(loc=1)
-    # Save figure
-    plt.suptitle('Lats wavelet coefficient of the MODWT', fontsize=24)
-    filename = 'lastcoeff_' + name + '.eps'
-    plt.savefig(filename, format='eps')
-    plt.close(1)
-
-def slidingMODWT(time, disp, J, name, time_ETS, times, dists, ibegin, iend):
-        # Initialization
-    N = np.shape(disp)[0]
-    t0 = time[0]
-    dt = 1.0 / 365.0
-    W = []
-    for i in range(ibegin, iend):
-        (W0, V0) = MODWT.pyramid(disp[0 : i], name, J)
-        W.append(W0)
-    # Plot figure
-    plt.figure(1, figsize=(15, (J + 2) * 4))
-    # Plot tremor
-    plt.subplot2grid((J + 2, 1), (J + 1, 0))
-    for i in range(0, len(time_ETS)):
-        plt.axvline(time_ETS[i], linewidth=2, color='grey')
-    colors = cm.rainbow(np.linspace(0, 1, len(dists)))
-    for time_dist, distance, c in zip(times, dists, colors):
-        nt = np.shape(time_dist)[0]
-        plt.plot(np.sort(time_dist), (1.0 / nt) * \
-            np.arange(0, len(time_dist)), color=c, \
-            label='distance <= {:2.0f} km'.format(distance))
-    plt.xlim(np.min(time), np.max(time))
-    plt.xlabel('Time (year)')
-    plt.title('Cumulative number of tremor')
-    plt.legend(loc=4)   
-    # Plot data
-    plt.subplot2grid((J + 2, 1), (J, 0))
-    for i in range(0, len(time_ETS)):
-        plt.axvline(time_ETS[i], linewidth=2, color='grey')
-    plt.plot(t0 + dt * np.arange(0, N), disp, 'k', label='Data')
-    plt.xlim(np.min(time), np.max(time))
-    plt.legend(loc=1)
-    colors = cm.rainbow(np.linspace(0, 1, iend - ibegin))
-    # Plot wavelet coefficient at each level
-    for j in range(0, J):
-        plt.subplot2grid((J + 2, 1), (J - j - 1, 0))
-        for i in range(0, len(time_ETS)):
-            plt.axvline(time_ETS[i], linewidth=2, color='grey')
-        for i in range(ibegin, iend):
-            W0 = W[iend - i - 1]
-            if (i == ibegin):
-                plt.plot(t0 + dt * np.arange(0, len(W0[j])), W0[j], \
-                    color=colors[iend - i - 1], label = 'W' + str(j + 1))
-            else:
-                plt.plot(t0 + dt * np.arange(0, len(W0[j])), W0[j], \
-                    color=colors[iend - i - 1])
-        plt.xlim(np.min(time), np.max(time))
-        plt.legend(loc=1)
-    # Save figure
-    plt.suptitle('Wavelet coefficients of the MODWT', fontsize=24)
-    filename = 'wavelet_' + name + '.eps'
-    plt.savefig(filename, format='eps')
-    plt.close(1)
-
-def deriveMODWT(time, disp, J, name, time_ETS, times, dists):
-    N = np.shape(disp)[0]
-    t0 = time[0]
-    dt = 1.0 / 365.0
     (W, V) = MODWT.pyramid(disp, name, J)
-    chsgn = []
-    # Plot figure
+    # Compute time derivative of wavelet coefficients
+    D = []
+    for j in range(0, J):
+        Wj = W[j]
+        Dj = np.diff(Wj)
+        D.append(Dj)
+    # Compute time when we have both:
+    #     - 1. Change in the sign of the derivative
+    #     - 2. The maximum or minimum is more than mean + 2 standard deviation
+    M = []
+    for j in range (0, J):
+        Dj = D[j]
+        index = np.sign(Dj[1 :]) - np.sign(Dj[0 : -1]) != 0
+        index = np.insert(index, 0, False)
+        index = np.append(index, False)
+        Mj = time[(index)] # & (abs(Wj) > np.mean(Wj) + np.std(Wj))]
+        M.append(Mj)
+    # Compute the cumulative variance
+    C = []
+    for j in range(0, J):
+        Wj = W[j]
+        Cj = np.cumsum(np.power(Wj, 2.0))
+        C.append(Cj)
+    # Compute time when we have:
+    #     - 1. Chqnge in the sign of the second derivative
+    I = []
+    for j in range(0, J):
+        Cj = C[j]
+        D1 = np.diff(Cj)
+        D2 = np.diff(D1)
+        index = np.sign(D2[1 :]) - np.sign(D2[0 : -1]) != 0
+        index = np.insert(index, 0, False)
+        index = np.append(index, False)
+        index = np.append(index, False)
+        Ij = time[(index)] + dt / 2.0
+        I.append(Ij)
+    # Figure 1: Look at the wavelet coefficients
     plt.figure(1, figsize=(15, (J + 2) * 4))
     # Plot tremor
     plt.subplot2grid((J + 2, 1), (J + 1, 0))
@@ -228,37 +143,113 @@ def deriveMODWT(time, disp, J, name, time_ETS, times, dists):
     plt.subplot2grid((J + 2, 1), (J, 0))
     for i in range(0, len(time_ETS)):
         plt.axvline(time_ETS[i], linewidth=2, color='grey')
-    plt.plot(t0 + dt * np.arange(0, N), disp, 'k', label='Data')
+    plt.plot(time, disp, 'k', label='Data')
     plt.xlim(np.min(time), np.max(time))
     plt.legend(loc=1)
-    # Plot wavelet coefficient at each level
+    # Plot wavelet coefficients at each level
     for j in range(0, J):
         plt.subplot2grid((J + 2, 1), (J - j - 1, 0))
         Wj = W[j]
-        deriv = np.diff(Wj)
-        index = np.sign(deriv[1 :]) - np.sign(deriv[0 : -1]) != 0
-        index = np.insert(index, 0, False)
-        index = np.append(index, False)
-        chsgn0 = time[(index) & (abs(Wj) > np.mean(Wj) + np.std(Wj))]
-        chsgn.append(chsgn0)
         plt.plot(time, Wj, 'k-', label ='W' + str(j + 1))
-        for i in range (0, len(chsgn0)):
-            plt.axvline(chsgn0[i], linewidth=1, color='grey')
+        Mj = M[j]
+        for i in range (0, len(Mj)):
+            plt.axvline(Mj[i], linewidth=1, color='grey')
+        Lj = (2 ** (j + 1) - 1) * (L - 1)
+        if (Lj < N):
+            plt.axvline(time[Lj], linewidth=2, color='red')
         plt.xlim(np.min(time), np.max(time))
         plt.legend(loc=1)
     # Save figure
-    plt.suptitle('Wavelet coefficients of the MODWT', fontsize=24)
+    plt.suptitle('Wavelet coefficients', fontsize=24)
     filename = 'wavelet_' + name + '.eps'
     plt.savefig(filename, format='eps')
     plt.close(1)
-    return chsgn
+    # Figure 2: Look at the derivative of the wavelet coefficients
+    plt.figure(2, figsize=(15, (J + 2) * 4))
+    # Plot tremor
+    plt.subplot2grid((J + 2, 1), (J + 1, 0))
+    for i in range(0, len(time_ETS)):
+        plt.axvline(time_ETS[i], linewidth=2, color='grey')
+    colors = cm.rainbow(np.linspace(0, 1, len(dists)))
+    for time_dist, distance, c in zip(times, dists, colors):
+        nt = np.shape(time_dist)[0]
+        plt.plot(np.sort(time_dist), (1.0 / nt) * \
+            np.arange(0, len(time_dist)), color=c, \
+            label='distance <= {:2.0f} km'.format(distance))
+    plt.xlim(np.min(time), np.max(time))
+    plt.xlabel('Time (year)')
+    plt.title('Cumulative number of tremor')
+    plt.legend(loc=4)   
+    # Plot data
+    plt.subplot2grid((J + 2, 1), (J, 0))
+    for i in range(0, len(time_ETS)):
+        plt.axvline(time_ETS[i], linewidth=2, color='grey')
+    plt.plot(time, disp, 'k', label='Data')
+    plt.xlim(np.min(time), np.max(time))
+    plt.legend(loc=1)
+    # Plot derivative of the wavelet coefficients at each level
+    for j in range(0, J):
+        plt.subplot2grid((J + 2, 1), (J - j - 1, 0))
+        Dj = D[j]
+        plt.plot(time[0 : -1] + dt / 2.0, Dj, 'k-', label ='D' + str(j + 1))
+        Mj = M[j]
+        for i in range (0, len(Mj)):
+            plt.axvline(Mj[i], linewidth=1, color='grey')
+        Lj = (2 ** (j + 1) - 1) * (L - 1)
+        if (Lj < N):
+            plt.axvline(time[Lj], linewidth=2, color='red')
+        plt.xlim(np.min(time), np.max(time))
+        plt.legend(loc=1)
+    # Save figure
+    plt.suptitle('Derivative of the wavelet coefficients', fontsize=24)
+    filename = 'derivative_' + name + '.eps'
+    plt.savefig(filename, format='eps')
+    plt.close(2)
+    # Figure 3: Look at the cumulative variance
+    plt.figure(3, figsize=(15, (J + 2) * 4))
+    # Plot tremor
+    plt.subplot2grid((J + 2, 1), (J + 1, 0))
+    for i in range(0, len(time_ETS)):
+        plt.axvline(time_ETS[i], linewidth=2, color='grey')
+    colors = cm.rainbow(np.linspace(0, 1, len(dists)))
+    for time_dist, distance, c in zip(times, dists, colors):
+        nt = np.shape(time_dist)[0]
+        plt.plot(np.sort(time_dist), (1.0 / nt) * \
+            np.arange(0, len(time_dist)), color=c, \
+            label='distance <= {:2.0f} km'.format(distance))
+    plt.xlim(np.min(time), np.max(time))
+    plt.xlabel('Time (year)')
+    plt.title('Cumulative number of tremor')
+    plt.legend(loc=4)   
+    # Plot data
+    plt.subplot2grid((J + 2, 1), (J, 0))
+    for i in range(0, len(time_ETS)):
+        plt.axvline(time_ETS[i], linewidth=2, color='grey')
+    plt.plot(time, disp, 'k', label='Data')
+    plt.xlim(np.min(time), np.max(time))
+    plt.legend(loc=1)
+    # Plot cumulative variance at each level
+    for j in range(0, J):
+        plt.subplot2grid((J + 2, 1), (J - j - 1, 0))
+        Cj = C[j]
+        plt.plot(time, Cj, 'k-', label ='C' + str(j + 1))
+        Ij = I[j]
+        for i in range (0, len(Ij)):
+            plt.axvline(Ij[i], linewidth=1, color='grey')
+        Lj = (2 ** (j + 1) - 1) * (L - 1)
+        if (Lj < N):
+            plt.axvline(time[Lj], linewidth=2, color='red')
+        plt.xlim(np.min(time), np.max(time))
+        plt.legend(loc=1)
+    # Save figure
+    plt.suptitle('Cumulative variance', fontsize=24)
+    filename = 'variance_' + name + '.eps'
+    plt.savefig(filename, format='eps')
+    plt.close(3)
+    return (M, I)
 
 time_ETS = [2000.9583, 2002.1250, 2003.1250, 2004.0417, 2004.5417, 2005.7083, \
     2007.0833, 2008.375, 2009.375, 2010.6667, 2011.6667, 2012.7083, \
     2013.7500, 2014.9167, 2016.0000, 2017.1667]
 
-#compute_last_coeff(time_sub, disp_sub, 8, 'D14', time_ETS, times, dists)
-
-#slidingMODWT(time_sub, disp_sub, 8, 'D4', time_ETS, times, dists, 2466, 2919)
-
-chsgn = deriveMODWT(time_sub, disp_sub, 8, 'LA8', time_ETS, times, dists)
+(M, I) = compute_var(time_sub, disp_sub, 8, 'ID4', time_ETS, times, dists)
