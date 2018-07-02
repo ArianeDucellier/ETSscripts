@@ -70,6 +70,8 @@ def get_scaling(name):
         g = np.loadtxt('../data/scalingcoeff/BL18.dat')
     elif (name == 'BL20'):
         g = np.loadtxt('../data/scalingcoeff/BL20.dat')
+    elif (name == 'ID4'):
+        g = np.loadtxt('../data/scalingcoeff/ID4.dat')
     else:
         raise ValueError('{} has not been implemented yet'.format(name))
     return g
@@ -367,11 +369,11 @@ def get_gamma(name, J, N):
     gamGe = []
     for j in range(1, J + 1):
         t = int(floor((L - 2) * (1 - 1.0 / (2 ** j))))
-        gamHb.append((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N)
-        gamGb.append((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N)
+        gamHb.append(int((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N))
+        gamGb.append(int((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N))
         t = 0
-        gamHe.append((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N)
-        gamGe.append((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N)
+        gamHe.append(int((2 ** j * (t + 1) - 1 - abs(nuH[j - 1])) % N))
+        gamGe.append(int((2 ** j * (t + 1) - 1 - abs(nuG[j - 1])) % N))
     return (gamHb, gamHe, gamGb, gamGe)
 
 def get_indices(L, J, N):
@@ -397,8 +399,8 @@ def get_indices(L, J, N):
     for j in range(1, J + 1):
         Lj = int((2 ** j - 1) * (L - 1) + 1)
         Ljp = int(ceil((L - 2) * (1 - 1 / 2 ** j)))
-        indb.append(max(2 ** j - 1, (2 ** j) * Ljp - 1, - 1))
-        inde.append(min(N + 2 ** j - Lj, N + (2 ** j) * Ljp - Lj, N))
+        indb.append(int(max(2 ** j - 1, (2 ** j) * Ljp - 1, - 1)))
+        inde.append(int(min(N + 2 ** j - Lj, N + (2 ** j) * Ljp - Lj, N)))
     return (indb, inde)
     
 if __name__ == '__main__':
@@ -434,7 +436,7 @@ if __name__ == '__main__':
         plt.ylim([- 2.0, 2.0])
         plt.title(title)
         plt.savefig('../tests/DWT/' + name_output, format='eps')
-        plt.close()
+        plt.close(1)
 
     # Compute DWT of the first time series from WMTSA
     # See upper plot of Figure 62 in WMTSA
@@ -505,7 +507,7 @@ if __name__ == '__main__':
                 plt.xlabel('n', fontsize=24)
         plt.suptitle(title, fontsize=30)
         plt.savefig('../tests/DWT/' + name_output, format='eps')
-        plt.close() 
+        plt.close(1) 
 
     # Compute details, smooths and roughs of the first time series
     # from WMTSA using the Haar wavelet filter
@@ -555,7 +557,7 @@ if __name__ == '__main__':
             plt.ylim([- 4.0, 4.0])
             plt.title(wavelet_filters[k])
         plt.savefig('../tests/DWT/ECG_W.eps', format='eps')
-        plt.close()
+        plt.close(1)
 
     # Compute DWT of the ECG time series from WMTSA
     # See Figure 126 in WMTSA
@@ -614,7 +616,7 @@ if __name__ == '__main__':
         plt.xlim([0, dt * (N - 1)])
         plt.legend(loc=1)
         plt.savefig('../tests/DWT/ECG_W_LA8.eps', format='eps')
-        plt.close()
+        plt.close(1)
 
     # Compute LA8 DWT of the ECG time series from WMTSA
     # See Figures 127 and 138 in WMTSA
@@ -665,7 +667,7 @@ if __name__ == '__main__':
         plt.legend(loc=1)
         plt.savefig('../tests/DWT/ECG_DS_' + name_filter + '.eps', \
             format='eps')
-        plt.close()
+        plt.close(1)
 
     # Compute Haar DWT MRA of the ECG time series from WMTSA
     # See Figure 130 in WMTSA
