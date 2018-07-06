@@ -86,6 +86,36 @@ Use extremal phase wavelet filters.
 
 Look at homogeneity of variance.
 
+\section{Long memory processes}
+
+\paragraph{Time series:} Any sequence of observations associated with an ordered independent variable $t$. For the analyses carried out in this report, we assume that the time series is defined essentially over a range of integers (usually $t = 0 , 1 , ... , N - 1$, where $N$ denotes the number of values in the time series).
+
+\paragraph{Random variable:} A real-valued random variable is a function, or mapping, from the sample space of possible outcomes of a random experiment to the real line.
+
+\paragraph{Stochastic process:} A discrete parameter real-valued stochastic process $\left\{ X_t : t = ... , -1 , 0 , 1 , ... \right\}$ is a sequence of random variables indexed over the integers. A process such as $\left\{ X_t \right\}$ can serve as a stochastic model for a sequence of observations of some physical phenomenon. We assume that these observations are recorded at a sampling interval of $\Delta t$.
+
+\paragraph{Stationarity:} The process $\left\{ X_t \right\} $ is said to be (second order) stationary if:
+\begin{enumerate}
+\item $E \left\{ X_t \right\} = \mu_X$ for all integers $t$ (i.e. $\mu_X$ does not depend on $t$).
+\item $cov \left\{ X_t , X_{t + \tau} \right\} = s_{X , \tau}$ for all integers $t$ and $\tau$ (i.e. $s_{X , \tau}$ depends only on $\tau$ and does not depend on $t$).
+\end{enumerate}
+
+\paragraph{Autocovariance sequence (ACVS):} The sequence $\left\{ s_{X , \tau} : \tau = ... , -1 , 0 , 1 , ... \right\}$. The autocorrelation sequence (ACS) is $\rho_{X , \tau} = s_{X , \tau } / s_{X , 0}$.
+
+\paragraph{Spectral density function (SDF), or power spectrum:} $S_X \left( f \right) = \Delta t \sum_{\tau = - \infty}^{\infty} s_{X , \tau} e^{- i 2 \pi f \tau \Delta t} \text{ for } \left| f \right| \leq f_N = \frac{1}{2 \Delta t}$, that is $S_X \left( . \right)$ is the Fourier transform of $\left\{ s_{X , \tau} \right\}$.
+
+\paragraph{Stationary long memory process:} $\left\{ X_t \right\}$ is a stationary long memory process if there exist constants $\alpha$ and $C_S$ satisfying $ -1 < \alpha < 0$ and $C_S > 0$ such that:
+
+\begin{equation}
+\lim_{f \to 0} \frac{S_X \left( f \right)}{C_S \left| f \right| ^{\alpha}} = 1 \text{ that is } \log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)
+\end{equation}
+
+\paragraph{Low-frequency earthquakes as a long memory process}
+
+\begin{itemize}
+\item Figure 2D of Frank \textit{et al.} (2016 ~\cite{FRA_2016}). We have $\log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)$ with $\alpha = - 0.5$
+\end{itemize}
+
 \chapter{Results}
 
 Something about DWT and MODWT of GPS data.
