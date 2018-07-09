@@ -1,7 +1,7 @@
 """
 This module contains a function to download every one-minute time window
 where there is an LFE recorded, stack the signal over all the LFEs, cross
-coorelate each window with the stack, sort the LFEs and keep only the best
+correlate each window with the stack, sort the LFEs and keep only the best
 """
 
 import obspy
@@ -240,9 +240,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             # Cross correlation
             maxCC = np.zeros(len(EW))
             for i in range(0, len(EW)):
-                ccEW = correlate(EW[i], EWstack[0], ncor)
-                ccNS = correlate(NS[i], NSstack[0], ncor)
-                ccUD = correlate(UD[i], UDstack[0], ncor)
+                ccEW = correlate(EWstack[0], EW[i], ncor)
+                ccNS = correlate(NSstack[0], NS[i], ncor)
+                ccUD = correlate(UDstack[0], UD[i], ncor)
                 maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
             # Sort cross correlations
             index = np.flip(np.argsort(maxCC), axis=0)
@@ -274,10 +274,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             dt = EWstack[0].stats.delta
             nt = EWstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, EWstack[0].data, 'k', label='All')
             for j in range(0, len(ratios)):
                 plt.plot(t, EWbest[j].data, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
+            plt.plot(t, EWstack[0].data, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('East - West component', fontsize=20)
             plt.xlabel('Time (s)', fontsize=20)
@@ -287,10 +287,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             dt = NSstack[0].stats.delta
             nt = NSstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, NSstack[0].data, 'k', label='All')
             for j in range(0, len(ratios)):
                 plt.plot(t, NSbest[j].data, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
+            plt.plot(t, NSstack[0].data, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('North - South component', fontsize=20)
             plt.xlabel('Time (s)', fontsize=20)
@@ -300,10 +300,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             dt = UDstack[0].stats.delta
             nt = UDstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, UDstack[0].data, 'k', label='All')
             for j in range(0, len(ratios)):
                 plt.plot(t, UDbest[j].data, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
+            plt.plot(t, UDstack[0].data, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('Vertical component', fontsize=20)
             plt.xlabel('Time (s)', fontsize=20)
