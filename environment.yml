@@ -10,7 +10,6 @@ dependencies:
   - babel=2.5.3=py36_0
   - backcall=0.1.0=py_0
   - basemap=1.1.0=py36_4
-  - blas=1.1=openblas
   - bleach=2.1.3=py_0
   - ca-certificates=2018.4.16=0
   - certifi=2018.4.16=py36_0
@@ -46,7 +45,6 @@ dependencies:
   - lazy-object-proxy=1.3.1=py36_0
   - libcxx=6.0.0=0
   - libffi=3.2.1=3
-  - libgfortran=3.0.0=0
   - libiconv=1.15=0
   - libpng=1.6.34=0
   - libsodium=1.0.16=0
@@ -65,12 +63,12 @@ dependencies:
   - nbformat=4.4.0=py36_0
   - ncurses=5.9=10
   - notebook=5.4.1=py36_0
-  - numpy=1.14.3=py36_blas_openblas_200
   - numpydoc=0.8.0=py36_0
   - obspy=1.1.0=py36_1
   - openblas=0.2.20=7
   - openssl=1.0.2o=0
   - packaging=17.1=py_0
+  - pandas=0.23.3=py36_0
   - pandoc=2.2=hde52d81_0
   - pandocfilters=1.4.2=py36_0
   - parso=0.2.0=py_0
@@ -103,8 +101,6 @@ dependencies:
   - readline=7.0=0
   - requests=2.18.4=py36_1
   - rope=0.10.7=py36_0
-  - scikit-learn=0.19.1=py36_blas_openblas_201
-  - scipy=1.0.1=py36_blas_openblas_200
   - send2trash=1.5.0=py_0
   - setuptools=39.1.0=py36_0
   - simplegeneric=0.8.1=py36_0
@@ -130,7 +126,13 @@ dependencies:
   - xz=5.2.3=0
   - zeromq=4.2.5=1
   - zlib=1.2.11=0
+  - blas=1.0=mkl
   - intel-openmp=2018.0.0=8
+  - libgfortran=3.0.1=h93005f0_2
   - mkl=2018.0.2=1
+  - numpy=1.14.3=py36he6379a5_2
+  - numpy-base=1.14.3=py36ha9ae307_2
+  - scikit-learn=0.19.1=py36hffbff8c_0
+  - scipy=1.1.0=py36hcaad992_0
 prefix: /anaconda3/envs/seismic
 

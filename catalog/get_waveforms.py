@@ -354,7 +354,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080416.13.033'
+    filename = '080401.05.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
     method = 'RMS'
