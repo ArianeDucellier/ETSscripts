@@ -142,7 +142,8 @@ def get_from_NCEDC(station, Tstart, Tend, filt, dt):
         D.decimate(ratio.numerator, no_filter=True)
         return(D)
 
-def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
+def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
+        norm='RMS'):
     """
     This function computes the waveform for each template, cross correlate
     them with the stack, and keep only the best to get the final template
@@ -163,6 +164,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
         ncor = Number of points for the cross correlation
         type method = string
         method = Normalization method for linear stack (RMS or Max)
+        type norm = string
+        norm = Normalization method to plot and compare templates
     Output:
         None
     """
@@ -275,12 +278,30 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             nt = EWstack[0].stats.npts
             t = dt * np.arange(0, nt)
             for j in range(0, len(ratios)):
-                plt.plot(t, EWbest[j].data, color = colors[j], \
+                if (method == 'RMS'):
+                    norm = EWbest[j].data / np.sqrt(np.mean(np.square( \
+                        EWbest[j].data)))
+                elif (method == 'MAD'):
+                    norm = EWbest[j].data / np.median(np.abs(EWbest[j].data - \
+                        np.median(EWbest[j].data)))
+                else:
+                    raise ValueError('Method must be RMS or MAD')
+                norm = np.nan_to_num(norm)
+                plt.plot(t, norm, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
-            plt.plot(t, EWstack[0].data, 'k', label='All')
+            if (method == 'RMS'):
+                norm = EWstack[0].data / np.sqrt(np.mean(np.square( \
+                    EWstack[0].data)))
+            elif (method == 'MAD'):
+                norm = EWstack[0].data / np.median(np.abs(EWstack[0].data - \
+                    np.median(EWstack[0].data)))
+            else:
+                raise ValueError('Method must be RMS or MAD')
+            norm = np.nan_to_num(norm)
+            plt.plot(t, norm, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('East - West component', fontsize=20)
-            plt.xlabel('Time (s)', fontsize=20)
+            plt.title('East - West component', fontsize=16)
+            plt.xlabel('Time (s)', fontsize=16)
             plt.legend(loc=1)
             # North - South component
             ax2 = plt.subplot(312)
@@ -288,12 +309,30 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             nt = NSstack[0].stats.npts
             t = dt * np.arange(0, nt)
             for j in range(0, len(ratios)):
-                plt.plot(t, NSbest[j].data, color = colors[j], \
+                if (method == 'RMS'):
+                    norm = NSbest[j].data / np.sqrt(np.mean(np.square( \
+                        NSbest[j].data)))
+                elif (method == 'MAD'):
+                    norm = NSbest[j].data / np.median(np.abs(NSbest[j].data - \
+                        np.median(NSbest[j].data)))
+                else:
+                    raise ValueError('Method must be RMS or MAD')
+                norm = np.nan_to_num(norm)
+                plt.plot(t, norm, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
-            plt.plot(t, NSstack[0].data, 'k', label='All')
+            if (method == 'RMS'):
+                norm = NSstack[0].data / np.sqrt(np.mean(np.square( \
+                    NSstack[0].data)))
+            elif (method == 'MAD'):
+                norm = NSstack[0].data / np.median(np.abs(NSstack[0].data - \
+                    np.median(NSstack[0].data)))
+            else:
+                raise ValueError('Method must be RMS or MAD')
+            norm = np.nan_to_num(norm)
+            plt.plot(t, norm, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('North - South component', fontsize=20)
-            plt.xlabel('Time (s)', fontsize=20)
+            plt.title('North - South component', fontsize=16)
+            plt.xlabel('Time (s)', fontsize=16)
             plt.legend(loc=1)
             # Vertical component
             ax3 = plt.subplot(313)
@@ -301,12 +340,30 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS'):
             nt = UDstack[0].stats.npts
             t = dt * np.arange(0, nt)
             for j in range(0, len(ratios)):
-                plt.plot(t, UDbest[j].data, color = colors[j], \
+                if (method == 'RMS'):
+                    norm = UDbest[j].data / np.sqrt(np.mean(np.square( \
+                        UDbest[j].data)))
+                elif (method == 'MAD'):
+                    norm = UDbest[j].data / np.median(np.abs(UDbest[j].data - \
+                        np.median(UDbest[j].data)))
+                else:
+                    raise ValueError('Method must be RMS or MAD')
+                norm = np.nan_to_num(norm)
+                plt.plot(t, norm, color = colors[j], \
                     label = str(int(ratios[j])) + '%')
-            plt.plot(t, UDstack[0].data, 'k', label='All')
+            if (method == 'RMS'):
+                norm = UDstack[0].data / np.sqrt(np.mean(np.square( \
+                    UDstack[0].data)))
+            elif (method == 'MAD'):
+                norm = UDstack[0].data / np.median(np.abs(UDstack[0].data - \
+                    np.median(UDstack[0].data)))
+            else:
+                raise ValueError('Method must be RMS or MAD')
+            norm = np.nan_to_num(norm)
+            plt.plot(t, norm, 'k', label='All')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('Vertical component', fontsize=20)
-            plt.xlabel('Time (s)', fontsize=20)
+            plt.title('Vertical component', fontsize=16)
+            plt.xlabel('Time (s)', fontsize=16)
             plt.legend(loc=1)
             # End figure
             plt.suptitle(station, fontsize=24)
@@ -332,5 +389,6 @@ if __name__ == '__main__':
     dt = 0.05
     ncor = 400
     method = 'RMS'
+    norm = 'MAD'
 
-    compute_templates(filename, TDUR, filt, ratios, dt, ncor, method)
+    compute_templates(filename, TDUR, filt, ratios, dt, ncor, method, norm)

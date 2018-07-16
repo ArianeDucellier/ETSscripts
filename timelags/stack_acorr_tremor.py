@@ -1,7 +1,7 @@
 """
 This module contains a function to download every one-minute time window
 where there is a tremor at a given location, stack the signal over the
-stations, cross correlate, and plot
+stations, autocorrelate, and plot
 """
 
 import obspy
@@ -23,13 +23,13 @@ from scipy.io import loadmat
 from date import matlab2ymdhms
 from stacking import linstack, powstack, PWstack
 
-def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, Tmax, \
     amp, amp_stack, draw_plot, client):
     """
     This function download every one-minute time window where there is a
-    tremor at a given location, stack the signal over the stations, cross
-    correlate, and plot
+    tremor at a given location, stack the signal over the stations,
+    autocorrelate, and plot
     
     Input:
         type arrayName = string
@@ -63,11 +63,11 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         type w = float
         w = Power of the stack (for 'pow' and 'PWS')
         type ncor = integer
-        ncor = Number of points for the cross correlation
+        ncor = Number of points for the autocorrelation
         type Tmax = float
-        Tmax = Maximum time lag for cross correlation plot
+        Tmax = Maximum time lag for autocorrelation plot
         type amp = float
-        amp = Amplification factor of cross correlation for plotting
+        amp = Amplification factor of autocorrelation for plotting
         type amp_stack = float
         amp_stack = Amplification factor of stack for plotting
         type draw_plot = boolean
@@ -108,9 +108,10 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     tremor = mbbp_cat_d[find, :][0, :, :]
     nt = np.shape(tremor)[0]
 
-    # Initialize streams to store cross correlations
-    EW_UD = Stream()
-    NS_UD = Stream()
+    # Initialize streams to store autocorrelations
+    EW0 = Stream()
+    NS0 = Stream()
+    UD0 = Stream()
     Year = []
     Month = []
     Day = []
@@ -175,7 +176,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             # Resample data to .05 s
             D.interpolate(100.0, method='lanczos', a=10)
             D.decimate(5, no_filter=True)         
-            # Cut data for cross correlation
+            # Cut data for autocorrelation
             EW = D.select(component='E').slice(t1, t2)
             NS = D.select(component='N').slice(t1, t2)
             UD = D.select(component='Z').slice(t1, t2)
@@ -183,10 +184,10 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             t = (1.0 / EW[0].stats.sampling_rate) * np.arange(- ncor, ncor + 1)
             # Create figure
             if (draw_plot == True):
-                plt.figure(1, figsize=(30, 15))
-            # EW - UD cross correlation
+                plt.figure(1, figsize=(30, 22))
+            # EW autocorrelation
             if (draw_plot == True):
-                ax = plt.subplot(211)
+                ax = plt.subplot(311)
             cc = Stream()
             for ksta in range(0, len(staNames)):
                 if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
@@ -195,7 +196,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                     cc.append(EW.select(station=staNames[ksta])[0].copy())
                     cc[-1].data = correlate( \
                         EW.select(station=staNames[ksta])[0], \
-                        UD.select(station=staNames[ksta])[0], ncor)
+                        EW.select(station=staNames[ksta])[0], ncor)
                     cc[-1].stats['channel'] = 'CC'
                     cc[-1].stats['station'] = staNames[ksta]
                     if (draw_plot == True):
@@ -211,20 +212,20 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                 raise ValueError( \
                     'Type of stack must be lin, pow, or PWS')
             # Keep value of stack
-            EW_UD.append(stack)
+            EW0.append(stack)
             if (draw_plot == True):
                 plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
                 plt.xlim(0, Tmax)
                 plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
-                plt.title('East / Vertical component', loc='right', \
+                plt.title('East component', loc='right', \
                     fontsize=24)
                 plt.xlabel('Lag time (s)', fontsize=24)
                 plt.ylabel('Cross correlation', fontsize=24)
                 ax.set_yticklabels([])
                 ax.tick_params(labelsize=20)
-            # NS - UD cross correlation
+            # NS autocorrelation
             if (draw_plot == True):
-                ax = plt.subplot(212)
+                ax = plt.subplot(312)
             cc = Stream()
             for ksta in range(0, len(staNames)):
                 if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
@@ -233,6 +234,44 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                     cc.append(NS.select(station=staNames[ksta])[0].copy())
                     cc[-1].data = correlate( \
                         NS.select(station=staNames[ksta])[0], \
+                        NS.select(station=staNames[ksta])[0], ncor)
+                    cc[-1].stats['channel'] = 'CC'
+                    cc[-1].stats['station'] = staNames[ksta]
+                    if (draw_plot == True):
+                        plt.plot(t, (2.0 * ksta + 1) + amp * cc[-1].data, 'k-')
+            # Stack cross correlations within the array and plot
+            if (type_stack == 'lin'):
+                stack = linstack([cc], normalize=False)[0]
+            elif (type_stack == 'pow'):
+                stack = powstack([cc], w, normalize=False)[0]
+            elif (type_stack == 'PWS'):
+                stack = PWstack([cc], w, normalize=False)[0]
+            else:
+                raise ValueError( \
+                    'Type of stack must be lin, pow, or PWS')
+            # Keep value of stack
+            NS0.append(stack)
+            if (draw_plot == True):
+                plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
+                plt.xlim(0, Tmax)
+                plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
+                plt.title('North component', loc='right', \
+                    fontsize=24)
+                plt.xlabel('Lag time (s)', fontsize=24)
+                plt.ylabel('Cross correlation', fontsize=24)
+                ax.set_yticklabels([])
+                ax.tick_params(labelsize=20)
+            # UD autocorrelation
+            if (draw_plot == True):
+                ax = plt.subplot(313)
+            cc = Stream()
+            for ksta in range(0, len(staNames)):
+                if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
+                    D.select(station=staNames[ksta], channel=chaNames[1]) and \
+                    D.select(station=staNames[ksta], channel=chaNames[2])):
+                    cc.append(NS.select(station=staNames[ksta])[0].copy())
+                    cc[-1].data = correlate( \
+                        UD.select(station=staNames[ksta])[0], \
                         UD.select(station=staNames[ksta])[0], ncor)
                     cc[-1].stats['channel'] = 'CC'
                     cc[-1].stats['station'] = staNames[ksta]
@@ -249,12 +288,12 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                 raise ValueError( \
                     'Type of stack must be lin, pow, or PWS')
             # Keep value of stack
-            NS_UD.append(stack)
+            UD0.append(stack)
             if (draw_plot == True):
                 plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
                 plt.xlim(0, Tmax)
                 plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
-                plt.title('North / Vertical component', loc='right', \
+                plt.title('Vertical component', loc='right', \
                     fontsize=24)
                 plt.xlabel('Lag time (s)', fontsize=24)
                 plt.ylabel('Cross correlation', fontsize=24)
@@ -263,7 +302,7 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                 title = '{} on {:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d}'. \
                     format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
                 plt.suptitle(title, fontsize=24)
-                filename = 'cc/{}_{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}.eps'. \
+                filename = 'ac/{}_{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}.eps'. \
                     format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
                 plt.savefig(filename, format='eps')
                 ax.clear()
@@ -278,9 +317,9 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
 
     # Save stacked cross correlations into file
     if nt > 0:
-        filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
+        filename = 'ac/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
             int(y0), type_stack)
-        pickle.dump([Year, Month, Day, Hour, Minute, Second, EW_UD, NS_UD], \
+        pickle.dump([Year, Month, Day, Hour, Minute, Second, EW, NS, UD], \
             open(filename, 'wb'))
 
 if __name__ == '__main__':
@@ -364,7 +403,7 @@ if __name__ == '__main__':
 
     ds = 5.0
     x0 = 0.0
-    y0 = -15.0
+    y0 = 0.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0
@@ -376,7 +415,7 @@ if __name__ == '__main__':
     type_stack = 'lin'
     amp = 3.0
     amp_stack = 10.0
-    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
         Tmax, amp, amp_stack, draw_plot, client)
         
@@ -384,7 +423,7 @@ if __name__ == '__main__':
     type_stack = 'pow'
     amp = 3.0
     amp_stack = 2.0
-    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
         Tmax, amp, amp_stack, draw_plot, client)
 
@@ -392,6 +431,6 @@ if __name__ == '__main__':
     type_stack = 'PWS'
     amp = 3.0
     amp_stack = 30.0
-    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
         Tmax, amp, amp_stack, draw_plot, client)

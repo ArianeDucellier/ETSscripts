@@ -1,10 +1,14 @@
 .DS_Store
+catalog/LFEdistribution/*
+catalog/templates
 catalog/waveforms/*
 data/LFEcatalog/*
 data/PANGA/*
+data/Shelly_2017/*
 data/timelags/*
 data/.DS_Store
 figures/AoA/gmt.history
+longrange/__pycache__/*
 notebooks/.ipynb_checkpoints
 timelags/ac/*
 timelags/cc/*
