@@ -1,5 +1,4 @@
 .DS_Store
-catalog/LFEdistribution/*
 catalog/templates
 catalog/waveforms/*
 data/LFEcatalog/*
@@ -9,6 +8,12 @@ data/timelags/*
 data/.DS_Store
 figures/AoA/gmt.history
 longrange/__pycache__/*
+longrange/absolutevalue_Plourde/*
+longrange/absolutevalue_Shelly/*
+longrange/variance_moulines_Plourde/*
+longrange/variance_moulines_Shelly/*
+longrange/variance_Plourde/*
+longrange/variance_Shelly/*
 notebooks/.ipynb_checkpoints
 timelags/ac/*
 timelags/cc/*

@@ -5,60 +5,11 @@ series. The tests come from Taqqu and Teverovsky (1998).
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 
 from datetime import datetime, timedelta
 from sklearn import linear_model
 from sklearn.metrics import r2_score
-
-def get_time_series(filename, window, tbegin, tend):
-    """
-    Function to transform the LFE catalog into a time series
-
-    Input:
-        type filename = string
-        filename = Name of the LFE template
-        type window = float
-        window = Duration of the time window where we count the number of LFEs
-                 (in seconds)
-        type tbegin = obspy UTCDateTime
-        tbegin = Beginning time of the catalog 
-        type tend = obspy UTCDateTime
-        tend = End time of the catalog
-    Output:
-        type X = numpy array
-        X = Time series with number of LFEs per time window
-    """
-    # Get the time of LFE detections
-    LFEtime = np.loadtxt('../data/LFEcatalog/detections/' + filename + \
-        '_detect5_cull.txt', \
-        dtype={'names': ('unknown', 'day', 'hour', 'second', 'threshold'), \
-             'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
-        skiprows=2)
-    dt = tend - tbegin
-    duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
-    nw = int(duration / window)
-    X = np.zeros(nw)
-    # Loop on LFEs
-    for i in range(0, np.shape(LFEtime)[0]):
-        YMD = LFEtime[i][1].astype(str)
-        myYear = 2000 + int(YMD[0 : 2])
-        myMonth = int(YMD[2 : 4])
-        myDay = int(YMD[4 : 6])
-        myHour = LFEtime[i][2] - 1
-        myMinute = int(LFEtime[i][3] / 60.0)
-        mySecond = int(LFEtime[i][3] - 60.0 * myMinute)
-        myMicrosecond = int(1000000.0 * (LFEtime[i][3] - 60.0 * myMinute \
-            - mySecond))
-        t = datetime(myYear, myMonth, myDay, myHour, myMinute, mySecond, \
-            myMicrosecond)
-        # Add LFE to appropriate time window
-        if ((tbegin <= t) and (t < tbegin + timedelta(seconds=nw * window))):
-            dt = t - tbegin
-            duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * \
-                0.000001
-            index = int(duration / window)
-            X[index] = X[index] + 1
-    return X
 
 def aggregate(X, m):
     """
@@ -77,31 +28,32 @@ def aggregate(X, m):
     N2 = int(N / m)
     X2 = X[0 : N2 * m]
     X2 = np.reshape(X2, (N2, int(m)))
-    Xm = np.sum(X2, axis=1)
+    Xm = np.mean(X2, axis=1)
     return Xm
 
-def absolutevalue(X, m, filename):
+def absolutevalue(dirname, filename, m):
     """
     Function to plot the first absolute moment of the aggregated series
     in function of m
     The slope is equal to H - 1 (Hurst parameter)
 
     Input:
-        type X = numpy array
-        X = Time series
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type filename = string
-        filename = Name of file to save the plot
     Output:
         type H = float
-        H = Hurst parameter
+        H = Hurst parameter        
     """
-    N = len(X)
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
     AM = np.zeros(len(m))
     for i in range(0, len(m)):
         Xm = aggregate(X, m[i])
-        AM[i] = (m[i] / N) * np.sum(np.abs(Xm - np.mean(X)))
+        AM[i] = np.mean(np.abs(Xm - np.mean(X)))
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(AM), (len(AM), 1))
@@ -117,33 +69,34 @@ def absolutevalue(X, m, filename):
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (absolute moment)', fontsize=24)
     plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-        int(np.sum(X)), H, R2), fontsize=24)
-    plt.savefig(filename, format='eps')
+        np.sum(X), H, R2), fontsize=24)
+    plt.savefig('absolutevalue/' + filename + '.eps', format='eps')
     plt.close(1)
     return H
 
-def variance(X, m, filename):
+def variance(dirname, filename, m):
     """
     Function to plot the sample variance of the aggregated series
     in function of m
     The slope is equal to 2 d - 1 (fractional index)
 
     Input:
-        type X = numpy array
-        X = Time series
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type filename = string
-        filename = Name of file to save the plot
     Output:
         type d = float
         d = Fractional index
     """
-    N = len(X)
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
     V = np.zeros(len(m))
     for i in range(0, len(m)):
         Xm = aggregate(X, m[i])
-        V[i] = (m[i] / N) * np.sum(np.power(Xm - np.mean(X), 2.0))
+        V[i] = np.var(Xm)
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(V), (len(V), 1))
@@ -159,8 +112,8 @@ def variance(X, m, filename):
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (sample variance)', fontsize=24)
     plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-        int(np.sum(X)), d, R2), fontsize=24)
-    plt.savefig(filename, format='eps')
+        np.sum(X), d, R2), fontsize=24)
+    plt.savefig('variance/' + filename + '.eps', format='eps')
     plt.close(1)
     return d
 
@@ -320,12 +273,49 @@ def compute_variance(filename, winlen, tbegin, tend):
         np.shape(LFEtime)[0], - regr.coef_[0][0], R2), fontsize=24)
     plt.savefig('variance2/' + filename + '.eps', format='eps')
 
-#if __name__ == '__main__':
-#
-#    # Set the parameters
-#    filename = '080417.15.043'
-#    winlen = 6 * 60 * np.array([1, 2, 10, 20, 100, 200, 1000])
-#    tbegin = datetime(2008, 3, 1, 0, 0, 0)
-#    tend = datetime(2008, 5, 1, 0, 0, 0)
-#
-#    compute_variance(filename, winlen, tbegin, tend)
+def variance_moulines(dirname, filename, m):
+    """
+    Function to plot the sample variance of the aggregated series
+    in function of m
+    The slope is equal to 2 H (Hurst parameter)
+
+    Input:
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
+        type m = numpy array of integers
+        m = List of values for the aggregation
+    Output:
+        type H = float
+        H = Hurst parameter        
+    """
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
+    N = len(X)
+    Vm = np.zeros(len(m))
+    for i in range(0, len(m)):
+        N2 = int(N / m[i])
+        X2 = X[0 : N2 * m[i]]
+        X2 = np.reshape(X2, (N2, int(m[i])))
+        Xm = np.sum(X2, axis=1)
+        Vm[i] = np.var(Xm)
+    # Linear regression
+    x = np.reshape(np.log10(m), (len(m), 1))
+    y = np.reshape(np.log10(Vm / m), (len(m), 1))
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y)
+    y_pred = regr.predict(x)
+    R2 = r2_score(y, y_pred)
+    H = 0.5 * (regr.coef_[0][0] + 1.0)
+    # Plot
+    plt.figure(1, figsize=(10, 10))
+    plt.plot(np.log10(m), np.log10(Vm / m), 'ko')
+    plt.plot(x, y_pred, 'r-')
+    plt.xlabel('Log (aggregation size)', fontsize=24)
+    plt.ylabel('Log (variance / aggregation size)', fontsize=24)
+    plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
+        np.sum(X), H, R2), fontsize=24)
+    plt.savefig('variance_moulines/' + filename + '.eps', format='eps')
+    plt.close(1)
+    return H
