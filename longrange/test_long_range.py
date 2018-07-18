@@ -9,7 +9,7 @@ import pickle
 
 from datetime import datetime, timedelta
 from sklearn import linear_model
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 
 def aggregate(X, m):
     """
@@ -117,60 +117,83 @@ def variance(dirname, filename, m):
     plt.close(1)
     return d
 
-def varianceresiduals(X, m, filename):
+def varianceresiduals(dirname, filename, m, method):
     """
-    Function to plot the median of the variance of residuals
+    Function to plot the median / mean of the variance of residuals
     in function of m
-    The slope is equal to 2 d + 1 (fractional index)
+    The slope is equal to 2 H (Hurst parameter) for the median
+    The slope is equal to 2 d + 1 (fractional index) for the mean
 
     Input:
-        type X = numpy array
-        X = Time series
-        type m = numpy array of integers
-        m = List of values for division into blocks
+        type dirname = string
+        dirname = Repertory where to find the time series file
         type filename = string
-        filename = Name of file to save the plot
-    Output:
+        filename = Name of the time series file
+        type m = numpy array of integers
+        m = List of values for the aggregation
+        type method = string
+        method = 'median' or 'mean'
+    Output (median):
+        type H = float
+        H = Hurst parameter
+    Output (mean):
         type d = float
         d = Fractional index
     """
-    N = len(X)
-    Vmean = np.zeros(len(m))
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
+    Vm = np.zeros(len(m))
     for i in range(0, len(m)):
-        N2 = int(N / m[i])
-        V = np.zeros(N2)
-        for j in range(0, N2):
-            Y = np.zeros(m[i])
-            for t in range(0, m[i]):
-               Y[t] = np.sum(X[j * m[i] : j * m[i] + t])
+        N = int(len(X) / m[i])
+        V = np.zeros(N)
+        for j in range(0, N):
+            Y = np.cumsum(X[j * m[i] : (j + 1) * m[i]])
             # Linear regression
             t = np.arange(0, m[i])
             x = np.reshape(t, (len(t), 1))
             y = np.reshape(Y, (len(Y), 1))
             regr = linear_model.LinearRegression(fit_intercept=True)
             regr.fit(x, y)
-            a = regr.intercept_
-            b = regr.coef_
-            V[j] = (1.0 / m[i]) * np.sum(np.power(Y - a - b * t, 2.0))
-        Vmean[i] = np.mean(V)
+            y_pred = regr.predict(x)
+            V[j] = mean_squared_error(y, y_pred)
+        if (method == 'median'):
+            Vm[i] = np.median(V)
+        elif (method == 'mean'):
+            Vm[i] = np.mean(V)
+        else:
+            raise ValueError('Method must be median or mean')
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
-    y = np.reshape(np.log10(Vmean), (len(Vmean), 1))
+    y = np.reshape(np.log10(Vm), (len(Vm), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
-    d = 0.5 * (regr.coef_[0][0] - 1)
+    if (method == 'median'):
+        H = 0.5 + regr.coef_[0][0]
+    elif (method == 'mean'):
+        d = 0.5 * (regr.coef_[0][0] - 1)
+    else:
+        raise ValueError('Method must be median or mean')
     # Plot
     plt.figure(1, figsize=(10, 10))
-    plt.plot(np.log10(m), np.log10(Vmean), 'ko')
+    plt.plot(np.log10(m), np.log10(Vm), 'ko')
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (block size)', fontsize=24)
-    plt.ylabel('Log (mean variance residuals)', fontsize=24)
-    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-        int(np.sum(X)), d, R2), fontsize=24)
-    plt.savefig(filename, format='eps')
-    return d
+    if (method == 'median'):
+        plt.ylabel('Log (median variance residuals)', fontsize=24)
+        plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
+            np.sum(X), H, R2), fontsize=24)
+    else:
+        plt.ylabel('Log (mean variance residuals)', fontsize=24)
+        plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+            np.sum(X), d, R2), fontsize=24)
+    plt.savefig('varianceresiduals/' + filename + '.eps', format='eps')
+    plt.close(1)
+    if (method == 'median'):
+        return H
+    else:
+        return d
 
 def RS(X, filename):
     """

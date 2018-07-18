@@ -382,7 +382,7 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080405.11.042'
+    filename = '080408.08.029'
     TDUR = 10.0
     filt = (1.5, 9.0)
     ratios = [50.0, 60.0, 70.0, 80.0, 90.0]

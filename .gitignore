@@ -14,6 +14,8 @@ longrange/variance_moulines_Plourde/*
 longrange/variance_moulines_Shelly/*
 longrange/variance_Plourde/*
 longrange/variance_Shelly/*
+longrange/varianceresiduals_Plourde/*
+longrange/varianceresiduals_Shelly/*
 notebooks/.ipynb_checkpoints
 timelags/ac/*
 timelags/cc/*

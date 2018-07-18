@@ -5,7 +5,10 @@ from the module test_long_range with the LFE catalog of Plourde et al. (2015)
 
 import numpy as np
 
-from test_long_range import variance_moulines, absolutevalue, variance
+from test_long_range import variance_moulines
+from test_long_range import absolutevalue
+from test_long_range import variance
+from test_long_range import varianceresiduals
 
 # Get the names of the template detection files
 templates = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
@@ -14,12 +17,20 @@ templates = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
          'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
     np.int, np.float, np.float, np.float, np.float, np.float)})
 
+dirname = '../data/LFEcatalog/timeseries/'
+
 # We will look at the following window sizes (in minutes)
 m = np.array([1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000], dtype=int)
-dirname = '../data/LFEcatalog/timeseries/'
+
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)   
+#    H = variance_moulines(dirname, filename, m)
+#    H = absolutevalue(dirname, filename, m)
+#    d = variance(dirname, filename, m)
+
+# For variance residuals, we look at the following sizes (in minutes)
+m = np.array([50, 100, 200, 500, 1000, 2000, 5000], dtype=int)
 
 for i in range(0, np.shape(templates)[0]):
     filename = templates[i][0].astype(str)   
-#    H = variance_moulines(dirname, filename, m)
-#    H = absolutevalue(dirname, filename, m)
-    d = variance(dirname, filename, m)
+    d = varianceresiduals(dirname, filename, m, 'mean')
