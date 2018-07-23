@@ -1,9 +1,12 @@
 .DS_Store
 catalog/templates
+catalog/timearrival
 catalog/waveforms/*
+data/Chestler_2017/*
 data/LFEcatalog/*
 data/PANGA/*
 data/Shelly_2017/*
+data/Sweet_2014/*
 data/timelags/*
 data/.DS_Store
 figures/AoA/gmt.history

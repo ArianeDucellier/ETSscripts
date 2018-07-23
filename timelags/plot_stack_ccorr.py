@@ -11,7 +11,7 @@ import pickle
 
 from stacking import linstack, powstack, PWstack
 
-def plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2):
     """
     This function stacks the cross correlation over all the tremor windows
@@ -65,11 +65,11 @@ def plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
         ncor = int((EW_UD[i].stats.npts - 1) / 2)
         t = dt * np.arange(- ncor, ncor + 1)
         plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'k-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_lin * EW_lin.data, 'r-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_pow * EW_pow.data, 'b-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_PWS * EW_PWS.data, 'g-')
+    plt.plot(t, - 2.0 + amp_lin * EW_lin.data, 'r-')
+    plt.plot(t, - 2.0 + amp_pow * EW_pow.data, 'b-')
+    plt.plot(t, - 2.0 + amp_PWS * EW_PWS.data, 'g-')
     plt.xlim(0, Tmax)
-    plt.ylim(- 5.0, 2.0 * n2 + 1.0)
+    plt.ylim(- 5.0, 2.0 * (n2 - n1))
     plt.title('East / Vertical component', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.ylabel('Cross correlation', fontsize=24)
@@ -82,11 +82,11 @@ def plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
         ncor = int((NS_UD[i].stats.npts - 1) / 2)
         t = dt * np.arange(- ncor, ncor + 1)
         plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'k-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_lin * NS_lin.data, 'r-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_pow * NS_pow.data, 'b-')
-    plt.plot(t, - 2.0 - 2 * n1 + amp_PWS * NS_PWS.data, 'g-')
+    plt.plot(t, - 2.0 + amp_lin * NS_lin.data, 'r-')
+    plt.plot(t, - 2.0 + amp_pow * NS_pow.data, 'b-')
+    plt.plot(t, - 2.0 + amp_PWS * NS_PWS.data, 'g-')
     plt.xlim(0, Tmax)
-    plt.ylim(- 5.0, 2.0 * n2 + 1.0)
+    plt.ylim(- 5.0, 2.0 * (n2 - n1))
     plt.title('North / Vertical component', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.ylabel('Cross correlation', fontsize=24)
@@ -104,12 +104,12 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = -25.0
-    y0 = -20.0
+    x0 = 0.0
+    y0 = 0.0
     w = 2.0
     Tmax = 15.0
     n1 = 0
-    n2 = 107
+    n2 = 70
 
     # Linear stack
     type_stack = 'lin'
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     amp_lin = 100.0
     amp_pow = 2.0
     amp_PWS = 200.0
-    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)
 
     # Power stack
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     amp_lin = 15.0
     amp_pow = 1.0
     amp_PWS = 100.0
-    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)
 
     # Phase-weighted stack
@@ -135,5 +135,5 @@ if __name__ == '__main__':
     amp_lin = 200.0
     amp_pow = 10.0
     amp_PWS = 1000.0
-    plot_stack(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     amp_pow, amp_PWS, n1, n2)

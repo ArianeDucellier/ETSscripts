@@ -136,7 +136,7 @@ def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     plt.title('EW / Vertical (Max cross correlation)', fontsize=24)
     plt.xlabel('Lag time (s)', fontsize=24)
     plt.legend(loc=1)
-    # NS/ Vertical. Select with max cross correlation
+    # NS / Vertical. Select with max cross correlation
     ax2 = plt.subplot(234)
     plt.plot(t, NS.data, 'k-', label='All')
     colors = cm.rainbow(np.linspace(0, 1, len(Nmax)))
@@ -224,7 +224,8 @@ def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     for j in range(0, len(Et)):
         EWselect = Stream()
         for i in range(0, nt):
-            if ((timedelayEW[i] <= Et[j]) and (timedelayNS[i] <= Nt[j])):
+            if ((abs(timedelayEW[i]) <= Et[j]) and \
+                (abs(timedelayNS[i]) <= Nt[j])):
                 EWselect.append(EW_UD[i])
         # Stack over selected tremor windows
         if (cc_stack == 'lin'):
@@ -251,7 +252,8 @@ def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     for j in range(0, len(Nt)):
         NSselect = Stream()
         for i in range(0, nt):
-            if ((timedelayEW[i] <= Et[j]) and (timedelayNS[i] <= Nt[j])):
+            if ((abs(timedelayEW[i]) <= Et[j]) and \
+                (abs(timedelayNS[i]) <= Nt[j])):
                 NSselect.append(NS_UD[i])
         # Stack over selected tremor windows
         if (cc_stack == 'lin'):
@@ -291,9 +293,9 @@ if __name__ == '__main__':
     x0 = 0.0
     y0 = 0.0
     w = 2.0
-    ncor = 120
-    Tmin = 2.0
-    Tmax = 8.0
+    ncor = 40
+    Tmin = 4.0
+    Tmax = 6.0
     xmax = 15.0
     Emax = [0.3, 0.4, 0.5, 0.6]
     Nmax = [0.3, 0.4, 0.5, 0.6]

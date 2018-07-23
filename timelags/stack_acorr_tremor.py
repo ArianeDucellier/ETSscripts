@@ -319,7 +319,7 @@ def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     if nt > 0:
         filename = 'ac/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
             int(y0), type_stack)
-        pickle.dump([Year, Month, Day, Hour, Minute, Second, EW, NS, UD], \
+        pickle.dump([Year, Month, Day, Hour, Minute, Second, EW0, NS0, UD0], \
             open(filename, 'wb'))
 
 if __name__ == '__main__':
