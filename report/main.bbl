@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{ALB_2011}
+Sequoia Alba.
+\newblock {ETS} in tidal records.
+\newblock Master's thesis, University of Oregon, December 2011.
+
 \bibitem{ARM_2014}
 J.G. Armbruster, W.Y. Kim, and A.M. Rubin.
 \newblock Accurate tremor locations from coherent {S} and {P} waves.
@@ -110,6 +115,13 @@ S.~Ide, D.R. Shelly, and G.C. Beroza.
 \newblock {\em Geophysical Research Letters}, 34:L03308, 2007.
 \newblock doi:10.1029/2006gl028890.
 
+\bibitem{IDE_2014}
+K.~Idehara, S.~Yabe, and S.~Ide.
+\newblock Regional and global variations in the temporal clustering of tectonic
+  tremor activity.
+\newblock {\em Earth, Planets and Space}, 66(1):1--10, 2014.
+\newblock doi:10.1186/1880-5981-66-66.
+
 \bibitem{LAR_2009}
 M.~La~Rocca, K.C. Creager, D.~Galluzzo, S.~Malone, J.E. Vidale, J.R. Sweet, and
   A.G. Wech.
@@ -217,7 +229,7 @@ D.R. Shelly and J.L. Hardebeck.
 \bibitem{SZE_2008}
 W.~Szeliga, T.~Melbourne, M.~Santillan, and M.~Miller.
 \newblock Gps constraints on 34 slow slip events within the {Cascadia}
-  subduction zone, 1997?2005.
+  subduction zone, 1997-2005.
 \newblock {\em Journal of Geophysical Research}, 113:B04404, 2008.
 \newblock doi:10.1029/2007jb004948.
 
