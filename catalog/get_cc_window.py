@@ -10,11 +10,15 @@ from obspy import read_inventory
 from obspy import UTCDateTime
 from obspy.core.stream import Stream
 
+import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pickle
 
 from fractions import Fraction
+from math import cos, pi, sin, sqrt
+from sklearn import linear_model
+from sklearn.metrics import r2_score
 
 from stacking import linstack
 
@@ -251,13 +255,111 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS'):
     pickle.dump([stations, maxEW, maxNS, maxUD, timeEW, timeNS, timeUD], \
         open(output, 'wb'))
 
+def get_timeLFE(filename):
+    """
+    This function finds the origin time of the LFE for a given template
+
+    Input:
+        type filename = string
+        filename = Name of the template
+    Output:
+        type tori = float
+        tori = Origin time of the LFE
+    """
+    # To transform latitude and longitude into kilometers
+    a = 6378.136
+    e = 0.006694470
+    lat0 = 41.0
+    lon0 = -123.0
+    dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * \
+        sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
+    dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
+        pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
+
+    # Get the location of the source of the LFE
+    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
+        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
+             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
+        np.int, np.float, np.float, np.float, np.float, np.float)})
+    for ie in range(0, len(LFEloc)):
+        if (filename == LFEloc[ie][0].decode('utf-8')):
+            lats = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
+            lons = - LFEloc[ie][6] + LFEloc[ie][7] / 60.0
+            xs = dx * (lons - lon0)
+            ys = dy * (lats - lat0)
+
+    # Get the locations of the stations
+    staloc = np.loadtxt('../data/LFEcatalog/station_locations.txt', \
+        dtype={'names': ('name', 'lat', 'lon'), \
+             'formats': ('|S5', np.float, np.float)})
+
+    # Open time arrival files
+    data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
+    stations = data[0]
+    maxEW = data[1]
+    maxNS = data[2]
+    maxUD = data[3]
+    timeEW = data[4]
+    timeNS = data[5]
+    timeUD = data[6]
+    
+    # Compute source-receiver distances
+    distance = []
+    for i in range(0, len(stations)):
+        for ir in range(0, len(staloc)):
+            if (stations[i] == staloc[ir][0].decode('utf-8')):
+                latr = staloc[ir][1]
+                lonr = staloc[ir][2]
+                xr = dx * (lonr - lon0)
+                yr = dy * (latr - lat0)
+                distance.append(sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0))
+
+    # Linear regression
+    x = np.reshape(np.array(distance + distance + distance), \
+        (3 * len(stations), 1))
+    y = np.reshape(np.array(timeEW + timeNS + timeUD), \
+        (3 * len(stations), 1))
+    w = list(map(lambda x : pow(x, 3.0), maxEW)) + \
+        list(map(lambda x : pow(x, 3.0), maxNS)) + \
+        list(map(lambda x : pow(x, 3.0), maxUD))
+    w = np.array(w)
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y, w)
+    y_pred = regr.predict(x)
+    R2 = r2_score(y, y_pred)
+    s = regr.coef_[0][0]
+    tori = regr.intercept_[0]
+    # Plot
+    plt.figure(1, figsize=(10, 10))
+    plt.plot(x, y, 'ko')
+    plt.plot(x, y_pred, 'r-')
+    plt.xlabel('Distance (km)', fontsize=24)
+    plt.ylabel('Arrival time (s)', fontsize=24)
+    plt.title('{} - R2 = {:4.2f} - slowness = {:4.3f} s/km'.format( \
+        filename, R2, s), fontsize=24)
+    plt.savefig('timearrival/' + filename + '.eps', format='eps')
+    plt.close(1)
+    return tori    
+
 if __name__ == '__main__':
 
-    # Set the parameters
-    filename = '080414.12.020'
-    TDUR = 10.0
-    filt = (1.5, 9.0)
-    dt = 0.05
-    method = 'RMS'
+#    # Set the parameters
+#    filename = '080429.15.005'
+#    TDUR = 10.0
+#    filt = (1.5, 9.0)
+#    dt = 0.05
+#    method = 'RMS'
+#
+#    get_cc_window(filename, TDUR, filt, dt, method)
 
-    get_cc_window(filename, TDUR, filt, dt, method)
+    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
+        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
+             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
+        np.int, np.float, np.float, np.float, np.float, np.float)})
+    tori = np.zeros(len(LFEloc))
+    for ie in range(0, len(LFEloc)):
+        filename = LFEloc[ie][0].decode('utf-8')
+        tori[ie] = get_timeLFE(filename)
+    print(tori)
