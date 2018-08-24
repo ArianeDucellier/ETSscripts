@@ -342,6 +342,56 @@ def get_timeLFE(filename):
     plt.close(1)
     return tori    
 
+def check_station(station, tori):
+    """
+    This function looks at the travel time from the LFE source to the station
+    location for all the templates
+
+    Input:
+        type station = string
+        filename = Name of the station
+        type tori = 1d numpy array
+        tori = Origin time for each template
+    """
+    # To transform latitude and longitude into kilometers
+    a = 6378.136
+    e = 0.006694470
+    lat0 = 41.0
+    lon0 = -123.0
+    dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * \
+        sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
+    dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
+        pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
+
+    # Get the locations of the sources of the LFE
+    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
+        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
+             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
+        np.int, np.float, np.float, np.float, np.float, np.float)})
+    lats = np.zeros(len(LFEloc))
+    lons = np.zeros(len(LFEloc))
+    for ie in range(0, len(LFEloc)):
+        lats[ie] = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
+        lons[ie] = - LFEloc[ie][6] + LFEloc[ie][7] / 60.0
+    xs = dx * (lons - lon0)
+    ys = dy * (lats - lat0)
+
+    # Get the locations of the stations
+    staloc = np.loadtxt('../data/LFEcatalog/station_locations.txt', \
+        dtype={'names': ('name', 'lat', 'lon'), \
+             'formats': ('|S5', np.float, np.float)})
+
+    # Open time arrival files
+    data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
+    stations = data[0]
+    maxEW = data[1]
+    maxNS = data[2]
+    maxUD = data[3]
+    timeEW = data[4]
+    timeNS = data[5]
+    timeUD = data[6]
+    
 if __name__ == '__main__':
 
 #    # Set the parameters
