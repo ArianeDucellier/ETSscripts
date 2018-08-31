@@ -5,8 +5,6 @@ This module contains functions to compute the MODWPT of a time series
 import matplotlib.pyplot as plt
 import numpy as np
 
-from math import floor
-
 import DWPT, MODWT
 
 def get_Wjn(h, g, j, n, Wjm1n):
@@ -244,81 +242,6 @@ def get_Dj(Wj, name, j):
         Dj.append(Dn)
     return Dj
 
-#def get_u(name, J):
-#    """
-#    Compute the series of filters to carry out the MODWPT up to level J
-#
-#    Input:
-#        type name = string
-#        name = Name of the wavelet filter
-#        type J = integer
-#        J = Level of partial MODWPT
-#    Output:
-#        type u = list of J lists of 1D numpy arrays
-#        u = Vectors of filters
-#    """
-#    assert (type(J) == int), \
-#        'Level of MODWPT must be an integer'
-#    assert (J >= 1), \
-#        'Level of MODWPT must be higher or equal to 1'
-#    g = MODWT.get_scaling(name)
-#    h = MODWT.get_wavelet(g)
-#    L = np.shape(h)[0]
-#    u = [[g, h]]
-#    for j in range(2, J + 1):
-#        uj = []
-#        Lj = (2 ** j - 1) * (L - 1) + 1
-#        for n in range(0, 2 ** j):
-#            ujm1 = u[-1][int(floor(n / 2))]
-#            if ((n % 4 == 0) or (n % 4 == 3)):
-#                un = g
-#            else:
-#                un = h
-#            ujn = np.zeros(Lj)
-#            for l in range(0, Lj):
-#                for k in range(0, L):
-#                    index = int(l - (2 ** (j - 1)) * k)
-#                    if ((index >= 0) and (index < len(ujm1))):
-#                        ujn[l] = ujn[l] + un[k] * ujm1[index]
-#            uj.append(ujn)
-#        u.append(uj)
-#    return u
-                
-#def get_D(W, name):
-#    """
-#    Compute the details of the MODWPT using the wavelet coefficients
-#
-#    Input:
-#        type W = list of J+1 lists of 1D numpy arrays
-#        W = Vectors of MODWPT coefficients at levels 0, ... , J
-#        type name = string
-#        name = Name of the wavelet filter
-#    Output:
-#        type D = list of J lists of 1D numpy arrays
-#        D = Vectors of MODWPT details at levels 1, ... , J
-#    """
-#    g = MODWT.get_scaling(name)
-#    h = MODWT.get_wavelet(g)
-#    J = len(W) - 1
-#    u = get_u(name, J)
-#    L = np.shape(h)[0]   
-#    N = len(W[0][0])
-#    D = []
-#    for j in range(1, J + 1):
-#        Wj = W[j]
-#        Dj = []
-#        Lj = (2 ** j - 1) * (L - 1) + 1
-#        for n in range(0, 2 ** j):
-#            Wjn = Wj[n]
-#            Djn = np.zeros(N)
-#            for t in range(0, N):
-#                for l in range(0, Lj):
-#                    index = int((t + l) % N)
-#                    Djn[t] = Djn[t] + u[j - 1][n][l] * Wjn[index]
-#            Dj.append(Djn)
-#        D.append(Dj)
-#    return D
-            
 if __name__ == '__main__':
 
     # Test 1

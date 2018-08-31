@@ -70,8 +70,6 @@ def get_scaling(name):
         g = np.loadtxt('../data/scalingcoeff/BL18.dat')
     elif (name == 'BL20'):
         g = np.loadtxt('../data/scalingcoeff/BL20.dat')
-    elif (name == 'ID4'):
-        g = np.loadtxt('../data/scalingcoeff/ID4.dat')
     else:
         raise ValueError('{} has not been implemented yet'.format(name))
     return g
@@ -402,7 +400,44 @@ def get_indices(L, J, N):
         indb.append(int(max(2 ** j - 1, (2 ** j) * Ljp - 1, - 1)))
         inde.append(int(min(N + 2 ** j - Lj, N + (2 ** j) * Ljp - Lj, N)))
     return (indb, inde)
-    
+
+def compute_AB(a, j, N):
+    """
+    Compute the matrix Aj or Bj at level j
+
+    Input:
+        type a = 1D numpy array
+        a = Scaling filter g for A / wavelet filter h for B
+        type j = integer
+        j = Level of the pyramid algorithm
+        type N = integer
+        N = Length of the time series (multiple of 2**j)
+    Output:
+        type C = Nj * Nj-1 numpy array
+        C = Aj or Bj
+    """
+    assert (type(j) == int), \
+        'Level of the pyramid algorithm must be an integer'
+    assert (j >= 1), \
+        'Level of the pyramid algorithm must be higher or equal to 1'
+    assert (N % (2 ** j) == 0), \
+        'Length of time series is not a multiple of 2**j'
+    L = len(a)
+    a0 = np.zeros(N)
+    nmax = int(L // N)
+    for t in range(0, N):
+        for n in range(0, nmax + 1):
+            if (t + n * N < L):
+                a0[t] = a0[t] + a[t + n * N]
+    Nj = int(N / (2 ** j))
+    Njm1 = int(N / (2 ** (j - 1)))
+    A = np.zeros((Nj, Njm1))
+    for t in range(0, Nj):
+        for l in range(0, Njm1):
+            index = int((2 * t + 1 - l) % Njm1)
+            A[t, l] = a0[index]
+    return A
+
 if __name__ == '__main__':
 
     # Test 1

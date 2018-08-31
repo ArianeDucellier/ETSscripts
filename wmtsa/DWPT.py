@@ -154,6 +154,34 @@ def compute_c(J):
         c.append(cj)
     return c
 
+def compute_basisvector(cjn, name, N):
+    """
+    Compute the basis vectors of the orthonormal basis
+    corresponding to the list cj,n
+
+    Input:
+        type cjn = list of length j
+        cj,n = 0 if the filter is g / 1 if the filter is h
+        type name = string
+        name = Name of the wavelet filter
+        type N = integer
+        N = Length of the time series (multiple of 2**j)
+    Output:
+        type C = N * N / 2**j numpy array
+        C = N / 2**j basis vectors of length N
+    """
+    g = DWT.get_scaling(name)
+    h = DWT.get_wavelet(g)
+    J = len(cjn)
+    C = np.identity(int(N / (2 ** J)))
+    for j in range(J, 0, -1):
+        if (cjn[j - 1] == 0):
+            Cj = DWT.compute_AB(g, j, N)
+        else:
+            Cj = DWT.compute_AB(h, j, N)
+        C = np.matmul(np.transpose(Cj), C)
+    return C
+
 def get_nu(name, J):
     """
     Compute the phase shift for LA or coiflet filters

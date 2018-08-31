@@ -132,6 +132,60 @@ def bestbasis(W, X, typecost, delta=0.5, p=1):
                 cost[j - 1][n] = cost[j][int(2 * n)] + cost[j][int(2 * n + 1)]
     return (base, cost)
 
+def decomposition(X, name, J, typecost, delta=0.5, p=1):
+    """
+    Get the decomposition of X into the best wavelet vector basis
+
+    Input:
+        type X = 1D numpy array
+        X = Time series which length is a multiple of 2**J
+        type name = string
+        name = Name of the wavelet filter
+        type J = integer
+        J = Level of partial DWT
+        type typecost = string
+        typecost = 'entropy' for the -l2 log(l2) norm
+                   'thresh' for the threshold functional
+                   'lp' for the lp norm (see WMTSA p 223)
+        type delta = float
+        delta = Value of the threshold for the threshold functional (> 0)
+        type p = float
+        p = Power for the lp norm (0 < p < 2)
+    Output:
+        type w = list of scalars
+        w = Weights
+        type b = list of vectors of length N
+        b = Basis vectors
+    """
+    assert (type(J) == int), \
+        'Level of DWT must be an integer'
+    assert (J >= 1), \
+        'Level of DWT must be higher or equal to 1'
+    N = np.shape(X)[0]
+    assert (N % (2 ** J) == 0), \
+        'Length of time series is not a multiple of 2**J'
+    W = DWPT.get_DWPT(X, name, J)
+    c = DWPT.compute_c(J)
+    (base, cost) = bestbasis(W, X, typecost, delta, p)
+    w = []
+    b = []
+    if (base[0][0] == 1):
+        w.append(1.0)
+        b.append(X)
+    else:
+        for j in range(1, len(base)): 
+            for n in range(0, int(2 ** j)):
+                if (base[j][n] == 1):
+                    weights = W[j][int(n * N / (2 ** j)) : \
+                                   int((n + 1) * N / (2 ** j))]
+                    cjn = c[j - 1][n]
+                    vectors = DWPT.compute_basisvector(cjn, name, N)
+                    for l in range(0, len(weights)):
+                        w.append(weights[l])
+                    for l in range(0, np.shape(vectors)[1]):
+                        b.append(vectors[:, l])
+    return (w, b)
+
 if __name__ == '__main__':
 
     # Test 1
@@ -155,6 +209,12 @@ if __name__ == '__main__':
         print(base)
         print('\nCost functionals:\n')
         print(cost)
+        (w, b) = decomposition(X, 'Haar', 3, 'entropy')
+        print('\nDecomposition:\n')
+        for l in range(0, len(w)):
+            if (abs(w[l]) > 1.0e-10):
+                print(w[l])
+                print(b[l])
 
     # Use best basis algorithm on a simple time series
     # See Figures 224 to 226 in WMTSA
