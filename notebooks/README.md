@@ -1,4 +1,4 @@
-# notebboks
+# notebooks
 
 This directory contains notebooks with examples of some analyses that you can do with the Python modules from the other directories
 
