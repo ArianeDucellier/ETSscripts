@@ -1,0 +1,167 @@
+\documentclass[methods.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Ray tracing}
+
+We solve the eikonal and the transport equations following \v Cevern\'y (2001, ch. 3.1).
+
+\subsection{Eikonal equation}
+
+Following \v Cevern\'y (2001, ch. 2.4), the eikonal equation is:
+
+\begin{equation}
+\nabla T . \nabla T = \frac{1}{V^2}
+\end{equation}
+
+with $V = \alpha$ or $V= \beta$. Using the Hamiltonian, it can also be written as:
+
+\begin{equation}
+\mathcal H (x_i, p_i) = \frac{1}{2} (p_i^2 - \frac{1}{V^2}) = 0
+\end{equation}
+
+where $p_i = \frac{\partial T}{\partial x_i}$.
+
+We define the auxiliary variable $\sigma$ by:
+
+\begin{equation}
+\frac{dx_i}{d\sigma} = \frac{\partial \mathcal H}{\partial p_i} \text{ and } \frac{dp_i}{d\sigma} = - \frac{\partial \mathcal H}{\partial x_i}
+\end{equation}
+
+We get:
+
+\begin{equation}
+\frac{dT}{d\sigma} = \frac{\partial T}{\partial x_i} \frac{\partial x_i}{\partial \sigma} = p_i \frac{\partial \mathcal H}{\partial p_i} = \frac{1}{V^2}
+\end{equation}
+
+thus we have:
+
+\begin{equation}
+T = T_0 + \frac{1}{V^2} \sigma \text{ and } \sigma = V^2 (T - T_0)
+\end{equation}
+
+\subsubsection{Constant velocity}
+
+We have:
+
+\begin{equation}
+\frac{dp_i}{d\sigma} = - \frac{\partial \mathcal H}{\partial x_i} = \frac{1}{2} \frac{\partial}{\partial x_i} (\frac{1}{V^2}) = - \frac{1}{V^3} \frac{\partial V}{\partial x_i} = 0
+\end{equation}
+
+thus:
+
+\begin{equation}
+\begin{split}
+p_1 & = p_{10} \\
+p_2 & = p_{20} \\
+p_3 & = p_{30}
+\end{split}
+\end{equation}
+
+We have:
+
+\begin{equation}
+x_i = x_{i0} + \frac{\partial \mathcal H}{\partial p_i} \sigma = x_{i0} + p_i \sigma
+\end{equation}
+
+thus:
+
+\begin{equation}
+\begin{split}
+x_1 & = x_{10} + p_{10} V^2 (T - T_0) \\
+x_2 & = x_{20} + p_{20} V^2 (T - T_0) \\
+x_3 & = x_{30} + p_{30} V^2 (T - T_0)
+\end{split}
+\end{equation}
+
+\subsubsection{Constant gradient of velocity}
+
+We write the velocity as $V = a z + b$.
+
+We have:
+
+\begin{equation}
+\frac{dp_1}{d\sigma} = 0 \text{, } \frac{dp_2}{d\sigma} = 0 \text{ and } \frac{dp_3}{d\sigma} = - \frac{1}{V^3} \frac{\partial V}{\partial z} = - \frac{a}{(a z + b)^3}
+\end{equation}
+
+thus:
+
+\begin{equation}
+\begin{split}
+p_1 & = p_{10} \\
+p_2 & = p_{20} \\
+p_3 & = p_{30} - \frac{a}{(a z + b)^3} \sigma = p_{30} - \frac{a}{a z + b} (T - T_0)
+\end{split}
+\end{equation}
+
+We have:
+
+\begin{equation}
+\begin{split}
+x_1 & = x_{10} + p_{10} \sigma \\
+x_2 & = x_{20} + p_{20} \sigma \\
+x_3 & = x_{30} + p_{30} \sigma - \frac{1}{2} \frac{a}{(a z + b)^3} \sigma^2
+\end{split}
+\end{equation}
+
+thus:
+
+\begin{equation}
+\begin{split}
+x_1 & = x_{10} + p_{10} (a z + b)^2 (T - T_0) \\
+x_2 & = x_{20} + p_{20} (a z + b)^2 (T - T_0) \\
+x_3 & = x_{30} + p_{30} (a z + b)^2 (T - T_0) - \frac{1}{2} a (a z + b) (T - T_0)^2
+\end{split}
+\end{equation}
+
+\subsection{Transport equation}
+
+Following \v Cevern\'y (2001, ch. 2.4), the transport equation is:
+
+\begin{equation}
+2 \nabla T . \nabla (\sqrt{\rho V^2} A) + \sqrt{\rho V^2} A \nabla^2 T = 0
+\end{equation}
+
+with $V = \alpha$ or $V= \beta$ and $A$ is the amplitude of the P-wave or one of the two components of the S-wave.
+
+\subsubsection{Constant velocity}
+
+We have $(\nabla T)_i = p_i = p_{i0}$ thus $\nabla^2 T = 0$ and the wave equation becomes:
+
+\begin{equation}
+2 \nabla T . \nabla (\sqrt{\rho V^2} A) = 0
+\end{equation}
+
+As $\rho$ and $V$ are constant, we get:
+
+\begin{equation}
+\nabla T . \nabla A = p_i \frac{\partial A}{\partial x_i} = 0
+\end{equation}
+
+However, we have:
+
+\begin{equation}
+\frac{\partial A}{\partial \sigma} = \frac{\partial A}{\partial x_i} \frac{\partial x_i}{\partial \sigma} = \frac{\partial A}{\partial x_i} \frac{\partial \mathcal H}{\partial p_i} = \frac{\partial A}{\partial x_i} p_i
+\end{equation}
+
+Thus:
+
+\begin{equation}
+\frac{\partial A}{\partial \sigma} = 0 \text{ that is } A = A_0
+\end{equation}
+
+\subsubsection{Constant gradient of velocity}
+
+We have:
+
+\begin{equation}
+\nabla^2 T = \frac{a^2}{(a z + b)^2} (T - T_0)
+\end{equation}
+
+If we assume constant density, we get the transport equation:
+
+\begin{equation}
+2 A \nabla T . \nabla V + 2 V \nabla T . \nabla A + A \frac{a^2}{a z + b} (T - T_0) = 0
+\end{equation}
+
+\end{document}

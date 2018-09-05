@@ -1,0 +1,530 @@
+\documentclass[methods.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Computation of amplitudes for P-, SV- and SH-waves}
+
+\subsection{Changes of coordinates}
+
+We denote $(x, y)$ the coordinates of the receiver array, $(x_0, y_0)$ the coordinates of the tremor source, and $d$ the depth of the tremor source.
+
+In the $(\vec{e}_X, \vec{e}_Y, \vec{e}_Z)$ coordinate system, we have:
+
+\begin{equation}
+\vec{e}_R = \begin{pmatrix}
+\cos \beta \\
+\sin \beta \\
+0
+\end{pmatrix} \text{, } \vec{e}_T = \begin{pmatrix}
+- \sin \beta \\
+\cos \beta \\
+0
+\end{pmatrix} \text{ and } \vec{e}_Z = \begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+\end{equation}
+
+with $\beta = \atantwo (y - y_0 , x - x_0)$
+
+In the $(\vec{e}_R, \vec{e}_T, \vec{e}_Z)$ coordinate system, we have:
+
+\begin{equation}
+\vec{e}_X = \begin{pmatrix}
+\cos \beta \\
+- \sin \beta \\
+0
+\end{pmatrix} \text{, } \vec{e}_Y = \begin{pmatrix}
+\sin \beta \\
+\cos \beta \\
+0
+\end{pmatrix} \text{ and } \vec{e}_Z = \begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+\end{equation}
+
+For the direct wave, we have:
+
+\begin{equation}
+\vec{e}_P = \begin{pmatrix}
+\sin \alpha \\
+0 \\
+\cos \alpha
+\end{pmatrix} \text{, } \vec{e}_{SV} = \begin{pmatrix}
+\cos \alpha \\
+0 \\
+- \sin \alpha
+\end{pmatrix} \text{ and } \vec{e}_{SH} = \begin{pmatrix}
+0 \\
+1 \\
+0
+\end{pmatrix}
+\end{equation}
+
+with $\alpha = \frac{\sqrt{ (x - x_0)^2 + (y - y_0)^2}}{d}$
+
+For the reflected wave, we have:
+
+\begin{equation}
+\vec{e}_P = \begin{pmatrix}
+\sin \alpha \\
+0 \\
+- \cos \alpha
+\end{pmatrix} \text{, } \vec{e}_{SV} = \begin{pmatrix}
+\cos \alpha \\
+0 \\
+\sin \alpha
+\end{pmatrix} \text{ and } \vec{e}_{SH} = \begin{pmatrix}
+0 \\
+- 1 \\
+0
+\end{pmatrix}
+\end{equation}
+
+where $\alpha$ is computed with the RayTracing code.
+
+In the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system, we have for the direct wave:
+
+\begin{equation}
+\vec{e}_R = \begin{pmatrix}
+\sin \alpha \\
+\cos \alpha \\
+0
+\end{pmatrix} \text{, } \vec{e}_T = \begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix} \text{ and } \vec{e}_Z = \begin{pmatrix}
+\cos \alpha \\
+- \sin \alpha \\
+0
+\end{pmatrix}
+\end{equation}
+
+For the reflected wave, we have:
+
+\begin{equation}
+\vec{e}_R = \begin{pmatrix}
+\sin \alpha \\
+\cos \alpha \\
+0
+\end{pmatrix} \text{, } \vec{e}_T = \begin{pmatrix}
+0 \\
+0 \\
+- 1
+\end{pmatrix} \text{ and } \vec{e}_Z = \begin{pmatrix}
+- \cos \alpha \\
+\sin \alpha \\
+0
+\end{pmatrix}
+\end{equation}
+
+We compute the seismic moment $M$ in the $(\vec{e}_X, \vec{e}_Y, \vec{e}_Z)$ coordinate system. We have:
+
+\begin{equation}
+M_{ij} = u_i \nu_j + u_j \nu_i
+\end{equation}
+
+with:
+
+\begin{equation}
+\vec{u} = \begin{pmatrix}
+- \cos \delta \cos \phi \\
+\cos \delta \sin \phi \\
+\sin \delta
+\end{pmatrix} \text{ and } \vec{\nu} = \begin{pmatrix}
+\sin \delta \cos \phi \\
+- \sin \delta \sin \phi \\
+\cos \delta 
+\end{pmatrix}
+\end{equation}
+
+where $\phi$ is the strike of the subducting plate, and $\delta$ is the dip of the subducting plate.
+
+We then compute the value of $M$ in the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system. We have:
+
+\begin{equation}
+\begin{pmatrix}
+M_{RR} & M_{RT} & M_{RZ} \\
+M_{TR} & M_{TT} & M_{TZ} \\
+M_{ZR} & M_{ZT} & M_{ZZ}
+\end{pmatrix} = \begin{pmatrix}
+\cos \beta & \sin \beta & 0 \\
+- \sin \beta & \cos \beta & 0 \\
+0 & 0 & 1
+\end{pmatrix} \begin{pmatrix}
+M_{XX} & M_{XY} & M_{XZ} \\
+M_{YX} & M_{YY} & M_{YZ} \\
+M_{ZX} & M_{ZY} & M_{ZZ}
+\end{pmatrix} \begin{pmatrix}
+\cos \beta & - \sin \beta & 0 \\
+\sin \beta & \cos \beta & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+
+For the direct wave, we have:
+
+\begin{equation}
+\begin{pmatrix}
+M_{PP} & M_{PSV} & M_{PSH} \\
+M_{SVP} & M_{SVSV} & M_{SVSH} \\
+M_{SHP} & M_{SHSV} & M_{SHSH}
+\end{pmatrix} = \begin{pmatrix}
+\sin \alpha & 0 & \cos \alpha \\
+\cos \alpha & 0 & - \sin \alpha \\
+0 & 1 & 0
+\end{pmatrix} \begin{pmatrix}
+M_{RR} & M_{RT} & M_{RZ} \\
+M_{TR} & M_{TT} & M_{TZ} \\
+M_{ZR} & M_{ZT} & M_{ZZ}
+\end{pmatrix} \begin{pmatrix}
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1 \\
+\cos \alpha & - \sin \alpha & 0
+\end{pmatrix}
+\end{equation}
+
+For the reflected wave, we have:
+
+\begin{equation}
+\begin{pmatrix}
+M_{PP} & M_{PSV} & M_{PSH} \\
+M_{SVP} & M_{SVSV} & M_{SVSH} \\
+M_{SHP} & M_{SHSV} & M_{SHSH}
+\end{pmatrix} = \begin{pmatrix}
+\sin \alpha & 0 & - \cos \alpha \\
+\cos \alpha & 0 & \sin \alpha \\
+0 & - 1 & 0
+\end{pmatrix} \begin{pmatrix}
+M_{RR} & M_{RT} & M_{RZ} \\
+M_{TR} & M_{TT} & M_{TZ} \\
+M_{ZR} & M_{ZT} & M_{ZZ}
+\end{pmatrix} \begin{pmatrix}
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & - 1 \\
+- \cos \alpha & \sin \alpha & 0
+\end{pmatrix}
+\end{equation}
+
+In the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system, we have:
+
+\begin{equation}
+\vec{\Gamma} = \begin{pmatrix}
+\gamma_1 \\
+\gamma_2 \\
+\gamma_3
+\end{pmatrix} = \begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix}
+\end{equation}
+
+from Equation 9.13.1 of Pujol (2003), we have:
+
+\begin{equation}
+\begin{pmatrix}
+A_P \\
+A_{SV} \\
+A_{SH}
+\end{pmatrix} =\begin{pmatrix}
+M_{PP} \\
+M_{SVP} \\
+M_{SHP}
+\end{pmatrix}
+\end{equation}
+
+\subsection{Getting the reflection, conversion and transmission coefficients}
+
+We compute the reflection, conversion and transmission coefficients at the interface between two homogeneous media, following Aki and Richards (2002, ch. 5.2).
+
+\subsubsection{SH-wave}
+
+We have $u_x = 0$, $u_z = 0$ and $\frac{\partial}{\partial y} = 0$. Thus the wave equations become:
+
+\begin{equation}
+\begin{split}
+\rho \frac{\partial ^2 u_y}{\partial t^2} & = \frac{\partial \sigma_{yx}}{\partial x} + \frac{\partial \sigma_{yz}}{\partial z} \\
+\sigma_{xy} & = \mu \frac{\partial u_y}{\partial x} \\
+\sigma_{yz} & = \mu \frac{\partial u_y}{\partial z} \\
+\sigma_{xx} & = \sigma_{yy} = \sigma_{zz} = \sigma_{xz} = 0
+\end{split}
+\end{equation}
+
+The incident SH-wave is of the form:
+
+\begin{equation}
+u_y (t) = \acute S_1 exp (i \omega (t - p_{\beta_1} x - q_{\beta_1} z))
+\end{equation}
+
+From Snell's law, we have $\frac{sin j_1}{\beta_1} = \frac{sin j_2}{\beta_2}$
+
+At $z = 0$, we have $u_y (z^+) = u_y (z^-)$, and $\sigma_{yz} (z^+) = \sigma_{yz} (z^-)$ thus:
+
+\begin{equation}
+\begin{split}
+& \acute S_1 + \grave S_1 = \acute S_2 \\
+& - \mu_1 i \omega q_{\beta_1} \acute S_1 + \mu_1 i \omega q_{\beta_1} \grave S_1 = - \mu_2 i \omega q_{\beta_2} \acute S_2
+\end{split}
+\end{equation}
+
+Therefore, using $q_{\beta_1} = \frac{cos j_1}{\beta_1}$ and $q_{\beta_2} = \frac{cos j_2}{\beta_2}$, we find:
+
+\begin{equation}
+\begin{split}
+& \grave S_1 = \acute S_1 \frac{\rho_1 \beta_1 cos j_1 - \rho_2 \beta_2 cos j_2}{\rho_1 \beta_1 cos j_1 + \rho_2 \beta_2 cos j_2} \\
+& \acute S_2 = \acute S_1 \frac{2 \rho_1 \beta_1 cos j_1}{\rho_1 \beta_1 cos j_1 + \rho_2 \beta_2 cos j_2}
+\end{split}
+\end{equation}
+
+\subsubsection{P-wave}
+
+We have $u_y = 0$ and $\frac{\partial}{\partial y} = 0$. Thus the wave equations become:
+
+\begin{equation}
+\begin{split}
+\rho \frac{\partial ^2 u_x}{\partial t^2} & = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} \\
+\rho \frac{\partial ^2 u_z}{\partial t^2} & = \frac{\partial \sigma_{zx}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} \\
+\sigma_{xx} & = (\lambda + 2 \mu) \frac{\partial u_x}{\partial x} + \lambda \frac{\partial u_z}{\partial z} \\
+\sigma_{yy} & = \lambda (\frac{\partial u_x}{\partial x} + \frac{\partial u_z}{\partial z}) \\
+\sigma_{zz} & = \lambda \frac{\partial u_x}{\partial x} + (\lambda + 2 \mu) \frac{\partial u_z}{\partial z} \\
+\sigma_{xz} & = \mu (\frac{\partial u_x}{\partial z} + \frac{\partial u_z}{\partial x}) \\
+\sigma_{xy} & = \sigma_{yz} = 0
+\end{split}
+\end{equation}
+
+The incident P-wave is of the form:
+
+\begin{equation}
+\begin{split}
+u_x (t) & = \acute P_1 sin i_1 exp (i \omega (t - p_{\alpha_1} x - q_{\alpha_1} z)) \\
+u_z (t) & = \acute P_1 cos i_1 exp (i \omega (t - p_{\alpha_1} x - q_{\alpha_1} z))
+\end{split}
+\end{equation}
+
+From Snell's law, we have $\frac{sin i_1}{\alpha_1} = \frac{sin i_2}{\alpha_2} = \frac{sin j_1}{\beta_1} = \frac{sin j_2}{\beta_2}$
+
+At $z = 0$, we have $u_x (z^+) = u_x (z^-)$, $u_z (z^+) = u_z (z^-)$, $\sigma_{xz} (z^+) = \sigma_{xz} (z^-)$ and $\sigma_{zz} (z^+) = \sigma_{zz} (z^-)$ thus:
+
+\begin{equation}
+\begin{split}
+\acute P_1 sin i_1 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = \acute P_2 sin i_2 + \acute S_2 cos j_2 \\
+- \acute P_1 cos i_1 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = - \acute P_2 cos i_2 + \acute S_2 sin j_2 \\
+\mu_1 (- q{\alpha_1} \acute P_1 sin i_1 + q_{\alpha_1} \grave P_1 sin i_1 + q_{\beta_1} \grave S_1 cos j_1) + \mu_1 (- p_{\alpha_1} \acute P_1 cos i_1 + p_{\alpha_1} \grave P_1 cos i_1 - p_{\beta_1} \grave S_1 sin j_1) = \\
+\mu_2 (- q_{\alpha_2} \acute P_2 sin i_2 - q_{\beta_2} \acute S_2 cos j_2) + \mu_2 (- p_{\alpha_2} \acute P_2 cos i_2 + p_{\beta_2} \acute S_2 sin j_2) \\
+\lambda_1 (p_{\alpha_1} \acute P_1 sin i_1 + p_{\alpha_1} \grave P_1 sin i_1 + p_{\beta_1} \grave S_1 cos j_1) + (\lambda_1 + 2 \mu_1) (q_{\alpha_1} \acute P_1 cos i_1 + q_{\alpha_1} \grave P_1 cos i_1 - q_{\beta_1} \grave S_1 sin j_1) = \\
+\lambda_2 (p_{\alpha_2} \acute P_2 sin i_2 + p_{\beta_2} \acute S_2 cos j_2) + (\lambda_2 + 2 \mu_2) (q_{\alpha_2} \acute P_2 cos i_2 - q_{\beta_2} \acute S_2 sin j_2)
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \acute P_2 sin i_2 - \acute S_2 cos j_2 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = - \acute P_1 sin i_1 \\
+\acute P_2 cos i_2 - \acute S_2 sin j_2 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = \acute P_1 cos i_1 \\
+\mu_2 q_{\alpha_2} \acute P_2 sin i_2 + \mu_2 p_{\alpha_2} \acute P_2 cos i_2 + \mu_2 q_{\beta_2} \acute S_2 cos j_2 - \mu_2 p_{\beta_2} \acute S_2 sin j_2 \\
++ \mu_1 q{\alpha_1} \grave P_1 sin i_1 + \mu_1 p_{\alpha_1} \grave P_1 cos i_1 + \mu_1 q_{\beta_1} \grave S_1 cos j_1 - \mu_1 p_{\beta_1} \grave S_1 sin j_1 = \\
+\mu_1 q_{\alpha_1} \acute P_1 sin i_1 + \mu_1 p_{\alpha_1} \acute P_1 cos i_1 \\
+- \lambda_2 p_{\alpha_2} \acute P_2 sin i_2 - (\lambda_2 + 2 \mu_2) q_{\alpha_2} \acute P_2 cos i_2 - \lambda_2 p_{\beta_2} \acute S_2 cos j_2 + (\lambda_2 + 2 \mu_2) q_{\beta_2} \acute S_2 sin j_2 \\
++ \lambda_1 p_{\alpha_1} \grave P_1 sin i_1 + (\lambda_1 + 2 \mu_1) q_{\alpha_1} \grave P_1 cos i_1 + \lambda_1 p_{\beta_1} \grave S_1 cos j_1 - (\lambda_1 + 2 \mu_1) q_{\beta_1} \grave S_1 sin j_1 = \\
+- \lambda_1 p_{\alpha_1} \acute P_1 sin i_1 - (\lambda_1 + 2 \mu_1) q_{\alpha_1} \acute P_1 cos i_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \acute P_2 sin i_2 - \acute S_2 cos j_2 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = - \acute P_1 sin i_1 \\
+\acute P_2 cos i_2 - \acute S_2 sin j_2 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = \acute P_1 cos i_1 \\
+(\mu_2 q_{\alpha_2} sin i_2 + \mu_2 p_{\alpha_2} cos i_2) \acute P_2 + (\mu_2 q_{\beta_2} cos j_2 - \mu_2 p_{\beta_2} sin j_2) \acute S_2 \\
++ (\mu_1 q_{\alpha_1} sin i_1 + \mu_1 p_{\alpha_1} cos i_1) \grave P_1 + (\mu_1 q_{\beta_1} cos j_1 - \mu_1 p_{\beta_1} sin j_1) \grave S_1 = \\
+(\mu_1 q_{\alpha_1} sin i_1 + \mu_1 p_{\alpha_1} cos i_1) \acute P_1 \\
+- (\lambda_2 p_{\alpha_2} sin i_2 + (\lambda_2 + 2 \mu_2) q_{\alpha_2} cos i_2) \acute P_2 - (\lambda_2 p_{\beta_2} cos j_2 - (\lambda_2 + 2 \mu_2) q_{\beta_2} sin j_2) \acute S_2 \\
++ (\lambda_1 p_{\alpha_1} sin i_1 + (\lambda_1 + 2 \mu_1) q_{\alpha_1} cos i_1) \grave P_1 + (\lambda_1 p_{\beta_1} cos j_1 - (\lambda_1 + 2 \mu_1) q_{\beta_1} sin j_1) \grave S_1 = \\
+- (\lambda_1 p_{\alpha_1} sin i_1 + (\lambda_1 + 2 \mu_1) q_{\alpha_1} cos i_1) \acute P_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \alpha_2 p_{\alpha_2} \acute P_2 - cos j_2 \acute S_2 + \alpha_1 p_{\alpha_1} \grave P_1 + cos j_1 \grave S_1 = - \alpha_1 p_{\alpha_1} \acute P_1 \\
+cos i_2 \acute P_2 - \beta_2 p_{\beta_2} \acute S_2 + cos i_1 \grave P_1 - \beta_1 p_{\beta_1} \grave S_1 = cos i_1 \acute P_1 \\
+(2 \rho_2 \beta_2^2 p_{\alpha_2} cos i_2) \acute P_2 + \rho_2 \beta_2 (1 - 2 \beta_2^2 p_{\beta_2}^2) \acute S_2 \\
++ (2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1) \grave P_1 + \rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \grave S_1 = \\
+(2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1) \acute P_1 \\
+- \rho_2 \alpha_2 (1 - 2 \beta_2^2 p_{\alpha_2}^2) \acute P_2 + 2 \rho_2 \beta_2^2 p_{\beta_2} cos j_2 \acute S_2 \\
++ \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) \grave P_1 - 2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1 \grave S_1 = \\
+- \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) \acute P_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+M \begin{pmatrix}
+\acute P_2 \\
+\acute S_2 \\
+\grave P_1 \\
+\grave S_1
+\end{pmatrix} = N \begin{pmatrix}
+0 \\
+0 \\
+\acute P_1 \\
+0
+\end{pmatrix}
+\end{equation}
+
+with:
+
+\begin{equation}
+M = \begin{pmatrix}
+- \alpha_2 p_{\alpha_2} & - cos j_2 & \alpha_1 p_{\alpha_1} & cos j_1 \\
+cos i_2 & - \beta_2 p_{\beta_2} & cos i_1 & - \beta_1 p_{\beta_1} \\
+2 \rho_2 \beta_2^2 p_{\alpha_2} cos i_2 & \rho_2 \beta_2 (1 - 2 \beta_2^2 p_{\beta_2}^2) & 2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1 & \rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \\
+- \rho_2 \alpha_2 (1 - 2 \beta_2^2 p_{\alpha_2}^2) & 2 \rho_2 \beta_2^2 p_{\beta_2} cos j_2 & \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) & - 2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1
+\end{pmatrix}
+\end{equation}
+
+and:
+
+\begin{equation}
+N = \begin{pmatrix}
+0 & 0 & - \alpha_1 p_{\alpha_1} & 0 \\
+0 & 0 & cos i_1 & 0 \\
+0 & 0 & 2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1 & 0 \\
+0 & 0 & - \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) & 0
+\end{pmatrix}
+\end{equation}
+
+\subsubsection{SV-wave}
+
+We have $u_y = 0$ and $\frac{\partial}{\partial y} = 0$. Thus the wave equations become:
+
+\begin{equation}
+\begin{split}
+\rho \frac{\partial ^2 u_x}{\partial t^2} & = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} \\
+\rho \frac{\partial ^2 u_z}{\partial t^2} & = \frac{\partial \sigma_{zx}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} \\
+\sigma_{xx} & = (\lambda + 2 \mu) \frac{\partial u_x}{\partial x} + \lambda \frac{\partial u_z}{\partial z} \\
+\sigma_{yy} & = \lambda (\frac{\partial u_x}{\partial x} + \frac{\partial u_z}{\partial z}) \\
+\sigma_{zz} & = \lambda \frac{\partial u_x}{\partial x} + (\lambda + 2 \mu) \frac{\partial u_z}{\partial z} \\
+\sigma_{xz} & = \mu (\frac{\partial u_x}{\partial z} + \frac{\partial u_z}{\partial x}) \\
+\sigma_{xy} & = \sigma_{yz} = 0
+\end{split}
+\end{equation}
+
+The incident S-wave is of the form:
+
+\begin{equation}
+\begin{split}
+u_x (t) & = \acute S_1 cos j_1 exp (i \omega (t - p_{\beta_1} x - q_{\beta_1} z)) \\
+u_z (t) & = - \acute S_1 sin j_1 exp (i \omega (t - p_{\beta_1} x - q_{\beta_1} z))
+\end{split}
+\end{equation}
+
+From Snell's law, we have $\frac{sin i_1}{\alpha_1} = \frac{sin i_2}{\alpha_2} = \frac{sin j_1}{\beta_1} = \frac{sin j_2}{\beta_2}$
+
+At $z = 0$, we have $u_x (z^+) = u_x (z^-)$, $u_z (z^+) = u_z (z^-)$, $\sigma_{xz} (z^+) = \sigma_{xz} (z^-)$ and $\sigma_{zz} (z^+) = \sigma_{zz} (z^-)$ thus:
+
+\begin{equation}
+\begin{split}
+\acute S_1 cos j_1 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = \acute P_2 sin i_2 + \acute S_2 cos j_2 \\
+\acute S_1 sin j_1 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = - \acute P_2 cos i_2 + \acute S_2 sin j_2 \\
+\mu_1 (- q_{\beta_1} \acute S_1 cos j_1 + q_{\alpha_1} \grave P_1 sin i_1 + q_{\beta_1} \grave S_1 cos j_1) + \mu_1 (p_{\beta_1} \acute S_1 sin j_1 + p_{\alpha_1} \grave P_1 cos i_1 - p_{\beta_1} \grave S_1 sin j_1) = \\
+\mu_2 (- q_{\alpha_2} \acute P_2 sin i_2 - q_{\beta_2} \acute S_2 cos j_2) + \mu_2 (- p_{\alpha_2} \acute P_2 cos i_2 + p_{\beta_2} \acute S_2 sin j_2) \\
+\lambda_1 (p_{\beta_1} \acute S_1 cos j_1 + p_{\alpha_1} \grave P_1 sin i_1 + p_{\beta_1} \grave S_1 cos j_1) + (\lambda_1 + 2 \mu_1) (- q_{\beta_1} \acute S_1 sin j_1 + q_{\alpha_1} \grave P_1 cos i_1 - q_{\beta_1} \grave S_1 sin j_1) = \\
+\lambda_2 (p_{\alpha_2} \acute P_2 sin i_2 + p_{\beta_2} \acute S_2 cos j_2) + (\lambda_2 + 2 \mu_2) (q_{\alpha_2} \acute P_2 cos i_2 - q_{\beta_2} \acute S_2 sin j_2)
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \acute P_2 sin i_2 - \acute S_2 cos j_2 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = - \acute S_1 cos j_1 \\
+\acute P_2 cos i_2 - \acute S_2 sin j_2 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = - \acute S_1 sin j_1 \\
+\mu_2 q_{\alpha_2} \acute P_2 sin i_2 + \mu_2 p_{\alpha_2} \acute P_2 cos i_2 + \mu_2 q_{\beta_2} \acute S_2 cos j_2 - \mu_2 p_{\beta_2} \acute S_2 sin j_2 \\
++ \mu_1 q{\alpha_1} \grave P_1 sin i_1 + \mu_1 p_{\alpha_1} \grave P_1 cos i_1 + \mu_1 q_{\beta_1} \grave S_1 cos j_1 - \mu_1 p_{\beta_1} \grave S_1 sin j_1 = \\
+\mu_1 q_{\beta_1} \acute S_1 cos j_1 - \mu_1 p_{\beta_1} \acute S_1 sin j_1 \\
+- \lambda_2 p_{\alpha_2} \acute P_2 sin i_2 - (\lambda_2 + 2 \mu_2) q_{\alpha_2} \acute P_2 cos i_2 - \lambda_2 p_{\beta_2} \acute S_2 cos j_2 + (\lambda_2 + 2 \mu_2) q_{\beta_2} \acute S_2 sin j_2 \\
++ \lambda_1 p_{\alpha_1} \grave P_1 sin i_1 + (\lambda_1 + 2 \mu_1) q_{\alpha_1} \grave P_1 cos i_1 + \lambda_1 p_{\beta_1} \grave S_1 cos j_1 - (\lambda_1 + 2 \mu_1) q_{\beta_1} \grave S_1 sin j_1 = \\
+- \lambda_1 p_{\beta_1} \acute S_1 cos j_1 + (\lambda_1 + 2 \mu_1) q_{\beta_1} \acute S_1 sin j_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \acute P_2 sin i_2 - \acute S_2 cos j_2 + \grave P_1 sin i_1 + \grave S_1 cos j_1 = - \acute S_1 cos j_1 \\
+\acute P_2 cos i_2 - \acute S_2 sin j_2 + \grave P_1 cos i_1 - \grave S_1 sin j_1 = - \acute S_1 sin j_1 \\
+(\mu_2 q_{\alpha_2} sin i_2 + \mu_2 p_{\alpha_2} cos i_2) \acute P_2 + (\mu_2 q_{\beta_2} cos j_2 - \mu_2 p_{\beta_2} sin j_2) \acute S_2 \\
++ (\mu_1 q_{\alpha_1} sin i_1 + \mu_1 p_{\alpha_1} cos i_1) \grave P_1 + (\mu_1 q_{\beta_1} cos j_1 - \mu_1 p_{\beta_1} sin j_1) \grave S_1 = \\
+(\mu_1 q_{\beta_1} cos j_1 - \mu_1 p_{\beta_1} sin j_1) \acute S_1 \\
+- (\lambda_2 p_{\alpha_2} sin i_2 + (\lambda_2 + 2 \mu_2) q_{\alpha_2} cos i_2) \acute P_2 - (\lambda_2 p_{\beta_2} cos j_2 - (\lambda_2 + 2 \mu_2) q_{\beta_2} sin j_2) \acute S_2 \\
++ (\lambda_1 p_{\alpha_1} sin i_1 + (\lambda_1 + 2 \mu_1) q_{\alpha_1} cos i_1) \grave P_1 + (\lambda_1 p_{\beta_1} cos j_1 - (\lambda_1 + 2 \mu_1) q_{\beta_1} sin j_1) \grave S_1 = \\
+(- \lambda_1 p_{\beta_1} cos j_1 + (\lambda_1 + 2 \mu_1) q_{\beta_1} sin j_1) \acute S_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\begin{split}
+- \alpha_2 p_{\alpha_2} \acute P_2 - cos j_2 \acute S_2 + \alpha_1 p_{\alpha_1} \grave P_1 + cos j_1 \grave S_1 = - cos j_1 \acute S_1 \\
+cos i_2 \acute P_2 - \beta_2 p_{\beta_2} \acute S_2 + cos i_1 \grave P_1 - \beta_1 p_{\beta_1} \grave S_1 = - \beta_1 p_{\beta_1} \acute S_1 \\
+(2 \rho_2 \beta_2^2 p_{\alpha_2} cos i_2) \acute P_2 + \rho_2 \beta_2 (1 - 2 \beta_2^2 p_{\beta_2}^2) \acute S_2 \\
++ (2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1) \grave P_1 + \rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \grave S_1 = \\
+\rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \acute S_1 \\
+- \rho_2 \alpha_2 (1 - 2 \beta_2^2 p_{\alpha_2}^2) \acute P_2 + 2 \rho_2 \beta_2^2 p_{\beta_2} cos j_2 \acute S_2 \\
++ \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) \grave P_1 - 2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1 \grave S_1 = \\
+2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1 \acute S_1
+\end{split}
+\end{equation}
+
+that is:
+
+\begin{equation}
+M \begin{pmatrix}
+\acute P_2 \\
+\acute S_2 \\
+\grave P_1 \\
+\grave S_1
+\end{pmatrix} = N \begin{pmatrix}
+0 \\
+0 \\
+0 \\
+\acute S_1
+\end{pmatrix}
+\end{equation}
+
+with:
+
+\begin{equation}
+M = \begin{pmatrix}
+- \alpha_2 p_{\alpha_2} & - cos j_2 & \alpha_1 p_{\alpha_1} & cos j_1 \\
+cos i_2 & - \beta_2 p_{\beta_2} & cos i_1 & - \beta_1 p_{\beta_1} \\
+2 \rho_2 \beta_2^2 p_{\alpha_2} cos i_2 & \rho_2 \beta_2 (1 - 2 \beta_2^2 p_{\beta_2}^2) & 2 \rho_1 \beta_1^2 p_{\alpha_1} cos i_1 & \rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \\
+- \rho_2 \alpha_2 (1 - 2 \beta_2^2 p_{\alpha_2}^2) & 2 \rho_2 \beta_2^2 p_{\beta_2} cos j_2 & \rho_1 \alpha_1 (1 - 2 \beta_1^2 p_{\alpha_1}^2) & - 2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1
+\end{pmatrix}
+\end{equation}
+
+and:
+
+\begin{equation}
+N = \begin{pmatrix}
+0 & 0 & 0 & - cos j_1 \\
+0 & 0 & 0 & - \beta_1 p_{\beta_1} \\
+0 & 0 & 0 & \rho_1 \beta_1 (1 - 2 \beta_1^2 p_{\beta_1}^2) \\
+0 & 0 & 0 & 2 \rho_1 \beta_1^2 p_{\beta_1} cos j_1
+\end{pmatrix}
+\end{equation}
+
+\end{document}

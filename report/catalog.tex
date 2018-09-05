@@ -4,6 +4,28 @@
 
 \part{LFE catalog}
 
-Some bla bla about getting an LFE catalog for South Cascadia / North California
+\chapter{Data}
+
+\section{Description of the dataset}
+
+The template waveforms are the ones obtained by Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). Alexandre Plourde has kindly provided us his template files. \\
+
+The folder \textit{waveforms} contains 91 Matlab files, which contain the template waveforms for the three channels of each of the stations. The folder \textit{detections} contains 89 files, which contain the names of the stations that were used by the network matched filter, and the time of each LFE detection. 66 of these templates have then been grouped into 34 families. The names of the templates in each family are given in the file \textit{family\_list.m}. The locations of the hypocentre for each template are given in the file \textit{template\_locations.txt}. The locations of the hypocentre for each family are given in the file \textit{unique\_families\_NCAL.txt}.
+
+\section{Websites to access the data}
+
+The waveforms from the FAME experiment can be accessed from the IRIS DMC using the Python package obspy, and the subpackage obspy.clients.fdsn. The network code is XQ, and the stations names are ME01 to ME93. \\
+
+The waveforms for the permanent stations of the Northern California Seismic Network can be downloaded from the website of the Northern California Earthquake Data Center (\href{http://ncedc.org/}{NCEDC}). The stations are B039 from the network PB, KCPB, KHBB, KRMB, and KSXB from the network NC, and WDC and YBH from the network BK. Queries for downloading the data in the miniSEED format must be formated as explained here: \\
+
+\href{http://service.ncedc.org/fdsnws/dataselect/1/#description-box}{FDSN Dataselect} \\
+
+The instrument response can be obtained from here: \\
+
+\href{http://service.ncedc.org/fdsnws/station/1/#description-box}{FDSN Station}
+
+\chapter{Method}
+
+\chapter{Results}
 
 \end{document}

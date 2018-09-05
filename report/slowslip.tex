@@ -4,120 +4,44 @@
 
 \part{Slow slip}
 
+\chapter{Data}
+
+The data are available on the website of the Pacific Northwest Geodetic Array (\href{http://www.geodesy.cwu.edu/}{PANGA}), from Central Washington University. Three types of time series are available:
+
+\begin{itemize}
+\item Raw data recorded by the GPS stations, after GIPSY postprocessing.
+\item Detrended data, for which a linear trend corresponding to the secular plate motion has been removed from the data.
+\item Cleaned data, for which the linear trend, steps due to earthquakes or hardware upgrades, and annual and semi-annual sinusoids signals have been simultaneously estimated and removed following Szeliga \textit{et al.} (2008 ~\cite{SZE_2008}).
+\end{itemize}
+
+For each GPS station, the website provides a file for the three components of the displacement (latitude, longitude, and vertical), and each file contains three columns, corresponding to the time, the displacement (in millimetres), and the error. The data are recorded once a day. \\
+
+The data are filtered with the function $f (t)$:
+
+\begin{equation}
+f (t) = \textrm{line} (t) + \textrm{annual} (t) + \textrm{jumps} (t)
+\end{equation}
+
+with:
+
+\begin{equation}
+\textrm{line} (t) = p_1 + p_2 t
+\end{equation}
+
+\begin{equation}
+\textrm{annual} (t) = p_3 \sin (2 \pi t + p_4)
+\end{equation}
+
+\begin{equation}
+\textrm{jumps} (t) = \sum_{i = 1}^{n} p_i \textrm{Heaviside} (t - t_i)
+\end{equation}
+
+The values of the $p_i$ and $t_i$ are given at the beginning of each file.
+
+Add something about the inversion of these parameters (Nikolaidis, 2002), and about the seasonal trends (Blewitt and Lavall\'ee, 2002)). 
+
 \chapter{Method}
 
-\section{Wavelet analysis}
-
-The wavelet method for time series analysis are explained in a more detailed way in Percival \& Walden (2000 ~\cite{PER_2000}). \\
-
-\subsection{Discrete Wavelet Transform}
-
-The Discrete Wavelet Transform (DWT) is an orthonormal transform that transforms a time series $X_t \left( t = 0, ... , N - 1 \right)$ into a vector of wavelet coefficients $W_i \left( i = 0 , ... , N - 1 \right)$. If we denote $J$ the level of the wavelet decomposition, and we have $N = n* 2^J$, where n is some integer higher or equal to 1, the vector of wavelet coefficients can be decomposed into $J$ wavelet vectors $W_j$ of lengths $\frac{N}{2}$, $\frac{N}{4}$, ... , $\frac{N}{2^J}$, and one scaling vector $V_J$ of length $\frac{N}{2^J}$. \\
-
-Each wavelet vector $W_j$ is associated with changes on scale $\tau_j = dt 2^{j - 1}$, where $dt$ is the time step of the time series, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{1}{dt 2^{j + 1}} ; \frac{1}{dt 2^j} \rbrack$. The scaling vector $V_J$ is associated with averages in scale $\lambda_J = dt 2^J$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack 0 ; \frac{1}{dt 2^{j + 1}} \rbrack$. \\
-
-We can also define for $j = 1 , ... , J$ the $j$th wavelet detail $D_j$, which is a vector of length $N$, and is associated to scale $\tau_j = dt 2^{j - 1}$. Similarly, we can define for $j = 1 , ... , J$ the $j$th wavelet smooth $S_j$, which is a vector of length $N$, and is associated to scales $\tau_{j + 1} = dt 2^{j + 1}$ and higher. Together, the details and the smooths define the multiresolution analysis (MRA) of X:
-
-\begin{equation}
-X = \sum_{j = 1}^{J} D_j + S_J
-\end{equation}
-
-One main advantage of the DWT is that it is an orthonormal transform, and thus we can write the analysis of variance (ANOVA):
-
-\begin{equation}
-\left\Vert X \right\Vert ^2 = \left\Vert W \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert W_j \right\Vert ^2 + \left\Vert V_J \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert D_j \right\Vert ^2 + \left\Vert S_J \right\Vert ^2
-\end{equation}
-
-Moreover, the DWT can be computed using $O \left( N \right)$ multiplications. \\
-
-However, the DWT present several disadvantages:
-
-\begin{itemize}
-	\item The length of the time series must be a multiple of $2^J$ where $J$ is the level of the DWT decomposition.
-	\item The time step of the wavelet vector $W_j$ is $dt 2^j$, which may not correspond to the time when some interesting phenomenon is visible on the original time series.
-	\item When we circularly shift the time series, the corresponding wavelet coefficients, details and smooths are not a circularly shifted version of the wavelet coefficients, details and smooths of the original time series. Thus, the values of the wavelet coefficients, details and smooths are strongly dependent on the time when we start experimentally gathering the data.
-	\item When we filter the time series to obtain the details and smooths, we introduce a phase shift, which makes difficult to line up meaningfully the features of the MRA with the original time series.
-\end{itemize}
-
-\subsection{Maximum Overlap Discrete Wavelet Transform}
-
-To get rid of these problems, we introduce the Maximum Overlap Discrete Wavelet Transform (MODWT). The MODWT transforms the time series $X_t \left( t = 0, ... , N - 1 \right)$ into J wavelet vectors $\widetilde{W}_j \left( j = 1 , ... , J \right)$ of length $N$ and a scaling vector $\widetilde{V}_J$ of length $N$. As is the case for the DWT, each wavelet vector $\widetilde{W}_j$ is associated with changes on scale $\tau_j = dt 2^{j - 1}$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{1}{dt 2^{j + 1}} ; \frac{1}{dt 2^j} \rbrack$. The scaling vector $\widetilde{V}_J$ is associated with averages in scale $\lambda_J = dt 2^J$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack 0 ; \frac{1}{dt 2^{j + 1}} \rbrack$. \\
-
-As is the case for the DWT, we can write the MRA:
-
-\begin{equation}
-X = \sum_{j = 1}^{J} \widetilde{D}_j + \widetilde{S}_J
-\end{equation}
-
-and the ANOVA:
-
-\begin{equation}
-\left\Vert X \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert \widetilde{W}_j \right\Vert ^2 + \left\Vert \widetilde{V}_J \right\Vert ^2
-\end{equation}
-
-Now, we have the following properties:
-
-\begin{itemize}
-	\item The MODWT of a time series can be defined for any length $N$.
-	\item The time step of the wavelet vectors $\widetilde{W}_j$ and the scaling vector $\widetilde{V}_J$ is equal to the time step of the original time series.
-	\item When we circularly shift the time series, the corresponding wavelet vectors, scaling vector, details and smooths are shifted by the same amount.
-	\item The details and smooths are associated with a zero phase filter, making it easy to line up meaningfully the features of the MRA with the original time series.
-\end{itemize}
-
-However, the MODWT has some disadvantages over the DWT:
-
-\begin{itemize}
-	\item The MODWT can only be computed using $O \left( N \log_2 N \right)$ multiplications.
-	\item We can no longer write the ANOVA for the details and smooths:
-
-\begin{equation}
-\left\Vert X \right\Vert ^2 \neq \sum_{j = 1}^{J} \left\Vert D_j \right\Vert ^2 + \left\Vert S_J \right\Vert ^2 \text{ and } \left\Vert \widetilde{W}_j \right\Vert ^2 \neq \left\Vert \widetilde{D}_j \right\Vert ^2
-\end{equation}
-
-\end{itemize}
-
-\subsection{Discrete Wavelet Packet Transform}
-
-\section{Dealing with missing data points}
-
-\section{Change point detection}
-
-Use extremal phase wavelet filters.
-
-Look at homogeneity of variance.
-
-\section{Long memory processes}
-
-\paragraph{Time series:} Any sequence of observations associated with an ordered independent variable $t$. For the analyses carried out in this report, we assume that the time series is defined essentially over a range of integers (usually $t = 0 , 1 , ... , N - 1$, where $N$ denotes the number of values in the time series).
-
-\paragraph{Random variable:} A real-valued random variable is a function, or mapping, from the sample space of possible outcomes of a random experiment to the real line.
-
-\paragraph{Stochastic process:} A discrete parameter real-valued stochastic process $\left\{ X_t : t = ... , -1 , 0 , 1 , ... \right\}$ is a sequence of random variables indexed over the integers. A process such as $\left\{ X_t \right\}$ can serve as a stochastic model for a sequence of observations of some physical phenomenon. We assume that these observations are recorded at a sampling interval of $\Delta t$.
-
-\paragraph{Stationarity:} The process $\left\{ X_t \right\} $ is said to be (second order) stationary if:
-\begin{enumerate}
-\item $E \left\{ X_t \right\} = \mu_X$ for all integers $t$ (i.e. $\mu_X$ does not depend on $t$).
-\item $cov \left\{ X_t , X_{t + \tau} \right\} = s_{X , \tau}$ for all integers $t$ and $\tau$ (i.e. $s_{X , \tau}$ depends only on $\tau$ and does not depend on $t$).
-\end{enumerate}
-
-\paragraph{Autocovariance sequence (ACVS):} The sequence $\left\{ s_{X , \tau} : \tau = ... , -1 , 0 , 1 , ... \right\}$. The autocorrelation sequence (ACS) is $\rho_{X , \tau} = s_{X , \tau } / s_{X , 0}$.
-
-\paragraph{Spectral density function (SDF), or power spectrum:} $S_X \left( f \right) = \Delta t \sum_{\tau = - \infty}^{\infty} s_{X , \tau} e^{- i 2 \pi f \tau \Delta t} \text{ for } \left| f \right| \leq f_N = \frac{1}{2 \Delta t}$, that is $S_X \left( . \right)$ is the Fourier transform of $\left\{ s_{X , \tau} \right\}$.
-
-\paragraph{Stationary long memory process:} $\left\{ X_t \right\}$ is a stationary long memory process if there exist constants $\alpha$ and $C_S$ satisfying $ -1 < \alpha < 0$ and $C_S > 0$ such that:
-
-\begin{equation}
-\lim_{f \to 0} \frac{S_X \left( f \right)}{C_S \left| f \right| ^{\alpha}} = 1 \text{ that is } \log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)
-\end{equation}
-
-\paragraph{Low-frequency earthquakes as a long memory process}
-
-\begin{itemize}
-\item Figure 2D of Frank \textit{et al.} (2016 ~\cite{FRA_2016}). We have $\log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)$ with $\alpha = - 0.5$
-\end{itemize}
-
 \chapter{Results}
-
-Something about DWT and MODWT of GPS data.
 
 \end{document}

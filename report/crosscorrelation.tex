@@ -1,0 +1,439 @@
+\documentclass[methods.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Cross-correlation of tremor recordings}
+
+\subsection{Definitions}
+
+We define the Fourier transform $\hat{f}$ of the function $f$ by:
+
+\begin{equation}
+\hat{f} (\omega) = \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} f(t) e^{-i \omega t} dt
+\end{equation}
+
+\begin{equation}
+f(t) = \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} \hat{f} (\omega) e^{i \omega t} d\omega
+\end{equation}
+
+We define the convolution product by:
+
+\begin{equation}
+(f * g) (t) = \int_{-\infty}^{\infty} f(\tau) g(t - \tau) d\tau
+\end{equation}
+
+We have:
+
+\begin{equation}
+\hat{(f * g)} (\omega) = \sqrt{2 \pi} \hat{f} (\omega) \hat{g} (\omega)
+\end{equation}
+
+and:
+
+\begin{equation}
+\hat{(f g)} (\omega) = \frac{1}{\sqrt{2 \pi}} \hat{f} (\omega) * \hat{g} (\omega)
+\end{equation}
+
+We define the cross correlation by:
+
+\begin{equation}
+(f \otimes g) (t) = \int_{- \infty}^{\infty} f^* (\tau) g(t + \tau) d\tau
+\end{equation}
+
+where $f^*$ is the complex conjugate of $f$. We have:
+
+\begin{equation}
+\hat{(f \otimes g)} (\omega) = \sqrt{2 \pi} \hat{f}^* (\omega) \hat{g} (\omega)
+\end{equation}
+ 
+ and:
+
+\begin{equation}
+\hat{(f g)} (\omega) = \frac{1}{\sqrt{2 \pi}} \hat{f}^* (\omega) \otimes \hat{g} (\omega)
+\end{equation}
+
+Finally, we have:
+
+\begin{equation}
+(f(t) * g(t)) \otimes (f(t) * g(t)) = (f(t) \otimes f(t)) * (g(t) \otimes g(t))
+\end{equation}
+
+If we have a point source at $\xi$ with a source function $f_k (t)$ for $k = 1, 2, 3$, then we can express the displacement $u(x, t)$ with the Green's function:
+
+\begin{equation}
+u_i(x, t) = \int_{- \infty}^{\infty} G_{ik} (x, \xi, t - \tau) f_k (\xi, \tau) d\tau
+\end{equation}
+
+In the case of a moment tensor, we have:
+
+\begin{equation}
+u_i(x, t) = \int_{- \infty}^{\infty} \frac{\partial G_{ip} }{\partial \xi_q} (x, \xi, t - \tau) M_{pq} (\xi, \tau) d\tau
+\end{equation}
+
+In the Fourier domain, we have:
+
+\begin{equation}
+\hat{u_i} (x, \omega) = \sqrt{2 \pi} \hat{G_{ik}} (x, \xi, \omega) \hat{f_k} (\xi, \omega)
+\end{equation}
+
+or:
+
+\begin{equation}
+\hat{u_i} (x, \omega) = \sqrt{2 \pi} \hat{\frac{\partial G_{ip}}{\partial \xi_q} } (x, \xi, \omega) \hat{M_{pq}} (\xi, \omega)
+\end{equation}
+
+When we compute the cross correlation between two components of the displacements, we have:
+
+\begin{equation}
+(u_i \otimes u_j) (x, t) = \int_{- \infty}^{\infty} u_i^* (x, \tau) u_j (x, t + \tau) d\tau
+\end{equation}
+
+In the Fourier domain, we have:
+
+\begin{equation}
+\begin{split}
+\hat{(u_i \otimes u_j)} (x, \omega) & = \sqrt{2 \pi} \hat{u_i}^* (x, \omega) \hat{u_j} (x, \omega) \\
+                                        & = (2 \pi)^{\frac{3}{2}} [\hat{G_{ik}}^* (x, \xi, \omega) \hat{f_k}^* (\xi, \omega)] [\hat{G_{jl}} (x, \xi, \omega) \hat{f_l} (\xi, \omega)] \\
+                                        & = (2 \pi)^{\frac{3}{2}} [\hat{\frac{\partial G_{ip}}{\partial \xi_q}}^* (x, \xi, \omega) \hat{M_{pq}}^* (\xi, \omega)] [\hat{\frac{\partial G_{jr}}{\partial \xi_s}} (x, \xi, \omega) \hat{M_{rs}} (\xi, \omega)] 
+\end{split}
+\end{equation}
+
+\subsection{Change of coordinates}
+
+\subsubsection{Point source}
+
+Equation (15) can be written as:
+
+\begin{equation}
+\begin{pmatrix}
+\hat{(u_1 \otimes u_1)} & \hat{(u_1 \otimes u_2)} & \hat{(u_1 \otimes u_3)} \\
+\hat{(u_2 \otimes u_1)} & \hat{(u_2 \otimes u_2)} & \hat{(u_2 \otimes u_3)} \\
+\hat{(u_3 \otimes u_1)} & \hat{(u_3 \otimes u_2)} & \hat{(u_3 \otimes u_3)}
+\end{pmatrix} = (2 \pi)^{\frac{3}{2}}
+\begin{pmatrix}
+\hat{G_{11}}^* & \hat{G_{12}}^* & \hat{G_{13}}^* \\
+\hat{G_{21}}^* & \hat{G_{22}}^* & \hat{G_{23}}^* \\
+\hat{G_{31}}^* & \hat{G_{32}}^* & \hat{G_{33}}^*
+\end{pmatrix}
+\begin{pmatrix}
+\hat{f_1}^* \\
+\hat{f_2}^* \\
+\hat{f_3}^*
+\end{pmatrix}
+\begin{pmatrix}
+\hat{f_1} & \hat{f_2} & \hat{f_3}
+\end{pmatrix}
+\begin{pmatrix}
+\hat{G_{11}} & \hat{G_{21}} & \hat{G_{31}} \\
+\hat{G_{12}} & \hat{G_{22}} & \hat{G_{32}} \\
+\hat{G_{13}} & \hat{G_{23}} & \hat{G_{33}}
+\end{pmatrix}
+\end{equation}
+
+that is:
+
+\begin{equation}
+\hat{U} = (2 \pi)^{\frac{3}{2}} \hat{G}^* \hat{f}^* \hat{f}^T \hat{G}^T
+\end{equation}
+
+We define a new coordinate system with the unit vectors $n^{(1)}$, $n^{(2)}$ and $n^{(3)}$, and the matrix $N$ by:
+
+\begin{equation}
+N = \begin{pmatrix}
+n_1^{(1)} & n_1^{(2)} & n_1^{(3)} \\
+n_2^{(1)} & n_2^{(2)} & n_2^{(3)} \\
+n_3^{(1)} & n_3^{(2)} & n_3^{(3)}
+\end{pmatrix}
+\end{equation}
+
+In the new coordinate system, the Green's function is equal to $G' = N^T G N$, thus we have:
+
+\begin{equation}
+N^T \hat{U} N = (2 \pi)^{\frac{3}{2}} \hat{G'}^* N^T \hat{f}^* \hat{f}^T N \hat{G'}^T
+\end{equation}
+
+with:
+
+\begin{equation}
+N^T \hat{U} N = \begin{pmatrix}
+\hat{(u . n^{(1)} \otimes u . n^{(1)})} & \hat{(u . n^{(1)} \otimes u . n^{(2)})} & \hat{(u . n^{(1)} \otimes u . n^{(3)})} \\
+\hat{(u . n^{(2)} \otimes u . n^{(1)})} & \hat{(u . n^{(2)} \otimes u . n^{(2)})} & \hat{(u . n^{(2)} \otimes u . n^{(3)})} \\
+\hat{(u . n^{(3)} \otimes u . n^{(1)})} & \hat{(u . n^{(3)} \otimes u . n^{(2)})} & \hat{(u . n^{(3)} \otimes u . n^{(3)})}
+\end{pmatrix}
+\end{equation}
+
+If we choose $N_1$ such that:
+
+\begin{equation}
+N_1^T \hat{f} = \begin{pmatrix}
+\hat{F} \\
+0 \\
+0
+\end{pmatrix}
+\end{equation}
+
+we get:
+
+\begin{equation}
+N_1^T \hat{U} N_1 = (2 \pi)^{\frac{3}{2}} \hat{F}^* \hat{F} \begin{pmatrix}
+\hat{G'_{11}}^* \hat{G'_{11}} & \hat{G'_{11}}^* \hat{G'_{21}} & \hat{G'_{11}}^* \hat{G'_{31}} \\
+\hat{G'_{21}}^* \hat{G'_{11}} & \hat{G'_{21}}^* \hat{G'_{21}} & \hat{G'_{21}}^* \hat{G'_{31}} \\
+\hat{G'_{31}}^* \hat{G'_{11}} & \hat{G'_{31}}^* \hat{G'_{21}} & \hat{G'_{31}}^* \hat{G'_{31}}
+\end{pmatrix}
+\end{equation}
+
+If we choose $N_2$ such that:
+
+\begin{equation}
+N_2^T \hat{f} = \begin{pmatrix}
+0 \\
+\hat{F} \\
+0
+\end{pmatrix}
+\end{equation}
+
+we get:
+
+\begin{equation}
+N_2^T \hat{U} N_2 = (2 \pi)^{\frac{3}{2}} \hat{F}^* \hat{F} \begin{pmatrix}
+\hat{G'_{12}}^* \hat{G'_{12}} & \hat{G'_{12}}^* \hat{G'_{22}} & \hat{G'_{12}}^* \hat{G'_{32}} \\
+\hat{G'_{22}}^* \hat{G'_{12}} & \hat{G'_{22}}^* \hat{G'_{22}} & \hat{G'_{22}}^* \hat{G'_{32}} \\
+\hat{G'_{32}}^* \hat{G'_{12}} & \hat{G'_{32}}^* \hat{G'_{22}} & \hat{G'_{32}}^* \hat{G'_{32}}
+\end{pmatrix}
+\end{equation}
+
+If we choose $N_3$ such that:
+
+\begin{equation}
+N_3^T \hat{f} = \begin{pmatrix}
+0 \\
+0 \\
+\hat{F}
+\end{pmatrix}
+\end{equation}
+
+we get:
+
+\begin{equation}
+N_3^T \hat{U} N_3 = (2 \pi)^{\frac{3}{2}} \hat{F}^* \hat{F} \begin{pmatrix}
+\hat{G'_{13}}^* \hat{G'_{13}} & \hat{G'_{13}}^* \hat{G'_{23}} & \hat{G'_{13}}^* \hat{G'_{33}} \\
+\hat{G'_{23}}^* \hat{G'_{13}} & \hat{G'_{23}}^* \hat{G'_{23}} & \hat{G'_{23}}^* \hat{G'_{33}} \\
+\hat{G'_{33}}^* \hat{G'_{13}} & \hat{G'_{33}}^* \hat{G'_{23}} & \hat{G'_{33}}^* \hat{G'_{33}}
+\end{pmatrix}
+\end{equation}
+
+If we define strike $\phi$, dip $\delta$ and rake $\lambda$, we can define the following vectors:
+
+\begin{equation}
+e_1 = \begin{pmatrix}
+\sin \phi \\
+\cos \phi \\
+0
+\end{pmatrix} \text{, } e_2 = \begin{pmatrix}
+\cos \phi \\
+- \sin \phi \\
+0
+\end{pmatrix} \text{, } e_3 = \cos \delta e_2 - \sin \delta e_z = \begin{pmatrix}
+\cos \phi \cos \delta \\
+- \sin \phi \cos \delta \\
+- \sin \delta
+\end{pmatrix} \text{ and } e_4 = \sin \delta e_2 + \cos \delta e_z = \begin{pmatrix}
+\cos \phi \sin \delta \\
+- \sin \phi \sin \delta \\
+\cos \delta
+\end{pmatrix}
+\end{equation}
+
+and the new coordinate system $(u, v, w)$ with:
+
+\begin{equation}
+u = \cos \lambda e_1 - \sin \lambda e_3 \text{, } v = - \sin \lambda e_1 - \cos \lambda e_3 \text{ and } w = e_4
+\end{equation}
+
+Thus we have:
+
+\begin{equation}
+u = \begin{pmatrix}
+\sin \phi \cos \lambda - \cos \phi \cos \delta \sin \lambda \\
+\cos \phi \cos \lambda + \sin \phi \cos \delta \sin \lambda \\
+\sin \delta \sin \lambda
+\end{pmatrix} \text{, } v = \begin{pmatrix}
+- \sin \phi \sin \lambda - \cos \phi \cos \delta \cos \lambda \\
+- \cos \phi \sin \lambda + \sin \phi \cos \delta \sin \lambda \\
+- \sin \delta \cos \lambda
+\end{pmatrix} \text{ and } w = \begin{pmatrix}
+\cos \phi \sin \delta \\
+- \sin \phi \sin \delta \\
+\cos \delta
+\end{pmatrix}
+\end{equation}
+
+We can choose:
+
+\begin{equation}
+N_1 = \begin{pmatrix}
+u_x & v_x & w_x \\
+u_y & v_y & w_y \\
+u_z & v_z & w_z
+\end{pmatrix} = \begin{pmatrix}
+\sin \phi \cos \lambda - \cos \phi \cos \delta \sin \lambda & - \sin \phi \sin \lambda - \cos \phi \cos \delta \cos \lambda & \cos \phi \sin \delta \\
+\cos \phi \cos \lambda + \sin \phi \cos \delta \sin \lambda & - \cos \phi \sin \lambda + \sin \phi \cos \delta \sin \lambda & - \sin \phi \sin \delta \\
+\sin \delta \sin \lambda & - \sin \delta \cos \lambda & \cos \delta
+\end{pmatrix}
+\end{equation}
+
+to get Equation (19). To get Equations (21) and (23), we just have to permute the columns of $N_1$ to get $N_2$ and $N_3$.
+
+If we go back into the time domain, we have:
+
+\begin{equation}
+N_k^T \begin{pmatrix}
+u_1 \otimes u_1 & u_1 \otimes u_2 & u_1 \otimes u_3 \\
+u_2 \otimes u_1 & u_2 \otimes u_2 & u_2 \otimes u_3 \\
+u_3 \otimes u_1 & u_3 \otimes u_2 & u_3 \otimes u_3
+\end{pmatrix} N_k = \begin{pmatrix}
+(F * G'_{1k}) \otimes (F * G'_{1k}) & (F * G'_{1k}) \otimes (F * G'_{2k}) & (F * G'_{1k}) \otimes (F * G'_{3k}) \\
+(F * G'_{2k}) \otimes (F * G'_{1k}) & (F * G'_{2k}) \otimes (F * G'_{2k}) & (F * G'_{2k}) \otimes (F * G'_{3k}) \\
+(F * G'_{3k}) \otimes (F * G'_{1k}) & (F * G'_{3k}) \otimes (F * G'_{2k}) & (F * G'_{3k}) \otimes (F * G'_{3k})
+\end{pmatrix}
+\end{equation}
+
+which can also be written as:
+
+\begin{equation}
+N_k^T \begin{pmatrix}
+u_1 \otimes u_1 & u_1 \otimes u_2 & u_1 \otimes u_3 \\
+u_2 \otimes u_1 & u_2 \otimes u_2 & u_2 \otimes u_3 \\
+u_3 \otimes u_1 & u_3 \otimes u_2 & u_3 \otimes u_3
+\end{pmatrix} N_k = \begin{pmatrix}
+(F \otimes F) * (G'_{1k} \otimes G'_{1k}) & (F \otimes F) * (G'_{1k} \otimes G'_{2k}) & (F^S \otimes F^S) * (G'_{1k} \otimes G'_{3k}) \\
+(F \otimes F) * (G'_{2k} \otimes G'_{1k}) & (F \otimes F) * (G'_{2k} \otimes G'_{2k}) & (F^S \otimes F^S) * (G'_{2k} \otimes G'_{3k}) \\
+(F \otimes F) * (G'_{3k} \otimes G'_{1k}) & (F \otimes F) * (G'_{3k} \otimes G'_{2k}) & (F^S \otimes F^S) * (G'_{3k} \otimes G'_{3k})
+\end{pmatrix}
+\end{equation}
+
+\subsubsection{Moment tensor}
+
+We have:
+
+\begin{equation}
+M_{pq} = \int \int_{\Sigma} m_{pq} d\Sigma = \int \int_{\Sigma} \mu (\nu_p [u_q] + \nu_q [u_p]) d\Sigma = \mu A (\nu_p [u_q] + \nu_q [u_p])
+\end{equation}
+
+where $\nu$ is the normal to the fault surface and$[u]$ is the displacement discontinuity on the fault.
+
+We define a new coordinates system with the unit vectors $n^{(1)}$, $n^{(2)}$ and $n^{(3)}$, and the matrix $N$ by:
+
+\begin{equation}
+N = \begin{pmatrix}
+n_1^{(1)} & n_1^{(2)} & n_1^{(3)} \\
+n_2^{(1)} & n_2^{(2)} & n_2^{(3)} \\
+n_3^{(1)} & n_3^{(2)} & n_3^{(3)}
+\end{pmatrix}
+\end{equation}
+
+In the new coordinates system, the Green's function is equal to $G' = N^T G N$, the moment tensor to $M' = N^T M N$, and the displacement to $u' = N^T u$. We choose N such that:
+
+\begin{equation}
+M' = \mu D A \begin{pmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+
+Therefore, we have:
+
+\begin{equation}
+\hat{u'_i \otimes u'_j} = (2 \pi)^{\frac{3}{2}} \mu D^* A [\hat{\frac{\partial G'_{i1}}{\partial \xi'_1}}^* - \hat{\frac{\partial G'_{i2}}{\partial \xi'_2}}^*] \mu D A [\hat{\frac{\partial G'_{j1}}{\partial \xi'_1}} - \hat{\frac{\partial G'_{j2}}{\partial \xi'_1}}]
+\end{equation}
+
+If we come back in the time domain, we have:
+
+\begin{equation}
+u'_i \otimes u'_j = \mu^2 A^2 (D * [\frac{\partial G'_{i1}}{\partial \xi'_1} - \frac{\partial G'_{i2}}{\partial \xi'_2}]) \otimes (D * [\frac{\partial G'_{j1}}{\partial \xi'_1} - \frac{\partial G'_{j2}}{\partial \xi'_2}])
+\end{equation}
+
+which can also be written as:
+
+\begin{equation}
+u'_i \otimes u'_j = \mu^2 A^2 (D \otimes D) * ([\frac{\partial G'_{i1}}{\partial \xi'_1} - \frac{\partial G'_{i2}}{\partial \xi'_2}] \otimes [\frac{\partial G'_{j1}}{\partial \xi'_1} - \frac{\partial G'_{j2}}{\partial \xi'_2}])
+\end{equation}
+
+If we choose N such that:
+
+\begin{equation}
+M' = \mu D A \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & -1
+\end{pmatrix}
+\end{equation}
+
+we would get:
+
+\begin{equation}
+u'_i \otimes u'_j = \mu^2 A^2 (D \otimes D) * ([\frac{\partial G'_{i1}}{\partial \xi'_1} - \frac{\partial G'_{i3}}{\partial \xi'_3}] \otimes [\frac{\partial G'_{j1}}{\partial \xi'_1} - \frac{\partial G'_{j3}}{\partial \xi'_3}])
+\end{equation}
+
+If we choose N such that:
+
+\begin{equation}
+M' = \mu D A \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1
+\end{pmatrix}
+\end{equation}
+
+we would get:
+
+\begin{equation}
+u'_i \otimes u'_j = \mu^2 A^2 (D \otimes D) * ([\frac{\partial G'_{i2}}{\partial \xi'_2} - \frac{\partial G'_{i3}}{\partial \xi'_3}] \otimes [\frac{\partial G'_{j2}}{\partial \xi'_2} - \frac{\partial G'_{j3}}{\partial \xi'_3}])
+\end{equation}
+
+\paragraph{How to compute the autocorrelation of the source term $F \otimes F$ or $D \otimes D$?}
+
+\subparagraph{White noise}
+
+At time $t_i$, we assume that the amplitude of the source function is $A_i$ (random variable with expectancy $m = 0$ and standard deviation $\sigma$). We define $a_i$ by:
+
+\begin{equation}
+P (A_i < p_0) = \int_{- \infty}^{p_0} a_i (p) dp
+\end{equation}
+
+We have:
+
+\begin{equation}
+\int_{- \infty}^{\infty} a_i (p) dp = m
+\end{equation}
+
+and:
+
+\begin{equation}
+\int_{- \infty}^{\infty} a_i^2 (p) dp = m^2 + \sigma ^2
+\end{equation}
+
+We suppose that the source function is a white noise, that is:
+
+\begin{equation}
+\int_{- \infty}^{\infty} (a_i (p) - m) (a_j (p) - m) dp = 0
+\end{equation}
+
+Thus, we have:
+
+\begin{equation}
+\int_{- \infty}^{\infty} a_i (p) a_j (p) dp = m^2
+\end{equation}
+
+We define the source time function $F (t_i) = A_i$ and we compute the autocorrelation. We have:
+
+\begin{equation}
+(F \otimes F) (t) = \int_{- \infty}^{\infty} F^* (\tau) F (t + \tau) d\tau
+\end{equation}
+
+The expectancy of the term $F^* (\tau) F (t + \tau)$ is $m^2 + \sigma^2$ if $t = 0$ and $m^2$ if $t \neq 0$.
+
+\subsection{Stacking}
+
+\end{document}
