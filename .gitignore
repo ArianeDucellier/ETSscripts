@@ -20,6 +20,14 @@ longrange/variance_Shelly/*
 longrange/varianceresiduals_Plourde/*
 longrange/varianceresiduals_Shelly/*
 notebooks/.ipynb_checkpoints
+slowslip/__pycache__/*
+slowslip/CLRS/*
+slowslip/CUSH/*
+slowslip/FRID/*
+slowslip/PGC5/*
+slowslip/PNCL/*
+slowslip/PTAA/*
+slowslip/SQIM/*
 timelags/ac/*
 timelags/cc/*
 timelags/plot_cc/*
