@@ -12,7 +12,7 @@ The Discrete Wavelet Transform (DWT) is an orthonormal transform that transforms
 
 Each wavelet vector $W_j$ is associated with changes on scale $\tau_j = dt 2^{j - 1}$, where $dt$ is the time step of the time series, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{1}{dt 2^{j + 1}} ; \frac{1}{dt 2^j} \rbrack$. The scaling vector $V_J$ is associated with averages in scale $\lambda_J = dt 2^J$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack 0 ; \frac{1}{dt 2^{j + 1}} \rbrack$. \\
 
-We can also define for $j = 1 , ... , J$ the $j$th wavelet detail $D_j$, which is a vector of length $N$, and is associated to scale $\tau_j = dt 2^{j - 1}$. Similarly, we can define for $j = 1 , ... , J$ the $j$th wavelet smooth $S_j$, which is a vector of length $N$, and is associated to scales $\tau_{j + 1} = dt 2^{j + 1}$ and higher. Together, the details and the smooths define the multiresolution analysis (MRA) of X:
+We can also define for $j = 1 , ... , J$ the $j$th wavelet detail $D_j$, which is a vector of length $N$, and is associated to scale $\tau_j = dt 2^{j - 1}$. Similarly, we can define for $j = 1 , ... , J$ the $j$th wavelet smooth $S_j$, which is a vector of length $N$, and is associated to scales $\tau_{j + 1} = dt 2^{j + 1}$ and higher. Together, the details and the smooths define the multiresolution analysis (MRA) of $X$:
 
 \begin{equation}
 X = \sum_{j = 1}^{J} D_j + S_J
