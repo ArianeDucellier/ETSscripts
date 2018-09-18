@@ -14,6 +14,23 @@ import date, DWT, MODWT
 
 def read_data(station, direction, dataset):
     """
+    Read the GPS data, and divide into segments with only short gaps (less
+    than two days), fill the missing values by interpolation
+
+    Input:
+        type station = string
+        station = Name of the GPS station
+        type direction = string
+        direction = Component of the displacement (lat, lon or rad)
+        type dataset = string
+        dataset = Preprocessing of the data (raw, detrended, or cleaned)
+    Output:
+        type times = list of 1D numpy arrays
+        times = Time when there is data recorded
+        type disps = list of 1D numpy arrays
+        disps = Corresponding displacement recorded
+        type gaps = list of 1D numpy arrays (integers)
+        gaps = Indices where a missing value has been filled by interpolation
     """
     filename = '../data/PANGA/' + dataset + '/' + station + '.' + direction
     # Load the data
@@ -64,6 +81,40 @@ def read_data(station, direction, dataset):
 def compute_wavelet(times, disps, gaps, time_ETS, J, name, station, \
         direction, dataset, draw=True, draw_gaps=False, draw_BC=False):
     """
+    Compute the MODWT wavelet coefficients for each times series
+
+    Input:
+        type times = list of 1D numpy arrays
+        times = Time when there is data recorded
+        type disps = list of 1D numpy arrays
+        disps = Corresponding displacement recorded
+        type gaps = list of 1D numpy arrays (integers)
+        gaps = Indices where a missing value has been filled by interpolation
+        type time_ETS = list of floats
+        time_ETS = Timing of main ETS events
+        type J = integer
+        J = Level of MODWT
+        type name = string
+        name = Name of wavelet filter
+        type station = string
+        station = Name of the GPS station
+        type direction = string
+        direction = Component of the displacement (lat, lon or rad)
+        type dataset = string
+        dataset = Preprocessing of the data (raw, detrended, or cleaned)
+        type draw = boolean
+        draw = Do we draw the wavelet coefficients?
+        type draw_gaps = boolean
+        draw_gaps = Do we draw a red line where there is a missing value that
+            has been filled by interpolation?
+        type draw_BC = boolean
+        draw_BC = Do we draw blue and green line where the wavelet coefficients
+            are affected by the circularity assumption?
+    Output:
+        type Ws = list of lists of 1D numpy arrays (length J)
+        Ws = List of lists of vectors of MODWT wavelet coefficients
+        type Vs = list of 1D numpy arrays
+        Vs = List of vectors of MODWT scaling coefficients at level J
     """
     # Length of wavelet filter
     g = MODWT.get_scaling(name)
@@ -192,6 +243,42 @@ def compute_wavelet(times, disps, gaps, time_ETS, J, name, station, \
 def compute_details(times, disps, gaps, Ws, time_ETS, J, name, station, \
         direction, dataset, draw=True, draw_gaps=False, draw_BC=False):
     """
+    Compute the MODWT wavelet details and smooths for each times series
+
+    Input:
+        type times = list of 1D numpy arrays
+        times = Time when there is data recorded
+        type disps = list of 1D numpy arrays
+        disps = Corresponding displacement recorded
+        type gaps = list of 1D numpy arrays (integers)
+        gaps = Indices where a missing value has been filled by interpolation
+        type Ws = list of lists of 1D numpy arrays (length J)
+        Ws = List of lists of vectors of MODWT wavelet coefficients
+        type time_ETS = list of floats
+        time_ETS = Timing of main ETS events
+        type J = integer
+        J = Level of MODWT
+        type name = string
+        name = Name of wavelet filter
+        type station = string
+        station = Name of the GPS station
+        type direction = string
+        direction = Component of the displacement (lat, lon or rad)
+        type dataset = string
+        dataset = Preprocessing of the data (raw, detrended, or cleaned)
+        type draw = boolean
+        draw = Do we draw the wavelet details and smooths?
+        type draw_gaps = boolean
+        draw_gaps = Do we draw a red line where there is a missing value that
+            has been filled by interpolation?
+        type draw_BC = boolean
+        draw_BC = Do we draw blue and green line where the wavelet details
+            are affected by the circularity assumption?
+    Output:
+        type Ds = list of lists of 1D numpy arrays (length J)
+        Ds = List of lists of details [D1, D2, ... , DJ]
+        type Ss = list of lists of 1D numpy arrays (length J+1)
+        Ss = List of lists of smooths [S0, S1, S2, ... , SJ]
     """
     # Length of wavelet filter
     g = MODWT.get_scaling(name)
@@ -310,8 +397,26 @@ def compute_details(times, disps, gaps, Ws, time_ETS, J, name, station, \
     # Return details and smooths
     return (Ds, Ss)
 
-def draw_tremor(filename, dists, lat0, lon0, station):
+def draw_tremor(filename, dists, lat0, lon0, station, time_ETS):
     """
+    Draw the cumulative number a tremor recorded around a GPS station
+
+    Input:
+        type filename = string
+        filename = Name the file containing the tremor dataset (downloaded
+            from the PNSN website)
+        type dists = list of floats
+        dists = Maximum distance from the station to the tremor source
+        type lat0 = float
+        lat0 = Latitude of the GPS station
+        type lon0 = float
+        lon0 = Longitude of the GPS station
+        type station = string
+        station = Name of the GPS station
+        type time_ETS = list of floats
+        time_ETS = Timing of main ETS events
+    Output:
+        None
     """
     # Load tremor data from the catalog downloaded from the PNSN
     filename = '../data/timelags/' + filename
@@ -345,11 +450,15 @@ def draw_tremor(filename, dists, lat0, lon0, station):
         plt.plot(np.sort(time_dist), \
             (1.0 / nt) * np.arange(0, len(time_dist)), \
             color=c, label='distance <= {:2.0f} km'.format(distance))
+    plt.legend(loc=4, fontsize=20)
+    # Plot time of main ETS events
+    for i in range(0, len(time_ETS)):
+        plt.axvline(time_ETS[i], linewidth=2, color='grey')
+    # End figure
     plt.xlim(np.min(time_tremor), np.max(time_tremor))
-    plt.xlabel('Time (year)')
+    plt.xlabel('Time (year)', fontsize=20)
     title = 'Cumulative number of tremor around station ' + station
     plt.title(title, fontsize=24)
-    plt.legend(loc=4)
     # Save figure
     namedir = station
     if not os.path.exists(namedir):

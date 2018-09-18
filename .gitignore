@@ -21,6 +21,7 @@ longrange/varianceresiduals_Plourde/*
 longrange/varianceresiduals_Shelly/*
 notebooks/.ipynb_checkpoints
 slowslip/__pycache__/*
+slowslip/*.eps
 slowslip/CLRS/*
 slowslip/CUSH/*
 slowslip/FRID/*

@@ -19,6 +19,12 @@ P.~Audet, M.G. Bostock, N.I. Christensen, and S.M. Peacock.
 \newblock {\em Nature}, 457:76--78, January 2009.
 \newblock doi:10.1038/nature07650.
 
+\bibitem{BLE_2002}
+G.~Blewitt and D.~Lavall\'ee.
+\newblock Effects of annual signals on geodetic velocity.
+\newblock {\em Journal of Geophysical Research}, 107:B72145, 2002.
+\newblock doi:10.1029/2001jb000570.
+
 \bibitem{BOS_2013}
 M.G. Bostock.
 \newblock The {Moho} in subduction zones.
@@ -140,6 +146,12 @@ T.I. Melbourne, W.M. Szeliga, M.M. Miller, and V.M. Santillan.
 M.M. Miller, T.~Melbourne, D.J. Johnson, and W.Q. Sumner.
 \newblock Periodic slow earthquakes from the {Cascadia} subduction zone.
 \newblock {\em Science}, 295(5564):2423, March 2002.
+
+\bibitem{NIK_2002}
+Rosanne Nikolaids.
+\newblock {\em Observation of geodetic and seismic deformation with the
+  {Global} {Positioning} {System}}.
+\newblock PhD thesis, University of California, San Diego, 2002.
 
 \bibitem{NOW_2013}
 R.L. Nowack and M.G. Bostock.
