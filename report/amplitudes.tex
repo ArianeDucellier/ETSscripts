@@ -2,13 +2,11 @@
  
 \begin{document}
 
-\section{Computation of amplitudes for P-, SV- and SH-waves}
+\section{Amplitudes of the direct and reflected P-, SV- and SH-waves}
 
-\subsection{Changes of coordinates}
+\subsection{Amplitudes at the tremor source}
 
-We denote $(x, y)$ the coordinates of the receiver array, $(x_0, y_0)$ the coordinates of the tremor source, and $d$ the depth of the tremor source.
-
-In the $(\vec{e}_X, \vec{e}_Y, \vec{e}_Z)$ coordinate system, we have:
+We denote $\left( x, y \right)$ the coordinates of the receiver array, $\left( x_0, y_0 \right)$ the coordinates of the tremor source, $d$ the depth of the tremor source, and $\beta$ the angle between the east direction and the tremor source - receiver direction. In the $\left( \vec{e}_X, \vec{e}_Y, \vec{e}_Z \right)$ coordinate system, we thus have:
 
 \begin{equation}
 \vec{e}_R = \begin{pmatrix}
@@ -23,12 +21,10 @@ In the $(\vec{e}_X, \vec{e}_Y, \vec{e}_Z)$ coordinate system, we have:
 0 \\
 0 \\
 1
-\end{pmatrix}
+\end{pmatrix} \text{ with } \beta = \atantwo \left(y - y_0 , x - x_0 \right)
 \end{equation}
 
-with $\beta = \atantwo (y - y_0 , x - x_0)$
-
-In the $(\vec{e}_R, \vec{e}_T, \vec{e}_Z)$ coordinate system, we have:
+Reversely, in the $\left( \vec{e}_R, \vec{e}_T, \vec{e}_Z \right)$ coordinate system, we have:
 
 \begin{equation}
 \vec{e}_X = \begin{pmatrix}
@@ -46,7 +42,7 @@ In the $(\vec{e}_R, \vec{e}_T, \vec{e}_Z)$ coordinate system, we have:
 \end{pmatrix}
 \end{equation}
 
-For the direct wave, we have:
+We denote $\alpha$ the angle between the vertical and the direction of propagation. In the $\left( \vec{e}_R, \vec{e}_T, \vec{e}_Z \right)$ coordinate system, we have for the direct wave:
 
 \begin{equation}
 \vec{e}_P = \begin{pmatrix}
@@ -61,10 +57,8 @@ For the direct wave, we have:
 0 \\
 1 \\
 0
-\end{pmatrix}
+\end{pmatrix} \text{ with } \alpha = \atantwo \left( \left( x - x_0 \right) ^2 + \left( y - y_0 \right) ^2, d \right)
 \end{equation}
-
-with $\alpha = \frac{\sqrt{ (x - x_0)^2 + (y - y_0)^2}}{d}$
 
 For the reflected wave, we have:
 
@@ -84,9 +78,9 @@ For the reflected wave, we have:
 \end{pmatrix}
 \end{equation}
 
-where $\alpha$ is computed with the RayTracing code.
+where $\alpha$ is computed using the RayTracing code. \\
 
-In the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system, we have for the direct wave:
+Reversely, in the $\left( \vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH} \right)$ coordinate system, we have for the direct wave:
 
 \begin{equation}
 \vec{e}_R = \begin{pmatrix}
@@ -122,7 +116,7 @@ For the reflected wave, we have:
 \end{pmatrix}
 \end{equation}
 
-We compute the seismic moment $M$ in the $(\vec{e}_X, \vec{e}_Y, \vec{e}_Z)$ coordinate system. We have:
+We compute the seismic moment $M$ in the $\left( \vec{e}_X, \vec{e}_Y, \vec{e}_Z \right)$ coordinate system. We have:
 
 \begin{equation}
 M_{ij} = u_i \nu_j + u_j \nu_i
@@ -142,7 +136,7 @@ with:
 \end{pmatrix}
 \end{equation}
 
-where $\phi$ is the strike of the subducting plate, and $\delta$ is the dip of the subducting plate.
+where $\phi$ is the strike of the subducting plate, and $\delta$ is the dip of the subducting plate.We assume that we have reverse faulting, that is the rake $\lambda$ is equal to $\frac{\pi}{2}$. \\
 
 We then compute the value of $M$ in the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system. We have:
 
@@ -210,7 +204,7 @@ M_{ZR} & M_{ZT} & M_{ZZ}
 \end{pmatrix}
 \end{equation}
 
-In the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system, we have:
+In the $\left( \vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH} \right)$ coordinate system, we have:
 
 \begin{equation}
 \vec{\Gamma} = \begin{pmatrix}
@@ -224,7 +218,7 @@ In the $(\vec{e}_P, \vec{e}_{SV}, \vec{e}_{SH})$ coordinate system, we have:
 \end{pmatrix}
 \end{equation}
 
-from Equation 9.13.1 of Pujol (2003), we have:
+Thus we can get the amplitude of the seismic wave at the tremor source from the strike and the dip of the subducting plate, using Equation 9.13.1 of Pujol (2003):
 
 \begin{equation}
 \begin{pmatrix}
