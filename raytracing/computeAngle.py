@@ -1,5 +1,8 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+This module contains functions to compute the angle at which a seismic ray
+must leave the tremor source at the plate boundary to arrive at the seismic
+station at the surface
+"""
 
 from math import sqrt, pi, asin
 from numpy import arange
@@ -10,19 +13,31 @@ from computeDistance import computeDistance3, computeDistance5
 from misc import computeDip
 
 def computeAngle3(x0, y0, d, x, y, R1='S', R2='S', R3='S'):
-    """ Test different angles of incidence of ray departing from the source
+    """
+    Test different angles of incidence of ray departing from the source
     and find the one corresponding to station-source distance
+    (one reflection at the mid-slab discontinuity)
+
     Input:
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
-        d = depth of the source (in km)
+        type d = float
+        d = Depth of the source (in km)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the upgoing ray in UOC (S or P)
-        R3 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the upgoing ray in UOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in CC (S or P)
     Output:
-        angle = best-fitting angle (in degrees with precision 0.01)
+        type angle = float
+        angle = Best-fitting angle (in degrees with precision 0.01)
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -59,8 +74,8 @@ def computeAngle3(x0, y0, d, x, y, R1='S', R2='S', R3='S'):
     maxAngle = min(max1, max2, 90.0 + dip)
     stepAngle = 1.0
     angle = minAngle
-    eps = abs(distance - computeDistance3(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3))
+    eps = abs(distance - computeDistance3(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance3(i, x0, y0, d, x, y, R1, R2, R3)
         if (abs(distance - X) < eps):
@@ -71,8 +86,8 @@ def computeAngle3(x0, y0, d, x, y, R1='S', R2='S', R3='S'):
     maxAngle = min(max1, max2, angle + 1.0)
     stepAngle = 0.1
     angle = minAngle
-    eps = abs(distance - computeDistance3(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3))
+    eps = abs(distance - computeDistance3(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance3(i, x0, y0, d, x, y, R1, R2, R3)
         if (abs(distance - X) < eps):
@@ -83,8 +98,8 @@ def computeAngle3(x0, y0, d, x, y, R1='S', R2='S', R3='S'):
     maxAngle = min(max1, max2, angle + 0.1)
     stepAngle = 0.01
     angle = minAngle
-    eps = abs(distance - computeDistance3(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3))
+    eps = abs(distance - computeDistance3(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance3(i, x0, y0, d, x, y, R1, R2, R3)
         if (abs(distance - X) < eps):
@@ -92,23 +107,36 @@ def computeAngle3(x0, y0, d, x, y, R1='S', R2='S', R3='S'):
             eps = abs(distance - X)
     return angle
 
-def computeAngle5(x0, y0, d, x, y, \
-    R1='S', R2='S', R3='S', R4='S', R5='S'):
-    """ Test different angles of incidence of ray departing from the source
+def computeAngle5(x0, y0, d, x, y, R1='S', R2='S', R3='S', R4='S', R5='S'):
+    """
+    Test different angles of incidence of ray departing from the source
     and find the one corresponding to station-source distance
+    (one reflection at the Moho)
+
     Input:
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
-        d = depth of the source (in m)
+        type d = float
+        d = Depth of the source (in km)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the downgoing ray in LOC (S or P)
-        R3 = type of the upgoing ray in LOC (S or P)
-        R4 = type of the upgoing ray in UOC (S or P)
-        R5 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the downgoing ray in LOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in LOC (S or P)
+        type R4 = string
+        R4 = Type of the upgoing ray in UOC (S or P)
+        type R5 = string
+        R5 = Type of the upgoing ray in CC (S or P)
     Output:
-        angle = best-fitting angle (in degrees with precision 0.01)
+        type angle = float
+        angle = Best-fitting angle (in degrees with precision 0.01)
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -163,8 +191,8 @@ def computeAngle5(x0, y0, d, x, y, \
     maxAngle = min(max1, max2, max3, max4, 90.0 + dip)
     stepAngle = 1.0
     angle = minAngle
-    eps = abs(distance - computeDistance5(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3, R4, R5))
+    eps = abs(distance - computeDistance5(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3, R4, R5))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance5(i, x0, y0, d, x, y, R1, R2, R3, R4, R5)
         if (abs(distance - X) < eps):
@@ -175,8 +203,8 @@ def computeAngle5(x0, y0, d, x, y, \
     maxAngle = min(max1, max2, max3, max4, angle + 1.0)
     stepAngle = 0.1
     angle = minAngle
-    eps = abs(distance - computeDistance5(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3, R4, R5))
+    eps = abs(distance - computeDistance5(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3, R4, R5))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance5(i, x0, y0, d, x, y, R1, R2, R3, R4, R5)
         if (abs(distance - X) < eps):
@@ -187,8 +215,8 @@ def computeAngle5(x0, y0, d, x, y, \
     maxAngle = min(max1, max2, max3, max4, angle + 0.1)
     stepAngle = 0.01
     angle = minAngle
-    eps = abs(distance - computeDistance5(minAngle, \
-        x0, y0, d, x, y, R1, R2, R3, R4, R5))
+    eps = abs(distance - computeDistance5(minAngle, x0, y0, d, x, y, R1, \
+        R2, R3, R4, R5))
     for i in arange(minAngle, maxAngle, stepAngle):
         X = computeDistance5(i, x0, y0, d, x, y, R1, R2, R3, R4, R5)
         if (abs(distance - X) < eps):

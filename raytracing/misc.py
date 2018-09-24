@@ -1,5 +1,6 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+Miscellaneous functions to be used in the other modules
+"""
 
 import numpy
 
@@ -8,15 +9,23 @@ from math import pi, sqrt, pow, cos, sin, tan, atan, atan2
 from data import phi, delta
 
 def latLon2xy(lat, lon, lat0=0.0, lon0=0.0):
-    """Compute the distance in m from an origin at (lat0, lon0)
+    """
+    Compute the distance in m from an origin at (lat0, lon0)
+
     Input:
-        lat = latitude of the points (numpy array)
-        lon = longitude of the points (numpy array)
-        lat0 = latitude of origin
-        lon0 = longitude of origin
+        type lat = 1D numpy array
+        lat = Latitude of the points
+        type lon = 1D numpy array
+        lon = Longitude of the points
+        type lat0 = float
+        lat0 = Latitude of origin
+        type lon0 = float
+        lon0 = Longitude of origin
     Output:
-        x = distance in EW direction (in m)
-        y = distance in NS direction (in m)
+        type x = 1D numpy array
+        x = Distance in EW direction (in m)
+        type y = 1D numpy array
+        y = Distance in NS direction (in m)
     """
     # Earth's radius and ellipticity
     a = 6378.136
@@ -34,14 +43,21 @@ def latLon2xy(lat, lon, lat0=0.0, lon0=0.0):
     return (x, y)
 
 def computeDip(x0, y0, x, y):
-    """Compute the plate dipping in the station-source direction
+    """
+    Compute the plate dipping in the station-source direction
+
     Input:
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)        
     Output:
-        dip (in degrees)
+        type dip = float
+        dip = Slope of the plate boundary (in degrees)
     """
     # Compute angle between station-source direction and dipping direction
     if sqrt((x - x0) ** 2.0 + (y - y0) ** 2.0) < 1.0:
@@ -54,7 +70,7 @@ def computeDip(x0, y0, x, y):
         if alpha < 0.0:
             alpha = alpha + 2.0 * pi
         # gamma varies between -pi and pi
-        gamma = phi * pi /180.0 - alpha - pi / 2.0
+        gamma = phi * pi / 180.0 + beta
         if gamma <  - pi:
             gamma = gamma + 2.0 * pi
         if gamma >= pi:

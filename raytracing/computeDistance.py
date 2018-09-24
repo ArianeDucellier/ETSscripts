@@ -1,5 +1,8 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+This module contains functions to compute the distance traveled by the 
+seismic wave between the tremor source at the plate boundary and the 
+seismic station at the surface
+"""
 
 from math import pi, cos, sin, tan, asin
 
@@ -8,19 +11,32 @@ from data import VsUOC, VpUOC, VsLOC, VpLOC, VsCC, VpCC, hUOC, hLOC
 from misc import computeDip
 
 def computeDistance3(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S'):
-    """Compute the distance between source and receiver (in m)
+    """
+    Compute the distance between the source and the receiver (in m)
+    with one reflection at the mid-slab discontinuity
+    
     Input:
-        alpha = angle between vertical and ray (in degrees)
-        x0 = EW coordinate of the source (in m)
-        y0 = NS coordinate of the source (in m)
-        d = depth of the source (in m)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
+        x0 = EW Coordinate of the source (in m)
+        type y0 = float
+        y0 = NS Coordinate of the source (in m)
+        type d = float
+        d = Depth of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the upgoing ray in UOC (S or P)
-        R3 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the upgoing ray in UOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in CC (S or P)
     Output:
-        X = corresponding distance
+        type X = float
+        X = Corresponding distance
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -56,23 +72,38 @@ def computeDistance3(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S'):
     X = D3 + D6 + D9
     return X
 
-def computeDistance5(alpha, x0, y0, d, x, y, \
-    R1='S', R2='S', R3='S', R4='S', R5='S'):
-    """Compute the distance between source and receiver
+def computeDistance5(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S',\
+    R4='S', R5='S'):
+    """
+    Compute the distance between the source and the receiver (in m)
+    with one reflection at the Moho
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
-        d = depth of the source (in m)
+        type d = float
+        d = Depth of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the downgoing ray in LOC (S or P)
-        R3 = type of the upgoing ray in LOC (S or P)
-        R4 = type of the upgoing ray in UOC (S or P)
-        R5 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the downgoing ray in LOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in LOC (S or P)
+        type R4 = string
+        R4 = Type of the upgoing ray in UOC (S or P)
+        type R5 = string
+        R5 = Type of the upgoing ray in CC (S or P)
     Output:
-        X = corresponding distance
+        type X = float
+        X = Corresponding distance
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -126,4 +157,3 @@ def computeDistance5(alpha, x0, y0, d, x, y, \
     D16 = tan((epsilon - dip) * pi / 180.0) * D15
     X = D3 + D7 + D10 + D13 + D16
     return X
- 

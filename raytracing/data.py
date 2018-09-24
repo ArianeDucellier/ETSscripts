@@ -1,5 +1,5 @@
 """
-This modules contain all the data that we are going to use in the notebooks
+This module contains all the data that we are going to use in the notebooks
 """
 
 import numpy

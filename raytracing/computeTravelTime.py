@@ -1,5 +1,8 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+This module contains functions to compute the seismic wave travel time
+between the tremor source at the plate boundary and the seismic station
+at the surface
+"""
 
 from math import pi, cos, sin, tan, asin
 
@@ -8,19 +11,32 @@ from data import VsUOC, VpUOC, VsLOC, VpLOC, VsCC, VpCC, hUOC, hLOC
 from misc import computeDip
 
 def computeTravelTime3(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S'):
-    """Compute the travel time between source and receiver
+    """
+    Compute the travel time between the source and the receiver
+    with one reflection at the mid-slab discontinuity
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
-        d = depth of the source (in m)
+        type d = float
+        d = Depth of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the upgoing ray in UOC (S or P)
-        R3 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the upgoing ray in UOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in CC (S or P)
     Output:
-        t = corresponding travel time
+        type t = float
+        t = Corresponding travel time
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -61,23 +77,38 @@ def computeTravelTime3(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S'):
     t = t1 + t2 + t3
     return t
 
-def computeTravelTime5(alpha, x0, y0, d, x, y, \
-    R1='S', R2='S', R3='S', R4='S', R5='S'):
-    """Compute the travel time between source and receiver
+def computeTravelTime5(alpha, x0, y0, d, x, y, R1='S', R2='S', R3='S', \
+    R4='S', R5='S'):
+    """
+    Compute the travel time between the source and the receiver
+    with one reflection at the Moho
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
-        d = depth of the source (in m)
+        type d = float
+        d = Depth of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the downgoing ray in LOC (S or P)
-        R3 = type of the upgoing ray in LOC (S or P)
-        R4 = type of the upgoing ray in UOC (S or P)
-        R5 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the downgoing ray in LOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in LOC (S or P)
+        type R4 = string
+        R4 = Type of the upgoing ray in UOC (S or P)
+        type R5 = string
+        R5 = Type of the upgoing ray in CC (S or P)
     Output:
-        t = corresponding travel time
+        type t = float
+        t = Corresponding travel time
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"

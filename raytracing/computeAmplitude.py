@@ -1,5 +1,7 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+"""
+This module contains functions to compute the amplitude at the seismic
+station of the sesmic wave
+"""
 
 import numpy
 
@@ -11,15 +13,24 @@ from data import VsUOC, VpUOC, rhoUOC, VsLOC, VpLOC, rhoLOC, \
 from misc import computeDip, computeM, computeN
 
 def computeAmplitude3SH(alpha, x0, y0, x, y):
-    """Compute the amplitude of the wave at the receiver
+    """
+    Compute the amplitude of the wave at the receiver for an SH-wave
+    with one reflection at the mid-slab discontinuity
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
     Output:
-        A = corresponding amplitude
+        type A = float
+        A = Corresponding amplitude
     """
     # Compute dipping in the source-receiver vertical plane
     dip = computeDip(x0, y0, x, y)
@@ -54,15 +65,24 @@ def computeAmplitude3SH(alpha, x0, y0, x, y):
     return A
 
 def computeAmplitude5SH(alpha, x0, y0, x, y):
-    """Compute the amplitude of the wave at the receiver
+    """
+    Compute the amplitude of the wave at the receiver for an SH-wave
+    with one reflection at the Moho
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
     Output:
-        A = corresponding amplitude
+        type A = float
+        A = Corresponding amplitude
     """
     # Compute dipping in the source-receiver vertical plane
     dip = computeDip(x0, y0, x, y)
@@ -125,18 +145,30 @@ def computeAmplitude5SH(alpha, x0, y0, x, y):
     return A
 
 def computeAmplitude3PSV(alpha, x0, y0, x, y, R1='S', R2='S', R3='S'):
-    """Compute the amplitude of the wave at the receiver
+    """
+    Compute the amplitude of the wave at the receiver for an P-SV-wave
+    with one reflection at the mid-slab discontinuity
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the upgoing ray in UOC (S or P)
-        R3 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the upgoing ray in UOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in CC (S or P)
     Output:
-        A = corresponding amplitude
+        type A = float
+        A = Corresponding amplitude
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
@@ -220,22 +252,36 @@ def computeAmplitude3PSV(alpha, x0, y0, x, y, R1='S', R2='S', R3='S'):
     A = A1 * A2
     return A
 
-def computeAmplitude5PSV(alpha, x0, y0, x, y, \
-    R1='S', R2='S', R3='S', R4='S', R5='S'):
-    """Compute the amplitude of the wave at the receiver
+def computeAmplitude5PSV(alpha, x0, y0, x, y, R1='S', R2='S', R3='S', \
+    R4='S', R5='S'):
+    """
+    Compute the amplitude of the wave at the receiver for an P-SV-wave
+    with one reflection at the Moho
+
     Input:
-        alpha = angle between vertical and ray (in degrees)
+        type alpha = float
+        alpha = Angle between vertical and ray (in degrees)
+        type x0 = float
         x0 = EW coordinate of the source (in m)
+        type y0 = float
         y0 = NS coordinate of the source (in m)
+        type x = float
         x = EW coordinate of the station (in m)
+        type y = float
         y = NS coordinate of the station (in m)
-        R1 = type of the downgoing ray in UOC (S or P)
-        R2 = type of the downgoing ray in LOC (S or P)
-        R3 = type of the upgoing ray in LOC (S or P)
-        R4 = type of the upgoing ray in UOC (S or P)
-        R5 = type of the upgoing ray in CC (S or P)
+        type R1 = string
+        R1 = Type of the downgoing ray in UOC (S or P)
+        type R2 = string
+        R2 = Type of the downgoing ray in LOC (S or P)
+        type R3 = string
+        R3 = Type of the upgoing ray in LOC (S or P)
+        type R4 = string
+        R4 = Type of the upgoing ray in UOC (S or P)
+        type R5 = string
+        R5 = Type of the upgoing ray in CC (S or P)
     Output:
-        A = corresponding amplitude
+        type A = float
+        A = Corresponding amplitude
     """
     # Checking input data
     assert (R1 == 'S' or R1 == 'P'), "Ray 1 must be a P or an S wave!"
