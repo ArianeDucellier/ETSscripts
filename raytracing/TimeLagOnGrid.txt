@@ -1,0 +1,477 @@
+Array BH:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0019815270052382836 s
+Max value: 0.005487796324544418 s
+Mean value: 0.0035606537417834775 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.004184076038306792 s
+Max value: 0.01673756243180148 s
+Mean value: 0.011197048680335643 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.004904818299671312 s
+Max value: 0.04006466517044306 s
+Mean value: 0.02153168293219058 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0010356852493700007 s
+Max value: 0.003104936532714123 s
+Mean value: 0.0021491885441476516 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.009595927153779759 s
+Max value: 0.04686075314200751 s
+Mean value: 0.026890920995264026 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.012254411582014865 s
+Max value: 0.0488701287981519 s
+Mean value: 0.02873669486448177 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.006396909378810601 s
+Max value: 0.04319242044336401 s
+Mean value: 0.02415833010235664 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0013575637256721506 s
+Max value: 0.019002883634725912 s
+Mean value: 0.010739516714930125 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.0052822278028590375 s
+Max value: 0.03749190558250636 s
+Mean value: 0.01712965506429285 s
+
+Array BS:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0011921952925085578 s
+Max value: 0.006095904670062187 s
+Mean value: 0.003727614611752182 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.0030575253371004185 s
+Max value: 0.017141871369921024 s
+Mean value: 0.011946713019000821 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.004496979581002997 s
+Max value: 0.07083674052002574 s
+Mean value: 0.027005074853252695 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0007327320859695637 s
+Max value: 0.0034605402832587305 s
+Mean value: 0.0023306682528941923 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.009702778693326627 s
+Max value: 0.052327098963086426 s
+Mean value: 0.03261079979983012 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.010410934097153234 s
+Max value: 0.05411677696922774 s
+Mean value: 0.034607772973355766 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.008800339695669752 s
+Max value: 0.05085343735458382 s
+Mean value: 0.029977777075936865 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0007343013688213435 s
+Max value: 0.03855425599064989 s
+Mean value: 0.013451211494625213 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.00667383753182838 s
+Max value: 0.039187207193558206 s
+Mean value: 0.021454564084931033 s
+
+Array CL:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.002115632079819416 s
+Max value: 0.006976822254043755 s
+Mean value: 0.003896466374124271 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.0052980580198109155 s
+Max value: 0.016141362378111552 s
+Mean value: 0.012146973621993786 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.00701298577593097 s
+Max value: 0.04960714023526826 s
+Mean value: 0.024676724964304387 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0013242302100416425 s
+Max value: 0.0031817243241599232 s
+Mean value: 0.0024626575855983754 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.007927050885353207 s
+Max value: 0.05227152303228357 s
+Mean value: 0.034058082976306636 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.009973798556170565 s
+Max value: 0.053798559346488806 s
+Mean value: 0.03621306429926221 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.0051519424910475755 s
+Max value: 0.04970478846403852 s
+Mean value: 0.031076940233205955 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0026991257159440503 s
+Max value: 0.04112975783508924 s
+Mean value: 0.014674341414863052 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.0021405153037893703 s
+Max value: 0.04092991248753311 s
+Mean value: 0.02278621306164529 s
+
+Array DR:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0024664718367163954 s
+Max value: 0.005333285482244967 s
+Mean value: 0.003819836422757017 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.006959340192252289 s
+Max value: 0.018866379409304492 s
+Mean value: 0.013803046888684866 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.009281609497059213 s
+Max value: 0.04529735467277437 s
+Mean value: 0.027537318124118946 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0013654440529808586 s
+Max value: 0.003545279271483763 s
+Mean value: 0.002546096935490508 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.014850018485552141 s
+Max value: 0.04364761641092159 s
+Mean value: 0.030789583923881148 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.018160579751800816 s
+Max value: 0.04512368595289822 s
+Mean value: 0.033145981082903515 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.010841490857848255 s
+Max value: 0.04054766112993284 s
+Mean value: 0.02758643739145962 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.002428185269258682 s
+Max value: 0.02040285095066475 s
+Mean value: 0.011243676658460558 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.00589001423842655 s
+Max value: 0.03130087851403784 s
+Mean value: 0.018157769561187517 s
+
+Array GC:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0025369343348525795 s
+Max value: 0.0060609279882037955 s
+Mean value: 0.004011089413816477 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.001691504533957745 s
+Max value: 0.020515308259159627 s
+Mean value: 0.01388202432314607 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.011368646757984815 s
+Max value: 0.06570333694819332 s
+Mean value: 0.029556441783110437 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0016446712424594383 s
+Max value: 0.00556721569435211 s
+Mean value: 0.0027749830262959324 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.0053843759381831426 s
+Max value: 0.058484229514479506 s
+Mean value: 0.03496819822570807 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.010951591632535252 s
+Max value: 0.060153265635893016 s
+Mean value: 0.037545994000651506 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.003597521833109221 s
+Max value: 0.05528619910061008 s
+Mean value: 0.03177757633963856 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.001059229536212876 s
+Max value: 0.03235801964622071 s
+Mean value: 0.011627881466793685 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.004760839784203563 s
+Max value: 0.04101699211481797 s
+Mean value: 0.021889152802531075 s
+
+Array LC:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0025287651328191885 s
+Max value: 0.005333713639571838 s
+Mean value: 0.0044185167505797355 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.007438834931086879 s
+Max value: 0.019833141832070793 s
+Mean value: 0.016083017638010937 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.00997138617841576 s
+Max value: 0.050170138279725836 s
+Mean value: 0.030653511162200536 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0017958164664847857 s
+Max value: 0.004068646636165417 s
+Mean value: 0.0029664626518566186 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.014383235192735832 s
+Max value: 0.05224697173336404 s
+Mean value: 0.038356698112983124 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.016212264851224043 s
+Max value: 0.05495381678286773 s
+Mean value: 0.04116247312439728 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.010193798001561321 s
+Max value: 0.048649014689026354 s
+Mean value: 0.034514471163080755 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0049013182609642224 s
+Max value: 0.022683272328453193 s
+Mean value: 0.013195584675277539 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.0028303978475465266 s
+Max value: 0.0383076970217504 s
+Mean value: 0.023212554997851947 s
+
+Array PA:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0024224692488016256 s
+Max value: 0.007139443602324965 s
+Mean value: 0.0045962195607940634 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.007858037666343977 s
+Max value: 0.026104233557098257 s
+Mean value: 0.017877154772867592 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.009389415422664417 s
+Max value: 0.09337085442065256 s
+Mean value: 0.041612542704925974 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0018254898612772908 s
+Max value: 0.004959382523718289 s
+Mean value: 0.00311101482632987 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.010377758941619785 s
+Max value: 0.0647374808740656 s
+Mean value: 0.04098674620320663 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.010570886691448131 s
+Max value: 0.06679452469207725 s
+Mean value: 0.04380390038146619 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.011228121786407003 s
+Max value: 0.06455816465761653 s
+Mean value: 0.03761741445951013 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0037505878710765873 s
+Max value: 0.036614034262258274 s
+Mean value: 0.013512577636099183 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.006627817972619126 s
+Max value: 0.0441333733717145 s
+Mean value: 0.02430161052408683 s
+
+Array TB:
+---------
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0021635191566659233 s
+Max value: 0.008839589990119941 s
+Mean value: 0.00551302909219824 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.0056247802726624285 s
+Max value: 0.02834572108871003 s
+Mean value: 0.02041133532218244 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.008166879960779399 s
+Max value: 0.0731581400735315 s
+Mean value: 0.03940485426583416 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0014212460411361092 s
+Max value: 0.0056440689423616994 s
+Mean value: 0.0038452796234133904 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.013091392014039291 s
+Max value: 0.07998334863165128 s
+Mean value: 0.04755662390849751 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.014413842967541892 s
+Max value: 0.08290092708324356 s
+Mean value: 0.05119262675165546 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.010984669022785989 s
+Max value: 0.07672211252815951 s
+Mean value: 0.04270060025108683 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0014318694013288793 s
+Max value: 0.032475047998578206 s
+Mean value: 0.01779177172657532 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.00817325687098003 s
+Max value: 0.05910149341269258 s
+Mean value: 0.02905885732925827 s
+
+All arrays:
+---------  
+Autocorrelation - Horizontal component
+
+Time difference between S-wave and SH-wave (mid-slab)
+Min value: 0.0011921952925085578 s
+Max value: 0.008839589990119941 s
+Mean value: 0.004192928245975683 s
+
+Time difference between S-wave and SH-wave (Moho)
+Min value: 0.001691504533957745 s
+Max value: 0.02834572108871003 s
+Mean value: 0.014668414283277772 s
+
+Time difference between S-wave and PPSSS-wave
+Min value: 0.004496979581002997 s
+Max value: 0.09337085442065256 s
+Mean value: 0.030247268848742213 s
+
+Autocorrelation - Vertical component
+
+Time difference between P-wave and PPP-wave
+Min value: 0.0007327320859695637 s
+Max value: 0.0056440689423616994 s
+Mean value: 0.0027732939307533173 s
+
+Cross correlation - Horizontal and vertical component
+
+Time difference between S-wave and P-wave
+Min value: 0.0053843759381831426 s
+Max value: 0.07998334863165128 s
+Mean value: 0.03577720676820966 s
+
+Time difference between S-wave and PPP-wave
+Min value: 0.009973798556170565 s
+Max value: 0.08290092708324356 s
+Mean value: 0.038301063434771715 s
+
+Time difference between SH-wave (mid-slab) and P-wave
+Min value: 0.003597521833109221 s
+Max value: 0.07672211252815951 s
+Mean value: 0.032426193377034424 s
+
+Time difference between PPSSS-wave and P-wave
+Min value: 0.0007343013688213435 s
+Max value: 0.04112975783508924 s
+Mean value: 0.013279570223453085 s
+
+Time difference between SH-wave (Moho) and P-wave
+Min value: 0.0021405153037893703 s
+Max value: 0.05910149341269258 s
+Mean value: 0.0222487971782231 s
+

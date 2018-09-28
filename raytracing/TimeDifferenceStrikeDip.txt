@@ -1,0 +1,448 @@
+---------------------
+Stations along strike
+---------------------
+
+Station 1 at 20000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: -0.5714285714285716
+Difference in time lag -0.009438828351017392 s (500m), -0.030189271181503052 s (1800m), -0.04726236480296375 s (3300m)
+
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.6703550751552586
+Difference in time lag -0.007796053137273162 s (500m), -0.023703676368180382 s (1800m), -0.04041892935767599 s (3300m)
+
+Time lag with direct S-wave
+
+Station 2 at 18000.000000000004 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: -0.5142857142857147
+Difference in time lag -0.009668041425280549 s (500m), -0.030925450918615205 s (1800m), -0.04841885425229364 s (3300m)
+
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.6539742807148731
+Difference in time lag -0.008417184001787703 s (500m), -0.025415598948415052 s (1800m), -0.04105966584768517 s (3300m)
+
+Time lag with direct S-wave
+
+Station 3 at 16000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.6384254932431559
+Difference in time lag -0.008296300464322393 s (500m), -0.026455333687083638 s (1800m), -0.04214268512835595 s (3300m)
+
+Time lag with direct S-wave
+
+Station 4 at 14000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.6240123084465719
+Difference in time lag -0.008771368573007088 s (500m), -0.026442491702301396 s (1800m), -0.04411814435402395 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.5221543460371566
+Difference in time lag 0.011726414928743267 s (500m), 0.03621684501676725 s (1800m), 0.05585651465661279 s (3300m)
+
+
+Station 5 at 12000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.6109489934026107
+Difference in time lag -0.008241145839323671 s (500m), -0.028258554476934705 s (1800m), -0.045696320666004375 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.6049821985880772
+Difference in time lag 0.011580757880078174 s (500m), 0.036986278959812324 s (1800m), 0.05671294761750012 s (3300m)
+
+
+Station 6 at 10000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.5995469497901691
+Difference in time lag -0.007661289721057507 s (500m), -0.02733881199318855 s (1800m), -0.04699140734149765 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.7223046129313885
+Difference in time lag 0.012128395273116155 s (500m), 0.037402689157557845 s (1800m), 0.05707887124168032 s (3300m)
+
+
+Station 7 at 8000.000000000001 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.589887430465837
+Difference in time lag -0.008591576984676053 s (500m), -0.029260031590874647 s (1800m), -0.050024942695713115 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.8995023342192411
+Difference in time lag 0.01211207357830979 s (500m), 0.037457595295271595 s (1800m), 0.05670828739467826 s (3300m)
+
+
+Station 8 at 6000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.5821914273462514
+Difference in time lag -0.008547341565433797 s (500m), -0.03200899565316906 s (1800m), -0.056389069499371836 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -1.1962250992212735
+Difference in time lag 0.012166029795928957 s (500m), 0.03699309954875396 s (1800m), 0.05460477159958277 s (3300m)
+
+
+Station 9 at 4000.0000000000005 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.5766131068505698
+Difference in time lag -0.009380515271857348 s (500m), -0.03727235588397271 s (1800m), -0.06729026705421681 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -1.7912152376381363
+Difference in time lag 0.011902602335691626 s (500m), 0.03450820614224881 s (1800m), 0.04962228591724127 s (3300m)
+
+
+Station 10 at 2000.0000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): 0.5732228738878644
+Difference in time lag -0.011991486799073137 s (500m), -0.05062674706813031 s (1800m), -0.08406504455837283 s (3300m)
+
+Time lag with direct S-wave
+
+Station 11 at 0.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SH-wave: -1.7498607814279343
+Difference in time lag -0.010874421342654372 s (500m), -0.03480385223490323 s (1800m), -0.05451652078383784 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 12 at 2000.0000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.5732228738878644
+Difference in time lag -0.011991486799074913 s (500m), -0.05062674706813031 s (1800m), -0.08406504455837283 s (3300m)
+
+Time lag with direct S-wave
+
+Station 13 at 4000.0000000000005 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.5766131068505698
+Difference in time lag -0.009380515271857348 s (500m), -0.03727235588397271 s (1800m), -0.06729026705421681 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -1.7912152376381427
+Difference in time lag 0.011902602335691626 s (500m), 0.03450820614224881 s (1800m), 0.04962228591724127 s (3300m)
+
+
+Station 14 at 6000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.5821914273462513
+Difference in time lag -0.008547341565433797 s (500m), -0.03200899565316906 s (1800m), -0.056389069499371836 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -1.1962250992212764
+Difference in time lag 0.012166029795928957 s (500m), 0.03699309954875396 s (1800m), 0.05460477159958277 s (3300m)
+
+
+Station 15 at 8000.000000000001 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.5898874304658369
+Difference in time lag -0.008591576984676053 s (500m), -0.029260031590874647 s (1800m), -0.050024942695713115 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.8995023342192426
+Difference in time lag 0.01211207357830979 s (500m), 0.037457595295271595 s (1800m), 0.05670828739467826 s (3300m)
+
+
+Station 16 at 10000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.5995469497901689
+Difference in time lag -0.007661289721057507 s (500m), -0.02733881199318855 s (1800m), -0.04699140734149765 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.7223046129313893
+Difference in time lag 0.012128395273116155 s (500m), 0.037402689157557845 s (1800m), 0.05707887124167854 s (3300m)
+
+
+Station 17 at 12000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.6109489934026104
+Difference in time lag -0.008241145839323671 s (500m), -0.028258554476934705 s (1800m), -0.04569632066600615 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.604982198588078
+Difference in time lag 0.011580757880078174 s (500m), 0.036986278959812324 s (1800m), 0.05671294761750012 s (3300m)
+
+
+Station 18 at 14000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.6240123084465717
+Difference in time lag -0.008771368573007088 s (500m), -0.026442491702301396 s (1800m), -0.0441181443540275 s (3300m)
+
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.5221543460371568
+Difference in time lag 0.011726414928743267 s (500m), 0.03621684501676725 s (1800m), 0.05585651465661279 s (3300m)
+
+
+Station 19 at 16000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.6384254932431556
+Difference in time lag -0.008296300464322393 s (500m), -0.026455333687085414 s (1800m), -0.04214268512835595 s (3300m)
+
+Time lag with direct S-wave
+
+Station 20 at 18000.000000000004 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: -0.5142857142857141
+Difference in time lag -0.009668041425280549 s (500m), -0.030925450918615205 s (1800m), -0.04841885425229364 s (3300m)
+
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.6539742807148728
+Difference in time lag -0.00841718400178948 s (500m), -0.025415598948415052 s (1800m), -0.041059665847686944 s (3300m)
+
+Time lag with direct S-wave
+
+Station 21 at 20000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: -0.5714285714285711
+Difference in time lag -0.009438828351017392 s (500m), -0.030189271181503052 s (1800m), -0.04726236480296375 s (3300m)
+
+Time lag with direct P-wave
+Amplitude of SH-wave (mid-slab): -0.6703550751552584
+Difference in time lag -0.007796053137273162 s (500m), -0.023703676368180382 s (1800m), -0.04041892935767599 s (3300m)
+
+Time lag with direct S-wave
+
+------------------
+Stations along dip
+------------------
+
+Station 1 at 20000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+Amplitude of ray PPP: -1.1224905247154793
+Difference in time lag 0.04573406636991173 s (500m), 0.16267154603825063 s (1800m), 0.2928316069622632 s (3300m)
+
+Amplitude of ray SPP: 0.5084453676046684
+Difference in time lag 0.04396142110445034 s (500m), 0.15826462076203818 s (1800m), 0.2843794756723437 s (3300m)
+
+Amplitude of ray SSS: -1.1695674303465824
+Difference in time lag 0.005758392098980991 s (500m), 0.022055027801510363 s (1800m), 0.039530269624751924 s (3300m)
+
+Amplitude of ray PPSSS: -0.6510585332844686
+Difference in time lag 0.03311215302855608 s (500m), 0.11713023155475 s (1800m), 0.21138538809537266 s (3300m)
+
+Amplitude of ray SSSSS: -1.6605700224673212
+Difference in time lag 0.021966328348559827 s (500m), 0.07658999963294733 s (1800m), 0.14016111600705017 s (3300m)
+
+
+Station 2 at 18000.000000000004 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+Amplitude of ray PPP: -0.6482959883343784
+Difference in time lag 0.0430381483673381 s (500m), 0.1539354640708881 s (1800m), 0.2771288605191895 s (3300m)
+
+Amplitude of ray PPS: 1.1693775983764338
+Difference in time lag 0.01641071113887982 s (500m), 0.05876787142910622 s (1800m), 0.1061600319367706 s (3300m)
+
+Amplitude of ray PSS: -1.0579231121059751
+Difference in time lag 0.012154313272214168 s (500m), 0.04298808860320413 s (1800m), 0.07740343673146555 s (3300m)
+
+Amplitude of ray SSS: -0.5175482605646218
+Difference in time lag 0.006066483971329362 s (500m), 0.02170005126873953 s (1800m), 0.03992142718829683 s (3300m)
+
+Amplitude of ray SSSSS: -0.7873215712658185
+Difference in time lag 0.02051958795288833 s (500m), 0.07438358487399022 s (1800m), 0.13564319384126122 s (3300m)
+
+
+Station 3 at 16000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 4 at 14000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 5 at 12000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 0.5960618371744807
+Difference in time lag -0.03122500586383392 s (500m), -0.10910037753511848 s (1800m), -0.19276192762653555 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 6 at 10000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 0.7536964314511387
+Difference in time lag -0.02818800112959341 s (500m), -0.09793508213382829 s (1800m), -0.1718093957191238 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 7 at 8000.000000000001 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 0.9450430180391689
+Difference in time lag -0.024979511132798393 s (500m), -0.0861672430730911 s (1800m), -0.1497909035264815 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 8 at 6000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.1872277001124496
+Difference in time lag -0.02161769708643213 s (500m), -0.07386942581033296 s (1800m), -0.1268548080739329 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 9 at 4000.0000000000005 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.5108142241479847
+Difference in time lag -0.018126355493579105 s (500m), -0.061134199766049946 s (1800m), -0.10318495445238796 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 10 at 2000.0000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.9762512551122788
+Difference in time lag -0.014534322891580409 s (500m), -0.048071413973045374 s (1800m), -0.07899443160493202 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 11 at 0.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SH-wave: -1.7498607814279343
+Difference in time lag -0.010874421342654372 s (500m), -0.03480385223490323 s (1800m), -0.05451652078383784 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 12 at 2000.0000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of ray SSS: -0.9065213399045706
+Difference in time lag -0.016809789987421553 s (500m), -0.06602726920234314 s (1800m), -0.11320355631513745 s (3300m)
+
+Time lag with direct S-wave
+
+Station 13 at 4000.0000000000005 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of ray SSS: -1.7362701979485906
+Difference in time lag -0.02143740367694491 s (500m), -0.04167467654966561 s (1800m), -0.03952040466241247 s (3300m)
+
+Amplitude of ray SSSSS: -0.7950464571980772
+Difference in time lag -0.02143740367694491 s (500m), -0.029472499681951092 s (1800m), -0.028874362850842772 s (3300m)
+
+Time lag with direct S-wave
+
+Station 14 at 6000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 15 at 8000.000000000001 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of ray SSSSS: 0.9490522132528513
+Difference in time lag 0.001242572887989013 s (500m), 0.007094424035653191 s (1800m), 0.01551343714554676 s (3300m)
+
+Time lag with direct S-wave
+
+Station 16 at 10000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of ray SSS: 0.9765584628436845
+Difference in time lag 0.005439909232166862 s (500m), 0.02312607359600971 s (1800m), 0.04938346150642037 s (3300m)
+
+Time lag with direct S-wave
+
+Station 17 at 12000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Amplitude of ray SSS: 0.6258053941225337
+Difference in time lag 0.008049466680719597 s (500m), 0.033614353530467156 s (1800m), 0.06733012725276044 s (3300m)
+
+Time lag with direct S-wave
+
+Station 18 at 14000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 19 at 16000.000000000002 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.8196373468615108
+Difference in time lag 0.01681937812078793 s (500m), 0.06426551127719105 s (1800m), 0.12551856959981134 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 20 at 18000.000000000004 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.4848445197362068
+Difference in time lag 0.01970225348552468 s (500m), 0.074459107718293 s (1800m), 0.14380546138708095 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave
+
+Station 21 at 20000.0 km from the tremor epicenter
+
+Time lag between direct waves
+Amplitude of direct SV-wave: 1.2404005686946022
+Difference in time lag 0.022414286337472333 s (500m), 0.08403215872840342 s (1800m), 0.16094772389325662 s (3300m)
+
+Time lag with direct P-wave
+Time lag with direct S-wave

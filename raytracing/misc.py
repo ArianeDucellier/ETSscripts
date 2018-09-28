@@ -81,21 +81,35 @@ def computeDip(x0, y0, x, y):
     return dip
 
 def computeM(b1, a1, r1, b2, a2, r2, i1, i2, j1, j2, p):
-    """Compute 4 x 4 matrix M from Aki and Richards (eq. 5.36 and Fig. 5.9) 
+    """
+    Compute 4 x 4 matrix M from Aki and Richards (Eq. 5.36 and Fig. 5.9) 
+
     Input:
+        type b1 = float
         b1 = S-wave velocity in upper medium (in m/s)
+        type a1 = float
         a1 = P-wave velocity in upper medium (in m/s)
+        type r1 = float
         r1 = density in upper medium (in kg/m3)
+        type b2 = float
         b2 = S-wave velocity in lower medium (in m/s)
+        type a2 = float
         a2 = P-wave velocity in lower medium (in m/s)
+        type r2 = float
         r2 = density in lower medium (in kg/m3)
+        type i1 = float
         i1 = incidence angle of P-wave in upper medium (in degrees)
+        type i2 = float
         i2 = incidence angle of P-wave in lower medium (in degrees)
+        type j1 = float
         j1 = incidence angle of S-wave in upper medium (in degrees)
+        type j2 = float
         j2 = incidence angle of S-wave in lower medium (in degrees)
+        type p = float
         p = ray parameter (in s/m)
     Output:
-        4 x 4 numpy array
+        type M = 4 x 4 numpy array
+        M = Eq. 5.36 and Fig. 5.9 from Aki and Richards
     """
     i1 = i1 * pi / 180.0
     i2 = i2 * pi / 180.0
@@ -121,21 +135,35 @@ def computeM(b1, a1, r1, b2, a2, r2, i1, i2, j1, j2, p):
     return M
 
 def computeN(b1, a1, r1, b2, a2, r2, i1, i2, j1, j2, p):
-    """Compute 4 x 4 matrix N from Aki and Richards (eq. 5.37 and Fig. 5.9) 
+    """
+    Compute 4 x 4 matrix N from Aki and Richards (Eq. 5.37 and Fig. 5.9)
+
     Input:
+        type b1 = float
         b1 = S-wave velocity in upper medium (in m/s)
+        type a1 = float
         a1 = P-wave velocity in upper medium (in m/s)
+        type r1 = float
         r1 = density in upper medium (in kg/m3)
+        type b2 = float
         b2 = S-wave velocity in lower medium (in m/s)
+        type a2 = float
         a2 = P-wave velocity in lower medium (in m/s)
+        type r2 = float
         r2 = density in lower medium (in kg/m3)
+        type i1 = float
         i1 = incidence angle of P-wave in upper medium (in degrees)
+        type i2 = float
         i2 = incidence angle of P-wave in lower medium (in degrees)
+        type j1 = float
         j1 = incidence angle of S-wave in upper medium (in degrees)
+        type j2 = float
         j2 = incidence angle of S-wave in lower medium (in degrees)
-        p = ray parameter
+        type p = float
+        p = ray parameter (in s/m)
     Output:
-        4 x 4 numpy array
+        type N = 4 x 4 numpy array
+        N = Eq. 5.37 and Fig. 5.9 from Aki and Richards
     """
     i1 = i1 * pi / 180.0
     i2 = i2 * pi / 180.0

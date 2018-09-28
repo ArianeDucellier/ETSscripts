@@ -20,6 +20,8 @@ longrange/variance_Shelly/*
 longrange/varianceresiduals_Plourde/*
 longrange/varianceresiduals_Shelly/*
 notebooks/.ipynb_checkpoints
+raytracing/.ipynb_checkpoints
+raytracing/__pycache__/*
 slowslip/__pycache__/*
 slowslip/*.eps
 slowslip/CLRS/*
