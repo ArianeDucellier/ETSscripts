@@ -14,7 +14,7 @@ import pickle
 from stacking import linstack, powstack, PWstack
 
 def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
-        Tmax, amp, n1, n2, ncor, tmin, tmax):
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax):
     """
     This function plots the cross correlations computed with
     stack_ccorr_tremor and the autocorrelations computed with
@@ -31,9 +31,9 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
         type_stack = Type of stack ('lin', 'pow', 'PWS')
         type w = float
         w = Power of the stack (for 'pow' and 'PWS')
-         type cc_stack = string
+        type cc_stack = string
         cc_stack = Type of stack ('lin', 'pow', 'PWS') over tremor windows
-       type Tmax = float
+        type Tmax = float
         Tmax = Maximum time lag for cross correlation plot
         type amp = float
         amp = Amplification factor of cross correlation for plotting
@@ -47,6 +47,10 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
         tmin = Minimum time lag for comparing cross correlation with the stack
         type tmax = float
         tmax = Maximum time lag for comparing cross correlation with the stack
+        type RMSmin = float
+        RMSmin = Minimum time lag to compute the RMS
+        type RMSmax = float
+        RMSmax = Maximum time lag to compute the RMS
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
@@ -79,14 +83,22 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
     ccmaxEW = np.zeros(nt)
     cc0EW = np.zeros(nt)
     timedelayEW = np.zeros(nt)
+    rmsEW = np.zeros(nt)
     ccmaxNS = np.zeros(nt)
     cc0NS = np.zeros(nt)
     timedelayNS = np.zeros(nt)
+    rmsNS = np.zeros(nt)
     # Windows of the cross correlation to look at
     i0 = int((len(EWstack) - 1) / 2)
     ibegin = i0 + int(tmin / EWstack.stats.delta)
     iend = i0 + int(tmax / EWstack.stats.delta) + 1
+    rmsb = i0 + int(RMSmin / EWstack.stats.delta)
+    rmse = i0 + int(RMSmax / EWstack.stats.delta) + 1
     for i in range(0, nt):
+        rmsEW[i] = np.max(np.abs(EW_UD[i][ibegin : iend])) / \
+            np.sqrt(np.mean(np.square(EW_UD[i][rmsb:rmse])))       
+        rmsNS[i] = np.max(np.abs(NS_UD[i][ibegin : iend])) / \
+            np.sqrt(np.mean(np.square(NS_UD[i][rmsb:rmse])))
         # Cross correlate cc for EW with stack       
         cc_EW = correlate(EW_UD[i][ibegin : iend], EWstack[ibegin : iend], \
             ncor)
@@ -112,10 +124,14 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
         order = np.flip(np.argsort(np.abs(timedelayEW)), axis=0)
     elif (type_sort == 'timedelayNS'):
         order = np.flip(np.argsort(np.abs(timedelayNS)), axis=0)
+    elif (type_sort == 'rmsEW'):
+        order = np.argsort(rmsEW)
+    elif (type_sort == 'rmsNS'):
+        order = np.argsort(rmsNS)
     else:
         raise ValueError( \
             'Type of ranking must be ccmaxEW, ccmaxNS, cc0EW, cc0NS, ' + \
-            'timedelayEW or timedelayNS')
+            'timedelayEW, timedelayNS, rmsEW or rmsNS')
     # Plot cross correlations
     plt.figure(1, figsize=(20, 15))  
     ax1 = plt.subplot(121)
@@ -221,156 +237,194 @@ if __name__ == '__main__':
     ncor = 40
     tmin = 4.0
     tmax = 6.0
+    RMSmin = 12.0
+    RMSmax = 14.0
 
     # Linear stack - Linear stack
     type_stack = 'lin'
     cc_stack = 'lin'
     amp = 10.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # Linear stack - Power stack
     type_stack = 'lin'
     cc_stack = 'pow'
     amp = 10.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # Linear stack - PWS stack
     type_stack = 'lin'
     cc_stack = 'PWS'
     amp = 10.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # Power stack - Linear stack
     type_stack = 'pow'
     cc_stack = 'lin'
     amp = 2.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # Power stack - Power stack
     type_stack = 'pow'
     cc_stack = 'pow'
     amp = 2.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # Power stack - PWS stack
     type_stack = 'pow'
     cc_stack = 'PWS'
     amp = 2.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # PWS stack - Linear stack
     type_stack = 'PWS'
     cc_stack = 'lin'
     amp = 50.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # PWS stack - Power stack
     type_stack = 'PWS'
     cc_stack = 'pow'
     amp = 50.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
 
     # PWS stack - PWS stack
     type_stack = 'PWS'
     cc_stack = 'PWS'
     amp = 50.0
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxEW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'ccmaxNS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0EW', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'cc0NS', \
-        Tmax, amp, n1, n2, ncor, tmin, tmax)
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayEW', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
     plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, \
-        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax)
+        'timedelayNS', Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsEW', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)
+    plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, 'rmsNS', \
+        Tmax, amp, n1, n2, ncor, tmin, tmax, RMSmin, RMSmax)

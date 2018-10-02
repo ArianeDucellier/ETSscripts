@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{AKI_2002}
+K.~Aki and P.G. Richards.
+\newblock {\em Quantitative Sesimology}.
+\newblock University Science Books, 2nd edition edition, 2002.
+
 \bibitem{ALB_2011}
 Sequoia Alba.
 \newblock {ETS} in tidal records.
@@ -136,6 +141,13 @@ M.~La~Rocca, K.C. Creager, D.~Galluzzo, S.~Malone, J.E. Vidale, J.R. Sweet, and
 \newblock {\em Science}, 323:620--623, January 2009.
 \newblock doi:10.1126/science.1167112.
 
+\bibitem{MCC_2006}
+P.A. McCrory, J.L. Blair, D.H. Oppenheimer, and S.R. Walter.
+\newblock Depth to the {Juan} de {Fuca} slab beneath the {Cascadia} subduction
+  margin - a {3-D} model sorting earthquakes.
+\newblock Technical Report Series 91, U.S. Geological Survey, 2006.
+\newblock ISBN: 0-607-97922-4.
+
 \bibitem{MEL_2005}
 T.I. Melbourne, W.M. Szeliga, M.M. Miller, and V.M. Santillan.
 \newblock Extent and duration of the 2003 {Cascadia} slow earthquake.
@@ -152,6 +164,13 @@ Rosanne Nikolaids.
 \newblock {\em Observation of geodetic and seismic deformation with the
   {Global} {Positioning} {System}}.
 \newblock PhD thesis, University of California, San Diego, 2002.
+
+\bibitem{NIK_2009}
+A.~Nikulin, V.~Levin, and J.~Park.
+\newblock Receiver function study of the {Cascadia} megathrust: Evidence for
+  localized serpentinization.
+\newblock {\em Geochemistry, Geophysics, Geosystems}, 10:Q07004, 2009.
+\newblock doi:10.1029/2009GC002376.
 
 \bibitem{NOW_2013}
 R.L. Nowack and M.G. Bostock.
