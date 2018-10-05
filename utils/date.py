@@ -4,7 +4,7 @@ This module contains function to convert dates in appropriate format
 
 from datetime import datetime, timedelta
 
-def matlab2ymdhms(time):
+def matlab2ymdhms(time, roundsec=True):
     """
     Convert Matlab format to year/month/day/hour/minute/second
 
@@ -13,7 +13,7 @@ def matlab2ymdhms(time):
         time = Number of days since January 1, 0000 (Matlab format)
     Output:
         type output = tuple of 6 integers
-        output = year, month, day, hour, minute, second
+        output = year, month, day, hour, minute, second, (microsecond)
     """    
     myday = datetime.fromordinal(int(time)) + \
         timedelta(days=time % 1) - timedelta(days=366)
@@ -24,17 +24,38 @@ def matlab2ymdhms(time):
     minute = myday.minute
     second = myday.second
     microsecond = myday.microsecond
-    rsecond = int(round(second + microsecond / 1000000.0))
-    if (rsecond == 60):
-        minute = minute + 1
-        rsecond = 0
-    if (minute == 60):
-        hour = hour + 1
-        minute = 0
-    if (hour == 24):
-        day = day + 1
-        hour = 0
-    return (year, month, day, hour, minute, rsecond)
+    if (roundsec==True):
+        rsecond = int(round(second + microsecond / 1000000.0))
+        if (rsecond == 60):
+            minute = minute + 1
+            rsecond = 0
+        if (minute == 60):
+            hour = hour + 1
+            minute = 0
+        if (hour == 24):
+            day = day + 1
+            hour = 0
+        if ((month in [1, 3, 5, 7, 8, 10, 12]) and (day == 32)):
+            month = month + 1
+            day = 1
+        elif ((month in [4, 6, 9, 11]) and (day == 31)):
+            month = month + 1
+            day = 1
+        else:
+            if (((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0)):
+                if (day == 30):
+                    month = month + 1
+                    day = 1
+            else:
+                if (day == 29):
+                    month = month + 1
+                    day = 1
+        if (month == 13):
+            year = year + 1
+            month = 1
+        return (year, month, day, hour, minute, rsecond)
+    else:
+        return (year, month, day, hour, minute, second, microsecond)
 
 def ymdhms2matlab(year, month, day, hour, minute, second):
     """
