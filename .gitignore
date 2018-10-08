@@ -20,7 +20,10 @@ data/PANGA/*
 data/Shelly_2017/LFEdistribution/*
 data/Shelly_2017/timeseries/*
 data/Shelly_2017/*.txt
-data/Sweet_2014/*
+data/Sweet_2014/catalogs/*
+data/Sweet_2014/LFEdistribution/*
+data/Sweet_2014/timeseries/*
+data/Sweet_2014/*.m
 data/timelags/*
 data/.DS_Store
 longrange/__pycache__/*

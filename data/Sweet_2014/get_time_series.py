@@ -1,5 +1,5 @@
 """
-This script looks at the catalog from Chestler and Creager (2017)) and
+This script looks at the catalog from Sweet (2014) and
 transform the LFE detections for each template into a time series
 """
 
@@ -30,17 +30,23 @@ def get_time_series(n, window, tbegin, tend):
         X = Time series with number of LFEs per time window
     """
     # Get the time of LFE detections
-    data = loadmat('LFEsAll.mat')
-    LFEs = data['LFEs'][n]
-    LFEtime = LFEs['peakTimes'][0]
+    data = loadmat('catalogs/LFE' + str(n) + 'catalog.mat')
+    if (n <= 4):
+        LFEtime = data['peakTimes'][0]
+    else:
+        LFEtime = data['peakTimes']
     dt = tend - tbegin
     duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
     nw = int(duration / window)
     X = np.zeros(nw, dtype=int)
     # Loop on LFEs
     for i in range(0, np.shape(LFEtime)[0]):
-        (myYear, myMonth, myDay, myHour, myMinute, mySecond, myMicrosecond) = \
-            matlab2ymdhms(LFEtime[i][0], False)
+        if (n <= 4):
+            (myYear, myMonth, myDay, myHour, myMinute, mySecond, \
+                 myMicrosecond) = matlab2ymdhms(LFEtime[i], False)
+        else:
+            (myYear, myMonth, myDay, myHour, myMinute, mySecond, \
+                 myMicrosecond) = matlab2ymdhms(LFEtime[i][0], False)
         t = datetime(myYear, myMonth, myDay, myHour, myMinute, mySecond, \
             myMicrosecond)
         # Add LFE to appropriate time window
@@ -54,22 +60,20 @@ def get_time_series(n, window, tbegin, tend):
 
 if __name__ == '__main__':
 
-    # Get the names of the template detection files
-    data = loadmat('LFEsAll.mat')
-    LFEs = data['LFEs']
-    nt = len(LFEs)
+    # Number of LFE families
+    nf = 9
 
     # Beginning and end of the period we are looking at
-    tbegin = datetime(2009, 6, 1, 0, 0, 0)
-    tend = datetime(2011, 9, 1, 0, 0, 0)
+    tbegin = datetime(2006, 10, 1, 0, 0, 0)
+    tend = datetime(2011, 10, 1, 0, 0, 0)
 
     # We construct the time series by counting the number of LFEs
     # per one-minute-long time window
     window = 60.0
 
     # Loop on templates
-    for n in range(0, nt):
-        X = get_time_series(n, window, tbegin, tend)
-        filename = LFEs[n]['name'][0][0]
+    for n in range(0, nf):
+        X = get_time_series(n + 1, window, tbegin, tend)
+        filename = 'LFE' + str(n + 1)
         output = 'timeseries/{}.pkl'.format(filename)
         pickle.dump([window, tbegin, tend, X], open(output, 'wb'))

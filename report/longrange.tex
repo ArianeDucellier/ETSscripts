@@ -4,6 +4,8 @@
 
 \chapter{Long-range dependence}
 
+\section{What is long-range dependence?}
+
 \paragraph{Time series:} Any sequence of observations associated with an ordered independent variable $t$. For the analyses carried out in this report, we assume that the time series is defined essentially over a range of integers (usually $t = 0 , 1 , ... , N - 1$, where $N$ denotes the number of values in the time series).
 
 \paragraph{Random variable:} A real-valued random variable is a function, or mapping, from the sample space of possible outcomes of a random experiment to the real line.
@@ -31,5 +33,13 @@
 \begin{itemize}
 \item Figure 2D of Frank \textit{et al.} (2016 ~\cite{FRA_2016}). We have $\log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)$ with $\alpha = - 0.5$
 \end{itemize}
+
+\section{Estimators}
+
+Let us define a time series $X_i$, of length $N$. We define the corresponding aggregated series:
+
+\begin{equation}
+X^{\left( m \right)} \left( k \right) = \frac{1}{m} \sum_{i = \left( k - 1 \right) m + 1}^{k m} X_i \text{, } k = 1 , 2 , ... , \left[ \frac{N}{m} \right]
+\end{equation}
 
 \end{document}

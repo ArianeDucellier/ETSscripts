@@ -9,10 +9,24 @@
 \begin{itemize}
 	\item Some generalities about slow slip and tremor
 	\item A few words about what wavelets are
-	\item Short bibliography about what has been done (master Seqoia Alba + papers by Ohtani and Wei)
+	\item Short bibliography about what has been done (master Sequoia Alba + papers by Ohtani and Wei)
 \end{itemize}
 
-The goal of this research work is to study the change over time in the spectral content of recordings of surface displacement by GPS stations, in order to detect slow slip events. We hope that by combining wavelet analyses of several channels and several stations, we will be able to detect smaller inter-ETS events, which can currently be observed in the tremor catalogs, but not in the GPS data.
+The goal of this research work is to study the change over time in the spectral content of recordings of surface displacement by GPS stations, in order to detect slow slip events.
+
+What I hope to do with that:
+
+\begin{itemize}
+
+\item Maybe by combining wavelet analyses of several channels and several stations, we will be able to detect smaller inter-ETS events, which can currently be observed in the tremor catalogs, but not in the GPS data.
+
+\item Maybe by looking at the wavelet details at larger scale, we could see some long term events (but we need to find a way to deal with the missing data before that).
+
+\item We could use wavelets to do some denoising of the vertical component of the GPS data. That could be useful to invert the slip at the surface and get the maximum depth of the slip on the plate boundary.
+
+\item Which region would be more interesting to study? All Cascadia? Only some areas not very well covered?
+
+\end{itemize} 
 
 \chapter{Data}
 
@@ -276,11 +290,22 @@ For the 6\textsuperscript{th} level detail, we can see a peak corresponding to t
 
 \chapter{Discussion and things to do}
 
+Things to do:
+
 \begin{itemize}
 
 \item Change point detection: Can we detect a big ETS event starting, and when can we detect it? Before it becomes obvious due to the tremor recordings? We could test other wavelets (Daubechies with extremal phase may be a good idea), or look at the wavelet variance (see paper by Eric Moulines - Kouamo et al., 2011, with correction of the mistake in Percival's paper).
 
 \item Plot of the cumulative number of tremor: How to get the exact timing of the inflection point / change point for putting it on the wavelet plot?
+
+\item Implementation of matching pursuit: I hope to see among the first basis vectors the ones at level 5 and 6 that could correspond to the big ETS events, and maybe some others at level 4 that could correspond to smaller and shorter inter-ETS events.
+
+\item Looking at what could do for the missing data points:
+\begin{itemize}
+	\item Linear or more complex interpolation
+	\item Simply replace them with Gaussian noise
+	\item Look at what we can do with kriging
+\end{itemize}
 
 \end{itemize}
 
