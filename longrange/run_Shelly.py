@@ -4,6 +4,7 @@ from the module test_long_range with the LFE catalog of Shelly (2017)
 """
 
 import numpy as np
+import os
 import pandas as pd
 
 from test_long_range import variance_moulines
@@ -22,21 +23,52 @@ families = LFEtime['ID'].cat.categories.tolist()
 
 dirname = '../data/Shelly_2017/timeseries/'
 
-# We will look at the following window sizes (in minutes)
-m = np.array([1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, \
-    20000, 50000, 100000], dtype=int)
+# Absolute value method
+#newpath = 'absolutevalue' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-# Loop on LFE families
+m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
+    190, 244, 314, 403, 518, 665, 854, 1096, 1408, 1808, 2321, 2980, \
+    3827, 4914, 6310, 8103, 10404, 13359, 17154, 22026, 28282, 36315, \
+    46630, 59874, 76879, 98715, 126753, 162754, 208981, 268337, 344551], \
+    dtype=int)
+
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    H = absolutevalue(dirname, filename, m)
+
+#os.rename('absolutevalue', 'absolutevalue_Shelly')
+
+# Variance method
+#newpath = 'variance' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    d = variance(dirname, filename, m)
+
+#os.rename('variance', 'variance_Shelly')
+
+# Variance method (from Moulines's paper)
+#newpath = 'variancemoulines' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
 #for i in range(0, len(families)):
 #    filename = families[i]
 #    H = variance_moulines(dirname, filename, m)
-#    H = absolutevalue(dirname, filename, m)
-#    d = variance(dirname, filename, m)
 
-# For variance residuals, we look at the following sizes (in minutes)
-m = np.array([50, 100, 200, 500, 1000, 2000, 5000, 10000, \
-    20000, 50000, 100000], dtype=int)
+#os.rename('variancemoulines', 'variancemoulines_Shelly')
+
+# Variance of residuals method
+newpath = 'varianceresiduals' 
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
 
 for i in range(0, len(families)):
     filename = families[i]
     d = varianceresiduals(dirname, filename, m, 'mean')
+
+os.rename('varianceresiduals', 'varianceresiduals_Shelly')

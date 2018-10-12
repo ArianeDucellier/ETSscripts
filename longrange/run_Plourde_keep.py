@@ -5,14 +5,12 @@ from the module test_long_range with the LFE catalog of Plourde et al. (2015)
 
 import numpy as np
 import os
-import pandas as pd
-import pickle
 
-from test_long_range_parallel import absolutevalue
-from test_long_range_parallel import variance
-from test_long_range_parallel import variance_moulines
-from test_long_range_parallel import varianceresiduals
-from test_long_range_parallel import RS
+from test_long_range import absolutevalue
+from test_long_range import variance
+from test_long_range import variance_moulines
+from test_long_range import varianceresiduals
+from test_long_range import RS
 
 # Get the names of the template detection files
 templates = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
@@ -23,14 +21,6 @@ templates = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
 
 dirname = '../data/Plourde_2015/timeseries/'
 
-# Create pandas dataframe to store the results
-families = []
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    families.append(filename)
-
-df = pd.DataFrame(data={'family': families})
- 
 # Absolute value method
 #newpath = 'absolutevalue' 
 #if not os.path.exists(newpath):
@@ -40,76 +30,52 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
     190, 244, 314, 403, 518, 665, 854, 1096, 1408, 1808, 2321, 2980], \
     dtype=int)
 
-#H_absval = np.zeros(np.shape(templates)[0])
-
-#for i in range(0, 1): #np.shape(templates)[0]):
+#for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)   
-#    H_absval[i] = absolutevalue(dirname, filename, m, False)
+#    H = absolutevalue(dirname, filename, m)
 
 #os.rename('absolutevalue', 'absolutevalue_Plourde')
-
-#df['absval'] = H_absval
 
 # Variance method
 #newpath = 'variance' 
 #if not os.path.exists(newpath):
 #    os.makedirs(newpath)
 
-#d_var = np.zeros(np.shape(templates)[0])
-
-#for i in range(0, 1): #np.shape(templates)[0]):
+#for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)   
-#    d_var[i] = variance(dirname, filename, m, False)
+#    d = variance(dirname, filename, m)
 
 #os.rename('variance', 'variance_Plourde')
-
-#df['var'] = d_var
 
 # Variance method (from Moulines's paper)
 #newpath = 'variancemoulines' 
 #if not os.path.exists(newpath):
 #    os.makedirs(newpath)
 
-#H_varm = np.zeros(np.shape(templates)[0])
-
-#for i in range(0, 1): #np.shape(templates)[0]):
+#for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)   
-#    H_varm[i] = variance_moulines(dirname, filename, m, False)
+#    H = variance_moulines(dirname, filename, m)
 
 #os.rename('variancemoulines', 'variancemoulines_Plourde')
-
-#df['varm'] = H_varm
 
 # Variance of residuals method
 #newpath = 'varianceresiduals' 
 #if not os.path.exists(newpath):
 #    os.makedirs(newpath)
 
-#d_varres = np.zeros(np.shape(templates)[0])
-
-#for i in range(0, 1): #np.shape(templates)[0]):
+#for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)   
-#    d_varres[i] = varianceresiduals(dirname, filename, m, 'mean', False)
+#    d = varianceresiduals(dirname, filename, m, 'mean')
 
 #os.rename('varianceresiduals', 'varianceresiduals_Plourde')
-
-#df['varres'] = d_varres
 
 # R/S method
 newpath = 'RS' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-d_RS = np.zeros(np.shape(templates)[0])
-
-for i in range(0, 1): #np.shape(templates)[0]):
+for i in range(0, np.shape(templates)[0]):
     filename = templates[i][0].astype(str)   
-    d_RS[i] = RS(dirname, filename, m, False)
+    d = RS(dirname, filename, m)
 
 os.rename('RS', 'RS_Plourde')
-
-df['varRS'] = d_RS
-
-# Save dataframe into file
-filename = 'Plourde_2015.pkl'
-pickle.dump([df], open(filename, 'wb'))
