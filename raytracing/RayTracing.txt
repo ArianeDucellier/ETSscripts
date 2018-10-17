@@ -8,340 +8,340 @@ Time lag between direct SH-wave and direct P-wave: 5.33385577372604
 Difference in time lag -0.010946548302179337 s (500m), -0.035748535429385164 s (1800m), -0.057723550462625006 s (3300m)
 
 Time lag with direct P-wave
-Amplitude ratio of SH-wave (mid-slab) / direct P-wave: 0.3158557831593951
+Amplitude ratio of SH-wave (mid-slab) / direct P-wave: -0.0
 Time lag between SH-wave (mid-slab) and direct P-wave: 8.364509632327803
 Difference in time lag 0.12307795540613853 s (500m), 0.08706128397360935 s (1800m), 0.037170064220211074 s (3300m)
 
-Amplitude ratio of SH-wave (Moho) / direct P-wave: 0.14484552715364538
-Time lag between SH-wave (Moho) and direct P-wave: 10.478687703687854
-Difference in time lag 0.14007873782913194 s (500m), 0.10406206639660276 s (1800m), 0.054170846643204484 s (3300m)
+Amplitude ratio of SH-wave (Moho) / direct P-wave: 0.4567713025609947
+Time lag between SH-wave (Moho) and direct P-wave: 11.765528113952772
+Difference in time lag 0.13162489474215988 s (500m), 0.0956082233096307 s (1800m), 0.04571700355623243 s (3300m)
 
-Amplitude ratio of ray PPP / direct P-wave: 0.40561178560783173
+Amplitude ratio of ray PPP / direct P-wave: 1.4068776137102907e-16
 Time lag between ray PPP and direct P-wave: 1.3431295696301087
 Difference in time lag 0.08276807163269417 s (500m), 0.0764931411987968 s (1800m), 0.06091931490536151 s (3300m)
 
-Amplitude ratio of ray PPS / direct P-wave: -0.04655921241932422
+Amplitude ratio of ray PPS / direct P-wave: 2.7689740934820258e-17
 Time lag between ray PPS and direct P-wave: 6.655084908917602
 Difference in time lag 0.17164359225611392 s (500m), 0.13544914184911594 s (1800m), 0.08535279250979233 s (3300m)
 
-Amplitude ratio of ray PSP / direct P-wave: -0.0034221341524257884
+Amplitude ratio of ray PSP / direct P-wave: -1.2483319368386455e-18
 Time lag between ray PSP and direct P-wave: 2.192269782701886
 Difference in time lag 0.08085972651112527 s (500m), 0.07458479607722968 s (1800m), 0.05901096978379261 s (3300m)
 
-Amplitude ratio of ray PSS / direct P-wave: -0.17649496573180357
+Amplitude ratio of ray PSS / direct P-wave: -4.344004479513836e-17
 Time lag between ray PSS and direct P-wave: 7.5093628029497195
 Difference in time lag 0.1653833994557008 s (500m), 0.12918894904869926 s (1800m), 0.07909259970937565 s (3300m)
 
-Amplitude ratio of ray SPP / direct P-wave: -0.03643623949388003
+Amplitude ratio of ray SPP / direct P-wave: -1.1105325986997767e-18
 Time lag between ray SPP and direct P-wave: 2.1922880405538345
 Difference in time lag 0.05017256304205908 s (500m), 0.04405394807507523 s (1800m), 0.02866048578192082 s (3300m)
 
-Amplitude ratio of ray SPS / direct P-wave: 0.0062142137482725564
+Amplitude ratio of ray SPS / direct P-wave: -1.2669496590312141e-18
 Time lag between ray SPS and direct P-wave: 7.509345727519034
 Difference in time lag 0.12830228487422346 s (500m), 0.09228561344169339 s (1800m), 0.04239439368829512 s (3300m)
 
-Amplitude ratio of ray SSP / direct P-wave: -0.010875784405875843
+Amplitude ratio of ray SSP / direct P-wave: 1.567515253191714e-18
 Time lag between ray SSP and direct P-wave: 3.0415913948173126
 Difference in time lag 0.04903975258461024 s (500m), 0.042921137617624616 s (1800m), 0.027527675324473755 s (3300m)
 
-Amplitude ratio of ray SSS / direct P-wave: -0.2580510249246977
+Amplitude ratio of ray SSS / direct P-wave: 9.699131959590822e-17
 Time lag between ray SSS and direct P-wave: 8.364509632327803
 Difference in time lag 0.12307795540613853 s (500m), 0.08706128397360935 s (1800m), 0.037170064220211074 s (3300m)
 
-Amplitude ratio of ray PPPPP / direct P-wave: 0.07986299061312803
-Time lag between ray PPPPP and direct P-wave: 2.3673330672329973
-Difference in time lag 0.09346344895013026 s (500m), 0.08718851851623288 s (1800m), 0.0716146922227976 s (3300m)
+Amplitude ratio of ray PPPPP / direct P-wave: 0.4823247125120734
+Time lag between ray PPPPP and direct P-wave: 2.8515484931383375
+Difference in time lag 0.08891084318757159 s (500m), 0.08263591275367599 s (1800m), 0.06706208646023892 s (3300m)
 
-Amplitude ratio of ray PPPPS / direct P-wave: -0.006023125168013463
-Time lag between ray PPPPS and direct P-wave: 7.654698792012847
-Difference in time lag 0.20165380561027746 s (500m), 0.16545935520327948 s (1800m), 0.11536300586395587 s (3300m)
+Amplitude ratio of ray PPPPS / direct P-wave: -0.04529881628903737
+Time lag between ray PPPPS and direct P-wave: 8.14822806250223
+Difference in time lag 0.18989060009207037 s (500m), 0.15369614968507328 s (1800m), 0.10359980034574967 s (3300m)
 
-Amplitude ratio of ray PPPSP / direct P-wave: 0.00010168778494329892
-Time lag between ray PPPSP and direct P-wave: 3.2117475949550522
-Difference in time lag 0.09529874050886633 s (500m), 0.08902381007496896 s (1800m), 0.07344998378153544 s (3300m)
+Amplitude ratio of ray PPPSP / direct P-wave: 0.0
+Time lag between ray PPPSP and direct P-wave: 3.69567110020009
+Difference in time lag 0.09103805540661192 s (500m), 0.08476312497271454 s (1800m), 0.06918929867927925 s (3300m)
 
-Amplitude ratio of ray PPPSS / direct P-wave: 0.004973155149149247
-Time lag between ray PPPSS and direct P-wave: 8.496765846699326
-Difference in time lag 0.205836570204589 s (500m), 0.16964211979759192 s (1800m), 0.11954577045826831 s (3300m)
+Amplitude ratio of ray PPPSS / direct P-wave: 0.0
+Time lag between ray PPPSS and direct P-wave: 8.989224979786723
+Difference in time lag 0.19514350208837072 s (500m), 0.15894905168137363 s (1800m), 0.10885270234205002 s (3300m)
 
-Amplitude ratio of ray PPSPP / direct P-wave: 0.002066982337707457
-Time lag between ray PPSPP and direct P-wave: 2.927110918749398
-Difference in time lag 0.08755516935027963 s (500m), 0.08128023891638403 s (1800m), 0.06570641262294696 s (3300m)
+Amplitude ratio of ray PPSPP / direct P-wave: -0.0
+Time lag between ray PPSPP and direct P-wave: 3.807819930090557
+Difference in time lag 0.08354809472773184 s (500m), 0.07727316429383624 s (1800m), 0.06169933800040095 s (3300m)
 
-Amplitude ratio of ray PPSPS / direct P-wave: -0.00047351844227236026
-Time lag between ray PPSPS and direct P-wave: 8.22604217452
-Difference in time lag 0.18643117372903717 s (500m), 0.15023672332204008 s (1800m), 0.10014037398271292 s (3300m)
+Amplitude ratio of ray PPSPS / direct P-wave: 0.0
+Time lag between ray PPSPS and direct P-wave: 9.115730610628848
+Difference in time lag 0.1749636595397881 s (500m), 0.13876920913278923 s (1800m), 0.08867285979346562 s (3300m)
 
-Amplitude ratio of ray PPSSP / direct P-wave: -0.0020334559975095264
-Time lag between ray PPSSP and direct P-wave: 3.7712118542753226
-Difference in time lag 0.08970405310514806 s (500m), 0.08342912267125069 s (1800m), 0.0678552963778154 s (3300m)
+Amplitude ratio of ray PPSSP / direct P-wave: -0.004552446599640345
+Time lag between ray PPSSP and direct P-wave: 4.651667573960061
+Difference in time lag 0.0859502701390209 s (500m), 0.0796753397051253 s (1800m), 0.06410151341168824 s (3300m)
 
-Amplitude ratio of ray PPSSS / direct P-wave: -0.10802795313391574
-Time lag between ray PPSSS and direct P-wave: 9.066970110685581
-Difference in time lag 0.1917530568442487 s (500m), 0.15555860643724984 s (1800m), 0.10546225709792445 s (3300m)
+Amplitude ratio of ray PPSSS / direct P-wave: -0.24094055440534953
+Time lag between ray PPSSS and direct P-wave: 9.955604377102436
+Difference in time lag 0.1813397123469933 s (500m), 0.14514526193999266 s (1800m), 0.09504891260066906 s (3300m)
 
-Amplitude ratio of ray PSPPP / direct P-wave: 0.0018801134156813358
-Time lag between ray PSPPP and direct P-wave: 2.921327859281601
-Difference in time lag 0.09201196944527013 s (500m), 0.08573703901137453 s (1800m), 0.07016321271793746 s (3300m)
+Amplitude ratio of ray PSPPP / direct P-wave: -9.71206324644641e-19
+Time lag between ray PSPPP and direct P-wave: 3.8029700526990586
+Difference in time lag 0.08741592344981441 s (500m), 0.08114099301591704 s (1800m), 0.06556716672248175 s (3300m)
 
-Amplitude ratio of ray PSPPS / direct P-wave: -0.00038224241232607864
-Time lag between ray PSPPS and direct P-wave: 8.212051710330908
-Difference in time lag 0.1980341085823376 s (500m), 0.16183965817534052 s (1800m), 0.11174330883601691 s (3300m)
+Amplitude ratio of ray PSPPS / direct P-wave: 0.0
+Time lag between ray PSPPS and direct P-wave: 9.103266389265826
+Difference in time lag 0.18565999895190188 s (500m), 0.14946554854490124 s (1800m), 0.09936919920557763 s (3300m)
 
-Amplitude ratio of ray PSPSP / direct P-wave: 2.589939875951159e-06
-Time lag between ray PSPSP and direct P-wave: 3.76558517655494
-Difference in time lag 0.09400447145272395 s (500m), 0.08772954101882657 s (1800m), 0.07215571472539128 s (3300m)
+Amplitude ratio of ray PSPSP / direct P-wave: -0.0
+Time lag between ray PSPSP and direct P-wave: 4.646953552793275
+Difference in time lag 0.08968224263638902 s (500m), 0.08340731220249165 s (1800m), 0.06783348590905636 s (3300m)
 
-Amplitude ratio of ray PSPSS / direct P-wave: 0.00031546456169111463
-Time lag between ray PSPSS and direct P-wave: 9.053561747164945
-Difference in time lag 0.20277389102909282 s (500m), 0.16657944062209573 s (1800m), 0.11648309128277035 s (3300m)
+Amplitude ratio of ray PSPSS / direct P-wave: -0.0
+Time lag between ray PSPSS and direct P-wave: 9.943710164985074
+Difference in time lag 0.19146604251344357 s (500m), 0.15527159210644648 s (1800m), 0.10517524276712287 s (3300m)
 
-Amplitude ratio of ray PSSPP / direct P-wave: -0.0003649797035698671
-Time lag between ray PSSPP and direct P-wave: 3.4818954978741443
-Difference in time lag 0.08531390276927908 s (500m), 0.07903897233538171 s (1800m), 0.0634651460419482 s (3300m)
+Amplitude ratio of ray PSSPP / direct P-wave: -0.0
+Time lag between ray PSSPP and direct P-wave: 4.759735525296114
+Difference in time lag 0.08155913934514025 s (500m), 0.0752842089112411 s (1800m), 0.05971038261780759 s (3300m)
 
-Amplitude ratio of ray PSSPS / direct P-wave: 8.897997211246632e-05
-Time lag between ray PSSPS and direct P-wave: 8.786298141988553
-Difference in time lag 0.17990842755060754 s (500m), 0.14371397714360512 s (1800m), 0.09361762780428329 s (3300m)
+Amplitude ratio of ray PSSPS / direct P-wave: 0.0
+Time lag between ray PSSPS and direct P-wave: 10.07277220485484
+Difference in time lag 0.16872979093722051 s (500m), 0.13253534053022342 s (1800m), 0.08243899119089981 s (3300m)
 
-Amplitude ratio of ray PSSSP / direct P-wave: 0.0003590579168161949
-Time lag between ray PSSSP and direct P-wave: 4.325804012206295
-Difference in time lag 0.08765520771791913 s (500m), 0.08138027728402353 s (1800m), 0.06580645099058824 s (3300m)
+Amplitude ratio of ray PSSSP / direct P-wave: -0.0
+Time lag between ray PSSSP and direct P-wave: 5.603419644759671
+Difference in time lag 0.08412483916237434 s (500m), 0.07784990872847697 s (1800m), 0.062276082435043456 s (3300m)
 
-Amplitude ratio of ray PSSSS / direct P-wave: 0.017674791667206275
-Time lag between ray PSSSS and direct P-wave: 9.626410806377233
-Difference in time lag 0.1860455824427163 s (500m), 0.14985113203571565 s (1800m), 0.0997547826963956 s (3300m)
+Amplitude ratio of ray PSSSS / direct P-wave: -0.0
+Time lag between ray PSSSS and direct P-wave: 10.91188626553339
+Difference in time lag 0.17586554953946276 s (500m), 0.13967109913246567 s (1800m), 0.08957474979314206 s (3300m)
 
-Amplitude ratio of ray SPPPP / direct P-wave: 0.0014673902778736623
-Time lag between ray SPPPP and direct P-wave: 3.2155559155430895
-Difference in time lag 0.05526223013512066 s (500m), 0.04914361516813681 s (1800m), 0.033750152874984174 s (3300m)
+Amplitude ratio of ray SPPPP / direct P-wave: 0.0
+Time lag between ray SPPPP and direct P-wave: 3.7000831624547112
+Difference in time lag 0.053153931425814704 s (500m), 0.047035316458830856 s (1800m), 0.03164185416567822 s (3300m)
 
-Amplitude ratio of ray SPPPS / direct P-wave: -0.0001539329910123296
-Time lag between ray SPPPS and direct P-wave: 8.504865251594136
-Difference in time lag 0.1492589288327224 s (500m), 0.11324225740019145 s (1800m), 0.06335103764679495 s (3300m)
+Amplitude ratio of ray SPPPS / direct P-wave: -4.3306565146311137e-19
+Time lag between ray SPPPS and direct P-wave: 8.999956654383347
+Difference in time lag 0.14133167063118535 s (500m), 0.10531499919865617 s (1800m), 0.055423779445261445 s (3300m)
 
-Amplitude ratio of ray SPPSP / direct P-wave: 1.961332664641733e-06
-Time lag between ray SPPSP and direct P-wave: 4.05987497102577
-Difference in time lag 0.05691063784460049 s (500m), 0.05079202287761664 s (1800m), 0.035398560584464 s (3300m)
+Amplitude ratio of ray SPPSP / direct P-wave: 0.0
+Time lag between ray SPPSP and direct P-wave: 4.544079398048958
+Difference in time lag 0.05512515902372783 s (500m), 0.04900654405674221 s (1800m), 0.033613081763591346 s (3300m)
 
-Amplitude ratio of ray SPPSS / direct P-wave: 0.00012706195858509475
-Time lag between ray SPPSS and direct P-wave: 9.34657813201067
-Difference in time lag 0.1535135116083488 s (500m), 0.11749684017581963 s (1800m), 0.06760562042242135 s (3300m)
+Amplitude ratio of ray SPPSS / direct P-wave: -1.114695552697703e-34
+Time lag between ray SPPSS and direct P-wave: 9.840460602381008
+Difference in time lag 0.14679518582568463 s (500m), 0.11077851439315545 s (1800m), 0.06088729463975717 s (3300m)
 
-Amplitude ratio of ray SPSPP / direct P-wave: 4.271340733577875e-05
-Time lag between ray SPSPP and direct P-wave: 3.7757833232984046
-Difference in time lag 0.0519830271438213 s (500m), 0.04586441217683923 s (1800m), 0.030470949883684817 s (3300m)
+Amplitude ratio of ray SPSPP / direct P-wave: -1.2037091840187707e-35
+Time lag between ray SPSPP and direct P-wave: 4.6568140897141275
+Difference in time lag 0.049605179350662 s (500m), 0.043486564383676374 s (1800m), 0.028093102090523736 s (3300m)
 
-Amplitude ratio of ray SPSPS / direct P-wave: -1.4695266029810157e-05
-Time lag between ray SPSPS and direct P-wave: 9.07807280510368
-Difference in time lag 0.13807501716411963 s (500m), 0.10205834573159045 s (1800m), 0.052167125978192175 s (3300m)
+Amplitude ratio of ray SPSPS / direct P-wave: 3.68700424246139e-36
+Time lag between ray SPSPS and direct P-wave: 9.969249221500046
+Difference in time lag 0.1289737698328679 s (500m), 0.09295709840033872 s (1800m), 0.04306587864694045 s (3300m)
 
-Amplitude ratio of ray SPSSP / direct P-wave: -4.2020461450061993e-05
-Time lag between ray SPSSP and direct P-wave: 4.619762758072752
-Difference in time lag 0.053971055561634174 s (500m), 0.0478524405946521 s (1800m), 0.03245897830149769 s (3300m)
+Amplitude ratio of ray SPSSP / direct P-wave: -2.4971367880553365e-20
+Time lag between ray SPSSP and direct P-wave: 5.500516103207974
+Difference in time lag 0.05187062904897388 s (500m), 0.04575201408199003 s (1800m), 0.03035855178883562 s (3300m)
 
-Amplitude ratio of ray SPSSS / direct P-wave: -0.0030691782469189264
-Time lag between ray SPSSS and direct P-wave: 9.918494336959924
-Difference in time lag 0.14362094850003615 s (500m), 0.10760427706750697 s (1800m), 0.057713057314108696 s (3300m)
+Amplitude ratio of ray SPSSS / direct P-wave: 2.238471289618455e-18
+Time lag between ray SPSSS and direct P-wave: 10.80844896975714
+Difference in time lag 0.13574148476793368 s (500m), 0.0997248133354045 s (1800m), 0.04983359358200623 s (3300m)
 
-Amplitude ratio of ray SSPPP / direct P-wave: -0.0255600148489608
-Time lag between ray SSPPP and direct P-wave: 3.7696432299926252
-Difference in time lag 0.05514334071623672 s (500m), 0.04902472574925287 s (1800m), 0.03363126345610201 s (3300m)
+Amplitude ratio of ray SSPPP / direct P-wave: -0.054170435078905316
+Time lag between ray SSPPP and direct P-wave: 4.651636710409579
+Difference in time lag 0.05257947804134311 s (500m), 0.046460863074357484 s (1800m), 0.031067400781206622 s (3300m)
 
-Amplitude ratio of ray SSPPS / direct P-wave: 0.0032061339124039604
-Time lag between ray SSPPS and direct P-wave: 9.06282695544008
-Difference in time lag 0.14794838104380403 s (500m), 0.11193170961127308 s (1800m), 0.062040489857878356 s (3300m)
+Amplitude ratio of ray SSPPS / direct P-wave: 0.007824387077113542
+Time lag between ray SSPPS and direct P-wave: 9.955480022082963
+Difference in time lag 0.13877085710142723 s (500m), 0.10275418566889805 s (1800m), 0.05286296591549977 s (3300m)
 
-Amplitude ratio of ray SSPSP / direct P-wave: -3.7118736120201496e-05
-Time lag between ray SSPSP and direct P-wave: 4.613787839212853
-Difference in time lag 0.05696619468816877 s (500m), 0.05084757972118492 s (1800m), 0.03545411742803406 s (3300m)
+Amplitude ratio of ray SSPSP / direct P-wave: -2.104968915767954e-20
+Time lag between ray SSPSP and direct P-wave: 5.495479463634299
+Difference in time lag 0.05470418800878285 s (500m), 0.048585573041797225 s (1800m), 0.033192110748646364 s (3300m)
 
-Amplitude ratio of ray SSPSS / direct P-wave: -0.0026451120054807376
-Time lag between ray SSPSS and direct P-wave: 9.90391590160775
-Difference in time lag 0.15282689806829453 s (500m), 0.1168102266357618 s (1800m), 0.06691900688237062 s (3300m)
+Amplitude ratio of ray SSPSS / direct P-wave: 1.915320789731712e-18
+Time lag between ray SSPSS and direct P-wave: 10.795335683312391
+Difference in time lag 0.14488265906415876 s (500m), 0.10886598763162958 s (1800m), 0.058974767878231305 s (3300m)
 
-Amplitude ratio of ray SSSPP / direct P-wave: 0.004517214677652114
-Time lag between ray SSSPP and direct P-wave: 4.330692659074358
-Difference in time lag 0.05104211639852174 s (500m), 0.04492350143153612 s (1800m), 0.029530039138385256 s (3300m)
+Amplitude ratio of ray SSSPP / direct P-wave: -3.477139885576518e-18
+Time lag between ray SSSPP and direct P-wave: 5.608901126824487
+Difference in time lag 0.048497236810694844 s (500m), 0.04237862184371277 s (1800m), 0.026985159550560134 s (3300m)
 
-Amplitude ratio of ray SSSPS / direct P-wave: -0.0006343558765198032
-Time lag between ray SSSPS and direct P-wave: 9.639215348053472
-Difference in time lag 0.13358363027135312 s (500m), 0.09756695883882394 s (1800m), 0.04767573908542566 s (3300m)
+Amplitude ratio of ray SSSPS / direct P-wave: -6.631177091403982e-19
+Time lag between ray SSSPS and direct P-wave: 10.927214976491587
+Difference in time lag 0.12397056901118475 s (500m), 0.08795389757865557 s (1800m), 0.038062677825257296 s (3300m)
 
-Amplitude ratio of ray SSSSP / direct P-wave: -0.004443905589848356
-Time lag between ray SSSSP and direct P-wave: 5.17444792678451
-Difference in time lag 0.053254311880529315 s (500m), 0.04713569691354369 s (1800m), 0.03174223462039283 s (3300m)
+Amplitude ratio of ray SSSSP / direct P-wave: -0.01492250997201011
+Time lag between ray SSSSP and direct P-wave: 6.452421478487099
+Difference in time lag 0.050944348340243195 s (500m), 0.04482573337326112 s (1800m), 0.029432271080108485 s (3300m)
 
-Amplitude ratio of ray SSSSS / direct P-wave: -0.11443318781088953
-Time lag between ray SSSSS and direct P-wave: 10.478687703687854
-Difference in time lag 0.14007873782913194 s (500m), 0.10406206639660276 s (1800m), 0.054170846643204484 s (3300m)
+Amplitude ratio of ray SSSSS / direct P-wave: -0.38099409075594376
+Time lag between ray SSSSS and direct P-wave: 11.765528113952772
+Difference in time lag 0.13162489474215988 s (500m), 0.0956082233096307 s (1800m), 0.04571700355623243 s (3300m)
 
 Time lag with direct S-wave
-Amplitude ratio of SH-wave (mid-slab) / direct S-wave: -0.1805033786182968
+Amplitude ratio of SH-wave (mid-slab) / direct S-wave: 0.0
 Time lag between SH-wave (mid-slab) and direct S-wave: 3.0306538586017613
 Difference in time lag 0.13402450370831964 s (500m), 0.1228098194029954 s (1800m), 0.09489361468283697 s (3300m)
 
-Amplitude ratio of SH-wave (Moho) / direct S-wave: -0.08277545773409897
-Time lag between SH-wave (Moho) and direct S-wave: 5.144831929961812
-Difference in time lag 0.15102528613131305 s (500m), 0.1398106018259888 s (1800m), 0.11189439710583038 s (3300m)
+Amplitude ratio of SH-wave (Moho) / direct S-wave: -0.2610329389680114
+Time lag between SH-wave (Moho) and direct S-wave: 6.431672340226731
+Difference in time lag 0.142571443044341 s (500m), 0.13135675873901675 s (1800m), 0.10344055401885832 s (3300m)
 
-Amplitude ratio of ray PPP / direct S-wave: -0.19450044444504663
+Amplitude ratio of ray PPP / direct S-wave: -6.746310902588197e-17
 Time lag between ray PPP and direct S-wave: -3.9907262040959317
 Difference in time lag 0.09371461993487351 s (500m), 0.11224167662818196 s (1800m), 0.11864286536798652 s (3300m)
 
-Amplitude ratio of ray PPS / direct S-wave: 0.022326243540974275
+Amplitude ratio of ray PPS / direct S-wave: -1.3277885676620617e-17
 Time lag between ray PPS and direct S-wave: 1.3212291351915617
 Difference in time lag 0.18259014055829326 s (500m), 0.1711976772785011 s (1800m), 0.14307634297241734 s (3300m)
 
-Amplitude ratio of ray PSP / direct S-wave: 0.0016409942640102048
+Amplitude ratio of ray PSP / direct S-wave: 5.986046883874726e-19
 Time lag between ray PSP and direct S-wave: -3.1415859910241544
 Difference in time lag 0.09180627481330461 s (500m), 0.11033333150661484 s (1800m), 0.11673452024641762 s (3300m)
 
-Amplitude ratio of ray PSS / direct S-wave: 0.0846335104038117
+Amplitude ratio of ray PSS / direct S-wave: 2.0830528892807417e-17
 Time lag between ray PSS and direct S-wave: 2.175507029223679
 Difference in time lag 0.17632994775788013 s (500m), 0.16493748447808443 s (1800m), 0.13681615017200066 s (3300m)
 
-Amplitude ratio of ray SPP / direct S-wave: 0.017472038601752577
+Amplitude ratio of ray SPP / direct S-wave: 5.325266466163763e-19
 Time lag between ray SPP and direct S-wave: -3.141567733172206
 Difference in time lag 0.06111911134423842 s (500m), 0.0798024835044604 s (1800m), 0.08638403624454583 s (3300m)
 
-Amplitude ratio of ray SPS / direct S-wave: -0.0029798624665313325
+Amplitude ratio of ray SPS / direct S-wave: 6.075323265121452e-19
 Time lag between ray SPS and direct S-wave: 2.1754899537929937
 Difference in time lag 0.1392488331764028 s (500m), 0.12803414887107856 s (1800m), 0.10011794415092012 s (3300m)
 
-Amplitude ratio of ray SSP / direct S-wave: 0.005215195849058965
+Amplitude ratio of ray SSP / direct S-wave: -7.516606376791912e-19
 Time lag between ray SSP and direct S-wave: -2.292264378908728
 Difference in time lag 0.05998630088678958 s (500m), 0.07866967304700978 s (1800m), 0.08525122578709876 s (3300m)
 
-Amplitude ratio of ray SSS / direct S-wave: 0.12374156969364059
+Amplitude ratio of ray SSS / direct S-wave: -4.650963171705102e-17
 Time lag between ray SSS and direct S-wave: 3.0306538586017613
 Difference in time lag 0.13402450370831964 s (500m), 0.1228098194029954 s (1800m), 0.09489361468283697 s (3300m)
 
-Amplitude ratio of ray PPPPP / direct S-wave: -0.038296192862557844
-Time lag between ray PPPPP and direct S-wave: -2.966522706493043
-Difference in time lag 0.1044099972523096 s (500m), 0.12293705394561805 s (1800m), 0.1293382426854226 s (3300m)
+Amplitude ratio of ray PPPPP / direct S-wave: -0.23128610725609117
+Time lag between ray PPPPP and direct S-wave: -2.482307280587703
+Difference in time lag 0.09985739148975092 s (500m), 0.11838444818306115 s (1800m), 0.12478563692286393 s (3300m)
 
-Amplitude ratio of ray PPPPS / direct S-wave: 0.0028882309728037276
-Time lag between ray PPPPS and direct S-wave: 2.3208430182868067
-Difference in time lag 0.2126003539124568 s (500m), 0.20120789063266464 s (1800m), 0.17308655632658088 s (3300m)
+Amplitude ratio of ray PPPPS / direct S-wave: 0.02172185378649453
+Time lag between ray PPPPS and direct S-wave: 2.8143722887761893
+Difference in time lag 0.20083714839425149 s (500m), 0.18944468511445933 s (1800m), 0.16132335080837557 s (3300m)
 
-Amplitude ratio of ray PPPSP / direct S-wave: -4.8761697928636504e-05
-Time lag between ray PPPSP and direct S-wave: -2.122108178770988
-Difference in time lag 0.10624528881104567 s (500m), 0.12477234550435412 s (1800m), 0.13117353424416045 s (3300m)
+Amplitude ratio of ray PPPSP / direct S-wave: -0.0
+Time lag between ray PPPSP and direct S-wave: -1.6381846735259504
+Difference in time lag 0.10198460370879125 s (500m), 0.12051166040209971 s (1800m), 0.12691284914190426 s (3300m)
 
-Amplitude ratio of ray PPPSS / direct S-wave: -0.002384745515602257
-Time lag between ray PPPSS and direct S-wave: 3.162910072973286
-Difference in time lag 0.21678311850676835 s (500m), 0.2053906552269762 s (1800m), 0.17726932092089243 s (3300m)
+Amplitude ratio of ray PPPSS / direct S-wave: -0.0
+Time lag between ray PPPSS and direct S-wave: 3.6553692060606835
+Difference in time lag 0.20609005039055006 s (500m), 0.1946975871107579 s (1800m), 0.16657625280467414 s (3300m)
 
-Amplitude ratio of ray PPSPP / direct S-wave: -0.0009911669177504277
-Time lag between ray PPSPP and direct S-wave: -2.406744854976642
-Difference in time lag 0.09850171765245896 s (500m), 0.1170287743457692 s (1800m), 0.12342996308557197 s (3300m)
+Amplitude ratio of ray PPSPP / direct S-wave: 0.0
+Time lag between ray PPSPP and direct S-wave: -1.5260358436354835
+Difference in time lag 0.09449464302991117 s (500m), 0.1130216997232214 s (1800m), 0.11942288846302596 s (3300m)
 
-Amplitude ratio of ray PPSPS / direct S-wave: 0.00022706329239640795
-Time lag between ray PPSPS and direct S-wave: 2.8921864007939586
-Difference in time lag 0.19737772203121828 s (500m), 0.18598525875142613 s (1800m), 0.1578639244453388 s (3300m)
+Amplitude ratio of ray PPSPS / direct S-wave: -0.0
+Time lag between ray PPSPS and direct S-wave: 3.781874836902807
+Difference in time lag 0.1859102078419692 s (500m), 0.17451774456217528 s (1800m), 0.1463964102560915 s (3300m)
 
-Amplitude ratio of ray PPSSP / direct S-wave: 0.0009750902446839846
-Time lag between ray PPSSP and direct S-wave: -1.5626439194507178
-Difference in time lag 0.1006506014073274 s (500m), 0.11917765810063585 s (1800m), 0.1255788468404404 s (3300m)
+Amplitude ratio of ray PPSSP / direct S-wave: 0.0021830058158085527
+Time lag between ray PPSSP and direct S-wave: -0.6821881997659798
+Difference in time lag 0.09689681844120024 s (500m), 0.11542387513451047 s (1800m), 0.12182506387431324 s (3300m)
 
-Amplitude ratio of ray PPSSS / direct S-wave: 0.05180195852925823
-Time lag between ray PPSSS and direct S-wave: 3.7331143369595416
-Difference in time lag 0.20269960514642804 s (500m), 0.1913071418666341 s (1800m), 0.16318580756054857 s (3300m)
+Amplitude ratio of ray PPSSS / direct S-wave: 0.11553669439473893
+Time lag between ray PPSSS and direct S-wave: 4.621748603376394
+Difference in time lag 0.19228626064917442 s (500m), 0.18089379736937872 s (1800m), 0.15277246306329495 s (3300m)
 
-Amplitude ratio of ray PSPPP / direct S-wave: -0.0009015588499459364
-Time lag between ray PSPPP and direct S-wave: -2.412527914444439
-Difference in time lag 0.10295851774744946 s (500m), 0.12148557444075969 s (1800m), 0.12788676318056247 s (3300m)
+Amplitude ratio of ray PSPPP / direct S-wave: 4.657164029594103e-19
+Time lag between ray PSPPP and direct S-wave: -1.5308857210269817
+Difference in time lag 0.09836247175199375 s (500m), 0.1168895284453022 s (1800m), 0.12329071718510676 s (3300m)
 
-Amplitude ratio of ray PSPPS / direct S-wave: 0.0001832942772403839
-Time lag between ray PSPPS and direct S-wave: 2.8781959366048664
-Difference in time lag 0.20898065688451872 s (500m), 0.19758819360472657 s (1800m), 0.1694668592986428 s (3300m)
+Amplitude ratio of ray PSPPS / direct S-wave: -0.0
+Time lag between ray PSPPS and direct S-wave: 3.769410615539785
+Difference in time lag 0.19660654725408122 s (500m), 0.1852140839742873 s (1800m), 0.15709274966820352 s (3300m)
 
-Amplitude ratio of ray PSPSP / direct S-wave: -1.2419374259639926e-06
-Time lag between ray PSPSP and direct S-wave: -1.5682705971711002
-Difference in time lag 0.10495101975490329 s (500m), 0.12347807644821174 s (1800m), 0.1298792651880163 s (3300m)
+Amplitude ratio of ray PSPSP / direct S-wave: 0.0
+Time lag between ray PSPSP and direct S-wave: -0.6869022209327653
+Difference in time lag 0.10062879093856836 s (500m), 0.11915584763187681 s (1800m), 0.12555703637168136 s (3300m)
 
-Amplitude ratio of ray PSPSS / direct S-wave: -0.00015127271847792902
-Time lag between ray PSPSS and direct S-wave: 3.719705973438904
-Difference in time lag 0.21372043933127394 s (500m), 0.20232797605148178 s (1800m), 0.17420664174539624 s (3300m)
+Amplitude ratio of ray PSPSS / direct S-wave: 0.0
+Time lag between ray PSPSS and direct S-wave: 4.609854391259033
+Difference in time lag 0.20241259081562468 s (500m), 0.19102012753583253 s (1800m), 0.16289879322974876 s (3300m)
 
-Amplitude ratio of ray PSSPP / direct S-wave: 0.00017501640010627405
-Time lag between ray PSSPP and direct S-wave: -1.851960275851896
-Difference in time lag 0.09626045107145842 s (500m), 0.11478750776476687 s (1800m), 0.1211886965045732 s (3300m)
+Amplitude ratio of ray PSSPP / direct S-wave: 0.0
+Time lag between ray PSSPP and direct S-wave: -0.5741202484299261
+Difference in time lag 0.09250568764731959 s (500m), 0.11103274434062627 s (1800m), 0.1174339330804326 s (3300m)
 
-Amplitude ratio of ray PSSPS / direct S-wave: -4.266800111995659e-05
-Time lag between ray PSSPS and direct S-wave: 3.4524423682625134
-Difference in time lag 0.1908549758527851 s (500m), 0.1794625125729894 s (1800m), 0.1513411782669074 s (3300m)
+Amplitude ratio of ray PSSPS / direct S-wave: -0.0
+Time lag between ray PSSPS and direct S-wave: 4.738916431128798
+Difference in time lag 0.17967633923940163 s (500m), 0.16828387595960947 s (1800m), 0.1401625416535257 s (3300m)
 
-Amplitude ratio of ray PSSSP / direct S-wave: -0.0001721767632999322
-Time lag between ray PSSSP and direct S-wave: -1.008051761519745
-Difference in time lag 0.09860175602009846 s (500m), 0.11712881271340869 s (1800m), 0.12353000145321325 s (3300m)
+Amplitude ratio of ray PSSSP / direct S-wave: 0.0
+Time lag between ray PSSSP and direct S-wave: 0.2695638710336308
+Difference in time lag 0.09507138746455368 s (500m), 0.11359844415786213 s (1800m), 0.11999963289766846 s (3300m)
 
-Amplitude ratio of ray PSSSS / direct S-wave: -0.00847548063622846
-Time lag between ray PSSSS and direct S-wave: 4.292555032651192
-Difference in time lag 0.1969921307448974 s (500m), 0.1855996674651017 s (1800m), 0.1574783331590215 s (3300m)
+Amplitude ratio of ray PSSSS / direct S-wave: 0.0
+Time lag between ray PSSSS and direct S-wave: 5.578030491807349
+Difference in time lag 0.18681209784164388 s (500m), 0.17541963456185172 s (1800m), 0.14729830025576796 s (3300m)
 
-Amplitude ratio of ray SPPPP / direct S-wave: -0.0007036483439283403
-Time lag between ray SPPPP and direct S-wave: -2.118299858182951
-Difference in time lag 0.0662087784373 s (500m), 0.08489215059752198 s (1800m), 0.09147370333760918 s (3300m)
+Amplitude ratio of ray SPPPP / direct S-wave: -0.0
+Time lag between ray SPPPP and direct S-wave: -1.6337726112713291
+Difference in time lag 0.06410047972799404 s (500m), 0.08278385188821602 s (1800m), 0.08936540462830322 s (3300m)
 
-Amplitude ratio of ray SPPPS / direct S-wave: 7.381450990578755e-05
-Time lag between ray SPPPS and direct S-wave: 3.171009477868095
-Difference in time lag 0.16020547713490174 s (500m), 0.1489907928295775 s (1800m), 0.12107458810942084 s (3300m)
+Amplitude ratio of ray SPPPS / direct S-wave: 2.0766522244227523e-19
+Time lag between ray SPPPS and direct S-wave: 3.6661008806573054
+Difference in time lag 0.15227821893336646 s (500m), 0.14106353462804222 s (1800m), 0.11314732990788734 s (3300m)
 
-Amplitude ratio of ray SPPSP / direct S-wave: -9.405054007632832e-07
-Time lag between ray SPPSP and direct S-wave: -1.2739808027002706
-Difference in time lag 0.06785718614677982 s (500m), 0.0865405583070018 s (1800m), 0.093122111047089 s (3300m)
+Amplitude ratio of ray SPPSP / direct S-wave: -0.0
+Time lag between ray SPPSP and direct S-wave: -0.7897763756770821
+Difference in time lag 0.06607170732590717 s (500m), 0.08475507948612737 s (1800m), 0.09133663222621635 s (3300m)
 
-Amplitude ratio of ray SPPSS / direct S-wave: -6.092921432207481e-05
-Time lag between ray SPPSS and direct S-wave: 4.012722358284629
-Difference in time lag 0.16446005991052992 s (500m), 0.15324537560520568 s (1800m), 0.12532917088504725 s (3300m)
+Amplitude ratio of ray SPPSS / direct S-wave: 5.345228815176566e-35
+Time lag between ray SPPSS and direct S-wave: 4.506604828654966
+Difference in time lag 0.15774173412786574 s (500m), 0.1465270498225415 s (1800m), 0.11861084510238307 s (3300m)
 
-Amplitude ratio of ray SPSPP / direct S-wave: -2.0482089045123822e-05
-Time lag between ray SPSPP and direct S-wave: -1.5580724504276358
-Difference in time lag 0.06292957544600064 s (500m), 0.0816129476062244 s (1800m), 0.08819450034630982 s (3300m)
+Amplitude ratio of ray SPSPP / direct S-wave: 5.772070230242215e-36
+Time lag between ray SPSPP and direct S-wave: -0.6770416840119129
+Difference in time lag 0.060551727652841336 s (500m), 0.07923509981306154 s (1800m), 0.08581665255314874 s (3300m)
 
-Amplitude ratio of ray SPSPS / direct S-wave: 7.046727623441826e-06
-Time lag between ray SPSPS and direct S-wave: 3.744217031377639
-Difference in time lag 0.14902156546630074 s (500m), 0.1378068811609765 s (1800m), 0.10989067644081807 s (3300m)
+Amplitude ratio of ray SPSPS / direct S-wave: -1.7680057367042796e-36
+Time lag between ray SPSPS and direct S-wave: 4.635393447774005
+Difference in time lag 0.13992031813504902 s (500m), 0.12870563382972477 s (1800m), 0.10078942910956634 s (3300m)
 
-Amplitude ratio of ray SPSSP / direct S-wave: 2.0149805103851496e-05
-Time lag between ray SPSSP and direct S-wave: -0.7140930156532885
-Difference in time lag 0.06491760386381351 s (500m), 0.08360097602403727 s (1800m), 0.0901825287641227 s (3300m)
+Amplitude ratio of ray SPSSP / direct S-wave: 1.1974361504042579e-20
+Time lag between ray SPSSP and direct S-wave: 0.16666032948193354
+Difference in time lag 0.06281717735115322 s (500m), 0.0815005495113752 s (1800m), 0.08808210225146063 s (3300m)
 
-Amplitude ratio of ray SPSSS / direct S-wave: 0.0014717435594535989
-Time lag between ray SPSSS and direct S-wave: 4.584638563233883
-Difference in time lag 0.15456749680221726 s (500m), 0.14335281249689302 s (1800m), 0.11543660777673459 s (3300m)
+Amplitude ratio of ray SPSSS / direct S-wave: -1.0733999261284275e-18
+Time lag between ray SPSSS and direct S-wave: 5.474593196031099
+Difference in time lag 0.1466880330701148 s (500m), 0.13547334876479056 s (1800m), 0.10755714404463212 s (3300m)
 
-Amplitude ratio of ray SSPPP / direct S-wave: 0.012256631647660084
-Time lag between ray SSPPP and direct S-wave: -1.5642125437334151
-Difference in time lag 0.06608988901841606 s (500m), 0.08477326117863804 s (1800m), 0.09135481391872702 s (3300m)
+Amplitude ratio of ray SSPPP / direct S-wave: 0.025976004821555147
+Time lag between ray SSPPP and direct S-wave: -0.6822190633164613
+Difference in time lag 0.06352602634352245 s (500m), 0.08220939850374265 s (1800m), 0.08879095124383163 s (3300m)
 
-Amplitude ratio of ray SSPPS / direct S-wave: -0.0015374170402332262
-Time lag between ray SSPPS and direct S-wave: 3.7289711817140407
-Difference in time lag 0.15889492934598337 s (500m), 0.14768024504065735 s (1800m), 0.11976404032050247 s (3300m)
+Amplitude ratio of ray SSPPS / direct S-wave: -0.0037519786604033006
+Time lag between ray SSPPS and direct S-wave: 4.621624248356921
+Difference in time lag 0.14971740540360834 s (500m), 0.1385027210982841 s (1800m), 0.11058651637812567 s (3300m)
 
-Amplitude ratio of ray SSPSP / direct S-wave: 1.7799311876006293e-05
-Time lag between ray SSPSP and direct S-wave: -0.7200679345131871
-Difference in time lag 0.06791274299034811 s (500m), 0.08659611515057009 s (1800m), 0.09317766789065907 s (3300m)
+Amplitude ratio of ray SSPSP / direct S-wave: 1.009382380362396e-20
+Time lag between ray SSPSP and direct S-wave: 0.16162368990825904
+Difference in time lag 0.06565073631096219 s (500m), 0.08433410847118239 s (1800m), 0.09091566121127137 s (3300m)
 
-Amplitude ratio of ray SSPSS / direct S-wave: 0.001268393766966022
-Time lag between ray SSPSS and direct S-wave: 4.570060127881709
-Difference in time lag 0.16377344637047564 s (500m), 0.15255876206514785 s (1800m), 0.12464255734499652 s (3300m)
+Amplitude ratio of ray SSPSS / direct S-wave: -9.184416185032636e-19
+Time lag between ray SSPSS and direct S-wave: 5.46147990958635
+Difference in time lag 0.15582920736633987 s (500m), 0.14461452306101563 s (1800m), 0.1166983183408572 s (3300m)
 
-Amplitude ratio of ray SSSPP / direct S-wave: -0.002166111275934434
-Time lag between ray SSSPP and direct S-wave: -1.0031631146516826
-Difference in time lag 0.06198866470070108 s (500m), 0.08067203686092128 s (1800m), 0.08725358960101026 s (3300m)
+Amplitude ratio of ray SSSPP / direct S-wave: 1.6673708140130853e-18
+Time lag between ray SSSPP and direct S-wave: 0.2750453530984469
+Difference in time lag 0.05944378511287418 s (500m), 0.07812715727309794 s (1800m), 0.08470871001318514 s (3300m)
 
-Amplitude ratio of ray SSSPS / direct S-wave: 0.0003041886461324918
-Time lag between ray SSSPS and direct S-wave: 4.305359574327431
-Difference in time lag 0.14453017857353423 s (500m), 0.13331549426821 s (1800m), 0.10539928954805156 s (3300m)
+Amplitude ratio of ray SSSPS / direct S-wave: 3.1798062512880363e-19
+Time lag between ray SSSPS and direct S-wave: 5.593359202765546
+Difference in time lag 0.13491711731336586 s (500m), 0.12370243300804162 s (1800m), 0.09578622828788319 s (3300m)
 
-Amplitude ratio of ray SSSSP / direct S-wave: 0.002130957834477291
-Time lag between ray SSSSP and direct S-wave: -0.1594078469415301
-Difference in time lag 0.06420086018270865 s (500m), 0.08288423234292885 s (1800m), 0.08946578508301783 s (3300m)
+Amplitude ratio of ray SSSSP / direct S-wave: 0.007155696468341391
+Time lag between ray SSSSP and direct S-wave: 1.1185657047610587
+Difference in time lag 0.06189089664242253 s (500m), 0.08057426880264629 s (1800m), 0.08715582154273349 s (3300m)
 
-Amplitude ratio of ray SSSSS / direct S-wave: 0.05487342004899513
-Time lag between ray SSSSS and direct S-wave: 5.144831929961812
-Difference in time lag 0.15102528613131305 s (500m), 0.1398106018259888 s (1800m), 0.11189439710583038 s (3300m)
+Amplitude ratio of ray SSSSS / direct S-wave: 0.18269567752307608
+Time lag between ray SSSSS and direct S-wave: 6.431672340226731
+Difference in time lag 0.142571443044341 s (500m), 0.13135675873901675 s (1800m), 0.10344055401885832 s (3300m)
 

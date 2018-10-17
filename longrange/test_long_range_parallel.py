@@ -58,7 +58,9 @@ def absolutevalue(dirname, filename, m, draw=True):
         type H = float
         H = Hurst parameter        
     """
-    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    infile = open(dirname + filename + '.pkl', 'rb')
+    data = pickle.load(infile)
+    infile.close()
     X = data[3]
     pool = Pool(len(m))
     map_func = partial(get_absval, X, m)
@@ -111,7 +113,9 @@ def variance(dirname, filename, m, draw=True):
         type d = float
         d = Fractional index
     """
-    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    infile = open(dirname + filename + '.pkl', 'rb')
+    data = pickle.load(infile)
+    infile.close()
     X = data[3]
     pool = Pool(len(m))
     map_func = partial(get_var, X, m)
@@ -168,7 +172,9 @@ def variance_moulines(dirname, filename, m, draw=True):
         type H = float
         H = Hurst parameter        
     """
-    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    infile = open(dirname + filename + '.pkl', 'rb')
+    data = pickle.load(infile)
+    infile.close()
     X = data[3]
     pool = Pool(len(m))
     map_func = partial(get_varm, X, m)
@@ -243,7 +249,9 @@ def varianceresiduals(dirname, filename, m, method, draw=True):
         type d = float
         d = Fractional index
     """
-    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    infile = open(dirname + filename + '.pkl', 'rb')
+    data = pickle.load(infile)
+    infile.close()
     X = data[3]
     pool = Pool(len(m))
     map_func = partial(get_varres, X, m, method)
@@ -286,8 +294,8 @@ def varianceresiduals(dirname, filename, m, method, draw=True):
 def get_RS(X, m, i):
     N = len(X)
     Y = np.cumsum(X)
-    RSlist = []
-    laglist = []
+    RS = []
+    lag = []
     K = int(N / m[i])
     for t in range(0, K):
         index = np.arange(0, m[i])
@@ -298,11 +306,11 @@ def get_RS(X, m, i):
         R = Rmax - Rmin
         S = sqrt(np.var(Y[t * m[i] : (t + 1) * m[i]]))
         if (S != 0.0):
-            RSlist.append(R / S)
-            laglist.append(m[i])
-    return (RSlist, laglist)
+            RS.append(R / S)
+            lag.append(m[i])
+    return (RS, lag)
 
-def RS(dirname, filename, m, draw=True):
+def RSstatistic(dirname, filename, m, draw=True):
     """
     Function to plot the R/S statistic in function of m
     The slope is equal to d + 1/2 (fractional index)
@@ -320,38 +328,24 @@ def RS(dirname, filename, m, draw=True):
         type d = float
         d = Fractional index
     """
-    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    infile = open(dirname + filename + '.pkl', 'rb')
+    data = pickle.load(infile)
+    infile.close()
     X = data[3]
-    N = len(X)
-    Y = np.cumsum(X)
-    RS1 = []
-    lag1 = []
-    for i in range(0, len(m)):
-        K = int(N / m[i])
-        for t in range(0, K):
-            index = np.arange(0, m[i])
-            Rmax = np.max(Y[t * m[i] : (t + 1) * m[i]] - Y[t * m[i]] - index * \
-                (Y[(t + 1) * m[i] - 1] - Y[t * m[i]]) / m[i])
-            Rmin = np.min(Y[t * m[i] : (t + 1) * m[i]] - Y[t * m[i]] - index * \
-                (Y[(t + 1) * m[i] - 1] - Y[t * m[i]]) / m[i])
-            R = Rmax - Rmin
-            S = sqrt(np.var(Y[t * m[i] : (t + 1) * m[i]]))
-            if (S != 0.0):
-                RS1.append(R / S)
-                lag1.append(m[i])
-    RS1 = np.asarray(RS1)
-    lag1 = np.asarray(lag1)
     pool = Pool(len(m))
     map_func = partial(get_RS, X, m)
     result = pool.map(map_func, iter(range(0, len(m))))
     pool.close()
     pool.join()
-    RS2 = np.array(result)[:, 0]
-    lag2 = np.array(result)[:, 1]
+    RS = []
+    lag = []
     for i in range(0, len(m)):
-        print(RS1[i], RS2[i], lag1[i], lag2[i])
-    RS = RS1
-    lag = lag1
+        K = len(result[i][0])
+        for j in range(0, K):
+            RS.append(result[i][0][j])
+            lag.append(result[i][1][j])
+    RS = np.array(RS)
+    lag = np.array(lag)
     # Linear regression
     x = np.reshape(np.log10(lag), (len(lag), 1))
     y = np.reshape(np.log10(RS), (len(RS), 1))

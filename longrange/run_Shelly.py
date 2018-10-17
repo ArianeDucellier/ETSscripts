@@ -11,6 +11,7 @@ from test_long_range import variance_moulines
 from test_long_range import absolutevalue
 from test_long_range import variance
 from test_long_range import varianceresiduals
+from test_long_range import RS
 
 # Read the LFE file
 LFEtime = pd.read_csv('../data/Shelly_2017/jgrb52060-sup-0002-datas1.txt', \
@@ -63,12 +64,23 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #os.rename('variancemoulines', 'variancemoulines_Shelly')
 
 # Variance of residuals method
-newpath = 'varianceresiduals' 
+#newpath = 'varianceresiduals' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    d = varianceresiduals(dirname, filename, m, 'mean')
+
+#os.rename('varianceresiduals', 'varianceresiduals_Shelly')
+
+# R/S method
+newpath = 'RS' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
 for i in range(0, len(families)):
     filename = families[i]
-    d = varianceresiduals(dirname, filename, m, 'mean')
+    d = RS(dirname, filename, m)
 
-os.rename('varianceresiduals', 'varianceresiduals_Shelly')
+os.rename('RS', 'RS_Shelly')

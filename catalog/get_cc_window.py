@@ -142,7 +142,7 @@ def get_from_NCEDC(station, Tstart, Tend, filt, dt):
         D.decimate(ratio.numerator, no_filter=True)
         return(D)
 
-def get_cc_window(filename, TDUR, filt, dt, method='RMS'):
+def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
     """
     This function finds the time arrival of each template waveform
     for each station
@@ -158,18 +158,20 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS'):
         dt = Time step for resampling
         type method = string
         method = Normalization method for linear stack (RMS or Max)
+        type envelope = boolean
+        envelope = Do we compute the max CC on the signal or the envelope?
     Output:
         None
     """
     # Get the names of the stations which have a waveform for this LFE family
-    file = open('../data/LFEcatalog/detections/' + filename + \
+    file = open('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt')
     first_line = file.readline().strip()
     staNames = first_line.split()
     file.close()
 
     # Get the time of LFE detections
-    LFEtime = np.loadtxt('../data/LFEcatalog/detections/' + filename + \
+    LFEtime = np.loadtxt('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt', \
         dtype={'names': ('unknown', 'day', 'hour', 'second', 'threshold'), \
              'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
@@ -236,6 +238,13 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS'):
             EWstack = linstack([EW], normalize=True, method=method) 
             NSstack = linstack([NS], normalize=True, method=method)
             UDstack = linstack([UD], normalize=True, method=method)
+            if (envelope == True):
+                EWstack[0].data = obspy.signal.filter.envelope( \
+                    EWstack[0].data)
+                NSstack[0].data = obspy.signal.filter.envelope( \
+                    NSstack[0].data)
+                UDstack[0].data = obspy.signal.filter.envelope( \
+                    UDstack[0].data)
             maxEW.append(np.max(np.abs(EWstack[0].data) / np.sqrt(np.mean( \
                 np.square(EWstack[0].data)))))
             maxNS.append(np.max(np.abs(NSstack[0].data) / np.sqrt(np.mean( \
@@ -277,7 +286,7 @@ def get_timeLFE(filename):
         pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
 
     # Get the location of the source of the LFE
-    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
         dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
         'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
              'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
@@ -285,17 +294,17 @@ def get_timeLFE(filename):
     for ie in range(0, len(LFEloc)):
         if (filename == LFEloc[ie][0].decode('utf-8')):
             lats = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
-            lons = - LFEloc[ie][6] + LFEloc[ie][7] / 60.0
+            lons = - LFEloc[ie][6] - LFEloc[ie][7] / 60.0
             xs = dx * (lons - lon0)
             ys = dy * (lats - lat0)
 
     # Get the locations of the stations
-    staloc = np.loadtxt('../data/LFEcatalog/station_locations.txt', \
+    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
         dtype={'names': ('name', 'lat', 'lon'), \
              'formats': ('|S5', np.float, np.float)})
 
     # Open time arrival files
-    data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
+    data = pickle.load(open('timearrival/envelope/' + filename +'.pkl', 'rb'))
     stations = data[0]
     maxEW = data[1]
     maxNS = data[2]
@@ -342,7 +351,7 @@ def get_timeLFE(filename):
     plt.close(1)
     return tori    
 
-def check_station(station, tori):
+def check_station(station):
     """
     This function looks at the travel time from the LFE source to the station
     location for all the templates
@@ -350,8 +359,6 @@ def check_station(station, tori):
     Input:
         type station = string
         filename = Name of the station
-        type tori = 1d numpy array
-        tori = Origin time for each template
     """
     # To transform latitude and longitude into kilometers
     a = 6378.136
@@ -364,7 +371,7 @@ def check_station(station, tori):
         pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
 
     # Get the locations of the sources of the LFE
-    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
         dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
         'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
              'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
@@ -373,12 +380,12 @@ def check_station(station, tori):
     lons = np.zeros(len(LFEloc))
     for ie in range(0, len(LFEloc)):
         lats[ie] = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
-        lons[ie] = - LFEloc[ie][6] + LFEloc[ie][7] / 60.0
+        lons[ie] = - LFEloc[ie][6] - LFEloc[ie][7] / 60.0
     xs = dx * (lons - lon0)
     ys = dy * (lats - lat0)
 
     # Get the locations of the stations
-    staloc = np.loadtxt('../data/LFEcatalog/station_locations.txt', \
+    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
         dtype={'names': ('name', 'lat', 'lon'), \
              'formats': ('|S5', np.float, np.float)})
 
@@ -391,19 +398,52 @@ def check_station(station, tori):
     timeEW = data[4]
     timeNS = data[5]
     timeUD = data[6]
+
+    # Loop on the stations
+    for ir in range(0, len(staloc)):
+        # Compute source-receiver distances
+        distance = []
+        for i in range(0, len(stations)):
+            if (stations[i] == staloc[ir][0].decode('utf-8')):
+                latr = staloc[ir][1]
+                lonr = staloc[ir][2]
+                xr = dx * (lonr - lon0)
+                yr = dy * (latr - lat0)
+                distance.append(sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0))
+
+    # Linear regression
+    x = np.reshape(np.array(distance + distance + distance), \
+        (3 * len(stations), 1))
+    y = np.reshape(np.array(timeEW + timeNS + timeUD), \
+        (3 * len(stations), 1))
+    w = list(map(lambda x : pow(x, 3.0), maxEW)) + \
+        list(map(lambda x : pow(x, 3.0), maxNS)) + \
+        list(map(lambda x : pow(x, 3.0), maxUD))
+    w = np.array(w)
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y, w)
+    y_pred = regr.predict(x)
+    R2 = r2_score(y, y_pred)
+    s = regr.coef_[0][0]
     
 if __name__ == '__main__':
 
 #    # Set the parameters
-#    filename = '080429.15.005'
 #    TDUR = 10.0
 #    filt = (1.5, 9.0)
 #    dt = 0.05
 #    method = 'RMS'
-#
-#    get_cc_window(filename, TDUR, filt, dt, method)
+#    envelope = True
+#    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
+#        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
+#        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
+#             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
+#        np.int, np.float, np.float, np.float, np.float, np.float)})
+#    for ie in range(0, len(LFEloc)):
+#        filename = LFEloc[ie][0].decode('utf-8')
+#        get_cc_window(filename, TDUR, filt, dt, method, envelope)
 
-    LFEloc = np.loadtxt('../data/LFEcatalog/template_locations.txt', \
+    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
         dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
         'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
              'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
@@ -412,4 +452,6 @@ if __name__ == '__main__':
     for ie in range(0, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         tori[ie] = get_timeLFE(filename)
-    print(tori)
+    # Save origin times into file
+    output = 'tori.pkl'
+    pickle.dump(tori, open(output, 'wb'))
