@@ -8,6 +8,7 @@ import numpy as np
 import pickle
 
 from math import sqrt
+from scipy.fftpack import fft
 from sklearn import linear_model
 from sklearn.metrics import r2_score, mean_squared_error
 
@@ -296,5 +297,48 @@ def RS(dirname, filename, m):
     plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
         np.sum(X), d, R2), fontsize=24)
     plt.savefig('RS/' + filename + '.eps', format='eps')
+    plt.close(1)
+    return d
+
+def periodogram(dirname, filename, dt):
+    """
+    Function to plot the periodogram of the aggregated series
+    in function of m
+    The slope is equal to - 2 d (fractional index)
+
+    Input:
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
+        type dt = float
+        dt = Time step of the time series (one minute)
+    Output:
+        type d = float
+        d = Fractional index
+    """
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
+    N = len(X)
+    Y = fft(X)
+    I = np.power(np.abs(Y[1 : int(N / 20) + 1]), 2.0)
+    nu = (1.0 / (N * dt)) * np.arange(1, int(N / 20) + 1)
+    # Linear regression
+    x = np.reshape(np.log10(nu[I > 0.0]), (len(nu[I > 0.0]), 1))
+    y = np.reshape(np.log10(I[I > 0.0]), (len(I[I > 0.0]), 1))
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y)
+    y_pred = regr.predict(x)
+    R2 = r2_score(y, y_pred)
+    d = - 0.5 * regr.coef_[0][0]
+    # Plot
+    plt.figure(1, figsize=(10, 10))
+    plt.plot(np.log10(nu), np.log10(I), 'ko')
+    plt.plot(x, y_pred, 'r-')
+    plt.xlabel('Log (frequency)', fontsize=24)
+    plt.ylabel('Log (spectral density)', fontsize=24)
+    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+        np.sum(X), d, R2), fontsize=24)
+    plt.savefig('periodogram/' + filename + '.eps', format='eps')
     plt.close(1)
     return d

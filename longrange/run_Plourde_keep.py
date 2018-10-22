@@ -7,17 +7,24 @@ import numpy as np
 import os
 
 from test_long_range import absolutevalue
+from test_long_range import periodogram
 from test_long_range import variance
 from test_long_range import variance_moulines
 from test_long_range import varianceresiduals
 from test_long_range import RS
 
 # Get the names of the template detection files
-templates = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
-    dtype={'names': ('name', 'day', 'uk1', 'uk2', 'lat1', 'lat2', \
-    'lon1', 'lon2', 'uk3', 'uk4', 'uk5', 'uk6'), \
-         'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-    np.int, np.float, np.float, np.float, np.float, np.float)})
+#templates = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
+#    dtype={'names': ('name', 'day', 'uk1', 'uk2', 'lat1', 'lat2', \
+#    'lon1', 'lon2', 'uk3', 'uk4', 'uk5', 'uk6'), \
+#         'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
+#    np.int, np.float, np.float, np.float, np.float, np.float)})
+templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+    dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+   'eZ', 'nb'), \
+         'formats': ('S13', 'S3', np.float, np.float, np.float, \
+    np.float, np.float, np.int)}, \
+    skiprows=1)
 
 dirname = '../data/Plourde_2015/timeseries/'
 
@@ -70,12 +77,25 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #os.rename('varianceresiduals', 'varianceresiduals_Plourde')
 
 # R/S method
-newpath = 'RS' 
+#newpath = 'RS' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)   
+#    d = RS(dirname, filename, m)
+
+#os.rename('RS', 'RS_Plourde')
+
+# Periodogram method
+newpath = 'periodogram' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
+dt = 60.0
+
 for i in range(0, np.shape(templates)[0]):
     filename = templates[i][0].astype(str)   
-    d = RS(dirname, filename, m)
+    d = periodogram(dirname, filename, dt)
 
-os.rename('RS', 'RS_Plourde')
+os.rename('periodogram', 'periodogram_Plourde')

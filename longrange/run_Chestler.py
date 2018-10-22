@@ -10,6 +10,7 @@ import os
 from scipy.io import loadmat
 
 from test_long_range import absolutevalue
+from test_long_range import periodogram
 from test_long_range import variance
 from test_long_range import variance_moulines
 from test_long_range import varianceresiduals
@@ -76,13 +77,27 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #os.rename('varianceresiduals', 'varianceresiduals_Chestler')
 
 # R/S method
-newpath = 'RS' 
+#newpath = 'RS' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0] 
+#    d = RS(dirname, filename, m)
+
+#os.rename('RS', 'RS_Chestler')
+
+# Periodogram method
+newpath = 'periodogram' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
+
+dt = 60.0
 
 for i in range(0, nt):
     LFEs = data['LFEs'][i]
     filename = LFEs['name'][0][0] 
-    d = RS(dirname, filename, m)
+    d = periodogram(dirname, filename, dt)
 
-os.rename('RS', 'RS_Chestler')
+os.rename('periodogram', 'periodogram_Chestler')

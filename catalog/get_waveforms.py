@@ -158,21 +158,21 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
         None
     """
     # Get the names of the stations which have a waveform for this LFE family
-    file = open('../data/LFEcatalog/detections/' + filename + \
+    file = open('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt')
     first_line = file.readline().strip()
     staNames = first_line.split()
     file.close()
 
     # Get the time of LFE detections
-    LFEtime = np.loadtxt('../data/LFEcatalog/detections/' + filename + \
+    LFEtime = np.loadtxt('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt', \
         dtype={'names': ('unknown', 'day', 'hour', 'second', 'threshold'), \
              'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
         skiprows=2)
 
     # Get the waveforms from the catalog of Plourde et al. (2015)
-    data = loadmat('../data/LFEcatalog/waveforms/' + filename + '.mat')
+    data = loadmat('../data/Plourde_2015/waveforms/' + filename + '.mat')
     ndt = ndt = data['ndt'][0][0]
     ordlst = data['ordlst']
     uk = data['uk']
@@ -354,7 +354,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080401.05.050'
+    filename = '080328.09.029'
     TDUR = 10.0
     filt = (1.5, 9.0)
     method = 'RMS'

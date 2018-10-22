@@ -8,6 +8,7 @@ import os
 import pandas as pd
 
 from test_long_range import variance_moulines
+from test_long_range import periodogram
 from test_long_range import absolutevalue
 from test_long_range import variance
 from test_long_range import varianceresiduals
@@ -75,12 +76,25 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #os.rename('varianceresiduals', 'varianceresiduals_Shelly')
 
 # R/S method
-newpath = 'RS' 
+#newpath = 'RS' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    d = RS(dirname, filename, m)
+
+#os.rename('RS', 'RS_Shelly')
+
+# Periodogram method
+newpath = 'periodogram' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
+dt = 60.0
+
 for i in range(0, len(families)):
     filename = families[i]
-    d = RS(dirname, filename, m)
+    d = periodogram(dirname, filename, dt)
 
-os.rename('RS', 'RS_Shelly')
+os.rename('periodogram', 'periodogram_Shelly')
