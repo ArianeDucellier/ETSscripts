@@ -19,6 +19,7 @@ import os
 import pickle
 
 from fractions import Fraction
+from math import cos, pi, sin, sqrt
 
 from stacking import linstack
 
@@ -142,8 +143,8 @@ def get_from_NCEDC(station, Tstart, Tend, filt, dt):
         D.decimate(ratio.numerator, no_filter=True)
         return(D)
 
-def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
-        norm='RMS'):
+def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
+        method='RMS'):
     """
     This function computes the waveform for each template, cross correlate
     them with the stack, and keep only the best to get the final template
@@ -162,34 +163,75 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
         dt = Time step for resampling
         type ncor = integer
         ncor = Number of points for the cross correlation
+        type window = float
+        window = Length of the window to do the cross correlation
         type method = string
         method = Normalization method for linear stack (RMS or Max)
-        type norm = string
-        norm = Normalization method to plot and compare templates
     Output:
         None
     """
+    # To transform latitude and longitude into kilometers
+    a = 6378.136
+    e = 0.006694470
+    lat0 = 41.0
+    lon0 = -123.0
+    dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * \
+        sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
+    dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
+        pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
+
     # Get the names of the stations which have a waveform for this LFE family
-    file = open('../data/LFEcatalog/detections/' + filename + \
+    file = open('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt')
     first_line = file.readline().strip()
     staNames = first_line.split()
     file.close()
 
+    # Get the locations of the stations
+    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
+        dtype={'names': ('name', 'lat', 'lon'), \
+             'formats': ('|S5', np.float, np.float)})
+
     # Get the time of LFE detections
-    LFEtime = np.loadtxt('../data/LFEcatalog/detections/' + filename + \
+    LFEtime = np.loadtxt('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt', \
         dtype={'names': ('unknown', 'day', 'hour', 'second', 'threshold'), \
              'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
         skiprows=2)
+
+    # Get the location of the source of the LFE
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
+    for ie in range(0, len(LFEloc)):
+        if (filename == LFEloc[ie][0].decode('utf-8')):
+            lats = LFEloc[ie][2]
+            lons = LFEloc[ie][3]
+            xs = dx * (lons - lon0)
+            ys = dy * (lats - lat0)
 
     # Create directory to store the waveforms
     namedir = 'templates/' + filename
     if not os.path.exists(namedir):
         os.makedirs(namedir)
 
+    # Read origin time and station slowness files
+    origintime = pickle.load(open('timearrival/origintime.pkl', 'rb'))
+    slowness = pickle.load(open('timearrival/slowness.pkl', 'rb'))
+    
     # Loop over stations
     for station in staNames:
+        # Compute source-receiver distance
+        for ir in range(0, len(staloc)):
+            if (station == staloc[ir][0].decode('utf-8')):
+                latr = staloc[ir][1]
+                lonr = staloc[ir][2]
+                xr = dx * (lonr - lon0)
+                yr = dy * (latr - lat0)
+                distance = sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0)
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -240,12 +282,21 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
             EWstack = linstack([EW], normalize=True, method=method) 
             NSstack = linstack([NS], normalize=True, method=method)
             UDstack = linstack([UD], normalize=True, method=method)
+            # Get time arrival
+            arrivaltime = origintime[filename] + slowness[station] * distance
+            Tmin = arrivaltime - window/ 2.0
+            Tmax = arrivaltime + window / 2.0
+            ibegin = int(Tmin / EWstack[0].stats.delta)
+            iend = int(Tmax / EWstack[0].stats.delta) + 1
             # Cross correlation
             maxCC = np.zeros(len(EW))
             for i in range(0, len(EW)):
-                ccEW = correlate(EWstack[0], EW[i], ncor)
-                ccNS = correlate(NSstack[0], NS[i], ncor)
-                ccUD = correlate(UDstack[0], UD[i], ncor)
+                ccEW = correlate(EWstack[0].data[ibegin : iend], \
+                    EW[i].data[ibegin : iend], ncor)
+                ccNS = correlate(NSstack[0].data[ibegin : iend], \
+                    NS[i].data[ibegin : iend], ncor)
+                ccUD = correlate(UDstack[0].data[ibegin : iend], \
+                    UD[i].data[ibegin : iend], ncor)
                 maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
             # Sort cross correlations
             index = np.flip(np.argsort(maxCC), axis=0)
@@ -299,6 +350,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
+            plt.axvline(Tmin, linewidth=2, color='grey')
+            plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('East - West component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -330,6 +383,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
+            plt.axvline(Tmin, linewidth=2, color='grey')
+            plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('North - South component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -361,6 +416,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
+            plt.axvline(Tmin, linewidth=2, color='grey')
+            plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('Vertical component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -374,21 +431,21 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, method='RMS', \
             plt.close(1)
             # Save stacks into file
             for j in range(0, len(ratios)):
-                filename = namedir + '/' + station + '_' + \
+                savename = namedir + '/' + station + '_' + \
                     str(int(ratios[j])) + '.pkl'
                 pickle.dump([EWbest[j], NSbest[j], UDbest[j]], \
-                    open(filename, 'wb'))
+                    open(savename, 'wb'))
 
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080408.08.029'
+    filename = '080408.08.007'
     TDUR = 10.0
     filt = (1.5, 9.0)
     ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
     ncor = 400
+    window = 10.0
     method = 'RMS'
-    norm = 'MAD'
 
-    compute_templates(filename, TDUR, filt, ratios, dt, ncor, method, norm)
+    compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, method)

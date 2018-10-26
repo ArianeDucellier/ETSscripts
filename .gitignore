@@ -14,6 +14,7 @@ data/PANGA/*
 data/Plourde_2015/detections/*
 data/Plourde_2015/LFEdistribution/*
 data/Plourde_2015/timeseries/*
+data/Plourde_2015/ttimes/*
 data/Plourde_2015/waveforms/*
 data/Plourde_2015/*.m
 data/Plourde_2015/*.txt
@@ -31,6 +32,10 @@ longrange/absolutevalue_Chestler/*
 longrange/absolutevalue_Plourde/*
 longrange/absolutevalue_Shelly/*
 longrange/absolutevalue_Sweet/*
+longrange/periodogram_Chestler/*
+longrange/periodogram_Plourde/*
+longrange/periodogram_Shelly/*
+longrange/periodogram_Sweet/*
 longrange/RS_Chestler/*
 longrange/RS_Plourde/*
 longrange/RS_Shelly/*

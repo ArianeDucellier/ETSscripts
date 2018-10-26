@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
+from sklearn import preprocessing
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
 from stacking import linstack, powstack, PWstack
@@ -139,6 +140,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     df = pd.DataFrame({'ccmaxEW' : ccmaxEW, 'ccmaxNS' : ccmaxNS, \
         'cc0EW' : cc0EW, 'cc0NS' : cc0NS, 'timedelayEW' : timedelayEW, \
         'timedelayNS' : timedelayNS, 'rmsEW' : rmsEW, 'rmsNS' : rmsNS})
+    df = preprocessing.scale(df)
+    df = pd.DataFrame(df)
+    df.columns = ['ccmaxEW', 'ccmaxNS', 'cc0EW', 'cc0NS', 'timedelayEW', \
+        'timedelayNS', 'rmsEW', 'rmsNS']
     if (typecluster == 'kmeans'):
         clusters = KMeans(n_clusters=nc, random_state=0).fit_predict(df)
     elif (typecluster == 'agglo'):
@@ -402,20 +407,20 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = 0.0
-    y0 = 0.0
+    x0 = 5.0
+    y0 = 5.0
     w = 2.0
     ncor = 40
-    Tmin = 4.0
-    Tmax = 6.0
+    Tmin = 4.5
+    Tmax = 6.5
     RMSmin = 12.0
     RMSmax = 14.0
     xmax = 15.0
-    nc = 4
+    nc = 2
     palette = {0: 'tomato', 1: 'royalblue', 2:'forestgreen', 3:'gold', \
         4: 'lightpink', 5:'skyblue'}
     n1 = 0
-    n2 = 70
+    n2 = 63
 
     # Linear stack
     amp = 10.0

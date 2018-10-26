@@ -20,22 +20,21 @@ rhoCC = 1000.0 * 0.31 * 6200.0 ** 0.25 # Gardner's law
 # Upper oceanic crust
 # P- and S-wave velocities in m/s, density in kg/m3, thickness in m
 # From Nowack and Bostock, 2013
-VpUOC = 4800.0 # or 4600.0
-VsUOC = 4800.0 / 2.25 # or 4600.0 / 2.36
-rhoUOC = 2700.0
+#VpUOC = 4800.0 # or 4600.0
+#VsUOC = 4800.0 / 2.25 # or 4600.0 / 2.36
+#rhoUOC = 2700.0
 hUOC = 3300.0
-
+VpUOC = 7000.0
+VsUOC = 3400.0
+rhoUOC = 3000.0
 
 # Lower oceanic crust
 # P- and S-wave velocities in m/s, density in kg/m3, thickness in m
 # From Nowack and Bostock, 2013
-# VpLOC = 7000.0
-# VsLOC = 3400.0
-# rhoLOC = 3000.0
+VpLOC = 7000.0
+VsLOC = 3400.0
+rhoLOC = 3000.0
 hLOC = 3700.0 # 7000.0 - 3300.0
-VpLOC = 4800.0 # or 4600.0
-VsLOC = 4800.0 / 2.25 # or 4600.0 / 2.36
-rhoLOC = 2700.0
 
 # Oceanic mantle
 # P- and S-wave velocities in m/s, density in kg/m3

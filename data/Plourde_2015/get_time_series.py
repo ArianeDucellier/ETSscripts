@@ -60,11 +60,6 @@ def get_time_series(filename, window, tbegin, tend):
 if __name__ == '__main__':
 
     # Get the names of the template detection files
-#    templates = np.loadtxt('template_locations.txt', \
-#        dtype={'names': ('name', 'day', 'uk1', 'uk2', 'lat1', 'lat2', 'lon1', \
-#        'lon2', 'uk3', 'uk4', 'uk5', 'uk6'), \
-#             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-#        np.int, np.float, np.float, np.float, np.float, np.float)})
     templates = np.loadtxt('templates_list.txt', \
         dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
         'eZ', 'nb'), \

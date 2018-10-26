@@ -104,12 +104,12 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = 0.0
-    y0 = 0.0
+    x0 = 5.0
+    y0 = 5.0
     w = 2.0
     Tmax = 15.0
     n1 = 0
-    n2 = 70
+    n2 = 63
 
     # Linear stack
     type_stack = 'lin'

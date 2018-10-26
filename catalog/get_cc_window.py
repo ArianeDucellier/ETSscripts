@@ -1,5 +1,5 @@
 """
-This module contains a function to find the time arrival of each template
+This module contains functions to find the time arrival of each template
 waveform for each station
 """
 
@@ -286,15 +286,16 @@ def get_timeLFE(filename):
         pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
 
     # Get the location of the source of the LFE
-    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
-        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
-        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
-             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-        np.int, np.float, np.float, np.float, np.float, np.float)})
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
     for ie in range(0, len(LFEloc)):
         if (filename == LFEloc[ie][0].decode('utf-8')):
-            lats = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
-            lons = - LFEloc[ie][6] - LFEloc[ie][7] / 60.0
+            lats = LFEloc[ie][2]
+            lons = LFEloc[ie][3]
             xs = dx * (lons - lon0)
             ys = dy * (lats - lat0)
 
@@ -304,7 +305,7 @@ def get_timeLFE(filename):
              'formats': ('|S5', np.float, np.float)})
 
     # Open time arrival files
-    data = pickle.load(open('timearrival/signal/' + filename +'.pkl', 'rb'))
+    data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
     stations = data[0]
     maxEW = data[1]
     maxNS = data[2]
@@ -355,6 +356,13 @@ def get_time_station():
     """
     This function looks at the travel time from the LFE source to the station
     location for all the templates
+
+    Input:
+        None
+    Output:
+        type slowness = dictionary
+        slowness = Slowness associated to each of the stations to compute
+                   the arrival time
     """
     # To transform latitude and longitude into kilometers
     a = 6378.136
@@ -366,17 +374,18 @@ def get_time_station():
     dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
         pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
 
-    # Get the locations of the sources of the LFE
-    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
-        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
-        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
-             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-        np.int, np.float, np.float, np.float, np.float, np.float)})
+    # Get the locations of the sources of the LFEs
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
     lats = np.zeros(len(LFEloc))
     lons = np.zeros(len(LFEloc))
     for ie in range(0, len(LFEloc)):
-        lats[ie] = LFEloc[ie][4] + LFEloc[ie][5] / 60.0
-        lons[ie] = - LFEloc[ie][6] - LFEloc[ie][7] / 60.0
+        lats[ie] = LFEloc[ie][2]
+        lons[ie] = LFEloc[ie][3]
     xs = dx * (lons - lon0)
     ys = dy * (lats - lat0)
 
@@ -386,8 +395,9 @@ def get_time_station():
              'formats': ('|S5', np.float, np.float)})
 
     # Get the origin time for each of the templates
-    tori = pickle.load(open('timearrival/tori.pkl', 'rb'))
+    origintime = pickle.load(open('timearrival/origintime.pkl', 'rb'))
 
+    slowness = {}
     # Loop on the stations
     for ir in range(0, len(staloc)):
         # Compute source-receiver distances
@@ -402,7 +412,7 @@ def get_time_station():
         for ie in range(0, len(LFEloc)):
             filename = LFEloc[ie][0].decode('utf-8')
             # Open time arrival files
-            data = pickle.load(open('timearrival/signal/' + filename +'.pkl', 'rb'))
+            data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
             stations = data[0]
             maxEW = data[1]
             maxNS = data[2]
@@ -417,13 +427,14 @@ def get_time_station():
                     lonr = staloc[ir][2]
                     xr = dx * (lonr - lon0)
                     yr = dy * (latr - lat0)
-                    distance.append(sqrt((xr - xs[ie]) ** 2.0 + (yr - ys[ie]) ** 2.0))
+                    distance.append(sqrt((xr - xs[ie]) ** 2.0 + \
+                                         (yr - ys[ie]) ** 2.0))
                     maxEWlist.append(maxEW[i])
                     maxNSlist.append(maxNS[i])
                     maxUDlist.append(maxUD[i])
-                    timeEWlist.append(timeEW[i] - tori[ie])
-                    timeNSlist.append(timeNS[i] - tori[ie])
-                    timeUDlist.append(timeUD[i] - tori[ie])
+                    timeEWlist.append(timeEW[i] - origintime[filename])
+                    timeNSlist.append(timeNS[i] - origintime[filename])
+                    timeUDlist.append(timeUD[i] - origintime[filename])
         # Linear regression
         if (len(distance) > 0):
             x = np.reshape(np.array(distance + distance + distance), \
@@ -447,8 +458,11 @@ def get_time_station():
             plt.ylabel('Travel time (s)', fontsize=24)
             plt.title('{} - R2 = {:4.2f} - slowness = {:4.3f} s/km'.format( \
                 staloc[ir][0].decode('utf-8'), R2, s), fontsize=24)
-            plt.savefig('timearrival/' + staloc[ir][0].decode('utf-8') + '.eps', format='eps')
+            plt.savefig('timearrival/' + staloc[ir][0].decode('utf-8') + \
+                '.eps', format='eps')
             plt.close(1)
+            slowness[staloc[ir][0].decode('utf-8')] = s
+    return slowness
     
 if __name__ == '__main__':
 
@@ -458,32 +472,33 @@ if __name__ == '__main__':
     dt = 0.05
     method = 'RMS'
     envelope = True
-#    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
-#        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
-#        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
-#             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-#        np.int, np.float, np.float, np.float, np.float, np.float)})
-    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
-        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
-        'eZ', 'nb'), \
-             'formats': ('S13', 'S3', np.float, np.float, np.float, \
-        np.float, np.float, np.int)}, \
-        skiprows=1)
-    for ie in range(0, len(LFEloc)):
-        filename = LFEloc[ie][0].decode('utf-8')
-        get_cc_window(filename, TDUR, filt, dt, method, envelope)
 
-#    LFEloc = np.loadtxt('../data/Plourde_2015/template_locations.txt', \
-#        dtype={'names': ('name', 'day', 'hour', 'second', 'lat', 'latd', \
-#        'lon', 'lond', 'depth', 'dx', 'dy', 'dz'), \
-#             'formats': ('S13', 'S10', np.int, np.float, np.int, np.float, \
-#        np.int, np.float, np.float, np.float, np.float, np.float)})
-#    tori = np.zeros(len(LFEloc))
+#    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+#        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+#        'eZ', 'nb'), \
+#             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+#        np.float, np.float, np.int)}, \
+#        skiprows=1)
+#    for ie in range(47, len(LFEloc)):
+#        filename = LFEloc[ie][0].decode('utf-8')
+#        get_cc_window(filename, TDUR, filt, dt, method, envelope)
+
+#    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+#        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+#        'eZ', 'nb'), \
+#             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+#        np.float, np.float, np.int)}, \
+#        skiprows=1)
+#    origintime = {}
 #    for ie in range(0, len(LFEloc)):
 #        filename = LFEloc[ie][0].decode('utf-8')
-#        tori[ie] = get_timeLFE(filename)
+#        tori = get_timeLFE(filename)
+#        origintime[filename] = tori
 #    # Save origin times into file
-#    output = 'timearrival/tori.pkl'
-#    pickle.dump(tori, open(output, 'wb'))
+#    output = 'timearrival/origintime.pkl'
+#    pickle.dump(origintime, open(output, 'wb'))
 
-#     get_time_station()
+    slowness = get_time_station()
+    # Save slownesses into file
+    output = 'timearrival/slowness.pkl'
+    pickle.dump(slowness, open(output, 'wb'))

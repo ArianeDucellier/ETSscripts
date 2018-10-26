@@ -146,6 +146,20 @@ K.~Idehara, S.~Yabe, and S.~Ide.
 \newblock {\em Earth, Planets and Space}, 66(1):1--10, 2014.
 \newblock doi:10.1186/1880-5981-66-66.
 
+\bibitem{KAL_2016}
+M.R. Kaloop and D.~Kim.
+\newblock De-noising of {GPS} structural monitoring observation error using
+  wavelet analysis.
+\newblock {\em Geomatics, Natural Hazards and Risk}, 7(2):804--825, 2016.
+\newblock doi:10.1080/19475705.2014.983186.
+
+\bibitem{KAL_2011}
+M.R. Kaloop and H.~Li.
+\newblock Sensitivity and analysis {GPS} signals based bridge damage using
+  {GPS} observations and wavelet transform.
+\newblock {\em Measurement}, 44(5):927--937, 2011.
+\newblock doi:10.1016/j.measurement.2011.02.008.
+
 \bibitem{LAR_2009}
 M.~La~Rocca, K.C. Creager, D.~Galluzzo, S.~Malone, J.E. Vidale, J.R. Sweet, and
   A.G. Wech.
