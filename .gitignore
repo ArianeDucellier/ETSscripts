@@ -10,6 +10,8 @@ data/Chestler_2017/timeseries/*
 data/Chestler_2017/*.m
 data/Chestler_2017/*.mat
 data/Chestler_2017/*.rtf
+data/Frank_2014/*
+data/GeoNet/*
 data/PANGA/*
 data/Plourde_2015/detections/*
 data/Plourde_2015/LFEdistribution/*
@@ -27,6 +29,8 @@ data/Sweet_2014/timeseries/*
 data/Sweet_2014/*.m
 data/timelags/*
 data/.DS_Store
+figures/LVZmodels/*.eps
+figures/subductionzone/*.eps
 longrange/__pycache__/*
 longrange/absolutevalue_Chestler/*
 longrange/absolutevalue_Plourde/*
@@ -57,12 +61,17 @@ raytracing/.ipynb_checkpoints
 raytracing/__pycache__/*
 slowslip/__pycache__/*
 slowslip/*.eps
+slowslip/ANAU/*
+slowslip/CKID/*
 slowslip/CLRS/*
 slowslip/CUSH/*
 slowslip/FRID/*
+slowslip/GISB/*
+slowslip/MAHI/*
 slowslip/PGC5/*
 slowslip/PNCL/*
 slowslip/PTAA/*
+slowslip/PUKE/*
 slowslip/SQIM/*
 timelags/ac/*
 timelags/cc/*

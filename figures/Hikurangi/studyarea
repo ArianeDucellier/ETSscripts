@@ -1,0 +1,60 @@
+#!/bin/csh -f
+
+set output = studyarea.eps
+
+# Small map
+set x1 = 176
+set x2 = 179
+set y1 = -40
+set y2 = -37
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m177.5/-38.5/6.0
+
+gmt pscoast -R$Rop -J$Jop -Ba0.5f0.25::WESN -W0.1p -S224/255/255 -Df -Na -Y5 -P -K >! $output
+
+# Locations of GPS stations
+cat << END >> arrays.dat
+178.257359581 -38.07141492
+178.291223348 -38.268212852
+177.886034958 -38.635336932
+177.90700192 -39.152563727
+177.07635309 -39.65787439
+END
+
+# Names of GPS stations
+cat << END >> names.dat
+178.457359581 -38.07141492 PUKE
+178.491223348 -38.268212852 ANAU
+178.086034958 -38.635336932 GISB
+178.10700192 -39.152563727 MAHI
+177.27635309 -39.65787439 CKID
+END
+
+gmt psxy arrays.dat -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
+
+gmt pstext names.dat -R$Rop -J$Jop -F+f15p -O -K >> $output
+
+# Large map
+set x1 = 165
+set x2 = 180
+set y1 = -48
+set y2 = -34
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m172.5/-41/0.5
+
+gmt pscoast -R$Rop -J$Jop -Ba5f1::wESn -W0.1p -S224/255/255 -Gwhite -Df -Na -X0.5 -Y10.5 -O -K >> $output
+
+# Limits of small map
+cat << END >> square.dat
+176.5 -40
+176.5 -37
+179.5 -37
+179.5 -40
+176.5 -40
+END
+
+gmt psxy square.dat -R$Rop -J$Jop -Wthicker,red -O >> $output
+
+rm arrays.dat
+rm names.dat
+rm square.dat
