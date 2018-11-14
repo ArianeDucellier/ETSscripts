@@ -11,6 +11,7 @@ import os
 import pandas as pd
 
 from math import log, sqrt
+from scipy.signal import medfilt
 from sklearn import linear_model
 
 import DWT, MODWT
@@ -76,6 +77,28 @@ def read_data(station, direction):
         gaps.append(gap)
     return (times, disps, gaps)
 
+def median_filtering(disps, width):
+    """
+    Perform a median filter on the displacements
+
+    Input:
+        type disps = list of 1D numpy arrays
+        disps = Displacement recorded
+        type width = odd integer
+        width = Size of the median filter window
+    Output:
+        type fdisps = list of 1D numpy arrays
+        fdisps = Filtered displacement
+    """
+    assert (width % 2 == 1), \
+        'Width of the filter must be odd'
+    fdisps = []
+    for i in range(0, len(disps)):
+        disp = disps[i]
+        fdisp = medfilt(disp, kernel_size=[width])
+        fdisps.append(fdisp)
+    return fdisps
+
 def compute_wavelet(times, disps, gaps, J, name, station, direction, \
     draw=True, draw_gaps=False, draw_BC=False):
     """
@@ -116,7 +139,10 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
 
     # Draw time series
     if (draw == True):
-        plt.figure(1, figsize=(15, 3 * (J + 2)))
+        params = {'xtick.labelsize':24,
+                  'ytick.labelsize':24}
+        pylab.rcParams.update(params)   
+        fig = plt.figure(1, figsize=(15, 3 * (J + 2)))
         plt.subplot2grid((J + 2, 1), (J + 1, 0))
         if (draw_gaps==True):
             for i in range(0, len(gaps)):
@@ -136,19 +162,26 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
             xmin.append(np.min(time))
             xmax.append(np.max(time))
         plt.xlim(min(xmin), max(xmax))
-        plt.xlabel('Time (years)')
-        plt.legend(loc=1)
+        plt.xlabel('Time (years)', fontsize=20)
+        plt.legend(loc=1, fontsize=20)
 
     # Compute wavelet coefficients
     Ws = []
     Vs = []
+    ymin = []
+    ymax = []
     for i in range(0, len(disps)):
         disp = disps[i]
         (W, V) = MODWT.pyramid(disp, name, J)
-        if (i == 0):
-            (nuH, nuG) = DWT.get_nu(name, J)
+        if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
+            if (i == 0):
+                (nuH, nuG) = DWT.get_nu(name, J)
         Ws.append(W)
         Vs.append(V)
+        maxW = max([np.max(Wj) for Wj in W])
+        minW = min([np.min(Wj) for Wj in W])
+        ymax.append(max(maxW, np.max(V)))
+        ymin.append(min(minW, np.min(V)))
 
     # Plot wavelet coefficients at each level
     if (draw == True):
@@ -163,25 +196,40 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
                 if (draw_gaps == True):
                     for k in range(0, len(gap)):
                         plt.axvline(time[gap[k]], linewidth=1, color='red')
-                if (i == 0):
-                    plt.plot(time, np.roll(Wj, nuH[j - 1]), 'k', \
-                        label = 'W' + str(j))
+                if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
+                    if (i == 0):
+                        plt.plot(time, np.roll(Wj, nuH[j - 1]), 'k', \
+                            label = 'W' + str(j))
+                    else:
+                        plt.plot(time, np.roll(Wj, nuH[j - 1]), 'k')
                 else:
-                    plt.plot(time, np.roll(Wj, nuH[j - 1]), 'k')
+                    if (i == 0):
+                        plt.plot(time, Wj, 'k', label = 'W' + str(j))
+                    else:
+                        plt.plot(time, Wj, 'k')
                 if (draw_BC == True):
                     Lj = (2 ** j - 1) * (L - 1) + 1
-                    if (Lj - 2 - abs(nuH[j - 1]) >= len(time)):
-                        plt.axvline(time[-1], linewidth=1, color='blue')
+                    if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
+                        if (Lj - 2 - abs(nuH[j - 1]) >= len(time)):
+                            plt.axvline(time[-1], linewidth=1, color='blue')
+                        else:
+                            plt.axvline(time[Lj - 2 - abs(nuH[j - 1])], \
+                                linewidth=1, color='blue')
+                        if (N - abs(nuH[j - 1]) < 0):
+                            plt.axvline(time[0], linewidth=1, color='green')
+                        else:
+                            plt.axvline(time[N - abs(nuH[j - 1])], \
+                                linewidth=1, color='green')
                     else:
-                        plt.axvline(time[Lj - 2 - abs(nuH[j - 1])], \
-                            linewidth=1, color='blue')
-                    if (N - abs(nuH[j - 1]) < 0):
-                        plt.axvline(time[0], linewidth=1, color='green')
-                    else:
-                        plt.axvline(time[N - abs(nuH[j - 1])], linewidth=1, \
-                            color='green')
+                        if (Lj - 2 >= len(time)):
+                            plt.axvline(time[-1], linewidth=1, color='blue')
+                        else:
+                            plt.axvline(time[Lj - 2], linewidth=1, \
+                                color='blue')
+                        plt.axvline(time[N - 1], linewidth=1, color='green')
             plt.xlim(min(xmin), max(xmax))
-            plt.legend(loc=1)
+            plt.ylim(min(ymin), max(ymax))
+            plt.legend(loc=1, fontsize=20)
 
     # Plot scaling coefficients for the last level
     if (draw == True):
@@ -194,25 +242,39 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
             if (draw_gaps == True):
                 for k in range(0, len(gap)):
                     plt.axvline(time[gap[k]], linewidth=1, color='red')
-            if (i == 0):
-                plt.plot(time, np.roll(V, nuG[J - 1]), 'k', \
-                    label = 'V' + str(J))
+            if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
+                if (i == 0):
+                    plt.plot(time, np.roll(V, nuG[J - 1]), 'k', \
+                        label = 'V' + str(J))
+                else:
+                    plt.plot(time, np.roll(V, nuG[J - 1]), 'k')
             else:
-                plt.plot(time, np.roll(V, nuG[J - 1]), 'k')
+                if (i == 0):
+                    plt.plot(time, V, 'k', label = 'V' + str(J))
+                else:
+                    plt.plot(time, V, 'k')
             if (draw_BC == True):
                 Lj = (2 ** J - 1) * (L - 1) + 1
-                if (Lj - 2 - abs(nuG[J - 1]) >= len(time)):
-                    plt.axvline(time[-1], linewidth=1, color='blue')
+                if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
+                    if (Lj - 2 - abs(nuG[J - 1]) >= len(time)):
+                        plt.axvline(time[-1], linewidth=1, color='blue')
+                    else:
+                        plt.axvline(time[Lj - 2 - abs(nuG[J - 1])], \
+                            linewidth=1, color='blue')
+                    if (N - abs(nuG[J - 1]) < 0):
+                        plt.axvline(time[0], linewidth=1, color='green')
+                    else:
+                        plt.axvline(time[N - abs(nuG[J - 1])], linewidth=1, \
+                            color='green')
                 else:
-                    plt.axvline(time[Lj - 2 - abs(nuG[J - 1])], linewidth=1, \
-                        color='blue')
-                if (N - abs(nuG[J - 1]) < 0):
-                    plt.axvline(time[0], linewidth=1, color='green')
-                else:
-                    plt.axvline(time[N - abs(nuG[J - 1])], linewidth=1, \
-                        color='green')
+                    if (Lj - 2 >= len(time)):
+                        plt.axvline(time[-1], linewidth=1, color='blue')
+                    else:
+                        plt.axvline(time[Lj - 2], linewidth=1, color='blue')
+                    plt.axvline(time[N - 1], linewidth=1, color='green')
         plt.xlim(min(xmin), max(xmax))
-        plt.legend(loc=1)
+        plt.ylim(min(ymin), max(ymax))
+        plt.legend(loc=1, fontsize=20)
 
     # Save figure
     if (draw == True):
@@ -220,9 +282,9 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
         if not os.path.exists(namedir):
             os.makedirs(namedir)
         title = station + ' - ' + direction
-        plt.suptitle(title, fontsize=30)
-        plt.savefig(namedir + '/' + station + '_' + direction + '_W.eps', \
-            format='eps')
+        plt.suptitle(title, fontsize=24)
+        plt.savefig(namedir + '/' + station + '_' + direction + '_' + \
+            name + '_W.eps', format='eps')
         plt.close(1)
 
     # Return wavelet coefficients
@@ -270,7 +332,10 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
 
     # Draw time series
     if (draw == True):
-        plt.figure(1, figsize=(15, 3 * (J + 2)))
+        params = {'xtick.labelsize':24,
+                  'ytick.labelsize':24}
+        pylab.rcParams.update(params)   
+        fig = plt.figure(1, figsize=(15, 3 * (J + 2)))
         plt.subplot2grid((J + 2, 1), (J + 1, 0))
         if (draw_gaps == True):
             for i in range(0, len(gaps)):
@@ -290,18 +355,24 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
             xmin.append(np.min(time))
             xmax.append(np.max(time))
         plt.xlim(min(xmin), max(xmax))
-        plt.xlabel('Time (years)')
-        plt.legend(loc=1)
+        plt.xlabel('Time (years)', fontsize=20)
+        plt.legend(loc=1, fontsize=20)
         
     # Compute details and smooth
     Ds = []
     Ss = []
+    ymin = []
+    ymax = []
     for i in range(0, len(disps)):
         disp = disps[i]
         W = Ws[i]
         (D, S) = MODWT.get_DS(disp, W, name, J)
         Ds.append(D)
         Ss.append(S)
+        maxD = max([np.max(Dj) for Dj in D])
+        minD = min([np.min(Dj) for Dj in D])
+        ymax.append(max(maxD, np.max(S[J])))
+        ymin.append(min(minD, np.min(S[J])))
 
     # Plot details at each level
     if (draw == True):
@@ -331,7 +402,8 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
                         plt.axvline(time[N - Lj + 1], linewidth=1, \
                             color='green')
             plt.xlim(min(xmin), max(xmax))
-            plt.legend(loc=1)
+            plt.ylim(min(ymin), max(ymax))
+            plt.legend(loc=1, fontsize=20)
 
     # Plot smooth for the last level
     if (draw == True):
@@ -359,7 +431,8 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
                 else:
                     plt.axvline(time[N - Lj + 1], linewidth=1, color='green')
         plt.xlim(min(xmin), max(xmax))
-        plt.legend(loc=1)
+        plt.ylim(min(ymin), max(ymax))
+        plt.legend(loc=1, fontsize=20)
         
     # Save figure
     if (draw == True):
@@ -367,9 +440,9 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
         if not os.path.exists(namedir):
             os.makedirs(namedir)
         title = station + ' - ' + direction
-        plt.suptitle(title, fontsize=30)
-        plt.savefig(namedir + '/' + station + '_' + direction + '_DS.eps', \
-            format='eps')
+        plt.suptitle(title, fontsize=24)
+        plt.savefig(namedir + '/' + station + '_' + direction + '_' + \
+            name + '_DS.eps', format='eps')
         plt.close(1)
 
     # Return details and smooths
@@ -425,7 +498,7 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
         Wt = []
         for j in range(1, J + 1):
             Wj = W[j - 1]
-            deltaj = sqrt(2.0 * sigMAD * log(N) / (2.0 ** (j / 2.0)))
+            deltaj = sqrt(2.0 * sigMAD * log(N) / (2.0 ** j))
             Wjt = np.where(Wj >= deltaj, Wj, 0.0)
             if (j == J):
                 Vt = np.where(V >= deltaj, V, 0.0)
@@ -506,6 +579,6 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
             os.makedirs(namedir)
         title = station + ' - ' + direction
         plt.suptitle(title, fontsize=24)
-        plt.savefig(namedir + '/' + station + '_' + direction + \
-            '_threshold.eps', format='eps')
+        plt.savefig(namedir + '/' + station + '_' + direction + '_' + \
+            name + '_threshold.eps', format='eps')
         plt.close(1)

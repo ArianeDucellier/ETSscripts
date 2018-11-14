@@ -59,7 +59,10 @@ longrange/varianceresiduals_Sweet/*
 notebooks/.ipynb_checkpoints
 raytracing/.ipynb_checkpoints
 raytracing/__pycache__/*
+report/Figures/longrange/*.pdf
+report/Figures/slowslip_results/*.pdf
 slowslip/__pycache__/*
+slowslip/allstations/*
 slowslip/*.eps
 slowslip/ANAU/*
 slowslip/CKID/*
@@ -73,6 +76,7 @@ slowslip/PNCL/*
 slowslip/PTAA/*
 slowslip/PUKE/*
 slowslip/SQIM/*
+slowslip/synthetics/*
 timelags/ac/*
 timelags/cc/*
 timelags/plot_cc/*

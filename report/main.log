@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  13 NOV 2018 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 NOV 2018 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -521,10 +521,8 @@ LaTeX Info: Redefining \nameref on input line 18.
 
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `DRA_2001' on page 2 undefined on input line 7.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -538,15 +536,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
  []
 
 
-LaTeX Warning: Citation `OBA_2002' on page 2 undefined on input line 9.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
-
-
-LaTeX Warning: Citation `PRE_2003' on page 2 undefined on input line 11.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
@@ -554,15 +546,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
  []
 
 
-LaTeX Warning: Citation `ROG_2003' on page 2 undefined on input line 13.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
-
-
-LaTeX Warning: Citation `OBA_2004' on page 2 undefined on input line 15.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
@@ -570,15 +556,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
  []
 
 
-LaTeX Warning: Citation `SZE_2004' on page 2 undefined on input line 17.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
-
-
-LaTeX Warning: Citation `SAN_2006' on page 2 undefined on input line 19.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 19--20
@@ -586,25 +566,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
  []
 
 
-LaTeX Warning: Citation `SHE_2006' on page 2 undefined on input line 21.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
 [2]
-
-LaTeX Warning: Citation `IDE_2007_GRL' on page 3 undefined on input line 23.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
-
-
-LaTeX Warning: Citation `IDE_2007_nature' on page 3 undefined on input line 25.
-
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 25--26
@@ -612,16 +581,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
  []
 
 
-LaTeX Warning: Citation `SHE_2007_nature' on page 3 undefined on input line 27.
-
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
-
-
-LaTeX Warning: Citation `SZE_2008' on page 3 undefined on input line 29.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 29--30
@@ -629,15 +591,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
  []
 
 
-LaTeX Warning: Citation `WEC_2008' on page 3 undefined on input line 31.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
-
-
-LaTeX Warning: Citation `AUD_2009' on page 3 undefined on input line 33.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
@@ -645,16 +601,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
  []
 
 [3]
-
-LaTeX Warning: Citation `LAR_2009' on page 4 undefined on input line 35.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
-
-
-LaTeX Warning: Citation `GHO_2010_G3' on page 4 undefined on input line 37.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
@@ -662,15 +611,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
  []
 
 
-LaTeX Warning: Citation `OHT_2010' on page 4 undefined on input line 39.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
-
-
-LaTeX Warning: Citation `ALB_2011' on page 4 undefined on input line 52.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 52--53
@@ -678,19 +621,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
  []
 
 [4]
-
-LaTeX Warning: Citation `WEC_2011' on page 5 undefined on input line 54.
-
-
-LaTeX Warning: Citation `WEC_2008' on page 5 undefined on input line 54.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
-
-
-LaTeX Warning: Citation `BOS_2012' on page 5 undefined on input line 56.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
@@ -698,15 +631,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
  []
 
 
-LaTeX Warning: Citation `GHO_2012' on page 5 undefined on input line 58.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
-
-
-LaTeX Warning: Citation `WEI_2012' on page 5 undefined on input line 60.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 60--61
@@ -714,24 +641,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
  []
 
 
-LaTeX Warning: Citation `BOS_2013' on page 5 undefined on input line 62.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 [5]
-
-LaTeX Warning: Citation `NOW_2013' on page 6 undefined on input line 64.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
-
-
-LaTeX Warning: Citation `ARM_2014' on page 6 undefined on input line 66.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
@@ -739,18 +656,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
  []
 
 
-LaTeX Warning: Citation `IDE_2014' on page 6 undefined on input line 68.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
-
-
-LaTeX Warning: Citation `ROY_2014' on page 6 undefined on input line 70.
-
-
-LaTeX Warning: Citation `BOS_2012' on page 6 undefined on input line 70.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 70--71
@@ -758,15 +666,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--71
  []
 
 
-LaTeX Warning: Citation `THU_2014' on page 6 undefined on input line 72.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
-
-
-LaTeX Warning: Citation `BOS_2015' on page 6 undefined on input line 74.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
@@ -774,16 +676,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
  []
 
 [6]
-
-LaTeX Warning: Citation `HOU_2015' on page 7 undefined on input line 76.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
-
-
-LaTeX Warning: Citation `HYN_2015' on page 7 undefined on input line 78.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 78--79
@@ -791,15 +686,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
  []
 
 
-LaTeX Warning: Citation `PLO_2015' on page 7 undefined on input line 80.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
-
-
-LaTeX Warning: Citation `FRA_2016' on page 7 undefined on input line 82.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 82--83
@@ -807,16 +696,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
  []
 
 [7]
-
-LaTeX Warning: Citation `GOM_2016_GRL' on page 8 undefined on input line 84.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
-
-
-LaTeX Warning: Citation `CHE_2017_JGR' on page 8 undefined on input line 86.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 86--87
@@ -824,18 +706,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
  []
 
 
-LaTeX Warning: Citation `CHE_2017_G3' on page 8 undefined on input line 88.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
-
-
-LaTeX Warning: Citation `SHE_2017' on page 8 undefined on input line 90.
-
-
-LaTeX Warning: Citation `SHE_2010' on page 8 undefined on input line 90.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 90--91
@@ -852,33 +725,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 11.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 11.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 10 undefined on input line 11.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 11.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
-
-
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 13.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 10 undefined on input line 13.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 13.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 10 undefined on input line 13.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
@@ -886,33 +735,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 15.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 10 undefined on input line 15.
-
-
-LaTeX Warning: Citation `GAO_2012' on page 10 undefined on input line 15.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 15.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 15.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 10 undefined on input line 15.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
-
-
-LaTeX Warning: Citation `MIL_2002' on page 10 undefined on input line 17.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 17.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
@@ -920,51 +745,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
  []
 
 
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `MIL_2002' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `MEL_2005' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `WEC_2008' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 10 undefined on input line 19.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
-
-
-LaTeX Warning: Citation `DRA_2001' on page 10 undefined on input line 21.
-
-
-LaTeX Warning: Citation `DRA_2004' on page 10 undefined on input line 21.
-
-
-LaTeX Warning: Citation `MEL_2005' on page 10 undefined on input line 21.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 10 undefined on input line 21.
-
-
-LaTeX Warning: Citation `SCH_2010' on page 10 undefined on input line 21.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
@@ -973,48 +756,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
 [10
 
-]
-
-LaTeX Warning: Citation `SCH_2010' on page 11 undefined on input line 23.
-
-[11]
+] [11]
 Chapter 2.
-
-LaTeX Warning: Citation `OBA_2002' on page 12 undefined on input line 27.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 27.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 29.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 12 undefined on input line 33.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 33.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 35.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 12 undefined on input line 40.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 42.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 12 undefined on input line 44.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 45.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 12 undefined on input line 47.
-
-
-LaTeX Warning: Citation `OBA_2002' on page 12 undefined on input line 53.
-
 [12
 
 ]
@@ -1048,9 +791,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--140
 [18] [19] [20] [21]) (./crosscorrelation.tex [22] [23] [24] [25])
 (./raytracing.tex [26] [27]) (./wavelets.tex [28]
 Chapter 7.
-
-LaTeX Warning: Citation `PER_2000' on page 29 undefined on input line 7.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
@@ -1097,7 +837,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=557, 401.5pt x 351.3125pt>
+<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=686, 401.5pt x 351.3125pt>
 File: Figures/longrange/Frank_et_al_2016_Fig2D.png Graphic file (type png)
 
 <use Figures/longrange/Frank_et_al_2016_Fig2D.png>
@@ -1121,7 +861,7 @@ value-eps-converted-to.pdf Figures/longrange/absolutevalue.eps>
 (epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=560, 722.7pt x 722.7p
+<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=689, 722.7pt x 722.7p
 t>
 File: Figures/longrange/absolutevalue-eps-converted-to.pdf Graphic file (type p
 df)
@@ -1142,7 +882,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/variance-eps-converted-to.pdf, id=572, 722.7pt x 722.7pt>
+<Figures/longrange/variance-eps-converted-to.pdf, id=700, 722.7pt x 722.7pt>
 File: Figures/longrange/variance-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/variance-eps-converted-to.pdf>
@@ -1163,7 +903,7 @@ residuals-eps-converted-to.pdf Figures/longrange/varianceresiduals.eps>
 (epstopdf)             \includegraphics on input line 84.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=668, 722.7pt x 72
+<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=797, 722.7pt x 72
 2.7pt>
 File: Figures/longrange/varianceresiduals-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1183,7 +923,7 @@ onverted-to.pdf Figures/longrange/RS.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/RS-eps-converted-to.pdf, id=670, 722.7pt x 722.7pt>
+<Figures/longrange/RS-eps-converted-to.pdf, id=799, 722.7pt x 722.7pt>
 File: Figures/longrange/RS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/RS-eps-converted-to.pdf>
@@ -1203,7 +943,7 @@ ram-eps-converted-to.pdf Figures/longrange/periodogram.eps>
 (epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/periodogram-eps-converted-to.pdf, id=722, 722.7pt x 722.7pt>
+<Figures/longrange/periodogram-eps-converted-to.pdf, id=851, 722.7pt x 722.7pt>
 File: Figures/longrange/periodogram-eps-converted-to.pdf Graphic file (type pdf
 )
 <use Figures/longrange/periodogram-eps-converted-to.pdf>
@@ -1222,9 +962,6 @@ Missing character: There is no ¤ in font cmr10!
 ]
 Chapter 9.
 
-LaTeX Warning: Citation `GHO_2012' on page 39 undefined on input line 11.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
@@ -1241,18 +978,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-
-LaTeX Warning: Citation `GHO_2012' on page 40 undefined on input line 55.
-
 [40]
 Chapter 10.
 
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
-
-
-LaTeX Warning: Citation `AKI_2002' on page 41 undefined on input line 68.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 89--90
@@ -1269,24 +1000,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
 ] [42]
 Chapter 11.
 
-LaTeX Warning: Citation `MCC_2006' on page 43 undefined on input line 99.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
-
-
-LaTeX Warning: Citation `BOS_2015' on page 43 undefined on input line 101.
-
-
-LaTeX Warning: Citation `NOW_2013' on page 43 undefined on input line 101.
-
-
-LaTeX Warning: Citation `NOW_2013' on page 43 undefined on input line 101.
-
-
-LaTeX Warning: Citation `NIK_2009' on page 43 undefined on input line 101.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
@@ -1294,29 +1010,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--102
  []
 
 
-LaTeX Warning: Citation `NIK_2009' on page 43 undefined on input line 118.
-
-
-LaTeX Warning: Citation `NOW_2013' on page 43 undefined on input line 118.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 118--119
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
  []
 
 [43
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
-LaTeX Warning: Citation `BOS_2015' on page 44 undefined on input line 137.
-
-
-LaTeX Warning: Citation `NIK_2009' on page 44 undefined on input line 137.
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 137--138
@@ -1341,9 +1044,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
 ]
 Chapter 13.
-
-LaTeX Warning: Citation `PLO_2015' on page 48 undefined on input line 11.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
@@ -1392,18 +1092,9 @@ Chapter 17.
 ]
 Chapter 18.
 
-LaTeX Warning: Citation `SZE_2008' on page 54 undefined on input line 46.
-
-
-LaTeX Warning: Citation `BLE_2002' on page 54 undefined on input line 46.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
-
-
-LaTeX Warning: Citation `NIK_2002' on page 54 undefined on input line 71.
 
 [54
 
@@ -1464,9 +1155,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--241
  []
 
 
-LaTeX Warning: Citation `WEC_2010' on page 59 undefined on input line 242.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
@@ -1498,8 +1186,8 @@ igure_1-eps-converted-to.pdf Figures/slowslip_results/Figure_1.eps>
 (epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=948, 1084.05pt x 17
-34.48pt>
+<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1099, 1084.05pt x 1
+734.48pt>
 File: Figures/slowslip_results/Figure_1-eps-converted-to.pdf Graphic file (type
  pdf)
  <use Figures/slowslip_results/Figure_1-eps-converted-to.pdf>
@@ -1521,8 +1209,8 @@ igure_2-eps-converted-to.pdf Figures/slowslip_results/Figure_2.eps>
 (epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=954, 1084.05pt x 86
-7.24pt>
+<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1106, 1084.05pt x 8
+67.24pt>
 File: Figures/slowslip_results/Figure_2-eps-converted-to.pdf Graphic file (type
  pdf)
  <use Figures/slowslip_results/Figure_2-eps-converted-to.pdf>
@@ -1551,8 +1239,8 @@ igure_3-eps-converted-to.pdf Figures/slowslip_results/Figure_3.eps>
 (epstopdf)             \includegraphics on input line 270.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=994, 1084.05pt x 17
-34.48pt>
+<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1146, 1084.05pt x 1
+734.48pt>
 File: Figures/slowslip_results/Figure_3-eps-converted-to.pdf Graphic file (type
  pdf)
  <use Figures/slowslip_results/Figure_3-eps-converted-to.pdf>
@@ -1572,7 +1260,7 @@ igure_4-eps-converted-to.pdf Figures/slowslip_results/Figure_4.eps>
 (epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1045, 1084.05pt x 8
+<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1197, 1084.05pt x 8
 67.24pt>
 File: Figures/slowslip_results/Figure_4-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1593,7 +1281,7 @@ igure_5-eps-converted-to.pdf Figures/slowslip_results/Figure_5.eps>
 (epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1074, 1445.4pt x 72
+<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1226, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_5-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1615,7 +1303,7 @@ igure_6-eps-converted-to.pdf Figures/slowslip_results/Figure_6.eps>
 (epstopdf)             \includegraphics on input line 294.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1177, 1445.4pt x 72
+<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1329, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_6-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1648,12 +1336,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--355
  []
 
 
-LaTeX Warning: Citation `KAL_2011' on page 66 undefined on input line 356.
-
-
-LaTeX Warning: Citation `KAL_2016' on page 66 undefined on input line 356.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
@@ -1682,9 +1364,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 379--384
 
 ]
 Chapter 22.
-
-LaTeX Warning: Citation `PLO_2015' on page 69 undefined on input line 13.
-
 [69
 
 ]
@@ -1707,32 +1386,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-)
-No file main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
-[72
+) (./main.bbl [72
 
-]
+] [73
+
+] [74])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
+ [75]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 91449DFE284261DABCBEB062608386F6;4348.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 8605 strings out of 493014
- 129702 string characters out of 6133351
- 220559 words of memory out of 5000000
- 11663 multiletter control sequences out of 15000+600000
- 12603 words of font info for 45 fonts, out of 8000000 for 9000
+ 8664 strings out of 493014
+ 130477 string characters out of 6133351
+ 223194 words of memory out of 5000000
+ 11664 multiletter control sequences out of 15000+600000
+ 12902 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,18n,41p,2631b,682s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,18n,41p,2634b,682s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7
@@ -1753,10 +1429,10 @@ l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (72 pages, 18457671 bytes).
+Output written on main.pdf (75 pages, 18476434 bytes).
 PDF statistics:
- 1409 PDF objects out of 1440 (max. 8388607)
- 893 compressed objects within 9 object streams
- 328 named destinations out of 1000 (max. 500000)
+ 1592 PDF objects out of 1728 (max. 8388607)
+ 1071 compressed objects within 11 object streams
+ 384 named destinations out of 1000 (max. 500000)
  649 words of extra memory for PDF output out of 10000 (max. 10000000)
 

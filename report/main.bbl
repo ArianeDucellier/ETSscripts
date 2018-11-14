@@ -219,6 +219,12 @@ K.~Obara, H.~Hires, F.~Yamamizu, and K.~Kasahara.
 \newblock {\em Geophysical Research Letters}, 31:1143--1150, 2004.
 \newblock doi:10.1029/2004gl020848.
 
+\bibitem{OHT_2010}
+R.~Ohtani, J.J. McGuire, and P.~Segall.
+\newblock Network strain filter: A new tool for monitoring and detecting
+  transient deformation signals in {GPS} arrays.
+\newblock {\em Journal of Geophysical Research}, 115:B12418, 2010.
+
 \bibitem{PER_2000}
 D.B. Percival and A.T. Walden.
 \newblock {\em Wavelet {Methods} for {Time} {Series} {Analysis}}.

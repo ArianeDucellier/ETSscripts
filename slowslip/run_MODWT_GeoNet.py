@@ -33,80 +33,92 @@ locations = [['MAHI', 'CKID'], ['GISB', 'MAHI'], ['PUKE'], ['MAHI'], \
     ['GISB', 'MAHI'], ['ANAU'], ['MAHI'], ['CKID'], ['PUKE'], ['GISB'], \
     ['ANAU', 'PUKE']]
 
-# Plot the wavelet coefficients and the details and smooth for each station
-for station in stations:
-    (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
+names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \
+    'LA8', 'LA10', 'LA12', 'LA14', 'LA16', 'LA18', 'LA20', 'C6', 'C12', \
+    'C18', 'C24', 'C30', 'BL14', 'BL18', 'BL20']
 
-    (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, 8, \
-        'LA8', station, direction, True, False, False)
+# Plot the details and smooth for each station and each wavelet filter
+# and reconstruct the time series after thresholding
+J = 8
+for name in ['LA8']:
+    for station in stations:
+        (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
 
-    (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
-        8, 'LA8', station, direction, True, False, False)
+#        disps = get_MODWT_GeoNet.median_filtering(disps, 3)
 
-    get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, 8, 'LA8', \
-        station, direction, events, locations, True, False, True)
+        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, J, \
+        name, station, direction, False, False, False)
+
+        (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
+            J, name, station, direction, True, False, False)
+
+        get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
+            station, direction, events, locations, True, False, True)
 
 # Plot the wavelet details as function of latitude
 #J = 8
+#level = 8
 #amp = 0.05
 #
-## Initialize figure
-#params = {'xtick.labelsize':24,
-#          'ytick.labelsize':24}
-#pylab.rcParams.update(params)
-#fig = plt.figure(1, figsize=(20, 10))
+#for name in names:
+#    # Initialize figure
+#    params = {'xtick.labelsize':24,
+#              'ytick.labelsize':24}
+#    pylab.rcParams.update(params)
+#    fig = plt.figure(1, figsize=(20, 10))
 #
-#xmin = []
-#xmax = []
-#colors = cm.rainbow(np.linspace(0, 1, len(stations)))
+#    xmin = []
+#    xmax = []
+#    colors = cm.rainbow(np.linspace(0, 1, len(stations)))
 #
-## Loop on stations
-#for station, lat, c in zip(stations, lats, colors):
-#    # Get details
-#    (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
-#    (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, 8, \
-#        'LA8', station, direction, False, False, False)
-#    (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, 8, \
-#        'LA8', station, direction, False, False, False)
-#    # Plot details
-#    for i in range(0, len(times)):
-#        time = times[i]
-#        D = Ds[i]
-#        if (i == 0):
-#            plt.plot(time, lat + amp * D[J - 1], color=c, label=station)
-#        else:
-#            plt.plot(time, lat + amp * D[J - 1], color=c)
-#    # Get limits of plot
-#    for i in range(0, len(times)):
-#        time = times[i]
-#        xmin.append(np.min(time))
-#        xmax.append(np.max(time))
+#    # Loop on stations
+#    for station, lat, c in zip(stations, lats, colors):
+#        # Get details
+#        (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
+#        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, J, \
+#            name, station, direction, False, False, False)
+#        (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
+#            J, name, station, direction, False, False, False)
+#        # Plot details
+#        for i in range(0, len(times)):
+#            time = times[i]
+#            D = Ds[i]
+#            if (i == 0):
+#                plt.plot(time, lat + amp * D[level - 1], color=c, \
+#                    label=station)
+#            else:
+#                plt.plot(time, lat + amp * D[level - 1], color=c)
+#        # Get limits of plot
+#        for i in range(0, len(times)):
+#            time = times[i]
+#            xmin.append(np.min(time))
+#            xmax.append(np.max(time))
 #
-## Loop on slow slip events
-#for event, location in zip(events, locations):
-#    for station in location:
-#        for i in range(0, len(stations)):
-#            if (station == stations[i]):
-#                y = lats[i]
-#        plt.plot(np.array([datetime.date(year=event[0], month=event[1], \
-#            day=event[2]), datetime.date(year=event[0], month=event[1], \
-#            day=event[2])]), np.array([y - 2 * amp, y + 2 * amp]), \
-#            linewidth=2, color='grey')
+#    # Loop on slow slip events
+#    for event, location in zip(events, locations):
+#        for station in location:
+#            for i in range(0, len(stations)):
+#                if (station == stations[i]):
+#                    y = lats[i]
+#            plt.plot(np.array([datetime.date(year=event[0], month=event[1], \
+#                day=event[2]), datetime.date(year=event[0], month=event[1], \
+#                day=event[2])]), np.array([y - 2 * amp, y + 2 * amp]), \
+#                linewidth=2, color='grey')
 #
-## End figure
-#plt.xlim(min(xmin), max(xmax))
-#plt.ylim(min(lats) - 2.0 * amp, max(lats) + 2.0 * amp)
-#plt.xlabel('Time (years)', fontsize=20)
-#plt.ylabel('Latitude', fontsize=20)
-#plt.legend(loc=3, fontsize=20)
-#if (direction == 'e'):
-#    title = str(J) + 'th level detail - Eastern direction'
-#elif (direction == 'n'):
-#    title = str(J) + 'th level detail - North direction'
-#else:
-#    title = str(J) + 'th level detail - Vertical direction'
-#plt.suptitle(title, fontsize=24)
-## Save figure
-#plt.savefig('D' + str(J) + '_' + direction + '.eps', \
-#    format='eps')
-#plt.close(1)
+#    # End figure
+#    plt.xlim(min(xmin), max(xmax))
+#    plt.ylim(min(lats) - 2.0 * amp, max(lats) + 2.0 * amp)
+#    plt.xlabel('Time (years)', fontsize=20)
+#    plt.ylabel('Latitude', fontsize=20)
+#    plt.legend(loc=3, fontsize=20)
+#    if (direction == 'e'):
+#        title = str(level) + 'th level detail - Eastern direction'
+#    elif (direction == 'n'):
+#        title = str(level) + 'th level detail - North direction'
+#    else:
+#        title = str(level) + 'th level detail - Vertical direction'
+#    plt.suptitle(title, fontsize=24)
+#    # Save figure
+#    plt.savefig('D' + str(level) + '_' + direction + '_' + name + '.eps', \
+#        format='eps')
+#    plt.close(1)
