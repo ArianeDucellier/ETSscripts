@@ -4,11 +4,13 @@ displacement measured at a GPS station
 """
 
 import datetime
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
 
+from math import log, sqrt
 from sklearn import linear_model
 
 import DWT, MODWT
@@ -219,7 +221,7 @@ def compute_wavelet(times, disps, gaps, J, name, station, direction, \
             os.makedirs(namedir)
         title = station + ' - ' + direction
         plt.suptitle(title, fontsize=30)
-        plt.savefig(namedir + '/' + direction + '_W.eps', \
+        plt.savefig(namedir + '/' + station + '_' + direction + '_W.eps', \
             format='eps')
         plt.close(1)
 
@@ -366,9 +368,144 @@ def compute_details(times, disps, gaps, Ws, J, name, station, direction, \
             os.makedirs(namedir)
         title = station + ' - ' + direction
         plt.suptitle(title, fontsize=30)
-        plt.savefig(namedir + '/' + direction + '_DS.eps', \
+        plt.savefig(namedir + '/' + station + '_' + direction + '_DS.eps', \
             format='eps')
         plt.close(1)
 
     # Return details and smooths
     return (Ds, Ss)
+
+def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
+    events, locations, draw=True, draw_gaps=False, draw_events=True):
+    """
+    Apply a hard threshold to the MODWT wavelet coefficients before
+    reconstructing the time series
+
+    Input:
+        type times = list of 1D numpy arrays
+        times = Time when there is data recorded
+        type disps = list of 1D numpy arrays
+        disps = Corresponding displacement recorded
+        type gaps = list of 1D numpy arrays (integers)
+        gaps = Indices where a missing value has been filled by interpolation
+        type Ws = list of lists of 1D numpy arrays (length J)
+        Ws = List of lists of vectors of MODWT wavelet coefficients
+        type Vs = list of 1D numpy arrays (length J)
+        Ws = List of vectors of MODWT scaling coefficients
+        type J = integer
+        J = Level of MODWT
+        type name = string
+        name = Name of wavelet filter
+        type station = string
+        station = Name of the GPS station
+        type direction = string
+        direction = Component of the displacement (lat, lon or rad)
+        type events = list of lists of integers
+        events = List of year, month, day of slow slip event
+        type locations = list of lists of strings
+        locations = List of stations that recorded the slow slip event
+        type draw = boolean
+        draw = Do we draw the wavelet details and smooths?
+        type draw_gaps = boolean
+        draw_gaps = Do we draw a red line where there is a missing value that
+            has been filled by interpolation?
+        type draw_events = boolen
+        draw_events = Do we draw the timing of known slow slip events?
+    Output:
+        None
+    """
+    # Thresholding of MODWT wavelet coefficients
+    dispt = []
+    for i in range(0, len(times)):
+        time = times[i]
+        N = len(time)
+        W = Ws[i]
+        V = Vs[i]
+        sigMAD = sqrt(2) * np.median(np.abs(W[0])) / 0.6745
+        Wt = []
+        for j in range(1, J + 1):
+            Wj = W[j - 1]
+            deltaj = sqrt(2.0 * sigMAD * log(N) / (2.0 ** (j / 2.0)))
+            Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+            if (j == J):
+                Vt = np.where(V >= deltaj, V, 0.0)
+            Wt.append(Wjt)
+        Xt = MODWT.inv_pyramid(Wt, Vt, name, J)
+        dispt.append(Xt)
+
+    # Initialize figure
+    if (draw == True):
+        params = {'xtick.labelsize':24,
+                'ytick.labelsize':24}
+        pylab.rcParams.update(params)   
+        fig = plt.figure(1, figsize=(15, 10))
+
+        # Initial data
+        plt.subplot2grid((2, 1), (0, 0))
+        if (draw_gaps == True):
+            for i in range(0, len(gaps)):
+                time = times[i]
+                gap = gaps[i]
+                for j in range(0, len(gap)):
+                    plt.axvline(time[gap[j]], linewidth=1, color='red')
+        if (draw_events == True):
+            for event, location in zip(events, locations):
+                for site in location:
+                    if (site == station):
+                        plt.axvline(datetime.date(year=event[0], \
+                            month=event[1], day=event[2]), linewidth=2, \
+                            color='grey')
+        xmin = []
+        xmax = []
+        for i in range(0, len(times)):
+            time = times[i]
+            disp = disps[i]
+            if (i == 0):
+                plt.plot(time, disp, 'k', label='Data')
+            else:
+                plt.plot(time, disp, 'k')
+            xmin.append(np.min(time))
+            xmax.append(np.max(time))
+        plt.xlim(min(xmin), max(xmax))
+        plt.legend(loc=1, fontsize=20)
+
+        # Denoised data
+        plt.subplot2grid((2, 1), (1, 0))
+        if (draw_gaps == True):
+            for i in range(0, len(gaps)):
+                time = times[i]
+                gap = gaps[i]
+                for j in range(0, len(gap)):
+                    plt.axvline(time[gap[j]], linewidth=1, color='red')
+        if (draw_events == True):
+            for event, location in zip(events, locations):
+                for site in location:
+                    if (site == station):
+                        plt.axvline(datetime.date(year=event[0], \
+                            month=event[1], day=event[2]), linewidth=2, \
+                            color='grey')
+        xmin = []
+        xmax = []
+        for i in range(0, len(times)):
+            time = times[i]
+            disp = dispt[i]
+            if (i == 0):
+                plt.plot(time, disp, 'k', label='Denoised')
+            else:
+                plt.plot(time, disp, 'k')
+            xmin.append(np.min(time))
+            xmax.append(np.max(time))
+        plt.xlim(min(xmin), max(xmax))
+        plt.xlabel('Time (years)', fontsize=20)
+        plt.legend(loc=1, fontsize=20)
+
+    # Save figure
+    if (draw == True):
+        namedir = station
+        if not os.path.exists(namedir):
+            os.makedirs(namedir)
+        title = station + ' - ' + direction
+        plt.suptitle(title, fontsize=24)
+        plt.savefig(namedir + '/' + station + '_' + direction + \
+            '_threshold.eps', format='eps')
+        plt.close(1)

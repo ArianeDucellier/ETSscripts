@@ -28,18 +28,100 @@
 \lim_{f \to 0} \frac{S_X \left( f \right)}{C_S \left| f \right| ^{\alpha}} = 1 \text{ that is } \log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)
 \end{equation}
 
-\paragraph{Low-frequency earthquakes as a long memory process}
+\newpage
 
-\begin{itemize}
-\item Figure 2D of Frank \textit{et al.} (2016 ~\cite{FRA_2016}). We have $\log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)$ with $\alpha = - 0.5$
-\end{itemize}
+\section{Long-range dependence in low-frequency earthquake catalogs?}
 
-\section{Estimators}
+Episodic Tremor and Slip (ETS) is a phenomenon that takes place mostly in subduction zones, when a geodetically detected slow slip event occurs concurrently with tectonic tremor. Tremor is a long (several seconds to many minutes), low amplitude seismic signal, with emergent onsets, and an absence of clear impulsive phases. Their occurrence is correlated temporally and spatially with slow slip events on the subduction zone interface. At least a portion of the tremor is made of small low-frequency earthquakes (LFEs). LFEs group into families, or clusters of LFEs that repeat on small $\approx$ 1 km\textsuperscript{2} patches on the plate interface. \\
+
+For a given LFE family, we can obtain from the seismic data an event catalog that gives the exact timing (and sometimes the magnitude) of each small earthquake occurring on this given small patch. We can then construct a time series by counting the number of events occurring in every time windows of a given duration. For example, Frank \textit{et al.} (2016) translated their LFE catalog from Guerrero, Mexico, into a discrete event count signal with regular time steps of 1 min, binning each cataloged event into the time step during which it is observed. They then computed an autocorrelation function for this time series. Finally, they computed the Fourier spectrum of the event count autocorrelation (see Figure 8.1). \\
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/Frank_et_al_2016_Fig2D.png}
+\captionsetup{type=figure}
+\captionof{figure}{Figure 2D of Frank \textit{et al.} (2016). We have $\log \left( S_X \left( f \right) \right) = \beta + \alpha \log \left( f \right)$ with $\alpha = - 0.5$ where $S_X$ is the spectral density function (SDF), or power spectrum, and $f$ is the frequency.}
+\end{center}
+
+I have taken a family of LFEs recorded in the Olympic Peninsula, Washington (catalog from Sweet \textit{et al.}, 2014) and applied several estimators from Taqqu and Teverovsky (1998) to measure the intensity of long-range dependence in the event count time series. \\
 
 Let us define a time series $X_i$, of length $N$. We define the corresponding aggregated series:
 
 \begin{equation}
 X^{\left( m \right)} \left( k \right) = \frac{1}{m} \sum_{i = \left( k - 1 \right) m + 1}^{k m} X_i \text{, } k = 1 , 2 , ... , \left[ \frac{N}{m} \right]
 \end{equation}
+
+The first absolute moment of the time series is then:
+
+\begin{equation}
+AM^{\left( m \right)} = \frac{m}{N} \sum_{k = 1}^{\frac{N}{m}} \left| X^{\left( m \right)} \left( k \right) - \bar{X} \right|
+\end{equation}
+
+and $AM^{\left( m \right)}$ behaves as $m^{H - 1}$, where $H$ is the Hurst parameter. The result of the corresponding linear regression can be seen in Figure 8.2.
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/absolutevalue.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Estimation of the Hurst parameter with the absolute value method.}
+\end{center}
+
+The sample variance of the time series is:
+
+\begin{equation}
+\hat{Var} X^{\left( m \right)} = \frac{m}{N} \sum_{k = 1}^{\frac{N}{m}} \left( X^{\left( m \right)} \left( k \right) - \bar{X} \right) ^2
+\end{equation}
+
+and $\hat{Var} X^{\left( m \right)}$ behaves as $m^{2 d - 1}$, where $d$ is the fractional index. The result of the corresponding linear regression can be seen in Figure 8.3.
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/variance.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Estimation of the fractional index with the variance method.}
+\end{center}
+
+To define the variance of residuals, we divide the time series into blocks of size $m$. We then compute the partial sums of the time series $Y \left( t \right) = \sum_{i = 1}^{t} X_i$, and fit the partial sums within each block by a least-squares line $a + b t$. The sample variance $\frac{1}{m} \sum_{t = 1}^{m} \left( Y \left( t \right) - a - b t \right) ^2$ is then computed, and its average is proportional to $m^{2 d + 1}$. The result of the corresponding linear regression can be seen in Figure 8.4.
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/varianceresiduals.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Estimation of the fractional index with the variance of residuals method.}
+\end{center}
+
+The $R / S$ statistics is defined by:
+
+\begin{equation}
+R \left( t , k \right) = \max_{0 \leq i \leq k} \left[ Y_{t + i} - Y_t - \frac{i}{k} \left( Y_{t + k} - Y_t \right) \right] - \min_{0 \leq i \leq k} \left[ Y_{t + i} - Y_t - \frac{i}{k} \left( Y_{t + k} - Y_t \right) \right]
+\end{equation}
+
+\begin{equation}
+S \left( t , k \right) = \sqrt{ \frac{1}{k} \sum_{i = t + 1}^{t + k} \left( X_i - \bar{X}_{t , k} \right) ^2 }
+\end{equation}
+
+and $R / S = \frac{R \left( t , k \right)}{S \left( t , k \right)}$ behaves as $k^{d + 1 / 2}$. The result of the corresponding linear regression can be seen in Figure 8.5.
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/RS.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Estimation of the fractional index with the R/S method.}
+\end{center}
+
+The periodogram  is defined as:
+
+\begin{equation}
+I \left( \nu \right) = \frac{1}{2 \pi N} \left| \sum_{j = 1}^N X \left( j \right) e^{i j \nu} \right| ^2
+\end{equation}
+
+and $I \left( \nu \right)$ behaves as $\left| \nu \right| ^{- 2 d}$ close to the origin. The result of the corresponding linear regression can be seen in Figure 8.6.
+
+\begin{center}
+\includegraphics[width=300pt, trim={0cm 0cm 0cm 0cm},clip]{Figures/longrange/periodogram.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Estimation of the fractional index with the periodogram method.}
+\end{center}
+
+Frank, WB ; Shapiro, NM ; Husker, AL ; Kostoglodov, V ; Gusev, AA ; Campillo, M. The evolving interaction of low-frequency earthquakes during transient slip. Science Advances, 2016 Apr, Vol.2(4).
+
+Sweet, Justin R. ; Creager, Kenneth C. ; Houston, Heidi. A family of repeating low‐frequency earthquakes at the downdip edge of tremor and slip. Geochemistry, Geophysics, Geosystems, September 2014, Vol.15(9), pp.3713-3721.
+
+Murad S. Taqqu and Vadim Teverovsky. On estimating the intensity of long-range dependence in finite and infinite variance time series. In: A practical guide to heavy tails : statistical techniques and applications. Robert J. Adler; Raisa E. Feldman, 1958-; Murad S. Taqqu; 1998 Boston : Birkhäuser.
 
 \end{document}
