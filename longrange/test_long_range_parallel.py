@@ -3,7 +3,6 @@ This module contains functions to test for long range dependence in time
 series. The tests come from Taqqu and Teverovsky (1998).
 """
 
-import matplotlib.pyplot as plt
 import multiprocessing
 import numpy as np
 import pickle
@@ -11,8 +10,9 @@ import pickle
 from functools import partial
 from math import sqrt
 from multiprocessing import Pool
+from scipy.fftpack import fft
 from sklearn import linear_model
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import mean_squared_error
 
 def aggregate(X, m):
     """
@@ -39,9 +39,9 @@ def get_absval(X, m, i):
     AM = np.mean(np.abs(Xm - np.mean(X)))
     return AM
 
-def absolutevalue(dirname, filename, m, draw=True):
+def absolutevalue(dirname, filename, m):
     """
-    Function to plot the first absolute moment of the aggregated series
+    Function to compute the first absolute moment of the aggregated series
     in function of m
     The slope is equal to H - 1 (Hurst parameter)
 
@@ -52,41 +52,24 @@ def absolutevalue(dirname, filename, m, draw=True):
         filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type draw = boolean
-        draw = Do we plot the linear regression?
     Output:
         type H = float
         H = Hurst parameter        
     """
-    infile = open(dirname + filename + '.pkl', 'rb')
-    data = pickle.load(infile)
-    infile.close()
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
-    pool = Pool(len(m))
     map_func = partial(get_absval, X, m)
-    result = pool.map(map_func, iter(range(0, len(m))))
-    pool.close()
-    pool.join()
+    with Pool(len(m)) as pool:
+        result = pool.map(map_func, iter(range(0, len(m))))
     AM = np.array(result)
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(AM), (len(AM), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
-    y_pred = regr.predict(x)
-    R2 = r2_score(y, y_pred)
     H = regr.coef_[0][0] + 1
-     # Plot
-    if (draw==True):
-        plt.figure(1, figsize=(10, 10))
-        plt.plot(np.log10(m), np.log10(AM), 'ko')
-        plt.plot(x, y_pred, 'r-')
-        plt.xlabel('Log (aggregation size)', fontsize=24)
-        plt.ylabel('Log (absolute moment)', fontsize=24)
-        plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-            np.sum(X), H, R2), fontsize=24)
-        plt.savefig('absolutevalue/' + filename + '.eps', format='eps')
-        plt.close(1)
+    pickle.dump([m, AM, np.sum(X)], open('absolutevalue/' + filename + \
+        '.pkl', 'wb'))
     return H
 
 def get_var(X, m, i):
@@ -94,9 +77,9 @@ def get_var(X, m, i):
     V = np.var(Xm)
     return V
  
-def variance(dirname, filename, m, draw=True):
+def variance(dirname, filename, m):
     """
-    Function to plot the sample variance of the aggregated series
+    Function to compute the sample variance of the aggregated series
     in function of m
     The slope is equal to 2 d - 1 (fractional index)
 
@@ -107,41 +90,24 @@ def variance(dirname, filename, m, draw=True):
         filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type draw = boolean
-        draw = Do we plot the linear regression?
     Output:
         type d = float
         d = Fractional index
     """
-    infile = open(dirname + filename + '.pkl', 'rb')
-    data = pickle.load(infile)
-    infile.close()
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
-    pool = Pool(len(m))
     map_func = partial(get_var, X, m)
-    result = pool.map(map_func, iter(range(0, len(m))))
-    pool.close()
-    pool.join()
+    with Pool(len(m)) as pool:
+        result = pool.map(map_func, iter(range(0, len(m))))
     V = np.array(result)
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(V), (len(V), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
-    y_pred = regr.predict(x)
-    R2 = r2_score(y, y_pred)
     d = 0.5 * (regr.coef_[0][0] + 1)
-    # Plot
-    if (draw==True):
-        plt.figure(1, figsize=(10, 10))
-        plt.plot(np.log10(m), np.log10(V), 'ko')
-        plt.plot(x, y_pred, 'r-')
-        plt.xlabel('Log (aggregation size)', fontsize=24)
-        plt.ylabel('Log (sample variance)', fontsize=24)
-        plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-            np.sum(X), d, R2), fontsize=24)
-        plt.savefig('variance/' + filename + '.eps', format='eps')
-        plt.close(1)
+    pickle.dump([m, V, np.sum(X)], open('variance/' + filename + \
+        '.pkl', 'wb'))
     return d
 
 def get_varm(X, m, i):
@@ -153,9 +119,9 @@ def get_varm(X, m, i):
     Vm = np.var(Xm)
     return Vm
 
-def variance_moulines(dirname, filename, m, draw=True):
+def variance_moulines(dirname, filename, m):
     """
-    Function to plot the sample variance of the aggregated series
+    Function to compute the sample variance of the aggregated series
     in function of m
     The slope is equal to 2 H (Hurst parameter)
 
@@ -166,41 +132,24 @@ def variance_moulines(dirname, filename, m, draw=True):
         filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type draw = boolean
-        draw = Do we plot the linear regression?
     Output:
         type H = float
         H = Hurst parameter        
     """
-    infile = open(dirname + filename + '.pkl', 'rb')
-    data = pickle.load(infile)
-    infile.close()
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
-    pool = Pool(len(m))
     map_func = partial(get_varm, X, m)
-    result = pool.map(map_func, iter(range(0, len(m))))
-    pool.close()
-    pool.join()
+    with Pool(len(m)) as pool:
+        result = pool.map(map_func, iter(range(0, len(m))))
     Vm = np.array(result)
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(Vm / m), (len(m), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
-    y_pred = regr.predict(x)
-    R2 = r2_score(y, y_pred)
     H = 0.5 * (regr.coef_[0][0] + 1.0)
-    # Plot
-    if (draw==True):
-        plt.figure(1, figsize=(10, 10))
-        plt.plot(np.log10(m), np.log10(Vm / m), 'ko')
-        plt.plot(x, y_pred, 'r-')
-        plt.xlabel('Log (aggregation size)', fontsize=24)
-        plt.ylabel('Log (variance / aggregation size)', fontsize=24)
-        plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-            np.sum(X), H, R2), fontsize=24)
-        plt.savefig('variancemoulines/' + filename + '.eps', format='eps')
-        plt.close(1)
+    pickle.dump([m, Vm, np.sum(X)], open('variancemoulines/' + filename + \
+        '.pkl', 'wb'))
     return H
 
 def get_varres(X, m, method, i):
@@ -224,9 +173,9 @@ def get_varres(X, m, method, i):
         raise ValueError('Method must be median or mean')
     return Vm
 
-def varianceresiduals(dirname, filename, m, method, draw=True):
+def varianceresiduals(dirname, filename, m, method):
     """
-    Function to plot the median / mean of the variance of residuals
+    Function to compute the median / mean of the variance of residuals
     in function of m
     The slope is equal to 2 H (Hurst parameter) for the median
     The slope is equal to 2 d + 1 (fractional index) for the mean
@@ -240,8 +189,6 @@ def varianceresiduals(dirname, filename, m, method, draw=True):
         m = List of values for the aggregation
         type method = string
         method = 'median' or 'mean'
-        type draw = boolean
-        draw = Do we plot the linear regression?
     Output (median):
         type H = float
         H = Hurst parameter
@@ -249,43 +196,25 @@ def varianceresiduals(dirname, filename, m, method, draw=True):
         type d = float
         d = Fractional index
     """
-    infile = open(dirname + filename + '.pkl', 'rb')
-    data = pickle.load(infile)
-    infile.close()
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
-    pool = Pool(len(m))
     map_func = partial(get_varres, X, m, method)
-    result = pool.map(map_func, iter(range(0, len(m))))
+    with Pool(len(m)) as pool:
+        result = pool.map(map_func, iter(range(0, len(m))))
     Vm = np.array(result)
     # Linear regression
     x = np.reshape(np.log10(m), (len(m), 1))
     y = np.reshape(np.log10(Vm), (len(Vm), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
-    y_pred = regr.predict(x)
-    R2 = r2_score(y, y_pred)
     if (method == 'median'):
         H = 0.5 + regr.coef_[0][0]
     elif (method == 'mean'):
         d = 0.5 * (regr.coef_[0][0] - 1)
     else:
         raise ValueError('Method must be median or mean')
-    # Plot
-    if (draw==True):
-        plt.figure(1, figsize=(10, 10))
-        plt.plot(np.log10(m), np.log10(Vm), 'ko')
-        plt.plot(x, y_pred, 'r-')
-        plt.xlabel('Log (block size)', fontsize=24)
-        if (method == 'median'):
-            plt.ylabel('Log (median variance residuals)', fontsize=24)
-            plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-                np.sum(X), H, R2), fontsize=24)
-        else:
-            plt.ylabel('Log (mean variance residuals)', fontsize=24)
-            plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-                np.sum(X), d, R2), fontsize=24)
-        plt.savefig('varianceresiduals/' + filename + '.eps', format='eps')
-        plt.close(1)
+    pickle.dump([m, Vm, np.sum(X)], open('varianceresiduals/' + filename + \
+        '.pkl', 'wb'))
     if (method == 'median'):
         return H
     else:
@@ -310,9 +239,9 @@ def get_RS(X, m, i):
             lag.append(m[i])
     return (RS, lag)
 
-def RSstatistic(dirname, filename, m, draw=True):
+def RSstatistic(dirname, filename, m):
     """
-    Function to plot the R/S statistic in function of m
+    Function to compute the R/S statistic in function of m
     The slope is equal to d + 1/2 (fractional index)
 
     Input:
@@ -322,21 +251,15 @@ def RSstatistic(dirname, filename, m, draw=True):
         filename = Name of the time series file
         type m = numpy array of integers
         m = List of values for the aggregation
-        type draw = boolean
-        draw = Do we plot the linear regression?
     Output:
         type d = float
         d = Fractional index
     """
-    infile = open(dirname + filename + '.pkl', 'rb')
-    data = pickle.load(infile)
-    infile.close()
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
-    pool = Pool(len(m))
     map_func = partial(get_RS, X, m)
-    result = pool.map(map_func, iter(range(0, len(m))))
-    pool.close()
-    pool.join()
+    with Pool(len(m)) as pool:
+        result = pool.map(map_func, iter(range(0, len(m))))
     RS = []
     lag = []
     for i in range(0, len(m)):
@@ -351,18 +274,40 @@ def RSstatistic(dirname, filename, m, draw=True):
     y = np.reshape(np.log10(RS), (len(RS), 1))
     regr = linear_model.LinearRegression(fit_intercept=True)
     regr.fit(x, y)
-    y_pred = regr.predict(x)
-    R2 = r2_score(y, y_pred)
     d = regr.coef_[0][0] - 0.5
-    # Plot
-    if (draw==True):
-        plt.figure(1, figsize=(10, 10))
-        plt.plot(np.log10(lag), np.log10(RS), 'ko')
-        plt.plot(x, y_pred, 'r-')
-        plt.xlabel('Log (aggregation size)', fontsize=24)
-        plt.ylabel('Log (R/S statistic)', fontsize=24)
-        plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-            np.sum(X), d, R2), fontsize=24)
-        plt.savefig('RS/' + filename + '.eps', format='eps')
-        plt.close(1)
+    pickle.dump([lag, RS, np.sum(X)], open('RS/' + filename + \
+        '.pkl', 'wb'))
+    return d
+
+def periodogram(dirname, filename, dt):
+    """
+    Function to compute the periodogram of the aggregated series
+    in function of m
+    The slope is equal to - 2 d (fractional index)
+
+    Input:
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
+        type dt = float
+        dt = Time step of the time series (one minute)
+    Output:
+        type d = float
+        d = Fractional index
+    """
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
+    N = len(X)
+    Y = fft(X)
+    I = np.power(np.abs(Y[1 : int(N / 20) + 1]), 2.0)
+    nu = (1.0 / (N * dt)) * np.arange(1, int(N / 20) + 1)
+    # Linear regression
+    x = np.reshape(np.log10(nu[I > 0.0]), (len(nu[I > 0.0]), 1))
+    y = np.reshape(np.log10(I[I > 0.0]), (len(I[I > 0.0]), 1))
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y)
+    d = - 0.5 * regr.coef_[0][0]
+    pickle.dump([nu, I, np.sum(X)], open('periodogram/' + filename + \
+        '.pkl', 'wb'))
     return d

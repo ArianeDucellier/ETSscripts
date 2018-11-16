@@ -19,17 +19,21 @@ names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \
     'LA8', 'LA10', 'LA12', 'LA14', 'LA16', 'LA18', 'LA20', 'C6', 'C12', \
     'C18', 'C24', 'C30', 'BL14', 'BL18', 'BL20']
 # Duration of recording
-N = 300
+N = 500
 # MODWT level
 J = 8
 
 # Create time vector
 time = np.arange(0, N + 1)
 
-# Loop on wavelet filters
-for name in names:
-    # Loop on signal-to-noise ratios
-    for SNR in SNRs:
+# Set random seed
+np.random.seed(0)
+
+# Loop on signal-to-noise ratios
+for SNR in SNRs:
+    noise = np.random.normal(0.0, 1.0 / SNR, N + 1)
+    # Loop on wavelet filters
+    for name in names:
         # Create displacements vectors
         disps = []
         for duration in durations:
@@ -40,8 +44,7 @@ for name in names:
                 elif (time[i] >= 0.5 * (N + duration)):
                     disp[i] = (time[i] - N) * SNR / (N - duration)
                 else:
-                    disp[i] = (0.5 * N - time[i]) * SNR / duration
-            noise = np.random.normal(0.0, 1.0 / SNR, N + 1)
+                    disp[i] = (0.5 * N - time[i]) * SNR / duration           
             disp = disp + noise
             disps.append(disp)
         # Compute MODWT
@@ -68,7 +71,6 @@ for name in names:
         for i in range(0, len(disps)):
             W = Ws[i]
             V = Vs[i]
-#            sigMAD = sqrt(2) * np.median(np.abs(W[0])) / 0.6745
             sigE = 1.0 / SNR
             Wt = []
             for j in range(1, J + 1):
@@ -115,7 +117,7 @@ for name in names:
             plt.legend(loc=1, fontsize=30)
             plt.title('Duration = ' + str(durations[i]), fontsize=30)
         # Save figure
-        title = 'SNR = ' + str(SNR)
+        title = 'Wavelet = ' + name + ' - SNR = ' + str(SNR)
         plt.suptitle(title, fontsize=50)
         plt.savefig('synthetics/' + name + '_' + str(SNR) + '_DS.eps', \
             format='eps')

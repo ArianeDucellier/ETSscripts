@@ -487,24 +487,36 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
     Output:
         None
     """
+    # Computation of sigE
+    filename = '../data/GeoNet/FITS-' + station + '-' + direction + '.csv'
+    data = pd.read_csv(filename)
+    N = data.shape[0]
+    s = data[' error (mm)'].mean()
+    sigE = sqrt((N - 1) / N) * s
     # Thresholding of MODWT wavelet coefficients
     dispt = []
+    ymin = []
+    ymax = []
     for i in range(0, len(times)):
         time = times[i]
+        disp = disps[i]
         N = len(time)
         W = Ws[i]
         V = Vs[i]
-        sigMAD = sqrt(2) * np.median(np.abs(W[0])) / 0.6745
         Wt = []
         for j in range(1, J + 1):
             Wj = W[j - 1]
-            deltaj = sqrt(2.0 * sigMAD * log(N) / (2.0 ** j))
+            deltaj = sqrt(2.0 * sigE * log(N) / (2.0 ** j))
             Wjt = np.where(Wj >= deltaj, Wj, 0.0)
             if (j == J):
                 Vt = np.where(V >= deltaj, V, 0.0)
             Wt.append(Wjt)
         Xt = MODWT.inv_pyramid(Wt, Vt, name, J)
+        maxy = max(np.max(disp), np.max(Xt))
+        miny = min(np.min(disp), np.min(Xt))
         dispt.append(Xt)
+        ymax.append(maxy)
+        ymin.append(miny)
 
     # Initialize figure
     if (draw == True):
@@ -540,6 +552,7 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
             xmin.append(np.min(time))
             xmax.append(np.max(time))
         plt.xlim(min(xmin), max(xmax))
+        plt.ylim(min(ymin), max(ymax))
         plt.legend(loc=1, fontsize=20)
 
         # Denoised data
@@ -569,6 +582,7 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
             xmin.append(np.min(time))
             xmax.append(np.max(time))
         plt.xlim(min(xmin), max(xmax))
+        plt.ylim(min(ymin), max(ymax))
         plt.xlabel('Time (years)', fontsize=20)
         plt.legend(loc=1, fontsize=20)
 

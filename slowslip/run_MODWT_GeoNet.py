@@ -38,19 +38,27 @@ names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \
     'C18', 'C24', 'C30', 'BL14', 'BL18', 'BL20']
 
 # Plot the details and smooth for each station and each wavelet filter
-# and reconstruct the time series after thresholding
+#J = 8
+#for name in names:
+#    for station in stations:
+#        (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
+#
+#        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, J, \
+#        name, station, direction, False, False, False)
+#
+#        (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
+#            J, name, station, direction, True, False, False)
+
+# Reconstruct the time series after applying median average and thresholding
 J = 8
-for name in ['LA8']:
+for name in names:
     for station in stations:
         (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
 
-#        disps = get_MODWT_GeoNet.median_filtering(disps, 3)
+        fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
 
-        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, J, \
+        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, fdisps, gaps, J, \
         name, station, direction, False, False, False)
-
-        (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
-            J, name, station, direction, True, False, False)
 
         get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
             station, direction, events, locations, True, False, True)
