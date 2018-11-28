@@ -60,8 +60,8 @@ for name in names:
         (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, fdisps, gaps, J, \
         name, station, direction, False, False, False)
 
-        get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
-            station, direction, events, locations, True, False, True)
+        dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, \
+            name, station, direction, events, locations, True, False, True)
 
 # Plot the wavelet details as function of latitude
 #J = 8

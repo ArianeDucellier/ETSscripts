@@ -91,8 +91,10 @@ for SNR in SNRs:
         for i in range(0, len(dispts)):
             plt.subplot2grid((J + 3, len(durations)), (J + 2, i))
             dispt = dispts[i]
+            disp = disps[i] - noise
+            plt.plot(time, disp, 'grey', label='Signal')
             plt.plot(time, dispt, 'k', label='Denoised')
-            plt.xlabel('Time (years)', fontsize=30)
+            plt.xlabel('Time (days)', fontsize=30)
             plt.legend(loc=1, fontsize=30)
         # Plot data
         for i in range(0, len(disps)):

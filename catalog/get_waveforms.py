@@ -173,7 +173,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 
     # Get the waveforms from the catalog of Plourde et al. (2015)
     data = loadmat('../data/Plourde_2015/waveforms/' + filename + '.mat')
-    ndt = ndt = data['ndt'][0][0]
+    ndt = data['ndt'][0][0]
     ordlst = data['ordlst']
     uk = data['uk']
     ns = len(ordlst)

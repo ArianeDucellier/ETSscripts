@@ -485,7 +485,8 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
         type draw_events = boolen
         draw_events = Do we draw the timing of known slow slip events?
     Output:
-        None
+        type dispt = list of 1D numpy arrays
+        dispt = Denoised data
     """
     # Computation of sigE
     filename = '../data/GeoNet/FITS-' + station + '-' + direction + '.csv'
@@ -596,3 +597,6 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
         plt.savefig(namedir + '/' + station + '_' + direction + '_' + \
             name + '_threshold.eps', format='eps')
         plt.close(1)
+
+    # Return denoised data
+    return dispt

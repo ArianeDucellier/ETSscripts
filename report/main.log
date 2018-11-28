@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 NOV 2018 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 NOV 2018 15:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -854,12 +854,16 @@ Package epstopdf Info: Source file: <Figures/longrange/absolutevalue.eps>
 (epstopdf)                    size: 23347 bytes
 (epstopdf)             Output file: <Figures/longrange/absolutevalue-eps-conver
 ted-to.pdf>
-(epstopdf)                    date: 2018-11-13 16:13:09
-(epstopdf)                    size: 24629 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/longrange/absolute
 value-eps-converted-to.pdf Figures/longrange/absolutevalue.eps>
 (epstopdf)             \includegraphics on input line 62.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/longrange/absolutevalue-eps-converted-to.
+pdf Figures/longrange/absolutevalue.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/longrange/absolutevalue-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:47
+(epstopdf)                    size: 24629 bytes.
 
 <Figures/longrange/absolutevalue-eps-converted-to.pdf, id=689, 722.7pt x 722.7p
 t>
@@ -875,12 +879,16 @@ Package epstopdf Info: Source file: <Figures/longrange/variance.eps>
 (epstopdf)                    size: 24536 bytes
 (epstopdf)             Output file: <Figures/longrange/variance-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2018-11-13 16:14:15
-(epstopdf)                    size: 25155 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/longrange/variance
 -eps-converted-to.pdf Figures/longrange/variance.eps>
 (epstopdf)             \includegraphics on input line 76.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/longrange/variance-eps-converted-to.pdf F
+igures/longrange/variance.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/longrange/variance-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:47
+(epstopdf)                    size: 25155 bytes.
 
 <Figures/longrange/variance-eps-converted-to.pdf, id=700, 722.7pt x 722.7pt>
 File: Figures/longrange/variance-eps-converted-to.pdf Graphic file (type pdf)
@@ -896,12 +904,16 @@ Package epstopdf Info: Source file: <Figures/longrange/varianceresiduals.eps>
 (epstopdf)                    size: 23145 bytes
 (epstopdf)             Output file: <Figures/longrange/varianceresiduals-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2018-11-13 16:15:11
-(epstopdf)                    size: 24110 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/longrange/variance
 residuals-eps-converted-to.pdf Figures/longrange/varianceresiduals.eps>
 (epstopdf)             \includegraphics on input line 84.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/longrange/varianceresiduals-eps-converted
+-to.pdf Figures/longrange/varianceresiduals.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/longrange/varianceresiduals-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:47
+(epstopdf)                    size: 24110 bytes.
 
 <Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=797, 722.7pt x 72
 2.7pt>
@@ -916,12 +928,16 @@ Package epstopdf Info: Source file: <Figures/longrange/RS.eps>
 (epstopdf)                    size: 482369 bytes
 (epstopdf)             Output file: <Figures/longrange/RS-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2018-11-13 16:17:00
-(epstopdf)                    size: 1763417 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/longrange/RS-eps-c
 onverted-to.pdf Figures/longrange/RS.eps>
 (epstopdf)             \includegraphics on input line 102.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/longrange/RS-eps-converted-to.pdf Figures
+/longrange/RS.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/longrange/RS-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2018-11-16 15:54:49
+(epstopdf)                    size: 1763417 bytes.
 
 <Figures/longrange/RS-eps-converted-to.pdf, id=799, 722.7pt x 722.7pt>
 File: Figures/longrange/RS-eps-converted-to.pdf Graphic file (type pdf)
@@ -936,12 +952,16 @@ Package epstopdf Info: Source file: <Figures/longrange/periodogram.eps>
 (epstopdf)                    size: 2360781 bytes
 (epstopdf)             Output file: <Figures/longrange/periodogram-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2018-11-13 16:17:10
-(epstopdf)                    size: 15804754 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/longrange/periodog
 ram-eps-converted-to.pdf Figures/longrange/periodogram.eps>
 (epstopdf)             \includegraphics on input line 116.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/longrange/periodogram-eps-converted-to.pd
+f Figures/longrange/periodogram.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/longrange/periodogram-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:58
+(epstopdf)                    size: 15804754 bytes.
 
 <Figures/longrange/periodogram-eps-converted-to.pdf, id=851, 722.7pt x 722.7pt>
 File: Figures/longrange/periodogram-eps-converted-to.pdf Graphic file (type pdf
@@ -1033,11 +1053,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
 [44] [45]
 Chapter 12.
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-
- []
-
 ) (./catalog.tex [46
 
 ] [47
@@ -1179,12 +1194,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_1.eps>
 (epstopdf)                    size: 414684 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_1-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:54:57
-(epstopdf)                    size: 67252 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_1-eps-converted-to.pdf Figures/slowslip_results/Figure_1.eps>
 (epstopdf)             \includegraphics on input line 251.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_1-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_1.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_1-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:59
+(epstopdf)                    size: 67252 bytes.
 
 <Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1099, 1084.05pt x 1
 734.48pt>
@@ -1202,12 +1221,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_2.eps>
 (epstopdf)                    size: 120306 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_2-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:54:57
-(epstopdf)                    size: 43463 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_2-eps-converted-to.pdf Figures/slowslip_results/Figure_2.eps>
 (epstopdf)             \includegraphics on input line 259.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_2-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_2.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_2-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:54:59
+(epstopdf)                    size: 43463 bytes.
 
 <Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1106, 1084.05pt x 8
 67.24pt>
@@ -1232,12 +1255,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_3.eps>
 (epstopdf)                    size: 418800 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_3-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:54:58
-(epstopdf)                    size: 118690 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_3-eps-converted-to.pdf Figures/slowslip_results/Figure_3.eps>
 (epstopdf)             \includegraphics on input line 270.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_3-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_3.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_3-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:55:00
+(epstopdf)                    size: 118690 bytes.
 
 <Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1146, 1084.05pt x 1
 734.48pt>
@@ -1253,12 +1280,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_4.eps>
 (epstopdf)                    size: 128053 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_4-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:54:58
-(epstopdf)                    size: 45840 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_4-eps-converted-to.pdf Figures/slowslip_results/Figure_4.eps>
 (epstopdf)             \includegraphics on input line 278.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_4-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_4.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_4-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:55:00
+(epstopdf)                    size: 45840 bytes.
 
 <Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1197, 1084.05pt x 8
 67.24pt>
@@ -1274,12 +1305,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_5.eps>
 (epstopdf)                    size: 236821 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_5-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:14:06
-(epstopdf)                    size: 79825 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_5-eps-converted-to.pdf Figures/slowslip_results/Figure_5.eps>
 (epstopdf)             \includegraphics on input line 286.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_5-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_5.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_5-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:55:01
+(epstopdf)                    size: 79825 bytes.
 
 <Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1226, 1445.4pt x 72
 2.7pt>
@@ -1296,12 +1331,16 @@ Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_6.eps>
 (epstopdf)                    size: 186194 bytes
 (epstopdf)             Output file: <Figures/slowslip_results/Figure_6-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2018-09-20 10:15:10
-(epstopdf)                    size: 66009 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/slowslip_results/F
 igure_6-eps-converted-to.pdf Figures/slowslip_results/Figure_6.eps>
 (epstopdf)             \includegraphics on input line 294.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figures/slowslip_results/Figure_6-eps-converted-t
+o.pdf Figures/slowslip_results/Figure_6.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Figures/slowslip_results/Figure_6-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2018-11-16 15:55:01
+(epstopdf)                    size: 66009 bytes.
 
 <Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1329, 1445.4pt x 72
 2.7pt>
@@ -1429,7 +1468,7 @@ l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (75 pages, 18476434 bytes).
+Output written on main.pdf (75 pages, 18476556 bytes).
 PDF statistics:
  1592 PDF objects out of 1728 (max. 8388607)
  1071 compressed objects within 11 object streams
