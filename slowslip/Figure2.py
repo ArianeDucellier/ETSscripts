@@ -14,8 +14,9 @@ direction2 = 'u'
 named1 = 'East'
 named2 = 'Vertical'
 
-name = 'LA8'
+name = 'C6'
 J = 8
+cutoff = 0.025
 
 # Create figure
 params = {'xtick.labelsize':16,
@@ -30,14 +31,16 @@ fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
     station, direction1, False, False, False)
 dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
     station, direction1, [], [], False, False, False)
+dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, direction1, cutoff)
 
 ymin = []
 ymax = []
 for i in range(0, len(times)):
     disp = disps[i]
     dispt = dispts[i]
-    maxy = max(np.max(disp), np.max(dispt))
-    miny = min(np.min(disp), np.min(dispt))
+    dispf = dispfs[i]
+    maxy = max(np.max(disp), np.max(dispt), np.max(dispf))
+    miny = min(np.min(disp), np.min(dispt), np.min(dispf))
     ymax.append(maxy)
     ymin.append(miny)
 
@@ -55,7 +58,7 @@ for i in range(0, len(times)):
     xmax.append(np.max(time))
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
-plt.legend(loc=1, fontsize=16)
+plt.legend(loc=2, fontsize=16)
 plt.title('Original data', fontsize=16)
 
 plt.subplot2grid((2, 2), (0, 1))
@@ -64,16 +67,19 @@ xmax = []
 for i in range(0, len(times)):
     time = times[i]
     dispt = dispts[i]
+    dispf = dispfs[i]
     if (i == 0):
-        plt.plot(time, dispt, 'k', label=named1)
+        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
+        plt.plot(time, dispf, 'grey', label='Low-pass filtered')
     else:
-        plt.plot(time, dispt, 'k')
+        plt.plot(time, dispt, 'k', linewidth=2)
+        plt.plot(time, dispf, 'grey')
     xmin.append(np.min(time))
     xmax.append(np.max(time))
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
 plt.title('Denoised signal', fontsize=16)
-plt.legend(loc=1, fontsize=16)
+plt.legend(loc=2, fontsize=16)
 
 # Direction 2
 (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction2)
@@ -82,14 +88,16 @@ fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
     station, direction2, False, False, False)
 dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
     station, direction2, [], [], False, False, False)
+dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, direction1, cutoff)
 
 ymin = []
 ymax = []
 for i in range(0, len(times)):
     disp = disps[i]
     dispt = dispts[i]
-    maxy = max(np.max(disp), np.max(dispt))
-    miny = min(np.min(disp), np.min(dispt))
+    dispf = dispfs[i]
+    maxy = max(np.max(disp), np.max(dispt), np.max(dispf))
+    miny = min(np.min(disp), np.min(dispt), np.min(dispf))
     ymax.append(maxy)
     ymin.append(miny)
 
@@ -108,7 +116,7 @@ for i in range(0, len(times)):
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
 plt.xlabel('Time (years)', fontsize=16)
-plt.legend(loc=1, fontsize=16)
+plt.legend(loc=2, fontsize=16)
 
 plt.subplot2grid((2, 2), (1, 1))
 xmin = []
@@ -116,16 +124,19 @@ xmax = []
 for i in range(0, len(times)):
     time = times[i]
     dispt = dispts[i]
+    dispf = dispfs[i]
     if (i == 0):
-        plt.plot(time, dispt, 'k', label=named2)
+        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
+        plt.plot(time, dispf, 'grey', label='Low-pass filtered')
     else:
-        plt.plot(time, dispt, 'k')
+        plt.plot(time, dispt, 'k', linewidth=2)
+        plt.plot(time, dispf, 'grey')
     xmin.append(np.min(time))
     xmax.append(np.max(time))
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
 plt.xlabel('Time (years)', fontsize=16)
-plt.legend(loc=1, fontsize=16)
+plt.legend(loc=2, fontsize=16)
 
 plt.savefig('Figure2.eps', format='eps')
 plt.close(1)

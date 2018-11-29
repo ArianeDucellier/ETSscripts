@@ -11,7 +11,7 @@ import os
 import pandas as pd
 
 from math import log, sqrt
-from scipy.signal import medfilt
+from scipy.signal import butter, lfilter, medfilt
 from sklearn import linear_model
 
 import DWT, MODWT
@@ -600,3 +600,18 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
 
     # Return denoised data
     return dispt
+
+def low_pass_filter(times, disps, gaps, station, direction, cutoff):
+    # Create low-pass filter
+    b, a = butter(4, cutoff, btype='low')
+    dispfs = []
+    for i in range(0, len(times)):
+	    time = times[i]
+	    disp = disps[i]
+	    dispf = lfilter(b, a, disp)
+	    maxy = max(np.max(disp), np.max(dispf))
+	    miny = min(np.min(disp), np.min(dispf))
+	    dispfs.append(dispf)
+			
+    # Return filtered data
+    return dispfs
