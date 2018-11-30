@@ -2,6 +2,7 @@
 NASA proposal - Figure 2
 """
 
+import datetime
 import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,6 +18,21 @@ named2 = 'Vertical'
 name = 'C6'
 J = 8
 cutoff = 0.025
+
+events = [[2010, 1, 31], [2010, 3, 31], [2010, 6, 30], [2010, 8, 15], \
+    [2011, 4, 30], [2011, 4, 30], [2011, 8, 31], [2011, 9, 30], \
+    [2011, 12, 15], [2012, 3, 15], [2012, 8, 15], [2012, 12, 31], \
+    [2013, 2, 28], [2013, 6, 30], [2013, 7, 31], [2013, 9, 30], \
+    [2013, 12, 15], [2014, 5, 31], [2014, 9, 30], [2014, 11, 15], \
+    [2014, 12, 31], [2014, 12, 31], [2015, 1, 31], [1015, 2, 15], \
+    [2015, 6, 30]]
+locations = [['MAHI', 'CKID'], ['GISB', 'MAHI'], ['PUKE'], ['MAHI'], \
+    ['PUKE'], ['ANAU'], ['MAHI', 'CKID'], ['ANAU', 'PUKE'], ['GISB'], \
+    ['PUKE', 'ANAU', 'GISB'], ['ANAU', 'PUKE', 'GISB'], \
+    ['PUKE', 'ANAU', 'GISB'], ['CKID', 'MAHI'], ['GISB', 'MAHI'], \
+    ['ANAU', 'PUKE'], ['MAHI'], ['PUKE', 'ANAU'], ['ANAU', 'GISB'], \
+    ['GISB', 'MAHI'], ['ANAU'], ['MAHI'], ['CKID'], ['PUKE'], ['GISB'], \
+    ['ANAU', 'PUKE']]
 
 # Create figure
 params = {'xtick.labelsize':16,
@@ -76,6 +92,11 @@ for i in range(0, len(times)):
         plt.plot(time, dispf, 'grey')
     xmin.append(np.min(time))
     xmax.append(np.max(time))
+for event, location in zip(events, locations):
+    for site in location:
+        if (site == station):
+            plt.axvline(datetime.date(year=event[0], month=event[1], \
+				day=event[2]), color='grey', linestyle='--')
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
 plt.title('Denoised signal', fontsize=16)
@@ -133,6 +154,11 @@ for i in range(0, len(times)):
         plt.plot(time, dispf, 'grey')
     xmin.append(np.min(time))
     xmax.append(np.max(time))
+for event, location in zip(events, locations):
+	for site in location:
+	    if (site == station):
+		    plt.axvline(datetime.date(year=event[0], month=event[1], \
+				day=event[2]), color='grey', linestyle='--')
 plt.xlim(min(xmin), max(xmax))
 plt.ylim(min(ymin), max(ymax))
 plt.xlabel('Time (years)', fontsize=16)

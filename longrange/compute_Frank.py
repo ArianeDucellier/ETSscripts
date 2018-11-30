@@ -15,7 +15,7 @@ from test_long_range_parallel import RSstatistic
 from test_long_range_parallel import periodogram
 
 # Read the LFE file
-LFEtime = pd.read_csv('frank_jgr_2014_lfe_catalog.txt', \
+LFEtime = pd.read_csv('../data/Frank_2014/frank_jgr_2014_lfe_catalog.txt', \
     delim_whitespace=True, header=None, skiprows=0)
 LFEtime.columns = ['year', 'month', 'day', 'hour', 'minute', 'second', \
     'ID', 'latitude', 'longitude', 'depth']
