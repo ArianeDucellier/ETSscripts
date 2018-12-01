@@ -11,7 +11,9 @@ data/Chestler_2017/timeseries/*
 data/Chestler_2017/*.m
 data/Chestler_2017/*.mat
 data/Chestler_2017/*.rtf
-data/Frank_2014/*
+data/Frank_2014/LFEdistribution/*
+data/Frank_2014/timeseries/*
+data/Frank_2014/*.txt
 data/GeoNet/*
 data/PANGA/*
 data/Plourde_2015/detections/*
@@ -30,7 +32,10 @@ data/Sweet_2014/timeseries/*
 data/Sweet_2014/*.m
 data/timelags/*
 data/.DS_Store
+figures/ETS/*.png
+figures/ETS/slowslip.eps
 figures/LVZmodels/*.eps
+figures/raypaths/*.eps
 figures/subductionzone/*.eps
 longrange/__pycache__/*
 longrange/absolutevalue_Chestler/*
