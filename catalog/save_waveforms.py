@@ -123,7 +123,6 @@ def save_waveform(filename, TDUR, filt, dt):
 
     # Loop over stations
     for station in stations:
-        print(station)
         # Create streams
         EW = Stream()
         NS = Stream()

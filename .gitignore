@@ -1,4 +1,5 @@
 .DS_Store
+catalog/data/*
 catalog/templates
 catalog/timearrival
 catalog/waveforms/*
