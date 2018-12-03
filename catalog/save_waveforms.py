@@ -180,9 +180,19 @@ def save_waveform(filename, TDUR, filt, dt):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080326.07.004'
     TDUR = 10.0
     filt = (1.5, 9.0)
     dt = 0.025
 
-    save_waveform(filename, TDUR, filt, dt)
+    # Get the names of the template detection files
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+	    dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+		'eZ', 'nb'), \
+			 'formats': ('S13', 'S3', np.float, np.float, np.float, \
+		np.float, np.float, np.int)}, \
+		skiprows=1)
+
+    # Loop on templates
+    for i in range(0, len(LFEloc)):
+        filename = LFEloc[i][0].decode('utf-8')
+        save_waveform(filename, TDUR, filt, dt)

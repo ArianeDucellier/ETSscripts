@@ -8,6 +8,7 @@ from obspy.core.stream import Stream
 
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import pickle
 
 import MODWT
@@ -154,6 +155,11 @@ def plot_figure(EW, NS, UD, station, filename, method='RMS'):
 def draw(filename, method='RMS'):
     """
     """
+    # Create directory to store the figures
+    namedir = 'data/raw/' + filename
+    if not os.path.exists(namedir):
+        os.makedirs(namedir)
+
     data = pickle.load(open('data/' + filename + '.pkl', 'rb'))
     stations = data[0]
     EWall = data[1]
@@ -173,11 +179,17 @@ def draw(filename, method='RMS'):
             if (len(UD) > 0):
                 UD = remove_trace(UD)
             # Plot
-            plot_figure(EW, NS, UD, station, 'data/raw/' + station, method)
+            plot_figure(EW, NS, UD, station, 'data/raw/' + \
+				filename + '/' + station, method)
 
 def draw_MODWT(filename, name, J, method='RMS'):
     """
     """
+    # Create directory to store the figures
+    namedir = 'data/MODWT/' + filename
+    if not os.path.exists(namedir):
+        os.makedirs(namedir)
+
     data = pickle.load(open('data/' + filename + '.pkl', 'rb'))
     stations = data[0]
     EWall = data[1]
@@ -241,14 +253,15 @@ def draw_MODWT(filename, name, J, method='RMS'):
             # Plot
             for j in range(0, J):
                 plot_figure(W_EW[j], W_NS[j], W_UD[j], station, \
-                    'data/MODWT/' + station + '_W' + str(j + 1), method)
-            plot_figure(V_EW, V_NS, V_UD, station, 'data/MODWT/' + station + \
-                '_V' + str(J), method)
+                    'data/MODWT/' + filename + '/' + station + \
+					'_W' + str(j + 1), method)
+            plot_figure(V_EW, V_NS, V_UD, station, 'data/MODWT/' + \
+				filename + '/' + station + '_V' + str(J), method)
 
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080326.07.004'
+    filename = '080401.05.050'
     method = 'RMS'
     name = 'LA8'
     J = 6

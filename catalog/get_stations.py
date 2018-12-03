@@ -11,7 +11,7 @@ import pickle
 from math import cos, pi, sin, sqrt
 
 # Maximum distance
-dmax = 50.0
+dmax = 100.0
 
 # To transform latitude and longitude into kilometers
 a = 6378.136
