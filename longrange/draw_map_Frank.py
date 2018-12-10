@@ -1,6 +1,6 @@
 """
 This script makes maps of the Hurst parameter and the fractional index
-for the LFE catalog of Chestler and Creager (2017)
+for the LFE catalog of Shelly (2017)
 """
 import altair as alt
 import matplotlib.pyplot as plt
@@ -8,24 +8,24 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from scipy.io import loadmat
+# Read the LFE file
+LFEtime = pd.read_csv('../data/Frank_2014/frank_jgr_2014_lfe_catalog.txt', \
+    delim_whitespace=True, header=None, skiprows=0)
+LFEtime.columns = ['year', 'month', 'day', 'hour', 'minute', 'second', \
+    'ID', 'latitude', 'longitude', 'depth']
+LFEtime['ID'] = LFEtime.ID.astype('category')
+families = LFEtime['ID'].cat.categories.tolist()
 
-# Get the names of the template detection files
-data = loadmat('../data/Chestler_2017/LFEsAll.mat')
-LFEs = data['LFEs']
-nt = len(LFEs)
+latitude = np.zeros(len(families))
+longitude = np.zeros(len(families))
 
-latitude = np.zeros(nt)
-longitude = np.zeros(nt)
-
-# Get the location of the LFE families
-for n in range(0, nt):
-    latitude[n] = LFEs[n]['lat'][0][0][0]
-    longitude[n] = LFEs[n]['lon'][0][0][0]
+for n in range(0, len(families)):
+    latitude[n] = LFEtime[LFEtime.ID == families[n]].latitude.mode()[0]
+    longitude[n] = LFEtime[LFEtime.ID == families[n]].longitude.mode()[0]
 
 # Open result file
-results = pickle.load(open('Chestler_2017.pkl', 'rb'))[0]
-results.drop(['family'], axis=1)
+results = pickle.load(open('Frank_2014.pkl', 'rb'))[0]
+results = results.drop(['family'], axis=1)
 		
 # Create dataframe
 data = pd.DataFrame(data={'latitude': latitude, \
@@ -38,7 +38,7 @@ data['d_RS'] = results['d_RS']
 data['d_p'] = results['d_p']
 
 pd.plotting.scatter_matrix(results, figsize=(15, 15))
-plt.savefig('scatter_Chestler.eps', format='eps')
+plt.savefig('scatter_Frank.eps', format='eps')
 plt.close()
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
@@ -49,7 +49,7 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
 	height=400
 )
-myChart.save('maps/H_absval_Chestler.png')
+myChart.save('maps/H_absval_Frank.png')
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
     longitude='longitude:Q',
@@ -59,7 +59,7 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
     height=400
 )
-myChart.save('maps/d_var_Chestler.png')
+myChart.save('maps/d_var_Frank.png')
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
     longitude='longitude:Q',
@@ -69,7 +69,7 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
     height=400
 )
-myChart.save('maps/H_varm_Chestler.png')
+myChart.save('maps/H_varm_Frank.png')
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
     longitude='longitude:Q',
@@ -79,7 +79,7 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
     height=400
 )
-myChart.save('maps/d_varres_Chestler.png')
+myChart.save('maps/d_varres_Frank.png')
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
     longitude='longitude:Q',
@@ -89,7 +89,7 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
     height=400
 )
-myChart.save('maps/d_RS_Chestler.png')
+myChart.save('maps/d_RS_Frank.png')
 
 myChart = alt.Chart(data).mark_circle(size=50).encode(
     longitude='longitude:Q',
@@ -99,4 +99,4 @@ myChart = alt.Chart(data).mark_circle(size=50).encode(
     width=400,
     height=400
 )
-myChart.save('maps/d_p_Chestler.png')
+myChart.save('maps/d_p_Frank.png')
