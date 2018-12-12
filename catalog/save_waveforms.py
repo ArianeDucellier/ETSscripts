@@ -193,6 +193,6 @@ if __name__ == '__main__':
 		skiprows=1)
 
     # Loop on templates
-    for i in range(0, len(LFEloc)):
+    for i in range(61, len(LFEloc)):
         filename = LFEloc[i][0].decode('utf-8')
         save_waveform(filename, TDUR, filt, dt)

@@ -17,7 +17,7 @@ named2 = 'Vertical'
 
 name = 'C6'
 J = 8
-cutoff = 0.025
+cutoff = 0.1
 
 events = [[2010, 1, 31], [2010, 3, 31], [2010, 6, 30], [2010, 8, 15], \
     [2011, 4, 30], [2011, 4, 30], [2011, 8, 31], [2011, 9, 30], \
@@ -47,7 +47,8 @@ fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
     station, direction1, False, False, False)
 dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
     station, direction1, [], [], False, False, False)
-dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, direction1, cutoff)
+dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, \
+    direction1, cutoff)
 
 ymin = []
 ymax = []
@@ -85,11 +86,11 @@ for i in range(0, len(times)):
     dispt = dispts[i]
     dispf = dispfs[i]
     if (i == 0):
-        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
         plt.plot(time, dispf, 'grey', label='Low-pass filtered')
+        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
     else:
-        plt.plot(time, dispt, 'k', linewidth=2)
         plt.plot(time, dispf, 'grey')
+        plt.plot(time, dispt, 'k', linewidth=2)
     xmin.append(np.min(time))
     xmax.append(np.max(time))
 for event, location in zip(events, locations):
@@ -109,7 +110,8 @@ fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
     station, direction2, False, False, False)
 dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, name, \
     station, direction2, [], [], False, False, False)
-dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, direction1, cutoff)
+dispfs = get_MODWT_GeoNet.low_pass_filter(times, disps, gaps, station, \
+    direction1, cutoff)
 
 ymin = []
 ymax = []
@@ -147,11 +149,11 @@ for i in range(0, len(times)):
     dispt = dispts[i]
     dispf = dispfs[i]
     if (i == 0):
-        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
         plt.plot(time, dispf, 'grey', label='Low-pass filtered')
+        plt.plot(time, dispt, 'k', label='Denoised', linewidth=2)
     else:
-        plt.plot(time, dispt, 'k', linewidth=2)
         plt.plot(time, dispf, 'grey')
+        plt.plot(time, dispt, 'k', linewidth=2)
     xmin.append(np.min(time))
     xmax.append(np.max(time))
 for event, location in zip(events, locations):
@@ -164,5 +166,5 @@ plt.ylim(min(ymin), max(ymax))
 plt.xlabel('Time (years)', fontsize=16)
 plt.legend(loc=2, fontsize=16)
 
-plt.savefig('Figure2.eps', format='eps')
+plt.savefig('Figure2_CKID.eps', format='eps')
 plt.close(1)

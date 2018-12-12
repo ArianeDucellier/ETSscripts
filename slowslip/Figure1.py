@@ -60,10 +60,10 @@ sigE = 1.0 / SNR1
 Wt = []
 for j in range(1, J + 1):
     Wj = W[j - 1]
-    deltaj = sqrt(2.0 * sigE * log(N + 1) / (2.0 ** j))
-    Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+    deltaj = sqrt(2.0 * (sigE ** 2.0) * log(N + 1) / (2.0 ** j))
+    Wjt = np.where(np.abs(Wj) >= deltaj, Wj, 0.0)
     if (j == J):
-        Vt = np.where(V >= deltaj, V, 0.0)
+        Vt = np.where(np.abs(V) >= deltaj, V, 0.0)
     Wt.append(Wjt)
 dispt = MODWT.inv_pyramid(Wt, Vt, name, J)
 dispf = lfilter(b, a, disp)
@@ -102,10 +102,10 @@ sigE = 1.0 / SNR2
 Wt = []
 for j in range(1, J + 1):
     Wj = W[j - 1]
-    deltaj = sqrt(2.0 * sigE * log(N + 1) / (2.0 ** j))
-    Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+    deltaj = sqrt(2.0 * (sigE ** 2.0) * log(N + 1) / (2.0 ** j))
+    Wjt = np.where(np.abs(Wj) >= deltaj, Wj, 0.0)
     if (j == J):
-        Vt = np.where(V >= deltaj, V, 0.0)
+        Vt = np.where(np.abs(V) >= deltaj, V, 0.0)
     Wt.append(Wjt)
 dispt = MODWT.inv_pyramid(Wt, Vt, name, J)
 dispf = lfilter(b, a, disp)
@@ -144,10 +144,10 @@ sigE = 1.0 / SNR1
 Wt = []
 for j in range(1, J + 1):
     Wj = W[j - 1]
-    deltaj = sqrt(2.0 * sigE * log(N + 1) / (2.0 ** j))
-    Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+    deltaj = sqrt(2.0 * (sigE ** 2.0) * log(N + 1) / (2.0 ** j))
+    Wjt = np.where(np.abs(Wj) >= deltaj, Wj, 0.0)
     if (j == J):
-        Vt = np.where(V >= deltaj, V, 0.0)
+        Vt = np.where(np.abs(V) >= deltaj, V, 0.0)
     Wt.append(Wjt)
 dispt = MODWT.inv_pyramid(Wt, Vt, name, J)
 dispf = lfilter(b, a, disp)
@@ -186,10 +186,10 @@ sigE = 1.0 / SNR2
 Wt = []
 for j in range(1, J + 1):
     Wj = W[j - 1]
-    deltaj = sqrt(2.0 * sigE * log(N + 1) / (2.0 ** j))
-    Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+    deltaj = sqrt(2.0 * (sigE ** 2.0) * log(N + 1) / (2.0 ** j))
+    Wjt = np.where(np.abs(Wj) >= deltaj, Wj, 0.0)
     if (j == J):
-        Vt = np.where(V >= deltaj, V, 0.0)
+        Vt = np.where(np.abs(V) >= deltaj, V, 0.0)
     Wt.append(Wjt)
 dispt = MODWT.inv_pyramid(Wt, Vt, name, J)
 dispf = lfilter(b, a, disp)

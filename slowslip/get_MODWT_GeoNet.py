@@ -492,8 +492,7 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
     filename = '../data/GeoNet/FITS-' + station + '-' + direction + '.csv'
     data = pd.read_csv(filename)
     N = data.shape[0]
-    s = data[' error (mm)'].mean()
-    sigE = sqrt((N - 1) / N) * s
+    sigE2 = np.mean(np.square(data[' error (mm)']))
     # Thresholding of MODWT wavelet coefficients
     dispt = []
     ymin = []
@@ -507,10 +506,10 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
         Wt = []
         for j in range(1, J + 1):
             Wj = W[j - 1]
-            deltaj = sqrt(2.0 * sigE * log(N) / (2.0 ** j))
-            Wjt = np.where(Wj >= deltaj, Wj, 0.0)
+            deltaj = sqrt(2.0 * sigE2 * log(N) / (2.0 ** j))
+            Wjt = np.where(np.abs(Wj) >= deltaj, Wj, 0.0)
             if (j == J):
-                Vt = np.where(V >= deltaj, V, 0.0)
+                Vt = np.where(np.abs(V) >= deltaj, V, 0.0)
             Wt.append(Wjt)
         Xt = MODWT.inv_pyramid(Wt, Vt, name, J)
         maxy = max(np.max(disp), np.max(Xt))
@@ -602,15 +601,32 @@ def thresholding(times, disps, gaps, Ws, Vs, J, name, station, direction, \
     return dispt
 
 def low_pass_filter(times, disps, gaps, station, direction, cutoff):
-    # Create low-pass filter
+    """
+    Apply a low-pass filter to the time series
+
+    Input:
+        type times = list of 1D numpy arrays
+        times = Time when there is data recorded
+        type disps = list of 1D numpy arrays
+        disps = Corresponding displacement recorded
+        type gaps = list of 1D numpy arrays (integers)
+        gaps = Indices where a missing value has been filled by interpolation
+        type station = string
+        station = Name of the GPS station
+        type direction = string
+        direction = Component of the displacement (lat, lon or rad)
+        type events = list of lists of integers
+        type cutoff = float
+        cutoff = cut-off frquency for Butterworth filter
+    Output:
+        type dispfs = list of 1D numpy arrays
+        dispfs = Low-pass filtered data
+    """    # Create low-pass filter
     b, a = butter(4, cutoff, btype='low')
     dispfs = []
     for i in range(0, len(times)):
-	    time = times[i]
 	    disp = disps[i]
 	    dispf = lfilter(b, a, disp)
-	    maxy = max(np.max(disp), np.max(dispf))
-	    miny = min(np.min(disp), np.min(dispf))
 	    dispfs.append(dispf)
 			
     # Return filtered data

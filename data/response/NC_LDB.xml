@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
 <FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" schemaVersion="1.0" xsi:schemaLocation="http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <Source>NCEDC</Source>
  <Sender>NCEDC</Sender>
  <Module>NCEDC WEB SERVICE: fdsnws-station | version: 1.1</Module>
  <ModuleURI>http://service.ncedc.org/fdsnws/station/1/query?net=NC&amp;sta=LDB&amp;start=1900-01-01T00:00:00.000Z&amp;end=2030-01-01T00:00:00.000Z&amp;level=resp</ModuleURI>
- <Created>2018-12-02T02:21:09</Created>
+ <Created>2018-12-03T18:38:45</Created>
  <Network code="NC" startDate="1983-06-27T00:00:00" endDate="3000-01-01T00:00:00">
   <Description>Northern California Seismic Network (NCSN)</Description>
   <TotalNumberStations>840</TotalNumberStations>

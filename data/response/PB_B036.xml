@@ -1,0 +1,5447 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" schemaVersion="1.0" xsi:schemaLocation="http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <Source>NCEDC</Source>
+ <Sender>NCEDC</Sender>
+ <Module>NCEDC WEB SERVICE: fdsnws-station | version: 1.1</Module>
+ <ModuleURI>http://service.ncedc.org/fdsnws/station/1/query?net=PB&amp;sta=B036&amp;start=1900-01-01T00:00:00.000Z&amp;end=2030-01-01T00:00:00.000Z&amp;level=resp</ModuleURI>
+ <Created>2018-12-03T18:08:18</Created>
+ <Network code="PB" startDate="2005-06-01T00:00:00" endDate="3000-01-01T00:00:00">
+  <Description>Plate Boundary Observatory Borehole Network</Description>
+  <TotalNumberStations>91</TotalNumberStations>
+  <SelectedNumberStations>78</SelectedNumberStations>
+  <Station code="B036" endDate="3000-01-01T00:00:00" startDate="2007-05-08T00:00:00">
+   <Latitude>42.505833</Latitude>
+   <Longitude>-123.381667</Longitude>
+   <Elevation>315.3</Elevation>
+   <Site>
+    <Name>grants036bor2007, Grant&apos;s Pass, OR, USA</Name>
+   </Site>
+   <CreationDate>2007-05-08T00:00:00</CreationDate>
+   <Channel code="BS1" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>20.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>20</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="BS2" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>20.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>20</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="BS3" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>20.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>20</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="BS4" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>20.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>20</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="EH1" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>205.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>100.0</SampleRate>
+    <ClockDrift>1.0E-4</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_100">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.000000000013154932</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00015010653</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">.013396814</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">.16442924</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">.56880941</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.51738348</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">-.26083604</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.12203293</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.25718129</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.2029026</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.070758805</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.038796662</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.11431347</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.13547966</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.11144746</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.067054813</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">-.019271235</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">-.020931286</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">.047680563</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">-.059338288</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">.057579308</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">-.046233307</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.029777146</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.01248294</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">-.0023660751</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">.012788211</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">-.018469822</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.018797255</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">-.017138655</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">.012781987</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.0076757868</NumeratorCoefficient>
+       <NumeratorCoefficient i="31">.0032551587</NumeratorCoefficient>
+       <NumeratorCoefficient i="32">-.000089475628</NumeratorCoefficient>
+       <NumeratorCoefficient i="33">-.0017787575</NumeratorCoefficient>
+       <NumeratorCoefficient i="34">.0025960431</NumeratorCoefficient>
+       <NumeratorCoefficient i="35">-.0026661685</NumeratorCoefficient>
+       <NumeratorCoefficient i="36">.002307403</NumeratorCoefficient>
+       <NumeratorCoefficient i="37">-.0017705155</NumeratorCoefficient>
+       <NumeratorCoefficient i="38">.0012186428</NumeratorCoefficient>
+       <NumeratorCoefficient i="39">-.00074604922</NumeratorCoefficient>
+       <NumeratorCoefficient i="40">.00039217516</NumeratorCoefficient>
+       <NumeratorCoefficient i="41">-.00015836647</NumeratorCoefficient>
+       <NumeratorCoefficient i="42">.00002437801</NumeratorCoefficient>
+       <NumeratorCoefficient i="43">.00003807573</NumeratorCoefficient>
+       <NumeratorCoefficient i="44">-.000056180479</NumeratorCoefficient>
+       <NumeratorCoefficient i="45">.00005152771</NumeratorCoefficient>
+       <NumeratorCoefficient i="46">-.000038564693</NumeratorCoefficient>
+       <NumeratorCoefficient i="47">.000025302859</NumeratorCoefficient>
+       <NumeratorCoefficient i="48">-.00001512465</NumeratorCoefficient>
+       <NumeratorCoefficient i="49">.0000087397951</NumeratorCoefficient>
+       <NumeratorCoefficient i="50">-.0000046481172</NumeratorCoefficient>
+       <NumeratorCoefficient i="51">.0000013762756</NumeratorCoefficient>
+       <NumeratorCoefficient i="52">.0000007042064</NumeratorCoefficient>
+       <NumeratorCoefficient i="53">.00000022418734</NumeratorCoefficient>
+       <NumeratorCoefficient i="54">-.0000012510258</NumeratorCoefficient>
+       <NumeratorCoefficient i="55">.00000010667707</NumeratorCoefficient>
+       <NumeratorCoefficient i="56">.00000026428765</NumeratorCoefficient>
+       <NumeratorCoefficient i="57">.00000032266382</NumeratorCoefficient>
+       <NumeratorCoefficient i="58">-.000000080741625</NumeratorCoefficient>
+       <NumeratorCoefficient i="59">-.00000010990485</NumeratorCoefficient>
+       <NumeratorCoefficient i="60">-.000000033252027</NumeratorCoefficient>
+       <NumeratorCoefficient i="61">.000000013885057</NumeratorCoefficient>
+       <NumeratorCoefficient i="62">.000000010562748</NumeratorCoefficient>
+       <NumeratorCoefficient i="63">.0000000025779114</NumeratorCoefficient>
+       <NumeratorCoefficient i="64">-.00000000070186227</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.041607</Delay>
+       <Correction>0.041607</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="EH2" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>295.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>100.0</SampleRate>
+    <ClockDrift>1.0E-4</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_100">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.000000000013154932</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00015010653</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">.013396814</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">.16442924</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">.56880941</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.51738348</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">-.26083604</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.12203293</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.25718129</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.2029026</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.070758805</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.038796662</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.11431347</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.13547966</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.11144746</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.067054813</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">-.019271235</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">-.020931286</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">.047680563</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">-.059338288</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">.057579308</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">-.046233307</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.029777146</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.01248294</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">-.0023660751</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">.012788211</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">-.018469822</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.018797255</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">-.017138655</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">.012781987</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.0076757868</NumeratorCoefficient>
+       <NumeratorCoefficient i="31">.0032551587</NumeratorCoefficient>
+       <NumeratorCoefficient i="32">-.000089475628</NumeratorCoefficient>
+       <NumeratorCoefficient i="33">-.0017787575</NumeratorCoefficient>
+       <NumeratorCoefficient i="34">.0025960431</NumeratorCoefficient>
+       <NumeratorCoefficient i="35">-.0026661685</NumeratorCoefficient>
+       <NumeratorCoefficient i="36">.002307403</NumeratorCoefficient>
+       <NumeratorCoefficient i="37">-.0017705155</NumeratorCoefficient>
+       <NumeratorCoefficient i="38">.0012186428</NumeratorCoefficient>
+       <NumeratorCoefficient i="39">-.00074604922</NumeratorCoefficient>
+       <NumeratorCoefficient i="40">.00039217516</NumeratorCoefficient>
+       <NumeratorCoefficient i="41">-.00015836647</NumeratorCoefficient>
+       <NumeratorCoefficient i="42">.00002437801</NumeratorCoefficient>
+       <NumeratorCoefficient i="43">.00003807573</NumeratorCoefficient>
+       <NumeratorCoefficient i="44">-.000056180479</NumeratorCoefficient>
+       <NumeratorCoefficient i="45">.00005152771</NumeratorCoefficient>
+       <NumeratorCoefficient i="46">-.000038564693</NumeratorCoefficient>
+       <NumeratorCoefficient i="47">.000025302859</NumeratorCoefficient>
+       <NumeratorCoefficient i="48">-.00001512465</NumeratorCoefficient>
+       <NumeratorCoefficient i="49">.0000087397951</NumeratorCoefficient>
+       <NumeratorCoefficient i="50">-.0000046481172</NumeratorCoefficient>
+       <NumeratorCoefficient i="51">.0000013762756</NumeratorCoefficient>
+       <NumeratorCoefficient i="52">.0000007042064</NumeratorCoefficient>
+       <NumeratorCoefficient i="53">.00000022418734</NumeratorCoefficient>
+       <NumeratorCoefficient i="54">-.0000012510258</NumeratorCoefficient>
+       <NumeratorCoefficient i="55">.00000010667707</NumeratorCoefficient>
+       <NumeratorCoefficient i="56">.00000026428765</NumeratorCoefficient>
+       <NumeratorCoefficient i="57">.00000032266382</NumeratorCoefficient>
+       <NumeratorCoefficient i="58">-.000000080741625</NumeratorCoefficient>
+       <NumeratorCoefficient i="59">-.00000010990485</NumeratorCoefficient>
+       <NumeratorCoefficient i="60">-.000000033252027</NumeratorCoefficient>
+       <NumeratorCoefficient i="61">.000000013885057</NumeratorCoefficient>
+       <NumeratorCoefficient i="62">.000000010562748</NumeratorCoefficient>
+       <NumeratorCoefficient i="63">.0000000025779114</NumeratorCoefficient>
+       <NumeratorCoefficient i="64">-.00000000070186227</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.041607</Delay>
+       <Correction>0.041607</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="EHZ" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>-90.0</Dip>
+    <SampleRate>100.0</SampleRate>
+    <ClockDrift>1.0E-4</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_100">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.000000000013154932</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00015010653</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">.013396814</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">.16442924</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">.56880941</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.51738348</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">-.26083604</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.12203293</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.25718129</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.2029026</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.070758805</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.038796662</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.11431347</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.13547966</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.11144746</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.067054813</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">-.019271235</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">-.020931286</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">.047680563</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">-.059338288</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">.057579308</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">-.046233307</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.029777146</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.01248294</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">-.0023660751</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">.012788211</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">-.018469822</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.018797255</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">-.017138655</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">.012781987</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.0076757868</NumeratorCoefficient>
+       <NumeratorCoefficient i="31">.0032551587</NumeratorCoefficient>
+       <NumeratorCoefficient i="32">-.000089475628</NumeratorCoefficient>
+       <NumeratorCoefficient i="33">-.0017787575</NumeratorCoefficient>
+       <NumeratorCoefficient i="34">.0025960431</NumeratorCoefficient>
+       <NumeratorCoefficient i="35">-.0026661685</NumeratorCoefficient>
+       <NumeratorCoefficient i="36">.002307403</NumeratorCoefficient>
+       <NumeratorCoefficient i="37">-.0017705155</NumeratorCoefficient>
+       <NumeratorCoefficient i="38">.0012186428</NumeratorCoefficient>
+       <NumeratorCoefficient i="39">-.00074604922</NumeratorCoefficient>
+       <NumeratorCoefficient i="40">.00039217516</NumeratorCoefficient>
+       <NumeratorCoefficient i="41">-.00015836647</NumeratorCoefficient>
+       <NumeratorCoefficient i="42">.00002437801</NumeratorCoefficient>
+       <NumeratorCoefficient i="43">.00003807573</NumeratorCoefficient>
+       <NumeratorCoefficient i="44">-.000056180479</NumeratorCoefficient>
+       <NumeratorCoefficient i="45">.00005152771</NumeratorCoefficient>
+       <NumeratorCoefficient i="46">-.000038564693</NumeratorCoefficient>
+       <NumeratorCoefficient i="47">.000025302859</NumeratorCoefficient>
+       <NumeratorCoefficient i="48">-.00001512465</NumeratorCoefficient>
+       <NumeratorCoefficient i="49">.0000087397951</NumeratorCoefficient>
+       <NumeratorCoefficient i="50">-.0000046481172</NumeratorCoefficient>
+       <NumeratorCoefficient i="51">.0000013762756</NumeratorCoefficient>
+       <NumeratorCoefficient i="52">.0000007042064</NumeratorCoefficient>
+       <NumeratorCoefficient i="53">.00000022418734</NumeratorCoefficient>
+       <NumeratorCoefficient i="54">-.0000012510258</NumeratorCoefficient>
+       <NumeratorCoefficient i="55">.00000010667707</NumeratorCoefficient>
+       <NumeratorCoefficient i="56">.00000026428765</NumeratorCoefficient>
+       <NumeratorCoefficient i="57">.00000032266382</NumeratorCoefficient>
+       <NumeratorCoefficient i="58">-.000000080741625</NumeratorCoefficient>
+       <NumeratorCoefficient i="59">-.00000010990485</NumeratorCoefficient>
+       <NumeratorCoefficient i="60">-.000000033252027</NumeratorCoefficient>
+       <NumeratorCoefficient i="61">.000000013885057</NumeratorCoefficient>
+       <NumeratorCoefficient i="62">.000000010562748</NumeratorCoefficient>
+       <NumeratorCoefficient i="63">.0000000025779114</NumeratorCoefficient>
+       <NumeratorCoefficient i="64">-.00000000070186227</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>100</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.041607</Delay>
+       <Correction>0.041607</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LCC" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>PERCENT</Name>
+       <Description>percentage 0-100</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>PERCENT</Name>
+        <Description>percentage 0-100</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LCE" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1000000.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>S</Name>
+       <Description>Time in Seconds</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>S</Name>
+        <Description>Time in Seconds</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1000000</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LCL" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M</Name>
+       <Description>Displacement in Meters</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>M</Name>
+        <Description>Displacement in Meters</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LCQ" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>PERCENT</Name>
+       <Description>percentage 0-100</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>PERCENT</Name>
+        <Description>percentage 0-100</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LDO" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>WEATHER</Type>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>SETRA MODEL 270 SN2505267</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.42925E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>HECTOPASCALS</Name>
+       <Description>PORE PRESSURE</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>59.95</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>VOLTS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>.00000238416</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LH1" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>205.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_1">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.00000000000000012199295</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00000000031619205</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">-.000000043146524</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">-.00000056355576</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">-.00012670077</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.0036581444</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">.0001675314</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.0054045052</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.012786087</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.01803566</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.014731158</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.0032269409</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.038596944</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.088835267</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.14824265</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.2177661</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">.80991439</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">.12459593</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">-.1230407</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">.088997526</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">-.048501567</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">.014259116</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.0068963909</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.014443419</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">.012428614</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">-.0065687263</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">.0015220402</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.0031420928</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">.000036562742</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">-.0000021529949</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.00000025978267</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>15.93</Delay>
+       <Correction>15.93</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LH2" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>295.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_1">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.00000000000000012199295</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00000000031619205</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">-.000000043146524</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">-.00000056355576</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">-.00012670077</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.0036581444</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">.0001675314</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.0054045052</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.012786087</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.01803566</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.014731158</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.0032269409</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.038596944</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.088835267</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.14824265</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.2177661</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">.80991439</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">.12459593</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">-.1230407</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">.088997526</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">-.048501567</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">.014259116</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.0068963909</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.014443419</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">.012428614</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">-.0065687263</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">.0015220402</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.0031420928</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">.000036562742</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">-.0000021529949</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.00000025978267</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>15.93</Delay>
+       <Correction>15.93</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LHZ" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>-90.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>HS-1-LT/Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>7.81398E8</Value>
+      <Frequency>20.0</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <PolesZeros>
+       <InputUnits>
+        <Name>M/S</Name>
+        <Description>Velocity in Meters Per Second</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </OutputUnits>
+       <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+       <NormalizationFactor>1</NormalizationFactor>
+       <NormalizationFrequency>20</NormalizationFrequency>
+       <Zero number="0">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Zero number="1">
+        <Real>0</Real>
+        <Imaginary>0</Imaginary>
+       </Zero>
+       <Pole number="0">
+        <Real>-8.0425</Real>
+        <Imaginary>9.6557</Imaginary>
+       </Pole>
+       <Pole number="1">
+        <Real>-8.0425</Real>
+        <Imaginary>-9.6557</Imaginary>
+       </Pole>
+      </PolesZeros>
+      <StageGain>
+       <Value>62.1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <StageGain>
+       <Value>30</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>419430</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="4">
+      <FIR name="FIR_FLBELOW100_1">
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <Symmetry>NONE</Symmetry>
+       <NumeratorCoefficient i="0">.00000000000000012199295</NumeratorCoefficient>
+       <NumeratorCoefficient i="1">.00000000031619205</NumeratorCoefficient>
+       <NumeratorCoefficient i="2">-.000000043146524</NumeratorCoefficient>
+       <NumeratorCoefficient i="3">-.00000056355576</NumeratorCoefficient>
+       <NumeratorCoefficient i="4">-.00012670077</NumeratorCoefficient>
+       <NumeratorCoefficient i="5">.0036581444</NumeratorCoefficient>
+       <NumeratorCoefficient i="6">.0001675314</NumeratorCoefficient>
+       <NumeratorCoefficient i="7">-.0054045052</NumeratorCoefficient>
+       <NumeratorCoefficient i="8">.012786087</NumeratorCoefficient>
+       <NumeratorCoefficient i="9">-.01803566</NumeratorCoefficient>
+       <NumeratorCoefficient i="10">.014731158</NumeratorCoefficient>
+       <NumeratorCoefficient i="11">.0032269409</NumeratorCoefficient>
+       <NumeratorCoefficient i="12">-.038596944</NumeratorCoefficient>
+       <NumeratorCoefficient i="13">.088835267</NumeratorCoefficient>
+       <NumeratorCoefficient i="14">-.14824265</NumeratorCoefficient>
+       <NumeratorCoefficient i="15">.2177661</NumeratorCoefficient>
+       <NumeratorCoefficient i="16">.80991439</NumeratorCoefficient>
+       <NumeratorCoefficient i="17">.12459593</NumeratorCoefficient>
+       <NumeratorCoefficient i="18">-.1230407</NumeratorCoefficient>
+       <NumeratorCoefficient i="19">.088997526</NumeratorCoefficient>
+       <NumeratorCoefficient i="20">-.048501567</NumeratorCoefficient>
+       <NumeratorCoefficient i="21">.014259116</NumeratorCoefficient>
+       <NumeratorCoefficient i="22">.0068963909</NumeratorCoefficient>
+       <NumeratorCoefficient i="23">-.014443419</NumeratorCoefficient>
+       <NumeratorCoefficient i="24">.012428614</NumeratorCoefficient>
+       <NumeratorCoefficient i="25">-.0065687263</NumeratorCoefficient>
+       <NumeratorCoefficient i="26">.0015220402</NumeratorCoefficient>
+       <NumeratorCoefficient i="27">.0031420928</NumeratorCoefficient>
+       <NumeratorCoefficient i="28">.000036562742</NumeratorCoefficient>
+       <NumeratorCoefficient i="29">-.0000021529949</NumeratorCoefficient>
+       <NumeratorCoefficient i="30">-.00000025978267</NumeratorCoefficient>
+      </FIR>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>15.93</Delay>
+       <Correction>15.93</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>20</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LPL" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LS1" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LS2" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LS3" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="LS4" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>1.0</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>1</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QBD" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>REBOOTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>REBOOTS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QBP" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>PERCENT</Name>
+       <Description>percentage 0-100</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>PERCENT</Name>
+        <Description>percentage 0-100</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QDL" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>S</Name>
+       <Description>Time in Seconds</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>S</Name>
+        <Description>Time in Seconds</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QDR" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>BITS/SEC</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>BITS/SEC</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QG1" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>GAPS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>GAPS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QGD" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>GAPS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>GAPS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QLD" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>CYCLES</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>CYCLES</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QRD" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>BYTES</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>BYTES</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QRT" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>S</Name>
+       <Description>Time in Seconds</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>S</Name>
+        <Description>Time in Seconds</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="QWD" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>217.6</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.05</SampleRate>
+    <ClockDrift>0.01</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>BYTES</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>BYTES</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T1" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T2" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T3" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T4" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T5" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCA" endDate="3000-01-01T00:00:00" locationCode="T6" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T1" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T2" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T3" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T4" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T5" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCB" endDate="3000-01-01T00:00:00" locationCode="T6" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T1" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T2" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T3" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T4" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T5" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCC" endDate="3000-01-01T00:00:00" locationCode="T6" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T1" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T2" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T3" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T4" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T5" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RCD" endDate="3000-01-01T00:00:00" locationCode="T6" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>2.7778E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MILLIVOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RDO" endDate="3000-01-01T00:00:00" locationCode="TS" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>WEATHER</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>KILOPASCALS</Name>
+       <Description>ATMOSPHERIC PRESSURE</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>VOLTS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RE1" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>DIODE</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>VOLTS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RE2" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>DIODE</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>AMPERES</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="REO" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>DIODE</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>AMPERES</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RK1" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>THERMISTOR</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>DEGREES</Name>
+       <Description>C</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RK2" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>THERMISTOR</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>DEGREES</Name>
+       <Description>C</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RKD" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>HEALTH</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>THERMISTOR</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0E-4</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>DEGREES</Name>
+       <Description>C</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.0001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RRO" endDate="3000-01-01T00:00:00" locationCode="TS" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>WEATHER</Type>
+    <SampleRate>5.556E-4</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>TEXAS TE525</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>0.252</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>MM/HOUR</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.252</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RS1" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>258.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.001667</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RS2" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>198.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.001667</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RS3" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>138.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.001667</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="RS4" endDate="3000-01-01T00:00:00" locationCode="T0" startDate="2007-05-08T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>182.0</Depth>
+    <Azimuth>108.9</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.001667</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>GLADWIN TENSOR STRAINMETER PBO 05-036</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>5.0E-11</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>M/M</Name>
+       <Description>STRAIN</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.00000000005</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VCO" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>6.66667</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>V</Name>
+       <Description>Volts</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>6.6667</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VDD" endDate="3000-01-01T00:00:00" locationCode="TP" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>PAROSCIENTIFIC DIGIQUARTZ DEPTH SENSOR 8WD0260-I</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>0.001</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>PASCALS</Name>
+       <Description>(null)</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>VOLTS</Name>
+        <Description>(null)</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="3">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>0</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VEA" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1000.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>A</Name>
+       <Description>Amperes</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>A</Name>
+        <Description>Amperes</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1000</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VEC" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1000.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>A</Name>
+       <Description>Amperes</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>A</Name>
+        <Description>Amperes</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1000</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VEP" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>6.66667</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>V</Name>
+       <Description>Volts</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>V</Name>
+        <Description>Volts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>6.6667</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VKD" endDate="3000-01-01T00:00:00" locationCode="TP" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>0.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.0</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>PAROSCIENTIFIC DIGIQUARTZ DEPTH SENSOR 8WD0260-I</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>0.001</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>DEGREES</Name>
+       <Description>C</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <StageGain>
+       <Value>.001</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+     <Stage number="2">
+      <Coefficients>
+       <InputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VKI" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>CELSIUS</Name>
+       <Description>temperature in degrees Celsius</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>CELSIUS</Name>
+        <Description>temperature in degrees Celsius</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>1</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+   <Channel code="VPB" endDate="3000-01-01T00:00:00" locationCode="" startDate="2007-05-09T00:00:00">
+    <Latitude>42.505833</Latitude>
+    <Longitude>-123.381667</Longitude>
+    <Elevation>315.3</Elevation>
+    <Depth>175.0</Depth>
+    <Azimuth>0.0</Azimuth>
+    <Dip>0.0</Dip>
+    <SampleRate>0.1</SampleRate>
+    <ClockDrift>0.1</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Quanterra 330 Linear Phase Composite</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>10.0</Value>
+      <Frequency>0.0</Frequency>
+      <InputUnits>
+       <Name>PERCENT</Name>
+       <Description>percentage 0-100</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+     <Stage number="1">
+      <Coefficients>
+       <InputUnits>
+        <Name>PERCENT</Name>
+        <Description>percentage 0-100</Description>
+       </InputUnits>
+       <OutputUnits>
+        <Name>COUNTS</Name>
+        <Description>Digital Counts</Description>
+       </OutputUnits>
+       <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+      </Coefficients>
+      <Decimation>
+       <InputSampleRate>0</InputSampleRate>
+       <Factor>1</Factor>
+       <Offset>0</Offset>
+       <Delay>0.0</Delay>
+       <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+       <Value>10</Value>
+       <Frequency>0</Frequency>
+      </StageGain>
+     </Stage>
+    </Response>
+   </Channel>
+  </Station>
+ </Network>
+</FDSNStationXML>
