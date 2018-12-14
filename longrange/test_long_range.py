@@ -1,13 +1,14 @@
 """
 This module contains functions to test for long range dependence in time
-series. The tests come from Taqqu and Teverovsky (1998).
+series. The tests come from Taqqu and Teverovsky (1998) and from
+Reisen et al. (2017).
 """
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
-from math import sqrt
+from math import floor, pi, sqrt
 from scipy.fftpack import fft
 from sklearn import linear_model
 from sklearn.metrics import r2_score, mean_squared_error
@@ -341,4 +342,39 @@ def periodogram(dirname, filename, dt):
         np.sum(X), d, R2), fontsize=24)
     plt.savefig('periodogram/' + filename + '.eps', format='eps')
     plt.close(1)
+    return d
+
+def periodogram_GPH(dirname, filename, beta):
+    """
+    Function to compute the periodogram using the method of
+    Geweke and Porter-Hudak (1983) and compute the
+    fractional index
+
+    Input:
+        type dirname = string
+        dirname = Repertory where to find the time series file
+        type filename = string
+        filename = Name of the time series file
+        type beta = floor
+        beta = Number of frequencies used = N ** beta
+    Output:
+        type d = float
+        d = Fractional index
+    """
+    assert (beta > 0.0 and beta < 1.0), \
+        'We must have 0 < beta < 1'
+    data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
+    X = data[3]
+    N = len(X)
+    k = np.arange(1, N + 1)
+    m = int(floor(N ** beta))
+    l = (2.0 * pi / N) * np.arange(1, m + 1)
+    I = np.zeros(m)
+    for i in range(0, m):
+        b1 = (2.0 / N) * np.sum(X * np.cos(k * l[i]))
+        b2 = (2.0 / N) * np.sum(X * np.sin(k * l[i]))
+        I[i] = (N / (8.0 * pi)) * (b1 * b1 + b2 * b2)
+    Y = np.log(np.abs(2.0 * np.sin(l / 2.0)))
+    d = - 0.5 * np.sum((Y - np.mean(Y)) * np.log(I))/ \
+        np.sum(np.square(Y - np.mean(Y)))
     return d
