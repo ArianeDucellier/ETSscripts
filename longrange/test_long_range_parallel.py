@@ -318,7 +318,6 @@ def get_pGPH(X, k, l, i):
     b1 = (2.0 / N) * np.sum(X * np.cos(k * l[i]))
     b2 = (2.0 / N) * np.sum(X * np.sin(k * l[i]))
     I = (N / (8.0 * pi)) * (b1 * b1 + b2 * b2)
-    print (i, I)
     return I
 
 def periodogram_GPH(dirname, filename, beta):
@@ -349,17 +348,10 @@ def periodogram_GPH(dirname, filename, beta):
     I = np.zeros(m)
     pool = Pool(multiprocessing.cpu_count() - 1)
     for i in range(0, m):
-        pool.apply_async(get_pGPH, args=(X, k, l, i))
+        I[i] = pool.apply_async(get_pGPH, args=(X, k, l, i)).get()
     pool.close()
-    result = pool.join()
-    result = [r.get() for r in result]
-    print(result)
-#    map_func = partial(get_pGPH, X, k, l)
-#    with Pool(m) as pool:
-#        result = pool.map(map_func, iter(range(0, m)))
-#    I = np.array(result)
-#    Y = np.log(np.abs(2.0 * np.sin(l / 2.0)))
-#    d = - 0.5 * np.sum((Y - np.mean(Y)) * np.log(I))/ \
-#        np.sum(np.square(Y - np.mean(Y)))
-#    return d
-    return 0
+    pool.join()
+    Y = np.log(np.abs(2.0 * np.sin(l / 2.0)))
+    d = - 0.5 * np.sum((Y - np.mean(Y)) * np.log(I))/ \
+        np.sum(np.square(Y - np.mean(Y)))
+    return d
