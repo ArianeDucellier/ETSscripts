@@ -37,6 +37,9 @@ figures/ETS/slowslip.eps
 figures/LVZmodels/*.eps
 figures/raypaths/*.eps
 figures/subductionzone/*.eps
+figures/website/LFE/*.jpg
+figures/website/slowslip/*.jpg
+figures/website/tremor/*.jpg
 longrange/__pycache__/*
 longrange/absolutevalue_Chestler/*
 longrange/absolutevalue_Frank/*

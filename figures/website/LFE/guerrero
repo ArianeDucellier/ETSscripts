@@ -1,0 +1,41 @@
+#!/bin/csh -f
+
+set output = guerrero.eps
+
+# Small map
+set x1 = -102
+set x2 = -98
+set y1 = 15
+set y2 = 20
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-100/17.5/4.5
+
+gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -P -K >! $output
+
+gmt psxy frank.txt -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
+
+# Large map
+set x1 = -107
+set x2 = -93
+set y1 = 12
+set y2 = 25
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-100/17.5/0.7
+
+gmt pscoast -R$Rop -J$Jop -Ba5f2.5::wEsN -W0.1p -S224/255/255 -G255/255/224 -Dl -Na -X0.5 -Y0.5 -O -K >> $output
+
+# Location of small map
+cat << END >> zoom.dat
+-100 18.5
+END
+
+cat << END >> names.dat
+-102.5 17.5 Guerrero
+END
+
+gmt psxy zoom.dat -R$Rop -J$Jop -Sc0.4 -Gred -O -K >> $output
+
+gmt pstext names.dat -R$Rop -J$Jop -F+f15p,red -O >> $output
+
+rm names.dat
+rm zoom.dat

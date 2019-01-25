@@ -1,0 +1,41 @@
+#!/bin/csh -f
+
+set output = washington.eps
+
+# Small map
+set x1 = -130
+set x2 = -116
+set y1 = 45
+set y2 = 50
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-123/47.5/1.8
+
+gmt pscoast -R$Rop -J$Jop -Ba5f2.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Di -Na -Y5 -P -K >! $output
+
+cat << END >> names.dat
+-120 46.5 Washington
+-120 45.4 Oregon
+-120 49.5 Canada
+-127 48 Juan de Fuca
+-127 47 Plate
+END
+
+gmt pstext names.dat -R$Rop -J$Jop -F+f20p -O -K >> $output
+
+# Location of small map
+cat << END >> zoom.dat
+-123.15 47.8
+END
+
+cat << END >> trench.dat
+-123.15 48.2 Olympic
+-123.15 47.4 Peninsula
+END
+
+gmt psxy zoom.dat -R$Rop -J$Jop -Sc4 -Wfat,red -O -K >> $output
+
+gmt pstext trench.dat -R$Rop -J$Jop -F+f20p,red -O >> $output
+
+rm names.dat
+rm trench.dat
+rm zoom.dat

@@ -380,12 +380,32 @@ def draw_denoised(filename, name, J, method='RMS'):
 
 if __name__ == '__main__':
 
-    # Set the parameters
-    filename = '080326.07.004'
-    method = 'RMS'
-    name = 'LA8'
-    J = 6
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
 
-    draw(filename, method)
-    draw_MODWT(filename, name, J, method)
-    draw_denoised(filename, name, J, method)
+    # Loop on templates
+    for filename in ['080326.07.048', \
+					 '080326.08.015', \
+					 '080326.09.007', \
+					 '080405.11.042', \
+					 '080413.13.026', \
+					 '080415.19.030', \
+					 '080419.24.054', \
+					 '080420.01.019', \
+					 '080420.04.009', \
+					 '080420.05.032', \
+					 '080421.14.048', \
+					 '080421.16.054', \
+					 '080421.17.056', \
+					 '080422.13.033', \
+					 '080422.13.043', \
+					 '080424.05.050', \
+					 '080426.20.030']:
+        method = 'RMS'
+        name = 'LA8'
+        J = 6
+        draw_denoised(filename, name, J, method)
