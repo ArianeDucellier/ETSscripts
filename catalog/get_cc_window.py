@@ -46,9 +46,14 @@ def get_from_IRIS(station, Tstart, Tend, filt, dt):
     fdsn_client = fdsn.Client('IRIS')
     # Download data
     try:
-        D = fdsn_client.get_waveforms(network='XQ', station=station, \
-            location='01', channel='BHE,BHN,BHZ', starttime=Tstart, \
-            endtime=Tend, attach_response=True)
+        if (station == 'B039'):
+            D = fdsn_client.get_waveforms(network='PB', station=station, \
+                location='--', channel='EH1,EH2,EHZ', starttime=Tstart, \
+                endtime=Tend, attach_response=True)
+        else:
+            D = fdsn_client.get_waveforms(network='XQ', station=station, \
+                location='01', channel='BHE,BHN,BHZ', starttime=Tstart, \
+                endtime=Tend, attach_response=True)
     except:
         message = 'Could not download data for station {} '.format(station) + \
             'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
@@ -209,7 +214,7 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
             Tstart = Tori - TDUR
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
-            if (station[0 : 2] == 'ME'):
+            if (station[0 : 2] == 'ME' or station == 'B039'):
                 D = get_from_IRIS(station, Tstart, Tend, filt, dt)
             # Second case: we get the data from NCEDC
             else:
@@ -479,7 +484,7 @@ if __name__ == '__main__':
 #             'formats': ('S13', 'S3', np.float, np.float, np.float, \
 #        np.float, np.float, np.int)}, \
 #        skiprows=1)
-#    for ie in range(47, len(LFEloc)):
+#    for ie in range(0, len(LFEloc)):
 #        filename = LFEloc[ie][0].decode('utf-8')
 #        get_cc_window(filename, TDUR, filt, dt, method, envelope)
 

@@ -2,12 +2,10 @@
 This module contains a function to download every one-minute time window
 where there is an LFE recorded, stack the signal over all the LFEs, cross
 correlate each window with the stack, sort the LFEs and keep only the best
+We also save the value of the maximum cross correlation for each LFE
 """
 
 import obspy
-import obspy.clients.fdsn.client as fdsn
-from obspy import read
-from obspy import read_inventory
 from obspy import UTCDateTime
 from obspy.core.stream import Stream
 from obspy.signal.cross_correlation import correlate
@@ -16,135 +14,16 @@ import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import pandas as pd
 import pickle
 
-from fractions import Fraction
 from math import cos, pi, sin, sqrt
 
+from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def get_from_IRIS(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from IRIS for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Create client
-    fdsn_client = fdsn.Client('IRIS')
-    # Download data
-    try:
-        D = fdsn_client.get_waveforms(network='XQ', station=station, \
-            location='01', channel='BHE,BHN,BHZ', starttime=Tstart, \
-            endtime=Tend, attach_response=True)
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
-
-def get_from_NCEDC(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from NCEDC for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Define network and channels
-    if (station == 'B039'):
-        network = 'PB'
-        channels = 'EH1,EH2,EHZ'
-    elif (station == 'WDC' or station == 'YBH'):
-        network = 'BK'
-        channels = 'BHE,BHN,BHZ'
-    else:
-        network = 'NC'
-        channels = 'HHE,HHN,HHZ'
-    # Write waveform request
-    file = open('waveform.request', 'w')
-    message = '{} {} -- {} '.format(network, station, channels) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d} '.format(Tstart.year, \
-        Tstart.month, Tstart.day, Tstart.hour, Tstart.minute, \
-        Tstart.second) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}\n'.format(Tend.year, \
-        Tend.month, Tend.day, Tend.hour, Tend.minute, Tend.second)
-    file.write(message)
-    file.close()
-    # Send waveform request
-    request = 'curl --data-binary @waveform.request -o station.miniseed ' + \
-         'http://service.ncedc.org/fdsnws/dataselect/1/query'
-    try:
-        os.system(request)
-        D = read('station.miniseed')
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        filename = '../data/response/' + network + '_' + station + '.xml'
-        inventory = read_inventory(filename, format='STATIONXML')
-        D.attach_response(inventory)
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
-
 def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
-        method='RMS'):
+        winlength, method='RMS'):
     """
     This function computes the waveform for each template, cross correlate
     them with the stack, and keep only the best to get the final template
@@ -163,8 +42,11 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
         dt = Time step for resampling
         type ncor = integer
         ncor = Number of points for the cross correlation
-        type window = float
-        window = Length of the window to do the cross correlation
+        type window = boolean
+        window = Do we do the cross correlation on the whole seismogram
+                 or a selected time window?
+        type winlength = float
+        winlength = Length of the window to do the cross correlation
         type method = string
         method = Normalization method for linear stack (RMS or Max)
     Output:
@@ -187,17 +69,18 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
     staNames = first_line.split()
     file.close()
 
-    # Get the locations of the stations
-    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
-        dtype={'names': ('name', 'lat', 'lon'), \
-             'formats': ('|S5', np.float, np.float)})
-
     # Get the time of LFE detections
     LFEtime = np.loadtxt('../data/Plourde_2015/detections/' + filename + \
         '_detect5_cull.txt', \
         dtype={'names': ('unknown', 'day', 'hour', 'second', 'threshold'), \
              'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
         skiprows=2)
+
+    # Get the network, channels, and location of the stations
+    staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
+        sep=r'\s{1,}', header=None)
+    staloc.columns = ['station', 'network', 'channels', 'location', \
+        'server', 'latitude', 'longitude']
 
     # Get the location of the source of the LFE
     LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
@@ -224,18 +107,23 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
     
     # Loop over stations
     for station in staNames:
-        # Compute source-receiver distance
-        for ir in range(0, len(staloc)):
-            if (station == staloc[ir][0].decode('utf-8')):
-                latr = staloc[ir][1]
-                lonr = staloc[ir][2]
-                xr = dx * (lonr - lon0)
-                yr = dy * (latr - lat0)
-                distance = sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0)
         # Create streams
         EW = Stream()
         NS = Stream()
         UD = Stream()
+        # Get station metadata for downloading
+        for ir in range(0, len(staloc)):
+            if (station == staloc['station'][ir]):
+                network = staloc['network'][ir]
+                channels = staloc['channels'][ir]
+                location = staloc['location'][ir]
+                server = staloc['server'][ir]
+                # Compute source-receiver distance
+                latitude = staloc['latitude'][ir]
+                longitude = staloc['longitude'][ir]
+                xr = dx * (longitude - lon0)
+                yr = dy * (latitude - lat0)
+                distance = sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0)
         # Loop on LFEs
         for i in range(0, np.shape(LFEtime)[0]):
             YMD = LFEtime[i][1]
@@ -253,14 +141,18 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
             Tstart = Tori - TDUR
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
-            if (station[0 : 2] == 'ME'):
-                D = get_from_IRIS(station, Tstart, Tend, filt, dt)
+            if (server == 'IRIS'):
+                D = get_from_IRIS(station, network, channels, location, \
+                    Tstart, Tend, filt, dt)
             # Second case: we get the data from NCEDC
+            elif (server == 'NCEDC'):
+                D = get_from_NCEDC(station, network, channels, location, \
+                    Tstart, Tend, filt, dt)
             else:
-                D = get_from_NCEDC(station, Tstart, Tend, filt, dt)
+                raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
-                if (station == 'B039'):
+                if (channels == 'EH1,EH2,EHZ'):
                     EW.append(D.select(channel='EH1').slice(Tori, \
                         Tori + 60.0)[0])
                     NS.append(D.select(channel='EH2').slice(Tori, \
@@ -277,27 +169,46 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
             else:
                 print('Failed at downloading data')
         # Stack
-        if (len(EW) > 0):
+        if (len(EW) > 0 and len(NS) > 0 and len(UD) > 0):
             # Stack waveforms
             EWstack = linstack([EW], normalize=True, method=method) 
             NSstack = linstack([NS], normalize=True, method=method)
             UDstack = linstack([UD], normalize=True, method=method)
-            # Get time arrival
-            arrivaltime = origintime[filename] + slowness[station] * distance
-            Tmin = arrivaltime - window/ 2.0
-            Tmax = arrivaltime + window / 2.0
-            ibegin = int(Tmin / EWstack[0].stats.delta)
-            iend = int(Tmax / EWstack[0].stats.delta) + 1
-            # Cross correlation
+            # Initializations
             maxCC = np.zeros(len(EW))
-            for i in range(0, len(EW)):
-                ccEW = correlate(EWstack[0].data[ibegin : iend], \
-                    EW[i].data[ibegin : iend], ncor)
-                ccNS = correlate(NSstack[0].data[ibegin : iend], \
-                    NS[i].data[ibegin : iend], ncor)
-                ccUD = correlate(UDstack[0].data[ibegin : iend], \
-                    UD[i].data[ibegin : iend], ncor)
-                maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
+            cc0EW = np.zeros(len(EW))
+            cc0NS = np.zeros(len(EW))
+            cc0UD = np.zeros(len(EW))
+            if (window == True):
+                # Get time arrival
+                arrivaltime = origintime[filename] + \
+                    slowness[station] * distance
+                Tmin = arrivaltime - winlength / 2.0
+                Tmax = arrivaltime + winlength / 2.0
+                ibegin = int(Tmin / EWstack[0].stats.delta)
+                iend = int(Tmax / EWstack[0].stats.delta) + 1
+                # Cross correlation
+                for i in range(0, len(EW)):
+                    ccEW = correlate(EWstack[0].data[ibegin : iend], \
+                        EW[i].data[ibegin : iend], ncor)
+                    ccNS = correlate(NSstack[0].data[ibegin : iend], \
+                        NS[i].data[ibegin : iend], ncor)
+                    ccUD = correlate(UDstack[0].data[ibegin : iend], \
+                        UD[i].data[ibegin : iend], ncor)
+                    maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
+                    cc0EW[i] = ccEW[ncor]
+                    cc0NS[i] = ccNS[ncor]
+                    cc0UD[i] = ccUD[ncor]
+            else:
+                # Cross correlation
+                for i in range(0, len(EW)):
+                    ccEW = correlate(EWstack[0].data, EW[i].data, ncor)
+                    ccNS = correlate(NSstack[0].data, NS[i].data, ncor)
+                    ccUD = correlate(UDstack[0].data, UD[i].data, ncor)
+                    maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
+                    cc0EW[i] = ccEW[ncor]
+                    cc0NS[i] = ccNS[ncor]
+                    cc0UD[i] = ccUD[ncor]
             # Sort cross correlations
             index = np.flip(np.argsort(maxCC), axis=0)
             EWbest = Stream()
@@ -350,8 +261,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
-            plt.axvline(Tmin, linewidth=2, color='grey')
-            plt.axvline(Tmax, linewidth=2, color='grey')
+            if (window == True):
+                plt.axvline(Tmin, linewidth=2, color='grey')
+                plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('East - West component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -383,8 +295,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
-            plt.axvline(Tmin, linewidth=2, color='grey')
-            plt.axvline(Tmax, linewidth=2, color='grey')
+            if (window == True):
+                plt.axvline(Tmin, linewidth=2, color='grey')
+                plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('North - South component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -416,8 +329,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
                 raise ValueError('Method must be RMS or MAD')
             norm = np.nan_to_num(norm)
             plt.plot(t, norm, 'k', label='All')
-            plt.axvline(Tmin, linewidth=2, color='grey')
-            plt.axvline(Tmax, linewidth=2, color='grey')
+            if (window == True):
+                plt.axvline(Tmin, linewidth=2, color='grey')
+                plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('Vertical component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -429,23 +343,32 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
             ax2.clear()
             ax3.clear()
             plt.close(1)
-            # Save stacks into file
+            # Save stacks into files
+            savename = namedir + '/' + station +'.pkl'
+            pickle.dump([EWstack[0], NSstack[0], UDstack[0]], \
+                open(savename, 'wb'))
             for j in range(0, len(ratios)):
                 savename = namedir + '/' + station + '_' + \
                     str(int(ratios[j])) + '.pkl'
                 pickle.dump([EWbest[j], NSbest[j], UDbest[j]], \
                     open(savename, 'wb'))
+            # Save cross correlations into files
+            savename = namedir + '/' + station + '_cc.pkl'
+            pickle.dump([cc0EW, cc0NS, cc0UD], \
+                open(savename, 'wb'))
 
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080408.08.007'
+    filename = '080421.14.048'
     TDUR = 10.0
     filt = (1.5, 9.0)
     ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
     ncor = 400
-    window = 10.0
+    window = False
+    winlength = 10.0
     method = 'RMS'
 
-    compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, method)
+    compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
+        winlength, method)

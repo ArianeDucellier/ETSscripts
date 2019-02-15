@@ -1,7 +1,8 @@
 .DS_Store
 catalog/data/*
-catalog/templates
-catalog/timearrival
+catalog/LFEs/*
+catalog/templates/*
+catalog/timearrival/*
 catalog/waveforms/*
 data/Chestler_2017/__pycache__/*
 data/Chestler_2017/BS/*

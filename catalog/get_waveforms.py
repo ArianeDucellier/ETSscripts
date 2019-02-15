@@ -1,149 +1,27 @@
 """
 This module contains a function to download every one-minute time window
 where there is an LFE recorded, stack the signal over all the LFEs, and
-compare the waveform with the one from Plourde et al. (2015)
+compare the template with the one from Plourde et al. (2015)
 """
 
 import obspy
-import obspy.clients.fdsn.client as fdsn
-from obspy import read
-from obspy import read_inventory
 from obspy import UTCDateTime
 from obspy.core.stream import Stream
 
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import pandas as pd
 
-from fractions import Fraction
 from scipy.io import loadmat
 
+from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
-
-def get_from_IRIS(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from IRIS for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Create client
-    fdsn_client = fdsn.Client('IRIS')
-    # Download data
-    try:
-        D = fdsn_client.get_waveforms(network='XQ', station=station, \
-            location='01', channel='BHE,BHN,BHZ', starttime=Tstart, \
-            endtime=Tend, attach_response=True)
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
-
-def get_from_NCEDC(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from NCEDC for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Define network and channels
-    if (station == 'B039'):
-        network = 'PB'
-        channels = 'EH1,EH2,EHZ'
-    elif (station == 'WDC' or station == 'YBH'):
-        network = 'BK'
-        channels = 'BHE,BHN,BHZ'
-    else:
-        network = 'NC'
-        channels = 'HHE,HHN,HHZ'
-    # Write waveform request
-    file = open('waveform.request', 'w')
-    message = '{} {} -- {} '.format(network, station, channels) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d} '.format(Tstart.year, \
-        Tstart.month, Tstart.day, Tstart.hour, Tstart.minute, \
-        Tstart.second) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}\n'.format(Tend.year, \
-        Tend.month, Tend.day, Tend.hour, Tend.minute, Tend.second)
-    file.write(message)
-    file.close()
-    # Send waveform request
-    request = 'curl --data-binary @waveform.request -o station.miniseed ' + \
-         'http://service.ncedc.org/fdsnws/dataselect/1/query'
-    try:
-        os.system(request)
-        D = read('station.miniseed')
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        filename = '../data/response/' + network + '_' + station + '.xml'
-        inventory = read_inventory(filename, format='STATIONXML')
-        D.attach_response(inventory)
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
 
 def get_waveform(filename, TDUR, filt, method='RMS'):
     """
-    This function computes the waveform for each template and compare it to
-    the waveform from Plourde et al. (2015)
+    This function computes the waveforms for a given template and compare
+    them to the waveforms from Plourde et al. (2015)
 
     Input:
         type filename = string
@@ -178,6 +56,12 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
     uk = data['uk']
     ns = len(ordlst)
 
+    # Get the network, channels, and location of the stations
+    staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
+        sep=r'\s{1,}', header=None)
+    staloc.columns = ['station', 'network', 'channels', 'location', \
+        'server', 'latitude', 'longitude']
+
     # Create directory to store the waveforms
     namedir = 'waveforms/' + filename
     if not os.path.exists(namedir):
@@ -189,6 +73,13 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
         EW = Stream()
         NS = Stream()
         UD = Stream()
+        # Get station metadata for downloading
+        for ir in range(0, len(staloc)):
+            if (station == staloc['station'][ir]):
+                network = staloc['network'][ir]
+                channels = staloc['channels'][ir]
+                location = staloc['location'][ir]
+                server = staloc['server'][ir]
         # Loop on LFEs
         for i in range(0, np.shape(LFEtime)[0]):
             YMD = LFEtime[i][1]
@@ -206,14 +97,18 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             Tstart = Tori - TDUR
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
-            if (station[0 : 2] == 'ME'):
-                D = get_from_IRIS(station, Tstart, Tend, filt, ndt)
+            if (server == 'IRIS'):
+                D = get_from_IRIS(station, network, channels, location, \
+                    Tstart, Tend, filt, ndt)
             # Second case: we get the data from NCEDC
+            elif (server == 'NCEDC'):
+                D = get_from_NCEDC(station, network, channels, location, \
+                    Tstart, Tend, filt, ndt)
             else:
-                D = get_from_NCEDC(station, Tstart, Tend, filt, ndt)
+                raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
-                if (station == 'B039'):
+                if (channels == 'EH1,EH2,EHZ'):
                     EW.append(D.select(channel='EH1').slice(Tori, \
                         Tori + 60.0)[0])
                     NS.append(D.select(channel='EH2').slice(Tori, \
@@ -354,7 +249,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080328.09.029'
+    filename = '080421.14.048'
     TDUR = 10.0
     filt = (1.5, 9.0)
     method = 'RMS'
