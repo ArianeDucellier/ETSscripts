@@ -112,6 +112,8 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
     if not os.path.exists(namedir):
         os.makedirs(namedir)
 
+    initcc = False
+
     for station in staNames:
         # Open file containing template
         data = pickle.load(open('templates/' + filename + \
@@ -173,15 +175,16 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
                     data = UD
                 cctemp = correlate(template, data, \
                     int((len(data) - len(template)) / 2))
-                if ((station == staNames[0]) and (channel == 'EW')):
-                    cc = cctemp
-                else:
+                if (initcc == True):
                     cc = np.vstack((cc, cctemp))
+                else:
+                    cc = cctemp
+                    initcc = True
     
     # Compute average cross-correlation across channels
     meancc = np.flipud(np.mean(cc, axis=0))
     MAD = np.median(np.abs(meancc - np.mean(meancc)))
-    index = np.where(np.abs(meancc) >= threshold * MAD)
+    index = np.where(meancc >= threshold * MAD)
     times = np.arange(0.0, np.shape(meancc)[0] * dt, dt)
 
     # Get LFE times
@@ -195,9 +198,10 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
         else:
             df = pd.DataFrame(columns=['year', 'month', 'day', 'hour', \
                 'minute', 'second', 'cc'])
+        i0 = len(df.index)
         for i in range(0, len(time)):
             timeLFE = t1 + time[i]
-            df.loc[i] = [int(timeLFE.year), int(timeLFE.month), \
+            df.loc[i0 + i] = [int(timeLFE.year), int(timeLFE.month), \
                 int(timeLFE.day), int(timeLFE.hour), int(timeLFE.minute), \
                 timeLFE.second + timeLFE.microsecond / 1000000.0, cc[i]]
         df = df.astype(dtype={'year':'int32', 'month':'int32', \
@@ -215,7 +219,7 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
             dt), meancc)
         plt.axhline(threshold * MAD, linewidth=2, color='red', \
             label = '{:6.2f} * MAD'.format(threshold))
-        plt.ylim(0.0, (np.shape(meancc)[0] - 1) * dt)
+        plt.xlim(0.0, (np.shape(meancc)[0] - 1) * dt)
         plt.xlabel('Time (s)', fontsize=24)
         plt.ylabel('Cross-correlation', fontsize=24)
         plt.title('Average cross-correlation across stations', \
@@ -276,22 +280,27 @@ if __name__ == '__main__':
 
     # Set the parameters
     filename = '080421.14.048'
-
-    # For permanent stations
-#    tbegin = (2010, 11, 24, 16, 0, 0)
-#    tend = (2010, 11, 24, 17, 0, 0)
-
-    # For FAME network (unknown LFEs)
-    tbegin = (2008, 5, 15, 3, 0, 0)
-    tend = (2008, 5, 15, 4, 0, 0)
+    TDUR = 10.0
+    filt = (1.5, 9.0)
+    freq0 = 0.25
+    draw = True
 
     # For FAME network (known LFEs)
 #    tbegin = (2008, 4, 21, 13, 0, 0)
 #    tend = (2008, 4, 21, 14, 0, 0)
+#
+#    find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
 
-    TDUR = 10.0
-    filt = (1.5, 9.0)
-    freq0 = 1.5
-    draw = True
+    # For FAME network (unknown LFEs)
+    for i in range(0, 24):
+        tbegin = (2008, 5, 1, i, 0, 0)
+        if (i == 23):
+            tend = (2008, 5, 2, 0, 0, 0)
+        else:
+            tend = (2008, 5, 1, i + 1, 0, 0)
 
-    find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
+        find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
+
+    # For permanent stations
+#    tbegin = (2010, 11, 24, 16, 0, 0)
+#    tend = (2010, 11, 24, 17, 0, 0)
