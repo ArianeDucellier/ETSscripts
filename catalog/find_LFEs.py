@@ -5,6 +5,7 @@ using the templates from Plourde et al. (2015)
 """
 import obspy
 from obspy import UTCDateTime
+from obspy.core.trace import Trace
 from obspy.signal.cross_correlation import correlate
 
 import matplotlib.pylab as pylab
@@ -112,7 +113,7 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
     if not os.path.exists(namedir):
         os.makedirs(namedir)
 
-    initcc = False
+    nchannel = 0
 
     for station in staNames:
         # Open file containing template
@@ -142,6 +143,8 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
             second=tend[5])
         Tstart = t1 - TDUR
         Tend = t2 + duration + TDUR
+        delta = t2 + duration - t1
+        ndata = int(delta / dt) + 1
 
         # First case: we can get the data from IRIS
         if (server == 'IRIS'):
@@ -156,13 +159,37 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
         # Compute cross-correlation
         if (type(D) == obspy.core.stream.Stream):
             if (channels == 'EH1,EH2,EHZ'):
-                EW = D.select(channel='EH1').slice(t1, t2 + duration)[0]
-                NS = D.select(channel='EH2').slice(t1, t2 + duration)[0]
-                UD = D.select(channel='EHZ').slice(t1, t2 + duration)[0]
+                if (len(D.select(channel='EH1').slice(t1, \
+                    t2 + duration)) == 1):
+                    EW = D.select(channel='EH1').slice(t1, t2 + duration)[0]
+                else:
+                    EW = Trace()
+                if (len(D.select(channel='EH2').slice(t1, \
+                    t2 + duration)) == 1):
+                    NS = D.select(channel='EH2').slice(t1, t2 + duration)[0]
+                else:
+                    NS = Trace()
+                if (len(D.select(channel='EHZ').slice(t1, \
+                    t2 + duration)) == 1):
+                    UD = D.select(channel='EHZ').slice(t1, t2 + duration)[0]
+                else:
+                    UD = Trace()
             else:
-                EW = D.select(component='E').slice(t1, t2 + duration)[0]
-                NS = D.select(component='N').slice(t1, t2 + duration)[0]
-                UD = D.select(component='Z').slice(t1, t2 + duration)[0]
+                if (len(D.select(component='E').slice(t1, \
+                    t2 + duration)) == 1):
+                    EW = D.select(component='E').slice(t1, t2 + duration)[0]
+                else:
+                    EW = Trace()
+                if (len(D.select(component='N').slice(t1, \
+                    t2 + duration)) == 1):
+                    NS = D.select(component='N').slice(t1, t2 + duration)[0]
+                else:
+                    NS = Trace()
+                if (len(D.select(component='Z').slice(t1, \
+                    t2 + duration)) == 1):
+                    UD = D.select(component='Z').slice(t1, t2 + duration)[0]
+                else:
+                    UD = Trace()
             for channel in ['EW', 'NS', 'UD']:
                 if (channel == 'EW'):
                     template = EW0
@@ -173,13 +200,14 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
                 else:
                     template = UD0
                     data = UD
-                cctemp = correlate(template, data, \
-                    int((len(data) - len(template)) / 2))
-                if (initcc == True):
-                    cc = np.vstack((cc, cctemp))
-                else:
-                    cc = cctemp
-                    initcc = True
+                if (len(data.data) == ndata):
+                    cctemp = correlate(template, data, \
+                        int((len(data) - len(template)) / 2))
+                    if (nchannel > 0):
+                        cc = np.vstack((cc, cctemp))
+                    else:
+                        cc = cctemp
+                    nchannel = nchannel + 1
     
     # Compute average cross-correlation across channels
     meancc = np.flipud(np.mean(cc, axis=0))
@@ -197,16 +225,17 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
             df = pickle.load(open(namefile, 'rb'))
         else:
             df = pd.DataFrame(columns=['year', 'month', 'day', 'hour', \
-                'minute', 'second', 'cc'])
+                'minute', 'second', 'cc', 'nchannel'])
         i0 = len(df.index)
         for i in range(0, len(time)):
             timeLFE = t1 + time[i]
             df.loc[i0 + i] = [int(timeLFE.year), int(timeLFE.month), \
                 int(timeLFE.day), int(timeLFE.hour), int(timeLFE.minute), \
-                timeLFE.second + timeLFE.microsecond / 1000000.0, cc[i]]
+                timeLFE.second + timeLFE.microsecond / 1000000.0, cc[i], \
+                nchannel]
         df = df.astype(dtype={'year':'int32', 'month':'int32', \
             'day':'int32', 'hour':'int32', 'minute':'int32', \
-            'second':'float', 'cc':'float'})
+            'second':'float', 'cc':'float', 'nchannel':'int32'})
         pickle.dump(df, open(namefile, 'wb'))
 
     # Draw figure
@@ -215,8 +244,11 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
                   'ytick.labelsize':16}
         pylab.rcParams.update(params) 
         plt.figure(1, figsize=(20, 8))
+        if np.shape(index)[1] > 0:
+            for i in range(0, len(time)):
+                plt.axvline(time[i], linewidth=2, color='grey')
         plt.plot(np.arange(0.0, np.shape(meancc)[0] * dt, \
-            dt), meancc)
+            dt), meancc, color='black')
         plt.axhline(threshold * MAD, linewidth=2, color='red', \
             label = '{:6.2f} * MAD'.format(threshold))
         plt.xlim(0.0, (np.shape(meancc)[0] - 1) * dt)
@@ -228,7 +260,7 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
         plt.savefig('LFEs/' + filename + '/' + \
             '{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}'.format( \
             tbegin[0], tbegin[1], tbegin[2], tbegin[3], tbegin[4], \
-            tbegin[5]) + '.eps', format='eps')
+            tbegin[5]) + '.png', format='png')
         plt.close(1)
 
 def find_LFEs_permanent(filename, stations, tbegin, tend,
@@ -283,23 +315,30 @@ if __name__ == '__main__':
     TDUR = 10.0
     filt = (1.5, 9.0)
     freq0 = 0.25
-    draw = True
+    draw = False
 
     # For FAME network (known LFEs)
 #    tbegin = (2008, 4, 21, 13, 0, 0)
 #    tend = (2008, 4, 21, 14, 0, 0)
-#
+
 #    find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
 
-    # For FAME network (unknown LFEs)
-    for i in range(0, 24):
-        tbegin = (2008, 5, 1, i, 0, 0)
-        if (i == 23):
-            tend = (2008, 5, 2, 0, 0, 0)
-        else:
-            tend = (2008, 5, 1, i + 1, 0, 0)
+    # For FAME network (unknown LFEs)    
+    year = 2008
+    month = 4
+    for day in range(21, 29):
+        for hour in range(0, 24):
+            tbegin = (year, month, day, hour, 0, 0)
+            if (hour == 23):
+                if (day == 31):
+                    tend = (year, month + 1, 1, 0, 0, 0)
+                else:
+                    tend = (year, month, day + 1, 0, 0, 0)
+            else:
+                tend = (year, month, day, hour + 1, 0, 0)
 
-        find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
+            find_LFEs_FAME(filename, tbegin, tend, TDUR, \
+                filt, freq0, draw)
 
     # For permanent stations
 #    tbegin = (2010, 11, 24, 16, 0, 0)
