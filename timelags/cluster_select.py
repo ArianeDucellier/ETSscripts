@@ -69,14 +69,14 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         clusters = List of cluster index to which the tremor window belongs
     """
     # Read file containing data from stack_ccorr_tremor
-    filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-        int(y0), type_stack)
+    filename = 'cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW_UD = data[6]
     NS_UD = data[7]
     # Read file containing data from stack_acorr_tremor
-    filename = 'ac/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-        int(y0), type_stack)
+    filename = 'ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW = data[6]
     NS = data[7]
@@ -155,8 +155,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # Scatter plot
     colors = [palette[c] for c in clusters]
     pd.plotting.scatter_matrix(df, c=colors, figsize=(20, 20))
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close()
     # Plot cross correlation
     plt.figure(1, figsize=(10 * nc, 16))
@@ -218,8 +218,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close(1)
     # Plot autocorrelation
     plt.figure(2, figsize=(10 * nc, 24))
@@ -307,8 +307,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close(2)
     # Plot colored cross correlation windows
     plt.figure(3, figsize=(20, 16))
@@ -344,8 +344,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax2.tick_params(labelsize=20)
     # End figure
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     plt.close(3)
@@ -395,8 +395,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax3.tick_params(labelsize=20)
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -407,12 +407,12 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = 5.0
-    y0 = 5.0
+    x0 = -25.0
+    y0 = 10.0
     w = 2.0
     ncor = 40
-    Tmin = 4.5
-    Tmax = 6.5
+    Tmin = 3.0
+    Tmax = 5.05
     RMSmin = 12.0
     RMSmax = 14.0
     xmax = 15.0
@@ -420,7 +420,7 @@ if __name__ == '__main__':
     palette = {0: 'tomato', 1: 'royalblue', 2:'forestgreen', 3:'gold', \
         4: 'lightpink', 5:'skyblue'}
     n1 = 0
-    n2 = 63
+    n2 = 269
 
     # Linear stack
     amp = 10.0

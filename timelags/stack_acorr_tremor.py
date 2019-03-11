@@ -14,6 +14,7 @@ from obspy.signal.cross_correlation import correlate
 
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import pickle
 import sys
 
@@ -317,8 +318,11 @@ def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
 
     # Save stacked cross correlations into file
     if nt > 0:
-        filename = 'ac/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-            int(y0), type_stack)
+        namedir = 'ac/{}_{:03d}_{:03d}/'.format(arrayName, int(x0), int(y0))
+        if not os.path.exists(namedir):
+            os.makedirs(namedir)
+        filename = namedir + '{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, \
+            int(x0), int(y0), type_stack)
         pickle.dump([Year, Month, Day, Hour, Minute, Second, EW0, NS0, UD0], \
             open(filename, 'wb'))
 
@@ -402,8 +406,7 @@ if __name__ == '__main__':
 #    lon0 = -123.138492857143
 
     ds = 5.0
-    x0 = 5.0
-    y0 = 5.0
+    x0 = 0.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0
@@ -411,26 +414,29 @@ if __name__ == '__main__':
     Tmax = 15.0
     draw_plot = False
 
-    # Linear stack
-    type_stack = 'lin'
-    amp = 3.0
-    amp_stack = 10.0
-    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-        Tmax, amp, amp_stack, draw_plot, client)
+    for i in range(4, 6):
         
-    # Power stack
-    type_stack = 'pow'
-    amp = 3.0
-    amp_stack = 2.0
-    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-        Tmax, amp, amp_stack, draw_plot, client)
+        y0 = i * 5.0
+        
+        # Linear stack
+        type_stack = 'lin'
+        amp = 3.0
+        amp_stack = 10.0
+        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+            Tmax, amp, amp_stack, draw_plot, client)
+        
+        # Power stack
+        type_stack = 'pow'
+        amp = 3.0
+        amp_stack = 2.0
+        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+            Tmax, amp, amp_stack, draw_plot, client)
 
-    # Phase-weighted stack
-    type_stack = 'PWS'
-    amp = 3.0
-    amp_stack = 30.0
-    stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-        Tmax, amp, amp_stack, draw_plot, client)
+        # Phase-weighted stack
+        type_stack = 'PWS'#        amp = 3.0
+        amp_stack = 30.0
+        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+            Tmax, amp, amp_stack, draw_plot, client)

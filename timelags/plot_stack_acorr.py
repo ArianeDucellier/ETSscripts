@@ -44,8 +44,8 @@ def plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
         n2 = Index of last tremor to be plotted
     """
     # Read file containing data from stack_acorr_tremor
-    filename = 'ac/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-        int(y0), type_stack)
+    filename = 'ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW = data[6]
     NS = data[7]
@@ -115,8 +115,9 @@ def plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     ax3.tick_params(labelsize=20)
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}_{}.eps'.format(arrayName, int(x0), \
-        int(y0), type_stack), format='eps')
+    plt.savefig('ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.eps'.format( \
+        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack), \
+        format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -126,12 +127,12 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = 5.0
-    y0 = 5.0
+    x0 = -25.0
+    y0 = 15.0
     w = 2.0
     Tmax = 15.0
     n1 = 0
-    n2 = 63
+    n2 = 188
 
     # Linear stack
     type_stack = 'lin'
