@@ -127,30 +127,30 @@ if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = -25.0
-    y0 = 15.0
+    x0 = -20.0
+    y0 = -25.0
     w = 2.0
     Tmax = 15.0
     n1 = 0
     n2 = 188
 
     # Linear stack
-    type_stack = 'lin'
-    amp = 10.0
-    amp_lin = 100.0
-    amp_pow = 2.0
-    amp_PWS = 200.0
-    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-    amp_pow, amp_PWS, n1, n2)
+#    type_stack = 'lin'
+#    amp = 10.0
+#    amp_lin = 100.0
+#    amp_pow = 2.0
+#    amp_PWS = 200.0
+#    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+#    amp_pow, amp_PWS, n1, n2)
 
     # Power stack
-    type_stack = 'pow'
-    amp = 2.0
-    amp_lin = 15.0
-    amp_pow = 1.0
-    amp_PWS = 100.0
-    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-    amp_pow, amp_PWS, n1, n2)
+#    type_stack = 'pow'
+#    amp = 2.0
+#    amp_lin = 15.0
+#    amp_pow = 1.0
+#    amp_PWS = 100.0
+#    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+#    amp_pow, amp_PWS, n1, n2)
 
     # Phase-weighted stack
     type_stack = 'PWS'

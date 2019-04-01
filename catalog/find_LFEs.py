@@ -70,7 +70,7 @@ def clean_LFEs(index, times, meancc, dt, freq0):
     return(time, cc)
 
 def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
-        freq0, draw=False):
+        freq0, draw=False, use_threshold=False, threshold=0.0075):
     """
     Find LFEs with the temporary stations from FAME
     using the templates from Plourde et al. (2015)
@@ -90,6 +90,10 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
         freq0 = Maximum frequency rate of LFE occurrence
         type draw = boolean
         draw = Do we draw a figure of the cross-correlation?
+        type use_threshold = boolean
+        use_threshold = Do we give the cross-correlation threshold as input?
+        type threshold = float
+        threshold = Cross-correlation vlaue must be higher than that
     Output:
         None
     """
@@ -99,7 +103,8 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
     first_line = file.readline().strip()
     staNames = first_line.split()
     second_line = file.readline().strip()
-    threshold = float(second_line.split()[1])
+    if (use_threshold == False):
+        threshold = float(second_line.split()[1])
     file.close()
 
     # Get the network, channels, and location of the stations
@@ -211,8 +216,11 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
     
     # Compute average cross-correlation across channels
     meancc = np.flipud(np.mean(cc, axis=0))
-    MAD = np.median(np.abs(meancc - np.mean(meancc)))
-    index = np.where(meancc >= threshold * MAD)
+    if (use_threshold == False):
+        MAD = np.median(np.abs(meancc - np.mean(meancc)))
+        index = np.where(meancc >= threshold * MAD)
+    else:
+        index = np.where(meancc >= threshold)
     times = np.arange(0.0, np.shape(meancc)[0] * dt, dt)
 
     # Get LFE times
@@ -249,8 +257,12 @@ def find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
                 plt.axvline(time[i], linewidth=2, color='grey')
         plt.plot(np.arange(0.0, np.shape(meancc)[0] * dt, \
             dt), meancc, color='black')
-        plt.axhline(threshold * MAD, linewidth=2, color='red', \
-            label = '{:6.2f} * MAD'.format(threshold))
+        if (use_threshold == False):
+            plt.axhline(threshold * MAD, linewidth=2, color='red', \
+                label = '{:6.2f} * MAD'.format(threshold))
+        else:
+            plt.axhline(threshold, linewidth=2, color='red', \
+                label = 'Threshold = {:8.4f}'.format(threshold))
         plt.xlim(0.0, (np.shape(meancc)[0] - 1) * dt)
         plt.xlabel('Time (s)', fontsize=24)
         plt.ylabel('Cross-correlation', fontsize=24)
@@ -314,32 +326,44 @@ if __name__ == '__main__':
     filename = '080421.14.048'
     TDUR = 10.0
     filt = (1.5, 9.0)
-    freq0 = 0.25
+    freq0 = 1.0
     draw = False
+    use_threshold = True
+    threshold = 0.01
 
-    # For FAME network (known LFEs)
-#    tbegin = (2008, 4, 21, 13, 0, 0)
-#    tend = (2008, 4, 21, 14, 0, 0)
-
-#    find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, freq0, draw)
+    # For FAME network (known LFEs)    
+#    year = 2008
+#    month = 4
+#    for day in range(21, 29):
+#        for hour in range(0, 24):
+#            tbegin = (year, month, day, hour, 0, 0)
+#            if (hour == 23):
+#                if (day == 31):
+#                    tend = (year, month + 1, 1, 0, 0, 0)
+#                else:
+#                    tend = (year, month, day + 1, 0, 0, 0)
+#            else:
+#                tend = (year, month, day, hour + 1, 0, 0)
+#
+#            find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
+#                freq0, draw, use_threshold, threshold)
 
     # For FAME network (unknown LFEs)    
-    year = 2008
-    month = 4
-    for day in range(21, 29):
-        for hour in range(0, 24):
+    year = 2009
+    month = 1
+    for day in range(21, 32):
+        for hour in range(1, 24):
             tbegin = (year, month, day, hour, 0, 0)
             if (hour == 23):
                 if (day == 31):
-                    tend = (year, month + 1, 1, 0, 0, 0)
+                    if (month == 12):
+                        tend = (year + 1, 1, 1, 0, 0, 0)
+                    else:
+                        tend = (year, month + 1, 1, 0, 0, 0)
                 else:
                     tend = (year, month, day + 1, 0, 0, 0)
             else:
                 tend = (year, month, day, hour + 1, 0, 0)
 
-            find_LFEs_FAME(filename, tbegin, tend, TDUR, \
-                filt, freq0, draw)
-
-    # For permanent stations
-#    tbegin = (2010, 11, 24, 16, 0, 0)
-#    tend = (2010, 11, 24, 17, 0, 0)
+            find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
+                freq0, draw, use_threshold, threshold)

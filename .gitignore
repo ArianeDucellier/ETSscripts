@@ -12,6 +12,7 @@ data/Chestler_2017/timeseries/*
 data/Chestler_2017/*.m
 data/Chestler_2017/*.mat
 data/Chestler_2017/*.rtf
+data/Ducellier/LFEdistribution/*
 data/Frank_2014/LFEdistribution/*
 data/Frank_2014/timeseries/*
 data/Frank_2014/*.txt

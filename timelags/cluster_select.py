@@ -67,6 +67,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     Output:
         type clusters = 1D numpy array
         clusters = List of cluster index to which the tremor window belongs
+        type t_EW = float
+        t_EW = Time of maximum cross-correlation for the EW component
+        type t_NS = float
+        t_NS = Time of maximum cross-correlation for the NS component
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
@@ -164,6 +168,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     dt = EW_UD_stack.stats.delta
     t = dt * np.arange(- npts, npts + 1)
     # EW / Vertical
+    cc_clust_EW = []
+    t_clust_EW = []
     for j in range(0, nc):
         plt.subplot2grid((2, nc), (0, j))
         plt.plot(t, EW_UD_stack.data, 'k-', label='All')
@@ -181,6 +187,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         else:
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
+        cc_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])))
+        i0 = np.argmax(np.abs(EWselect_stack.data[ibegin:iend]))
+        t_clust_EW.append(t[ibegin:iend][i0])
         plt.plot(t, EWselect_stack.data, color=palette[j], \
             label='Cluster {:d}'.format(j))
         plt.xlim(0, xmax)
@@ -189,7 +198,11 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
             len(EWselect)), fontsize=24)
         plt.xlabel('Lag time (s)', fontsize=24)
         plt.legend(loc=1)
+    i0 = cc_clust_EW.index(max(cc_clust_EW))
+    t_EW = t_clust_EW[i0]
     # NS / Vertical
+    cc_clust_NS = []
+    t_clust_NS = []
     for j in range(0, nc):
         plt.subplot2grid((2, nc), (1, j))
         plt.plot(t, NS_UD_stack.data, 'k-', label='All')
@@ -207,6 +220,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         else:
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
+        cc_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])))
+        i0 = np.argmax(np.abs(NSselect_stack.data[ibegin:iend]))
+        t_clust_NS.append(t[ibegin:iend][i0])
         plt.plot(t, NSselect_stack.data, color=palette[j], \
             label='Cluster {:d}'.format(j, ))
         plt.xlim(0, xmax)
@@ -215,6 +231,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
             len(NSselect)), fontsize=24)
         plt.xlabel('Lag time (s)', fontsize=24)
         plt.legend(loc=1)
+    i0 = cc_clust_NS.index(max(cc_clust_NS))
+    t_NS = t_clust_NS[i0]
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
@@ -401,7 +419,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax2.clear()
     ax3.clear()
     plt.close(4)
-    return clusters
+    return (clusters, t_EW, t_NS)
 
 if __name__ == '__main__':
 
@@ -424,36 +442,36 @@ if __name__ == '__main__':
 
     # Linear stack
     amp = 10.0
-    clusters = cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, palette, amp, \
         n1, n2)
 
     # Power stack
     amp = 2.0
-    clusters = cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, palette, amp, \
         n1, n2)
 
     # Phase-weighted stack
     amp = 20.0
-    clusters = cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
         n1, n2)
-    clusters = cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
         Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, palette, amp, \
         n1, n2)
