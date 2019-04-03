@@ -68,7 +68,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
         os.makedirs(namedir)
 
     # Loop over stations
-    for station in staNames:
+    for station in ['ME57']: #staNames:
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -145,7 +145,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             t = dt * np.arange(0, nt)
             plt.plot(t, EWstack[0].data, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-            plt.plot(t0, uk[ns + index, :], 'k', label='Waveform')
+#            plt.plot(t0, uk[ns + index, :], 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('East component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -158,7 +158,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             t = dt * np.arange(0, nt)
             plt.plot(t, NSstack[0].data, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-            plt.plot(t0, uk[index, :], 'k', label='Waveform')
+#            plt.plot(t0, uk[index, :], 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('North component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -171,7 +171,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             t = dt * np.arange(0, nt)
             plt.plot(t, UDstack[0].data, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-            plt.plot(t0, uk[2 * ns + index, :], 'k', label='Waveform')
+#            plt.plot(t0, uk[2 * ns + index, :], 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('Vertical component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -249,7 +249,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080421.14.048'
+    filename = '080401.05.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
     method = 'RMS'

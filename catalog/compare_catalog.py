@@ -18,7 +18,7 @@ df1 = df1.astype({'year': int, 'month': int, 'day': int, \
     'hour': int, 'minute': int, 'second': float, \
     'cc': float, 'nchannel': int})
 df1['second'] = df1['second'].round(3)
-df1 = df1.iloc[1036:]
+#df1 = df1.iloc[1036:]
 
 # Write our catalog to file
 tfile = open('catalog1.txt', 'w')

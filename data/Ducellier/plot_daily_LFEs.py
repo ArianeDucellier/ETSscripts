@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from math import floor
 
 # Beginning and end of the period we are looking at
-tbegin = datetime(2009, 1, 1, 0, 0, 0)
+tbegin = datetime(2007, 8, 1, 0, 0, 0)
 tend = datetime(2009, 2, 1, 0, 0, 0)
 
 # We construct the time series by counting the number of LFEs
@@ -28,7 +28,7 @@ nw = int(duration / window)
 filename = '080421.14.048'
 
 df = pickle.load(open('../../catalog/LFEs/' + \
-    filename + '/catalog_200901.pkl', 'rb'))
+    filename + '/catalog_200708_200901.pkl', 'rb'))
 X = np.zeros(nw, dtype=int)
 # Loop on LFEs
 for j in range(0, len(df)):

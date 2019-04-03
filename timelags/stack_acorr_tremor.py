@@ -427,12 +427,12 @@ if __name__ == '__main__':
 #            Tmax, amp, amp_stack, draw_plot, client)
         
         # Power stack
-        type_stack = 'pow'
-        amp = 3.0
-        amp_stack = 2.0
-        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-            Tmax, amp, amp_stack, draw_plot, client)
+#        type_stack = 'pow'
+#        amp = 3.0
+#        amp_stack = 2.0
+#        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+#            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+#            Tmax, amp, amp_stack, draw_plot, client)
 
         # Phase-weighted stack
         type_stack = 'PWS'

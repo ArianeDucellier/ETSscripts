@@ -332,34 +332,14 @@ if __name__ == '__main__':
     threshold = 0.01
 
     # For FAME network (known LFEs)    
-#    year = 2008
-#    month = 4
-#    for day in range(21, 29):
-#        for hour in range(0, 24):
-#            tbegin = (year, month, day, hour, 0, 0)
-#            if (hour == 23):
-#                if (day == 31):
-#                    tend = (year, month + 1, 1, 0, 0, 0)
-#                else:
-#                    tend = (year, month, day + 1, 0, 0, 0)
-#            else:
-#                tend = (year, month, day, hour + 1, 0, 0)
-#
-#            find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
-#                freq0, draw, use_threshold, threshold)
-
-    # For FAME network (unknown LFEs)    
-    year = 2009
-    month = 1
-    for day in range(21, 32):
-        for hour in range(1, 24):
+    year = 2008
+    month = 4
+    for day in range(25, 29):
+        for hour in range(0, 24):
             tbegin = (year, month, day, hour, 0, 0)
             if (hour == 23):
                 if (day == 31):
-                    if (month == 12):
-                        tend = (year + 1, 1, 1, 0, 0, 0)
-                    else:
-                        tend = (year, month + 1, 1, 0, 0, 0)
+                    tend = (year, month + 1, 1, 0, 0, 0)
                 else:
                     tend = (year, month, day + 1, 0, 0, 0)
             else:
@@ -367,3 +347,23 @@ if __name__ == '__main__':
 
             find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
                 freq0, draw, use_threshold, threshold)
+
+    # For FAME network (unknown LFEs)    
+#    year = 2009
+#    month = 1
+#    for day in range(21, 32):
+#        for hour in range(1, 24):
+#            tbegin = (year, month, day, hour, 0, 0)
+#            if (hour == 23):
+#                if (day == 31):
+#                    if (month == 12):
+#                        tend = (year + 1, 1, 1, 0, 0, 0)
+#                    else:
+#                        tend = (year, month + 1, 1, 0, 0, 0)
+#                else:
+#                    tend = (year, month, day + 1, 0, 0, 0)
+#            else:
+#                tend = (year, month, day, hour + 1, 0, 0)
+#
+#            find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
+#                freq0, draw, use_threshold, threshold)
