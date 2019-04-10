@@ -363,8 +363,8 @@ if __name__ == '__main__':
 #    lon0 = -123.138492857143
 
     ds = 5.0
-    x0 = -10.0
-    y0 = 15.0
+    x0 = 5.0
+    y0 = 25.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0
@@ -381,17 +381,17 @@ if __name__ == '__main__':
 #        Tmax, amp, amp_stack, draw_plot, client)
         
     # Power stack
-#    type_stack = 'pow'
-#    amp = 3.0
-#    amp_stack = 2.0
-#    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-#        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-#        Tmax, amp, amp_stack, draw_plot, client)
-
-    # Phase-weighted stack
-    type_stack = 'PWS'
+    type_stack = 'pow'
     amp = 3.0
-    amp_stack = 30.0
+    amp_stack = 2.0
     stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
         Tmax, amp, amp_stack, draw_plot, client)
+
+    # Phase-weighted stack
+#    type_stack = 'PWS'
+#    amp = 3.0
+#    amp_stack = 30.0
+#    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+#        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+#        Tmax, amp, amp_stack, draw_plot, client)

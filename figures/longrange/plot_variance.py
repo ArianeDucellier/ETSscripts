@@ -1,143 +1,125 @@
 """
-Figure to illustrate long range dependence
+Script to make figure illustrating the presence or absence of
+long-range dependence for different time series
 """
-
+import matplotlib.pylab as pylab
 import matplotlib.pylab as plt
 import numpy as np
+import pandas as pd
+import pickle
 
-# Part 1: Long range dependence / bursts of LFEs
+filename = 'FARIMA'
+
+# Initialization
+data = np.loadtxt(filename + '.txt')
+m = np.zeros(6)
+variance = np.zeros(6)
+
+# Figure
 plt.figure(1, figsize=(30, 10))
+params = {'xtick.labelsize':16,
+          'ytick.labelsize':16}
+pylab.rcParams.update(params)
 
-data = np.array([0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 2, 2, 3, 3, \
-                 3, 4, 4, 4, 5, \
-                 5, 10, 10, 10, 5, \
-                 5, 4, 4, 4, 3, \
-                 3, 3, 2, 2, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 2, 2, 3, 3, \
-                 3, 4, 4, 4, 5, \
-                 5, 10, 10, 10, 5, \
-                 5, 4, 4, 4, 3, \
-                 3, 3, 2, 2, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0, \
-                 0, 0, 0, 0, 0])
-
-# 125 time windows
+# Aggregate one time window (initial time series)
 N = len(data)
-ax1 = plt.subplot(131)
+ax1 = plt.subplot(231)
 for i in range(0, N):
-    plt.plot(np.array([i, i]), np.array([0, data[i]]), 'k-')
+    plt.plot(0.5 + np.array([i, i]), np.array([0, data[i]]), 'k-')
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Number of LFEs', fontsize=20)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data), 'Window size = 1', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[0] = 1
+variance[0] = np.var(data)
+
+# Aggregate 3 time windows
+data1 = np.reshape(data, (1215, 3))
+data1 = np.sum(data1, axis=1)
+N = len(data1)
+ax2 = plt.subplot(232)
+for i in range(0, N):
+    plt.plot(1.5 + 3 * np.array([i, i]), np.array([0, data1[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data)
-plt.title('Window size = 1 - Variance = {:4.2f}'.format(v), fontsize=24)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data1), 'Window size = 3', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[1] = 3
+variance[1] = np.var(data1)
 
-# 25 time windows
-data2 = np.reshape(data, (25, 5))
+# Aggregate 9 time windows
+data2 = np.reshape(data, (405, 9))
 data2 = np.sum(data2, axis=1)
 N = len(data2)
-ax2 = plt.subplot(132)
+ax3 = plt.subplot(233)
 for i in range(0, N):
-    plt.plot(2.5 + 5 * np.array([i, i]), np.array([0, data2[i]]), 'k-')
+    plt.plot(4.5 + 9 * np.array([i, i]), np.array([0, data2[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data2)
-plt.title('Window size = 5 - Variance = {:4.2f}'.format(v), fontsize=24)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data2), 'Window size = 9', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[2] = 9
+variance[2] = np.var(data2)
 
-# 5 time windows
-data3 = np.reshape(data, (5, 25))
+# Aggregate 27 time windows
+data3 = np.reshape(data, (135, 27))
 data3 = np.sum(data3, axis=1)
 N = len(data3)
-ax3 = plt.subplot(133)
+ax4 = plt.subplot(234)
 for i in range(0, N):
-    plt.plot(12.5 + 25 * np.array([i, i]), np.array([0, data3[i]]), 'k-')
+    plt.plot(13.5 + 27 * np.array([i, i]), np.array([0, data3[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data3)
-plt.title('Window size = 25 - Variance = {:4.2f}'.format(v), fontsize=24)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data3), 'Window size = 27', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[3] = 27
+variance[3] = np.var(data3)
 
-# End and sae figure
-plt.suptitle('Long range dependence', fontsize=24)
-plt.savefig('longrange.eps', format='eps')
+# Aggregate 81 time windows
+data4 = np.reshape(data, (45, 81))
+data4 = np.sum(data4, axis=1)
+N = len(data4)
+ax5 = plt.subplot(235)
+for i in range(0, N):
+    plt.plot(40.5 + 81 * np.array([i, i]), np.array([0, data4[i]]), 'k-')
+plt.xlabel('Time', fontsize=24)
+plt.ylabel('Number of LFEs', fontsize=24)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data4), 'Window size = 81', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[4] = 81
+variance[4] = np.var(data4)
+
+# Aggregate 243 time windows
+data5 = np.reshape(data, (15, 243))
+data5 = np.sum(data5, axis=1)
+N = len(data5)
+ax6 = plt.subplot(236)
+for i in range(0, N):
+    plt.plot(121.5 + 243 * np.array([i, i]), np.array([0, data5[i]]), 'k-')
+plt.xlabel('Time', fontsize=24)
+plt.ylabel('Number of LFEs', fontsize=24)
+plt.xlim([0.0, 3645.0])
+plt.text(3645.5 / 2.0, np.max(data5), 'Window size = 243', \
+    horizontalalignment='center', verticalalignment='top', fontsize=20)
+m[5] = 243
+variance[5] = np.var(data5)
+
+# End and save figure
+plt.suptitle(filename + ' model', fontsize=24)
+plt.savefig(filename + '.eps', format='eps')
 ax1.clear()
 ax2.clear()
 ax3.clear()
+ax4.clear()
+ax5.clear()
+ax6.clear()
 plt.close(1)
 
-# Part 2: Homogeneous Poisson process
-plt.figure(2, figsize=(30, 10))
-
-NLFE = np.concatenate((np.repeat(0, 25), \
-                       np.repeat(1, 41), \
-                       np.repeat(2, 32), \
-                       np.repeat(3, 17), \
-                       np.repeat(4, 7), \
-                       np.repeat(5, 2), \
-                       np.repeat(6, 1)))
-np.random.seed(seed=0)
-ILFE = np.random.permutation(125)
-
-data = np.zeros(125, dtype=int)
-N = len(data)
-for i in range(0, N):
-    index = int(ILFE[i])
-    data[index] = int(NLFE[i])
-
-# 125 time windows
-ax1 = plt.subplot(131)
-for i in range(0, N):
-    plt.plot(np.array([i, i]), np.array([0, data[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data)
-plt.title('Window size = 1 - Variance = {:4.2f}'.format(v), fontsize=24)
-
-# 25 time windows
-data2 = np.reshape(data, (25, 5))
-data2 = np.sum(data2, axis=1)
-N = len(data2)
-ax2 = plt.subplot(132)
-for i in range(0, N):
-    plt.plot(2.5 + 5 * np.array([i, i]), np.array([0, data2[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data2)
-plt.title('Window size = 5 - Variance = {:4.2f}'.format(v), fontsize=24)
-
-# 5 time windows
-data3 = np.reshape(data, (5, 25))
-data3 = np.sum(data3, axis=1)
-N = len(data3)
-ax3 = plt.subplot(133)
-for i in range(0, N):
-    plt.plot(12.5 + 25 * np.array([i, i]), np.array([0, data3[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
-plt.xlim([-0.5, 124.5])
-v = np.var(data3)
-plt.title('Window size = 25 - Variance = {:4.2f}'.format(v), fontsize=24)
-
-# End and sae figure
-plt.suptitle('Homogeneous Poisson', fontsize=24)
-plt.savefig('poisson.eps', format='eps')
-ax1.clear()
-ax2.clear()
-ax3.clear()
-plt.close(2)
+# Save variance
+df = pd.DataFrame(data={'m':m, 'var':variance})
+pickle.dump(df, open(filename + '.pkl', 'wb'))
