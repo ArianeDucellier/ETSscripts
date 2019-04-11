@@ -21,7 +21,7 @@ for (i in 0:N){
         }
     }
 }
-write.table(nb, file="poisson.txt", row.names=FALSE, col.names=FALSE)
+write.table(nb, file="Poisson.txt", row.names=FALSE, col.names=FALSE)
 print(c("Poisson", mean(nb), sqrt(var(nb))))
 
 # ETAS model

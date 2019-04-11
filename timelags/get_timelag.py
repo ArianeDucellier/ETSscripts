@@ -31,8 +31,8 @@ palette = {0: 'tomato', 1: 'royalblue', 2:'forestgreen', 3:'gold', \
     4: 'lightpink', 5:'skyblue'}
 
 # Loop on tremor location
-for i in range(3, 4):
-    for j in range(2, 3):
+for i in range(5, 6):
+    for j in range(5, 6):
         x0 = i * ds
         y0 = j * ds
         filename = '{}_{:03d}_{:03d}/{}_{:03d}_{:03d}'.format( \

@@ -58,3 +58,4 @@ plt.ylabel('Log (Variance / Aggregation size)', fontsize=20)
 plt.legend(loc=2, fontsize=20)
 
 plt.savefig('comparison.eps', format='eps')
+plt.close(1)

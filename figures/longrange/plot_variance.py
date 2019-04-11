@@ -16,7 +16,7 @@ m = np.zeros(6)
 variance = np.zeros(6)
 
 # Figure
-plt.figure(1, figsize=(30, 10))
+plt.figure(1, figsize=(36, 10))
 params = {'xtick.labelsize':16,
           'ytick.labelsize':16}
 pylab.rcParams.update(params)
@@ -27,7 +27,7 @@ ax1 = plt.subplot(231)
 for i in range(0, N):
     plt.plot(0.5 + np.array([i, i]), np.array([0, data[i]]), 'k-')
 plt.xlabel('Time', fontsize=20)
-plt.ylabel('Number of LFEs', fontsize=20)
+plt.ylabel('Number of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data), 'Window size = 1', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
@@ -42,7 +42,7 @@ ax2 = plt.subplot(232)
 for i in range(0, N):
     plt.plot(1.5 + 3 * np.array([i, i]), np.array([0, data1[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
+plt.ylabel('Number of events', fontsize=24)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data1), 'Window size = 3', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
@@ -57,7 +57,7 @@ ax3 = plt.subplot(233)
 for i in range(0, N):
     plt.plot(4.5 + 9 * np.array([i, i]), np.array([0, data2[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
+plt.ylabel('Number of events', fontsize=24)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data2), 'Window size = 9', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
@@ -72,7 +72,7 @@ ax4 = plt.subplot(234)
 for i in range(0, N):
     plt.plot(13.5 + 27 * np.array([i, i]), np.array([0, data3[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
+plt.ylabel('Number of events', fontsize=24)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data3), 'Window size = 27', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
@@ -87,7 +87,7 @@ ax5 = plt.subplot(235)
 for i in range(0, N):
     plt.plot(40.5 + 81 * np.array([i, i]), np.array([0, data4[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
+plt.ylabel('Number of events', fontsize=24)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data4), 'Window size = 81', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
@@ -102,7 +102,7 @@ ax6 = plt.subplot(236)
 for i in range(0, N):
     plt.plot(121.5 + 243 * np.array([i, i]), np.array([0, data5[i]]), 'k-')
 plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
+plt.ylabel('Number of events', fontsize=24)
 plt.xlim([0.0, 3645.0])
 plt.text(3645.5 / 2.0, np.max(data5), 'Window size = 243', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
