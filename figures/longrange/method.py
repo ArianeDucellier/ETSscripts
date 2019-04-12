@@ -52,17 +52,17 @@ m = data[0]
 V = data[1]
 nLFE = data[2]
 x = np.reshape(np.log10(m), (len(m), 1))
-y = np.reshape(np.log10(V), (len(V), 1))
+y = np.reshape(np.log10(V * m), (len(V), 1))
 regr = linear_model.LinearRegression(fit_intercept=True)
 regr.fit(x, y)
 y_pred = regr.predict(x)
 R2 = r2_score(y, y_pred)
-d = 0.5 * (regr.coef_[0][0] + 1)
+d = 0.5 * regr.coef_[0][0]
 plt.figure(1, figsize=(10, 10))
-plt.plot(np.log10(m), np.log10(V), 'ko')
+plt.plot(np.log10(m), np.log10(V * m), 'ko')
 plt.plot(x, y_pred, 'r-')
-plt.xlabel('Log (aggregation size)', fontsize=24)
-plt.ylabel('Log (sample variance)', fontsize=24)
+plt.xlabel('Log (Sample size)', fontsize=24)
+plt.ylabel('Log (Sample size * Variance)', fontsize=24)
 plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
     nLFE, d, R2), fontsize=24)
 plt.savefig('variance_LFE1_Sweet.eps', format='eps')

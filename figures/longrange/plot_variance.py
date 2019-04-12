@@ -27,84 +27,84 @@ ax1 = plt.subplot(231)
 for i in range(0, N):
     plt.plot(0.5 + np.array([i, i]), np.array([0, data[i]]), 'k-')
 plt.xlabel('Time', fontsize=20)
-plt.ylabel('Number of events', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data), 'Window size = 1', \
+plt.text(3645.5 / 2.0, np.max(data), 'Sample size = 1', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[0] = 1
 variance[0] = np.var(data)
 
 # Aggregate 3 time windows
 data1 = np.reshape(data, (1215, 3))
-data1 = np.sum(data1, axis=1)
+data1 = np.mean(data1, axis=1)
 N = len(data1)
 ax2 = plt.subplot(232)
 for i in range(0, N):
     plt.plot(1.5 + 3 * np.array([i, i]), np.array([0, data1[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of events', fontsize=24)
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data1), 'Window size = 3', \
+plt.text(3645.5 / 2.0, np.max(data1), 'Sample size = 3', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[1] = 3
 variance[1] = np.var(data1)
 
 # Aggregate 9 time windows
 data2 = np.reshape(data, (405, 9))
-data2 = np.sum(data2, axis=1)
+data2 = np.mean(data2, axis=1)
 N = len(data2)
 ax3 = plt.subplot(233)
 for i in range(0, N):
     plt.plot(4.5 + 9 * np.array([i, i]), np.array([0, data2[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of events', fontsize=24)
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data2), 'Window size = 9', \
+plt.text(3645.5 / 2.0, np.max(data2), 'Sample size = 9', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[2] = 9
 variance[2] = np.var(data2)
 
 # Aggregate 27 time windows
 data3 = np.reshape(data, (135, 27))
-data3 = np.sum(data3, axis=1)
+data3 = np.mean(data3, axis=1)
 N = len(data3)
 ax4 = plt.subplot(234)
 for i in range(0, N):
     plt.plot(13.5 + 27 * np.array([i, i]), np.array([0, data3[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of events', fontsize=24)
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data3), 'Window size = 27', \
+plt.text(3645.5 / 2.0, np.max(data3), 'Sample size = 27', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[3] = 27
 variance[3] = np.var(data3)
 
 # Aggregate 81 time windows
 data4 = np.reshape(data, (45, 81))
-data4 = np.sum(data4, axis=1)
+data4 = np.mean(data4, axis=1)
 N = len(data4)
 ax5 = plt.subplot(235)
 for i in range(0, N):
     plt.plot(40.5 + 81 * np.array([i, i]), np.array([0, data4[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of events', fontsize=24)
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data4), 'Window size = 81', \
+plt.text(3645.5 / 2.0, np.max(data4), 'Sample size = 81', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[4] = 81
 variance[4] = np.var(data4)
 
 # Aggregate 243 time windows
 data5 = np.reshape(data, (15, 243))
-data5 = np.sum(data5, axis=1)
+data5 = np.mean(data5, axis=1)
 N = len(data5)
 ax6 = plt.subplot(236)
 for i in range(0, N):
     plt.plot(121.5 + 243 * np.array([i, i]), np.array([0, data5[i]]), 'k-')
-plt.xlabel('Time', fontsize=24)
-plt.ylabel('Number of events', fontsize=24)
+plt.xlabel('Time', fontsize=20)
+plt.ylabel('Average nb of events', fontsize=20)
 plt.xlim([0.0, 3645.0])
-plt.text(3645.5 / 2.0, np.max(data5), 'Window size = 243', \
+plt.text(3645.5 / 2.0, np.max(data5), 'Sample size = 243', \
     horizontalalignment='center', verticalalignment='top', fontsize=20)
 m[5] = 243
 variance[5] = np.var(data5)
