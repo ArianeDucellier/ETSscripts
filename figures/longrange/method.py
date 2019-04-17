@@ -23,6 +23,8 @@ duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
 nw = int(duration / window)
 data = loadmat('../../data/Sweet_2014/catalogs/LFE1catalog.mat')
 LFEtime = data['peakTimes'][0]
+cc = data['xcor'][0]
+LFEtime = LFEtime[cc >= 0.275]
 dt = tend - tbegin
 duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
 nw = int(duration / window)
@@ -46,11 +48,43 @@ plt.ylabel('Number of LFEs', fontsize=24)
 plt.savefig('timeseries_LFE1_Sweet.eps', format='eps')
 plt.close(1)
 
+# Get times series (one-minute-long bins)
+window = 60.0
+nw = int(duration / window)
+X = np.zeros(nw, dtype=int)
+for i in range(0, np.shape(LFEtime)[0]):
+    (myYear, myMonth, myDay, myHour, myMinute, mySecond, \
+        myMicrosecond) = matlab2ymdhms(LFEtime[i], False)
+    t = datetime(myYear, myMonth, myDay, myHour, myMinute, mySecond, \
+        myMicrosecond)
+    if ((tbegin <= t) and (t < tbegin + timedelta(seconds=nw * window))):
+        dt = t - tbegin
+        duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * \
+            0.000001
+        index = int(duration / window)
+        X[index] = X[index] + 1
+
+# Compute fractional parameter
+def aggregate(X, m):
+    N = len(X)
+    N2 = int(N / m)
+    X2 = X[0 : N2 * m]
+    X2 = np.reshape(X2, (N2, int(m)))
+    Xm = np.mean(X2, axis=1)
+    return Xm
+
+m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
+    190, 244, 314, 403, 518, 665, 854, 1096, 1408, 1808, 2321, 2980, \
+    3827, 4914, 6310, 8103, 10404, 13359, 17154, 22026, 28282, 36315, \
+    46630, 59874, 76879, 98715], dtype=int)
+
+V = np.zeros(len(m))
+for i in range(0, len(m)):
+    Xm = aggregate(X, m[i])
+    V[i] = np.var(Xm)
+
 # Draw visualization of fractional parameter
-data = pickle.load(open('../../longrange/variance_Sweet/LFE1.pkl', 'rb'))
-m = data[0]
-V = data[1]
-nLFE = data[2]
+nLFE = np.sum(X)
 x = np.reshape(np.log10(m), (len(m), 1))
 y = np.reshape(np.log10(V * m), (len(V), 1))
 regr = linear_model.LinearRegression(fit_intercept=True)

@@ -28,7 +28,7 @@ regr.fit(x, y)
 y_pred = regr.predict(x)
     
 plt.plot(np.log10(dfP['m']), np.log10(dfP['var'] * dfP['m']), 'ro', \
-    label='Poisson - Slope = {:6.4f}'.format(regr.coef_[0][0]))
+    label='Poisson - Slope = {:4.2f}'.format(regr.coef_[0][0]))
 plt.plot(x, y_pred, 'r-')
 
 # Linear regression for ETAS
@@ -39,7 +39,7 @@ regr.fit(x, y)
 y_pred = regr.predict(x)
     
 plt.plot(np.log10(dfE['m']), np.log10(dfE['var'] * dfE['m']), 'bo', \
-    label='ETAS - Slope = {:6.4f}'.format(regr.coef_[0][0]))
+    label='ETAS - Slope = {:4.2f}'.format(regr.coef_[0][0]))
 plt.plot(x, y_pred, 'b-')
 
 # Linear regression for FARIMA
@@ -50,7 +50,7 @@ regr.fit(x, y)
 y_pred = regr.predict(x)
     
 plt.plot(np.log10(dfF['m']), np.log10(dfF['var'] * dfF['m']), 'go', \
-    label='FARIMA - Slope = {:6.4f}'.format(regr.coef_[0][0]))
+    label='FARIMA - Slope = {:4.2f}'.format(regr.coef_[0][0]))
 plt.plot(x, y_pred, 'g-')
 
 plt.xlabel('Log (Sample size)', fontsize=20)
