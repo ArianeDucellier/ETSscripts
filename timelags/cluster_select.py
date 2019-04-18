@@ -71,6 +71,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         t_EW = Time of maximum cross-correlation for the EW component
         type t_NS = float
         t_NS = Time of maximum cross-correlation for the NS component
+        type cc_EW = float
+        cc_EW = Maximum cross-correlation for the EW component
+        type cc_NS = float
+        cc_NS = Maximum cross-correlation for the NS component
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
@@ -200,6 +204,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         plt.legend(loc=1)
     i0 = cc_clust_EW.index(max(cc_clust_EW))
     t_EW = t_clust_EW[i0]
+    cc_EW = max(cc_clust_EW)
     # NS / Vertical
     cc_clust_NS = []
     t_clust_NS = []
@@ -233,6 +238,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         plt.legend(loc=1)
     i0 = cc_clust_NS.index(max(cc_clust_NS))
     t_NS = t_clust_NS[i0]
+    cc_NS = max(cc_clust_NS)
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
@@ -419,7 +425,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax2.clear()
     ax3.clear()
     plt.close(4)
-    return (clusters, t_EW, t_NS)
+    return (clusters, t_EW, t_NS, cc_EW, cc_NS)
 
 if __name__ == '__main__':
 

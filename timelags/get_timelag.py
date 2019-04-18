@@ -190,45 +190,54 @@ for i in range(5, 6):
             # Cluster tremor for better peak
             # Linear stack
             amp = 10.0
-            (clusters, t_lin_lin_EW_cluster, t_lin_lin_NS_cluster) = \
+            (clusters, t_lin_lin_EW_cluster, t_lin_lin_NS_cluster, \
+                 cc_lin_lin_EW_cluster, cc_lin_lin_NS_cluster) = \
                  cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor_cluster, \
                  Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, palette, amp, \
                  n1, n2)
-            (clusters, t_lin_pow_EW_cluster, t_lin_pow_NS_cluster) = \
+            (clusters, t_lin_pow_EW_cluster, t_lin_pow_NS_cluster, \
+                cc_lin_pow_EW_cluster, cc_lin_pow_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
                 n1, n2)
-            (clusters, t_lin_PWS_EW_cluster, t_lin_PWS_NS_cluster) = \
+            (clusters, t_lin_PWS_EW_cluster, t_lin_PWS_NS_cluster, \
+                cc_lin_PWS_EW_cluster, cc_lin_PWS_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, palette, amp, \
                 n1, n2)
 
             # Power stack
             amp = 2.0
-            (clusters, t_pow_lin_EW_cluster, t_pow_lin_NS_cluster) = \
+            (clusters, t_pow_lin_EW_cluster, t_pow_lin_NS_cluster, \
+                cc_pow_lin_EW_cluster, cc_pow_lin_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
                 n1, n2)
-            (clusters, t_pow_pow_EW_cluster, t_pow_pow_NS_cluster) = \
+            (clusters, t_pow_pow_EW_cluster, t_pow_pow_NS_cluster, \
+                cc_pow_pow_EW_cluster, cc_pow_pow_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, palette, amp, \
                 n1, n2)
-            (clusters, t_pow_PWS_EW_cluster, t_pow_PWS_NS_cluster) = \
+            (clusters, t_pow_PWS_EW_cluster, t_pow_PWS_NS_cluster, 
+                cc_pow_PWS_EW_cluster, cc_pow_PWS_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, palette, amp, \
                 n1, n2)
 
             # Phase-weighted stack
             amp = 20.0
-            (clusters, t_PWS_lin_EW_cluster, t_PWS_lin_NS_cluster) = \
+            (clusters, t_PWS_lin_EW_cluster, t_PWS_lin_NS_cluster, \
+                cc_PWS_lin_EW_cluster, cc_PWS_lin_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, palette, amp, \
                 n1, n2)
-            (clusters, t_PWS_pow_EW_cluster, t_PWS_pow_NS_cluster) = \
+            (clusters, t_PWS_pow_EW_cluster, t_PWS_pow_NS_cluster, \
+                cc_PWS_pow_EW_cluster, cc_PWS_pow_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
                 n1, n2)
-            (clusters, t_PWS_PWS_EW_cluster, t_PWS_PWS_NS_cluster) = \
+            (clusters, t_PWS_PWS_EW_cluster, t_PWS_PWS_NS_cluster, \
+                cc_PWS_PWS_EW_cluster, cc_PWS_PWS_NS_cluster) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, palette, amp, \
                 n1, n2)
@@ -250,7 +259,13 @@ for i in range(5, 6):
                     't_pow_lin_EW_cluster', 't_pow_pow_EW_cluster', 't_pow_PWS_EW_cluster', \
                     't_pow_lin_NS_cluster', 't_pow_pow_NS_cluster', 't_pow_PWS_NS_cluster', \
                     't_PWS_lin_EW_cluster', 't_PWS_pow_EW_cluster', 't_PWS_PWS_EW_cluster', \
-                    't_PWS_lin_NS_cluster', 't_PWS_pow_NS_cluster', 't_PWS_PWS_NS_cluster'])
+                    't_PWS_lin_NS_cluster', 't_PWS_pow_NS_cluster', 't_PWS_PWS_NS_cluster', \
+                    'cc_lin_lin_EW_cluster', 'cc_lin_pow_EW_cluster', 'cc_lin_PWS_EW_cluster', \
+                    'cc_lin_lin_NS_cluster', 'cc_lin_pow_NS_cluster', 'cc_lin_PWS_NS_cluster', \
+                    'cc_pow_lin_EW_cluster', 'cc_pow_pow_EW_cluster', 'cc_pow_PWS_EW_cluster', \
+                    'cc_pow_lin_NS_cluster', 'cc_pow_pow_NS_cluster', 'cc_pow_PWS_NS_cluster', \
+                    'cc_PWS_lin_EW_cluster', 'cc_PWS_pow_EW_cluster', 'cc_PWS_PWS_EW_cluster', \
+                    'cc_PWS_lin_NS_cluster', 'cc_PWS_pow_NS_cluster', 'cc_PWS_PWS_NS_cluster'])
             i0 = len(df.index)
             df.loc[i0] = [x0, y0, ntremor, \
                 t_lin_lin_EW, t_lin_pow_EW, t_lin_PWS_EW, \
@@ -264,7 +279,13 @@ for i in range(5, 6):
                 t_pow_lin_EW_cluster, t_pow_pow_EW_cluster, t_pow_PWS_EW_cluster, \
                 t_pow_lin_NS_cluster, t_pow_pow_NS_cluster, t_pow_PWS_NS_cluster, \
                 t_PWS_lin_EW_cluster, t_PWS_pow_EW_cluster, t_PWS_PWS_EW_cluster, \
-                t_PWS_lin_NS_cluster, t_PWS_pow_NS_cluster, t_PWS_PWS_NS_cluster]
+                t_PWS_lin_NS_cluster, t_PWS_pow_NS_cluster, t_PWS_PWS_NS_cluster, \
+                cc_lin_lin_EW_cluster, cc_lin_pow_EW_cluster, cc_lin_PWS_EW_cluster, \
+                cc_lin_lin_NS_cluster, cc_lin_pow_NS_cluster, cc_lin_PWS_NS_cluster, \
+                cc_pow_lin_EW_cluster, cc_pow_pow_EW_cluster, cc_pow_PWS_EW_cluster, \
+                cc_pow_lin_NS_cluster, cc_pow_pow_NS_cluster, cc_pow_PWS_NS_cluster, \
+                cc_PWS_lin_EW_cluster, cc_PWS_pow_EW_cluster, cc_PWS_PWS_EW_cluster, \
+                cc_PWS_lin_NS_cluster, cc_PWS_pow_NS_cluster, cc_PWS_PWS_NS_cluster]
             df['ntremor'] = df['ntremor'].astype('int')
             pickle.dump(df, open(namefile, 'wb'))
 
