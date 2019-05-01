@@ -16,13 +16,12 @@ import os
 import pandas as pd
 import pickle
 
-from math import cos, pi, sin, sqrt
+from math import cos, floor, pi, sin, sqrt
 
 from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, ncor, window,
-        winlength, method='RMS'):
+def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method):
     """
     This function computes the waveform for each template, cross correlate
     them with the stack, and keep only the best to get the final template
@@ -92,10 +91,11 @@ def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, ncor, wi
         for i in range(0, len(LFEtime)):
             mySecond = int(floor(LFEtime['second'].iloc[i]))
             myMicrosecond = int(1000000.0 * \
-                (LFEtime['second'].iloc[i] - floor(LFEtime['second'].iloc[i]))
-            Tori = UTCDateTime(year=myYear, month=myMonth, day=myDay, \
-                hour=myHour, minute=myMinute, second=mySecond, \
-                microsecond=myMicrosecond)
+                (LFEtime['second'].iloc[i] - floor(LFEtime['second'].iloc[i])))
+            Tori = UTCDateTime(year=LFEtime['year'].iloc[i], \
+                month=LFEtime['month'].iloc[i], day=LFEtime['day'].iloc[i], \
+                hour=LFEtime['hour'].iloc[i], minute=LFEtime['minute'].iloc[i], \
+                second=mySecond, microsecond=myMicrosecond)
             Tstart = Tori - TDUR
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
@@ -132,168 +132,35 @@ def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, ncor, wi
             EWstack = linstack([EW], normalize=True, method=method) 
             NSstack = linstack([NS], normalize=True, method=method)
             UDstack = linstack([UD], normalize=True, method=method)
-            # Initializations
-            maxCC = np.zeros(len(EW))
-            cc0EW = np.zeros(len(EW))
-            cc0NS = np.zeros(len(EW))
-            cc0UD = np.zeros(len(EW))
-            if (window == True):
-                # Get time arrival
-                arrivaltime = origintime[filename] + \
-                    slowness[station] * distance
-                Tmin = arrivaltime - winlength / 2.0
-                Tmax = arrivaltime + winlength / 2.0
-                ibegin = int(Tmin / EWstack[0].stats.delta)
-                iend = int(Tmax / EWstack[0].stats.delta) + 1
-                # Cross correlation
-                for i in range(0, len(EW)):
-                    ccEW = correlate(EWstack[0].data[ibegin : iend], \
-                        EW[i].data[ibegin : iend], ncor)
-                    ccNS = correlate(NSstack[0].data[ibegin : iend], \
-                        NS[i].data[ibegin : iend], ncor)
-                    ccUD = correlate(UDstack[0].data[ibegin : iend], \
-                        UD[i].data[ibegin : iend], ncor)
-                    maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
-                    cc0EW[i] = ccEW[ncor]
-                    cc0NS[i] = ccNS[ncor]
-                    cc0UD[i] = ccUD[ncor]
-            else:
-                # Cross correlation
-                for i in range(0, len(EW)):
-                    ccEW = correlate(EWstack[0].data, EW[i].data, ncor)
-                    ccNS = correlate(NSstack[0].data, NS[i].data, ncor)
-                    ccUD = correlate(UDstack[0].data, UD[i].data, ncor)
-                    maxCC[i] = np.max(ccEW) + np.max(ccNS) + np.max(ccUD)
-                    cc0EW[i] = ccEW[ncor]
-                    cc0NS[i] = ccNS[ncor]
-                    cc0UD[i] = ccUD[ncor]
-            # Sort cross correlations
-            index = np.flip(np.argsort(maxCC), axis=0)
-            EWbest = Stream()
-            NSbest = Stream()
-            UDbest = Stream()
-            # Compute stack of best LFEs
-            for j in range(0, len(ratios)):
-                nLFE = int(ratios[j] * len(EW) / 100.0)
-                EWselect = Stream()
-                NSselect = Stream()
-                UDselect = Stream()
-                for i in range(0, nLFE):
-                    EWselect.append(EW[index[i]])
-                    NSselect.append(NS[index[i]])
-                    UDselect.append(UD[index[i]])
-                # Stack best LFEs
-                EWbest.append(linstack([EWselect], normalize=True, \
-                    method=method)[0])
-                NSbest.append(linstack([NSselect], normalize=True, \
-                    method=method)[0])
-                UDbest.append(linstack([UDselect], normalize=True, \
-                    method=method)[0])
             # Plot figure
             plt.figure(1, figsize=(20, 15))
-            colors = cm.rainbow(np.linspace(0, 1, len(ratios)))
             # East - West component
             ax1 = plt.subplot(311)
             dt = EWstack[0].stats.delta
             nt = EWstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            for j in range(0, len(ratios)):
-                if (method == 'RMS'):
-                    norm = EWbest[j].data / np.sqrt(np.mean(np.square( \
-                        EWbest[j].data)))
-                elif (method == 'MAD'):
-                    norm = EWbest[j].data / np.median(np.abs(EWbest[j].data - \
-                        np.median(EWbest[j].data)))
-                else:
-                    raise ValueError('Method must be RMS or MAD')
-                norm = np.nan_to_num(norm)
-                plt.plot(t, norm, color = colors[j], \
-                    label = str(int(ratios[j])) + '%')
-            if (method == 'RMS'):
-                norm = EWstack[0].data / np.sqrt(np.mean(np.square( \
-                    EWstack[0].data)))
-            elif (method == 'MAD'):
-                norm = EWstack[0].data / np.median(np.abs(EWstack[0].data - \
-                    np.median(EWstack[0].data)))
-            else:
-                raise ValueError('Method must be RMS or MAD')
-            norm = np.nan_to_num(norm)
-            plt.plot(t, norm, 'k', label='All')
-            if (window == True):
-                plt.axvline(Tmin, linewidth=2, color='grey')
-                plt.axvline(Tmax, linewidth=2, color='grey')
+            plt.plot(t, EWstack[0].data, 'k')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('East - West component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
             # North - South component
             ax2 = plt.subplot(312)
             dt = NSstack[0].stats.delta
             nt = NSstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            for j in range(0, len(ratios)):
-                if (method == 'RMS'):
-                    norm = NSbest[j].data / np.sqrt(np.mean(np.square( \
-                        NSbest[j].data)))
-                elif (method == 'MAD'):
-                    norm = NSbest[j].data / np.median(np.abs(NSbest[j].data - \
-                        np.median(NSbest[j].data)))
-                else:
-                    raise ValueError('Method must be RMS or MAD')
-                norm = np.nan_to_num(norm)
-                plt.plot(t, norm, color = colors[j], \
-                    label = str(int(ratios[j])) + '%')
-            if (method == 'RMS'):
-                norm = NSstack[0].data / np.sqrt(np.mean(np.square( \
-                    NSstack[0].data)))
-            elif (method == 'MAD'):
-                norm = NSstack[0].data / np.median(np.abs(NSstack[0].data - \
-                    np.median(NSstack[0].data)))
-            else:
-                raise ValueError('Method must be RMS or MAD')
-            norm = np.nan_to_num(norm)
-            plt.plot(t, norm, 'k', label='All')
-            if (window == True):
-                plt.axvline(Tmin, linewidth=2, color='grey')
-                plt.axvline(Tmax, linewidth=2, color='grey')
+            plt.plot(t, NSstack[0].data, 'k')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('North - South component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
             # Vertical component
             ax3 = plt.subplot(313)
             dt = UDstack[0].stats.delta
             nt = UDstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            for j in range(0, len(ratios)):
-                if (method == 'RMS'):
-                    norm = UDbest[j].data / np.sqrt(np.mean(np.square( \
-                        UDbest[j].data)))
-                elif (method == 'MAD'):
-                    norm = UDbest[j].data / np.median(np.abs(UDbest[j].data - \
-                        np.median(UDbest[j].data)))
-                else:
-                    raise ValueError('Method must be RMS or MAD')
-                norm = np.nan_to_num(norm)
-                plt.plot(t, norm, color = colors[j], \
-                    label = str(int(ratios[j])) + '%')
-            if (method == 'RMS'):
-                norm = UDstack[0].data / np.sqrt(np.mean(np.square( \
-                    UDstack[0].data)))
-            elif (method == 'MAD'):
-                norm = UDstack[0].data / np.median(np.abs(UDstack[0].data - \
-                    np.median(UDstack[0].data)))
-            else:
-                raise ValueError('Method must be RMS or MAD')
-            norm = np.nan_to_num(norm)
-            plt.plot(t, norm, 'k', label='All')
-            if (window == True):
-                plt.axvline(Tmin, linewidth=2, color='grey')
-                plt.axvline(Tmax, linewidth=2, color='grey')
+            plt.plot(t, UDstack[0].data, 'k')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('Vertical component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
             # End figure
             plt.suptitle(station, fontsize=24)
             plt.savefig(namedir + '/' + station + '.eps', format='eps')
@@ -301,32 +168,20 @@ def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, ncor, wi
             ax2.clear()
             ax3.clear()
             plt.close(1)
-            # Save stacks into files
+            # Save stack into file
             savename = namedir + '/' + station +'.pkl'
             pickle.dump([EWstack[0], NSstack[0], UDstack[0]], \
-                open(savename, 'wb'))
-            for j in range(0, len(ratios)):
-                savename = namedir + '/' + station + '_' + \
-                    str(int(ratios[j])) + '.pkl'
-                pickle.dump([EWbest[j], NSbest[j], UDbest[j]], \
-                    open(savename, 'wb'))
-            # Save cross correlations into files
-            savename = namedir + '/' + station + '_cc.pkl'
-            pickle.dump([cc0EW, cc0NS, cc0UD], \
                 open(savename, 'wb'))
 
 if __name__ == '__main__':
 
     # Set the parameters
     filename = '080421.14.048'
+    catalog = 'catalog_200708_200901.pkl'
+    threshold = 0.025
     TDUR = 10.0
     filt = (1.5, 9.0)
-    ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
-    ncor = 400
-    window = False
-    winlength = 10.0
     method = 'RMS'
 
-    compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
-        winlength, method)
+    compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method)

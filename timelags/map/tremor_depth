@@ -15,7 +15,7 @@ set Jop = m-123.15/47.9/20.0
 gmt xyz2grd $input -Ghoge.grd -I0.07 -R$Rop
 gmt grdimage hoge.grd -C$cpt -R$Rop -J$Jop -Y10 -P -K >! $output
 
-gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -S224/255/255 -Df -Na -O -K >> $output
+gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -Df -Na -O -K >> $output
 
 # Locations of arrays
 cat << END >> arrays.dat

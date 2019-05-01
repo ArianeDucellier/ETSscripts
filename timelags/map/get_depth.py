@@ -12,8 +12,8 @@ from math import cos, pi, sin, sqrt
 arrayName = 'BS'
 lat0 = 47.95728
 lon0 = -122.92866
-stackStation = 'PWS'
-stackTremor = 'PWS'
+stackStation = 'lin'
+stackTremor = 'lin'
 Vs = 3.6
 Vp = 6.4
 
@@ -45,9 +45,19 @@ for n in range(0, len(df)):
         depth[n] = sqrt(distance)
     else:
         depth[n] = 0.0
+    if (depth[n] < 30.0):
+        print(df['x0'][n], df['y0'][n], depth[n])
+
+# Keep only points with enough tremor
+table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, \
+    'depth':depth, 'ntremor':df['ntremor']})
+enough = table['ntremor'] > 10
+table = table[enough]
+positive = table['depth'] > 0.0
+table = table[positive]
+table.drop(columns=['ntremor'])
 
 # Write to file
-table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, 'depth':depth})
 tfile = open('depth_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table.to_string(header=False, index=False))
 tfile.close()
