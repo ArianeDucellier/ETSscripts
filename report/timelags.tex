@@ -4,11 +4,19 @@
 
 \part{Time lags}
 
+\chapter{Introduction}
+
+General question
+
+Specific question
+
+Part of the specific question
+
 \chapter{Data}
 
 \section{Description of the dataset}
 
-The available data come from eight small-aperture arrays installed in the eastern part of the Olympic Peninsula. The aperture of the arrays is about 1 km, and station spacing is a few hundred meters. The arrays are around 5 to 10 km apart from each other. Most of the arrays were installed for nearly a year and were able to record the main August 2010 ETS event, and some of the stations were able to record the August 2011 ETS event. The time and locations of the tremor sources were all computed by Ghosh \textit{et al.} (2012 ~\cite{GHO_2012}).
+The available data come from eight small-aperture arrays installed in the eastern part of the Olympic Peninsula. The aperture of the arrays is about 1 km, and station spacing is a few hundred meters. The arrays are around 5 to 10 km apart from each other. Most of the arrays were installed for nearly a year and were able to record the main August 2010 ETS event, and some of the stations were able to record the August 2011 ETS event. The time and locations (latitude and longitude) of the tremor sources were all computed by Ghosh \textit{et al.} (2012 ~\cite{GHO_2012}).
 
 \section{Websites to access the data}
 
@@ -60,6 +68,30 @@ This website gives the dates and locations of tremor activity in Cascadia. Follo
 \end{itemize}
 
 \chapter{Method}
+
+\section{What I have been doing}
+
+\paragraph{stack\_ccorr\_2hour.py} For a given array, we download two hours of seismic data for each seismic station of the array. For each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. We then divide the two hours of data into 240 thirty-second-long time windows. For each seismic station and each thirty-second-long time window, we cross correlate the vertical component with one horizontal component. Then, we stack the cross correlation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we plot the corresponding 240 cross correlation functions as a function of time. 
+
+\paragraph{stack\_ccorr\_tremor.py} We take a 5 km by 5 km grid cell located not too far (less than 25 km) from a given array. We then take all the one-minute-long time windows when tremor was detected and the source of the tremor was located inside this cell. For each one-minute-long time window, we download the seismic data for each seismic station of the array. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. For each seismic station and each one-minute-long time window, we cross correlate the vertical component with one horizontal component. Then, we stack the cross correlation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we stack the data over all the one-minute-long time windows. Again, we experiment with a linear stack, a power stack, and a phase-weighted stack.
+
+\paragraph{stack\_acorr\_tremor.py} We take a 5 km by 5 km grid cell located not too far (less than 25 km) from a given array. We then take all the one-minute-long time windows when tremor was detected and the source of the tremor was located inside this cell. For each one-minute-long time window, we download the seismic data for each seismic station of the array. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. For each seismic station and each one-minute-long time window, we autocorrelate each channel. Then, we stack the autocorrelation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we stack the data over all the one-minute-long time windows. Again, we experiment with a linear stack, a power stack, and a phase-weighted stack.
+
+%\paragraph{plot_stack_ccorr.py}
+%
+%\paragraph{plot_stack_acorr.py}
+%
+%\paragraph{plot_stack_sort.py}
+%
+%\paragraph{plot_stack_select.py}
+%
+%\paragraph{compare_ccorr.py}
+%
+%\paragraph{cluster_select.py}
+%
+%\paragraph{get_timelag.py}
+%
+%\paragraph{get_depth.py}
 
 \section{Is the method going to work?}
 
@@ -199,15 +231,36 @@ Finally, if we assume that there is a Low Velocity Zone (LVZ) and that it corres
 \captionof{table}{Expected position of the vertical autocorrelation peak (direct P-wave and reflected P-wave on the mid-slab or the Moho).}
 \end{center}
 
+\section{Maps of tremor depth}
+
 \chapter{Discussion and things to do}
+
+How analysis addresses the part of the specific question
+
+How analysis addresses the specific question
+
+How analysis addresses the general question
+
+Things to do now:
 
 \begin{itemize}
 	\item Write work already done
-	\item Read paper by Korenaga
+	\item Find out how to run code on AWS
+	\item Reproduce the work on BS array with other 7 arrays
+	\item Draw maps of the depth of the tremor (with some sort of interpolation / least square regression to account for data points coming from different arrays)
+	\item Find a better velocity model (layers, 3D)
+\end{itemize}
+
+Things that could be done:
+
+\begin{itemize}
 	\item Implementation tf-PHS stacking
-	\item Implementation noise computation (from Korenaga paper)
 	\item Scripts to download and store tremor data
-	\item Script to compute MODW(P)T and scattering transform (and then CC)
+	\item Transform the data before cross correlation:
+	\begin{itemize}
+		\item MODW(P)T
+		\item Scattering transform
+	\end{itemize}
 \end{itemize}
 
 \end{document}

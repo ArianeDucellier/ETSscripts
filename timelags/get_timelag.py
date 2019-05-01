@@ -10,6 +10,8 @@ import os
 import pandas as pd
 import pickle
 
+from math import sqrt
+
 from cluster_select import cluster_select
 from plot_stack_acorr import plot_stack_acorr
 from plot_stack_ccorr import plot_stack_ccorr
@@ -20,8 +22,6 @@ arrayName = 'BS'
 w = 2.0
 Tmax = 15.0
 ds = 5.0
-tbegin = 3.8
-tend = 7.6
 ncor_cluster = 40
 RMSmin = 12.0
 RMSmax = 14.0
@@ -29,6 +29,12 @@ xmax = 15.0
 nc = 2
 palette = {0: 'tomato', 1: 'royalblue', 2:'forestgreen', 3:'gold', \
     4: 'lightpink', 5:'skyblue'}
+Vs = 3.6
+Vp = 6.4
+
+# Get depth of plate boundary around the array
+depth = pd.read_csv('depth/' + arrayName + '_depth.txt', sep=' ', header=None)
+depth.columns = ['x', 'y', 'depth']
 
 # Loop on tremor location
 for i in range(5, 6):
@@ -38,6 +44,18 @@ for i in range(5, 6):
         filename = '{}_{:03d}_{:03d}/{}_{:03d}_{:03d}'.format( \
             arrayName, int(x0), int(y0), arrayName, int(x0), int(y0))
 
+        # Get the depth of the plate boundary
+        myx = depth['x'] == x0
+        myy = depth['y'] == y0
+        myline = depth[myx & myy]
+        d0 = myline['depth'].iloc[0]
+
+        # Compute the expected timelag between P-wave and S-wave
+        distance = sqrt(x0 ** 2.0 + y0 ** 2.0 + d0 ** 2.0)
+        tlag = distance * (1.0 / Vs - 1.0 / Vp)
+        tbegin = tlag - 1.0
+        tend = tlag + 1.0
+        
         # Get the number of tremor
         data = pickle.load(open('cc/' + filename + '_lin.pkl', 'rb'))
         nlincc = len(data[6])

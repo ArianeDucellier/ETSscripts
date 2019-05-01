@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import sys
+import time
 
 from math import pi, cos, sin, sqrt
 from scipy.io import loadmat
@@ -25,7 +26,7 @@ from stacking import linstack, powstack, PWstack
 
 def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, Tmax, \
-    amp, amp_stack, draw_plot, client):
+    amp, amp_stack, draw_plot, client, nattempts, waittime):
     """
     This function download every one-minute time window where there is a
     tremor at a given location, stack the signal over the stations, cross
@@ -74,6 +75,10 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         draw_plot = Do we draw the plot for every tremor window?
         type client = string
         client = Server from which we download the data ('IRIS', 'Rainier')
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
     Output:
         None
     """
@@ -128,153 +133,161 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         t2 = UTCDateTime(str(YY2) + '-' + str(MM2) + '-' + str(DD2) + 'T' + \
             str(HH2) + ':' + str(mm2) + ':' + str(ss2))
         Tend = t2 + TDUR
-        # Get data from server
-        try:
-            if client == 'IRIS':
-                Dtmp = fdsn_client.get_waveforms(network=network, \
-                    station=staCodes, location='--', channel=chans, \
-                    starttime=Tstart, endtime=Tend, attach_response=True)
+        # Loop to try downloading several times
+        success = False
+        attempts = 0
+        while attempts < nattempts and not success:
+            # Get data from server
+            try:
+                if client == 'IRIS':
+                    Dtmp = fdsn_client.get_waveforms(network=network, \
+                        station=staCodes, location='--', channel=chans, \
+                        starttime=Tstart, endtime=Tend, attach_response=True)
+                else:
+                    Dtmp = Stream()
+                    for ksta in range(0, len(staNames)):
+                        for kchan in range(0, len(chaNames)):
+                            trace = earthworm_client.get_waveforms( \
+                                network=network, station=staNames[ksta], \
+                                location='', channel=chaNames[kchan], \
+                                starttime=Tstart, endtime=Tend)
+                            if len(trace) > 0:
+                                Dtmp.append(trace[0])
+                success = True
+            except:
+                message = 'Cannot open waveform file for tremor {} '. \
+                    format(i + 1) + \
+                    '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d})\n'. \
+                    format(YY1, MM1, DD1, HH1, mm1, ss1)
+                with open('error.txt', 'a') as file:
+                    file.write(message)
+                attempts += 1
+                time.sleep(waittime)
             else:
-                Dtmp = Stream()
+                # Remove stations that have different amounts of data
+                ntmp = []
+                for ksta in range(0, len(Dtmp)):
+                    ntmp.append(len(Dtmp[ksta]))
+                ntmp = max(set(ntmp), key=ntmp.count)
+                D = Dtmp.select(npts=ntmp)
+                # Detrend data
+                D.detrend(type='linear')
+                # Taper first and last 5 s of data
+                D.taper(type='hann', max_percentage=None, max_length=5.0)
+                # Remove instrument response
+                if client == 'Rainier':
+                    filename = '../data/response/' + network + '_' + \
+                        arrayName + '.xml'
+                    inventory = read_inventory(filename, format='STATIONXML')
+                    D.attach_response(inventory)
+                D.remove_response(output='VEL', \
+                    pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
+                # Filter
+                D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
+                    zerophase=True)
+                # Resample data to .05 s
+                D.interpolate(100.0, method='lanczos', a=10)
+                D.decimate(5, no_filter=True)         
+                # Cut data for cross correlation
+                EW = D.select(component='E').slice(t1, t2)
+                NS = D.select(component='N').slice(t1, t2)
+                UD = D.select(component='Z').slice(t1, t2)
+                # Time vector
+                t = (1.0 / EW[0].stats.sampling_rate) * np.arange(- ncor, ncor + 1)
+                # Create figure
+                if (draw_plot == True):
+                    plt.figure(1, figsize=(30, 15))
+                # EW - UD cross correlation
+                if (draw_plot == True):
+                    ax = plt.subplot(211)
+                cc = Stream()
                 for ksta in range(0, len(staNames)):
-                    for kchan in range(0, len(chaNames)):
-                        trace = earthworm_client.get_waveforms( \
-                            network=network, station=staNames[ksta], \
-                            location='', channel=chaNames[kchan], \
-                            starttime=Tstart, endtime=Tend)
-                        if len(trace) > 0:
-                            Dtmp.append(trace[0])
-        except:
-            message = 'Cannot open waveform file for tremor {} '. \
-                format(i + 1) + \
-                '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d})'. \
-                format(YY1, MM1, DD1, HH1, mm1, ss1)
-            print(message)
-        else:
-            # Remove stations that have different amounts of data
-            ntmp = []
-            for ksta in range(0, len(Dtmp)):
-                ntmp.append(len(Dtmp[ksta]))
-            ntmp = max(set(ntmp), key=ntmp.count)
-            D = Dtmp.select(npts=ntmp)
-            # Detrend data
-            D.detrend(type='linear')
-            # Taper first and last 5 s of data
-            D.taper(type='hann', max_percentage=None, max_length=5.0)
-            # Remove instrument response
-            if client == 'Rainier':
-                filename = '../data/response/' + network + '_' + \
-                    arrayName + '.xml'
-                inventory = read_inventory(filename, format='STATIONXML')
-                D.attach_response(inventory)
-            D.remove_response(output='VEL', \
-                pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-            # Filter
-            D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-                zerophase=True)
-            # Resample data to .05 s
-            D.interpolate(100.0, method='lanczos', a=10)
-            D.decimate(5, no_filter=True)         
-            # Cut data for cross correlation
-            EW = D.select(component='E').slice(t1, t2)
-            NS = D.select(component='N').slice(t1, t2)
-            UD = D.select(component='Z').slice(t1, t2)
-            # Time vector
-            t = (1.0 / EW[0].stats.sampling_rate) * np.arange(- ncor, ncor + 1)
-            # Create figure
-            if (draw_plot == True):
-                plt.figure(1, figsize=(30, 15))
-            # EW - UD cross correlation
-            if (draw_plot == True):
-                ax = plt.subplot(211)
-            cc = Stream()
-            for ksta in range(0, len(staNames)):
-                if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[1]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[2])):
-                    cc.append(EW.select(station=staNames[ksta])[0].copy())
-                    cc[-1].data = correlate( \
-                        EW.select(station=staNames[ksta])[0], \
-                        UD.select(station=staNames[ksta])[0], ncor)
-                    cc[-1].stats['channel'] = 'CC'
-                    cc[-1].stats['station'] = staNames[ksta]
-                    if (draw_plot == True):
-                        plt.plot(t, (2.0 * ksta + 1) + amp * cc[-1].data, 'k-')
-            # Stack cross correlations within the array and plot
-            if (type_stack == 'lin'):
-                stack = linstack([cc], normalize=False)[0]
-            elif (type_stack == 'pow'):
-                stack = powstack([cc], w, normalize=False)[0]
-            elif (type_stack == 'PWS'):
-                stack = PWstack([cc], w, normalize=False)[0]
-            else:
-                raise ValueError( \
-                    'Type of stack must be lin, pow, or PWS')
-            # Keep value of stack
-            EW_UD.append(stack)
-            if (draw_plot == True):
-                plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
-                plt.xlim(0, Tmax)
-                plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
-                plt.title('East / Vertical component', loc='right', \
-                    fontsize=24)
-                plt.xlabel('Lag time (s)', fontsize=24)
-                plt.ylabel('Cross correlation', fontsize=24)
-                ax.set_yticklabels([])
-                ax.tick_params(labelsize=20)
-            # NS - UD cross correlation
-            if (draw_plot == True):
-                ax = plt.subplot(212)
-            cc = Stream()
-            for ksta in range(0, len(staNames)):
-                if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[1]) and \
-                    D.select(station=staNames[ksta], channel=chaNames[2])):
-                    cc.append(NS.select(station=staNames[ksta])[0].copy())
-                    cc[-1].data = correlate( \
-                        NS.select(station=staNames[ksta])[0], \
-                        UD.select(station=staNames[ksta])[0], ncor)
-                    cc[-1].stats['channel'] = 'CC'
-                    cc[-1].stats['station'] = staNames[ksta]
-                    if (draw_plot == True):
-                        plt.plot(t, (2.0 * ksta + 1) + amp * cc[-1].data, 'k-')
-            # Stack cross correlations within the array and plot
-            if (type_stack == 'lin'):
-                stack = linstack([cc], normalize=False)[0]
-            elif (type_stack == 'pow'):
-                stack = powstack([cc], w, normalize=False)[0]
-            elif (type_stack == 'PWS'):
-                stack = PWstack([cc], w, normalize=False)[0]
-            else:
-                raise ValueError( \
-                    'Type of stack must be lin, pow, or PWS')
-            # Keep value of stack
-            NS_UD.append(stack)
-            if (draw_plot == True):
-                plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
-                plt.xlim(0, Tmax)
-                plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
-                plt.title('North / Vertical component', loc='right', \
-                    fontsize=24)
-                plt.xlabel('Lag time (s)', fontsize=24)
-                plt.ylabel('Cross correlation', fontsize=24)
-                ax.set_yticklabels([])
-                ax.tick_params(labelsize=20)
-                title = '{} on {:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d}'. \
-                    format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
-                plt.suptitle(title, fontsize=24)
-                filename = 'cc/{}_{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}.eps'. \
-                    format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
-                plt.savefig(filename, format='eps')
-                ax.clear()
-                plt.close(1)
-            # Keep values of tremor time
-            Year.append(YY1)
-            Month.append(MM1)
-            Day.append(DD1)
-            Hour.append(HH1)
-            Minute.append(mm1)
-            Second.append(ss1)
+                    if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
+                        D.select(station=staNames[ksta], channel=chaNames[1]) and \
+                        D.select(station=staNames[ksta], channel=chaNames[2])):
+                        cc.append(EW.select(station=staNames[ksta])[0].copy())
+                        cc[-1].data = correlate( \
+                            EW.select(station=staNames[ksta])[0], \
+                            UD.select(station=staNames[ksta])[0], ncor)
+                        cc[-1].stats['channel'] = 'CC'
+                        cc[-1].stats['station'] = staNames[ksta]
+                        if (draw_plot == True):
+                            plt.plot(t, (2.0 * ksta + 1) + amp * cc[-1].data, 'k-')
+                # Stack cross correlations within the array and plot
+                if (type_stack == 'lin'):
+                    stack = linstack([cc], normalize=False)[0]
+                elif (type_stack == 'pow'):
+                    stack = powstack([cc], w, normalize=False)[0]
+                elif (type_stack == 'PWS'):
+                    stack = PWstack([cc], w, normalize=False)[0]
+                else:
+                    raise ValueError( \
+                        'Type of stack must be lin, pow, or PWS')
+                # Keep value of stack
+                EW_UD.append(stack)
+                if (draw_plot == True):
+                    plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
+                    plt.xlim(0, Tmax)
+                    plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
+                    plt.title('East / Vertical component', loc='right', \
+                        fontsize=24)
+                    plt.xlabel('Lag time (s)', fontsize=24)
+                    plt.ylabel('Cross correlation', fontsize=24)
+                    ax.set_yticklabels([])
+                    ax.tick_params(labelsize=20)
+                # NS - UD cross correlation
+                if (draw_plot == True):
+                    ax = plt.subplot(212)
+                cc = Stream()
+                for ksta in range(0, len(staNames)):
+                    if (D.select(station=staNames[ksta], channel=chaNames[0]) and \
+                        D.select(station=staNames[ksta], channel=chaNames[1]) and \
+                        D.select(station=staNames[ksta], channel=chaNames[2])):
+                        cc.append(NS.select(station=staNames[ksta])[0].copy())
+                        cc[-1].data = correlate( \
+                            NS.select(station=staNames[ksta])[0], \
+                            UD.select(station=staNames[ksta])[0], ncor)
+                        cc[-1].stats['channel'] = 'CC'
+                        cc[-1].stats['station'] = staNames[ksta]
+                        if (draw_plot == True):
+                            plt.plot(t, (2.0 * ksta + 1) + amp * cc[-1].data, 'k-')
+                # Stack cross correlations within the array and plot
+                if (type_stack == 'lin'):
+                    stack = linstack([cc], normalize=False)[0]
+                elif (type_stack == 'pow'):
+                    stack = powstack([cc], w, normalize=False)[0]
+                elif (type_stack == 'PWS'):
+                    stack = PWstack([cc], w, normalize=False)[0]
+                else:
+                    raise ValueError( \
+                        'Type of stack must be lin, pow, or PWS')
+                # Keep value of stack
+                NS_UD.append(stack)
+                if (draw_plot == True):
+                    plt.plot(t, - 2.0 + amp_stack * stack.data, 'r-')
+                    plt.xlim(0, Tmax)
+                    plt.ylim(- 4.0, 2.0 * len(staNames) + 1.0)
+                    plt.title('North / Vertical component', loc='right', \
+                        fontsize=24)
+                    plt.xlabel('Lag time (s)', fontsize=24)
+                    plt.ylabel('Cross correlation', fontsize=24)
+                    ax.set_yticklabels([])
+                    ax.tick_params(labelsize=20)
+                    title = '{} on {:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d}'. \
+                        format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
+                    plt.suptitle(title, fontsize=24)
+                    filename = 'cc/{}_{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}.eps'. \
+                        format(arrayName, YY1, MM1, DD1, HH1, mm1, ss1)
+                    plt.savefig(filename, format='eps')
+                    ax.clear()
+                    plt.close(1)
+                # Keep values of tremor time
+                Year.append(YY1)
+                Month.append(MM1)
+                Day.append(DD1)
+                Hour.append(HH1)
+                Minute.append(mm1)
+                Second.append(ss1)
 
     # Save stacked cross correlations into file
     if nt > 0:
@@ -371,6 +384,8 @@ if __name__ == '__main__':
     ncor = 400
     Tmax = 15.0
     draw_plot = False
+    nattempts = 10
+    waittime = 10
 
     # Linear stack
 #    type_stack = 'lin'
@@ -378,7 +393,7 @@ if __name__ == '__main__':
 #    amp_stack = 10.0
 #    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
 #        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-#        Tmax, amp, amp_stack, draw_plot, client)
+#        Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
         
     # Power stack
     type_stack = 'pow'
@@ -386,7 +401,7 @@ if __name__ == '__main__':
     amp_stack = 2.0
     stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
         network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-        Tmax, amp, amp_stack, draw_plot, client)
+        Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
 
     # Phase-weighted stack
 #    type_stack = 'PWS'
@@ -394,4 +409,4 @@ if __name__ == '__main__':
 #    amp_stack = 30.0
 #    stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
 #        network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-#        Tmax, amp, amp_stack, draw_plot, client)
+#        Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)

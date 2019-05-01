@@ -30,19 +30,19 @@ Work done:
 
 We look at LFE family 080421.14.048
 
-\paragraph{get_data.py} This module contains functions to download seismic waveforms from the IRIS Data Management Center (DMC) for the stations of the FAME experiment, or from the Northern California Earthquake Data Center (NCEDC) for the permanent stations. Somehow, waveforms for some of the permanent stations (e.g. station B039 from the Plate Boundary Observatory) could not be downloaded from the NCEDC, but they are available on the IRIS DMC.
+\paragraph{get\_data.py} This module contains functions to download seismic waveforms from the IRIS Data Management Center (DMC) for the stations of the FAME experiment, or from the Northern California Earthquake Data Center (NCEDC) for the permanent stations. Somehow, waveforms for some of the permanent stations (e.g. station B039 from the Plate Boundary Observatory) could not be downloaded from the NCEDC, but they are available on the IRIS DMC.
 
-\paragraph{get_waveforms.py} We look at a given family from the catalog of Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). For this family, we know the timing of each LFE. We download the one-minute-long seismic waveform corresponding to each LFE, we stack all the waveforms, and we compare the final template with the template from Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). The two templates are similar, but the amplitude is different because we normalized each LFE by the RMS whereas Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) have used another normalization method.
+\paragraph{get\_waveforms.py} We look at a given family from the catalog of Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). For this family, we know the timing of each LFE. We download the one-minute-long seismic waveform corresponding to each LFE, we stack all the waveforms, and we compare the final template with the template from Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). The two templates are similar, but the amplitude is different because we normalized each LFE by the RMS whereas Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) have used another normalization method.
 
-\paragraph{get_cc_window.py} For each family and each station, we assume that the arrival time of the seismic waves is the time where the amplitude of the template signal is maximum. We get the time arrivals as a function of the distance from source to station for several seismic stations. From that, we can get the origin time of the template. After we have done that for each family, we can get for each station the travel time from source to station as a function of the distance from source to station, and compute the slowness associated to the station.
+\paragraph{get\_cc\_window.py} For each family and each station, we assume that the arrival time of the seismic waves is the time where the amplitude of the template signal is maximum. We get the time arrivals as a function of the distance from source to station for several seismic stations. From that, we can get the origin time of the template. After we have done that for each family, we can get for each station the travel time from source to station as a function of the distance from source to station, and compute the slowness associated to the station.
 
-\paragraph{compute_templates.py} Using the slowness of the station, we determine a time window where we expect to see an LFE. This is this time window that we cross correlate with the template to determine whether it is a good or bad LFE. We then compute new templates using only the beFE. We save the original template, and the templates with the best LFE into files.
+\paragraph{compute\_templates.py} Using the slowness of the station, we determine a time window where we expect to see an LFE. This is this time window that we cross correlate with the template to determine whether it is a good or bad LFE. We then compute new templates using only the beFE. We save the original template, and the templates with the best LFE into files.
 
-\paragraph{get_stations.py} We look at all the stations from the BK, NC and PB permanent network, and keep the stations that are less than 100 km from the epicenter of the LFE family. For each family, we get the stations where we hope to see an LFE in the seismic waveforms.
+\paragraph{get\_stations.py} We look at all the stations from the BK, NC and PB permanent network, and keep the stations that are less than 100 km from the epicenter of the LFE family. For each family, we get the stations where we hope to see an LFE in the seismic waveforms.
 
-\paragraph{save_waveforms.py} We download the waveform for each LFE and each permanent station less than 100 km from the epicenter of the LFE family. We save all the waveforms into a file for future data analysis.
+\paragraph{save\_waveforms.py} We download the waveform for each LFE and each permanent station less than 100 km from the epicenter of the LFE family. We save all the waveforms into a file for future data analysis.
 
-\paragraph[draw_waveforms.py}
+\paragraph{draw\_waveforms.py}
 
 \chapter{Results}
 
