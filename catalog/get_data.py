@@ -10,11 +10,12 @@ from obspy import read_inventory
 from obspy import UTCDateTime
 
 import os
+import time
 
 from fractions import Fraction
 
 def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
-    filt, dt):
+    filt, dt, nattempts, waittime):
     """
     Function to get the waveform from IRIS for a given station
 
@@ -35,6 +36,10 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
         filt = Lower and upper frequencies of the filter
         type dt = float
         dt = Time step for resampling
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
@@ -42,35 +47,44 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
     """
     # Create client
     fdsn_client = fdsn.Client('IRIS')
-    # Download data
-    try:
-        D = fdsn_client.get_waveforms(network=network, station=station, \
-            location=location, channel=channels, starttime=Tstart, \
-            endtime=Tend, attach_response=True)
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
+    # Loop to try downloading several times
+    success = False
+    attempts = 0
+    while attempts < nattempts and not success:
+        # Get data from server
+        try:
+            D = fdsn_client.get_waveforms(network=network, station=station, \
+                location=location, channel=channels, starttime=Tstart, \
+                endtime=Tend, attach_response=True)
+            success = True
+        except:
+            message = 'Could not download data for station {} '.format(station) + \
+                'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
+                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            with open('error.txt', 'a') as file:
+                file.write(message)
+            attempts += 1
+            time.sleep(waittime)
+            if attempts == nattempts:
+                return(0)
+        else:
+            # Detrend data
+            D.detrend(type='linear')
+            # Taper first and last 5 s of data
+            D.taper(type='hann', max_percentage=None, max_length=5.0)
+            # Remove instrument response
+            D.remove_response(output='VEL', \
+                pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
+            D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
+                zerophase=True)
+            freq = D[0].stats.sampling_rate
+            ratio = Fraction(int(freq), int(1.0 / dt))
+            D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
+            D.decimate(ratio.numerator, no_filter=True)
+            return(D)
 
 def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
-    filt, dt):
+    filt, dt, nattempts, waittime):
     """
     Function to get the waveform from NCEDC for a given station
 
@@ -91,6 +105,10 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
         filt = Lower and upper frequencies of the filter
         type dt = float
         dt = Time step for resampling
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
@@ -109,30 +127,40 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
     # Send waveform request
     request = 'curl --data-binary @waveform.request -o station.miniseed ' + \
          'http://service.ncedc.org/fdsnws/dataselect/1/query'
-    try:
-        os.system(request)
-        D = read('station.miniseed')
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        filename = '../data/response/' + network + '_' + station + '.xml'
-        inventory = read_inventory(filename, format='STATIONXML')
-        D.attach_response(inventory)
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
+    # Loop to try downloading several times
+    success = False
+    attempts = 0
+    while attempts < nattempts and not success:
+        # Get data from server
+        try:
+            os.system(request)
+            D = read('station.miniseed')
+            success = True
+        except:
+            message = 'Could not download data for station {} '.format(station) + \
+                'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
+                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            with open('error.txt', 'a') as file:
+                file.write(message)
+            attempts += 1
+            time.sleep(waittime)
+            if attempts == nattempts:
+                return(0)
+        else:
+            # Detrend data
+            D.detrend(type='linear')
+            # Taper first and last 5 s of data
+            D.taper(type='hann', max_percentage=None, max_length=5.0)
+            # Remove instrument response
+            filename = '../data/response/' + network + '_' + station + '.xml'
+            inventory = read_inventory(filename, format='STATIONXML')
+            D.attach_response(inventory)
+            D.remove_response(output='VEL', \
+                pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
+            D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
+                zerophase=True)
+            freq = D[0].stats.sampling_rate
+            ratio = Fraction(int(freq), int(1.0 / dt))
+            D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
+            D.decimate(ratio.numerator, no_filter=True)
+            return(D)

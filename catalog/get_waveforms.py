@@ -18,7 +18,7 @@ from scipy.io import loadmat
 from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def get_waveform(filename, TDUR, filt, method='RMS'):
+def get_waveform(filename, TDUR, filt, nattempts, waittime, method='RMS'):
     """
     This function computes the waveforms for a given template and compare
     them to the waveforms from Plourde et al. (2015)
@@ -30,6 +30,10 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
         TDUR = Time to add before and after the time window for tapering
         type filt = tuple of floats
         filt = Lower and upper frequencies of the filter
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
         type method = string
         method = Normalization method for linear stack (RMS or Max)
     Output:
@@ -68,7 +72,7 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
         os.makedirs(namedir)
 
     # Loop over stations
-    for station in ['ME57']: #staNames:
+    for station in staNames:
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -99,11 +103,11 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
                 D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt)
+                    Tstart, Tend, filt, ndt, nattempts, waittime)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
                 D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt)
+                    Tstart, Tend, filt, ndt, nattempts, waittime)
             else:
                 raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
@@ -143,9 +147,11 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             dt = EWstack[0].stats.delta
             nt = EWstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, EWstack[0].data, 'r', label='Stack')
+            norm = np.max(np.abs(EWstack[0].data))
+            plt.plot(t, EWstack[0].data / norm, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-#            plt.plot(t0, uk[ns + index, :], 'k', label='Waveform')
+            norm = np.max(np.abs(uk[ns + index, :]))
+            plt.plot(t0, uk[ns + index, :] / norm, 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('East component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -156,9 +162,11 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             dt = NSstack[0].stats.delta
             nt = NSstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, NSstack[0].data, 'r', label='Stack')
+            norm = np.max(np.abs(NSstack[0].data))
+            plt.plot(t, NSstack[0].data / norm, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-#            plt.plot(t0, uk[index, :], 'k', label='Waveform')
+            norm = np.max(np.abs(uk[index, :]))
+            plt.plot(t0, uk[index, :] / norm, 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('North component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -169,9 +177,11 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
             dt = UDstack[0].stats.delta
             nt = UDstack[0].stats.npts
             t = dt * np.arange(0, nt)
-            plt.plot(t, UDstack[0].data, 'r', label='Stack')
+            norm = np.max(np.abs(UDstack[0].data))
+            plt.plot(t, UDstack[0].data / norm, 'r', label='Stack')
             t0 = ndt * np.arange(0, np.shape(uk)[1])
-#            plt.plot(t0, uk[2 * ns + index, :], 'k', label='Waveform')
+            norm = np.max(np.abs(uk[2 * ns + index, :]))
+            plt.plot(t0, uk[2 * ns + index, :] / norm, 'k', label='Waveform')
             plt.xlim(0.0, 60.0)
             plt.title('Vertical component', fontsize=16)
             plt.xlabel('Time (s)', fontsize=16)
@@ -249,9 +259,18 @@ def get_waveform(filename, TDUR, filt, method='RMS'):
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080401.05.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
+    nattempts = 10
+    waittime = 10.0
     method = 'RMS'
 
-    get_waveform(filename, TDUR, filt, method)
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
+    for ie in range(0, len(LFEloc)):
+        filename = LFEloc[ie][0].decode('utf-8')
+        get_waveform(filename, TDUR, filt, nattempts, waittime, method)

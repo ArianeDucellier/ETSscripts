@@ -1,7 +1,7 @@
 #!/bin/csh -f
-set input = depth_lin_lin.txt
-set output = depth_lin_lin.eps
-set cpt = depth.cpt
+set input = cc_lin_lin.txt
+set output = cc_lin_lin.eps
+set cpt = cc.cpt
 
 # Boundaries
 set x1 = -123.9
@@ -47,7 +47,7 @@ END
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
 
-gmt psscale -C$cpt -D7.0/-3.0/10/0.5h -O -L -B:"Tremor depth in km": >> $output
+gmt psscale -C$cpt -D7.0/-3.0/10/0.5h -O -L -B:"Cross correlation": >> $output
 
 rm hoge.grd
 rm arrays.dat
