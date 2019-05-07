@@ -3,14 +3,22 @@
 set output = arrays_location.eps
 
 # Small map
-set x1 = -123.6
-set x2 = -122.7
+set x1 = -123.9
+set x2 = -122.5
 set y1 = 47.6
-set y2 = 48.2
+set y2 = 48.4
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-123.15/47.8/25.0
+set Jop = m-123.2/48.0/18.0
 
-gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -S224/255/255 -Df -Na -Y5 -P -K >! $output
+gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -G255/255/224 -S224/255/255 -Lf-123/47.75/48/50 -Df -Na -Y5 -P -K >! $output
+
+cat << END >> mytext.dat
+-123 47.78 km
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f15p -O -K >> $output
+
+rm mytext.dat
 
 # Locations of arrays
 cat << END >> arrays.dat
@@ -39,11 +47,11 @@ END
 gmt xyz2grd plate_boundary.txt -Gplate_boundary.grd -I0.1 -R$Rop
 gmt grdcontour plate_boundary.grd -A2 -J$Jop -R$Rop -O -K >> $output
 
+gmt psxy tremor_AoA.dat -R$Rop -J$Jop -Sc0.03 -Gblue -O -K >> $output
+
 gmt psxy arrays.dat -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f15p -O -K >> $output
-
-gmt psxy tremor_AoA.dat -R$Rop -J$Jop -Sc0.03 -Gblue -O -K >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
 
 # Large map
 set x1 = -126
@@ -51,20 +59,28 @@ set x2 = -120
 set y1 = 46
 set y2 = 50
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-123/48/1.5
+set Jop = m-123.2/48.0/1.5
 
-gmt pscoast -R$Rop -J$Jop -Ba2f1::wEsN -W0.1p -S224/255/255 -Gwhite -Df -Na -X0.5 -Y0.5 -O -K >> $output
+gmt pscoast -R$Rop -J$Jop -Ba2f1::WESN -W0.1p -G255/255/224 -S224/255/255 -Lf-124/46.5/48/200 -Df -Na -X-1.5 -Y-1.5 -O -K >> $output
+
+cat << END >> mytext.dat
+-124 46.75 km
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
+
+rm mytext.dat
 
 # Limits of small map
 cat << END >> square.dat
--123.6 47.6
--123.6 48.2
--122.7 48.2
--122.7 47.6
--123.6 47.6
+-123.9 47.6
+-123.9 48.4
+-122.5 48.4
+-122.5 47.6
+-123.9 47.6
 END
 
-gmt psxy square.dat -R$Rop -J$Jop -Wthicker,red -O >> $output
+gmt psxy square.dat -R$Rop -J$Jop -Wthicker,black -O >> $output
 
 rm arrays.dat
 rm names.dat

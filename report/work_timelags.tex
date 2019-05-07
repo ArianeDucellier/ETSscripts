@@ -1,0 +1,242 @@
+\documentclass[workdone.tex]{subfiles}
+ 
+\begin{document}
+
+\chapter{Work done on depth of the tremor source}
+
+\section{Websites to access the data}
+
+\subsection{FDSN}
+
+\href{http://www.fdsn.org/networks/}{\textbf{International Federation of Digital Seismograph Networks}} \\
+
+This website gives a list of the network codes, and the corresponding map, with the names and locations of stations. The selected experiments are:
+\begin{itemize}
+	\item XG (2009-2011): Cascadia Array of Arrays
+	\item XU (2006-2012): Collaborative Research: Earthscope integrated investigations of Cascadia subduction zone tremor, structure and process
+\end{itemize}
+
+The stations are the following:
+\begin{itemize}
+	\item Port Angeles XG - PA01 to PA13
+	\item Danz Ranch XG - DR01 to DR10, and DR12
+	\item Lost Cause XG - LC01 to LC14
+	\item Three Bumps XG - TB01 toTB14
+	\item Burnt Hill XG - BH01 to BH11
+	\item Cat Lake XG - CL01 to CL20
+	\item Gold Creek XG - GC01 to GC14
+	\item Blyn XU - BS01 to BS06, BS11, BS20 to BS27
+\end{itemize}
+
+\subsection{IRIS}
+
+\href{http://ds.iris.edu/mda}{\textbf{IRIS DMC MetaData Aggregator}} \\
+
+This website gives for each station:
+\begin{itemize}
+	\item Location and time of recording
+	\item Epoch (effective periods of recording during the time that the station was installed)
+	\item Type of instrument
+	\item Channels
+\end{itemize}
+
+The data can be downloaded from the IRIS DMC using the Python package obspy, and the subpackage obspy.clients.fdsn, or alternatively, they can be downloaded from the ESS server Rainier, using the subpackage obspy.clients.earthworm.
+
+\subsection{PNSN}
+
+\href{https://www.pnsn.org/tremor}{\textbf{Pacific Northwest Seismic Network tremor catalog}} \\
+
+This website gives the dates and locations of tremor activity in Cascadia. Following Ghosh \textit{et al.} (2012 ~\cite{GHO_2012}), the selected periods of tremors are:
+\begin{itemize}
+	\item From November 9th 2009 to November 13th 2009,
+	\item From March 16th 2010 to March 21st 2010,
+	\item From August 14th 2010 to August 22nd 2010.
+\end{itemize}
+
+\section{What I have been doing}
+
+\paragraph{stack\_ccorr\_2hour.py} For a given array, we download two hours of seismic data for each seismic station of the array. For each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. We then divide the two hours of data into 240 thirty-second-long time windows. For each seismic station and each thirty-second-long time window, we cross correlate the vertical component with one horizontal component. Then, we stack the cross correlation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we plot the corresponding 240 cross correlation functions as a function of time. 
+
+\paragraph{stack\_ccorr\_tremor.py} We take a 5 km by 5 km grid cell located not too far (less than 25 km) from a given array. We then take all the one-minute-long time windows when tremor was detected and the source of the tremor was located inside this cell. For each one-minute-long time window, we download the seismic data for each seismic station of the array. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. For each seismic station and each one-minute-long time window, we cross correlate the vertical component with one horizontal component. Then, we stack the cross correlation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we stack the data over all the one-minute-long time windows. Again, we experiment with a linear stack, a power stack, and a phase-weighted stack.
+
+\paragraph{stack\_acorr\_tremor.py} We take a 5 km by 5 km grid cell located not too far (less than 25 km) from a given array. We then take all the one-minute-long time windows when tremor was detected and the source of the tremor was located inside this cell. For each one-minute-long time window, we download the seismic data for each seismic station of the array. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 2 and 8 Hz, and resample the data to 20 Hz. All these preprocessing operations are done with the Python package obspy. For each seismic station and each one-minute-long time window, we autocorrelate each channel. Then, we stack the autocorrelation function over all the seismic stations. We experiment with a linear stack, a power stack, and a phase-weighted stack. Finally, we stack the data over all the one-minute-long time windows. Again, we experiment with a linear stack, a power stack, and a phase-weighted stack.
+
+%\paragraph{plot_stack_ccorr.py}
+%
+%\paragraph{plot_stack_acorr.py}
+%
+%\paragraph{plot_stack_sort.py}
+%
+%\paragraph{plot_stack_select.py}
+%
+%\paragraph{compare_ccorr.py}
+%
+%\paragraph{cluster_select.py}
+%
+%\paragraph{get_timelag.py}
+%
+%\paragraph{get_depth.py}
+
+\section{Is the method going to work?}
+
+We assume that each tremor source is located on the plate boundary and generates a direct P-wave and a direct S-wave, and P-to-P, S-to-S, P-to-S, and S-to-P reflections off both the slab Moho and a mid-slab crustal discontinuity caused by the inferred strong velocity contrast between the hydrated basaltic upper oceanic crust, and the impermeable gabbroic lower oceanic crust. There is a time lag between the arrival of the direct wave and the arrivals of the reflected waves at a seismic station. By computing the autocorrelation or the cross correlation of the seismic signal recorded at the station, we expect to see an amplitude peak at each time lag corresponding to the time difference between two different phase arrivals. \\
+
+The first question is which are the phases that we can expect to see on the auto / cross correlation signal, that is which phases have a high enough amplitude to be seen on the auto / cross correlation signal. We assumed a simple velocity model with four parallel dipping layers (continental crust, upper oceanic crust, lower oceanic crust, and oceanic mantle). Using Snell's law and the reflection / transmission coefficients from Aki and Richards (2002 ~\cite{AKI_2002}), we computed for different positions of the tremor source, the amplitude of the direct P- and S-waves, and the amplitude of the reflected and converted waves, and we looked at the amplitude ratio between both phases (see Jupyter notebook AmplitudesOnGrid.ipynb). On the horizontal autocorrelation plot, we can expect to see:
+
+\begin{itemize}
+\item A peak corresponding to the time lag between the direct S-wave and the reflected SH-wave on the mid-slab discontinuity,
+\item A peak corresponding to the time lag between the direct S-wave and the reflected SH-wave on the Moho, and
+\item A peak corresponding to the time lag between the direct S-wave and a ray corresponding to a P-wave traveling downward, converted to an S-wave at the Moho, and traveling upward.
+\end{itemize}
+
+On the vertical autocorrelation plot, we can expect to see:
+\begin{itemize}
+\item A peak corresponding to the time lag between the direct P-wave and the reflected P-wave at the mid-slab discontinuity.
+\end{itemize}
+
+On the cross correlation plot, we can expect to see:
+\begin{itemize}
+\item A peak corresponding to the time lag between the direct P-wave and the direct S-wave,
+\item A peak corresponding to the time lag between the direct P-wave and the reflected SH-wave on the mid-slab discontinuity,
+\item A peak corresponding to the time lag between the direct P-wave and the reflected SH-wave on the Moho, and
+\item A peak corresponding to the time lag between the direct P-wave and a ray corresponding to a P-wave traveling downward, converted to an S-wave at the Moho, and traveling upward.
+\end{itemize}
+
+The second question is at which time lag should we expect to see this peaks. We computed the time arrival for all of the waves above (see Jupyter notebook TimeDifferenceArray.ipynb). On the autocorrelation plots, all the peaks should be seen between 0 and 5 seconds. On the cross correlation plots, all the peaks should be seen between 1 and 14 seconds. We do not expect peaks on the negative part of the cross correlation plots. \\
+
+We are going to stack the seismograms recorded at different stations of the same array. The third questions is thus whether we need to apply some time shift to the seismic recordings before stacking them. For that, we need to know whether there is a significant difference between the time lags at different stations from the same array. To answer this question, we computed for each station the time lag between the direct P/S wave arrival, and the arrival of the PPP and SH waves reflected off the mid-slab discontinuity, and the PPSSS and SH waves reflected off the Moho (see Jupyter notebook TimeLagOnGrid.ipynb). Then, we computed the average difference in time lag between two stations. We found that the difference in time lags between two stations of the same array stays always inferior to 0.1 second. We can thus stack the seismograms over all the stations, without applying some time shift between the stations. \\
+
+The location of the tremor source is not constant with time. During an ETS event, rapid tremor streaks have been observed propagating in the up-dip and down-dip directions at velocities ranging on average between 30 and 110, and up to 200 km/h, which corresponds to a source displacement of 0.5 to 3 km during one minute. If we denote $t_d$ the arrival time of the direct wave, and $t_r$ the arrival time of the reflected wave, the time lag between the two phase arrivals is $tlag = t_d - t_r$. During the one-minute time window where we compute the auto / cross correlation, the displacement $dx$ of the tremor source along the plate boundary should corresponds to a time lag difference $dtlag$ shorter than a quarter of the dominant period of $T$ = 0.3 s. We computed the time lag difference for a displacement of the source of 0.5, 1.8 and 3 km in the up-dip direction, for stations aligned along the strike and along the dip direction. We assume that the source was located at 35 kilometres depth, and we look at the time arrivals of the seismic wave for stations located up to 20 kilometres from the epicentre, in the strike or the dip direction (see Jupyter notebook TimeDifferenceStrikeDip.ipynb). The difference in time lags stays low for all the stations aligned along the strike of the plate boundary, even for tremor streaks travelling at 200 km/h. However, for the stations aligned along the dip of the plate boundary, the tremor streaks travelling at 200 km/h will cause a problem for the stations that are not immediately above the tremor source. The tremor streaks travelling at 110 km/h will cause a problem for the stations located more than 6 km updip of the tremor source.
+
+\section{Tremor just under the array}
+
+We first look at the cross correlation of the horizontal components and the vertical component of the seismograms recorded at the Big Skidder array when the tremor source is located in a five by five kilometres square cell centered on this array. Using Snell's law and assuming a simple velocity model with four parallel dipping layers (continental crust, upper oceanic crust, lower oceanic crust, and oceanic mantle), we compute the time arrival of the direct P-wave, the direct S-wave, and the downgoing P-wave reflected at the mid-slab discontinuity, and then travelling upward. We assume that the tremor source is located at the plate boundary, and we take the depth of the plate boundary from McCrory \textit{et al.} (2006 ~\cite{MCC_2006}), that is the depth is 41.5 km. \\
+
+For the values of the seismic velocities, we made a first hypothesis: The P-wave velocity of the continental crust is taken from Bostock \textit{et al.} (2015 ~\cite{BOS_2015}, 1D model from their Table 1, 6 to 30 km depth). We assumed a $V_P / V_S$ ratio of $\sqrt{3}$, and we computed the density from Gardner's law ($\rho = 1000 * 0.31 * V_P^{0.25}$). The P-wave velocity, S-wave velocity, density, and thickness of the upper oceanic crust are taken from Nowack and Bostock (2013 ~\cite{NOW_2013}, velocity model for their template 37). The P-wave velocity, S-wave velocity, and density of the lower oceanic crust are from Nowack and Bostock (2013 ~\cite{NOW_2013}). We assume a total thickness of the oceanic crust of 7 kilometres. The P-wave velocity, S-wave velocity, and density of the oceanic mantle is from Nikulin \textit{et al.} (2009 ~\cite{NIK_2009}, last layer of 1D model under station GNW, located in the eastern Olympic Peninsula, from their Table 2). All values are given in Table 11.1. With these values, we get the time arrival of the direct P-wave (5.84 s), the time arrival of the direct S-wave (10.12 s), and the time arrival of the reflected P-wave at the mid-slab discontinuity (7.25 s), which gives us a time lag between the direct P- and S-waves of 4.28 s, and a time lag between the direct S-wave and the reflected P-wave of 2.87 s. \\
+
+\begin{center}
+\begin{tabular}{| l | c | c | c | c |}
+  \hline
+  Layer & $V_P$ (m/s) & $V_S$ (m/s) & $\rho$ (kg/m\textsuperscript{3}) & Thickness (m) \\
+  \hline
+  Continental crust & 7100 & 4099 & 2846 & - \\
+  Upper oceanic crust & 4600 & 1949 & 2700 & 3300 \\
+  Lower oceanic crust & 7000 & 3400 & 3000 & 3700 \\
+  Oceanic mantle & 8000 & 4600 & 2932 & - \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Seismic velocities, densities and thicknesses of first layered model.}
+\end{center}
+
+We then made a second hypothesis. The P-wave velocity, and the S-wave velocity of the continental crust is taken from Nikulin \textit{et al.} (2009 ~\cite{NIK_2009}, first layer of 1D model under station GNW, from their Table 2), and we computed the density from Gardner's law ($\rho = 1000 * 0.31 * V_P^{0.25}$). The P-wave velocity, S-wave velocity, density, and thickness of the upper oceanic crust are taken from Nowack and Bostock (2013 ~\cite{NOW_2013}, velocity model for their template 14). The values for the lower oceanic crust and the oceanic mantle stay unchanged. All values are given in Table 11.2. With these values, we get the time arrival of the direct P-wave (6.69 s), the time arrival of the direct S-wave (12.03 s), and the time arrival of the reflected P-wave at the mid-slab discontinuity (8.03 s), which gives us a time lag between the direct P- and S-waves of 5.33 s, and a time lag between the direct S-wave and the reflected P-wave of 3.99 s. \\
+
+\begin{center}
+\begin{tabular}{| l | c | c | c | c |}
+  \hline
+  Layer & $V_P$ (m/s) & $V_S$ (m/s) & $\rho$ (kg/m\textsuperscript{3}) & Thickness (m) \\
+  \hline
+  Continental crust & 6200 & 3450 & 2751 & - \\
+  Upper oceanic crust & 4800 & 2133 & 2700 & 3300 \\
+  Lower oceanic crust & 7000 & 3400 & 3000 & 3700 \\
+  Oceanic mantle & 8000 & 4600 & 2932 & - \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Seismic velocities, densities and thicknesses of second layered model.}
+\end{center}
+
+In both cases, the amplitude ratio between the direct S-wave and the direct P-wave is about 2.5 times the amplitude ratio between the direct S-wave and the reflected P-wave at the mid-slab discontinuity. In the cross correlation plot with linear stacking, we can see a main peak at 4.7 s, and a secondary peak at 3.0 s, which amplitude is about half the amplitude of the main cross correlation peak. We hypothesize that the main peak represents the time lag between the direct P-wave and the direct S-wave, and that the secondary peak represents the time lag between the direct S-wave and the reflected P-wave at the mid-slab discontinuity. \\
+
+However, if we assume that there is no mid-slab discontinuity, and that the entire oceanic crust has the rheological properties of the lower oceanic crust defined above, the lag time between the direct S-wave and a reflected P-wave on the Moho would be equal to 2.33 s (with the first set of parameters from Bostock \textit{et al.} (2015 ~\cite{BOS_2015} for the continental crust) or to 3.39 s (with the second set of parameters from Nikulin \textit{et al.} (2009 ~\cite{NIK_2009} for the continental crust. However, the amplitude ratio between the direct S-wave and the reflected P-wave at the Moho would be about three to four times smaller than in the case of a reflection at the mid-slab discontinuity. The first scenario with a reflection on a mid-slab discontinuity is therefore more likely. \\
+
+In both cases, we expect to see a peak on the autocorrelation of the vertical component, corresponding to the time lag between the direct P-wave and the reflected P-wave on the mid-slab discontinuity or the Moho. However, this peak should be located at about 1.34 to 1.40 s (for the reflection on the mid-slab discontinuity), or 1.94 to 1.95 s (for the reflection on the Moho), and would be hard to see on the autocorrelation signal. \\
+
+Finally, if we assume that there is a Low Velocity Zone (LVZ) and that it corresponds to the entire oceanic crust, and has the same rheological properties of the upper oceanic crust defined above, we could expect to see on the horizontal-to-vertical cross correlation signal, a peak at 1.30 to 2.48 s corresponding to the time lag between the direct S-wave and the reflected P-wave at the Moho, and a peak at 4.28 to 5.33 s corresponding to the time lag between the direct P-wave and the direct S-wave. However, due to the strong velocity contrast between the seismic wave velocities in the LVZ and in the oceanic mantle, we also expect on the vertical autocorrelation a peak at 2.85 to 2.98 s corresponding to the time lag between the direct P-wave and the reflected P-wave on the Moho ; and on the horizontal-to-vertical cross correlation a peak at 11.33 to 11.77 s corresponding to the time lag between the direct P-wave and the reflected S-wave on the Moho. We do not see any of these peaks and conclude that this last scenario is unlikely.
+
+\section{Different locations of the tremor}
+
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+  \hline
+  Latitude & Longitude & Depth & Model 1 & Model 2 & Model 3 & Model 4 & Data \\
+  47.9124 & -122.9957 & 40.1464 & 4.20 & 5.24 & 4.20 & 5.24 & 4.8 \\
+  47.9573 & -122.9957 & 40.3390 & 4.19 & 5.23 & 4.19 & 5.23 & 4.85 \\
+  48.0022 & -122.9957 & 40.5549 & 4.24 & 5.29 & 4.24 & 5.29 & 4.7 \\
+  47.9124 & -122.9287 & 41.2982 & 4.29 & 5.35 & 4.29 & 5.35 & 4.85 \\
+  47.9573 & -122.9287 & 41.4877 & 4.28 & 5.33 & 4.28 & 5.33 & 4.85 \\
+  48.0022 & -122.9287 & 41.7000 & 4.33 & 5.40 & 4.33 & 5.40 & 4.95 \\
+  47.9124 & -122.8616 & 42.4448 & 4.44 & 5.53 & 4.44 & 5.53 & 5.0 \\
+  47.9573 & -122.8616 & 42.6332 & 4.43 & 5.52 & 4.43 & 5.52 & 6.3 \\
+  48.0022 & -122.8616 & 42.8438 & 4.48 & 5.58 & 4.48 & 5.58 & 5.5 \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Expected position of the main cross correlation peak (direct S-wave and direct P-wave).}
+\end{center}
+
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+  \hline
+  Latitude & Longitude & Depth & Model 1 & Model 2 & Model 3 & Model 4 & Data \\
+  47.9124 & -122.9957 & 40.1464 & 2.79 & 3.89 & 2.23 & 3.27 & \\
+  47.9573 & -122.9957 & 40.3390 & 2.77 & 3.86 & 2.21 & 3.24 & \\
+  48.0022 & -122.9957 & 40.5549 & 2.82 & 3.93 & 2.26 & 3.32 & \\
+  47.9124 & -122.9287 & 41.2982 & 2.86 & 3.98 & 2.30 & 3.36 & \\
+  47.9573 & -122.9287 & 41.4877 & 2.84 & 3.96 & 2.28 & 3.34 & \\
+  48.0022 & -122.9287 & 41.7000 & 2.92 & 4.05 & 2.38 & 3.46 & \\
+  47.9124 & -122.8616 & 42.4448 & 3.01 & 4.17 & 2.46 & 3.56 & \\
+  47.9573 & -122.8616 & 42.6332 & 3.02 & 4.18 & 2.49 & 3.59 & \\
+  48.0022 & -122.8616 & 42.8438 & 3.09 & 4.27 & 2.59 & 3.72 & \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Expected position of the secondary cross correlation peak (direct S-wave and reflected P-wave on the mid-slab or the Moho).}
+\end{center}
+
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+  \hline
+  Latitude & Longitude & Depth & Model 1 & Model 2 & Model 3 & Model 4 & Data \\
+  47.9124 & -122.9957 & 40.1464 & 1.41 & 1.35 & 1.97 & 1.97 & \\
+  47.9573 & -122.9957 & 40.3390 & 1.42 & 1.36 & 1.98 & 1.98 & \\
+  48.0022 & -122.9957 & 40.5549 & 1.43 & 1.37 & 1.98 & 1.98 & \\
+  47.9124 & -122.9287 & 41.2982 & 1.43 & 1.37 & 1.99 & 1.99 & \\
+  47.9573 & -122.9287 & 41.4877 & 1.43 & 1.37 & 2.00 & 2.00 & \\
+  48.0022 & -122.9287 & 41.7000 & 1.41 & 1.35 & 1.95 & 1.94 & \\
+  47.9124 & -122.8616 & 42.4448 & 1.43 & 1.36 & 1.98 & 1.97 & \\
+  47.9573 & -122.8616 & 42.6332 & 1.40 & 1.34 & 1.94 & 1.92 & \\
+  48.0022 & -122.8616 & 42.8438 & 1.38 & 1.31 & 1.89 & 1.86 & \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Expected position of the vertical autocorrelation peak (direct P-wave and reflected P-wave on the mid-slab or the Moho).}
+\end{center}
+
+\section{Things to do}
+
+Things to do now:
+
+\begin{itemize}
+	\item Write work already done
+	\item Find out how to run code on AWS
+	\item Identify a way to decide whether the result we get for a given cell is reliable or not (amplitude of the peak compared to RMS error?)
+	\item Reproduce the work on BS array with other 7 arrays
+	\item Draw maps of the depth of the tremor (with some sort of interpolation / least square regression to account for data points coming from different arrays)
+	\item Find a better velocity model (layers, 3D)
+\end{itemize}
+
+Things that could be done:
+
+\begin{itemize}
+	\item Implementation tf-PHS stacking
+	\item Scripts to download and store tremor data
+	\item Transform the data before cross correlation:
+	\begin{itemize}
+		\item MODW(P)T
+		\item Scattering transform
+	\end{itemize}
+\end{itemize}
+
+\end{document}
+

@@ -51,23 +51,11 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
     success = False
     attempts = 0
     while attempts < nattempts and not success:
-        # Get data from server
         try:
+            # Get data from server
             D = fdsn_client.get_waveforms(network=network, station=station, \
                 location=location, channel=channels, starttime=Tstart, \
                 endtime=Tend, attach_response=True)
-            success = True
-        except:
-            message = 'Could not download data for station {} '.format(station) + \
-                'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-            with open('error.txt', 'a') as file:
-                file.write(message)
-            attempts += 1
-            time.sleep(waittime)
-            if attempts == nattempts:
-                return(0)
-        else:
             # Detrend data
             D.detrend(type='linear')
             # Taper first and last 5 s of data
@@ -81,7 +69,18 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
             ratio = Fraction(int(freq), int(1.0 / dt))
             D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
             D.decimate(ratio.numerator, no_filter=True)
+            success = True
             return(D)
+        except:
+            message = 'Could not download data for station {} '.format(station) + \
+                'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
+                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            with open('error.txt', 'a') as file:
+                file.write(message)
+            attempts += 1
+            time.sleep(waittime)
+            if attempts == nattempts:
+                return(0)
 
 def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
     filt, dt, nattempts, waittime):
@@ -131,22 +130,10 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
     success = False
     attempts = 0
     while attempts < nattempts and not success:
-        # Get data from server
         try:
+            # Get data from server
             os.system(request)
             D = read('station.miniseed')
-            success = True
-        except:
-            message = 'Could not download data for station {} '.format(station) + \
-                'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-            with open('error.txt', 'a') as file:
-                file.write(message)
-            attempts += 1
-            time.sleep(waittime)
-            if attempts == nattempts:
-                return(0)
-        else:
             # Detrend data
             D.detrend(type='linear')
             # Taper first and last 5 s of data
@@ -163,4 +150,15 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
             ratio = Fraction(int(freq), int(1.0 / dt))
             D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
             D.decimate(ratio.numerator, no_filter=True)
+            success = True
             return(D)
+        except:
+            message = 'Could not download data for station {} '.format(station) + \
+                'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
+                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            with open('error.txt', 'a') as file:
+                file.write(message)
+            attempts += 1
+            time.sleep(waittime)
+            if attempts == nattempts:
+                return(0)

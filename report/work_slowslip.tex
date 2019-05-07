@@ -1,0 +1,187 @@
+\documentclass[workdone.tex]{subfiles}
+ 
+\begin{document}
+
+\chapter{Work done on Investigating slow slip using wavelets}
+
+The wavelet methods for time series analysis are explained in a more detailed way in Percival \& Walden (2000 ~\cite{PER_2000}). \\
+
+\section{Discrete Wavelet Transform}
+
+The Discrete Wavelet Transform (DWT) is an orthonormal transform that transforms a time series $X_t \left( t = 0, ... , N - 1 \right)$ into a vector of wavelet coefficients $W_i \left( i = 0 , ... , N - 1 \right)$. If we denote $J$ the level of the wavelet decomposition, and we have $N = n* 2^J$, where n is some integer higher or equal to 1, the vector of wavelet coefficients can be decomposed into $J$ wavelet vectors $W_j$ of lengths $\frac{N}{2}$, $\frac{N}{4}$, ... , $\frac{N}{2^J}$, and one scaling vector $V_J$ of length $\frac{N}{2^J}$. \\
+
+Each wavelet vector $W_j$ is associated with changes on scale $\tau_j = dt 2^{j - 1}$, where $dt$ is the time step of the time series, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{1}{dt 2^{j + 1}} ; \frac{1}{dt 2^j} \rbrack$. The scaling vector $V_J$ is associated with averages in scale $\lambda_J = dt 2^J$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack 0 ; \frac{1}{dt 2^{j + 1}} \rbrack$. \\
+
+We can also define for $j = 1 , ... , J$ the $j$th wavelet detail $D_j$, which is a vector of length $N$, and is associated to scale $\tau_j = dt 2^{j - 1}$. Similarly, we can define for $j = 1 , ... , J$ the $j$th wavelet smooth $S_j$, which is a vector of length $N$, and is associated to scales $\tau_{j + 1} = dt 2^{j + 1}$ and higher. Together, the details and the smooths define the multiresolution analysis (MRA) of $X$:
+
+\begin{equation}
+X = \sum_{j = 1}^{J} D_j + S_J
+\end{equation}
+
+One main advantage of the DWT is that it is an orthonormal transform, and thus we can write the analysis of variance (ANOVA):
+
+\begin{equation}
+\left\Vert X \right\Vert ^2 = \left\Vert W \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert W_j \right\Vert ^2 + \left\Vert V_J \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert D_j \right\Vert ^2 + \left\Vert S_J \right\Vert ^2
+\end{equation}
+
+Moreover, the DWT can be computed using $O \left( N \right)$ multiplications. \\
+
+However, the DWT present several disadvantages:
+
+\begin{itemize}
+	\item The length of the time series must be a multiple of $2^J$ where $J$ is the level of the DWT decomposition.
+	\item The time step of the wavelet vector $W_j$ is $dt 2^j$, which may not correspond to the time when some interesting phenomenon is visible on the original time series.
+	\item When we circularly shift the time series, the corresponding wavelet coefficients, details and smooths are not a circularly shifted version of the wavelet coefficients, details and smooths of the original time series. Thus, the values of the wavelet coefficients, details and smooths are strongly dependent on the time when we start experimentally gathering the data.
+	\item When we filter the time series to obtain the details and smooths, we introduce a phase shift, which makes difficult to line up meaningfully the features of the MRA with the original time series.
+\end{itemize}
+
+\section{Maximum Overlap Discrete Wavelet Transform}
+
+To get rid of these problems, we introduce the Maximum Overlap Discrete Wavelet Transform (MODWT). The MODWT transforms the time series $X_t \left( t = 0, ... , N - 1 \right)$ into J wavelet vectors $\widetilde{W}_j \left( j = 1 , ... , J \right)$ of length $N$ and a scaling vector $\widetilde{V}_J$ of length $N$. As is the case for the DWT, each wavelet vector $\widetilde{W}_j$ is associated with changes on scale $\tau_j = dt 2^{j - 1}$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{1}{dt 2^{j + 1}} ; \frac{1}{dt 2^j} \rbrack$. The scaling vector $\widetilde{V}_J$ is associated with averages in scale $\lambda_J = dt 2^J$, and corresponds to the filtering of the original time series with a filter with nominal frequency interval $\lbrack 0 ; \frac{1}{dt 2^{j + 1}} \rbrack$. \\
+
+As is the case for the DWT, we can write the MRA:
+
+\begin{equation}
+X = \sum_{j = 1}^{J} \widetilde{D}_j + \widetilde{S}_J
+\end{equation}
+
+and the ANOVA:
+
+\begin{equation}
+\left\Vert X \right\Vert ^2 = \sum_{j = 1}^{J} \left\Vert \widetilde{W}_j \right\Vert ^2 + \left\Vert \widetilde{V}_J \right\Vert ^2
+\end{equation}
+
+Now, we have the following properties:
+
+\begin{itemize}
+	\item The MODWT of a time series can be defined for any length $N$.
+	\item The time step of the wavelet vectors $\widetilde{W}_j$ and the scaling vector $\widetilde{V}_J$ is equal to the time step of the original time series.
+	\item When we circularly shift the time series, the corresponding wavelet vectors, scaling vector, details and smooths are shifted by the same amount.
+	\item The details and smooths are associated with a zero phase filter, making it easy to line up meaningfully the features of the MRA with the original time series.
+\end{itemize}
+
+However, the MODWT has some disadvantages over the DWT:
+
+\begin{itemize}
+	\item The MODWT can only be computed using $O \left( N \log_2 N \right)$ multiplications.
+	\item We can no longer write the ANOVA for the details and smooths:
+
+\begin{equation}
+\left\Vert X \right\Vert ^2 \neq \sum_{j = 1}^{J} \left\Vert D_j \right\Vert ^2 + \left\Vert S_J \right\Vert ^2 \text{ and } \left\Vert \widetilde{W}_j \right\Vert ^2 \neq \left\Vert \widetilde{D}_j \right\Vert ^2
+\end{equation}
+
+\end{itemize}
+
+\section{Discrete Wavelet Packet Transform}
+
+\subsection{DWPT and MODWPT}
+
+When we carry out a DWT, we filter the time series $X$ with the high-pass wavelet filter $h_l \left( l = 0 , ... , L - 1 \right)$ to obtain $W_1$, and with the low-pass scaling filter $g_l \left( l = 0 , ... , L - 1 \right)$ to obtain $V_1$. We then filter the vector of scaling coefficients at level 1 $V_1$ with the high-pass wavelet filter $h_l \left( l = 0 , ... , L - 1 \right)$ to obtain $W_2$, and with the low-pass scaling filter $g_l \left( l = 0 , ... , L - 1 \right)$ to obtain $V_2$. We thus get:
+
+\begin{equation}
+\mathcal{W} X = \begin{pmatrix}
+W_1 \\
+W_2 \\
+V_2
+\end{pmatrix} = \begin{pmatrix}
+W_{1,1} \\
+W_{2,1} \\
+W_{2,0}
+\end{pmatrix}
+\end{equation}
+
+We could have filtered the vector of wavelet coefficients at level 1 $W_1$, instead of $V_1$, and obtained:
+
+\begin{equation}
+\mathcal{W} X = \begin{pmatrix}
+W_{2,3} \\
+W_{2,2} \\
+W_{1,0}
+\end{pmatrix}
+\end{equation}
+
+or we could have filtered both $W_1$ and $V_1$, and obtained:
+
+\begin{equation}
+\mathcal{W} X = \begin{pmatrix}
+W_{2,3} \\
+W_{2,2} \\
+W_{2,1} \\
+W_{2,0}
+\end{pmatrix}
+\end{equation}
+
+At each level $j$, we can similarly carry out the Discrete Wavelet Packet Transform (DWPT) of $X$ and obtain $n = 2^j$ wavelet vectors $W_{j,n}$ of length $\frac{N}{2^j}$, and corresponding to the filtering of the original time series with a filter with nominal frequency interval $\lbrack \frac{n}{dt 2^{j + 1}} ; \frac{n + 1}{dt 2^{j + 1}} \rbrack$. \\
+
+The ANOVA decomposition becomes:
+
+\begin{equation}
+\left\Vert X \right\Vert ^2 = \sum_{n = 0}^{2^j - 1} \left\Vert W_{j,n} \right\Vert ^2 \text{ for each level } j
+\end{equation}
+
+As we have done for the DWT, we can define for each level $j$ the detail vectors $D_{j,n} \left( n = 0 , ... , 2^j - 1 \right)$ of length $N$, and we get:
+
+\begin{equation}
+X = \sum_{n = 0}^{2^j - 1} D_{j,n} \text{ for each level } j
+\end{equation}
+
+We can obtain the Maximum Overlap Discrete Wavelet Packet Transform (MODWPT) by filtering at each level $j$ both $\widetilde{W}_j$ and $\widetilde{V}j$ with the filters $\widetilde{h}_l$ and $\widetilde{g}_l$. We thus get at each level $j$ the wavelet vectors $\widetilde{W}_{j,n} \left(n = 0 , ... , 2^j - 1 \right)$ of length $N$, and we have the properties:
+
+\begin{equation}
+\left\Vert X \right\Vert ^2 = \sum_{n = 0}^{2^j - 1} \left\Vert \widetilde{W}_{j,n} \right\Vert ^2 \text{ for each level } j
+\end{equation}
+
+and:
+
+\begin{equation}
+X = \sum_{n = 0}^{2^j - 1} \widetilde{D}_{j,n} \text{ for each level } j
+\end{equation}
+
+\subsection{Best basis algorithm}
+
+At level $j = 2$, we can write the wavelet decomposition of $X$ as one of the four decompositions:
+
+\begin{equation}
+\begin{pmatrix}
+W_{1,1} \\
+W_{1,0}
+\end{pmatrix} \text{, } \begin{pmatrix}
+W_{1,1} \\
+W_{2,1} \\
+W_{2,0}
+\end{pmatrix} \text{, } \begin{pmatrix}
+W_{2,3} \\
+W_{2,2} \\
+W_{1,0}
+\end{pmatrix} \text{, and } \begin{pmatrix}
+W_{2,3} \\
+W_{2,2} \\
+W_{2,1} \\
+W_{2,0}
+\end{pmatrix}
+\end{equation}
+
+To choose between these four decompositions, we define a cost functional:
+
+\begin{equation}
+M \left( W_{j,n} \right) = \sum_{t = 0}^{N_j - 1} m \left( \left\vert W_{j,n,t} \right\vert \right) \text{ with } N_j = \frac{N}{2^j}
+\end{equation}
+
+and we try to minimize:
+
+\begin{equation}
+\min_{\mathcal{C}} \sum_{\left( j,n \right) \in \mathcal{C}} M \left( W_{j,n} \right)
+\end{equation}
+
+with $\mathcal{C} \subset \mathcal{N}$ and $\mathcal{N} = \left\{ \left( j,n \right) : j = 0 , ... , J ; n = 0 , ... , 2^j - 1 \right\}$. In the case of $J = 2$ above, we have 4 possible values for $\mathcal{C}$:
+
+\begin{align*}
+\mathcal{C}_1 &= \left\{ \left( 1,0 \right) , \left( 1,1 \right) \right\} \\
+\mathcal{C}_2 &= \left\{ \left( 1,1 \right) , \left( 2,0 \right) , \left( 2,1 \right) \right\} \\
+\mathcal{C}_3 &= \left\{ \left( 1,0 \right) , \left( 2,2 \right) , \left( 2,3 \right) \right\} \\
+\mathcal{C}_4 &= \left\{ \left( 2,0 \right) , \left( 2,1 \right) , \left( 2,2 \right) , \left( 2,3 \right) \right\}
+\end{align*}
+
+\subsection{Matching pursuit}
+
+\end{document}

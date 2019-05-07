@@ -153,17 +153,6 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                                 starttime=Tstart, endtime=Tend)
                             if len(trace) > 0:
                                 Dtmp.append(trace[0])
-                success = True
-            except:
-                message = 'Cannot open waveform file for tremor {} '. \
-                    format(i + 1) + \
-                    '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d})\n'. \
-                    format(YY1, MM1, DD1, HH1, mm1, ss1)
-                with open('error.txt', 'a') as file:
-                    file.write(message)
-                attempts += 1
-                time.sleep(waittime)
-            else:
                 # Remove stations that have different amounts of data
                 ntmp = []
                 for ksta in range(0, len(Dtmp)):
@@ -188,6 +177,19 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
                 # Resample data to .05 s
                 D.interpolate(100.0, method='lanczos', a=10)
                 D.decimate(5, no_filter=True)         
+                success = True
+            except:
+                message = 'Cannot open waveform file for tremor {} '. \
+                    format(i + 1) + \
+                    '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d}) '. \
+                    format(YY1, MM1, DD1, HH1, mm1, ss1) + \
+                    'for cell x0 = {} and y0 = {}\n'. \
+                    format(x0, y0)
+                with open('error.txt', 'a') as file:
+                    file.write(message)
+                attempts += 1
+                time.sleep(waittime)
+            else:
                 # Cut data for cross correlation
                 EW = D.select(component='E').slice(t1, t2)
                 NS = D.select(component='N').slice(t1, t2)
