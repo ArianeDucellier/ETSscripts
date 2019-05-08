@@ -1,5 +1,6 @@
 .DS_Store
 catalog/data/*
+catalog/new_templates
 catalog/LFEs/*
 catalog/templates/*
 catalog/timearrival/*

@@ -12,8 +12,8 @@ from math import cos, pi, sin, sqrt
 arrayName = 'BS'
 lat0 = 47.95728
 lon0 = -122.92866
-stackStation = 'lin'
-stackTremor = 'lin'
+stackStation = 'PWS'
+stackTremor = 'PWS'
 Vs = 3.6
 Vp = 6.4
 

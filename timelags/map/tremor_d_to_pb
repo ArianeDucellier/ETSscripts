@@ -1,7 +1,7 @@
 #!/bin/csh -f
-set input = depth_PWS_PWS.txt
-set output = depth_PWS_PWS.eps
-set cpt = depth.cpt
+set input = d_to_pb_PWS_PWS.txt
+set output = d_to_pb_PWS_PWS.eps
+set cpt = d_to_pb.cpt
 
 # Boundaries
 set x1 = -123.9
@@ -47,7 +47,7 @@ END
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
 
-gmt psscale -C$cpt -D7.0/-3.0/10/0.5h -O -L -B:"Tremor depth in km": >> $output
+gmt psscale -C$cpt -D7.0/-3.0/10/0.5h -O -L -B:"Distance to plate boundary in km": >> $output
 
 rm hoge.grd
 rm arrays.dat
