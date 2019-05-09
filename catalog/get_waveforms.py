@@ -71,6 +71,9 @@ def get_waveform(filename, TDUR, filt, nattempts, waittime, method='RMS'):
     if not os.path.exists(namedir):
         os.makedirs(namedir)
 
+    # File to write error messages
+    errorfile = 'error/' + filename + '.txt'
+
     # Loop over stations
     for station in staNames:
         # Create streams
@@ -103,11 +106,11 @@ def get_waveform(filename, TDUR, filt, nattempts, waittime, method='RMS'):
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
                 D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt, nattempts, waittime)
+                    Tstart, Tend, filt, ndt, nattempts, waittime, errorfile)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
                 D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt, nattempts, waittime)
+                    Tstart, Tend, filt, ndt, nattempts, waittime, errorfile)
             else:
                 raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
@@ -271,6 +274,6 @@ if __name__ == '__main__':
              'formats': ('S13', 'S3', np.float, np.float, np.float, \
         np.float, np.float, np.int)}, \
         skiprows=1)
-    for ie in range(17, len(LFEloc)):
+    for ie in range(15, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         get_waveform(filename, TDUR, filt, nattempts, waittime, method)

@@ -1,6 +1,6 @@
 #!/bin/csh -f
-set input = cc_lin_pow.txt
-set output = cc_lin_pow.eps
+set input = cc_pow_pow.txt
+set output = cc_pow_pow.eps
 set cpt = cc.cpt
 
 # Boundaries

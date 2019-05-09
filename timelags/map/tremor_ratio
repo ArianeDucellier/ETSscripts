@@ -1,0 +1,54 @@
+#!/bin/csh -f
+set input = ratio_PWS_PWS.txt
+set output = ratio_PWS_PWS.eps
+set cpt = cc.cpt
+
+# Boundaries
+set x1 = -123.9
+set x2 = -122.5
+set y1 = 47.6
+set y2 = 48.4
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-123.2/48.0/16.0
+
+gmt xyz2grd $input -Ghoge.grd -I0.07 -R$Rop
+gmt grdimage hoge.grd -C$cpt -R$Rop -J$Jop -Y10 -P -K >! $output
+
+gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -Df -Na -O -K >> $output
+
+gmt xyz2grd plate_boundary.txt -Gplate_boundary.grd -I0.1 -R$Rop
+gmt grdcontour plate_boundary.grd -A2 -J$Jop -R$Rop -O -K >> $output
+
+# Locations of arrays
+cat << END >> arrays.dat
+-123.084354545455 48.0056818181818
+-122.92866 47.95728
+-122.969935 48.068735
+-123.313118181818 48.0059272727273
+-123.045528571429 47.9321857142857
+-123.210035714286 48.0554071428571
+-123.464415384615 48.0549384615385
+-123.138492857143 47.9730357142857
+END
+
+gmt psxy arrays.dat -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
+
+# Names of arrays
+cat << END >> names.dat
+-123.084354545455 48.0256818181818 Burnt Hill
+-122.92866 47.93728 Big Skidder
+-122.969935 48.088735 Cat Lake
+-123.313118181818 48.0259272727273 Danz Ranch
+-123.045528571429 47.9121857142857 Gold Creek
+-123.210035714286 48.0754071428571 Lost Cause
+-123.464415384615 48.0749384615385 Port Angeles
+-123.138492857143 47.9530357142857 Three Bumps
+END
+
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
+
+gmt psscale -C$cpt -D7.0/-3.0/10/0.5h -O -L -B:"Ratio cc / RMS": >> $output
+
+rm hoge.grd
+rm arrays.dat
+rm names.dat

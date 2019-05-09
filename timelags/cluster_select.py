@@ -75,16 +75,20 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         cc_EW = Maximum cross-correlation for the EW component
         type cc_NS = float
         cc_NS = Maximum cross-correlation for the NS component
+        type ratio_EW = float
+        ratio_EW = Ratio between max cc and RMS
+        type ratio_NS = float
+        ratio_NS = Ratio between max cc and RMS
     """
     # Read file containing data from stack_ccorr_tremor
-    filename = 'cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+    filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW_UD = data[6]
     NS_UD = data[7]
     # Read file containing data from stack_acorr_tremor
-    filename = 'ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+    filename = 'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW = data[6]
     NS = data[7]
@@ -128,9 +132,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     rmsb = i0 + int(RMSmin / EW_UD_stack.stats.delta)
     rmse = i0 + int(RMSmax / EW_UD_stack.stats.delta) + 1
     for i in range(0, nt):
-        rmsEW[i] = np.max(np.abs(EW_UD[i][ibegin : iend])) / \
-            np.sqrt(np.mean(np.square(EW_UD[i][rmsb:rmse])))       
-        rmsNS[i] = np.max(np.abs(NS_UD[i][ibegin : iend])) / \
+        rmsEW[i] = np.max(np.abs(EW_UD[i][ibegin:iend])) / \
+            np.sqrt(np.mean(np.square(EW_UD[i][rmsb:rmse])))
+        rmsNS[i] = np.max(np.abs(NS_UD[i][ibegin:iend])) / \
             np.sqrt(np.mean(np.square(NS_UD[i][rmsb:rmse])))
         # Cross correlate cc for EW with stack       
         cc_EW = correlate(EW_UD[i][ibegin : iend], \
@@ -163,8 +167,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # Scatter plot
     colors = [palette[c] for c in clusters]
     pd.plotting.scatter_matrix(df, c=colors, figsize=(20, 20))
-    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close()
     # Plot cross correlation
     plt.figure(1, figsize=(10 * nc, 16))
@@ -174,6 +178,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # EW / Vertical
     cc_clust_EW = []
     t_clust_EW = []
+    ratio_clust_EW = []
     for j in range(0, nc):
         plt.subplot2grid((2, nc), (0, j))
         plt.plot(t, EW_UD_stack.data, 'k-', label='All')
@@ -190,10 +195,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
             EWselect_stack = PWstack([EWselect], w, normalize=False)[0]
         else:
             raise ValueError( \
-                'Type of stack must be lin, pow, or PWS')
-        cc_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])))
-        i0 = np.argmax(np.abs(EWselect_stack.data[ibegin:iend]))
-        t_clust_EW.append(t[ibegin:iend][i0])
+                'Type of stack must be lin, pow, or PWS') 
         plt.plot(t, EWselect_stack.data, color=palette[j], \
             label='Cluster {:d}'.format(j))
         plt.xlim(0, xmax)
@@ -202,12 +204,20 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
             len(EWselect)), fontsize=24)
         plt.xlabel('Lag time (s)', fontsize=24)
         plt.legend(loc=1)
+        # Max cc and ratio with RMS
+        cc_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])))
+        i0 = np.argmax(np.abs(EWselect_stack.data[ibegin:iend]))
+        t_clust_EW.append(t[ibegin:iend][i0])
+        RMS = np.sqrt(np.mean(np.square(EWselect_stack.data[rmsb:rmse])))
+        ratio_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])) / RMS)
     i0 = cc_clust_EW.index(max(cc_clust_EW))
     t_EW = t_clust_EW[i0]
     cc_EW = max(cc_clust_EW)
+    ratio_EW = ratio_clust_EW[i0]
     # NS / Vertical
     cc_clust_NS = []
     t_clust_NS = []
+    ratio_clust_NS = []
     for j in range(0, nc):
         plt.subplot2grid((2, nc), (1, j))
         plt.plot(t, NS_UD_stack.data, 'k-', label='All')
@@ -225,9 +235,6 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         else:
             raise ValueError( \
                 'Type of stack must be lin, pow, or PWS')
-        cc_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])))
-        i0 = np.argmax(np.abs(NSselect_stack.data[ibegin:iend]))
-        t_clust_NS.append(t[ibegin:iend][i0])
         plt.plot(t, NSselect_stack.data, color=palette[j], \
             label='Cluster {:d}'.format(j, ))
         plt.xlim(0, xmax)
@@ -236,14 +243,21 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
             len(NSselect)), fontsize=24)
         plt.xlabel('Lag time (s)', fontsize=24)
         plt.legend(loc=1)
+        # Max cc and ratio with RMS
+        cc_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])))
+        i0 = np.argmax(np.abs(NSselect_stack.data[ibegin:iend]))
+        t_clust_NS.append(t[ibegin:iend][i0])
+        RMS = np.sqrt(np.mean(np.square(NSselect_stack.data[rmsb:rmse])))
+        ratio_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])) / RMS)  
     i0 = cc_clust_NS.index(max(cc_clust_NS))
     t_NS = t_clust_NS[i0]
     cc_NS = max(cc_clust_NS)
+    ratio_NS = ratio_clust_NS[i0]
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close(1)
     # Plot autocorrelation
     plt.figure(2, figsize=(10 * nc, 24))
@@ -331,8 +345,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     plt.close(2)
     # Plot colored cross correlation windows
     plt.figure(3, figsize=(20, 16))
@@ -368,8 +382,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax2.tick_params(labelsize=20)
     # End figure
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     plt.close(3)
@@ -419,13 +433,13 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax3.tick_params(labelsize=20)
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'.format( \
-        arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
     plt.close(4)
-    return (clusters, t_EW, t_NS, cc_EW, cc_NS)
+    return (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS)
 
 if __name__ == '__main__':
 

@@ -125,6 +125,13 @@ def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     Minute = []
     Second = []
 
+    # File to write error messages
+    namedir = 'error/ac/{}/'.format(arrayName)
+    if not os.path.exists(namedir):
+        os.makedirs(namedir)
+    errorfile = namedir + 'error_{}_{:03d}_{:03d}.txt'.format( \
+        arrayName, int(x0), int(y0))
+
     # Loop on tremor windows
     for i in range(0, nt):
         (YY1, MM1, DD1, HH1, mm1, ss1) = matlab2ymdhms(tremor[i, 0])
@@ -183,14 +190,16 @@ def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
             except:
                 message = 'Cannot open waveform file for tremor {} '. \
                     format(i + 1) + \
-                    '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d}) '. \
-                    format(YY1, MM1, DD1, HH1, mm1, ss1 + \
-                    'for cell x0 = {} and y0 = {}\n'. \
-                    format(x0, y0)
-                with open('error.txt', 'a') as file:
+                    '({:04d}/{:02d}/{:02d} at {:02d}:{:02d}:{:02d})\n'. \
+                    format(YY1, MM1, DD1, HH1, mm1, ss1)
+                with open(errorfile, 'a') as file:
                     file.write(message)
                 attempts += 1
                 time.sleep(waittime)
+                if attempts == nattempts:
+                    with open(errorfile, 'a') as file:
+                        file.write('Failed to download data after {} attempts\n'. \
+                            format(nattempts))
             else:
                 # Cut data for autocorrelation
                 EW = D.select(component='E').slice(t1, t2)
@@ -333,7 +342,8 @@ def stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
 
     # Save stacked cross correlations into file
     if nt > 0:
-        namedir = 'ac/{}_{:03d}_{:03d}/'.format(arrayName, int(x0), int(y0))
+        namedir = 'ac/{}/{}_{:03d}_{:03d}/'.format(arrayName, arrayName, \
+            int(x0), int(y0))
         if not os.path.exists(namedir):
             os.makedirs(namedir)
         filename = namedir + '{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, \
@@ -421,7 +431,6 @@ if __name__ == '__main__':
 #    lon0 = -123.138492857143
 
     ds = 5.0
-    x0 = -5.0
     TDUR = 10.0
     filt = (2, 8)
     w = 2.0
@@ -431,30 +440,31 @@ if __name__ == '__main__':
     nattempts = 10
     waittime = 10
 
-    for i in range(5, 6):
+    for i in range(-5, 6):
+        x0 = i * 5.0
+        for j in range(-5, 6):
+            y0 = j * 5.0
         
-        y0 = i * 5.0
+            # Linear stack
+            type_stack = 'lin'
+            amp = 3.0
+            amp_stack = 10.0
+            stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+                network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+                Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
         
-        # Linear stack
-#        type_stack = 'lin'
-#        amp = 3.0
-#        amp_stack = 10.0
-#        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-#            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-#            Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
-        
-        # Power stack
-#        type_stack = 'pow'
-#        amp = 3.0
-#        amp_stack = 2.0
-#        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-#            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-#            Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
+            # Power stack
+            type_stack = 'pow'
+            amp = 3.0
+            amp_stack = 2.0
+            stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+                network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+                Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
 
-        # Phase-weighted stack
-        type_stack = 'PWS'
-        amp = 3.0
-        amp_stack = 30.0
-        stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
-            network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
-            Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)
+            # Phase-weighted stack
+            type_stack = 'PWS'
+            amp = 3.0
+            amp_stack = 30.0
+            stack_acorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
+                network, lat0, lon0, ds, x0, y0, TDUR, filt, type_stack, w, ncor, \
+                Tmax, amp, amp_stack, draw_plot, client, nattempts, waittime)

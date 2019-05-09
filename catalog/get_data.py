@@ -15,7 +15,7 @@ import time
 from fractions import Fraction
 
 def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
-    filt, dt, nattempts, waittime):
+    filt, dt, nattempts, waittime, errorfile):
     """
     Function to get the waveform from IRIS for a given station
 
@@ -40,6 +40,8 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
         nattempts = Number of times we try to download data
         type waittime = positive float
         waittime = Type to wait between two attempts at downloading
+        type errorfile = string
+        errorfile = Name of the file where we write error messages
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
@@ -75,15 +77,18 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
             message = 'Could not download data for station {} '.format(station) + \
                 'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
                 Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-            with open('error.txt', 'a') as file:
+            with open(errorfile, 'a') as file:
                 file.write(message)
             attempts += 1
             time.sleep(waittime)
             if attempts == nattempts:
+                with open(errorfile, 'a') as file:
+                    file.write('Failed to download data after {} attempts\n'. \
+                        format(nattempts))
                 return(0)
 
 def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
-    filt, dt, nattempts, waittime):
+    filt, dt, nattempts, waittime, errorfile):
     """
     Function to get the waveform from NCEDC for a given station
 
@@ -108,6 +113,8 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
         nattempts = Number of times we try to download data
         type waittime = positive float
         waittime = Type to wait between two attempts at downloading
+        type errorfile = string
+        errorfile = Name of the file where we write error messages
     Output:
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
@@ -156,9 +163,12 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
             message = 'Could not download data for station {} '.format(station) + \
                 'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
                 Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-            with open('error.txt', 'a') as file:
+            with open(errorfile, 'a') as file:
                 file.write(message)
             attempts += 1
             time.sleep(waittime)
             if attempts == nattempts:
+                with open(errorfile, 'a') as file:
+                    file.write('Failed to download data after {} attempts\n'. \
+                        format(nattempts))
                 return(0)
