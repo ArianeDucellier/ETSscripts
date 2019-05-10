@@ -4,5 +4,53 @@
 
 \chapter{Work done on an extended catalog of low-frequency earthquakes}
 
+\section{Description of the dataset}
+
+The template waveforms are the ones obtained by Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). Alexandre Plourde has kindly provided us his template files. \\
+
+The folder \textit{waveforms} contains 91 Matlab files, which contain the template waveforms for the three channels of each of the stations. The folder \textit{detections} contains 89 files, which contain the names of the stations that were used by the network matched filter, and the time of each LFE detection. 66 of these templates have then been grouped into 34 families. The names of the templates in each family are given in the file \textit{family\_list.m}. The locations of the hypocentre for each template are given in the file \textit{template\_locations.txt}. The locations of the hypocentre for each family are given in the file \textit{unique\_families\_NCAL.txt}.
+
+\section{Websites to access the data}
+
+The waveforms from the FAME experiment can be accessed from the IRIS DMC using the Python package obspy, and the subpackage obspy.clients.fdsn. The network code is XQ, and the stations names are ME01 to ME93. \\
+
+The waveforms for the permanent stations of the Northern California Seismic Network can be downloaded from the website of the Northern California Earthquake Data Center (\href{http://ncedc.org/}{NCEDC}). The stations are B039 from the network PB, KCPB, KHBB, KRMB, and KSXB from the network NC, and WDC and YBH from the network BK. Queries for downloading the data in the miniSEED format must be formated as explained here: \\
+
+\href{http://service.ncedc.org/fdsnws/dataselect/1/#description-box}{FDSN Dataselect} \\
+
+The instrument response can be obtained from here: \\
+
+\href{http://service.ncedc.org/fdsnws/station/1/#description-box}{FDSN Station}
+
+\section{Work done}
+
+We look at LFE family 080421.14.048
+
+\paragraph{get\_data.py} This module contains functions to download seismic waveforms from the IRIS Data Management Center (DMC) for the stations of the FAME experiment, or from the Northern California Earthquake Data Center (NCEDC) for the permanent stations. Somehow, waveforms for some of the permanent stations (e.g. station B039 from the Plate Boundary Observatory) could not be downloaded from the NCEDC, but they are available on the IRIS DMC.
+
+\paragraph{get\_waveforms.py} We look at a given family from the catalog of Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). For this family, we know the timing of each LFE. We download the one-minute-long seismic waveform corresponding to each LFE, we stack all the waveforms, and we compare the final template with the template from Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). The two templates are similar, but the amplitude is different because we normalized each LFE by the RMS whereas Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) have used another normalization method.
+
+\paragraph{get\_cc\_window.py} For each family and each station, we assume that the arrival time of the seismic waves is the time where the amplitude of the template signal is maximum. We get the time arrivals as a function of the distance from source to station for several seismic stations. From that, we can get the origin time of the template. After we have done that for each family, we can get for each station the travel time from source to station as a function of the distance from source to station, and compute the slowness associated to the station.
+
+\paragraph{compute\_templates.py} Using the slowness of the station, we determine a time window where we expect to see an LFE. This is this time window that we cross correlate with the template to determine whether it is a good or bad LFE. We then compute new templates using only the beFE. We save the original template, and the templates with the best LFE into files.
+
+\paragraph{get\_stations.py} We look at all the stations from the BK, NC and PB permanent network, and keep the stations that are less than 100 km from the epicenter of the LFE family. For each family, we get the stations where we hope to see an LFE in the seismic waveforms.
+
+\paragraph{save\_waveforms.py} We download the waveform for each LFE and each permanent station less than 100 km from the epicenter of the LFE family. We save all the waveforms into a file for future data analysis.
+
+\paragraph{draw\_waveforms.py}
+
+We first try to find LFEs for family 080421.14.048 between April 21st and April 28th 2008, that is the start date and end date of the catalog obtained by Plourde for this family. We choose different values for the lowest time lag between two LFEs for which we assume that they actually are two different LFEs. We count the number of LFEs missing in our catalog, and the number of LFEs added in our catalog.
+
+timelag Plourde ours missing added both
+4s 225 1487 65 1327 160
+3s 225 1732 54 1561 171
+2s 225 2121 36 1932 189
+1s 225 3048 16 2839 209
+
+\section{Things to do}
+
+Look at the maximum of the envelope (instead of the maximum of the raw signal) to find the time of the LFE.
+
 \end{document}
 

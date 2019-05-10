@@ -28,43 +28,47 @@
 \BOOKMARK [1][-]{section.7.5}{Different locations of the tremor}{chapter.7}% 28
 \BOOKMARK [1][-]{section.7.6}{Things to do}{chapter.7}% 29
 \BOOKMARK [0][-]{chapter.8}{Work done on an extended catalog of low-frequency earthquakes}{part.3}% 30
-\BOOKMARK [0][-]{chapter.9}{Work done on Investigating slow slip using wavelets}{part.3}% 31
-\BOOKMARK [1][-]{section.9.1}{Discrete Wavelet Transform}{chapter.9}% 32
-\BOOKMARK [1][-]{section.9.2}{Maximum Overlap Discrete Wavelet Transform}{chapter.9}% 33
-\BOOKMARK [1][-]{section.9.3}{Discrete Wavelet Packet Transform}{chapter.9}% 34
-\BOOKMARK [2][-]{subsection.9.3.1}{DWPT and MODWPT}{section.9.3}% 35
-\BOOKMARK [2][-]{subsection.9.3.2}{Best basis algorithm}{section.9.3}% 36
-\BOOKMARK [2][-]{subsection.9.3.3}{Matching pursuit}{section.9.3}% 37
-\BOOKMARK [0][-]{chapter.10}{Work done on long-range dependence in low-frequency earthquake catalogs}{part.3}% 38
-\BOOKMARK [1][-]{section.10.1}{What is long-range dependence?}{chapter.10}% 39
-\BOOKMARK [1][-]{section.10.2}{Long-range dependence in low-frequency earthquake catalogs?}{chapter.10}% 40
-\BOOKMARK [-1][-]{part.4}{IV Depth of the tremor source}{}% 41
-\BOOKMARK [0][-]{chapter.11}{Introduction}{part.4}% 42
-\BOOKMARK [0][-]{chapter.12}{Data}{part.4}% 43
-\BOOKMARK [0][-]{chapter.13}{Method}{part.4}% 44
-\BOOKMARK [0][-]{chapter.14}{Results}{part.4}% 45
-\BOOKMARK [0][-]{chapter.15}{Discussion / Conclusion}{part.4}% 46
-\BOOKMARK [-1][-]{part.5}{V An extended catalog of low-frequency earthquakes}{}% 47
-\BOOKMARK [0][-]{chapter.16}{Data}{part.5}% 48
-\BOOKMARK [1][-]{section.16.1}{Description of the dataset}{chapter.16}% 49
-\BOOKMARK [1][-]{section.16.2}{Websites to access the data}{chapter.16}% 50
-\BOOKMARK [0][-]{chapter.17}{Method}{part.5}% 51
-\BOOKMARK [0][-]{chapter.18}{Results}{part.5}% 52
-\BOOKMARK [0][-]{chapter.19}{Discussion and things to do}{part.5}% 53
-\BOOKMARK [-1][-]{part.6}{VI Investigating slow slip using wavelets}{}% 54
-\BOOKMARK [0][-]{chapter.20}{Introduction}{part.6}% 55
-\BOOKMARK [1][-]{section.20.1}{New Zealand}{chapter.20}% 56
-\BOOKMARK [0][-]{chapter.21}{Data}{part.6}% 57
-\BOOKMARK [0][-]{chapter.22}{Method}{part.6}% 58
-\BOOKMARK [0][-]{chapter.23}{Results}{part.6}% 59
-\BOOKMARK [0][-]{chapter.24}{Discussion and things to do}{part.6}% 60
-\BOOKMARK [1][-]{section.24.1}{Broader impacts}{chapter.24}% 61
-\BOOKMARK [2][-]{subsection.24.1.1}{Better understanding of the seismic hazard}{section.24.1}% 62
-\BOOKMARK [2][-]{subsection.24.1.2}{Extension of the method to the study of other phenomena}{section.24.1}% 63
-\BOOKMARK [2][-]{subsection.24.1.3}{Data management}{section.24.1}% 64
-\BOOKMARK [-1][-]{part.7}{VII Long-range dependence in low-frequency earthquake catalogs}{}% 65
-\BOOKMARK [0][-]{chapter.25}{Data}{part.7}% 66
-\BOOKMARK [1][-]{section.25.1}{LFE catalogs}{chapter.25}% 67
-\BOOKMARK [0][-]{chapter.26}{Method}{part.7}% 68
-\BOOKMARK [0][-]{chapter.27}{Results}{part.7}% 69
-\BOOKMARK [0][-]{chapter.28}{Discussion and things to do}{part.7}% 70
+\BOOKMARK [1][-]{section.8.1}{Description of the dataset}{chapter.8}% 31
+\BOOKMARK [1][-]{section.8.2}{Websites to access the data}{chapter.8}% 32
+\BOOKMARK [1][-]{section.8.3}{Work done}{chapter.8}% 33
+\BOOKMARK [1][-]{section.8.4}{Things to do}{chapter.8}% 34
+\BOOKMARK [0][-]{chapter.9}{Work done on Investigating slow slip using wavelets}{part.3}% 35
+\BOOKMARK [1][-]{section.9.1}{Discrete Wavelet Transform}{chapter.9}% 36
+\BOOKMARK [1][-]{section.9.2}{Maximum Overlap Discrete Wavelet Transform}{chapter.9}% 37
+\BOOKMARK [1][-]{section.9.3}{Discrete Wavelet Packet Transform}{chapter.9}% 38
+\BOOKMARK [2][-]{subsection.9.3.1}{DWPT and MODWPT}{section.9.3}% 39
+\BOOKMARK [2][-]{subsection.9.3.2}{Best basis algorithm}{section.9.3}% 40
+\BOOKMARK [2][-]{subsection.9.3.3}{Matching pursuit}{section.9.3}% 41
+\BOOKMARK [0][-]{chapter.10}{Work done on long-range dependence in low-frequency earthquake catalogs}{part.3}% 42
+\BOOKMARK [1][-]{section.10.1}{What is long-range dependence?}{chapter.10}% 43
+\BOOKMARK [1][-]{section.10.2}{Long-range dependence in low-frequency earthquake catalogs?}{chapter.10}% 44
+\BOOKMARK [0][-]{chapter.11}{Things to do}{part.3}% 45
+\BOOKMARK [-1][-]{part.4}{IV Depth of the tremor source}{}% 46
+\BOOKMARK [0][-]{chapter.12}{Introduction}{part.4}% 47
+\BOOKMARK [0][-]{chapter.13}{Data}{part.4}% 48
+\BOOKMARK [0][-]{chapter.14}{Method}{part.4}% 49
+\BOOKMARK [0][-]{chapter.15}{Results}{part.4}% 50
+\BOOKMARK [0][-]{chapter.16}{Discussion / Conclusion}{part.4}% 51
+\BOOKMARK [-1][-]{part.5}{V An extended catalog of low-frequency earthquakes}{}% 52
+\BOOKMARK [0][-]{chapter.17}{Introduction}{part.5}% 53
+\BOOKMARK [0][-]{chapter.18}{Data}{part.5}% 54
+\BOOKMARK [0][-]{chapter.19}{Method}{part.5}% 55
+\BOOKMARK [0][-]{chapter.20}{Results}{part.5}% 56
+\BOOKMARK [0][-]{chapter.21}{Discussion / Conclusion}{part.5}% 57
+\BOOKMARK [-1][-]{part.6}{VI Investigating slow slip using wavelets}{}% 58
+\BOOKMARK [0][-]{chapter.22}{Introduction}{part.6}% 59
+\BOOKMARK [1][-]{section.22.1}{New Zealand}{chapter.22}% 60
+\BOOKMARK [0][-]{chapter.23}{Data}{part.6}% 61
+\BOOKMARK [0][-]{chapter.24}{Method}{part.6}% 62
+\BOOKMARK [0][-]{chapter.25}{Results}{part.6}% 63
+\BOOKMARK [0][-]{chapter.26}{Discussion and things to do}{part.6}% 64
+\BOOKMARK [1][-]{section.26.1}{Broader impacts}{chapter.26}% 65
+\BOOKMARK [2][-]{subsection.26.1.1}{Better understanding of the seismic hazard}{section.26.1}% 66
+\BOOKMARK [2][-]{subsection.26.1.2}{Extension of the method to the study of other phenomena}{section.26.1}% 67
+\BOOKMARK [2][-]{subsection.26.1.3}{Data management}{section.26.1}% 68
+\BOOKMARK [-1][-]{part.7}{VII Long-range dependence in low-frequency earthquake catalogs}{}% 69
+\BOOKMARK [0][-]{chapter.27}{Data}{part.7}% 70
+\BOOKMARK [1][-]{section.27.1}{LFE catalogs}{chapter.27}% 71
+\BOOKMARK [0][-]{chapter.28}{Method}{part.7}% 72
+\BOOKMARK [0][-]{chapter.29}{Results}{part.7}% 73
+\BOOKMARK [0][-]{chapter.30}{Discussion / Conclusion}{part.7}% 74
