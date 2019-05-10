@@ -274,6 +274,6 @@ if __name__ == '__main__':
              'formats': ('S13', 'S3', np.float, np.float, np.float, \
         np.float, np.float, np.int)}, \
         skiprows=1)
-    for ie in range(15, len(LFEloc)):
+    for ie in range(54, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         get_waveform(filename, TDUR, filt, nattempts, waittime, method)
