@@ -12,14 +12,6 @@ set Jop = m-123.2/48.0/18.0
 
 gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -G255/255/224 -S224/255/255 -Lf-123/47.75/48/50 -Df -Na -Y5 -P -K >! $output
 
-cat << END >> mytext.dat
--123 47.78 km
-END
-
-gmt pstext mytext.dat -R$Rop -J$Jop -F+f15p -O -K >> $output
-
-rm mytext.dat
-
 # Locations of arrays
 cat << END >> arrays.dat
 -123.084354545455 48.0056818181818
@@ -44,12 +36,22 @@ cat << END >> names.dat
 -123.138492857143 47.9530357142857 Three Bumps
 END
 
+gmt psxy tremor_AoA.dat -R$Rop -J$Jop -Sc0.03 -Ggrey -O -K >> $output
+
 gmt xyz2grd plate_boundary.txt -Gplate_boundary.grd -I0.1 -R$Rop
 gmt grdcontour plate_boundary.grd -A2 -J$Jop -R$Rop -O -K >> $output
 
-gmt psxy tremor_AoA.dat -R$Rop -J$Jop -Sc0.03 -Gblue -O -K >> $output
+gmt pscoast -R$Rop -J$Jop -Ba0.25f0.125::WESN -W0.1p -Lf-123/47.75/48/50 -Df -Na -O -K >> $output
 
-gmt psxy arrays.dat -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
+cat << END >> mytext.dat
+-123 47.78 km
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f15p -O -K >> $output
+
+rm mytext.dat
+
+gmt psxy arrays.dat -R$Rop -J$Jop -St0.4 -Gred -O -K >> $output
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p -O -K >> $output
 

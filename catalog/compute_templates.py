@@ -23,7 +23,7 @@ from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
 def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
-        winlength, method='RMS'):
+        winlength, nattempts, waittime, method='RMS'):
     """
     This function computes the waveform for each template, cross correlate
     them with the stack, and keep only the best to get the final template
@@ -47,6 +47,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
                  or a selected time window?
         type winlength = float
         winlength = Length of the window to do the cross correlation
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
         type method = string
         method = Normalization method for linear stack (RMS or Max)
     Output:
@@ -104,7 +108,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
     # Read origin time and station slowness files
     origintime = pickle.load(open('timearrival/origintime.pkl', 'rb'))
     slowness = pickle.load(open('timearrival/slowness.pkl', 'rb'))
-    
+
+    # File to write error messages
+    errorfile = 'error/' + filename + '.txt'
+
     # Loop over stations
     for station in staNames:
         # Create streams
@@ -143,11 +150,11 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
                 D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, dt)
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
                 D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, dt)
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             else:
                 raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
@@ -368,6 +375,8 @@ if __name__ == '__main__':
     ncor = 400
     window = False
     winlength = 10.0
+    nattempts = 10
+    waittime = 10.0
     method = 'RMS'
 
     compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,

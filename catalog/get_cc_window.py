@@ -13,6 +13,7 @@ from obspy.core.stream import Stream
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import pandas as pd
 import pickle
 
 from fractions import Fraction
@@ -20,134 +21,10 @@ from math import cos, pi, sin, sqrt
 from sklearn import linear_model
 from sklearn.metrics import r2_score
 
+from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def get_from_IRIS(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from IRIS for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Create client
-    fdsn_client = fdsn.Client('IRIS')
-    # Download data
-    try:
-        if (station == 'B039'):
-            D = fdsn_client.get_waveforms(network='PB', station=station, \
-                location='--', channel='EH1,EH2,EHZ', starttime=Tstart, \
-                endtime=Tend, attach_response=True)
-        else:
-            D = fdsn_client.get_waveforms(network='XQ', station=station, \
-                location='01', channel='BHE,BHN,BHZ', starttime=Tstart, \
-                endtime=Tend, attach_response=True)
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
-
-def get_from_NCEDC(station, Tstart, Tend, filt, dt):
-    """
-    Function to get the waveform from NCEDC for a given station and LFE
-
-    Input:
-        type station = string
-        station = Name of the station
-        type Tstart = obspy UTCDateTime
-        Tstart = Time when to begin downloading
-        type Tend = obspy UTCDateTime
-        Tend = Time when to end downloading
-        type filt = tuple of floats
-        filt = Lower and upper frequencies of the filter
-        type dt = float
-        dt = Time step for resampling
-    Output:
-        type D = obspy Stream
-        D = Stream with data detrended, tapered, instrument response
-        deconvolved, filtered, and resampled
-    """
-    # Define network and channels
-    if (station == 'B039'):
-        network = 'PB'
-        channels = 'EH1,EH2,EHZ'
-    elif (station == 'WDC' or station == 'YBH'):
-        network = 'BK'
-        channels = 'BHE,BHN,BHZ'
-    else:
-        network = 'NC'
-        channels = 'HHE,HHN,HHZ'
-    # Write waveform request
-    file = open('waveform.request', 'w')
-    message = '{} {} -- {} '.format(network, station, channels) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d} '.format(Tstart.year, \
-        Tstart.month, Tstart.day, Tstart.hour, Tstart.minute, \
-        Tstart.second) + \
-        '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}\n'.format(Tend.year, \
-        Tend.month, Tend.day, Tend.hour, Tend.minute, Tend.second)
-    file.write(message)
-    file.close()
-    # Send waveform request
-    request = 'curl --data-binary @waveform.request -o station.miniseed ' + \
-         'http://service.ncedc.org/fdsnws/dataselect/1/query'
-    try:
-        os.system(request)
-        D = read('station.miniseed')
-    except:
-        message = 'Could not download data for station {} '.format(station) + \
-            'at time {}/{}/{} - {}:{}:{}'.format(Tstart.year, Tstart.month, \
-            Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
-        print(message)
-        return(0)
-    else:
-        # Detrend data
-        D.detrend(type='linear')
-        # Taper first and last 5 s of data
-        D.taper(type='hann', max_percentage=None, max_length=5.0)
-        # Remove instrument response
-        filename = '../data/response/' + network + '_' + station + '.xml'
-        inventory = read_inventory(filename, format='STATIONXML')
-        D.attach_response(inventory)
-        D.remove_response(output='VEL', \
-            pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
-        D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
-            zerophase=True)
-        freq = D[0].stats.sampling_rate
-        ratio = Fraction(int(freq), int(1.0 / dt))
-        D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
-        D.decimate(ratio.numerator, no_filter=True)
-        return(D)
-
-def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
+def get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method='RMS', envelope=True):
     """
     This function finds the time arrival of each template waveform
     for each station
@@ -161,6 +38,10 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
         filt = Lower and upper frequencies of the filter
         type dt = float
         dt = Time step for resampling
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
         type method = string
         method = Normalization method for linear stack (RMS or Max)
         type envelope = boolean
@@ -182,6 +63,15 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
              'formats': (np.float, '|S6', np.int, np.float, np.float)}, \
         skiprows=2)
 
+    # Get the network, channels, and location of the stations
+    staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
+        sep=r'\s{1,}', header=None)
+    staloc.columns = ['station', 'network', 'channels', 'location', \
+        'server', 'latitude', 'longitude']
+
+    # File to write error messages
+    errorfile = 'error/' + filename + '.txt'
+
     # Initialize lists
     maxEW = []
     maxNS = []
@@ -197,6 +87,13 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
         EW = Stream()
         NS = Stream()
         UD = Stream()
+        # Get station metadata for downloading
+        for ir in range(0, len(staloc)):
+            if (station == staloc['station'][ir]):
+                network = staloc['network'][ir]
+                channels = staloc['channels'][ir]
+                location = staloc['location'][ir]
+                server = staloc['server'][ir]
         # Loop on LFEs
         for i in range(0, np.shape(LFEtime)[0]):
             YMD = LFEtime[i][1]
@@ -215,10 +112,12 @@ def get_cc_window(filename, TDUR, filt, dt, method='RMS', envelope=True):
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
             if (station[0 : 2] == 'ME' or station == 'B039'):
-                D = get_from_IRIS(station, Tstart, Tend, filt, dt)
+                D = get_from_IRIS(station, network, channels, location, \
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             # Second case: we get the data from NCEDC
             else:
-                D = get_from_NCEDC(station, Tstart, Tend, filt, dt)
+                D = get_from_NCEDC(station, network, channels, location, \
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
                 if (station == 'B039'):
@@ -475,18 +374,20 @@ if __name__ == '__main__':
     TDUR = 10.0
     filt = (1.5, 9.0)
     dt = 0.05
+    nattempts = 10
+    waittime = 10.0
     method = 'RMS'
     envelope = True
 
-#    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
-#        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
-#        'eZ', 'nb'), \
-#             'formats': ('S13', 'S3', np.float, np.float, np.float, \
-#        np.float, np.float, np.int)}, \
-#        skiprows=1)
-#    for ie in range(0, len(LFEloc)):
-#        filename = LFEloc[ie][0].decode('utf-8')
-#        get_cc_window(filename, TDUR, filt, dt, method, envelope)
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
+    for ie in range(65, len(LFEloc)):
+        filename = LFEloc[ie][0].decode('utf-8')
+        get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method, envelope)
 
 #    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
@@ -503,7 +404,7 @@ if __name__ == '__main__':
 #    output = 'timearrival/origintime.pkl'
 #    pickle.dump(origintime, open(output, 'wb'))
 
-    slowness = get_time_station()
-    # Save slownesses into file
-    output = 'timearrival/slowness.pkl'
-    pickle.dump(slowness, open(output, 'wb'))
+#    slowness = get_time_station()
+#    # Save slownesses into file
+#    output = 'timearrival/slowness.pkl'
+#    pickle.dump(slowness, open(output, 'wb'))

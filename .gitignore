@@ -1,5 +1,7 @@
 .DS_Store
 catalog/data/*
+catalog/error/*
+catalog/error_get_waveform/*
 catalog/new_templates
 catalog/LFEs/*
 catalog/templates/*
@@ -7,6 +9,7 @@ catalog/timearrival/*
 catalog/waveforms/*
 data/Chestler_2017/__pycache__/*
 data/Chestler_2017/BS/*
+data/Chestler_2017/catalogs/*
 data/Chestler_2017/LFEdistribution/*
 data/Chestler_2017/Templates/*
 data/Chestler_2017/timeseries/*
