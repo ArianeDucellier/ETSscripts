@@ -18,10 +18,9 @@ df1 = df1.astype({'year': int, 'month': int, 'day': int, \
     'hour': int, 'minute': int, 'second': float, \
     'cc': float, 'nchannel': int})
 df1['second'] = df1['second'].round(3)
-#df1 = df1.iloc[1036:]
 
 # Write our catalog to file
-tfile = open('catalog1.txt', 'w')
+tfile = open('LFEs/' + filename + '/catalog1.txt', 'w')
 tfile.write(df1.to_string())
 tfile.close()
 
@@ -55,7 +54,7 @@ df2 = df2.astype({'year': int, 'month': int, 'day': int, \
 df2['second'] = df2['second'].round(3)
 
 # Write Plourde's catalog to file
-tfile = open('catalog2.txt', 'w')
+tfile = open('LFEs/' + filename + '/catalog2.txt', 'w')
 tfile.write(df2.to_string())
 tfile.close()
 
@@ -150,19 +149,19 @@ params = {'xtick.labelsize':16,
 pylab.rcParams.update(params) 
 ax1 = plt.subplot(121)
 plt.hist(df_added['cc'], \
-    bins=[0.0, 0.0025, 0.0050, 0.0075, 0.0100, 0.0125, 0.0150, 0.0175, \
-    0.0200, 0.0225, 0.0250, 0.0275, 0.0300, 0.0325, 0.0350, 0.0375, 0.04])
+    bins=[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, \
+    0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22])
 plt.xlabel('Cross-correlation value', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('LFEs added in our catalog', fontsize=30)
 ax2 = plt.subplot(122)
 plt.hist(df_both2['cc'], \
-    bins=[0.0, 0.0025, 0.0050, 0.0075, 0.0100, 0.0125, 0.0150, 0.0175, \
-    0.0200, 0.0225, 0.0250, 0.0275, 0.0300, 0.0325, 0.0350, 0.0375, 0.04])
+    bins=[0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, \
+    0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22])
 plt.xlabel('Cross-correlation value', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('LFEs present in both catalogs', fontsize=30)
-plt.savefig('hist.eps', format='eps')
+plt.savefig('LFEs/' + filename + '/hist.eps', format='eps')
 ax1.clear()
 ax2.clear()
 plt.close(1)
@@ -195,5 +194,5 @@ plt.hist(timediff, bins=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
 plt.xlabel('Time to closest LFE', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('LFEs missing in our catalog', fontsize=30)
-plt.savefig('timelag.eps', format='eps')
+plt.savefig('LFEs/' + filename + '/timelag.eps', format='eps')
 plt.close(2)

@@ -74,8 +74,9 @@ def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         depthPB = Depth of the plate boundary at x0, y0 (in km)
     """
     # Read file containing data from stack_ccorr_tremor
-    filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-        int(y0), type_stack)
+    filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     Year = data[0]
     Month = data[1]
@@ -286,7 +287,8 @@ def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_loc.eps'.format(arrayName, int(x0), \
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_loc.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
         int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
@@ -382,8 +384,9 @@ def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_depth.eps'.format(arrayName, \
-        int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_depth.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()

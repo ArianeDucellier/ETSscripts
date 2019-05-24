@@ -1,5 +1,5 @@
 """
-Functions to correlate template with data
+Functions to cross correlate template with data
 """
 
 import numpy as np
@@ -9,6 +9,16 @@ from math import pi, sqrt
 
 def simple(template, data):
     """
+    Simple version but heavy computing time
+
+    Input:
+        type template = 1D Numpy array
+        template = Waveform template
+        type data = 1D Numpy array
+        data = Time series (much) longer than the template
+    Output:
+        type cc = 1D Numpy array
+        cc = Cross correlation value for all possible time lags
     """
     # Initialization
     M = len(template)
@@ -29,6 +39,16 @@ def simple(template, data):
 
 def optimized(template, data):
     """
+    Faster version with optimized computing time
+
+    Input:
+        type template = 1D Numpy array
+        template = Waveform template
+        type data = 1D Numpy array
+        data = Time series (much) longer than the template
+    Output:
+        type cc = 1D Numpy array
+        cc = Cross correlation value for all possible time lags
     """
     # Initialization
     M = len(template)
@@ -56,8 +76,8 @@ if __name__ == '__main__':
     # Check if we get the same result
     cc1 = simple(template, data)
     cc2 = optimized(template, data)
-    diff = np.abs(cc1 - cc2)
-    print('Difference = {}'.format(np.sum(diff)))
+    diff = np.sum(np.abs(cc1 - cc2))
+    print('Difference = {}'.format(diff))
 
     # Number of computations
     NC = 100

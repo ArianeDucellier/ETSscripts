@@ -204,9 +204,10 @@ def get_timeLFE(filename):
             ys = dy * (lats - lat0)
 
     # Get the locations of the stations
-    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
-        dtype={'names': ('name', 'lat', 'lon'), \
-             'formats': ('|S5', np.float, np.float)})
+    staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
+        sep=r'\s{1,}', header=None)
+    staloc.columns = ['station', 'network', 'channels', 'location', \
+        'server', 'latitude', 'longitude']
 
     # Open time arrival files
     data = pickle.load(open('timearrival/' + filename +'.pkl', 'rb'))
@@ -222,9 +223,9 @@ def get_timeLFE(filename):
     distance = []
     for i in range(0, len(stations)):
         for ir in range(0, len(staloc)):
-            if (stations[i] == staloc[ir][0].decode('utf-8')):
-                latr = staloc[ir][1]
-                lonr = staloc[ir][2]
+            if (stations[i] == staloc['station'][ir]):
+                latr = staloc['latitude'][ir]
+                lonr = staloc['longitude'][ir]
                 xr = dx * (lonr - lon0)
                 yr = dy * (latr - lat0)
                 distance.append(sqrt((xr - xs) ** 2.0 + (yr - ys) ** 2.0))
@@ -294,9 +295,10 @@ def get_time_station():
     ys = dy * (lats - lat0)
 
     # Get the locations of the stations
-    staloc = np.loadtxt('../data/Plourde_2015/station_locations.txt', \
-        dtype={'names': ('name', 'lat', 'lon'), \
-             'formats': ('|S5', np.float, np.float)})
+    staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
+        sep=r'\s{1,}', header=None)
+    staloc.columns = ['station', 'network', 'channels', 'location', \
+        'server', 'latitude', 'longitude']
 
     # Get the origin time for each of the templates
     origintime = pickle.load(open('timearrival/origintime.pkl', 'rb'))
@@ -326,9 +328,9 @@ def get_time_station():
             timeUD = data[6]
             # If the station was used for this template
             for i in range(0, len(stations)):
-                if (stations[i] == staloc[ir][0].decode('utf-8')):
-                    latr = staloc[ir][1]
-                    lonr = staloc[ir][2]
+                if (stations[i] == staloc['station'][ir]):
+                    latr = staloc['latitude'][ir]
+                    lonr = staloc['longitude'][ir]
                     xr = dx * (lonr - lon0)
                     yr = dy * (latr - lat0)
                     distance.append(sqrt((xr - xs[ie]) ** 2.0 + \
@@ -354,18 +356,18 @@ def get_time_station():
             y_pred = regr.predict(x)
             R2 = r2_score(y, y_pred)
             s = regr.coef_[0][0]
-                # Plot
+            # Plot
             plt.figure(1, figsize=(10, 10))
             plt.plot(x, y, 'ko')
             plt.plot(x, y_pred, 'r-')
             plt.xlabel('Distance (km)', fontsize=24)
             plt.ylabel('Travel time (s)', fontsize=24)
             plt.title('{} - R2 = {:4.2f} - slowness = {:4.3f} s/km'.format( \
-                staloc[ir][0].decode('utf-8'), R2, s), fontsize=24)
-            plt.savefig('timearrival/' + staloc[ir][0].decode('utf-8') + \
+                staloc['station'][ir], R2, s), fontsize=24)
+            plt.savefig('timearrival/' + staloc['station'][ir] + \
                 '.eps', format='eps')
             plt.close(1)
-            slowness[staloc[ir][0].decode('utf-8')] = s
+            slowness[staloc['station'][ir]] = s
     return slowness
     
 if __name__ == '__main__':
@@ -379,15 +381,15 @@ if __name__ == '__main__':
     method = 'RMS'
     envelope = True
 
-    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
-        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
-        'eZ', 'nb'), \
-             'formats': ('S13', 'S3', np.float, np.float, np.float, \
-        np.float, np.float, np.int)}, \
-        skiprows=1)
-    for ie in range(65, len(LFEloc)):
-        filename = LFEloc[ie][0].decode('utf-8')
-        get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method, envelope)
+#    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+#        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+#        'eZ', 'nb'), \
+#             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+#        np.float, np.float, np.int)}, \
+#        skiprows=1)
+#    for ie in range(0, len(LFEloc)):
+#        filename = LFEloc[ie][0].decode('utf-8')
+#        get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method, envelope)
 
 #    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
@@ -404,7 +406,7 @@ if __name__ == '__main__':
 #    output = 'timearrival/origintime.pkl'
 #    pickle.dump(origintime, open(output, 'wb'))
 
-#    slowness = get_time_station()
-#    # Save slownesses into file
-#    output = 'timearrival/slowness.pkl'
-#    pickle.dump(slowness, open(output, 'wb'))
+    slowness = get_time_station()
+    # Save slownesses into file
+    output = 'timearrival/slowness.pkl'
+    pickle.dump(slowness, open(output, 'wb'))

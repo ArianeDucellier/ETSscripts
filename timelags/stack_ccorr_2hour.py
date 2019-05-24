@@ -327,18 +327,18 @@ if __name__ == '__main__':
     scal = 0.5
 
     # Linear stack
-#    type_stack = 'lin'
-#    offset = 0.1
-#    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
-#        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
-#        type_stack, offset, w, ncor, Tmax, scal, client)
+    type_stack = 'lin'
+    offset = 0.1
+    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
+        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
+        type_stack, offset, w, ncor, Tmax, scal, client)
         
     # Power stack
-#    type_stack = 'pow'
-#    offset = 0.5
-#    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
-#        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
-#        type_stack, offset, w, ncor, Tmax, scal, client)
+    type_stack = 'pow'
+    offset = 0.5
+    stack_ccorr_2hour(arrayName, staNames, staCodes, chaNames, chans, \
+        network, myYear, myMonth, dStarts, hStarts, TDUR, tdur, filt, \
+        type_stack, offset, w, ncor, Tmax, scal, client)
 
     # Phase-weighted stack
     type_stack = 'PWS'

@@ -45,7 +45,8 @@ def plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     """
     # Read file containing data from stack_acorr_tremor
     filename = 'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW = data[6]
     NS = data[7]
@@ -116,8 +117,8 @@ def plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
     plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack), \
-        format='eps')
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -135,22 +136,22 @@ if __name__ == '__main__':
     n2 = 188
 
     # Linear stack
-#    type_stack = 'lin'
-#    amp = 10.0
-#    amp_lin = 100.0
-#    amp_pow = 2.0
-#    amp_PWS = 200.0
-#    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-#    amp_pow, amp_PWS, n1, n2)
+    type_stack = 'lin'
+    amp = 10.0
+    amp_lin = 100.0
+    amp_pow = 2.0
+    amp_PWS = 200.0
+    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+    amp_pow, amp_PWS, n1, n2)
 
     # Power stack
-#    type_stack = 'pow'
-#    amp = 2.0
-#    amp_lin = 15.0
-#    amp_pow = 1.0
-#    amp_PWS = 100.0
-#    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-#    amp_pow, amp_PWS, n1, n2)
+    type_stack = 'pow'
+    amp = 2.0
+    amp_lin = 15.0
+    amp_pow = 1.0
+    amp_PWS = 100.0
+    plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+    amp_pow, amp_PWS, n1, n2)
 
     # Phase-weighted stack
     type_stack = 'PWS'

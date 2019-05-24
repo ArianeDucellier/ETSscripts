@@ -22,7 +22,7 @@ from math import cos, pi, sin, sqrt
 from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
+def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
         winlength, nattempts, waittime, method='RMS'):
     """
     This function computes the waveform for each template, cross correlate
@@ -367,17 +367,24 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080421.14.048'
     TDUR = 10.0
     filt = (1.5, 9.0)
     ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
     ncor = 400
-    window = False
+    window = True
     winlength = 10.0
     nattempts = 10
     waittime = 10.0
     method = 'RMS'
 
-    compute_templates(filename, TDUR, filt, ratios, dt, ncor, window,
-        winlength, method)
+    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
+        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \
+        'eZ', 'nb'), \
+             'formats': ('S13', 'S3', np.float, np.float, np.float, \
+        np.float, np.float, np.int)}, \
+        skiprows=1)
+    for ie in range(34, len(LFEloc)):
+        filename = LFEloc[ie][0].decode('utf-8')
+        compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
+            winlength, nattempts, waittime, method)

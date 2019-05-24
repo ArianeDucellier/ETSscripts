@@ -72,8 +72,9 @@ def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     assert (len(Et) == len(Nt)), \
         'Et and Nt must have the same length'
     # Read file containing data from stack_ccorr_tremor
-    filename = 'cc/{}_{:03d}_{:03d}_{}.pkl'.format(arrayName, int(x0), \
-        int(y0), type_stack)
+    filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW_UD = data[6]
     NS_UD = data[7]

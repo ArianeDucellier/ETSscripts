@@ -45,7 +45,8 @@ def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW_UD = data[6]
     NS_UD = data[7]
@@ -95,8 +96,8 @@ def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
     plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack), \
-        format='eps')
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack), format='eps')
     ax1.clear()
     ax2.clear()
     plt.close(1)
