@@ -22,7 +22,8 @@ Vp = 6.4
 df = pickle.load(open('../' + arrayName + '_timelag.pkl', 'rb'))
 
 # Get depth of plate boundary around the array
-depth_pb = pd.read_csv('../depth/' + arrayName + '_depth.txt', sep=' ', header=None)
+depth_pb = pd.read_csv('../depth/' + arrayName + '_depth.txt', sep=' ', \
+    header=None)
 depth_pb.columns = ['x', 'y', 'depth']
 
 # Earth's radius and ellipticity
@@ -54,7 +55,8 @@ for n in range(0, len(df)):
         time = df['t_' + stackStation + '_' + stackTremor + '_NS_cluster'][n]
         cc[n] = ccNS
         ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_NS'][n]
-    distance = (time / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 - df['y0'][n] ** 2.0
+    distance = (time / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+        - df['y0'][n] ** 2.0
     if (distance >= 0.0):
         depth[n] = sqrt(distance)
     else:

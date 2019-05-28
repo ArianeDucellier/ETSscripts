@@ -84,6 +84,8 @@ longrange/varianceresiduals_Sweet/*
 longrange/*.eps
 longrange/*.pkl
 notebooks/.ipynb_checkpoints
+notebooks/timelags/data/*
+notebooks/timelags/results/*
 raytracing/.ipynb_checkpoints
 raytracing/__pycache__/*
 report/Figures/longrange/*.pdf

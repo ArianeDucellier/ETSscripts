@@ -384,7 +384,7 @@ if __name__ == '__main__':
              'formats': ('S13', 'S3', np.float, np.float, np.float, \
         np.float, np.float, np.int)}, \
         skiprows=1)
-    for ie in range(34, len(LFEloc)):
+    for ie in range(65, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
             winlength, nattempts, waittime, method)

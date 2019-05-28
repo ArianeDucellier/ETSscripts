@@ -1,0 +1,591 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 MAY 2019 16:47
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**agujournaltemplate.tex
+(./agujournaltemplate.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(./agujournal2019.cls
+Document Class: agujournal2019 01/14/2019
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 96.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count79
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (./trackchanges.sty
+Package: trackchanges 2009/04/22 v0.7.0 TrackChanges file 
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count80
+\calc@Bcount=\count81
+\calc@Adimen=\dimen104
+\calc@Bdimen=\dimen105
+\calc@Askip=\skip41
+\calc@Bskip=\skip42
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count82
+\calc@Cskip=\skip43
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks15
+\SOUL@lasttoken=\toks16
+\SOUL@cmds=\toks17
+\SOUL@buffer=\toks18
+\SOUL@token=\toks19
+\SOUL@spaceskip=\skip44
+\SOUL@ttwidth=\dimen106
+\SOUL@uldp=\dimen107
+\SOUL@ulht=\dimen108
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/morefloats/morefloats.sty
+Package: morefloats 2015/07/22 v1.0h Raise limit of unprocessed floats (HMM)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package morefloats Info: Maximum number of possible floats asked for: 36
+(morefloats)             (i.e. 18 more floats).
+(morefloats)             LaTeX might run out of memory before this
+(morefloats)             (in which case it will notify you).
+)
+\c@userid=\count83
+\c@changenumber=\count84
+\c@storefootnote=\count85
+\c@numeditors=\count86
+\c@maxeditors=\count87
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count88
+\output=\toks20
+\linenoprevgraf=\count89
+\linenumbersep=\dimen109
+\linenumberwidth=\dimen110
+\c@linenumber=\count90
+\c@pagewiselinenumber=\count91
+\c@LN@truepage=\count92
+\c@internallinenumber=\count93
+\c@internallinenumbers=\count94
+\quotelinenumbersep=\dimen111
+\bframerule=\dimen112
+\bframesep=\dimen113
+\bframebox=\box26
+LaTeX Info: Redefining \\ on input line 3056.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip45
+\RaggedLeftLeftskip=\skip46
+\RaggedRightLeftskip=\skip47
+\CenteringRightskip=\skip48
+\RaggedLeftRightskip=\skip49
+\RaggedRightRightskip=\skip50
+\CenteringParfillskip=\skip51
+\RaggedLeftParfillskip=\skip52
+\RaggedRightParfillskip=\skip53
+\JustifyingParfillskip=\skip54
+\CenteringParindent=\skip55
+\RaggedLeftParindent=\skip56
+\RaggedRightParindent=\skip57
+\JustifyingParindent=\skip58
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+\c@r@tfl@t=\count95
+\rotFPtop=\skip59
+\rotFPbot=\skip60
+\rot@float@box=\box27
+\rot@mess@toks=\toks21
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box28
+\UL@hyphenbox=\box29
+\UL@skip=\skip61
+\UL@hook=\toks22
+\UL@height=\dimen114
+\UL@pe=\count96
+\UL@pixel=\dimen115
+\ULC@box=\box30
+Package: ulem 2012/05/18
+\ULdepth=\dimen116
+)
+\draftskip=\count97
+\c@section=\count98
+\c@subsection=\count99
+\c@subsubsection=\count100
+\c@paragraph=\count101
+\c@subparagraph=\count102
+\c@figure=\count103
+\c@table=\count104
+\abovecaptionskip=\skip62
+\belowcaptionskip=\skip63
+\c@appendnum=\count105
+\bibindent=\dimen117
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/apacite/apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count106
+\bibleftmargin=\skip64
+\bibindent=\skip65
+\bibparsep=\skip66
+\bibitemsep=\skip67
+\biblabelsep=\skip68
+))
+(./agujournaltemplate.aux)
+\openout1 = `agujournaltemplate.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count107
+\scratchdimen=\dimen118
+\scratchbox=\box31
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen119
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks24
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+
+Package trackchanges Warning: TrackChanges is not compatable with the 
+(trackchanges)                'ulem' package.
+(trackchanges)                Use the 'soul' package instead.
+
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 69.
+\c@maskedRefs=\count113
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/apacite/english.apc
+File: english.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 129.
+LaTeX Info: Redefining \BHBI on input line 130.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 104.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 104.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 112.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 112.
+ [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 195.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 195.
+
+
+Overfull \hbox (6.90454pt too wide) in paragraph at lines 200--201
+[]\OT1/cmr/m/n/10 Specific ques-tion - Depth of the low-frequency earth-quake o
+n the plate bound-ary. 
+ []
+
+
+Overfull \hbox (10.71005pt too wide) in paragraph at lines 202--204
+[][]\OT1/cmr/m/n/10 La Rocca et al.[] (2009)) stacked seis-mo-grams over all st
+a-tions of the ar-ray for each 
+ []
+
+
+Overfull \hbox (11.93236pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 com-po-nent, and for three ar-rays in Cas-ca-dia. They then com
+-puted the cross-correlation 
+ []
+
+
+Overfull \hbox (9.26572pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 be-tween the hor-i-zon-tal and the ver-ti-cal com-po-nent, and 
+found a dis-tinct and per-sis-tent 
+ []
+
+
+Overfull \hbox (4.34895pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 peak at a pos-i-tive lag time, cor-re-spond-ing to the time be-
+tween P-wave and S-wave ar- 
+ []
+
+
+Overfull \hbox (2.48795pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 rivals. Us-ing a stan-dard lay-ered Earth model, and hor-i-zon-
+tal slow-ness es-ti-mated from 
+ []
+
+
+Overfull \hbox (20.12679pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 ar-ray anal-y-sis, they com-puted the depths of the tremor sour
+ces. They lo-cated the sources 
+ []
+
+
+Overfull \hbox (9.57123pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 near or at the plate in-ter-face, with a much bet-ter depth res
+-o-lu-tion than pre-vi-ous meth- 
+ []
+
+
+Overfull \hbox (7.18233pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 ods based on seis-mic sig-nal en-velopes, source scan-ning al-g
+o-rithm, or small-aperture ar- 
+ []
+
+
+Overfull \hbox (14.9601pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 rays. They con-cluded that at least some of the tremor con-sist
+ed in the rep-e-ti-tion of low- 
+ []
+
+
+Overfull \hbox (20.4601pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 frequency events as was the case in Shikoku. A draw-back of the
+ method was that it could 
+ []
+
+
+Overfull \hbox (12.23802pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 be ap-plied only to tremor lo-cated be-neath an ar-ray, and com
+-ing from only one place for 
+ []
+
+
+Overfull \hbox (4.26572pt too wide) in paragraph at lines 202--204
+\OT1/cmr/m/n/10 an ex-tended pe-riod of time. Part of the spe-cific ques-tion -
+ Just on the plate bound-ary 
+ []
+
+
+Overfull \hbox (18.01564pt too wide) in paragraph at lines 205--206
+[]\OT1/cmr/m/n/10 If the source is on the plate bound-ary, you should have a co
+n-stant time lag be-tween 
+ []
+
+
+Overfull \hbox (19.7656pt too wide) in paragraph at lines 205--206
+\OT1/cmr/m/n/10 P-wave and S-wave ar-rivals, and a peak in the cross cor-re-la-
+tion be-tween the ver-ti-cal com- 
+ []
+
+
+Overfull \hbox (25.73787pt too wide) in paragraph at lines 211--212
+[]\OT1/cmr/m/n/10 The data were col-lected dur-ing the Ar-ray of Ar-rays ex-per
+-i-ment. Eight small-aperture 
+ []
+
+
+Overfull \hbox (0.43237pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 ar-rays were in-stalled in the north-east-ern part of the Olymp
+ic Penin-sula, Wash-ing-ton. 
+ []
+
+
+Overfull \hbox (11.37677pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 The aper-ture of the ar-rays was about 1 km, and sta-tion spac-
+ing was a few hun-dred me- 
+ []
+
+
+Overfull \hbox (9.57121pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 ters. The ar-rays were around 5 to 10 km apart from each other 
+(Fig-ure 1). Most of the 
+ []
+
+
+Overfull \hbox (6.12677pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 ar-rays were in-stalled for more than a year, be-tween June 200
+9 to Septem-ber 2010, and 
+ []
+
+
+Overfull \hbox (26.21004pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 were able to record the main Au-gust 2010 ETS event. Some of th
+e ar-rays were also record- 
+ []
+
+
+Overfull \hbox (36.66858pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 ing dur-ing the Au-gust 2011 ETS event. []Ghosh et al.[] (2012)
+ used a multibeam-backprojection 
+ []
+
+
+Overfull \hbox (14.18236pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 (MBBP) tech-nique to de-tect and lo-cate tremor. They band-pass
+ fil-tered the seis-mic data 
+ []
+
+
+Overfull \hbox (0.46014pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 be-tween 5 and 9 Hz. They di-vided the data into one-minute-lon
+g slid-ing in-de-pen-dent 
+ []
+
+
+Overfull \hbox (6.15466pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 (no over-lap) time win-dows. They per-formed beam form-ing in t
+he fre-quency do-main at 
+ []
+
+
+Overfull \hbox (2.6544pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 each ar-ray to de-ter-mine the slow-ness vec-tors, and back-pro
+-jected the slow-nesses in the 
+ []
+
+
+Overfull \hbox (1.93219pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 3-D space to lo-cate the source of the tremor for each time win
+-dow. We thus have two 
+ []
+
+
+Overfull \hbox (2.43234pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 cat-a-logs of tremors. The first one is a cat-a-log of 28902 on
+e-minute-long time win-dows 
+ []
+
+
+Overfull \hbox (2.099pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 dur-ing which tremor was de-tected be-tween June 20th 2009 and 
+Septem-ber 30th 2010. 
+ []
+
+
+Overfull \hbox (10.57123pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 For each time win-dow, we have the be-gin-ning time, the end ti
+me, and the lo-ca-tion (lat- 
+ []
+
+
+Overfull \hbox (20.93236pt too wide) in paragraph at lines 211--212
+\OT1/cmr/m/n/10 i-tude and lon-gi-tude) of the source of the tremor. The sec-on
+d one is a cat-a-log of 5600 one- 
+ []
+
+Package epstopdf Info: Source file: <figures/arrays_location.eps>
+(epstopdf)                    date: 2019-05-14 10:29:15
+(epstopdf)                    size: 1074276 bytes
+(epstopdf)             Output file: <figures/arrays_location-eps-converted-to.p
+df>
+(epstopdf)                    date: 2019-05-28 16:27:56
+(epstopdf)                    size: 1654891 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/arrays_location-ep
+s-converted-to.pdf figures/arrays_location.eps>
+(epstopdf)             \includegraphics on input line 214.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/arrays_location-eps-converted-to.pdf, id=17, 597.23125pt x 845.1575pt>
+File: figures/arrays_location-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/arrays_location-eps-converted-to.pdf>
+Package pdftex.def Info: figures/arrays_location-eps-converted-to.pdf used on i
+nput line 214.
+(pdftex.def)             Requested size: 397.48499pt x 335.25694pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+[]\OT1/cmr/bx/n/9 Figure  1. \OT1/cmr/m/n/9 Map show-ing the lo-ca-tion of the 
+eight ar-rays (red dots) used in this study. Blue
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+\OT1/cmr/m/n/9 dots are the lo-ca-tions of the source of the tremor recorded by
+ the ar-rays. In-set shows the study
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+\OT1/cmr/m/n/9 area with the box mark-ing the area cov-ered in the main map. Co
+n-tour lines rep-re-sent a model of
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+[3 <./figures/arrays_location-eps-converted-to.pdf>]
+Overfull \hbox (24.21025pt too wide) in paragraph at lines 437--439
+\OT1/cmr/m/n/10 Abhijit Ghosh for cat-a-log. NSF grant num-ber. IGERT Big Data 
+if com-pu-ta-tions ob AWS.  
+ []
+
+(./agujournaltemplate.bbl
+Underfull \hbox (badness 4096) in paragraph at lines 16--30
+\OT1/cmr/m/n/10 con-trol evo-lu-tion of slow earth-quakes.  \OT1/cmr/m/it/10 Jo
+ur-nal of Geo-phys-i-cal Re-search\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 117\OT1/cm
+r/m/n/10 , 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--60
+[]\OT1/cmr/m/n/10 La Rocca, M., Crea-ger, K., Gal-luzzo, D., Mal-one, S., Vi-da
+le, J., Sweet, J., & Wech, 
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 75--91
+[]\OT1/cmr/m/n/10 McCrory, P., Blair, J., Op-pen-heimer, D., & Wal-ter, S.  (20
+06).  \OT1/cmr/m/it/10 Depth to the Juan 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--91
+\OT1/cmr/m/it/10 de Fuca slab be-neath the Cas-ca-dia sub-duc-tion mar-gin - a 
+3-D model sort-ing 
+ []
+
+) [4] (./agujournaltemplate.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.45pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3387 strings out of 493014
+ 46589 string characters out of 6133351
+ 119591 words of memory out of 5000000
+ 6867 multiletter control sequences out of 15000+600000
+ 9168 words of font info for 33 fonts, out of 8000000 for 9000
+ 1147 hyphenation exceptions out of 8191
+ 50i,8n,37p,1472b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on agujournaltemplate.pdf (4 pages, 1806923 bytes).
+PDF statistics:
+ 78 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 12 words of extra memory for PDF output out of 10000 (max. 10000000)
+

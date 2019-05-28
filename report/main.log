@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 MAY 2019 14:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 MAY 2019 14:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -815,52 +815,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
 [29
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
-
- []
-
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
-[32] [33]) (./work_catalog.tex [34]
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+[33]) (./work_catalog.tex [34]
 Chapter 8.
 
 Underfull \hbox (badness 10000) in paragraph at lines 9--10
@@ -937,7 +937,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=792, 401.5pt x 351.3125pt>
+<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=802, 401.5pt x 351.3125pt>
 File: Figures/longrange/Frank_et_al_2016_Fig2D.png Graphic file (type png)
 
 <use Figures/longrange/Frank_et_al_2016_Fig2D.png>
@@ -961,7 +961,7 @@ value-eps-converted-to.pdf Figures/longrange/absolutevalue.eps>
 (epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=795, 722.7pt x 722.7p
+<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=805, 722.7pt x 722.7p
 t>
 File: Figures/longrange/absolutevalue-eps-converted-to.pdf Graphic file (type p
 df)
@@ -982,7 +982,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/variance-eps-converted-to.pdf, id=806, 722.7pt x 722.7pt>
+<Figures/longrange/variance-eps-converted-to.pdf, id=816, 722.7pt x 722.7pt>
 File: Figures/longrange/variance-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/variance-eps-converted-to.pdf>
@@ -1003,7 +1003,7 @@ residuals-eps-converted-to.pdf Figures/longrange/varianceresiduals.eps>
 (epstopdf)             \includegraphics on input line 84.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=902, 722.7pt x 72
+<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=913, 722.7pt x 72
 2.7pt>
 File: Figures/longrange/varianceresiduals-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1023,7 +1023,7 @@ onverted-to.pdf Figures/longrange/RS.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/RS-eps-converted-to.pdf, id=904, 722.7pt x 722.7pt>
+<Figures/longrange/RS-eps-converted-to.pdf, id=915, 722.7pt x 722.7pt>
 File: Figures/longrange/RS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/RS-eps-converted-to.pdf>
@@ -1043,7 +1043,7 @@ ram-eps-converted-to.pdf Figures/longrange/periodogram.eps>
 (epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/periodogram-eps-converted-to.pdf, id=958, 722.7pt x 722.7pt>
+<Figures/longrange/periodogram-eps-converted-to.pdf, id=968, 722.7pt x 722.7pt>
 File: Figures/longrange/periodogram-eps-converted-to.pdf Graphic file (type pdf
 )
 <use Figures/longrange/periodogram-eps-converted-to.pdf>
@@ -1082,16 +1082,16 @@ rted-to.pdf>
 (epstopdf)                    size: 1629616 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figures/timelags/arrays_lo
 cation-eps-converted-to.pdf Figures/timelags/arrays_location.eps>
-(epstopdf)             \includegraphics on input line 24.
+(epstopdf)             \includegraphics on input line 26.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/timelags/arrays_location-eps-converted-to.pdf, id=1067, 597.23125pt x 
+<Figures/timelags/arrays_location-eps-converted-to.pdf, id=1077, 597.23125pt x 
 845.1575pt>
 File: Figures/timelags/arrays_location-eps-converted-to.pdf Graphic file (type 
 pdf)
  <use Figures/timelags/arrays_location-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/timelags/arrays_location-eps-converted-to.pdf 
-used on input line 24.
+used on input line 26.
 (pdftex.def)             Requested size: 540.60236pt x 455.99187pt.
 
 [49
@@ -1233,7 +1233,7 @@ igure_1-eps-converted-to.pdf Figures/slowslip_results/Figure_1.eps>
 (epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1192, 1084.05pt x 1
+<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1201, 1084.05pt x 1
 734.48pt>
 File: Figures/slowslip_results/Figure_1-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1256,7 +1256,7 @@ igure_2-eps-converted-to.pdf Figures/slowslip_results/Figure_2.eps>
 (epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1200, 1084.05pt x 8
+<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1209, 1084.05pt x 8
 67.24pt>
 File: Figures/slowslip_results/Figure_2-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1286,7 +1286,7 @@ igure_3-eps-converted-to.pdf Figures/slowslip_results/Figure_3.eps>
 (epstopdf)             \includegraphics on input line 270.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1240, 1084.05pt x 1
+<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1249, 1084.05pt x 1
 734.48pt>
 File: Figures/slowslip_results/Figure_3-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1307,7 +1307,7 @@ igure_4-eps-converted-to.pdf Figures/slowslip_results/Figure_4.eps>
 (epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1289, 1084.05pt x 8
+<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1298, 1084.05pt x 8
 67.24pt>
 File: Figures/slowslip_results/Figure_4-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1328,7 +1328,7 @@ igure_5-eps-converted-to.pdf Figures/slowslip_results/Figure_5.eps>
 (epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1318, 1445.4pt x 72
+<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1327, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_5-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1350,7 +1350,7 @@ igure_6-eps-converted-to.pdf Figures/slowslip_results/Figure_6.eps>
 (epstopdf)             \includegraphics on input line 294.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1421, 1445.4pt x 72
+<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1431, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_6-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1434,69 +1434,47 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 45.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: B8ABD4B6DFB55DA73CCCA4E220BC1AA7;5011
-(rerunfilecheck)             After:  544DF842FAA1D4158D0C8DA7F20C6272;5062.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 544DF842FAA1D4158D0C8DA7F20C6272;5062.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 45.
  ) 
 Here is how much of TeX's memory you used:
- 8914 strings out of 493014
- 132888 string characters out of 6133351
+ 8916 strings out of 493014
+ 132891 string characters out of 6133351
  221252 words of memory out of 5000000
- 11860 multiletter control sequences out of 15000+600000
+ 11861 multiletter control sequences out of 15000+600000
  20072 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,18n,44p,2634b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.25.1.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.25.1.2} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.25.1.1} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.25.1} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.21.1} has been referenced but does not exis
-t, replaced by a fixed one
-
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/
-usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on main.pdf (83 pages, 20212065 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.p
+fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on main.pdf (83 pages, 20215475 bytes).
 PDF statistics:
- 1711 PDF objects out of 1728 (max. 8388607)
- 1173 compressed objects within 12 object streams
- 416 named destinations out of 1000 (max. 500000)
- 716 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1715 PDF objects out of 1728 (max. 8388607)
+ 1177 compressed objects within 12 object streams
+ 417 named destinations out of 1000 (max. 500000)
+ 724 words of extra memory for PDF output out of 10000 (max. 10000000)
 

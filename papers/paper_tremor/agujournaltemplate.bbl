@@ -1,0 +1,92 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Ghosh%
+, Vidale%
+\BCBL {}\ \BBA {} Creager%
+}{%
+Ghosh%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+GHO_2012}
+\APACinsertmetastar {%
+GHO_2012}%
+\begin{APACrefauthors}%
+Ghosh, A.%
+, Vidale, J.%
+\BCBL {}\ \BBA {} Creager, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Tremor asperities in the transition zone control
+  evolution of slow earthquakes} {Tremor asperities in the transition zone
+  control evolution of slow earthquakes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{117}{}{B10301}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+La~Rocca%
+\ \protect \BOthers {.}}{%
+La~Rocca%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+LAR_2009}
+\APACinsertmetastar {%
+LAR_2009}%
+\begin{APACrefauthors}%
+La~Rocca, M.%
+, Creager, K.%
+, Galluzzo, D.%
+, Malone, S.%
+, Vidale, J.%
+, Sweet, J.%
+\BCBL {}\ \BBA {} Wech, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{January}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Cascadia} tremor located near plate interface
+  constrained by {S} minus {P} wave times} {{Cascadia} tremor located near
+  plate interface constrained by {S} minus {P} wave times}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Science}{323}{}{620-623}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+McCrory%
+, Blair%
+, Oppenheimer%
+\BCBL {}\ \BBA {} Walter%
+}{%
+McCrory%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+MCC_2006}
+\APACinsertmetastar {%
+MCC_2006}%
+\begin{APACrefauthors}%
+McCrory, P.%
+, Blair, J.%
+, Oppenheimer, D.%
+\BCBL {}\ \BBA {} Walter, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{}{}.
+\newblock
+\APACrefbtitle {Depth to the {Juan} de {Fuca} slab beneath the {Cascadia}
+  subduction margin - A {3-D} model sorting earthquakes} {Depth to the {Juan}
+  de {Fuca} slab beneath the {Cascadia} subduction margin - a {3-D} model
+  sorting earthquakes}\ \APACbVolEdTR{}{\BTR{}\ \BNUM\ Series 91}.
+\newblock
+\APACaddressInstitution{}{U.S. Geological Survey}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

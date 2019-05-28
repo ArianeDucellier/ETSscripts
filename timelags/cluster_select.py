@@ -82,13 +82,15 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW_UD = data[6]
     NS_UD = data[7]
     # Read file containing data from stack_acorr_tremor
     filename = 'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack)
+        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
+        type_stack)
     data = pickle.load(open(filename, 'rb'))
     EW = data[6]
     NS = data[7]
@@ -167,8 +169,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # Scatter plot
     colors = [palette[c] for c in clusters]
     pd.plotting.scatter_matrix(df, c=colors, figsize=(20, 20))
-    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig( \
+        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     plt.close()
     # Plot cross correlation
     plt.figure(1, figsize=(10 * nc, 16))
@@ -209,7 +213,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         i0 = np.argmax(np.abs(EWselect_stack.data[ibegin:iend]))
         t_clust_EW.append(t[ibegin:iend][i0])
         RMS = np.sqrt(np.mean(np.square(EWselect_stack.data[rmsb:rmse])))
-        ratio_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])) / RMS)
+        ratio_clust_EW.append(np.max(np.abs(EWselect_stack.data[ibegin:iend])) \
+            / RMS)
     i0 = cc_clust_EW.index(max(cc_clust_EW))
     t_EW = t_clust_EW[i0]
     cc_EW = max(cc_clust_EW)
@@ -248,7 +253,8 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         i0 = np.argmax(np.abs(NSselect_stack.data[ibegin:iend]))
         t_clust_NS.append(t[ibegin:iend][i0])
         RMS = np.sqrt(np.mean(np.square(NSselect_stack.data[rmsb:rmse])))
-        ratio_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])) / RMS)  
+        ratio_clust_NS.append(np.max(np.abs(NSselect_stack.data[ibegin:iend])) \
+            / RMS)  
     i0 = cc_clust_NS.index(max(cc_clust_NS))
     t_NS = t_clust_NS[i0]
     cc_NS = max(cc_clust_NS)
@@ -256,8 +262,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig( \
+        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+            int(y0), type_stack, cc_stack), format='eps')
     plt.close(1)
     # Plot autocorrelation
     plt.figure(2, figsize=(10 * nc, 24))
@@ -345,8 +353,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig( \
+        'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     plt.close(2)
     # Plot colored cross correlation windows
     plt.figure(3, figsize=(20, 16))
@@ -382,8 +392,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax2.tick_params(labelsize=20)
     # End figure
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig( \
+        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     plt.close(3)
@@ -433,8 +445,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax3.tick_params(labelsize=20)
     # End figure and plot
     plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'.format( \
-        arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig( \
+        'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_acwin.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -462,36 +476,36 @@ if __name__ == '__main__':
 
     # Linear stack
     amp = 10.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, palette, amp, \
-        n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
+        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
+        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
+        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, \
+        palette, amp, n1, n2)
 
     # Power stack
     amp = 2.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, palette, amp, \
-        n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
+        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
+        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
+        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, \
+        palette, amp, n1, n2)
 
     # Phase-weighted stack
     amp = 20.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-        n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
-        Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, palette, amp, \
-        n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
+        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
+        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
+        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
+        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, \
+        palette, amp, n1, n2)

@@ -89,10 +89,10 @@ for i in range(5, 6):
             amp_lin = 100.0
             amp_pow = 2.0
             amp_PWS = 200.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
+            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
+            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for power stack
             type_stack = 'pow'
@@ -100,10 +100,10 @@ for i in range(5, 6):
             amp_lin = 15.0
             amp_pow = 1.0
             amp_PWS = 100.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
+            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
+            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for phase-weighted stack
             type_stack = 'PWS'
@@ -111,10 +111,10 @@ for i in range(5, 6):
             amp_lin = 200.0
             amp_pow = 10.0
             amp_PWS = 1000.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-                amp_pow, amp_PWS, n1, n2)
+            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
+            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Find time of maximum cross-correlation
             # Linear stack
@@ -209,56 +209,65 @@ for i in range(5, 6):
             # Linear stack
             amp = 10.0
             (clusters, t_lin_lin_EW_cluster, t_lin_lin_NS_cluster, \
-                 cc_lin_lin_EW, cc_lin_lin_NS, ratio_lin_lin_EW, ratio_lin_lin_NS) = \
-                 cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor_cluster, \
-                 Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, palette, amp, \
-                 n1, n2)
+                cc_lin_lin_EW, cc_lin_lin_NS, \
+                ratio_lin_lin_EW, ratio_lin_lin_NS) = \
+                cluster_select(arrayName, x0, y0, 'lin', w, 'lin', \
+                ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_lin_pow_EW_cluster, t_lin_pow_NS_cluster, \
-                cc_lin_pow_EW, cc_lin_pow_NS, ratio_lin_pow_EW, ratio_lin_pow_NS) = \
-                cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_lin_pow_EW, cc_lin_pow_NS, \
+                ratio_lin_pow_EW, ratio_lin_pow_NS) = \
+                cluster_select(arrayName, x0, y0, 'lin', w, 'pow', \
+                ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_lin_PWS_EW_cluster, t_lin_PWS_NS_cluster, \
-                cc_lin_PWS_EW, cc_lin_PWS_NS, ratio_lin_PWS_EW, ratio_lin_PWS_NS) = \
-                cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_lin_PWS_EW, cc_lin_PWS_NS, \
+                ratio_lin_PWS_EW, ratio_lin_PWS_NS) = \
+                cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', \
+                ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, \
+                'kmeans', nc, palette, amp, n1, n2)
 
             # Power stack
             amp = 2.0
             (clusters, t_pow_lin_EW_cluster, t_pow_lin_NS_cluster, \
-                cc_pow_lin_EW, cc_pow_lin_NS, ratio_pow_lin_EW, ratio_pow_lin_NS) = \
-                cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_pow_lin_EW, cc_pow_lin_NS, \
+                ratio_pow_lin_EW, ratio_pow_lin_NS) = \
+                cluster_select(arrayName, x0, y0, 'pow', w, 'lin', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_pow_pow_EW_cluster, t_pow_pow_NS_cluster, \
-                cc_pow_pow_EW, cc_pow_pow_NS, ratio_pow_pow_EW, ratio_pow_pow_NS) = \
-                cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_pow_pow_EW, cc_pow_pow_NS, \
+                ratio_pow_pow_EW, ratio_pow_pow_NS) = \
+                cluster_select(arrayName, x0, y0, 'pow', w, 'pow', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_pow_PWS_EW_cluster, t_pow_PWS_NS_cluster, 
-                cc_pow_PWS_EW, cc_pow_PWS_NS, ratio_pow_PWS_EW, ratio_pow_PWS_NS) = \
-                cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_pow_PWS_EW, cc_pow_PWS_NS, \
+                ratio_pow_PWS_EW, ratio_pow_PWS_NS) = \
+                cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, \
+                'kmeans', nc, palette, amp, n1, n2)
 
             # Phase-weighted stack
             amp = 20.0
             (clusters, t_PWS_lin_EW_cluster, t_PWS_lin_NS_cluster, \
-                cc_PWS_lin_EW, cc_PWS_lin_NS, ratio_PWS_lin_EW, ratio_PWS_lin_NS) = \
-                cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_PWS_lin_EW, cc_PWS_lin_NS, \
+                ratio_PWS_lin_EW, ratio_PWS_lin_NS) = \
+                cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_PWS_pow_EW_cluster, t_PWS_pow_NS_cluster, \
-                cc_PWS_pow_EW, cc_PWS_pow_NS, ratio_PWS_pow_EW, ratio_PWS_pow_NS) = \
-                cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_PWS_pow_EW, cc_PWS_pow_NS, \
+                ratio_PWS_pow_EW, ratio_PWS_pow_NS) = \
+                cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
+                'kmeans', nc, palette, amp, n1, n2)
             (clusters, t_PWS_PWS_EW_cluster, t_PWS_PWS_NS_cluster, \
-                cc_PWS_PWS_EW, cc_PWS_PWS_NS, ratio_PWS_PWS_EW, ratio_PWS_PWS_NS) = \
-                cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, \
-                Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, palette, amp, \
-                n1, n2)
+                cc_PWS_PWS_EW, cc_PWS_PWS_NS, \
+                ratio_PWS_PWS_EW, ratio_PWS_PWS_NS) = \
+                cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', \
+                ncor_clusters, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, \
+                'kmeans', nc, palette, amp, n1, n2)
 
             # Store results in pandas dataframe
             namefile = arrayName + '_timelag.pkl'
@@ -272,24 +281,30 @@ for i in range(5, 6):
                     't_pow_lin_NS', 't_pow_pow_NS', 't_pow_PWS_NS', \
                     't_PWS_lin_EW', 't_PWS_pow_EW', 't_PWS_PWS_EW', \
                     't_PWS_lin_NS', 't_PWS_pow_NS', 't_PWS_PWS_NS', \
-                    't_lin_lin_EW_cluster', 't_lin_pow_EW_cluster', 't_lin_PWS_EW_cluster', \
-                    't_lin_lin_NS_cluster', 't_lin_pow_NS_cluster', 't_lin_PWS_NS_cluster', \
-                    't_pow_lin_EW_cluster', 't_pow_pow_EW_cluster', 't_pow_PWS_EW_cluster', \
-                    't_pow_lin_NS_cluster', 't_pow_pow_NS_cluster', 't_pow_PWS_NS_cluster', \
-                    't_PWS_lin_EW_cluster', 't_PWS_pow_EW_cluster', 't_PWS_PWS_EW_cluster', \
-                    't_PWS_lin_NS_cluster', 't_PWS_pow_NS_cluster', 't_PWS_PWS_NS_cluster', \
+                    't_lin_lin_EW_cluster', 't_lin_pow_EW_cluster', \
+                    't_lin_PWS_EW_cluster', 't_lin_lin_NS_cluster', \
+                    't_lin_pow_NS_cluster', 't_lin_PWS_NS_cluster', \
+                    't_pow_lin_EW_cluster', 't_pow_pow_EW_cluster', \
+                    't_pow_PWS_EW_cluster', 't_pow_lin_NS_cluster', \
+                    't_pow_pow_NS_cluster', 't_pow_PWS_NS_cluster', \
+                    't_PWS_lin_EW_cluster', 't_PWS_pow_EW_cluster', \
+                    't_PWS_PWS_EW_cluster', 't_PWS_lin_NS_cluster', \
+                    't_PWS_pow_NS_cluster', 't_PWS_PWS_NS_cluster', \
                     'cc_lin_lin_EW', 'cc_lin_pow_EW', 'cc_lin_PWS_EW', \
                     'cc_lin_lin_NS', 'cc_lin_pow_NS', 'cc_lin_PWS_NS', \
                     'cc_pow_lin_EW', 'cc_pow_pow_EW', 'cc_pow_PWS_EW', \
                     'cc_pow_lin_NS', 'cc_pow_pow_NS', 'cc_pow_PWS_NS', \
                     'cc_PWS_lin_EW', 'cc_PWS_pow_EW', 'cc_PWS_PWS_EW', \
                     'cc_PWS_lin_NS', 'cc_PWS_pow_NS', 'cc_PWS_PWS_NS', \
-                    'ratio_lin_lin_EW', 'ratio_lin_pow_EW', 'ratio_lin_PWS_EW', \
-                    'ratio_lin_lin_NS', 'ratio_lin_pow_NS', 'ratio_lin_PWS_NS', \
-                    'ratio_pow_lin_EW', 'ratio_pow_pow_EW', 'ratio_pow_PWS_EW', \
-                    'ratio_pow_lin_NS', 'ratio_pow_pow_NS', 'ratio_pow_PWS_NS', \
-                    'ratio_PWS_lin_EW', 'ratio_PWS_pow_EW', 'ratio_PWS_PWS_EW', \
-                    'ratio_PWS_lin_NS', 'ratio_PWS_pow_NS', 'ratio_PWS_PWS_NS'])
+                    'ratio_lin_lin_EW', 'ratio_lin_pow_EW', \
+                    'ratio_lin_PWS_EW', 'ratio_lin_lin_NS', \
+                    'ratio_lin_pow_NS', 'ratio_lin_PWS_NS', \
+                    'ratio_pow_lin_EW', 'ratio_pow_pow_EW', \
+                    'ratio_pow_PWS_EW', 'ratio_pow_lin_NS', \
+                    'ratio_pow_pow_NS', 'ratio_pow_PWS_NS', \
+                    'ratio_PWS_lin_EW', 'ratio_PWS_pow_EW', \
+                    'ratio_PWS_PWS_EW', 'ratio_PWS_lin_NS', \
+                    'ratio_PWS_pow_NS', 'ratio_PWS_PWS_NS'])
             i0 = len(df.index)
             df.loc[i0] = [x0, y0, ntremor, \
                 t_lin_lin_EW, t_lin_pow_EW, t_lin_PWS_EW, \
@@ -298,12 +313,15 @@ for i in range(5, 6):
                 t_pow_lin_NS, t_pow_pow_NS, t_pow_PWS_NS, \
                 t_PWS_lin_EW, t_PWS_pow_EW, t_PWS_PWS_EW, \
                 t_PWS_lin_NS, t_PWS_pow_NS, t_PWS_PWS_NS, \
-                t_lin_lin_EW_cluster, t_lin_pow_EW_cluster, t_lin_PWS_EW_cluster, \
-                t_lin_lin_NS_cluster, t_lin_pow_NS_cluster, t_lin_PWS_NS_cluster, \
-                t_pow_lin_EW_cluster, t_pow_pow_EW_cluster, t_pow_PWS_EW_cluster, \
-                t_pow_lin_NS_cluster, t_pow_pow_NS_cluster, t_pow_PWS_NS_cluster, \
-                t_PWS_lin_EW_cluster, t_PWS_pow_EW_cluster, t_PWS_PWS_EW_cluster, \
-                t_PWS_lin_NS_cluster, t_PWS_pow_NS_cluster, t_PWS_PWS_NS_cluster, \
+                t_lin_lin_EW_cluster, t_lin_pow_EW_cluster, \
+                t_lin_PWS_EW_cluster, t_lin_lin_NS_cluster, \
+                t_lin_pow_NS_cluster, t_lin_PWS_NS_cluster, \
+                t_pow_lin_EW_cluster, t_pow_pow_EW_cluster, \
+                t_pow_PWS_EW_cluster, t_pow_lin_NS_cluster, \
+                t_pow_pow_NS_cluster, t_pow_PWS_NS_cluster, \
+                t_PWS_lin_EW_cluster, t_PWS_pow_EW_cluster, \
+                t_PWS_PWS_EW_cluster, t_PWS_lin_NS_cluster, \
+                t_PWS_pow_NS_cluster, t_PWS_PWS_NS_cluster, \
                 cc_lin_lin_EW, cc_lin_pow_EW, cc_lin_PWS_EW, \
                 cc_lin_lin_NS, cc_lin_pow_NS, cc_lin_PWS_NS, \
                 cc_pow_lin_EW, cc_pow_pow_EW, cc_pow_PWS_EW, \

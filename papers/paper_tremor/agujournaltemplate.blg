@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: agujournaltemplate.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibliography.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--No address in MCC_2006
+You've used 3 entries,
+            6951 wiz_defined-function locations,
+            1292 strings with 11326 characters,
+and the built_in function-call counts, 7245 in all, are:
+= -- 837
+> -- 78
+< -- 390
++ -- 405
+- -- 6
+* -- 501
+:= -- 1442
+add.period$ -- 13
+call.type$ -- 3
+change.case$ -- 53
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 200
+empty$ -- 253
+format.name$ -- 131
+if$ -- 1288
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 0
+newline$ -- 85
+num.names$ -- 24
+pop$ -- 108
+preamble$ -- 1
+purify$ -- 14
+quote$ -- 0
+skip$ -- 407
+stack$ -- 0
+substring$ -- 449
+swap$ -- 118
+text.length$ -- 18
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 240
+warning$ -- 1
+while$ -- 48
+width$ -- 0
+write$ -- 115
+(There was 1 warning)
