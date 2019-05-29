@@ -192,6 +192,10 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                     slowness[station] * distance
                 Tmin = arrivaltime - winlength / 2.0
                 Tmax = arrivaltime + winlength / 2.0
+                if (Tmin < 0.0):
+                    Tmin = 0.0
+                if (Tmax > EWstack[0].stats.delta * (EWstack[0].stats.npts - 1)):
+                    Tmax = EWstack[0].stats.delta * (EWstack[0].stats.npts - 1)
                 ibegin = int(Tmin / EWstack[0].stats.delta)
                 iend = int(Tmax / EWstack[0].stats.delta) + 1
                 # Cross correlation
@@ -384,7 +388,7 @@ if __name__ == '__main__':
              'formats': ('S13', 'S3', np.float, np.float, np.float, \
         np.float, np.float, np.int)}, \
         skiprows=1)
-    for ie in range(65, len(LFEloc)):
+    for ie in range(52, 53): #0, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
             winlength, nattempts, waittime, method)

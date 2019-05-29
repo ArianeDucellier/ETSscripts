@@ -324,7 +324,7 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080401.05.050'
+    filename = '080410.01.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
     freq0 = 1.0
@@ -345,18 +345,8 @@ if __name__ == '__main__':
 
     # For FAME network (known LFEs)    
     year = 2008
-    month = 3
-    for day in range(25, 32):
-        tbegin = (year, month, day, 0, 0, 0)
-        if (day == 31):
-            tend = (year, month + 1, 1, 0, 0, 0)
-        else:
-            tend = (year, month, day + 1, 0, 0, 0)
-
-        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-            freq0, nattempts, waittime, draw, type_threshold, threshold)
     month = 4
-    for day in range(1, 5):
+    for day in range(9, 19):
         tbegin = (year, month, day, 0, 0, 0)
         tend = (year, month, day + 1, 0, 0, 0)
 

@@ -7,7 +7,7 @@ import pickle
 from datetime import datetime, timedelta
 from math import floor
 
-filename = '080421.14.048'
+filename = '080405.11.042'
 
 # Read our catalog
 namefile = 'LFEs/' + filename + '/catalog.pkl'
@@ -196,3 +196,12 @@ plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('LFEs missing in our catalog', fontsize=30)
 plt.savefig('LFEs/' + filename + '/timelag.eps', format='eps')
 plt.close(2)
+
+# Write number of LFEs
+tfile = open('LFEs/' + filename + '/comparison.txt', 'w')
+tfile.write('Number of LFEs in our catalog: {}\n'.format(len(df1)))
+tfile.write('Number of LFEs in Plourde catalog: {}\n'.format(len(df2)))
+tfile.write('Number of LFEs added in our catalog: {}\n'.format(len(df_added)))
+tfile.write('Number of LFEs missing in our catalog: {}\n'.format(len(df_missing)))
+tfile.write('Number of LFEs present in both catalogs: {}\n'.format(len(df_both1)))
+tfile.close()

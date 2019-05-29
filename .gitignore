@@ -1,6 +1,7 @@
 .DS_Store
 catalog/data/*
 catalog/error/*
+catalog/error_compute_template/*
 catalog/error_get_cc_window/*
 catalog/error_get_waveform/*
 catalog/new_templates
