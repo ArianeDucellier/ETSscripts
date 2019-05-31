@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 MAY 2019 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  31 MAY 2019 16:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -663,62 +663,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--56
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
@@ -816,51 +816,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 [29
 
 ] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 
  []
 
-[33]) (./work_catalog.tex [34]
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+[33] [34]) (./work_catalog.tex [35]
 Chapter 8.
 
 Underfull \hbox (badness 10000) in paragraph at lines 9--10
@@ -887,9 +887,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
-[35
+[36
 
-]) (./work_slowslip.tex [36]
+]) (./work_slowslip.tex [37]
 Chapter 9.
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
@@ -916,16 +916,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-[37
+[38
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
-[38]) (./work_longrange.tex [39]
+[39]) (./work_longrange.tex [40]
 Chapter 10.
-[40
+[41
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 35--36
@@ -937,7 +937,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=802, 401.5pt x 351.3125pt>
+<Figures/longrange/Frank_et_al_2016_Fig2D.png, id=808, 401.5pt x 351.3125pt>
 File: Figures/longrange/Frank_et_al_2016_Fig2D.png Graphic file (type png)
 
 <use Figures/longrange/Frank_et_al_2016_Fig2D.png>
@@ -961,7 +961,7 @@ value-eps-converted-to.pdf Figures/longrange/absolutevalue.eps>
 (epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=805, 722.7pt x 722.7p
+<Figures/longrange/absolutevalue-eps-converted-to.pdf, id=811, 722.7pt x 722.7p
 t>
 File: Figures/longrange/absolutevalue-eps-converted-to.pdf Graphic file (type p
 df)
@@ -969,7 +969,7 @@ df)
 Package pdftex.def Info: Figures/longrange/absolutevalue-eps-converted-to.pdf u
 sed on input line 62.
 (pdftex.def)             Requested size: 300.0pt x 300.00313pt.
- [41 <./Figures/longrange/Frank_et_al_2016_Fig2D.png>]
+ [42 <./Figures/longrange/Frank_et_al_2016_Fig2D.png>]
 Package epstopdf Info: Source file: <Figures/longrange/variance.eps>
 (epstopdf)                    date: 2018-10-09 11:11:34
 (epstopdf)                    size: 24536 bytes
@@ -982,14 +982,14 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/variance-eps-converted-to.pdf, id=816, 722.7pt x 722.7pt>
+<Figures/longrange/variance-eps-converted-to.pdf, id=822, 722.7pt x 722.7pt>
 File: Figures/longrange/variance-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/variance-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/longrange/variance-eps-converted-to.pdf used o
 n input line 76.
 (pdftex.def)             Requested size: 300.0pt x 300.00313pt.
- [42 <./Figures/longrange/absolutevalue-eps-converted-to.pdf> <./Figures/longra
+ [43 <./Figures/longrange/absolutevalue-eps-converted-to.pdf> <./Figures/longra
 nge/variance-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/longrange/varianceresiduals.eps>
 (epstopdf)                    date: 2018-10-09 13:29:57
@@ -1003,7 +1003,7 @@ residuals-eps-converted-to.pdf Figures/longrange/varianceresiduals.eps>
 (epstopdf)             \includegraphics on input line 84.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=913, 722.7pt x 72
+<Figures/longrange/varianceresiduals-eps-converted-to.pdf, id=920, 722.7pt x 72
 2.7pt>
 File: Figures/longrange/varianceresiduals-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1023,14 +1023,14 @@ onverted-to.pdf Figures/longrange/RS.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/RS-eps-converted-to.pdf, id=915, 722.7pt x 722.7pt>
+<Figures/longrange/RS-eps-converted-to.pdf, id=922, 722.7pt x 722.7pt>
 File: Figures/longrange/RS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figures/longrange/RS-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/longrange/RS-eps-converted-to.pdf used on inpu
 t line 102.
 (pdftex.def)             Requested size: 300.0pt x 300.00313pt.
- [43 <./Figures/longrange/varianceresiduals-eps-converted-to.pdf>]
+ [44 <./Figures/longrange/varianceresiduals-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/longrange/periodogram.eps>
 (epstopdf)                    date: 2018-10-22 11:47:18
 (epstopdf)                    size: 2360781 bytes
@@ -1043,15 +1043,15 @@ ram-eps-converted-to.pdf Figures/longrange/periodogram.eps>
 (epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/longrange/periodogram-eps-converted-to.pdf, id=968, 722.7pt x 722.7pt>
+<Figures/longrange/periodogram-eps-converted-to.pdf, id=974, 722.7pt x 722.7pt>
 File: Figures/longrange/periodogram-eps-converted-to.pdf Graphic file (type pdf
 )
 <use Figures/longrange/periodogram-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/longrange/periodogram-eps-converted-to.pdf use
 d on input line 116.
 (pdftex.def)             Requested size: 300.0pt x 300.00313pt.
- [44 <./Figures/longrange/RS-eps-converted-to.pdf> <./Figures/longrange/periodo
-gram-eps-converted-to.pdf>] [45]
+ [45 <./Figures/longrange/RS-eps-converted-to.pdf> <./Figures/longrange/periodo
+gram-eps-converted-to.pdf>] [46]
 Chapter 11.
 
 Underfull \hbox (badness 10000) in paragraph at lines 129--130
@@ -1063,13 +1063,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
-)) (./timelags.tex [46
+)) (./timelags.tex [47
 
-] [47
+] [48
 
 ]
 Chapter 12.
-[48
+[49
 
 ]
 Chapter 13.
@@ -1085,7 +1085,7 @@ cation-eps-converted-to.pdf Figures/timelags/arrays_location.eps>
 (epstopdf)             \includegraphics on input line 26.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/timelags/arrays_location-eps-converted-to.pdf, id=1077, 597.23125pt x 
+<Figures/timelags/arrays_location-eps-converted-to.pdf, id=1084, 597.23125pt x 
 845.1575pt>
 File: Figures/timelags/arrays_location-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -1094,47 +1094,47 @@ Package pdftex.def Info: Figures/timelags/arrays_location-eps-converted-to.pdf
 used on input line 26.
 (pdftex.def)             Requested size: 540.60236pt x 455.99187pt.
 
-[49
+[50
 
-] [50 <./Figures/timelags/arrays_location-eps-converted-to.pdf>]
+] [51 <./Figures/timelags/arrays_location-eps-converted-to.pdf>]
 Chapter 14.
-[51
-
-]
-Chapter 15.
 [52
 
 ]
-Chapter 16.
-) (./catalog.tex [53
+Chapter 15.
+[53
 
-] [54
+]
+Chapter 16.
+) (./catalog.tex [54
+
+] [55
 
 ]
 Chapter 17.
-[55
-
-]
-Chapter 18.
 [56
 
 ]
-Chapter 19.
+Chapter 18.
 [57
 
 ]
-Chapter 20.
+Chapter 19.
 [58
 
 ]
-Chapter 21.
-) (./slowslip.tex [59
+Chapter 20.
+[59
 
-] [60
+]
+Chapter 21.
+) (./slowslip.tex [60
+
+] [61
 
 ]
 Chapter 22.
-[61
+[62
 
 ]
 Chapter 23.
@@ -1143,7 +1143,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
 
-[62
+[63
 
 ]
 Chapter 24.
@@ -1162,7 +1162,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
-[63
+[64
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 141--142
@@ -1184,7 +1184,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
 
-[64]
+[65]
 Underfull \hbox (badness 10000) in paragraph at lines 183--184
 
  []
@@ -1194,7 +1194,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
-[65] [66]
+[66] [67]
 Chapter 25.
 
 Underfull \hbox (badness 10000) in paragraph at lines 240--241
@@ -1233,7 +1233,7 @@ igure_1-eps-converted-to.pdf Figures/slowslip_results/Figure_1.eps>
 (epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1201, 1084.05pt x 1
+<Figures/slowslip_results/Figure_1-eps-converted-to.pdf, id=1208, 1084.05pt x 1
 734.48pt>
 File: Figures/slowslip_results/Figure_1-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1241,7 +1241,7 @@ File: Figures/slowslip_results/Figure_1-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_1-eps-converted-to.pdf
  used on input line 251.
 (pdftex.def)             Requested size: 300.0pt x 467.4463pt.
- [67
+ [68
 
 ]
 Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_2.eps>
@@ -1256,7 +1256,7 @@ igure_2-eps-converted-to.pdf Figures/slowslip_results/Figure_2.eps>
 (epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1209, 1084.05pt x 8
+<Figures/slowslip_results/Figure_2-eps-converted-to.pdf, id=1215, 1084.05pt x 8
 67.24pt>
 File: Figures/slowslip_results/Figure_2-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1264,7 +1264,7 @@ File: Figures/slowslip_results/Figure_2-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_2-eps-converted-to.pdf
  used on input line 259.
 (pdftex.def)             Requested size: 300.0pt x 240.95767pt.
- [68 <./Figures/slowslip_results/Figure_1-eps-converted-to.pdf>]
+ [69 <./Figures/slowslip_results/Figure_1-eps-converted-to.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 265--266
 
  []
@@ -1286,7 +1286,7 @@ igure_3-eps-converted-to.pdf Figures/slowslip_results/Figure_3.eps>
 (epstopdf)             \includegraphics on input line 270.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1249, 1084.05pt x 1
+<Figures/slowslip_results/Figure_3-eps-converted-to.pdf, id=1255, 1084.05pt x 1
 734.48pt>
 File: Figures/slowslip_results/Figure_3-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1294,7 +1294,7 @@ File: Figures/slowslip_results/Figure_3-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_3-eps-converted-to.pdf
  used on input line 270.
 (pdftex.def)             Requested size: 300.0pt x 467.4463pt.
- [69 <./Figures/slowslip_results/Figure_2-eps-converted-to.pdf>]
+ [70 <./Figures/slowslip_results/Figure_2-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_4.eps>
 (epstopdf)                    date: 2018-09-20 10:52:47
 (epstopdf)                    size: 128053 bytes
@@ -1307,7 +1307,7 @@ igure_4-eps-converted-to.pdf Figures/slowslip_results/Figure_4.eps>
 (epstopdf)             \includegraphics on input line 278.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1298, 1084.05pt x 8
+<Figures/slowslip_results/Figure_4-eps-converted-to.pdf, id=1304, 1084.05pt x 8
 67.24pt>
 File: Figures/slowslip_results/Figure_4-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1315,7 +1315,7 @@ File: Figures/slowslip_results/Figure_4-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_4-eps-converted-to.pdf
  used on input line 278.
 (pdftex.def)             Requested size: 300.0pt x 240.95767pt.
- [70 <./Figures/slowslip_results/Figure_3-eps-converted-to.pdf>]
+ [71 <./Figures/slowslip_results/Figure_3-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_5.eps>
 (epstopdf)                    date: 2018-09-18 11:38:55
 (epstopdf)                    size: 236821 bytes
@@ -1328,7 +1328,7 @@ igure_5-eps-converted-to.pdf Figures/slowslip_results/Figure_5.eps>
 (epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1327, 1445.4pt x 72
+<Figures/slowslip_results/Figure_5-eps-converted-to.pdf, id=1333, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_5-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1336,7 +1336,7 @@ File: Figures/slowslip_results/Figure_5-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_5-eps-converted-to.pdf
  used on input line 286.
 (pdftex.def)             Requested size: 500.0pt x 249.99341pt.
- [71 <./Figures/slowslip_results/Figure_4-eps-converted-to.pdf> <./Figures/slow
+ [72 <./Figures/slowslip_results/Figure_4-eps-converted-to.pdf> <./Figures/slow
 slip_results/Figure_5-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Figures/slowslip_results/Figure_6.eps>
 (epstopdf)                    date: 2018-09-18 11:37:23
@@ -1350,7 +1350,7 @@ igure_6-eps-converted-to.pdf Figures/slowslip_results/Figure_6.eps>
 (epstopdf)             \includegraphics on input line 294.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1431, 1445.4pt x 72
+<Figures/slowslip_results/Figure_6-eps-converted-to.pdf, id=1437, 1445.4pt x 72
 2.7pt>
 File: Figures/slowslip_results/Figure_6-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1358,14 +1358,14 @@ File: Figures/slowslip_results/Figure_6-eps-converted-to.pdf Graphic file (type
 Package pdftex.def Info: Figures/slowslip_results/Figure_6-eps-converted-to.pdf
  used on input line 294.
 (pdftex.def)             Requested size: 500.0pt x 249.99341pt.
- [72 <./Figures/slowslip_results/Figure_6-eps-converted-to.pdf>]
+ [73 <./Figures/slowslip_results/Figure_6-eps-converted-to.pdf>]
 Chapter 26.
 
 Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
-[73
+[74
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 348--349
@@ -1397,7 +1397,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 365--372
 
  []
 
-[74]
+[75]
 Underfull \hbox (badness 10000) in paragraph at lines 375--378
 
  []
@@ -1407,29 +1407,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 379--384
 
  []
 
-) (./longrange.tex [75] [76
+) (./longrange.tex [76] [77
 
 ]
 Chapter 27.
-[77
-
-]
-Chapter 28.
 [78
 
 ]
-Chapter 29.
+Chapter 28.
 [79
 
 ]
+Chapter 29.
+[80
+
+]
 Chapter 30.
-) (./main.bbl [80
+) (./main.bbl [81
 
-] [81
+] [82
 
-] [82])
+] [83])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 45.
- [83]
+ [84]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
@@ -1439,13 +1439,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 45.
  ) 
 Here is how much of TeX's memory you used:
- 8916 strings out of 493014
- 132891 string characters out of 6133351
+ 8919 strings out of 493014
+ 132920 string characters out of 6133351
  221252 words of memory out of 5000000
  11861 multiletter control sequences out of 15000+600000
  20072 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,18n,44p,2634b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,18n,44p,2634b,682s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><
@@ -1471,10 +1471,10 @@ e/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2016/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on main.pdf (83 pages, 20215475 bytes).
+Output written on main.pdf (84 pages, 20216827 bytes).
 PDF statistics:
- 1715 PDF objects out of 1728 (max. 8388607)
- 1177 compressed objects within 12 object streams
- 417 named destinations out of 1000 (max. 500000)
+ 1721 PDF objects out of 1728 (max. 8388607)
+ 1182 compressed objects within 12 object streams
+ 420 named destinations out of 1000 (max. 500000)
  724 words of extra memory for PDF output out of 10000 (max. 10000000)
 

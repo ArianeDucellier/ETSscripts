@@ -73,7 +73,7 @@ This website gives the dates and locations of tremor activity in Cascadia. Follo
 
 \paragraph{cluster\_select.py} We take the output of the script stack\_ccorr\_tremor.py, and we associate each cross correlation function to the criteria defined in plot\_stack\_select.py. We then classify each one-minute-long time window into several clusters, based on the value of these criterion, and a k-means clustering algorithm (function sklearn.cluster.KMeans from Python library SciKitLearn). For each cluster, we then compute the stack of the cross correlation functions over all the one-minute-long time windows that belongs to the cluster. We get for each cluster, the time lag at which we get a peal in the amplitude of the stacked corss correlation, the value of the amplitude of the peak, and the ratio between the amplitude of the peak and the root mean square error of the cross correlation function.
 
-\paragraph{get\_timelag.py} This is a script to run plot\_stack\_ccorr.py, plot\_stack_acorr.py, and cluster for each location of the tremor source. We look at tremor located in a 50 by 50 km square centered on the seismic array. We thus get the time lag between P-wave arrival and S-wave arrival for each of the location of the tremor source.
+\paragraph{get\_timelag.py} This is a script to run plot\_stack\_ccorr.py, plot\_stack\_acorr.py, and cluster for each location of the tremor source. We look at tremor located in a 50 by 50 km square centered on the seismic array. We thus get the time lag between P-wave arrival and S-wave arrival for each of the location of the tremor source.
 
 \paragraph{get\_depth.py} We take the output of get\_timelag.py and compute the corresponding depth of the tremor source. We write input files to draw maps with GMT.
 
