@@ -60,7 +60,7 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
     EW_UD = data[6]
     NS_UD = data[7]
     # Read file containing data from stack_acorr_tremor
-    filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
+    filename = 'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
         arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), int(y0), \
         type_stack)
     data = pickle.load(open(filename, 'rb'))
@@ -166,9 +166,9 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
     ax2.tick_params(labelsize=20)
     plt.suptitle('{} at {} km, {} km ({} - {}) sorted by {}'.format( \
         arrayName, x0, y0, type_stack, cc_stack, type_sort), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_sort_{}.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack, type_sort), \
-        format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_sort_{}.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack, type_sort), format='eps')
     ax1.clear()
     ax2.clear()
     plt.close(1)
@@ -218,9 +218,9 @@ def plot_stack_sort(arrayName, x0, y0, type_stack, w, cc_stack, type_sort, \
     ax3.tick_params(labelsize=20)
     plt.suptitle('{} at {} km, {} km ({} - {}) sorted by {}'.format( \
         arrayName, x0, y0, type_stack, cc_stack, type_sort), fontsize=24)
-    plt.savefig('ac/{}_{:03d}_{:03d}_{}_{}_sort_{}.eps'.format( \
-        arrayName, int(x0), int(y0), type_stack, cc_stack, type_sort), \
-        format='eps')
+    plt.savefig('ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_sort_{}.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack, type_sort), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -235,7 +235,7 @@ if __name__ == '__main__':
     w = 2.0
     Tmax = 15.0
     n1 = 0
-    n2 = 70
+    n2 = 82
     ncor = 40
     tmin = 4.0
     tmax = 6.0

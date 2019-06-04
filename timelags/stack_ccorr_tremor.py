@@ -14,6 +14,7 @@ from obspy.signal.cross_correlation import correlate
 
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import pickle
 import sys
 import time
@@ -95,11 +96,11 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     else:
          raise ValueError('Data must be imported from IRIS or Rainier')       
 
-    # Find tremors located in the cell
+    # Find tremors located in the cell (2009 - 2010)
     data = loadmat('../data/timelags/mbbp_cat_d_forHeidi')
-    mbbp_cat_d = data['mbbp_cat_d']
-    lat = mbbp_cat_d[:, 2]
-    lon = mbbp_cat_d[:, 3]
+    mbbp = data['mbbp_cat_d']
+    lat = mbbp[:, 2]
+    lon = mbbp[:, 3]
     dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * \
         sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
     dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
@@ -110,7 +111,25 @@ def stack_ccorr_tremor(arrayName, staNames, staCodes, chaNames, chans, \
     latmax = lat0 + (y0 + 0.5 * ds) / dy
     find = np.where((lat >= latmin) & (lat <= latmax) & \
                     (lon >= lonmin) & (lon <= lonmax))
-    tremor = mbbp_cat_d[find, :][0, :, :]
+    tremor1 = mbbp[find, :][0, :, :]
+
+    # Find tremors located in the cell (August - September 2011)
+    data = loadmat('../data/timelags/mbbp_ets12')
+    mbbp = data['mbbp_ets12']
+    lat = mbbp[:, 2]
+    lon = mbbp[:, 3]
+    dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * \
+        sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
+    dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * \
+        pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
+    lonmin = lon0 + (x0 - 0.5 * ds) / dx
+    lonmax = lon0 + (x0 + 0.5 * ds) / dx 
+    latmin = lat0 + (y0 - 0.5 * ds) / dy
+    latmax = lat0 + (y0 + 0.5 * ds) / dy
+    find = np.where((lat >= latmin) & (lat <= latmax) & \
+                    (lon >= lonmin) & (lon <= lonmax))
+    tremor2 = mbbp[find, :][0, :, :]
+    tremor = np.concatenate((tremor1[:, 0 : 8], tremor2[:, 0 : 8]), axis=0)
     nt = np.shape(tremor)[0]
 
     # Initialize streams to store cross correlations
@@ -412,9 +431,9 @@ if __name__ == '__main__':
     nattempts = 10
     waittime = 10
 
-    for i in range(-5, 6):
+    for i in range(0, 1):
         x0 = i * 5.0
-        for j in range(-5, 6):
+        for j in range(0, 1):
             y0 = j * 5.0
 
             # Linear stack

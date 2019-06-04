@@ -350,8 +350,9 @@ def plot_stack_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
    # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
-    plt.savefig('cc/{}_{:03d}_{:03d}_{}_{}_select.eps'.format(arrayName, \
-        int(x0), int(y0), type_stack, cc_stack), format='eps')
+    plt.savefig('cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_select.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+        int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
     ax3.clear()

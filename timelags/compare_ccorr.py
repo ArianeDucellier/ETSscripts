@@ -99,9 +99,13 @@ def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     else:
         raise ValueError( \
             'Type of stack must be lin, pow, or PWS')
-    # Open file containing tremor locations
+    # Open tremor dataset (2009 - 2010)
     data = loadmat('../data/timelags/mbbp_cat_d_forHeidi')
-    mbbp_cat_d = data['mbbp_cat_d']
+    mbbp1 = data['mbbp_cat_d']
+    # Open tremor dataset (August - September 2011)
+    data = loadmat('../data/timelags/mbbp_ets12')
+    mbbp2 = data['mbbp_ets12']
+    mbbp = np.concatenate((mbbp1[:, 0 : 8], mbbp2[:, 0 : 8]), axis=0)
     # Initialize indicators of cross correlation fit
     nt = len(Year)
     depth = np.zeros(nt)
@@ -121,8 +125,8 @@ def compare_ccorr(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     for i in range(0, nt):
         time = ymdhms2matlab(Year[i], Month[i], Day[i], Hour[i], Minute[i], \
             Second[i])
-        find = np.where(mbbp_cat_d[:, 0] == time)
-        tremor = mbbp_cat_d[find, :][0, 0, :]
+        find = np.where(mbbp[:, 0] == time)
+        tremor = mbbp[find, :][0, 0, :]
         depth[i] = tremor[4]
         dx[i] = tremor[5]
         dy[i] = tremor[6]

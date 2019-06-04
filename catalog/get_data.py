@@ -74,9 +74,10 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
             success = True
             return(D)
         except:
-            message = 'Could not download data for station {} '.format(station) + \
-                'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
-                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            message = 'Could not download data for station {} '.format( \
+                station) + 'at time {}/{}/{} - {}:{}:{}\n'.format( \
+                Tstart.year, Tstart.month, Tstart.day, Tstart.hour, \
+                Tstart.minute, Tstart.second)
             with open(errorfile, 'a') as file:
                 file.write(message)
             attempts += 1
@@ -160,9 +161,10 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
             success = True
             return(D)
         except:
-            message = 'Could not download data for station {} '.format(station) + \
-                'at time {}/{}/{} - {}:{}:{}\n'.format(Tstart.year, Tstart.month, \
-                Tstart.day, Tstart.hour, Tstart.minute, Tstart.second)
+            message = 'Could not download data for station {} '.format( \
+                station) + 'at time {}/{}/{} - {}:{}:{}\n'.format( \
+                Tstart.year, Tstart.month, Tstart.day, Tstart.hour, \
+                Tstart.minute, Tstart.second)
             with open(errorfile, 'a') as file:
                 file.write(message)
             attempts += 1

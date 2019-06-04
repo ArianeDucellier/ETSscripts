@@ -24,7 +24,8 @@ from sklearn.metrics import r2_score
 from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method='RMS', envelope=True):
+def get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, \
+        method='RMS', envelope=True):
     """
     This function finds the time arrival of each template waveform
     for each station
@@ -389,7 +390,8 @@ if __name__ == '__main__':
 #        skiprows=1)
 #    for ie in range(0, len(LFEloc)):
 #        filename = LFEloc[ie][0].decode('utf-8')
-#        get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, method, envelope)
+#        get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, \
+#            method, envelope)
 
 #    LFEloc = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #        dtype={'names': ('name', 'family', 'lat', 'lon', 'depth', 'eH', \

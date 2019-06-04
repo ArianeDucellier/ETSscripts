@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from math import cos, pi, sin, sqrt
+from math import atan2, cos, pi, sin, sqrt
 
 arrayName = 'BS'
 lat0 = 47.95728
@@ -43,24 +43,37 @@ depth = pd.Series(np.zeros(len(df)))
 cc = pd.Series(np.zeros(len(df)))
 d_to_pb = pd.Series(np.zeros(len(df)))
 ratio = pd.Series(np.zeros(len(df)))
+thickness = pd.Series(np.zeros(len(df)))
+azimuth = pd.Series(np.zeros(len(df)))
 
 for n in range(0, len(df)):
     ccEW = df['cc_' + stackStation + '_' + stackTremor + '_EW'][n]
     ccNS = df['cc_' + stackStation + '_' + stackTremor + '_NS'][n]
     if (ccEW >= ccNS):
         time = df['t_' + stackStation + '_' + stackTremor + '_EW_cluster'][n]
+        dt = df['std_' + stackStation + '_' + stackTremor + '_EW'][n]
         cc[n] = ccEW
         ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_EW'][n]
     else:
         time = df['t_' + stackStation + '_' + stackTremor + '_NS_cluster'][n]
+        dt = df['std_' + stackStation + '_' + stackTremor + '_NS'][n]
         cc[n] = ccNS
         ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_NS'][n]
     distance = (time / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+        - df['y0'][n] ** 2.0
+    d1 = ((time + dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+        - df['y0'][n] ** 2.0
+    d2 = ((time - dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
         - df['y0'][n] ** 2.0
     if (distance >= 0.0):
         depth[n] = sqrt(distance)
     else:
         depth[n] = 0.0
+    if ((d1 >= 0.0) and (d2>= 0.0)):
+        thickness[n] = sqrt(d1) - sqrt(d2)
+    else:
+        thickness[n] = 0.0
+    azimuth[n] = atan2(df['y0'][n], df['x0'][n]) * 180.0 / pi
     # Get the depth of the plate boundary
     myx = depth_pb['x'] == df['x0'][n]
     myy = depth_pb['y'] == df['y0'][n]
@@ -71,7 +84,7 @@ for n in range(0, len(df)):
 # Keep only points with enough tremor
 table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, \
     'depth':depth, 'cc':cc, 'd_to_pb':d_to_pb, 'ratio':ratio, \
-    'ntremor':df['ntremor']})
+    'thickness':thickness, 'ntremor':df['ntremor'], 'azimuth':azimuth})
 enough = table['ntremor'] > 10
 table = table[enough]
 positive = table['depth'] > 0.0
@@ -82,41 +95,54 @@ table['cc'] = table['cc'] / table['cc'].max()
 table['ratio'] = table['ratio'] / table['ratio'].max()
 
 # Write to file
-table1 = table.drop(columns=['cc', 'd_to_pb', 'ratio', 'ntremor'])
+table1 = table.drop(columns=['cc', 'd_to_pb', 'ratio', 'thickness', \
+    'ntremor', 'azimuth'])
 tfile = open('depth_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table1.to_string(header=False, index=False))
 tfile.close()
 
-table2 = table.drop(columns=['depth', 'd_to_pb', 'ratio', 'ntremor'])
+table2 = table.drop(columns=['depth', 'd_to_pb', 'ratio', 'thickness', \
+    'ntremor', 'azimuth'])
 tfile = open('cc_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table2.to_string(header=False, index=False))
 tfile.close()
 
-table3 = table.drop(columns=['depth', 'cc', 'ratio', 'ntremor'])
+table3 = table.drop(columns=['depth', 'cc', 'ratio', 'thickness', \
+    'ntremor', 'azimuth'])
 tfile = open('d_to_pb_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table3.to_string(header=False, index=False))
 tfile.close()
 
-table4 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'ntremor'])
+table4 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'thickness', \
+    'ntremor', 'azimuth'])
 tfile = open('ratio_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table4.to_string(header=False, index=False))
 tfile.close()
 
+table5 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'ratio', \
+    'ntremor', 'azimuth'])
+tfile = open('thickness_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile.write(table5.to_string(header=False, index=False))
+tfile.close()
+
 # Plot of distance to plate boundary
-# versus number of tremor and ratio cc / RMS
-plt.figure(1, figsize=(10, 6))
+# versus number of tremor, ratio cc / RMS, and azimuth
+plt.figure(1, figsize=(15, 6))
 params = {'xtick.labelsize':16,
           'ytick.labelsize':16}
 pylab.rcParams.update(params) 
-ax1 = plt.subplot(121)
+ax1 = plt.subplot(131)
 plt.plot(table['ntremor'], table['d_to_pb'], 'ko')
 plt.title('Distance to plate boundary', fontsize=16)
 plt.xlabel('Number of tremor', fontsize=16)
 plt.ylabel('Distance (km)', fontsize=16)
-ax2 = plt.subplot(122)
+ax2 = plt.subplot(132)
 plt.plot(table['ratio'], table['d_to_pb'], 'ko')
 plt.title('Distance to plate boundary', fontsize=16)
 plt.xlabel('Ratio cc / RMS', fontsize=16)
-plt.savefig('quality_{}_{}.eps'.format( \
-    stackStation, stackTremor), format='eps')
+ax2 = plt.subplot(133)
+plt.plot(table['azimuth'], table['d_to_pb'], 'ko')
+plt.title('Distance to plate boundary', fontsize=16)
+plt.xlabel('Azimuth', fontsize=16)
+plt.savefig('quality_{}_{}.eps'.format(stackStation, stackTremor), format='eps')
 plt.close(1)

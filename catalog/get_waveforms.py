@@ -112,7 +112,8 @@ def get_waveform(filename, TDUR, filt, nattempts, waittime, method='RMS'):
                 D = get_from_NCEDC(station, network, channels, location, \
                     Tstart, Tend, filt, ndt, nattempts, waittime, errorfile)
             else:
-                raise ValueError('You can only download data from IRIS and NCEDC')
+                raise ValueError( \
+                    'You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
                 if (channels == 'EH1,EH2,EHZ'):

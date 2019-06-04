@@ -76,9 +76,13 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         type cc_NS = float
         cc_NS = Maximum cross-correlation for the NS component
         type ratio_EW = float
-        ratio_EW = Ratio between max cc and RMS
+        ratio_EW = Ratio between max cc and RMS for the EW component
         type ratio_NS = float
-        ratio_NS = Ratio between max cc and RMS
+        ratio_NS = Ratio between max cc and RMS for the NS component
+        type std_EW = float
+        std_EW = Standard deviation of the time lags for the EW component
+        type std_NS = float
+        std_NS = Standard deviation of the time lags for the NS component
     """
     # Read file containing data from stack_ccorr_tremor
     filename = 'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}.pkl'.format( \
@@ -174,8 +178,47 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
         int(y0), type_stack, cc_stack), format='eps')
     plt.close()
-    # Plot cross correlation
+    # Plot histogram of timelags
     plt.figure(1, figsize=(10 * nc, 16))
+    # EW / Vertical
+    std_clust_EW = []
+    timelag_clust_EW = []
+    for j in range(0, nc):
+        plt.subplot2grid((2, nc), (0, j))
+        times = df['timedelayEW'].iloc[clusters == j]
+        plt.hist(times)
+        plt.title('EW / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
+            len(times)), fontsize=24)
+        plt.xlabel('Lag time difference (s)', fontsize=24)
+        std_clust_EW.append(np.std(times))
+        timelag_clust_EW.append(times)
+    # NS / Vertical
+    std_clust_NS = []
+    timelag_clust_NS = []
+    for j in range(0, nc):
+        plt.subplot2grid((2, nc), (1, j))
+        times = df['timedelayNS'].iloc[clusters == j]
+        plt.hist(times)
+        plt.title('NS / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
+            len(times)), fontsize=24)
+        plt.xlabel('Lag time difference (s)', fontsize=24)
+        std_clust_NS.append(np.std(times))
+        timelag_clust_NS.append(times)
+    # End figure
+    plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
+        type_stack, cc_stack), fontsize=24)
+    plt.savefig( \
+        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_timelags.eps'. \
+        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+            int(y0), type_stack, cc_stack), format='eps')
+    plt.close(1)
+    # Save timelags into file
+    filename = 'cc/{}/{}_{:03d}_{:03d}/'.format(arrayName, arrayName, \
+        int(x0), int(y0)) + '{}_{:03d}_{:03d}_{}_{}_cluster_timelags.pkl'. \
+        format(arrayName, int(x0), int(y0), type_stack, cc_stack)
+    pickle.dump([timelag_clust_EW, timelag_clust_NS], open(filename, 'wb'))
+    # Plot cross correlation
+    plt.figure(2, figsize=(10 * nc, 16))
     npts = int((EW_UD_stack.stats.npts - 1) / 2)
     dt = EW_UD_stack.stats.delta
     t = dt * np.arange(- npts, npts + 1)
@@ -219,6 +262,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     t_EW = t_clust_EW[i0]
     cc_EW = max(cc_clust_EW)
     ratio_EW = ratio_clust_EW[i0]
+    std_EW = std_clust_EW[i0]
     # NS / Vertical
     cc_clust_NS = []
     t_clust_NS = []
@@ -259,6 +303,7 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     t_NS = t_clust_NS[i0]
     cc_NS = max(cc_clust_NS)
     ratio_NS = ratio_clust_NS[i0]
+    std_NS = std_clust_NS[i0]
     # End figure
     plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
         type_stack, cc_stack), fontsize=24)
@@ -266,9 +311,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackcc.eps'. \
         format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
             int(y0), type_stack, cc_stack), format='eps')
-    plt.close(1)
+    plt.close(2)
     # Plot autocorrelation
-    plt.figure(2, figsize=(10 * nc, 24))
+    plt.figure(3, figsize=(10 * nc, 24))
     npts = int((EW_stack.stats.npts - 1) / 2)
     dt = EW_stack.stats.delta
     t = dt * np.arange(- npts, npts + 1)
@@ -357,9 +402,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         'ac/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_stackac.eps'. \
         format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
         int(y0), type_stack, cc_stack), format='eps')
-    plt.close(2)
+    plt.close(3)
     # Plot colored cross correlation windows
-    plt.figure(3, figsize=(20, 16))
+    plt.figure(4, figsize=(20, 16))
     # EW - UD cross correlation
     ax1 = plt.subplot(121)
     for i in range(n1, n2):
@@ -398,9 +443,9 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         int(y0), type_stack, cc_stack), format='eps')
     ax1.clear()
     ax2.clear()
-    plt.close(3)
+    plt.close(4)
     # Plot colored autocorrelation windows
-    plt.figure(4, figsize=(20, 24))
+    plt.figure(5, figsize=(20, 24))
     # EW autocorrelation
     ax1 = plt.subplot(131)
     for i in range(n1, n2):
@@ -452,19 +497,20 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     ax1.clear()
     ax2.clear()
     ax3.clear()
-    plt.close(4)
-    return (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS)
+    plt.close(5)
+    return (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, \
+        std_EW, std_NS)
 
 if __name__ == '__main__':
 
     # Set the parameters
     arrayName = 'BS'
-    x0 = -25.0
-    y0 = 10.0
+    x0 = 0.0
+    y0 = 0.0
     w = 2.0
     ncor = 40
-    Tmin = 3.0
-    Tmax = 5.05
+    Tmin = 4.0
+    Tmax = 6.0
     RMSmin = 12.0
     RMSmax = 14.0
     xmax = 15.0
@@ -472,40 +518,40 @@ if __name__ == '__main__':
     palette = {0: 'tomato', 1: 'royalblue', 2:'forestgreen', 3:'gold', \
         4: 'lightpink', 5:'skyblue'}
     n1 = 0
-    n2 = 269
+    n2 = 82
 
     # Linear stack
     amp = 10.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
-        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
-        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'lin', w, \
-        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, \
-        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'lin', w, 'lin', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.1, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'lin', w, 'pow', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.05, 'kmeans', nc, palette, amp, n1, n2)
 
     # Power stack
     amp = 2.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
-        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
-        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'pow', w, \
-        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, \
-        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'pow', w, 'lin', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'pow', w, 'pow', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 1.0, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.15, 'kmeans', nc, palette, amp, n1, n2)
 
     # Phase-weighted stack
     amp = 20.0
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
-        'lin', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
-        'pow', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, \
-        palette, amp, n1, n2)
-    (clusters, t_EW, t_NS) = cluster_select(arrayName, x0, y0, 'PWS', w, \
-        'PWS', ncor, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, \
-        palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.02, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.2, 'kmeans', nc, palette, amp, n1, n2)
+    (clusters, t_EW, t_NS, cc_EW, cc_NS, ratio_EW, ratio_NS, std_EW, std_NS) = \
+        cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', ncor, Tmin, Tmax, \
+        RMSmin, RMSmax, xmax, 0.01, 'kmeans', nc, palette, amp, n1, n2)

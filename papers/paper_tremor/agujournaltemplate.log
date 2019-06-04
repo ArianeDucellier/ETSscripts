@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 MAY 2019 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUN 2019 16:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -521,11 +521,140 @@ n-tour lines rep-re-sent a model of
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (20.43237pt too wide) in paragraph at lines 221--221
+[]\OT1/cmr/m/n/10 We take a 5 km by 5 km grid cell lo-cated not too far (less t
+han 25 km) from a given 
+ []
+
+
+Overfull \hbox (12.26561pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 and the source of the tremor was lo-cated in-side this cell. Fo
+r each one-minute-long time 
+ []
+
+
+Overfull \hbox (3.01561pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 win-dow, we down-load the seis-mic data for each seis-mic sta-t
+ion of the ar-ray. Then, for 
+ []
+
+
+Overfull \hbox (18.87668pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 each seis-mic sta-tion and each chan-nel, we de-trend the data,
+ ta-per the first and last 5 sec- 
+ []
+
+
+Overfull \hbox (8.07124pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 onds of the data with a Hann win-dow, re-move the in-stru-ment 
+re-sponse, band-pass fil-ter 
+ []
+
+
+Overfull \hbox (14.6823pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 be-tween 2 and 8 Hz, and re-sam-ple the data to 20 Hz. All thes
+e pre-pro-cess-ing op-er-a-tions 
+ []
+
+
+Overfull \hbox (12.90454pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 are done with the Python pack-age ob-spy. For each seis-mic sta
+-tion and each one-minute- 
+ []
+
+
+Overfull \hbox (0.34889pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 long time win-dow, we cross cor-re-late the ver-ti-cal com-po-n
+ent with the East-West hor- 
+ []
+
+
+Overfull \hbox (14.54349pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 i-zon-tal com-po-nent and the North-South hor-i-zon-tal com-po-
+nent. Then, we stack the cross 
+ []
+
+
+Overfull \hbox (0.59897pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 cor-re-la-tion func-tions over all the seis-mic sta-tions. We e
+x-per-i-ment with a lin-ear stack, 
+ []
+
+
+Overfull \hbox (10.76556pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 a power stack, and a phase-weighted stack. Fig-ure 2 shows an e
+x-am-ple of the cross cor- 
+ []
+
+
+Overfull \hbox (21.37692pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 re-la-tion func-tions as func-tion of time for the Big Skid-der
+ ar-ray for the 82 one-minute long 
+ []
+
+
+Overfull \hbox (13.71pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 time win-dows when tremor was de-tected in a 5 km by 5 km grid 
+cell cen-tered on the ar- 
+ []
+
+
+Overfull \hbox (2.46005pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 ray. We can see that for about half of the tremor win-dow, ther
+e is a peak in the cross 
+ []
+
+
+Overfull \hbox (11.71007pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 cor-re-la-tion at about 4.7 s. As the en-ergy of the P-waves is
+ ex-pected to be higher on the 
+ []
+
+
+Overfull \hbox (6.12677pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 ver-ti-cal com-po-nent, and the en-ergy of the S-waves to be hi
+gher on the hor-i-zon-tal com- 
+ []
+
+
+Overfull \hbox (11.40453pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 po-nents, we as-sume that this peak cor-re-sponds to the time l
+ag be-tween the ar-rival a di- 
+ []
+
+
+Overfull \hbox (7.0433pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 rect P-wave and a di-rect S-wave. We then stack the cross cor-r
+e-la-tion func-tions over all 
+ []
+
+
+Overfull \hbox (4.48785pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 the one-minute-long time win-dows. Again, we ex-per-i-ment with
+ a lin-ear stack, a power 
+ []
+
+
+Overfull \hbox (4.2379pt too wide) in paragraph at lines 221--221
+\OT1/cmr/m/n/10 stack, and a phase-weighted stack. We get the time of the max-i
+-mum ab-so-lute value of 
+ []
+
+
+Underfull \vbox (badness 7649) has occurred while \output is active []
 
  [2]
 [3 <./figures/arrays_location-eps-converted-to.pdf>]
-Overfull \hbox (24.21025pt too wide) in paragraph at lines 437--439
+Overfull \hbox (23.59906pt too wide) in paragraph at lines 223--224
+[]\OT1/cmr/m/n/10 We no-tice that only about half of the cross cor-re-la-tion f
+unc-tions have a dis-tinct peak 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+Overfull \hbox (24.21025pt too wide) in paragraph at lines 441--443
 \OT1/cmr/m/n/10 Abhijit Ghosh for cat-a-log. NSF grant num-ber. IGERT Big Data 
 if com-pu-ta-tions ob AWS.  
  []
@@ -555,7 +684,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--91
 3-D model sort-ing 
  []
 
-) [4] (./agujournaltemplate.aux)
+) [5] (./agujournaltemplate.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
@@ -564,11 +693,11 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3387 strings out of 493014
  46589 string characters out of 6133351
- 119591 words of memory out of 5000000
+ 122591 words of memory out of 5000000
  6867 multiletter control sequences out of 15000+600000
  9168 words of font info for 33 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1472b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1931b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -582,10 +711,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on agujournaltemplate.pdf (4 pages, 1806923 bytes).
+Output written on agujournaltemplate.pdf (5 pages, 1809131 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  12 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -316,8 +316,8 @@ if __name__ == '__main__':
 
     myYear = 2010
     myMonth = 8
-    dStarts = np.arange(14, 23, 1)
-    hStarts = np.arange(0, 24, 2)
+    dStarts = np.arange(17, 18, 1)
+    hStarts = np.arange(6, 8, 2)
     TDUR = 2 * 3600.0
     tdur = 30.0
     filt = (2, 8)
