@@ -132,7 +132,7 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
     file.write(message)
     file.close()
     # Send waveform request
-    request = 'curl --data-binary @waveform.request -o station.miniseed ' + \
+    request = 'curl -s --data-binary @waveform.request -o station.miniseed ' + \
          'http://service.ncedc.org/fdsnws/dataselect/1/query'
     # Loop to try downloading several times
     success = False
