@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: proposal.aux
+The style file: plain.bst
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "MAL_1993"
+Warning--I didn't find a database entry for "PER_2000"
+Warning--I didn't find a database entry for "DAU_1992"
+Warning--I didn't find a database entry for "WHI_2002"
+Warning--I didn't find a database entry for "KOU_2010"
+You've used 16 entries,
+            2118 wiz_defined-function locations,
+            625 strings with 6778 characters,
+and the built_in function-call counts, 5314 in all, are:
+= -- 520
+> -- 235
+< -- 0
++ -- 93
+- -- 76
+* -- 394
+:= -- 915
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 86
+chr.to.int$ -- 0
+cite$ -- 16
+duplicate$ -- 176
+empty$ -- 423
+format.name$ -- 76
+if$ -- 1097
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 16
+newline$ -- 83
+num.names$ -- 32
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 70
+quote$ -- 0
+skip$ -- 118
+stack$ -- 0
+substring$ -- 429
+swap$ -- 16
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 64
+warning$ -- 0
+while$ -- 48
+width$ -- 18
+write$ -- 178
+(There were 5 warnings)

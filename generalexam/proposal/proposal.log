@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  29 MAY 2019 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 JUN 2019 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -345,160 +345,108 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 34.
-
-
-LaTeX Warning: Citation `BER_2011' on page 1 undefined on input line 36.
-
-
-LaTeX Warning: Citation `AUD_2016' on page 1 undefined on input line 36.
-
-[1
+ [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `SHE_2007_nature' on page 2 undefined on input line 38.
-
-
-
-LaTeX Warning: Citation `OBA_2002' on page 2 undefined on input line 38.
-
-
-LaTeX Warning: Citation `ROG_2003' on page 2 undefined on input line 38.
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
-[2]
+ [2]
 Overfull \hbox (0.94144pt too wide) in paragraph at lines 68--69
 \OT1/ptm/m/n/12 earth-quakes dur-ing pe-ri-ods of high tremor ac-tiv-ity. Low-f
 requency earth-quakes are usu-ally grouped
  []
 
-[3] [4]
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
-LaTeX Warning: Citation `WAL_2010' on page 5 undefined on input line 99.
+ []
 
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
-LaTeX Warning: Citation `TOD_2016' on page 5 undefined on input line 99.
-
-
-LaTeX Warning: Citation `DEL_2009' on page 5 undefined on input line 101.
-
-
-LaTeX Warning: Citation `KIM_2011' on page 5 undefined on input line 101.
-
-
-LaTeX Warning: Citation `IDE_2012' on page 5 undefined on input line 101.
-
-
-LaTeX Warning: Citation `WAL_2013' on page 5 undefined on input line 101.
-
-
-LaTeX Warning: Citation `TOD_2016' on page 5 undefined on input line 101.
-
-[5]
-
-LaTeX Warning: Citation `AGU_2009' on page 6 undefined on input line 103.
-
-
-LaTeX Warning: Citation `FRA_2016' on page 6 undefined on input line 103.
-
-
-LaTeX Warning: Citation `KAL_2011' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `KAL_2016' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `LI_2017' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `AHA_2016' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `LAU_2017' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `PUG_2016' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `RAO_2006' on page 6 undefined on input line 105.
-
-
-LaTeX Warning: Citation `KUM_1997' on page 6 undefined on input line 107.
-
-
-LaTeX Warning: Citation `ALB_2011' on page 6 undefined on input line 107.
-
-
-LaTeX Warning: Citation `ALB_2019' on page 6 undefined on input line 107.
-
-
-LaTeX Warning: Citation `SZE_2008' on page 6 undefined on input line 107.
-
-
-LaTeX Warning: Citation `OHT_2010' on page 6 undefined on input line 107.
-
-
-LaTeX Warning: Citation `WEI_2012' on page 6 undefined on input line 107.
-
-
-Overfull \hbox (4.25043pt too wide) in paragraph at lines 107--108
-[]\OT1/ptm/m/n/12 Wavelet meth-ods have also been widely used for geo-phys-i-ca
-l ap-pli-ca-tions (Ku-mar and Foufoula-
  []
 
 
-LaTeX Warning: Citation `MAL_1993' on page 6 undefined on input line 115.
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+ []
 
 
-LaTeX Warning: Citation `PER_2000' on page 6 undefined on input line 115.
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
-[6]
-
-LaTeX Warning: Citation `TOD_2016' on page 7 undefined on input line 117.
+ []
 
 
-LaTeX Warning: Citation `SZE_2008' on page 7 undefined on input line 119.
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+LaTeX Warning: Citation `MAL_1993' on page 7 undefined on input line 119.
+
+
+LaTeX Warning: Citation `PER_2000' on page 7 undefined on input line 119.
 
 [7]
 
-LaTeX Warning: Citation `DAU_1992' on page 8 undefined on input line 121.
+LaTeX Warning: Citation `DAU_1992' on page 8 undefined on input line 125.
 
 
-LaTeX Warning: Citation `WHI_2002' on page 8 undefined on input line 121.
+LaTeX Warning: Citation `WHI_2002' on page 8 undefined on input line 125.
 
 
-LaTeX Warning: Citation `KOU_2010' on page 8 undefined on input line 121.
+LaTeX Warning: Citation `KOU_2010' on page 8 undefined on input line 125.
 
-[8]
-No file proposal.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
+[8] (./proposal.bbl
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ê in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ê in font ptmr7t!
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.134 \end{document}
+l.90 
+      [1])pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.133 \newpage
+               [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.138 \end{document}
                      [1]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 0CADCAFF59EB56DF7FF9B5F134294A33;428.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 7065 strings out of 493014
- 107325 string characters out of 6133351
- 202154 words of memory out of 5000000
- 10536 multiletter control sequences out of 15000+600000
+ 7077 strings out of 493014
+ 107511 string characters out of 6133351
+ 199648 words of memory out of 5000000
+ 10526 multiletter control sequences out of 15000+600000
  15537 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,38p,2668b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,5n,38p,2668b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
@@ -506,10 +454,10 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on proposal.pdf (9 pages, 93182 bytes).
+Output written on proposal.pdf (11 pages, 99605 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
- 24 named destinations out of 1000 (max. 500000)
+ 164 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

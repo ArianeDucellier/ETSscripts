@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 from math import floor
 
 # Beginning and end of the period we are looking at
-tbegin = datetime(2007, 8, 1, 0, 0, 0)
-tend = datetime(2009, 2, 1, 0, 0, 0)
+tbegin = datetime(2007, 7, 1, 0, 0, 0)
+tend = datetime(2008, 1, 1, 0, 0, 0)
 
 # We construct the time series by counting the number of LFEs
 # per one-day-long time window
@@ -27,9 +27,9 @@ nw = int(duration / window)
 # Family name
 filename = '080421.14.048'
 
-df = pickle.load(open('../../catalog/LFEs/' + \
-    filename + '/catalog_200708_200901.pkl', 'rb'))
-df = df.loc[df['cc'] >= 0.0250]
+df = pickle.load(open('../../../AWS/ETSscripts/catalog/LFEs/' + \
+    filename + '/catalog_2007_07-12.pkl', 'rb'))
+df = df.loc[df['cc'] >= 0.06]
 X = np.zeros(nw, dtype=int)
 # Loop on LFEs
 for j in range(0, len(df)):
@@ -57,5 +57,5 @@ plt.xlabel('Time (days) since 2007/08/01', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('Family {} ({:d} LFEs)'.format(filename, np.sum(X)), \
     fontsize=24)
-plt.savefig('LFEdistribution/' + filename + '_0250.eps', format='eps')
+plt.savefig('LFEdistribution/' + filename + '.eps', format='eps')
 plt.close(1)
