@@ -39,11 +39,22 @@ M.J. Kim, S.Y. Schwartz, and S.~Bannister.
   slow slip event at the {Hikurangi} subduction margin, {New} {Zealand}.
 \newblock {\em Geophysical Research Letters}, 38:L14301, 2011.
 
+\bibitem{MAL_1993}
+S.G. Mallat and Z.~Zhang.
+\newblock Matching pursuits with time-frequency dictionaries.
+\newblock {\em IEEE Transactions on Signal Processing}, 41:3397--3415, 1993.
+
 \bibitem{OBA_2002}
 K.~Obara.
 \newblock Nonvolcanic deep tremor associated with subduction in southwest
   {Japan}.
 \newblock {\em Science}, 296(5573):1679--1681, 2002.
+
+\bibitem{PER_2000}
+D.B. Percival and A.T. Walden.
+\newblock {\em Wavelet {Methods} for {Time} {Series} {Analysis}}.
+\newblock Cambridge {Series} in {Statistical} and {Probabilistic}
+  {Mathematics}. Cambridge {University} {Press}, New York, NY, USA, 2000.
 
 \bibitem{ROG_2003}
 G.~Rogers and H.~Dragert.
