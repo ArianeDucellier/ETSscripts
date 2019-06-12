@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  11 JUN 2019 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 JUN 2019 16:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,54 +350,48 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
- [2]
-Overfull \hbox (0.94144pt too wide) in paragraph at lines 68--69
-\OT1/ptm/m/n/12 earth-quakes dur-ing pe-ri-ods of high tremor ac-tiv-ity. Low-f
-requency earth-quakes are usu-ally grouped
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+ [2] [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
-[5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
@@ -417,7 +411,7 @@ l.88
 e.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.139 \newpage
+l.144 \newpage
                [2]
 Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
 (epstopdf)                    date: 2018-11-14 13:56:00
@@ -428,7 +422,7 @@ Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
 (epstopdf)                    size: 63965 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_MRA-eps-c
 onverted-to.pdf figures/slowslip_MRA.eps>
-(epstopdf)             \includegraphics on input line 145.
+(epstopdf)             \includegraphics on input line 150.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/slowslip_MRA-eps-converted-to.pdf, id=143, 1445.4pt x 722.7pt>
@@ -436,7 +430,7 @@ File: figures/slowslip_MRA-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_MRA-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_MRA-eps-converted-to.pdf used on inpu
-t line 145.
+t line 150.
 (pdftex.def)             Requested size: 400.0pt x 225.39464pt.
 Package epstopdf Info: Source file: <figures/slowslip_synthetics.eps>
 (epstopdf)                    date: 2018-12-04 11:53:30
@@ -447,7 +441,7 @@ to.pdf>
 (epstopdf)                    size: 53754 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_synthetic
 s-eps-converted-to.pdf figures/slowslip_synthetics.eps>
-(epstopdf)             \includegraphics on input line 151.
+(epstopdf)             \includegraphics on input line 156.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/slowslip_synthetics-eps-converted-to.pdf, id=147, 2168.1pt x 722.7pt>
@@ -455,7 +449,7 @@ File: figures/slowslip_synthetics-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_synthetics-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_synthetics-eps-converted-to.pdf used 
-on input line 151.
+on input line 156.
 (pdftex.def)             Requested size: 450.0pt x 167.436pt.
 Package epstopdf Info: Source file: <figures/slowslip_denoising.eps>
 (epstopdf)                    date: 2018-12-04 12:05:56
@@ -466,7 +460,7 @@ o.pdf>
 (epstopdf)                    size: 99456 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_denoising
 -eps-converted-to.pdf figures/slowslip_denoising.eps>
-(epstopdf)             \includegraphics on input line 157.
+(epstopdf)             \includegraphics on input line 162.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/slowslip_denoising-eps-converted-to.pdf, id=149, 1445.4pt x 722.7pt>
@@ -474,35 +468,35 @@ File: figures/slowslip_denoising-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_denoising-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_denoising-eps-converted-to.pdf used o
-n input line 157.
+n input line 162.
 (pdftex.def)             Requested size: 450.0pt x 247.0549pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.159 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
+l.164 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
                                                    [1 <./figures/slowslip_MRA-e
 ps-converted-to.pdf> <./figures/slowslip_synthetics-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 162.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.162 \end{document}
+l.167 \end{document}
                      [2 <./figures/slowslip_denoising-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 162.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
 
 (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 162.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 162.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 0CADCAFF59EB56DF7FF9B5F134294A33;428.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 162.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
  ) 
 Here is how much of TeX's memory you used:
  7106 strings out of 493014
  108352 string characters out of 6133351
- 199710 words of memory out of 5000000
+ 201710 words of memory out of 5000000
  10540 multiletter control sequences out of 15000+600000
  17122 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -520,7 +514,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on proposal.pdf (13 pages, 351473 bytes).
+Output written on proposal.pdf (13 pages, 352347 bytes).
 PDF statistics:
  380 PDF objects out of 1000 (max. 8388607)
  220 compressed objects within 3 object streams
