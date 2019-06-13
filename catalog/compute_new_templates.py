@@ -1,7 +1,7 @@
 """
-This module contains a function to download every one-minute time window
-where there is an LFE recorded, stack the signal over all the LFEs, cross
-correlate each window with the stack, sort the LFEs and keep only the best
+This module contains a function to take only the best LFEs from an LFE catalog,
+download every one-minute time window where there is an LFE recorded,
+and stack the signal over all the LFEs to get the template
 """
 
 import obspy
@@ -21,42 +21,37 @@ from math import cos, floor, pi, sin, sqrt
 from get_data import get_from_IRIS, get_from_NCEDC
 from stacking import linstack
 
-def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method):
+def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
+    filt, dt, nattempts, waittime, method='RMS'):
     """
-    This function computes the waveform for each template, cross correlate
-    them with the stack, and keep only the best to get the final template
-    that will be used to find LFEs
+    This function take only the best LFEs from an LFE catalog,
+    downloads every one-minute time window where there is an LFE recorded,
+    and stacks the signal over all the LFEs to get the template
 
     Input:
         type filename = string
         filename = Name of the template
+        type catalog = string
+        catalog = Name of the catalog containing the LFEs
+        type threshold = float
+        threshold = Minimun value of cross correlation to keep LFE
+        type stations = list of strings
+        stations = Name of the stations where we want a template
         type TDUR = float
         TDUR = Time to add before and after the time window for tapering
         type filt = tuple of floats
         filt = Lower and upper frequencies of the filter
-        type ratios = list of floats
-        ratios = Percentage of LFEs to be kept for the final template
         type dt = float
         dt = Time step for resampling
-        type ncor = integer
-        ncor = Number of points for the cross correlation
-        type window = boolean
-        window = Do we do the cross correlation on the whole seismogram
-                 or a selected time window?
-        type winlength = float
-        winlength = Length of the window to do the cross correlation
+        type nattempts = integer
+        nattempts = Number of times we try to download data
+        type waittime = positive float
+        waittime = Type to wait between two attempts at downloading
         type method = string
         method = Normalization method for linear stack (RMS or Max)
     Output:
         None
     """
-    # Get the names of the stations which have a waveform for this LFE family
-    file = open('../data/Plourde_2015/detections/' + filename + \
-        '_detect5_cull.txt')
-    first_line = file.readline().strip()
-    staNames = first_line.split()
-    file.close()
-
     # Get the time of LFE detections
     namefile = 'LFEs/' + filename + '/' + catalog
     LFEtime = pickle.load(open(namefile, 'rb'))
@@ -74,8 +69,11 @@ def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method):
     if not os.path.exists(namedir):
         os.makedirs(namedir)
 
+    # File to write error messages
+    errorfile = 'error/' + filename + '.txt'
+
     # Loop over stations
-    for station in staNames:
+    for station in stations:
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -101,11 +99,11 @@ def compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method):
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
                 D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, dt)
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
                 D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, dt)
+                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
             else:
                 raise ValueError('You can only download data from IRIS and NCEDC')
             if (type(D) == obspy.core.stream.Stream):
@@ -179,9 +177,13 @@ if __name__ == '__main__':
     filename = '080421.14.048'
     catalog = 'catalog_200708_200901.pkl'
     threshold = 0.025
+    stations = ['WDC']
     TDUR = 10.0
     filt = (1.5, 9.0)
     dt = 0.05
+    nattempts = 10
+    waittime = 10.0    
     method = 'RMS'
 
-    compute_new_templates(filename, catalog, threshold, TDUR, filt, dt, method)
+    compute_new_templates(filename, catalog, threshold, stations, TDUR, \
+        filt, dt, nattempts, waittime, method)

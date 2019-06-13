@@ -24,8 +24,6 @@ The instrument response can be obtained from here: \\
 
 \section{Work done}
 
-We look at LFE family 080421.14.048
-
 \paragraph{get\_data.py} This module contains functions to download seismic waveforms from the IRIS Data Management Center (DMC) for the stations of the FAME experiment, or from the Northern California Earthquake Data Center (NCEDC) for the permanent stations. Somehow, waveforms for some of the permanent stations (e.g. station B039 from the Plate Boundary Observatory) could not be downloaded from the NCEDC, but they are available on the IRIS DMC.
 
 \paragraph{get\_waveforms.py} We look at a given LFE family from the catalog of Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). For this family, we know the timing of each LFE. We download the one-minute-long seismic waveform corresponding to each LFE. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 1.5 and 9 Hz, and resample the data to 40 Hz (that is the same sampling rate as the templates given by Plourde). All these preprocessing operations are done with the Python package obspy. We then stack linearly all the waveforms to obtain a waveform template for each station and each channel, and we compare the final templates with the templates from Plourde \textit{et al.} (2015, ~\cite{PLO_2015}). The two templates are similar, but their amplitude is different because we normalized each LFE waveform by the root mean square (RMS) of the waveform, whereas Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) have used another normalization method.
@@ -40,9 +38,13 @@ We look at LFE family 080421.14.048
 
 \paragraph{draw\_waveforms.py}
 
+\paragraph{compute\_stats.py}
+
 \paragraph{find\_LFEs.py} We download the seismic waveforms for each station and each channel for the whole time period when we look for LFEs. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 1.5 and 9 Hz, and resample the data to 20 Hz. We then select a time window of the same length as the template. We compute the cross correlation value for each station and each channel. Then we move the selected time window from one sample point, and we compute again the cross correlation. We move the time window sample point by sample point until we have covered the whole time period that we have downloaded. We thus have the stacked cross correlation in function of time for the whole time period. We compute the median absolute deviation (MAD) of the stacked cross correlation function, and whenever the cross correlation is higher that eight times the MAD, we decide that there is an LFE. We marge the LFEs that are within one second of each other, as they are probably the same LFE. We thus obtain a new catalog of LFEs.
 
 \paragraph{compare\_catalog.py} For a given LFE family, we look for LFEs in the time period covered by the catalog from Plourde \textit{et al.} (2015 ~\cite{PLO_2015}). We then count the number of LFEs that are added i our catalog, but are nor present in Plourde's catalog, the number of LFEs that are missing in our catalog, but are present in Plourde's catalog, and the number of LFEs that are present in both catalogs. We compare the cross correlation values associated with the LFEs added in our catalog, with the cross correlation values associated with the LFEs that are present in both catalogs. We note that we only added LFEs associated with a small cross correlation value. We also look at the time lag between the LFEs missing in our catalog, and the closest LFEs. However, this time lag is usually higher than a few seconds, and the fact that some LFEs present in Plourde's catalog are missing in our catalog cannot be explained by the fact that two high cross correlation values could be associated with two different LFEs instead of a single one.
+
+\paragraph{compute\_new\_templates.py}
 
 We first try to find LFEs for family 080421.14.048 between April 21st and April 28th 2008, that is the start date and end date of the catalog obtained by Plourde for this family. We choose different values for the lowest time lag between two LFEs for which we assume that they actually are two different LFEs. We count the number of LFEs missing in our catalog, and the number of LFEs added in our catalog.
 

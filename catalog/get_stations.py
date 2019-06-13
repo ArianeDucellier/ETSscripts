@@ -79,5 +79,5 @@ for ie in range(0, len(LFEloc)):
     pickle.dump(station_list, open(filename, 'wb'))
 
 stations.sort()
-stations =  list(stations for stations,_ in itertools.groupby(stations))
+stations = list(stations for stations,_ in itertools.groupby(stations))
 print(stations)

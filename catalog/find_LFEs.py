@@ -324,7 +324,7 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080422.12.039'
+    filename = '080421.14.048'
     TDUR = 10.0
     filt = (1.5, 9.0)
     freq0 = 1.0
@@ -333,45 +333,397 @@ if __name__ == '__main__':
     draw = False
     type_threshold = 'MAD'
     
-    # Get the names of the stations which have a waveform for this LFE family
-    file = open('../data/Plourde_2015/detections/' + filename + \
-        '_detect5_cull.txt')
-    first_line = file.readline().strip()
-    stations = first_line.split()
-    second_line = file.readline().strip()
-    if (type_threshold == 'MAD'):
-        threshold = float(second_line.split()[1])
-    file.close()
+    # Using the same stations as in Plourde's catalog
+#    file = open('../data/Plourde_2015/detections/' + filename + \
+#        '_detect5_cull.txt')
+#    first_line = file.readline().strip()
+#    stations = first_line.split()
+#    second_line = file.readline().strip()
+#    if (type_threshold == 'MAD'):
+#        threshold = float(second_line.split()[1])
+#    file.close()
 
-    # For FAME network (known LFEs)    
-    year = 2008
-    month = 4
-    for day in range(21, 31):
+    # Using only the permanent stations
+    stations = ['KSXB', 'YBH', 'KRMB', 'B039', 'KHBB', 'WDC']   
+    threshold = 8 
+    
+    # Known LFEs
+#    year = 2008
+#    month = 4
+#    for day in range(27, 31):
+#        tbegin = (year, month, day, 0, 0, 0)
+#        if day == 30:
+#            tend = (year, month + 1, 1, 0, 0, 0)
+#        else:
+#            tend = (year, month, day + 1, 0, 0, 0)
+#
+#        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+#            freq0, nattempts, waittime, draw, type_threshold, threshold)
+
+    # Unknown LFEs
+    # 2007
+    year = 2007
+    # July
+    month = 7
+    for day in range(6, 31):
         tbegin = (year, month, day, 0, 0, 0)
-        if day == 30:
+        if (day == 31):
             tend = (year, month + 1, 1, 0, 0, 0)
         else:
             tend = (year, month, day + 1, 0, 0, 0)
-
         find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
             freq0, nattempts, waittime, draw, type_threshold, threshold)
-
-    # For FAME network (unknown LFEs)    
-#    year = 2009
-#    month = 1
-#    for day in range(21, 32):
-#        for hour in range(1, 24):
-#            tbegin = (year, month, day, hour, 0, 0)
-#            if (hour == 23):
-#                if (day == 31):
-#                    if (month == 12):
-#                        tend = (year + 1, 1, 1, 0, 0, 0)
-#                    else:
-#                        tend = (year, month + 1, 1, 0, 0, 0)
-#                else:
-#                    tend = (year, month, day + 1, 0, 0, 0)
-#            else:
-#                tend = (year, month, day, hour + 1, 0, 0)
-#
-#            find_LFEs_FAME(filename, tbegin, tend, TDUR, filt, \
-#                freq0, draw, use_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # August
+    month = 8
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # September
+    month = 9
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # October
+    month = 10
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # November
+    month = 11
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # December
+    month = 12
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year + 1, 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # 2008
+    year = 2008
+    # January
+    month = 1
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # February
+    month = 2
+    for day in range(1, 30):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 29):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # March
+    month = 3
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # April
+    month = 4
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # May
+    month = 5
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # June
+    month = 6
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # July
+    month = 7
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # August
+    month = 8
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # September
+    month = 9
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # October
+    month = 10
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # November
+    month = 11
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # December
+    month = 12
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year + 1, 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # 2009
+    year = 2009
+    # January
+    month = 1
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # February
+    month = 2
+    for day in range(1, 29):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 28):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # March
+    month = 3
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # April
+    month = 4
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # May
+    month = 5
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # June
+    month = 6
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # July
+    month = 7
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # August
+    month = 8
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # September
+    month = 9
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # October
+    month = 10
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # November
+    month = 11
+    for day in range(1, 31):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 30):
+            tend = (year, month + 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # December
+    month = 12
+    for day in range(1, 32):
+        tbegin = (year, month, day, 0, 0, 0)
+        if (day == 31):
+            tend = (year + 1, 1, 1, 0, 0, 0)
+        else:
+            tend = (year, month, day + 1, 0, 0, 0)
+        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+            freq0, nattempts, waittime, draw, type_threshold, threshold)
+    os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+        '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')

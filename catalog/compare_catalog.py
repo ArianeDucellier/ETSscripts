@@ -7,7 +7,7 @@ import pickle
 from datetime import datetime, timedelta
 from math import floor
 
-filename = '080420.08.042'
+filename = '080427.20.043'
 
 # Read our catalog
 namefile = 'LFEs/' + filename + '/catalog.pkl'

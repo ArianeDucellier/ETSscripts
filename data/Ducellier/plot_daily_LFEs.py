@@ -13,7 +13,7 @@ from math import floor
 
 # Beginning and end of the period we are looking at
 tbegin = datetime(2007, 7, 1, 0, 0, 0)
-tend = datetime(2008, 1, 1, 0, 0, 0)
+tend = datetime(2008, 11, 1, 0, 0, 0)
 
 # We construct the time series by counting the number of LFEs
 # per one-day-long time window
@@ -28,8 +28,8 @@ nw = int(duration / window)
 filename = '080421.14.048'
 
 df = pickle.load(open('../../../AWS/ETSscripts/catalog/LFEs/' + \
-    filename + '/catalog_2007_07-12.pkl', 'rb'))
-df = df.loc[df['cc'] >= 0.06]
+    filename + '/catalog_200707-200810.pkl', 'rb'))
+df = df.loc[df['cc'] >= 0.05]
 X = np.zeros(nw, dtype=int)
 # Loop on LFEs
 for j in range(0, len(df)):
