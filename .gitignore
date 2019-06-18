@@ -4,8 +4,14 @@ catalog/error/*
 catalog/error_compute_template/*
 catalog/error_get_cc_window/*
 catalog/error_get_waveform/*
-catalog/new_templates
-catalog/LFEs/*
+catalog/error_LFEs_known/*
+catalog/error_LFEs_unknown/*
+catalog/error_LFEs_permanent/*
+catalog/LFEs_keep/*
+catalog/LFEs_known/*
+catalog/LFEs_permanent/*
+catalog/LFEs_unknown/*
+catalog/new_templates/*
 catalog/templates/*
 catalog/timearrival/*
 catalog/waveforms/*
@@ -108,9 +114,13 @@ slowslip/PUKE/*
 slowslip/SQIM/*
 slowslip/synthetics/*
 timelags/ac/*
+timelags/ac_new/*
 timelags/cc/*
+timelags/cc_new/*
+timelags/error/*
 timelags/plot_cc/*
 utils/__pycache__/*
 visualization/.ipynb_checkpoints
+velocitymodel3D/*
 wmtsa/__pycache__/*
 

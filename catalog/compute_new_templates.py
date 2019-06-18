@@ -115,6 +115,9 @@ def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
                         Tori + 60.0)[0])
                     UD.append(D.select(channel='EHZ').slice(Tori, \
                         Tori + 60.0)[0])
+                elif (channels == 'EHZ'):
+                    UD.append(D.select(channel='EHZ').slice(Tori, \
+                        Tori + 60.0)[0])
                 else:
                     EW.append(D.select(component='E').slice(Tori, \
                         Tori + 60.0)[0])
@@ -125,59 +128,70 @@ def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
             else:
                 print('Failed at downloading data')
         # Stack
-        if (len(EW) > 0 and len(NS) > 0 and len(UD) > 0):
-            # Stack waveforms
-            EWstack = linstack([EW], normalize=True, method=method) 
-            NSstack = linstack([NS], normalize=True, method=method)
-            UDstack = linstack([UD], normalize=True, method=method)
+        if (len(EW) > 0 or len(NS) > 0 or len(UD) > 0):
             # Plot figure
-            plt.figure(1, figsize=(20, 15))
+            plt.figure(1, figsize=(20, 15))# Stack waveforms
             # East - West component
-            ax1 = plt.subplot(311)
-            dt = EWstack[0].stats.delta
-            nt = EWstack[0].stats.npts
-            t = dt * np.arange(0, nt)
-            plt.plot(t, EWstack[0].data, 'k')
-            plt.xlim([np.min(t), np.max(t)])
-            plt.title('East - West component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
+            if (len(EW) > 0):
+                EWstack = linstack([EW], normalize=True, method=method) 
+                ax1 = plt.subplot(311)
+                dt = EWstack[0].stats.delta
+                nt = EWstack[0].stats.npts
+                t = dt * np.arange(0, nt)
+                plt.plot(t, EWstack[0].data, 'k')
+                plt.xlim([np.min(t), np.max(t)])
+                plt.title('East - West component', fontsize=16)
+                plt.xlabel('Time (s)', fontsize=16)
             # North - South component
-            ax2 = plt.subplot(312)
-            dt = NSstack[0].stats.delta
-            nt = NSstack[0].stats.npts
-            t = dt * np.arange(0, nt)
-            plt.plot(t, NSstack[0].data, 'k')
-            plt.xlim([np.min(t), np.max(t)])
-            plt.title('North - South component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
+            if (len(NS) > 0):
+                NSstack = linstack([NS], normalize=True, method=method)
+                ax2 = plt.subplot(312)
+                dt = NSstack[0].stats.delta
+                nt = NSstack[0].stats.npts
+                t = dt * np.arange(0, nt)
+                plt.plot(t, NSstack[0].data, 'k')
+                plt.xlim([np.min(t), np.max(t)])
+                plt.title('North - South component', fontsize=16)
+                plt.xlabel('Time (s)', fontsize=16)
             # Vertical component
-            ax3 = plt.subplot(313)
-            dt = UDstack[0].stats.delta
-            nt = UDstack[0].stats.npts
-            t = dt * np.arange(0, nt)
-            plt.plot(t, UDstack[0].data, 'k')
-            plt.xlim([np.min(t), np.max(t)])
-            plt.title('Vertical component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
+            if (len(UD) > 0):
+                UDstack = linstack([UD], normalize=True, method=method)
+                ax3 = plt.subplot(313)
+                dt = UDstack[0].stats.delta
+                nt = UDstack[0].stats.npts
+                t = dt * np.arange(0, nt)
+                plt.plot(t, UDstack[0].data, 'k')
+                plt.xlim([np.min(t), np.max(t)])
+                plt.title('Vertical component', fontsize=16)
+                plt.xlabel('Time (s)', fontsize=16)
             # End figure
             plt.suptitle(station, fontsize=24)
             plt.savefig(namedir + '/' + station + '.eps', format='eps')
-            ax1.clear()
-            ax2.clear()
-            ax3.clear()
+            if (len(EW) > 0):
+                ax1.clear()
+            if (len(NS) > 0):
+                ax2.clear()
+            if (len(UD) > 0):
+                ax3.clear()
             plt.close(1)
             # Save stack into file
             savename = namedir + '/' + station +'.pkl'
-            pickle.dump([EWstack[0], NSstack[0], UDstack[0]], \
-                open(savename, 'wb'))
+            data = []
+            if (len(EW) > 0):
+                data.append(EWstack[0])
+            if (len(NS) > 0):
+                data.append(NSstack[0])
+            if (len(UD) > 0):
+                data.append(UDstack[0])
+            pickle.dump(data, open(savename, 'wb'))
 
 if __name__ == '__main__':
 
     # Set the parameters
     filename = '080421.14.048'
-    catalog = 'catalog_200708_200901.pkl'
-    threshold = 0.025
-    stations = ['WDC']
+    catalog = 'catalog_200707-200810.pkl'
+    threshold = 0.08
+    stations = ['KCS', 'KOM', 'KTR', 'LAM', 'LBK', 'LBO', 'LCSB', 'LGB', 'LGP', 'LHE', 'LMP', 'LPK', 'LSF', 'LSR']
     TDUR = 10.0
     filt = (1.5, 9.0)
     dt = 0.05
