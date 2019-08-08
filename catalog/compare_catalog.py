@@ -7,7 +7,7 @@ import pickle
 from datetime import datetime, timedelta
 from math import floor
 
-filename = '080427.20.043'
+filename = '080326.08.015'
 
 # Read our catalog
 namefile = 'LFEs/' + filename + '/catalog.pkl'
@@ -33,9 +33,10 @@ first_line = file.readline().strip()
 staNames = first_line.split()
 nsta = len(staNames)
 # Get LFE times
-df2 = pd.read_csv(namefile, delimiter = r'\s*', header=None, \
+df2 = pd.read_csv(namefile, delim_whitespace=True, header=None, \
     skiprows=2, names = ['id', 'date', 'hours', 'seconds', 'cc', 'nan'], \
-    dtype={'id': 'str', 'date': 'str', 'hours': int, 'seconds': float, 'cc': float})
+    dtype={'id': 'str', 'date': 'str'})
+df2 = df2.astype({'hours': int, 'seconds': float, 'cc': float})
 
 # Modify Plourde's catalog for comparison
 df2['year'] = df2['date'].str[0:2].astype('int') + 2000

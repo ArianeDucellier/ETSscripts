@@ -53,7 +53,7 @@ def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
         None
     """
     # Get the time of LFE detections
-    namefile = 'LFEs/' + filename + '/' + catalog
+    namefile = 'LFEs_unknown/' + filename + '/' + catalog
     LFEtime = pickle.load(open(namefile, 'rb'))
     best = LFEtime['cc'] > threshold
     LFEtime = LFEtime[best]
@@ -188,10 +188,10 @@ def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080421.14.048'
-    catalog = 'catalog_200707-200810.pkl'
+    filename = '080326.08.015'
+    catalog = 'catalog_200707-200912.pkl'
     threshold = 0.08
-    stations = ['KCS', 'KOM', 'KTR', 'LAM', 'LBK', 'LBO', 'LCSB', 'LGB', 'LGP', 'LHE', 'LMP', 'LPK', 'LSF', 'LSR']
+    stations = ['GCW'] #, 'GHM', 'GNA', 'GWR', 'KCPB']
     TDUR = 10.0
     filt = (1.5, 9.0)
     dt = 0.05
