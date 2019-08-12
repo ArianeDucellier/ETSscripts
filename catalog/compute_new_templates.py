@@ -53,14 +53,14 @@ def compute_new_templates(filename, catalog, threshold, stations, TDUR, \
         None
     """
     # Get the time of LFE detections
-    namefile = 'LFEs_unknown/' + filename + '/' + catalog
+    namefile = 'LFEs/' + filename + '/' + catalog
     LFEtime = pickle.load(open(namefile, 'rb'))
     best = LFEtime['cc'] > threshold
     LFEtime = LFEtime[best]
 
     # Get the network, channels, and location of the stations
     staloc = pd.read_csv('../data/Plourde_2015/station_locations.txt', \
-        sep=r'\s{1,}', header=None)
+        delim_whitespace=True, header=None)
     staloc.columns = ['station', 'network', 'channels', 'location', \
         'server', 'latitude', 'longitude']
 
@@ -189,8 +189,8 @@ if __name__ == '__main__':
 
     # Set the parameters
     filename = '080326.08.015'
-    catalog = 'catalog_200707-200912.pkl'
-    threshold = 0.08
+    catalog = 'catalog.pkl'
+    threshold = 0.09
     stations = ['GCW'] #, 'GHM', 'GNA', 'GWR', 'KCPB']
     TDUR = 10.0
     filt = (1.5, 9.0)

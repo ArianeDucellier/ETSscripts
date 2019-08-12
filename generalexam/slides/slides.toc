@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Sow slip}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Tectonic tremor}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Low-frequency earthquakes (LFEs)}{7}{0}{1}
+\beamer@subsectionintoc {1}{4}{Episodic Tremor and Slip (ETS)}{9}{0}{1}
+\beamer@subsectionintoc {1}{5}{Research questions}{10}{0}{1}
+\beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{16}{0}{2}
+\beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{16}{0}{3}
+\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{16}{0}{4}
+\beamer@sectionintoc {5}{Time line}{16}{0}{5}
