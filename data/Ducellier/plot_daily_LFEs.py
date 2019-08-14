@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 from math import floor
 
 # Beginning and end of the period we are looking at
-tbegin = datetime(2007, 7, 1, 0, 0, 0)
-tend = datetime(2010, 1, 1, 0, 0, 0)
+tbegin = datetime(2007, 9, 26, 0, 0, 0)
+tend = datetime(2009, 6, 9, 0, 0, 0)
 
 # We construct the time series by counting the number of LFEs
 # per one-day-long time window
@@ -25,10 +25,10 @@ duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
 nw = int(duration / window)
 
 # Family name
-filename = '080421.14.048'
+filename = '080326.08.015'
 
 df = pickle.load(open('/Users/ariane/Documents/ResearchProject/ETSscripts/catalog/LFEs/' + \
-    filename + '/catalog_200707-200912.pkl', 'rb'))
+    filename + '/catalog_200709-200906.pkl', 'rb'))
 df = df.loc[df['cc'] >= 0.07]
 X = np.zeros(nw, dtype=int)
 # Loop on LFEs
@@ -53,7 +53,7 @@ for j in range(0, len(df)):
 plt.figure(1, figsize=(20, 10))
 plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
 plt.xlim([-0.5, len(X) - 0.5])
-plt.xlabel('Time (days) since 2007/08/01', fontsize=24)
+plt.xlabel('Time (days) since 2007/09/26', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('Family {} ({:d} LFEs)'.format(filename, np.sum(X)), \
     fontsize=24)

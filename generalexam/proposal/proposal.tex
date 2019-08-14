@@ -94,19 +94,31 @@ Once I have obtained the new two-year-long catalog of LFEs, I intend to carry ou
 
 \subsubsection*{Completed work}
 
-We are using a matched-filter algorithm. To detect new low-frequency earthquakes for a given family, we take one hour of seismic data recorded by the permanent stations. Then for each station and each channel (two horizontal and one vertical), we cross-correlate the one-hour long signal with the one-minute long template for the given station and channel. As the signal-to-noise ratio of the seismic data is low, we may not see obvious peaks in the cross-correlation signal. However, if we stack the cross-correlation signals for all the channels and all the stations, we can see peaks appearing. Whenever the value of the average cross-correlation is higher than a threshold (generally eight times the median absolute deviation), we assume that there is a low-frequency earthquake.
+\paragraph{Extension of the LFE catalog} Alexandre Plourde has kindly accepted to share his LFE catalog with me. For each LFE family, each seismic station, and each channel (two horizontal and one vertical), I have downloaded a one-minute-long time window of seismic data around the detection time of each LFE. I have then linearly stacked the data to obtain a template for each LFE family, each seismic station, and each channel. I then used a matched-filter algorithm. To detect new LFEs for a given LFE family, I download one hour of seismic data. Then for each station and each channel, I cross-correlate the one-hour long signal with the one-minute-long template for the given station and channel. As the signal-to-noise ratio of the seismic data is low, we may not see obvious peaks in the cross-correlation signal. However, if we stack the cross-correlation signals for all the channels and all the stations, we can see peaks appearing. Whenever the value of the average cross-correlation is higher than a threshold (generally eight times the median absolute deviation), I assume that there is a LFE. \\
 
+I first applied the matched-filter algorithm on the time period covered by the catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and compared the LFE detection times I obtained to the detection times in the original catalog. I have successfully detected nearly all the LFE events that were present in the original catalog and added a few new LFEs (see Table X for an example for family 080421.14.048). I have reproduced the detection times with similar accuracy for all the LFE families in the original catalog.
 
+\begin{center}
+\begin{tabular}{| l | c |}
+  \hline
+  Number of LFEs in our catalog & 230 \\
+  \hline
+  Number of LFEs in the catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) & 225 \\
+  \hline
+  Number of LFEs added in our catalog & 11 \\
+  \hline
+  Number of LFEs missing in our catalog & 6 \\
+  \hline
+  Number of LFEs present in both catalogs & 219 \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Comparison between the LFE catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and our new catalog using templates obtained from their detection times for LFE family 080421.14.048.}
+\end{center}
 
+I have then used the matched-filter algorithm to extend the catalog to the period 2007-2009 using first both the FAME stations and the permanent stations, and then only the permanent stations (Figure X), for two different LFE families, one located on the southern Cascadia Subduction Zone (family 080421.14.048), and one located on a strike-slip fault from the San Andreas Fault system (family 080326.08.015). For the subduction zone LFE family, I was able to detect the burst of LFEs during the April 2008 ETS event even when I used only the templates from the permanent stations. \\
 
-  Low-frequency earthquakes are usually grouped into families of events, with all the earthquakes of a given family originating from the same small patch on the plate interface, and recurring more or less episodically in a bursty manner. When enough (a few hundred) low-frequency earthquakes have been identified for a given family, a template waveform can be obtained by stacking all the waveforms corresponding to all the low-frequency earthquakes identified. Once a template is available, additional low-frequency earthquakes can be found by cross-correlating seismic data with the template, and assuming that a low-frequency earthquake is occurring whenever the value of the cross-correlation is higher than a chosen threshold.  The signal-to-noise ratios are low, so low-frequency earthquakes can be best identified by stacking the cross-correlation functions of multiple stations.
-
-
-We are currently using data from a temporary experiment in Northern California. A hundred seismic stations have been installed between 2007 and 2009. Low-frequency earthquakes have been detected, and templates for 66 families have been obtained by Plourde et al. (2015) using data recorded during a period of high tremor activity in April 2008. We are currently using their templates to extend their catalog to the whole two years during which the temporary seismic stations were installed.
-
-It turns out that these low-frequency earthquakes were also detected by the stations from three permanent seismic networks (Berkeley Digital Seismic Network, Northern California Seismic Network, and Plate Boundary Observatory). These stations have been installed as early as 2001 and are still recording seismic data. We thus have 18 years of data available. The aim of this project is thus to extend our catalog of low-frequency earthquakes from two years to eighteen years.
-
-n a related research project, I analyzed catalogs of LFEs from the Olympic Peninsula, Northern California, Mexico, and the San Andreas Fault. For each family of LFEs, I translated the catalog into a continuous time series defined by number of events per minute. The sample interval is 1 minute. Then, I computed the value of the fractional parameter $d$, which represents how fast the variance in the number of LFEs increases with the length of the time window considered. For most families of the catalogs studied, I found that $0 < d < 0.5$, which is characteristic of long-range dependence in the time series. The only exception is the San Andreas Fault catalog, where the LFE families show a wider range of behaviors, and where only some of the families exhibit evidence for long-range dependence. Long-range dependence may be explained by interactions among several asperities associated with the same LFE family. The statistical characterization of LFE occurrence could provide important constraints on future mechanical models of slow earthquake phenomena.
+\paragraph{Statistical analysis of LFE catalogs} I have analyzed catalogs of LFEs from Mexico (Frank \textit{et al.}, 2014 ~\cite{FRA_2014}), the San Andreas Fault (Shelly, 2017 ~\cite{SHE_2017}), and Washington State (Sweet \textit{et al.}, 2019 ~\cite{SWE_2019} and Chestler and Creager, 2017a ~\cite{CHE_2017_JGR} and b ~\cite{CHE_2017_G3}). I also analyzed the original LFE catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}). For each family of LFEs, I translated the catalog into a continuous time series defined by number of events per minute. The sample interval is 1 minute. Then, I computed the value of the fractional parameter $d$, which represents how fast the variance in the number of LFEs increases with the length of the time window considered. For most families of the catalogs studied, I found that $0 < d < 0.5$, which is characteristic of long-range dependence in the time series. The only exception is the San Andreas Fault catalog, where the LFE families show a wider range of behaviors, and where only some of the families exhibit evidence for long-range dependence. Long-range dependence may be explained by interactions among several asperities associated with the same LFE family. The statistical characterization of LFE occurrence could provide important constraints on future mechanical models of slow earthquake phenomena.
 
 \subsubsection*{Future work}
 
