@@ -94,6 +94,12 @@ J.~Han, J.E. Vidale, H.~Houston, K.~Chao, and K.~Obara.
   the {Nankai} subduction zone in southwest {Japan}.
 \newblock {\em Geophysical Research Letters}, 41:8053--8060, 2014.
 
+\bibitem{HAR_2010}
+D.~Harte.
+\newblock {PtProcess}: An {R} package for modelling marked point processes
+  indexed by time.
+\newblock {\em Journal of Statistical Software}, 35(8):1--32, 2010.
+
 \bibitem{IDE_2012}
 S.~Ide.
 \newblock Variety and spatial heterogeneity of tectonic tremor worldwide.
@@ -158,6 +164,13 @@ G.~Rogers and H.~Dragert.
 \newblock Tremor and slip on the {Cascadia} subduction zone: The chatter of
   silent slip.
 \newblock {\em Science}, 300(5627):1942--1943, 2003.
+
+\bibitem{ROS_2016}
+G.J. Ross.
+\newblock Bayesian estimation of the {ETAS} model for earthquake occurrences.
+\newblock Available at
+  \href{http://www.gordonjross.co.uk/bayesianetas.pdf}{http://www.gordonjross.co.uk/bayesianetas.pdf},
+  2016.
 
 \bibitem{RUB_2009}
 J.L. Rubinstein, J.~Gomberg, J.E. Vidale, A.G. Wech, H.~Kao, K.C. Creager, and

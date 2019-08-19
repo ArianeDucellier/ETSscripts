@@ -92,39 +92,27 @@ Once I have obtained the new two-year-long catalog of LFEs, I intend to carry ou
 
 This kind of statistical analysis may help explain the mechanism producing LFEs. If slow slip was an increase of the loading rate on the plate boundary, it should increase the rate of LFEs, but their distribution should still follow a Poisson process. If the fractional index $d$ is higher than 0, it would seem to imply than the occurrence of LFEs does not follow a Poisson process, and that the density of asperities increases during a slow slip event (Frank \textit{et al.}, 2016 ~\cite{FRA_2016_SA}). A possible explanation is that a large number of asperities are locked during the inter-slip period, and are activated during slow slip by a mechanism such as migrating pore pressure pulses (Frank \textit{et al.}, 2015 ~\cite{FRA_2015}), or along-fault hydrofracturing similar to what is geologically observed on ancient subduction zones (Angiboust \textit{et al.}, 2015 ~\cite{ANG_2015}).
 
-\paragraph{Temporal models of seismicity} Temporal models of seismicity have been developed to describe, analyze and forecast the probabilities of regular earthquake occurrences. The Epidemic-Type Aftershock Sequence (ETAS) model was first introduced by Ogata (1988 ~\cite{OGA_1988}). It takes account the magnitude frequency distribution law of Gutemberg and Richter (1944 ~\cite{GUT_1944}) and the Omori-Utsu law of aftershock decay (Omori, 1894 ~\cite{OMO_1894}; Utsu, 1957 ~\cite{UTS_1957}), but it allows each event, irrespective of whether it is a small or a big event, to trigger its own offspring. According to the Omori-Utsu formula, the number of aftershocks after a mainshock decays as $1 / t^p$, where $t$ is the time from the occurrence of the main shock, and the decay rate $p$ can vary between 0.9 and 1.5 (Utsu \textit{et al.}, 1995 ~\cite{UTS_1995}). I intend to first verify whether I can fit an ETAS model to the available LFE catalogs, and then verify whether the decay rate for LFE catalogs is similar to the decay rate obtained for regular earthquake catalogs.
+\paragraph{Temporal models of seismicity} Temporal models of seismicity have been developed to describe, analyze and forecast the probabilities of regular earthquake occurrences. The Epidemic-Type Aftershock Sequence (ETAS) model was first introduced by Ogata (1988 ~\cite{OGA_1988}). It takes account the magnitude frequency distribution law of Gutemberg and Richter (1944 ~\cite{GUT_1944}) and the Omori-Utsu law of aftershock decay (Omori, 1894 ~\cite{OMO_1894}; Utsu, 1957 ~\cite{UTS_1957}), but it allows each event, irrespective of whether it is a small or a big event, to trigger its own offspring. According to the Omori-Utsu formula, the number of aftershocks after a mainshock decays as $1 / t^p$, where $t$ is the time from the occurrence of the main shock, and the decay rate $p$ can vary between 0.9 and 1.5 (Utsu \textit{et al.}, 1995 ~\cite{UTS_1995}). I intend to first verify whether I can fit an ETAS model to the available LFE catalogs, and then verify whether the decay rate for LFE catalogs is similar to the decay rate obtained for regular earthquake catalogs. \\
+
+\textcolor{red}{Add something about earthquake-rate equations from Dieterich should lead to p = 1}
 
 \subsubsection*{Completed work}
 
 \paragraph{Extension of the LFE catalog} Alexandre Plourde has kindly accepted to share his LFE catalog with me. For each LFE family, each seismic station, and each channel (two horizontal and one vertical), I have downloaded a one-minute-long time window of seismic data around the detection time of each LFE. I have then linearly stacked the data to obtain a template for each LFE family, each seismic station, and each channel. I then used a matched-filter algorithm. To detect new LFEs for a given LFE family, I download one hour of seismic data. Then for each station and each channel, I cross-correlate the one-hour long signal with the one-minute-long template for the given station and channel. As the signal-to-noise ratio of the seismic data is low, we may not see obvious peaks in the cross-correlation signal. However, if we stack the cross-correlation signals for all the channels and all the stations, we can see peaks appearing. Whenever the value of the average cross-correlation is higher than a threshold (generally eight times the median absolute deviation), I assume that there is a LFE. \\
 
-I first applied the matched-filter algorithm on the time period covered by the catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and compared the LFE detection times I obtained to the detection times in the original catalog. I have successfully detected nearly all the LFE events that were present in the original catalog and added a few new LFEs (see Table X for an example for family 080421.14.048). I have reproduced the detection times with similar accuracy for all the LFE families in the original catalog.
+I first applied the matched-filter algorithm on the time period covered by the catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and compared the LFE detection times I obtained to the detection times in the original catalog. I have successfully detected nearly all the LFE events that were present in the original catalog and added a few new LFEs (see Table X for an example for family 080421.14.048). I missed only two LFEs, but one of them was preceded by another LFE 1.95 seconds before, and the other one was followed by another LFE 3.375 seconds later. In the catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), these LFEs were considered as separate LFEs, but it is possible that the peaks in the cross correlation correspond in fact to the same LFEs. I added 13 LFEs to the catalog but they all have a small cross correlation value compared to the other LFEs in the catalog, and they may be false detections. I have reproduced the detection times with similar accuracy for all the LFE families in the original catalog. \\
 
-\begin{center}
-\begin{tabular}{| l | c |}
-  \hline
-  Number of LFEs in our catalog & 230 \\
-  \hline
-  Number of LFEs in the catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) & 225 \\
-  \hline
-  Number of LFEs added in our catalog & 11 \\
-  \hline
-  Number of LFEs missing in our catalog & 6 \\
-  \hline
-  Number of LFEs present in both catalogs & 219 \\
-  \hline
-\end{tabular}
-\captionsetup{type=table}
-\captionof{table}{Comparison between the LFE catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and our new catalog using templates obtained from their detection times for LFE family 080421.14.048.}
-\end{center}
+I have then used the matched-filter algorithm to extend the catalog to the period 2007-2009 using first both the FAME stations and the permanent stations, and then only the permanent stations (Figure X), for two different LFE families, one located on the southern Cascadia Subduction Zone (family 080421.14.048), and one located on a strike-slip fault from the San Andreas Fault system (family 080326.08.015). For the subduction zone family, I was able to detect the burst of LFEs during the April 2008 ETS event even when I used only the templates from the permanent stations. The results are more contrasted for the strike-slip fault family. I was able to detect most of the main bursts of LFEs when I used only the templates from the permanent stations, but I missed a few bursts of LFEs. This may be due because I have only two seismic stations with three components, the other five seismic stations that I used recorded only the vertical component. Due to the reduced number of channels available, I probably have more false detections. The stations from the permanent networks have been recording seismic data from at least 2007 until now, and I infer that I will be able to extend the catalog from 2009 to 2019 using only seismic data from the permanent stations.
 
-I have then used the matched-filter algorithm to extend the catalog to the period 2007-2009 using first both the FAME stations and the permanent stations, and then only the permanent stations (Figure X), for two different LFE families, one located on the southern Cascadia Subduction Zone (family 080421.14.048), and one located on a strike-slip fault from the San Andreas Fault system (family 080326.08.015). For the subduction zone LFE family, I was able to detect the burst of LFEs during the April 2008 ETS event even when I used only the templates from the permanent stations.
-
-\paragraph{Statistical analysis of LFE catalogs} I have analyzed catalogs of LFEs from Mexico (Frank \textit{et al.}, 2014 ~\cite{FRA_2014}), the San Andreas Fault (Shelly, 2017 ~\cite{SHE_2017}), and Washington State (Sweet \textit{et al.}, 2019 ~\cite{SWE_2019} and Chestler and Creager, 2017a ~\cite{CHE_2017_JGR} and b ~\cite{CHE_2017_G3}). I also analyzed the original LFE catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}). For each family of LFEs, I translated the catalog into a continuous time series defined by number of events per minute. The sample interval is 1 minute. Then, I computed the value of the fractional parameter $d$, which represents how fast the variance in the number of LFEs increases with the length of the time window considered. Following Taqqu and Teverovsky (1998 ~\cite{TAQ_1998}), I computed this parameter using the absolute value method, the variance method, the variance of residuals method the R/S method, and the periodogram method. These methods gave values of $d$ that are consistent between one method and another, except for the absolute value method, and the R/S method. These may be due because these methods assume that the time series is stationary, which may not be the case is the time period studied is too short and only one burst of LFEs during a big ETS event has been recorded. For most families of the catalogs studied, I found that $0 < d < 0.5$, which is characteristic of long-range dependence in the time series. The only exception is the San Andreas Fault catalog, where the LFE families show a wider range of behaviors, and where only some of the families exhibit evidence for long-range dependence.
+\paragraph{Statistical analysis of LFE catalogs} I have analyzed catalogs of LFEs from Mexico (Frank \textit{et al.}, 2014 ~\cite{FRA_2014}), the San Andreas Fault (Shelly, 2017 ~\cite{SHE_2017}), and Washington State (Sweet \textit{et al.}, 2019 ~\cite{SWE_2019} and Chestler and Creager, 2017a ~\cite{CHE_2017_JGR} and b ~\cite{CHE_2017_G3}). I also analyzed the original LFE catalog of Plourde \textit{et al.} (2015 ~\cite{PLO_2015}). For each family of LFEs, I translated the catalog into a continuous time series defined by number of events per minute. The sample interval is 1 minute. Then, I computed the value of the fractional parameter $d$, which represents how fast the variance in the number of LFEs increases with the length of the time window considered. Following Taqqu and Teverovsky (1998 ~\cite{TAQ_1998}), I computed this parameter using the absolute value method, the variance method, the variance of residuals method the R/S method, and the periodogram method. These methods gave values of $d$ that are consistent between one method and another, except for the absolute value method, and the R/S method. These may be due because these methods assume that the time series is stationary, which may not be the case is the time period studied is too short and only one burst of LFEs during a big ETS event has been recorded. The results of the computation of the fractional parameter with the variance method fro the four regional areas considered are shown in Figures X to X. For most families of the catalogs studied, I found that $0 < d < 0.5$, which is characteristic of long-range dependence in the time series. The only exception is the San Andreas Fault catalog, where the LFE families show a wider range of behaviors, and where only some of the families exhibit evidence for long-range dependence.
 
 \subsubsection*{Future work}
 
-\paragraph{Extension of the LFE catalog} I will first use the templates to extend the LFE catalog by Plourde \textit{et al.} (2015) to the period 2007-2009 for all the LFE families in the catalog, as I have already done for two LFE families. Then for each LFE family, I will choose about one hundred LFEs with the best values of the cross correlation coefficient to compute templates for nearby (within a hundred kilometers) permanent stations that were recording during the 2007-2009 period. I will then use these new templates to find LFEs during the same period, and I will compare the catalog computed with the temporary stations from the FAME network and the catalog computed with the permanent stations. 
+\paragraph{Extension of the LFE catalog} I will first use the templates to extend the LFE catalog by Plourde \textit{et al.} (2015) to the period 2007-2009 for all the LFE families in the catalog, as I have already done for two LFE families. Then for each LFE family, I will choose about one hundred LFEs with the best values of the cross correlation coefficient to compute templates for nearby (within a hundred kilometers) permanent stations that were recording during the 2007-2009 period. I will then use these new templates to find LFEs during the same period, and I will compare the catalog computed with the temporary stations from the FAME network and the catalog computed with the permanent stations. If for a given family, I can retrieve most of the LFEs detected with the temporary FAME network when I use only the permanent stations, I will then extend the LFE catalog to the period 2009-2019. \\
+
+I will then study how low-frequency earthquakes event rate is affected by nearby earthquakes. I will take several moderate earthquakes that occurred near the Mendocino Triple Junction, and test whether there is a change in the LFE event rate before and after the earthquakes. I intend particularly to test the effects of the M5.4 April 30th 2008 earthquake, and the M6.5 January 10th 2010 earthquake. Shelly (2017 ~\cite{SHE_2017}) noticed changed in the LFE event rate for some LFE families for at least several months after the M6.0 2004 Parkfield earthquake on the San Andreas Fault. I will also compare the behavior of the most updip LFE families with the behavior of the most downdip LFE families, and verify whether the downdip families are more frequently active than the updip families, as observed by Sweet \textit{et al.} (2019 ~\cite{SWE_2019}) in Washington state.
+
+\paragraph{Statistical analysis of LFE catalogs} Once I have obtained a two-year-long LFE catalog, I will recompute the value of the fractional parameter for all the LFE families, as I have already done for the two-month-long catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and I will verify if I still observe evidence for long-range dependence. I will then try to fit an ETAS model on the available LFE catalogs. I will start with the catalog by Chestler and Creager (2017a ~\cite{CHE_2017_JGR} and b ~\cite{CHE_2017_G3}) because it provides values for the magnitudes of the LFEs. However, it should be possible to fit an ETAS model with the other catalogs as well, by assuming that all the LFEs have the same magnitude, or by looking at the amplitude of the seismic waveforms instead of the magnitude. I intend to use the software R and two available R packages, bayesianETAS by Gordon Ross ~\cite{ROS_2016}, and PtProcess by David Harte ~\cite{HAR_2010}.
 
 \subsection{Detection of slow slip events in New Zealand}
 
@@ -205,7 +193,60 @@ I have applied this denoising method to GPS time series. Figure X shows the deno
 \newpage
 \setcounter{page}{1}
 
+\section*{Tables}
+
+\begin{center}
+\begin{tabular}{| l | c |}
+  \hline
+  Number of LFEs in my catalog & 236 \\
+  \hline
+  Number of LFEs in the catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}) & 225 \\
+  \hline
+  Number of LFEs added in my catalog & 13 \\
+  \hline
+  Number of LFEs missing in my catalog & 2 \\
+  \hline
+  Number of LFEs present in both catalogs & 223 \\
+  \hline
+\end{tabular}
+\captionsetup{type=table}
+\captionof{table}{Comparison between the LFE catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}), and my new catalog using templates obtained from their detection times for LFE family 080421.14.048.}
+\end{center}
+
+\newpage
+\setcounter{page}{1}
+
 \section*{Figures}
+
+\begin{center}
+\includegraphics[trim={4cm 1cm 5cm 2cm}, clip, width=400pt]{figures/two_year_long_catalog.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Number of LFEs per day for subduction zone LFE family 080421.14.048 (left) and strike-slip fault family 080326.08.015 (right) detected with the FAME stations (top) and the permanent stations (bottom).}
+\end{center}
+
+\begin{center}
+\includegraphics[trim={1.5cm 4cm 6cm 9cm}, clip, width=400pt]{figures/california.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Fractional index for 66 low-frequency earthquakes families in Northern California (catalog by Plourde \textit{et al.} (2015 ~\cite{PLO_2015}). Red dots correspond to $0 < d < 0.1$. Orange dots correspond to $0.1 < d < 0.2$. Green dots correspond to $0.2 < d < 0.3$. Cyan dots correspond to $0.3 < d < 0.4$.}
+\end{center}
+
+\begin{center}
+\includegraphics[trim={1cm 4cm 2cm 7.5cm}, clip, width=400pt]{figures/cascadia.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Fractional index for 78 low-frequency earthquakes families in the Olympic Peninsula, Washington (catalogs by Chestler and Creager (2017a ~\cite{CHE_2017_JGR} and b ~\cite{CHE_2017_G3}) and Sweet \textit{et al.} (2019 ~\cite{SWE_2019})). Red dots correspond to $0 < d < 0.1$. Orange dots correspond to $0.1 < d < 0.2$. Green dots correspond to $0.2 < d < 0.3$. Cyan dots correspond to $0.3 < d < 0.4$.}
+\end{center}
+
+\begin{center}
+\includegraphics[trim={1.5cm 4cm 6.5cm 8cm}, clip, width=400pt]{figures/guerrero.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Fractional index for 1120 low-frequency earthquakes families in Guerrero, Mexico (catalog by Frank \textit{et al.} 92016 ~\cite{FRA_2016_SA}). Red dots correspond to $0 < d < 0.1$. Orange dots correspond to $0.1 < d < 0.2$. Green dots correspond to $0.2 < d < 0.3$. Cyan dots correspond to $0.3 < d < 0.4$.}
+\end{center}
+
+\begin{center}
+\includegraphics[trim={1.5cm 4cm 4.5cm 12cm}, clip, width=400pt]{figures/sanandreas.eps}
+\captionsetup{type=figure}
+\captionof{figure}{Fractional index for 88 low-frequency earthquakes families along the deep San Andreas fault (catalog by Shelly (2017 ~\cite{SHE_2017}). Red dots correspond to $0 < d < 0.1$. Orange dots correspond to $0.1 < d < 0.2$. Green dots correspond to $0.2 < d < 0.3$. Cyan dots correspond to $0.3 < d < 0.4$.}
+\end{center}
 
 \begin{center}
 \includegraphics[trim={2.5cm 0.5cm 5cm 0.5cm}, clip, width=400pt]{figures/slowslip_MRA.eps}

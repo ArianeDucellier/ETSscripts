@@ -1,16 +1,16 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.15)  16 AUG 2019 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  19 AUG 2019 15:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **proposal.tex
 (./proposal.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -24,15 +24,15 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 \captionmargin=\dimen103
@@ -45,25 +45,24 @@ Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 )
 \c@ContinuedFloat=\count87
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.def
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count88
@@ -79,125 +78,125 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen117
 \Gm@dimlist=\toks15
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 96.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
 ))
 \Gin@req@height=\dimen118
 \Gin@req@width=\dimen119
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package hobsub Info: Skipping package `ifvtex' (already loaded).
-Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
 Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
-Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
-Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
-Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
-Package: xcolor-patch 2011/01/30 xcolor patch
-Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
-Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
-Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen120
 \Hy@linkcounter=\count92
 \Hy@pagecounter=\count93
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count94
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4443.
-Package hyperref Info: Link nesting OFF on input line 4448.
-Package hyperref Info: Hyper index ON on input line 4451.
-Package hyperref Info: Plain pages OFF on input line 4458.
-Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Hyper figures OFF on input line 4446.
+Package hyperref Info: Link nesting OFF on input line 4451.
+Package hyperref Info: Hyper index ON on input line 4454.
+Package hyperref Info: Plain pages OFF on input line 4461.
+Package hyperref Info: Backreferencing OFF on input line 4466.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4688.
+Package hyperref Info: Bookmarks ON on input line 4691.
 \c@Hy@tempcnt=\count95
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5041.
+LaTeX Info: Redefining \url on input line 5044.
 \XeTeXLinkMargin=\dimen121
 \Fld@menulength=\count96
 \Field@Width=\dimen122
 \Fld@charsize=\dimen123
-Package hyperref Info: Hyper figures OFF on input line 6295.
-Package hyperref Info: Link nesting OFF on input line 6300.
-Package hyperref Info: Hyper index ON on input line 6303.
-Package hyperref Info: backreferencing OFF on input line 6310.
-Package hyperref Info: Link coloring OFF on input line 6315.
-Package hyperref Info: Link coloring with OCG OFF on input line 6320.
-Package hyperref Info: PDF/A mode OFF on input line 6325.
-LaTeX Info: Redefining \ref on input line 6365.
-LaTeX Info: Redefining \pageref on input line 6369.
+Package hyperref Info: Hyper figures OFF on input line 6298.
+Package hyperref Info: Link nesting OFF on input line 6303.
+Package hyperref Info: Hyper index ON on input line 6306.
+Package hyperref Info: backreferencing OFF on input line 6313.
+Package hyperref Info: Link coloring OFF on input line 6318.
+Package hyperref Info: Link coloring with OCG OFF on input line 6323.
+Package hyperref Info: PDF/A mode OFF on input line 6328.
+LaTeX Info: Redefining \ref on input line 6368.
+LaTeX Info: Redefining \pageref on input line 6372.
 \Hy@abspage=\count97
 \c@Item=\count98
 \c@Hfootnote=\count99
@@ -205,37 +204,37 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
 \Fld@listcount=\count100
 \c@bookmark@seq@number=\count101
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip43
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/times.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (./proposal.aux)
 \openout1 = `proposal.aux'.
@@ -255,7 +254,7 @@ LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 11.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/t1ptm.fd
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -295,7 +294,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen124
@@ -308,29 +307,29 @@ Package caption Info: End \AtBeginDocument code.
 \MPnumerator=\count106
 \makeMPintoPDFobject=\count107
 \everyMPtoPDFconversion=\toks17
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
+(grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box27
 Package hyperref Info: Link coloring OFF on input line 11.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count108
 )
@@ -374,13 +373,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
 [1
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 48.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
@@ -408,57 +407,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
-
- []
-
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-[11] [12] (./proposal.bblpdfTeX warning (ext4): destination with the same ident
-ifier (name{page.1}) has been already used, duplicate ignored
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
+
+ []
+
+[11] [12] [13] (./proposal.bblpdfTeX warning (ext4): destination with the same 
+identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.96 
@@ -466,118 +480,250 @@ l.96
 .2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 \bibitem{SHE_2007_nature}
-                                [2])pdfTeX warning (ext4): destination with the
- same identifier (name{page.3}) has been already used, duplicate ignored
+l.181 
+       [2])pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.205 \newpage
-               [3]
-Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 170076 bytes
-(epstopdf)             Output file: <figures/slowslip_MRA-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 63965 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_MRA-eps-c
-onverted-to.pdf figures/slowslip_MRA.eps>
-(epstopdf)             \includegraphics on input line 211.
+l.193 \newpage
+               [3]pdfTeX warning (ext4): destination with the same identifier (
+name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.216 \newpage
+               [1]
+Package epstopdf Info: Source file: <figures/two_year_long_catalog.eps>
+(epstopdf)                    date: 2019-08-16 09:54:40
+(epstopdf)                    size: 302102 bytes
+(epstopdf)             Output file: <figures/two_year_long_catalog-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2019-08-19 12:15:02
+(epstopdf)                    size: 39308 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/two_year_long_cata
+log-eps-converted-to.pdf figures/two_year_long_catalog.eps>
+(epstopdf)             \includegraphics on input line 222.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/slowslip_MRA-eps-converted-to.pdf, id=237, 1445.4pt x 722.7pt>
-File: figures/slowslip_MRA-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/slowslip_MRA-eps-converted-to.pdf>
-Package pdftex.def Info: figures/slowslip_MRA-eps-converted-to.pdf used on inpu
-t line 211.
-(pdftex.def)             Requested size: 400.0pt x 225.39464pt.
-Package epstopdf Info: Source file: <figures/slowslip_synthetics.eps>
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 155121 bytes
-(epstopdf)             Output file: <figures/slowslip_synthetics-eps-converted-
-to.pdf>
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 53754 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_synthetic
-s-eps-converted-to.pdf figures/slowslip_synthetics.eps>
-(epstopdf)             \includegraphics on input line 217.
+<figures/two_year_long_catalog-eps-converted-to.pdf, id=258, 1445.4pt x 722.7pt
+>
+File: figures/two_year_long_catalog-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use figures/two_year_long_catalog-eps-converted-to.pdf>
+Package pdftex.def Info: figures/two_year_long_catalog-eps-converted-to.pdf use
+d on input line 222.
+(pdftex.def)             Requested size: 400.0pt x 214.3496pt.
+Package epstopdf Info: Source file: <figures/california.eps>
+(epstopdf)                    date: 2019-04-08 11:51:49
+(epstopdf)                    size: 80890 bytes
+(epstopdf)             Output file: <figures/california-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-08-19 14:14:40
+(epstopdf)                    size: 21142 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/california-eps-con
+verted-to.pdf figures/california.eps>
+(epstopdf)             \includegraphics on input line 228.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/slowslip_synthetics-eps-converted-to.pdf, id=241, 2168.1pt x 722.7pt>
-File: figures/slowslip_synthetics-eps-converted-to.pdf Graphic file (type pdf)
+<figures/california-eps-converted-to.pdf, id=260, 597.23125pt x 845.1575pt>
+File: figures/california-eps-converted-to.pdf Graphic file (type pdf)
 
-<use figures/slowslip_synthetics-eps-converted-to.pdf>
-Package pdftex.def Info: figures/slowslip_synthetics-eps-converted-to.pdf used 
-on input line 217.
-(pdftex.def)             Requested size: 450.0pt x 167.436pt.
-Package epstopdf Info: Source file: <figures/slowslip_denoising.eps>
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 305373 bytes
-(epstopdf)             Output file: <figures/slowslip_denoising-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2019-06-18 16:46:11
-(epstopdf)                    size: 99456 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_denoising
--eps-converted-to.pdf figures/slowslip_denoising.eps>
-(epstopdf)             \includegraphics on input line 223.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/slowslip_denoising-eps-converted-to.pdf, id=243, 1445.4pt x 722.7pt>
-File: figures/slowslip_denoising-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/slowslip_denoising-eps-converted-to.pdf>
-Package pdftex.def Info: figures/slowslip_denoising-eps-converted-to.pdf used o
-n input line 223.
-(pdftex.def)             Requested size: 450.0pt x 247.0549pt.
+<use figures/california-eps-converted-to.pdf>
+Package pdftex.def Info: figures/california-eps-converted-to.pdf used on input 
+line 228.
+(pdftex.def)             Requested size: 400.0pt x 495.3152pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
-                                                   [1 <./figures/slowslip_MRA-e
-ps-converted-to.pdf> <./figures/slowslip_synthetics-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+l.230 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+                                                   [1 <./figures/two_year_long_
+catalog-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/cascadia.eps>
+(epstopdf)                    date: 2019-04-08 11:57:49
+(epstopdf)                    size: 662908 bytes
+(epstopdf)             Output file: <figures/cascadia-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-08-19 14:20:30
+(epstopdf)                    size: 307093 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/cascadia-eps-conve
+rted-to.pdf figures/cascadia.eps>
+(epstopdf)             \includegraphics on input line 234.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/cascadia-eps-converted-to.pdf, id=317, 597.23125pt x 845.1575pt>
+File: figures/cascadia-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/cascadia-eps-converted-to.pdf>
+Package pdftex.def Info: figures/cascadia-eps-converted-to.pdf used on input li
+ne 234.
+(pdftex.def)             Requested size: 400.0pt x 404.76665pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.228 \end{document}
-                     [2 <./figures/slowslip_denoising-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
+l.236 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+                                                   [2 <./figures/california-eps
+-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/guerrero.eps>
+(epstopdf)                    date: 2019-04-08 12:05:24
+(epstopdf)                    size: 96334 bytes
+(epstopdf)             Output file: <figures/guerrero-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-08-19 14:20:31
+(epstopdf)                    size: 65543 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/guerrero-eps-conve
+rted-to.pdf figures/guerrero.eps>
+(epstopdf)             \includegraphics on input line 240.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/guerrero-eps-converted-to.pdf, id=337, 597.23125pt x 845.1575pt>
+File: figures/guerrero-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/guerrero-eps-converted-to.pdf>
+Package pdftex.def Info: figures/guerrero-eps-converted-to.pdf used on input li
+ne 240.
+(pdftex.def)             Requested size: 400.0pt x 545.15956pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.242 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+                                                   [3 <./figures/cascadia-eps-c
+onverted-to.pdf>]
+Package epstopdf Info: Source file: <figures/sanandreas.eps>
+(epstopdf)                    date: 2019-04-08 12:09:57
+(epstopdf)                    size: 52548 bytes
+(epstopdf)             Output file: <figures/sanandreas-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-08-19 14:20:31
+(epstopdf)                    size: 17117 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/sanandreas-eps-con
+verted-to.pdf figures/sanandreas.eps>
+(epstopdf)             \includegraphics on input line 246.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/sanandreas-eps-converted-to.pdf, id=352, 597.23125pt x 845.1575pt>
+File: figures/sanandreas-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/sanandreas-eps-converted-to.pdf>
+Package pdftex.def Info: figures/sanandreas-eps-converted-to.pdf used on input 
+line 246.
+(pdftex.def)             Requested size: 400.0pt x 365.68575pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.248 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+                                                   [4 <./figures/guerrero-eps-c
+onverted-to.pdf>]
+Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
+(epstopdf)                    date: 2018-11-14 13:56:00
+(epstopdf)                    size: 170076 bytes
+(epstopdf)             Output file: <figures/slowslip_MRA-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2019-06-11 16:30:14
+(epstopdf)                    size: 63965 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_MRA-eps-c
+onverted-to.pdf figures/slowslip_MRA.eps>
+(epstopdf)             \includegraphics on input line 252.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/slowslip_MRA-eps-converted-to.pdf, id=367, 1445.4pt x 722.7pt>
+File: figures/slowslip_MRA-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/slowslip_MRA-eps-converted-to.pdf>
+Package pdftex.def Info: figures/slowslip_MRA-eps-converted-to.pdf used on inpu
+t line 252.
+(pdftex.def)             Requested size: 400.0pt x 225.39464pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.254 ... (2016 ~\cite{TOD_2016}, their Table 1).}
+                                                   [5 <./figures/sanandreas-eps
+-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/slowslip_synthetics.eps>
+(epstopdf)                    date: 2018-12-04 11:53:30
+(epstopdf)                    size: 155121 bytes
+(epstopdf)             Output file: <figures/slowslip_synthetics-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2019-06-11 16:30:14
+(epstopdf)                    size: 53754 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_synthetic
+s-eps-converted-to.pdf figures/slowslip_synthetics.eps>
+(epstopdf)             \includegraphics on input line 258.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/slowslip_synthetics-eps-converted-to.pdf, id=382, 2168.1pt x 722.7pt>
+File: figures/slowslip_synthetics-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/slowslip_synthetics-eps-converted-to.pdf>
+Package pdftex.def Info: figures/slowslip_synthetics-eps-converted-to.pdf used 
+on input line 258.
+(pdftex.def)             Requested size: 450.0pt x 167.436pt.
+Package epstopdf Info: Source file: <figures/slowslip_denoising.eps>
+(epstopdf)                    date: 2018-12-04 12:05:56
+(epstopdf)                    size: 305373 bytes
+(epstopdf)             Output file: <figures/slowslip_denoising-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2019-06-11 16:30:14
+(epstopdf)                    size: 99456 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/slowslip_denoising
+-eps-converted-to.pdf figures/slowslip_denoising.eps>
+(epstopdf)             \includegraphics on input line 264.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/slowslip_denoising-eps-converted-to.pdf, id=384, 1445.4pt x 722.7pt>
+File: figures/slowslip_denoising-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/slowslip_denoising-eps-converted-to.pdf>
+Package pdftex.def Info: figures/slowslip_denoising-eps-converted-to.pdf used o
+n input line 264.
+(pdftex.def)             Requested size: 450.0pt x 247.0549pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.266 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
+                                                   [6 <./figures/slowslip_MRA-e
+ps-converted-to.pdf> <./figures/slowslip_synthetics-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 269.
+pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.269 \end{document}
+                     [7 <./figures/slowslip_denoising-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 269.
 
 (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 269.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 269.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 2A565B10F15C1F6CDE45AF78380D28FB;471.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 269.
  ) 
 Here is how much of TeX's memory you used:
- 7350 strings out of 493117
- 110416 string characters out of 6135433
- 200624 words of memory out of 5000000
- 10663 multiletter control sequences out of 15000+600000
+ 7405 strings out of 493014
+ 111911 string characters out of 6133351
+ 201488 words of memory out of 5000000
+ 10782 multiletter control sequences out of 15000+600000
  27129 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,41p,1960b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
+ 36i,8n,43p,1960b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on proposal.pdf (17 pages, 373010 bytes).
+Output written on proposal.pdf (24 pages, 816813 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 315 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 621 PDF objects out of 1000 (max. 8388607)
+ 387 compressed objects within 4 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
