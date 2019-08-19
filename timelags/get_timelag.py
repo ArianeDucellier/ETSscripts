@@ -18,7 +18,7 @@ from plot_stack_ccorr import plot_stack_ccorr
 from stacking import linstack, powstack, PWstack
 
 # Set parameters
-arrayName = 'BS'
+arrayName = 'BH'
 w = 2.0
 Tmax = 15.0
 ds = 5.0
@@ -37,8 +37,8 @@ depth = pd.read_csv('depth/' + arrayName + '_depth.txt', sep=' ', header=None)
 depth.columns = ['x', 'y', 'depth']
 
 # Loop on tremor location
-for i in range(5, 6):
-    for j in range(5, 6):
+for i in range(-3, -2):
+    for j in range(-1, 1):
         x0 = i * ds
         y0 = j * ds
         filename = '{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}'.format( \
@@ -63,16 +63,16 @@ for i in range(5, 6):
         npowcc = len(data[6])
         data = pickle.load(open('cc/' + filename + '_PWS.pkl', 'rb'))
         nPWScc = len(data[6])
-        data = pickle.load(open('ac/' + filename + '_lin.pkl', 'rb'))
-        nlinac = len(data[6])
-        data = pickle.load(open('ac/' + filename + '_pow.pkl', 'rb'))
-        npowac = len(data[6])
-        data = pickle.load(open('ac/' + filename + '_PWS.pkl', 'rb'))
-        nPWSac = len(data[6])
+#        data = pickle.load(open('ac/' + filename + '_lin.pkl', 'rb'))
+#        nlinac = len(data[6])
+#        data = pickle.load(open('ac/' + filename + '_pow.pkl', 'rb'))
+#        npowac = len(data[6])
+#        data = pickle.load(open('ac/' + filename + '_PWS.pkl', 'rb'))
+#        nPWSac = len(data[6])
 
         # If there are tremor at this location
-        if ((nlincc == npowcc) and (nlincc == nPWScc) and \
-            (nlincc == nlinac) and (nlincc == npowac) and (nlincc == nPWSac)):
+        if ((nlincc == npowcc) and (nlincc == nPWScc)):
+#            and (nlincc == nlinac) and (nlincc == npowac) and (nlincc == nPWSac)):
             ntremor = nlincc
             n1 = 0
             n2 = ntremor
@@ -91,8 +91,8 @@ for i in range(5, 6):
             amp_PWS = 200.0
             plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
                 amp_lin, amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for power stack
             type_stack = 'pow'
@@ -102,8 +102,8 @@ for i in range(5, 6):
             amp_PWS = 100.0
             plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
                 amp_lin, amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for phase-weighted stack
             type_stack = 'PWS'
@@ -113,8 +113,8 @@ for i in range(5, 6):
             amp_PWS = 1000.0
             plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
                 amp_lin, amp_pow, amp_PWS, n1, n2)
-            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Find time of maximum cross-correlation
             # Linear stack

@@ -5,6 +5,12 @@ A.C. Aguiar, T.I. Melbourne, and C.W. Scrivner.
 \newblock Moment release rate of {Cascadia} tremor constrained by {GPS}.
 \newblock {\em Journal of Geophysical Research}, 114:B00A05, 2009.
 
+\bibitem{ANG_2015}
+S.~Angiboust, J.~Kirsch, O.~Oncken, J.~Glodny, P.~Moni\'e, and E.~Rybacki.
+\newblock Probing the transition between seismically coupled and decoupled
+  segments along an ancient subduction interface.
+\newblock {\em Geochemistry, Geophysics, Geosystems}, 16:1905--1922, 2015.
+
 \bibitem{AUD_2016}
 P.~Audet and Y.H. Kim.
 \newblock Teleseismic constraints on the geological environment of deep
@@ -43,10 +49,24 @@ E.J. Delahaye, J.~Townend, M.E. Reyners, and G.~Rogers.
   {Hikurangi} subduction zone, {New} {Zealand}.
 \newblock {\em Earth and Planetary Science Letters}, 277:21--28, 2009.
 
-\bibitem{FRA_2016}
+\bibitem{FRA_2015}
+W.~B. Frank, M.~Radiguet, B.~Rousset, N.M. Shapiro, A.L. Husker,
+  V.~Kostoglodov, N.~Cotte, and M.~Campillo.
+\newblock Uncovering the geodetic signature of silent slip through repeating
+  earthquakes.
+\newblock {\em Geophysical Research Letters}, 42:2774--2779, 2015.
+
+\bibitem{FRA_2016_GRL}
 W.B. Frank.
 \newblock Slow slip hidden in the noise: The intermittence of tectonic release.
 \newblock {\em Geophysical Research Letters}, 43:10125--10133, 2016.
+
+\bibitem{FRA_2016_SA}
+W.B. Frank, N.M. Shapiro, A.L. Husker, V.~Kostoglodov, A.A. Gusev, and
+  M.~Campillo.
+\newblock The evolving interaction of low-frequency earthquakes during
+  transient slip.
+\newblock {\em Science Advances}, 2:e1501616, 2016.
 
 \bibitem{FRA_2014}
 W.B. Frank, N.M. Shapiro, A.L. Husker, V.~Kostoglodov, A.~Romanenko, and
@@ -176,6 +196,14 @@ W.~Szeliga, T.~Melbourne, M.~Santillan, and M.~Miller.
 \newblock {GPS} constraints on 34 slow slip events within the {Cascadia}
   subduction zone, 1997-2005.
 \newblock {\em Journal of Geophysical Research}, 113:B04404, 2008.
+
+\bibitem{TAQ_1998}
+M.~Taqqu and V.~Teverovsky.
+\newblock On estimating the intensity of long-range dependence in finite and
+  infinite variance time series.
+\newblock In R.J. Adler, R.E. Feldman, and M.S. Taqqu, editors, {\em A
+  {Practical} {Guide} to {Heavy} {Tails}: {Statistical} {Techniques} and
+  {Application}}. Birkh\"auser, Boston, MA, USA, 1998.
 
 \bibitem{TOD_2016}
 E.K. Todd and S.Y. Schwartz.
