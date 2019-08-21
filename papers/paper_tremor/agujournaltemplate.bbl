@@ -29,6 +29,35 @@ Ghosh, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Ghosh%
+\ \protect \BOthers {.}}{%
+Ghosh%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2010}}%
+}]{%
+GHO_2010_G3}
+\APACinsertmetastar {%
+GHO_2010_G3}%
+\begin{APACrefauthors}%
+Ghosh, A.%
+, Vidale, J.%
+, Sweet, J.%
+, Creager, K.%
+, Wech, A.%
+, Houston, H.%
+\BCBL {}\ \BBA {} Brodsky, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Rapid, continuous streaking of tremor in {Cascadia}}
+  {Rapid, continuous streaking of tremor in {Cascadia}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{11}{}{Q12010}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 La~Rocca%
 \ \protect \BOthers {.}}{%
 La~Rocca%

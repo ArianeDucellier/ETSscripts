@@ -36,7 +36,9 @@ cat << END >> names.dat
 -123.138492857143 47.9530357142857 Three Bumps
 END
 
-gmt psxy tremor_AoA.dat -R$Rop -J$Jop -Sc0.03 -Ggrey -O -K >> $output
+gmt psxy tremor_2009-2010.dat -R$Rop -J$Jop -Sc0.03 -Ggrey -O -K >> $output
+gmt psxy tremor_2011.dat -R$Rop -J$Jop -Sc0.03 -Ggrey -O -K >> $output
+
 
 gmt xyz2grd plate_boundary.txt -Gplate_boundary.grd -I0.1 -R$Rop
 gmt grdcontour plate_boundary.grd -A2 -J$Jop -R$Rop -O -K >> $output

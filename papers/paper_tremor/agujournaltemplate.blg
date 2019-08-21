@@ -12,47 +12,53 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "SHE_2007"
+Warning--I didn't find a database entry for "IDE_2007"
+Warning--I didn't find a database entry for "OBA_2002"
+Warning--I didn't find a database entry for "ROG_2003"
+Warning--I didn't find a database entry for "AUD_2014"
+Warning--I didn't find a database entry for "HYN_2015"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No address in MCC_2006
-You've used 3 entries,
+You've used 4 entries,
             6951 wiz_defined-function locations,
-            1292 strings with 11326 characters,
-and the built_in function-call counts, 7245 in all, are:
-= -- 837
-> -- 78
-< -- 390
-+ -- 405
-- -- 6
-* -- 501
-:= -- 1442
-add.period$ -- 13
-call.type$ -- 3
-change.case$ -- 53
+            1312 strings with 11652 characters,
+and the built_in function-call counts, 9425 in all, are:
+= -- 1085
+> -- 105
+< -- 484
++ -- 515
+- -- 8
+* -- 647
+:= -- 1807
+add.period$ -- 17
+call.type$ -- 4
+change.case$ -- 70
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 200
-empty$ -- 253
-format.name$ -- 131
-if$ -- 1288
+cite$ -- 9
+duplicate$ -- 287
+empty$ -- 345
+format.name$ -- 189
+if$ -- 1692
 int.to.chr$ -- 0
-int.to.str$ -- 9
+int.to.str$ -- 12
 missing$ -- 0
-newline$ -- 85
-num.names$ -- 24
-pop$ -- 108
+newline$ -- 113
+num.names$ -- 32
+pop$ -- 141
 preamble$ -- 1
-purify$ -- 14
+purify$ -- 18
 quote$ -- 0
-skip$ -- 407
+skip$ -- 546
 stack$ -- 0
-substring$ -- 449
-swap$ -- 118
-text.length$ -- 18
+substring$ -- 568
+swap$ -- 167
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 240
+type$ -- 320
 warning$ -- 1
-while$ -- 48
+while$ -- 67
 width$ -- 0
-write$ -- 115
-(There was 1 warning)
+write$ -- 154
+(There were 7 warnings)
