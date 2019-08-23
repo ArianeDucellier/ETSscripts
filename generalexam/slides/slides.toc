@@ -6,8 +6,8 @@
 \beamer@subsectionintoc {1}{4}{Episodic Tremor and Slip (ETS)}{9}{0}{1}
 \beamer@subsectionintoc {1}{5}{Research questions}{10}{0}{1}
 \beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{16}{0}{2}
-\beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{16}{0}{3}
-\beamer@subsectionintoc {3}{1}{Extension of an LFEs catalog for southern Cascadia}{16}{0}{3}
-\beamer@subsectionintoc {3}{2}{Statistical analysis of LFE catalogs}{32}{0}{3}
-\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{32}{0}{4}
-\beamer@sectionintoc {5}{Time line}{32}{0}{5}
+\beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{17}{0}{3}
+\beamer@subsectionintoc {3}{1}{Extension of an LFEs catalog for southern Cascadia}{17}{0}{3}
+\beamer@subsectionintoc {3}{2}{Statistical analysis of LFE catalogs}{33}{0}{3}
+\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{53}{0}{4}
+\beamer@sectionintoc {5}{Time line}{65}{0}{5}

@@ -22,12 +22,20 @@
 		\titlepage
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Introduction
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\section{Introduction}
 
 	\begin{frame}
 		\frametitle{Slow earthquakes}
 		% Here image of subduction zone with seismogenic zone  ETS zone / Aseismic slip zone
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Slow slip
+	%----------------------------------------------------------------------------------------------------------------------------------
 
 	\subsection{Sow slip}
 
@@ -40,6 +48,10 @@
 		\frametitle{Slow slip}
 		% Here image of GPS data showing slow slip (from Cascadia?)
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Tectonic tremor
+	%----------------------------------------------------------------------------------------------------------------------------------
 
 	\subsection{Tectonic tremor}
 
@@ -58,6 +70,10 @@
 		% Here image of tectonic tremor (signal envelope for 10 stations of seismic array)
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Low-frequency earthquakes (LFEs)
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Low-frequency earthquakes (LFEs)}
 
 	\begin{frame}
@@ -75,6 +91,10 @@
 		% Here image of low-frequency earthquakes
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Episodic Tremor and Slip (ETS)
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Episodic Tremor and Slip (ETS)}
 
 	\begin{frame}
@@ -85,6 +105,10 @@
 			\item No spatial or temporal correlation in other regions like New Zealand
 		\end{itemize}
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Research questions
+	%----------------------------------------------------------------------------------------------------------------------------------
 	
 	\subsection{Research questions}
 
@@ -153,10 +177,26 @@
 			$\rightarrow$ Can we detect smaller and / or longer slow slip events in the absence of spatially and temporally correlated tectonic tremor?
 		\end{block}			
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Depth of the source of the tectonic tremor
+	%----------------------------------------------------------------------------------------------------------------------------------
 				
 	\section{Depth of the source of the tectonic tremor}
 
+	\begin{frame}
+		\frametitle{Array of Arrays}
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% A low-frequency earthquakes catalog for southern Cascadia
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\section{A low-frequency earthquakes catalog for southern Cascadia}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Extension of an LFEs catalog for southern Cascadia
+	%----------------------------------------------------------------------------------------------------------------------------------
 
 	\subsection{Extension of an LFEs catalog for southern Cascadia}
 	
@@ -262,9 +302,241 @@
 		\end{itemize}
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Statistical analysis of LFE catalogs
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Statistical analysis of LFE catalogs}
 
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during one day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during 3 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during 9 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during 27 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during 81 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Homogeneous Poisson process}
+		% Image
+		Number of events recorded during 243 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Variance vsLlength of time window}
+		\begin{columns}[c]
+			\begin{column}{5cm}
+				$V$ = Variance
+				$m$ = Sample size
+				$V$ behaves as $m^{2 d - 1}$
+				$\rightarrow$ $d =  0$
+			\end{column}
+			\begin{column}{7cm}
+				\begin{center}
+					% here figure
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		Epidemic-Type Aftershock Sequence (ETAS) model:
+		\begin{itemize}
+			\item Magnitude frequency distribution law of Gutemberg and Richter
+			\item Omori-Utsu law of aftershock decay
+			\item Each event, irrespective of whether it is a small or a big event, can trigger its own offspring
+		\end{itemize}
+		\begin{equation}
+		\lambda = \mu + A \sum_{t_i < t} e^{\alpha \left( M_i - M_0 \right)} \left( 1 + \frac{t - t_i}{c} \right) ^{-p}
+		\end{equation}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 1 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 3 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 9 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 27 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 81 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{ETAS model}
+		% Image
+		Number of events recorded during 243 day $\rightarrow$ Variance over X values = Y
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Variance vs Length of time window}
+		\begin{columns}[c]
+			\begin{column}{5cm}
+				$V$ = Variance
+				$m$ = Sample size
+				$V$ behaves as $m^{2 d - 1}$
+				$\rightarrow$ $d =  0.23$
+			\end{column}
+			\begin{column}{7cm}
+				\begin{center}
+					% here figure
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Long-range dependence}
+		\begin{itemize}
+			\item Relates to the slow rate of decay of the statistical dependence between two points with increasing time interval between the points
+			\item The fractional index $d$ represents how fast the variance in the number of LFEs in a time window of a given length increases with the length of the time window considered
+			\item $0 < d < 0.5$ is characteristic of long-range dependence
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Northern Cascadia}
+		% image
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Guerrero, Mexico}
+		% image
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{San Andreas Fault}
+		% image
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Future work}
+		\begin{itemize}
+			\item Computation of fractional index $d$ for the southern Cascadia catalog
+			\item Fit ETAS model on existing LFE families
+		\end{itemize}
+	\end{frame}
+		
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Detection of slow slip events in New Zealand
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\section{Detection of slow slip events in New Zealand}
+
+	\begin{frame}
+		\frametitle{Tremor as proxy for slow slip}
+		Episodic Tremor and Slip in Cascadia
+		\begin{itemize}
+			\item Tremor occurrence rate $\rightarrow$ Moment of slow slip events not detectable in the GPS data (Aguiar, 2009)
+			\item Stacking of GPS data when LFEs are detected (Frank, 2016)
+		\end{itemize}
+		$\rightarrow$ What do we do when tremor is not correlated with slow slip?
+	\end{frame}
+		
+	\begin{frame}
+		\frametitle{Northern New Zealand}
+		% Figure 1 of Wallace and Eerhardt Phillips 2010
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tremor during deep slow slip events}
+		% Figure 3a of Wallace and Eerhardt Phillips 2010
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tremor during deep slow slip events}
+		% Figure 3b of Wallace and Eberhardt Phillips 2010
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Tremor with no detected slow slip event}
+		% Figure 6 of Todd and Schartz 2016
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Possible questions}
+		\begin{itemize}
+			\item 
+			\item Detecting longer term slow slip events
+			\item Better measuring of the vertical displacement at the Earth’s surface during slow slip events
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detecting smaller, currently undetected slow slip events}
+		% Figure 3 of Wech and Creager 2011
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detecting longer term slow slip events}
+		% Figure 1 of Wei et al 2012
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Better measuring of the vertical displacement at the Earth’s surface during slow slip events}
+		% Figure from http://all-geo.org/highlyallochthonous/2015/05/the-geodetic-fingerprints-of-shallow-thrusting-in-nepal/
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{GPS stations in New Zealand}
+		% map of statins
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Denoising of GPS data}
+		% Synthetics example
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Denoising of GPS data}
+		% Station CKID
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Time line
+	%----------------------------------------------------------------------------------------------------------------------------------
 
 	\section{Time line}
 
