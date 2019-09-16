@@ -1,11 +1,16 @@
-This is BibTeX, Version 0.99d (TeX Live 2016)
+This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: proposal.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "SHE_2007"
+Warning--I didn't find a database entry for "IDE_2007"
+Warning--I didn't find a database entry for "GHO_2012"
+Warning--I didn't find a database entry for "GHO_2010_G3"
+Warning--I didn't find a database entry for "MCC_2006"
 You've used 41 entries,
             2118 wiz_defined-function locations,
-            785 strings with 11469 characters,
+            795 strings with 11555 characters,
 and the built_in function-call counts, 14213 in all, are:
 = -- 1372
 > -- 725
@@ -44,3 +49,4 @@ warning$ -- 0
 while$ -- 121
 width$ -- 43
 write$ -- 462
+(There were 5 warnings)
