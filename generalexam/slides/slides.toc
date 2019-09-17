@@ -1,18 +1,18 @@
-\beamer@endinputifotherversion {3.33pt}
+\beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@subsectionintoc {1}{1}{Sow slip}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Tectonic tremor}{5}{0}{1}
-\beamer@subsectionintoc {1}{3}{Low-frequency earthquakes (LFEs)}{7}{0}{1}
-\beamer@subsectionintoc {1}{4}{Episodic Tremor and Slip (ETS)}{9}{0}{1}
-\beamer@subsectionintoc {1}{5}{Research questions}{10}{0}{1}
-\beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{16}{0}{2}
-\beamer@subsectionintoc {2}{1}{Motivation}{16}{0}{2}
-\beamer@subsectionintoc {2}{2}{Data}{24}{0}{2}
-\beamer@subsectionintoc {2}{3}{Method}{26}{0}{2}
-\beamer@subsectionintoc {2}{4}{Results}{31}{0}{2}
-\beamer@subsectionintoc {2}{5}{Discussion and Conclusion}{34}{0}{2}
-\beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{38}{0}{3}
-\beamer@subsectionintoc {3}{1}{Extension of an LFEs catalog for southern Cascadia}{38}{0}{3}
-\beamer@subsectionintoc {3}{2}{Statistical analysis of LFE catalogs}{54}{0}{3}
-\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{74}{0}{4}
-\beamer@sectionintoc {5}{Time line}{87}{0}{5}
+\beamer@subsectionintoc {1}{1}{Sow slip}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Tectonic tremor}{6}{0}{1}
+\beamer@subsectionintoc {1}{3}{Low-frequency earthquakes (LFEs)}{8}{0}{1}
+\beamer@subsectionintoc {1}{4}{Episodic Tremor and Slip (ETS)}{10}{0}{1}
+\beamer@subsectionintoc {1}{5}{Research questions}{11}{0}{1}
+\beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{17}{0}{2}
+\beamer@subsectionintoc {2}{1}{Motivation}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{Data}{26}{0}{2}
+\beamer@subsectionintoc {2}{3}{Method}{28}{0}{2}
+\beamer@subsectionintoc {2}{4}{Results}{33}{0}{2}
+\beamer@subsectionintoc {2}{5}{Discussion and Conclusion}{36}{0}{2}
+\beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{40}{0}{3}
+\beamer@subsectionintoc {3}{1}{Extension of an LFEs catalog for southern Cascadia}{41}{0}{3}
+\beamer@subsectionintoc {3}{2}{Statistical analysis of LFE catalogs}{57}{0}{3}
+\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{77}{0}{4}
+\beamer@sectionintoc {5}{Time line}{91}{0}{5}

@@ -335,7 +335,7 @@ if __name__ == '__main__':
     freq0 = 1.0
     nattempts = 10
     waittime = 10.0
-    draw = False
+    draw = True
     type_threshold = 'MAD'
     
     # Using the same stations as in Plourde's catalog
@@ -355,12 +355,12 @@ if __name__ == '__main__':
     # Known LFEs
     year = 2008
     month = 4
-    for day in range(21, 29):
-        tbegin = (year, month, day, 0, 0, 0)
+    for day in range(21, 22):
+        tbegin = (year, month, day, 13, 0, 0)
         if day == 30:
-            tend = (year, month + 1, 1, 0, 0, 0)
+            tend = (year, month + 1, 1, 14, 0, 0)
         else:
-            tend = (year, month, day + 1, 0, 0, 0)
+            tend = (year, month, day + 1, 14, 0, 0)
 
         find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
             freq0, nattempts, waittime, draw, type_threshold, threshold)

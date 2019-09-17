@@ -76,6 +76,18 @@ W.B. Frank, N.M. Shapiro, A.L. Husker, V.~Kostoglodov, A.~Romanenko, and
 \newblock {\em Journal of Geophysical Research Solid Earth}, 119:7686--7700,
   2014.
 
+\bibitem{GHO_2012}
+A.~Ghosh, J.E. Vidale, and K.C. Creager.
+\newblock Tremor asperities in the transition zone control evolution of slow
+  earthquakes.
+\newblock {\em Journal of Geophysical Research}, 117:B10301, 2012.
+
+\bibitem{GHO_2010_G3}
+A.~Ghosh, J.E. Vidale, J.R. Sweet, K.C. Creager, A.G. Wech, H.~Houston, and
+  E.E. Brodsky.
+\newblock Rapid, continuous streaking of tremor in {Cascadia}.
+\newblock {\em Geochemistry, Geophysics, Geosystems}, 11:Q12010, 2010.
+
 \bibitem{GUI_2010}
 A.~Guilhem, Z.~Peng, and R.M. Nadeau.
 \newblock High-frequency identification of non-volcanic tremor triggered by
@@ -121,6 +133,12 @@ M.J. Kim, S.Y. Schwartz, and S.~Bannister.
 S.G. Mallat and Z.~Zhang.
 \newblock Matching pursuits with time-frequency dictionaries.
 \newblock {\em IEEE Transactions on Signal Processing}, 41:3397--3415, 1993.
+
+\bibitem{MCC_2006}
+P.A. McCrory, J.L. Blair, D.H. Oppenheimer, and S.R. Walter.
+\newblock Depth to the {Juan} de {Fuca} slab beneath the {Cascadia} subduction
+  margin - a {3-D} model sorting earthquakes.
+\newblock Technical Report Series 91, U.S. Geological Survey, 2006.
 
 \bibitem{OBA_2002}
 K.~Obara.

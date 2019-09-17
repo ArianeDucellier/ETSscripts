@@ -1,52 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2014)
+This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: proposal.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
-Warning--I didn't find a database entry for "SHE_2007"
-Warning--I didn't find a database entry for "IDE_2007"
-Warning--I didn't find a database entry for "GHO_2012"
-Warning--I didn't find a database entry for "GHO_2010_G3"
-Warning--I didn't find a database entry for "MCC_2006"
-You've used 41 entries,
+You've used 44 entries,
             2118 wiz_defined-function locations,
-            795 strings with 11555 characters,
-and the built_in function-call counts, 14213 in all, are:
-= -- 1372
-> -- 725
-< -- 0
-+ -- 290
-- -- 243
-* -- 1083
-:= -- 2465
-add.period$ -- 129
-call.type$ -- 41
-change.case$ -- 242
+            803 strings with 12033 characters,
+and the built_in function-call counts, 15311 in all, are:
+= -- 1472
+> -- 804
+< -- 1
++ -- 321
+- -- 271
+* -- 1173
+:= -- 2665
+add.period$ -- 138
+call.type$ -- 44
+change.case$ -- 265
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 451
-empty$ -- 1068
-format.name$ -- 243
-if$ -- 2908
+cite$ -- 44
+duplicate$ -- 482
+empty$ -- 1133
+format.name$ -- 271
+if$ -- 3121
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 41
-newline$ -- 212
-num.names$ -- 84
-pop$ -- 164
+int.to.str$ -- 44
+missing$ -- 43
+newline$ -- 227
+num.names$ -- 90
+pop$ -- 182
 preamble$ -- 1
-purify$ -- 202
+purify$ -- 222
 quote$ -- 0
-skip$ -- 294
+skip$ -- 313
 stack$ -- 0
-substring$ -- 1045
-swap$ -- 40
-text.length$ -- 0
+substring$ -- 1096
+swap$ -- 43
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 162
+type$ -- 174
 warning$ -- 0
-while$ -- 121
-width$ -- 43
-write$ -- 462
-(There were 5 warnings)
+while$ -- 129
+width$ -- 46
+write$ -- 495

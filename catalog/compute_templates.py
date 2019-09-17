@@ -11,6 +11,7 @@ from obspy.core.stream import Stream
 from obspy.signal.cross_correlation import correlate
 
 import matplotlib.cm as cm
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -113,7 +114,7 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
     errorfile = 'error/' + filename + '.txt'
 
     # Loop over stations
-    for station in staNames:
+    for station in ['YBH']:
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -245,6 +246,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                     method=method)[0])
             # Plot figure
             plt.figure(1, figsize=(20, 15))
+            params = {'xtick.labelsize':16,
+                      'ytick.labelsize':16}
+            pylab.rcParams.update(params) 
             colors = cm.rainbow(np.linspace(0, 1, len(ratios)))
             # East - West component
             ax1 = plt.subplot(311)
@@ -277,9 +281,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                 plt.axvline(Tmin, linewidth=2, color='grey')
                 plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('East - West component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
+            plt.title('East - West component', fontsize=24)
+            #plt.xlabel('Time (s)', fontsize=24)
+            #plt.legend(loc=1)
             # North - South component
             ax2 = plt.subplot(312)
             dt = NSstack[0].stats.delta
@@ -311,9 +315,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                 plt.axvline(Tmin, linewidth=2, color='grey')
                 plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('North - South component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
+            plt.title('North - South component', fontsize=24)
+            #plt.xlabel('Time (s)', fontsize=24)
+            #plt.legend(loc=1)
             # Vertical component
             ax3 = plt.subplot(313)
             dt = UDstack[0].stats.delta
@@ -345,9 +349,9 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                 plt.axvline(Tmin, linewidth=2, color='grey')
                 plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
-            plt.title('Vertical component', fontsize=16)
-            plt.xlabel('Time (s)', fontsize=16)
-            plt.legend(loc=1)
+            plt.title('Vertical component', fontsize=24)
+            plt.xlabel('Time (s)', fontsize=24)
+            #plt.legend(loc=1)
             # End figure
             plt.suptitle(station, fontsize=24)
             plt.savefig(namedir + '/' + station + '.eps', format='eps')
@@ -374,10 +378,10 @@ if __name__ == '__main__':
     # Set the parameters
     TDUR = 10.0
     filt = (1.5, 9.0)
-    ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
+    ratios = [] #[50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
     ncor = 400
-    window = True
+    window = False
     winlength = 10.0
     nattempts = 10
     waittime = 10.0
