@@ -2,7 +2,7 @@
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Sow slip}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Tectonic tremor}{6}{0}{1}
-\beamer@subsectionintoc {1}{3}{Low-frequency earthquakes (LFEs)}{8}{0}{1}
+\beamer@subsectionintoc {1}{3}{Low-frequency earthquakes (LFE)}{8}{0}{1}
 \beamer@subsectionintoc {1}{4}{Episodic Tremor and Slip (ETS)}{10}{0}{1}
 \beamer@subsectionintoc {1}{5}{Research questions}{11}{0}{1}
 \beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{17}{0}{2}
@@ -12,7 +12,8 @@
 \beamer@subsectionintoc {2}{4}{Results}{33}{0}{2}
 \beamer@subsectionintoc {2}{5}{Discussion and Conclusion}{36}{0}{2}
 \beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{40}{0}{3}
-\beamer@subsectionintoc {3}{1}{Extension of an LFEs catalog for southern Cascadia}{41}{0}{3}
-\beamer@subsectionintoc {3}{2}{Statistical analysis of LFE catalogs}{57}{0}{3}
-\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{77}{0}{4}
-\beamer@sectionintoc {5}{Time line}{91}{0}{5}
+\beamer@subsectionintoc {3}{1}{Extension of an LFE catalog for southern Cascadia}{41}{0}{3}
+\beamer@subsectionintoc {3}{2}{Effect of nearby earthquakes on LFE activity}{55}{0}{3}
+\beamer@subsectionintoc {3}{3}{Statistical analysis of LFE catalogs}{59}{0}{3}
+\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{79}{0}{4}
+\beamer@sectionintoc {5}{Time line}{93}{0}{5}

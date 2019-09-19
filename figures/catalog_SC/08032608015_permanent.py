@@ -51,49 +51,20 @@ def get_time_series(df, window, tbegin, tend):
     return X
 
 # Plot figure
-plt.figure(1, figsize=(20, 10))
+plt.figure(1, figsize=(10, 10))
 params = {'xtick.labelsize':16,
           'ytick.labelsize':16}
 pylab.rcParams.update(params)
 window = 86400.0
 path = '/Users/ariane/Documents/ResearchProject/ETSscripts/catalog/'
 
-# Family 080421.14.048
-tbegin = datetime(2007, 7, 23, 0, 0, 0)
-tend = datetime(2009, 6, 13, 0, 0, 0)
-threshold = 0.08
-
-# With FAME data
-ax1 = plt.subplot(221)
-df = pickle.load(open(path + 'LFEs_unknown/080421.14.048/catalog_200707-200912.pkl', 'rb'))
-df = df.loc[df['cc'] >= threshold]
-X = get_time_series(df, window, tbegin, tend)
-plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
-plt.xlim([-0.5, len(X) - 0.5])
-plt.ylabel('Number of LFEs', fontsize=24)
-plt.title('Family 080421.14.048', fontsize=24)
-plt.figtext(0.4, 0.8, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
-plt.figtext(0.4, 0.75, '(FAME)', fontsize=16)
-
-# With permanent stations
-ax2 = plt.subplot(223)
-df = pickle.load(open(path + 'LFEs_permanent/080421.14.048/catalog_200707-200912.pkl', 'rb'))
-df = df.loc[df['cc'] >= threshold]
-X = get_time_series(df, window, tbegin, tend)
-plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
-plt.xlim([-0.5, len(X) - 0.5])
-plt.xlabel('Time (days) since 2007/07/23', fontsize=24)
-plt.ylabel('Number of LFEs', fontsize=24)
-plt.figtext(0.4, 0.4, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
-plt.figtext(0.35, 0.35, '(permanent networks)', fontsize=16)
-
-# Family 080421.14.048
+# Family 080326.08.015
 tbegin = datetime(2007, 9, 26, 0, 0, 0)
 tend = datetime(2009, 6, 9, 0, 0, 0)
 threshold = 0.09
 
 # With FAME data
-ax3 = plt.subplot(222)
+ax1 = plt.subplot(211)
 df = pickle.load(open(path + 'LFEs_unknown/080326.08.015/catalog_200709-200906.pkl', 'rb'))
 df = df.loc[df['cc'] >= threshold]
 X = get_time_series(df, window, tbegin, tend)
@@ -104,11 +75,11 @@ plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
 plt.xlim([-0.5, len(X) - 0.5])
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.title('Family 080326.08.015', fontsize=24)
-plt.figtext(0.8, 0.8, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
-plt.figtext(0.8, 0.75, '(FAME)', fontsize=16)
+plt.figtext(0.7, 0.8, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
+plt.figtext(0.7, 0.75, '(FAME)', fontsize=16)
 
 # With permanent stations
-ax4 = plt.subplot(224)
+ax2 = plt.subplot(212)
 df = pickle.load(open(path + 'LFEs_permanent/080326.08.015/catalog_200709-200906.pkl', 'rb'))
 df = df.loc[df['cc'] >= threshold]
 X = get_time_series(df, window, tbegin, tend)
@@ -118,11 +89,10 @@ plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
 plt.xlim([-0.5, len(X) - 0.5])
 plt.xlabel('Time (days) since 2007/09/26', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
-plt.figtext(0.8, 0.4, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
-plt.figtext(0.75, 0.35, '(permanent networks)', fontsize=16)
+plt.figtext(0.7, 0.4, '{:d} LFEs'.format(np.sum(X)), fontsize=16)
+plt.figtext(0.6, 0.35, '(permanent networks)', fontsize=16)
 
-plt.savefig('Figure2.eps', format='eps')
+plt.savefig('08032608015_permanent.eps', format='eps')
 ax1.clear()
 ax2.clear()
-ax3.clear()
 plt.close(1)

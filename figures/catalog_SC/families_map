@@ -18,6 +18,13 @@ gmt psxy FAME.txt -R$Rop -J$Jop -St0.3 -Gblue -O -K >> $output
 
 gmt psxy plourde.txt -R$Rop -J$Jop -Sc0.2 -Gblack -O -K >> $output
 
+cat << END >> families.dat
+-123.35000 39.50000
+-123.15000 41.35000
+END
+
+gmt psxy families.dat -R$Rop -J$Jop -Ss0.5 -Wthick,black -O -K >> $output
+
 # Large map
 set x1 = -130
 set x2 = -115
@@ -39,4 +46,4 @@ END
 
 gmt psxy square.dat -R$Rop -J$Jop -Wthicker,red -O >> $output
 
-rm square.dat
+rm *.dat

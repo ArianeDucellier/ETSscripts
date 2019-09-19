@@ -284,8 +284,8 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
 
             # Draw figure
             if (draw == True):
-                params = {'xtick.labelsize':16,
-                          'ytick.labelsize':16}
+                params = {'xtick.labelsize':20,
+                          'ytick.labelsize':20}
                 pylab.rcParams.update(params) 
                 plt.figure(1, figsize=(20, 8))
                 if np.shape(index)[1] > 0:
@@ -311,7 +311,7 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
                 plt.savefig('LFEs/' + filename + '/' + \
                     '{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}'.format( \
                     Tstart.year, Tstart.month, Tstart.day, Tstart.hour, \
-                    Tstart.minute, Tstart.second) + '.png', format='png')
+                    Tstart.minute, Tstart.second) + '.eps', format='eps')
                 plt.close(1)
 
     # Add to pandas dataframe and save
@@ -356,14 +356,12 @@ if __name__ == '__main__':
     year = 2008
     month = 4
     for day in range(21, 22):
-        tbegin = (year, month, day, 13, 0, 0)
-        if day == 30:
-            tend = (year, month + 1, 1, 14, 0, 0)
-        else:
-            tend = (year, month, day + 1, 14, 0, 0)
+        for hour in range(13, 14):
+            tbegin = (year, month, day, hour, 0, 0)
+            tend = (year, month, day, hour + 1, 0, 0)
 
-        find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-            freq0, nattempts, waittime, draw, type_threshold, threshold)
+            find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+                freq0, nattempts, waittime, draw, type_threshold, threshold)
 
     # Unknown LFEs
     # 2007

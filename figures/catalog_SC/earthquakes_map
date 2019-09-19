@@ -1,0 +1,45 @@
+#!/bin/csh -f
+
+set output = earthquakes_map.eps
+
+# Small map
+set x1 = -127
+set x2 = -121
+set y1 = 38
+set y2 = 42
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-124/40/3.5
+
+gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -P -K >! $output
+
+gmt psxy plourde.txt -R$Rop -J$Jop -Sc0.2 -Gblack -O -K >> $output
+
+cat << END >> earthquakes.dat
+-124.300 40.273 0.56
+-122.841 38.822 0.50
+-122.802 39.329 0.51
+-123.790 41.143 0.56
+-123.497 40.836 0.54
+-124.433 40.281 0.50
+-122.312 38.215 0.60
+-125.134 40.829 0.68
+-124.692 40.652 0.65
+END
+
+gmt psxy earthquakes.dat -R$Rop -J$Jop -Sa -Gred -O -K >> $output
+
+cat << END >> time_mag.dat
+-123.500 40.273 M5.6 2019-06-23
+-122.841 38.972 M5.0 2016-12-14
+-122.302 39.479 M5.1 2016-08-10
+-123.890 41.293 M5.6 2012-02-13
+-123.897 40.986 M5.4 2008-04-30
+-125.233 40.281 M5.0 2006-07-19
+-122.212 38.365 M6.0 2014-08-24
+-125.934 40.829 M6.8 2014-03-10
+-123.892 40.652 M6.5 2010-01-10
+END
+
+gmt pstext time_mag.dat -R$Rop -J$Jop -F+f12p,red -O >> $output
+
+rm *.dat

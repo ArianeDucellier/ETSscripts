@@ -114,7 +114,7 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
     errorfile = 'error/' + filename + '.txt'
 
     # Loop over stations
-    for station in ['YBH']:
+    for station in ['WDC']:
         # Create streams
         EW = Stream()
         NS = Stream()

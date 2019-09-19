@@ -4,15 +4,15 @@ import numpy as np
 import pandas as pd
 import pickle
 
-filename = '080326.08.015'
-catalog = 'catalog_200709-200906.pkl'
-tbegin = '2007-9-26'
-tend = '2009-6-8'
-threshold = 0.09
-figurename = 'Figure4.eps'
+filename = '080421.14.048'
+catalog = 'catalog_200707-200912.pkl'
+tbegin = '2007-7-23'
+tend = '2009-6-13'
+threshold = 0.08
+figurename = '08042114048_comparison.eps'
 
 # Permanent stations catalog
-namefile = '../../Researchproject/ETSscripts/catalog/LFEs_permanent/' + filename + '/' + catalog
+namefile = '../../catalog/LFEs_permanent/' + filename + '/' + catalog
 df1 = pickle.load(open(namefile, 'rb'))
 df1 = df1[['year', 'month', 'day', 'hour', 'minute', 'second', \
     'cc', 'nchannel']]
@@ -22,7 +22,7 @@ df1 = df1.astype({'year': int, 'month': int, 'day': int, \
 df1['second'] = df1['second'].round(3)
 
 # FAME stations catalog
-namefile = '../../Researchproject/ETSscripts/catalog/LFEs_unknown/' + filename + '/' + catalog
+namefile = '../../catalog/LFEs_unknown/' + filename + '/' + catalog
 df2 = pickle.load(open(namefile, 'rb'))
 df2 = df2[['year', 'month', 'day', 'hour', 'minute', 'second', \
     'cc', 'nchannel']]
@@ -143,18 +143,10 @@ plt.xlabel('Cross-correlation value', fontsize=24)
 plt.ylabel('Number of LFEs', fontsize=24)
 plt.figtext(0.64, 0.4, '{:d} detections reproduced'.format(len(df1_both)), fontsize=16)
 plt.figtext(0.64, 0.35, '(LFEs are in permanent networks catalog)', fontsize=16)
+plt.suptitle('Family {}'.format(filename), fontsize=24)
 plt.savefig(figurename, format='eps')
 ax1.clear()
 ax2.clear()
 ax3.clear()
 ax4.clear()
 plt.close(1)
-
-# Write number of LFEs
-tfile = open(filename + '_comparison.txt', 'w')
-tfile.write('Number of LFEs in permanent stations catalog: {}\n'.format(len(df1)))
-tfile.write('Number of LFEs in FAME stations catalog: {}\n'.format(len(df2)))
-tfile.write('Number of LFEs added in permanent stations catalog: {}\n'.format(len(df_added)))
-tfile.write('Number of LFEs missing in permanent stations catalog: {}\n'.format(len(df_missing)))
-tfile.write('Number of LFEs present in both catalogs: {}\n'.format(len(df1_both)))
-tfile.close()

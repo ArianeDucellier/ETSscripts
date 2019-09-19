@@ -3,6 +3,7 @@ This script looks at the catalog from Shelly (2017) and plots for
 each family the daily number of LFEs in function of time
 """
 
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -56,6 +57,11 @@ for i in range(0, len(families)):
             X[index] = X[index] + 1    
     # Plot figure
     plt.figure(1, figsize=(20, 10))
+    params = {'xtick.labelsize':20,
+          'ytick.labelsize':20}
+    pylab.rcParams.update(params)
+    # 2004 Parkfield earhquake
+    plt.axvline(1269, color='red', linestyle='--')
     plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
     plt.xlim([-0.5, len(X) - 0.5])
     plt.xlabel('Time (days) since 2001/04/06', fontsize=24)
