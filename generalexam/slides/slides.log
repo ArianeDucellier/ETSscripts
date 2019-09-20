@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  19 SEP 2019 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 SEP 2019 10:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1040,7 +1040,7 @@ eps>
 ed-to.pdf ../../figures/subductionzone/subduction_0.eps>
 (epstopdf)             \includegraphics on input line 43.
 Package epstopdf Info: Output file is already uptodate.
- <./subduction_0-eps-converted-to.pdf, id=200, 755.82375pt x 323.2075pt>
+ <./subduction_0-eps-converted-to.pdf, id=204, 755.82375pt x 323.2075pt>
 File: ./subduction_0-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./subduction_0-eps-converted-to.pdf>
@@ -1066,7 +1066,7 @@ to.pdf ../../figures/ETS/slow_slip.eps>
 (epstopdf)             \includegraphics on input line 56.
 Package epstopdf Info: Output file is already uptodate.
 
-<./slow_slip-eps-converted-to.pdf, id=244, 560.0925pt x 368.37625pt>
+<./slow_slip-eps-converted-to.pdf, id=248, 560.0925pt x 368.37625pt>
 File: ./slow_slip-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./slow_slip-eps-converted-to.pdf>
@@ -1087,7 +1087,7 @@ ted-to.pdf ../../figures/slowslip/slow_slip_GPS.eps>
 (epstopdf)             \includegraphics on input line 63.
 Package epstopdf Info: Output file is already uptodate.
 
-<./slow_slip_GPS-eps-converted-to.pdf, id=290, 1084.05pt x 722.7pt>
+<./slow_slip_GPS-eps-converted-to.pdf, id=294, 1084.05pt x 722.7pt>
 File: ./slow_slip_GPS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./slow_slip_GPS-eps-converted-to.pdf>
@@ -1114,7 +1114,7 @@ pdf ../../figures/ETS/tremor.eps>
 (epstopdf)             \includegraphics on input line 86.
 Package epstopdf Info: Output file is already uptodate.
 
-<./tremor-eps-converted-to.pdf, id=403, 563.10374pt x 422.57875pt>
+<./tremor-eps-converted-to.pdf, id=407, 563.10374pt x 422.57875pt>
 File: ./tremor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./tremor-eps-converted-to.pdf>
@@ -1162,7 +1162,7 @@ pdf ../../figures/ETS/LFE_NS.eps>
 (epstopdf)             \includegraphics on input line 109.
 Package epstopdf Info: Output file is already uptodate.
 
-<./LFE_NS-eps-converted-to.pdf, id=486, 486.81876pt x 397.485pt>
+<./LFE_NS-eps-converted-to.pdf, id=490, 486.81876pt x 397.485pt>
 File: ./LFE_NS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./LFE_NS-eps-converted-to.pdf>
@@ -1192,7 +1192,7 @@ o.pdf ../../figures/LFE_catalogs/cascadia.eps>
 (epstopdf)             \includegraphics on input line 160.
 Package epstopdf Info: Output file is already uptodate.
 
-<./cascadia-eps-converted-to.pdf, id=641, 597.23125pt x 845.1575pt>
+<./cascadia-eps-converted-to.pdf, id=645, 597.23125pt x 845.1575pt>
 File: ./cascadia-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./cascadia-eps-converted-to.pdf>
@@ -1214,7 +1214,7 @@ Package epstopdf Info: Source file: <../../figures/LFE_catalogs/sanandreas.eps>
 (epstopdf)             \includegraphics on input line 167.
 Package epstopdf Info: Output file is already uptodate.
 
-<./sanandreas-eps-converted-to.pdf, id=687, 597.23125pt x 845.1575pt>
+<./sanandreas-eps-converted-to.pdf, id=691, 597.23125pt x 845.1575pt>
 File: ./sanandreas-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./sanandreas-eps-converted-to.pdf>
@@ -1236,7 +1236,7 @@ Overfull \vbox (15.4743pt too high) detected at line 211
 ] [18
 
 ]
-<../../figures/articles/shelly_al_2006_4d.png, id=894, 552.0625pt x 200.75pt>
+<../../figures/articles/shelly_al_2006_4d.png, id=898, 552.0625pt x 200.75pt>
 File: ../../figures/articles/shelly_al_2006_4d.png Graphic file (type png)
 
 <use ../../figures/articles/shelly_al_2006_4d.png>
@@ -1251,7 +1251,7 @@ Overfull \hbox (5.69043pt too wide) in paragraph at lines 230--230
 [19
 
  <../../figures/articles/shelly_al_2006_4d.png>]
-<../../figures/articles/audet_burgmann_2014_1b.png, id=936, 401.5pt x 301.125pt
+<../../figures/articles/audet_burgmann_2014_1b.png, id=940, 401.5pt x 301.125pt
 >
 File: ../../figures/articles/audet_burgmann_2014_1b.png Graphic file (type png)
 
@@ -1266,7 +1266,7 @@ Overfull \vbox (7.89095pt too high) detected at line 237
 [20
 
  <../../figures/articles/audet_burgmann_2014_1b.png>]
-<../../figures/articles/fagereng_harris_2014_8b.png, id=977, 451.6875pt x 180.6
+<../../figures/articles/fagereng_harris_2014_8b.png, id=981, 451.6875pt x 180.6
 75pt>
 File: ../../figures/articles/fagereng_harris_2014_8b.png Graphic file (type png
 )
@@ -1277,7 +1277,7 @@ d on input line 244.
  [21
 
  <../../figures/articles/fagereng_harris_2014_8b.png>]
-<../../figures/articles/audet_burgmann_2014_1c.png, id=1017, 381.425pt x 321.2p
+<../../figures/articles/audet_burgmann_2014_1c.png, id=1021, 381.425pt x 321.2p
 t>
 File: ../../figures/articles/audet_burgmann_2014_1c.png Graphic file (type png)
 
@@ -1292,7 +1292,7 @@ Overfull \vbox (31.47296pt too high) detected at line 251
 [22
 
  <../../figures/articles/audet_burgmann_2014_1c.png>]
-<../../figures/articles/hyndmann_al_2015_8a.png, id=1060, 552.0625pt x 250.9375
+<../../figures/articles/hyndmann_al_2015_8a.png, id=1064, 552.0625pt x 250.9375
 pt>
 File: ../../figures/articles/hyndmann_al_2015_8a.png Graphic file (type png)
  <use ../../figures/articles/hyndmann_al_2015_8a.png>
@@ -1307,7 +1307,7 @@ Overfull \hbox (5.69043pt too wide) in paragraph at lines 258--258
 [23
 
  <../../figures/articles/hyndmann_al_2015_8a.png>]
-<../../figures/articles/hyndmann_al_2015_8b.png, id=1101, 501.875pt x 281.05pt>
+<../../figures/articles/hyndmann_al_2015_8b.png, id=1105, 501.875pt x 281.05pt>
 File: ../../figures/articles/hyndmann_al_2015_8b.png Graphic file (type png)
 <use ../../figures/articles/hyndmann_al_2015_8b.png>
 Package pdftex.def Info: ../../figures/articles/hyndmann_al_2015_8b.png used on
@@ -1338,7 +1338,7 @@ erted-to.pdf ../../figures/AoA/arrays_location.eps>
 (epstopdf)             \includegraphics on input line 307.
 Package epstopdf Info: Output file is already uptodate.
 
-<./arrays_location-eps-converted-to.pdf, id=1176, 597.23125pt x 845.1575pt>
+<./arrays_location-eps-converted-to.pdf, id=1180, 597.23125pt x 845.1575pt>
 File: ./arrays_location-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./arrays_location-eps-converted-to.pdf>
@@ -1364,7 +1364,7 @@ rted-to.pdf ../../figures/BS_000_000/BS_000_000_lin.eps>
 (epstopdf)             \includegraphics on input line 354.
 Package epstopdf Info: Output file is already uptodate.
 
-<./BS_000_000_lin-eps-converted-to.pdf, id=1297, 1445.4pt x 1084.05pt>
+<./BS_000_000_lin-eps-converted-to.pdf, id=1301, 1445.4pt x 1084.05pt>
 File: ./BS_000_000_lin-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./BS_000_000_lin-eps-converted-to.pdf>
@@ -1390,7 +1390,7 @@ er_ccwin.eps>
 (epstopdf)             \includegraphics on input line 378.
 Package epstopdf Info: Output file is already uptodate.
 
-<./BS_000_000_PWS_PWS_cluster_ccwin-eps-converted-to.pdf, id=1410, 1445.4pt x 1
+<./BS_000_000_PWS_PWS_cluster_ccwin-eps-converted-to.pdf, id=1414, 1445.4pt x 1
 156.32pt>
 File: ./BS_000_000_PWS_PWS_cluster_ccwin-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -1416,7 +1416,7 @@ ster_stackcc.eps>
 (epstopdf)             \includegraphics on input line 385.
 Package epstopdf Info: Output file is already uptodate.
 
-<./BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf, id=1488, 1445.4pt x
+<./BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf, id=1492, 1445.4pt x
  1156.32pt>
 File: ./BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -1442,7 +1442,7 @@ erted-to.pdf ../../figures/other/d_to_pb_PWS_PWS.eps>
 (epstopdf)             \includegraphics on input line 394.
 Package epstopdf Info: Output file is already uptodate.
 
-<./d_to_pb_PWS_PWS-eps-converted-to.pdf, id=1596, 597.23125pt x 845.1575pt>
+<./d_to_pb_PWS_PWS-eps-converted-to.pdf, id=1600, 597.23125pt x 845.1575pt>
 File: ./d_to_pb_PWS_PWS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./d_to_pb_PWS_PWS-eps-converted-to.pdf>
@@ -1476,7 +1476,7 @@ nverted-to.pdf ../../figures/other/thickness_PWS_PWS.eps>
 (epstopdf)             \includegraphics on input line 428.
 Package epstopdf Info: Output file is already uptodate.
 
-<./thickness_PWS_PWS-eps-converted-to.pdf, id=1789, 597.23125pt x 845.1575pt>
+<./thickness_PWS_PWS-eps-converted-to.pdf, id=1793, 597.23125pt x 845.1575pt>
 File: ./thickness_PWS_PWS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./thickness_PWS_PWS-eps-converted-to.pdf>
@@ -1491,7 +1491,11 @@ Overfull \vbox (12.28937pt too high) detected at line 428
 
  <./thickness_PWS_PWS-eps-converted-to.pdf>] [39
 
-] (./slides.toc) [40
+] (./slides.toc)
+Overfull \vbox (1.8743pt too high) detected at line 444
+ []
+
+[40
 
 ]
 Package epstopdf Info: Source file: <../../figures/catalog_SC/families_map.eps>
@@ -1505,8 +1509,7 @@ Package epstopdf Info: Source file: <../../figures/catalog_SC/families_map.eps>
 ed-to.pdf ../../figures/catalog_SC/families_map.eps>
 (epstopdf)             \includegraphics on input line 457.
 Package epstopdf Info: Output file is already uptodate.
-
-<./families_map-eps-converted-to.pdf, id=1916, 597.23125pt x 845.1575pt>
+ <./families_map-eps-converted-to.pdf, id=1922, 597.23125pt x 845.1575pt>
 File: ./families_map-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./families_map-eps-converted-to.pdf>
@@ -1536,7 +1539,7 @@ verted-to.pdf ../../figures/catalog_SC/08042114048_KRMB.eps>
 (epstopdf)             \includegraphics on input line 487.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08042114048_KRMB-eps-converted-to.pdf, id=2030, 1445.4pt x 1084.05pt>
+<./08042114048_KRMB-eps-converted-to.pdf, id=2039, 1445.4pt x 1084.05pt>
 File: ./08042114048_KRMB-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08042114048_KRMB-eps-converted-to.pdf>
@@ -1560,7 +1563,7 @@ erted-to.pdf ../../figures/catalog_SC/20080421_130000.eps>
 (epstopdf)             \includegraphics on input line 499.
 Package epstopdf Info: Output file is already uptodate.
 
-<./20080421_130000-eps-converted-to.pdf, id=2155, 1445.4pt x 578.16pt>
+<./20080421_130000-eps-converted-to.pdf, id=2166, 1445.4pt x 578.16pt>
 File: ./20080421_130000-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./20080421_130000-eps-converted-to.pdf>
@@ -1589,7 +1592,7 @@ verted-to.pdf ../../figures/catalog_SC/08042114048_FAME.eps>
 (epstopdf)             \includegraphics on input line 529.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08042114048_FAME-eps-converted-to.pdf, id=2266, 722.7pt x 361.35pt>
+<./08042114048_FAME-eps-converted-to.pdf, id=2279, 722.7pt x 361.35pt>
 File: ./08042114048_FAME-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08042114048_FAME-eps-converted-to.pdf>
@@ -1616,7 +1619,7 @@ verted-to.pdf ../../figures/catalog_SC/08032608015_FAME.eps>
 (epstopdf)             \includegraphics on input line 536.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08032608015_FAME-eps-converted-to.pdf, id=2335, 722.7pt x 361.35pt>
+<./08032608015_FAME-eps-converted-to.pdf, id=2349, 722.7pt x 361.35pt>
 File: ./08032608015_FAME-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08032608015_FAME-eps-converted-to.pdf>
@@ -1644,7 +1647,7 @@ s-converted-to.pdf ../../figures/catalog_SC/08042114048_permanent.eps>
 (epstopdf)             \includegraphics on input line 543.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08042114048_permanent-eps-converted-to.pdf, id=2408, 722.7pt x 722.7pt>
+<./08042114048_permanent-eps-converted-to.pdf, id=2423, 722.7pt x 722.7pt>
 File: ./08042114048_permanent-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08042114048_permanent-eps-converted-to.pdf>
@@ -1667,7 +1670,7 @@ s-converted-to.pdf ../../figures/catalog_SC/08032608015_permanent.eps>
 (epstopdf)             \includegraphics on input line 550.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08032608015_permanent-eps-converted-to.pdf, id=2489, 722.7pt x 722.7pt>
+<./08032608015_permanent-eps-converted-to.pdf, id=2505, 722.7pt x 722.7pt>
 File: ./08032608015_permanent-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08032608015_permanent-eps-converted-to.pdf>
@@ -1690,7 +1693,7 @@ ps-converted-to.pdf ../../figures/catalog_SC/08042114048_comparison.eps>
 (epstopdf)             \includegraphics on input line 557.
 Package epstopdf Info: Output file is already uptodate.
 
-<./08042114048_comparison-eps-converted-to.pdf, id=2573, 1445.4pt x 722.7pt>
+<./08042114048_comparison-eps-converted-to.pdf, id=2591, 1445.4pt x 722.7pt>
 File: ./08042114048_comparison-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./08042114048_comparison-eps-converted-to.pdf>
@@ -1745,7 +1748,7 @@ verted-to.pdf ../../figures/LFE_catalogs/15025s_Parkfield.eps>
 (epstopdf)             \includegraphics on input line 586.
 Package epstopdf Info: Output file is already uptodate.
 
-<./15025s_Parkfield-eps-converted-to.pdf, id=2729, 1445.4pt x 722.7pt>
+<./15025s_Parkfield-eps-converted-to.pdf, id=2750, 1445.4pt x 722.7pt>
 File: ./15025s_Parkfield-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./15025s_Parkfield-eps-converted-to.pdf>
@@ -1772,7 +1775,7 @@ verted-to.pdf ../../figures/LFE_catalogs/75171s_Parkfield.eps>
 (epstopdf)             \includegraphics on input line 593.
 Package epstopdf Info: Output file is already uptodate.
 
-<./75171s_Parkfield-eps-converted-to.pdf, id=2805, 1445.4pt x 722.7pt>
+<./75171s_Parkfield-eps-converted-to.pdf, id=2826, 1445.4pt x 722.7pt>
 File: ./75171s_Parkfield-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./75171s_Parkfield-eps-converted-to.pdf>
@@ -1799,7 +1802,7 @@ erted-to.pdf ../../figures/catalog_SC/earthquakes_map.eps>
 (epstopdf)             \includegraphics on input line 600.
 Package epstopdf Info: Output file is already uptodate.
 
-<./earthquakes_map-eps-converted-to.pdf, id=2880, 597.23125pt x 845.1575pt>
+<./earthquakes_map-eps-converted-to.pdf, id=2902, 597.23125pt x 845.1575pt>
 File: ./earthquakes_map-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./earthquakes_map-eps-converted-to.pdf>
@@ -1814,130 +1817,307 @@ Overfull \vbox (4.05264pt too high) detected at line 600
 
  <./earthquakes_map-eps-converted-to.pdf>] [58
 
+] [59
+
 ]
-Package epstopdf Info: Source file: <../../figures/other/Poisson.eps>
-(epstopdf)                    date: 2019-09-16 12:47:25
-(epstopdf)                    size: 609933 bytes
-(epstopdf)             Output file: <./Poisson-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-09-19 10:36:38
-(epstopdf)                    size: 54685 bytes
-(epstopdf)             Command: <repstopdf --outfile=./Poisson-eps-converted-to
-.pdf ../../figures/other/Poisson.eps>
-(epstopdf)             \includegraphics on input line 623.
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_1.eps>
+(epstopdf)                    date: 2019-09-19 16:45:22
+(epstopdf)                    size: 338768 bytes
+(epstopdf)             Output file: <./Poisson_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 09:57:49
+(epstopdf)                    size: 34907 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_1-eps-converted-
+to.pdf ../../figures/longrange/Poisson_1.eps>
+(epstopdf)             \includegraphics on input line 634.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Poisson-eps-converted-to.pdf, id=2956, 2601.72pt x 722.7pt>
-File: ./Poisson-eps-converted-to.pdf Graphic file (type pdf)
+<./Poisson_1-eps-converted-to.pdf, id=3018, 867.24pt x 361.35pt>
+File: ./Poisson_1-eps-converted-to.pdf Graphic file (type pdf)
 
-<use ./Poisson-eps-converted-to.pdf>
-Package pdftex.def Info: ./Poisson-eps-converted-to.pdf used on input line 623.
+<use ./Poisson_1-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_1-eps-converted-to.pdf used on input line 63
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [60
 
-(pdftex.def)             Requested size: 312.9803pt x 86.92978pt.
-
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 623--623
- [] 
- []
-
-[59
-
- <./Poisson-eps-converted-to.pdf>] [60
-
-] [61
-
-] [62
-
-] [63
-
-] [64
-
-]
-Package epstopdf Info: Source file: <../../figures/other/comparison.eps>
-(epstopdf)                    date: 2019-09-16 12:47:25
-(epstopdf)                    size: 29442 bytes
-(epstopdf)             Output file: <./comparison-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-09-19 10:36:38
-(epstopdf)                    size: 22804 bytes
-(epstopdf)             Command: <repstopdf --outfile=./comparison-eps-converted
--to.pdf ../../figures/other/comparison.eps>
-(epstopdf)             \includegraphics on input line 670.
+ <./Poisson_1-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_2.eps>
+(epstopdf)                    date: 2019-09-19 16:45:24
+(epstopdf)                    size: 129945 bytes
+(epstopdf)             Output file: <./Poisson_2-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:08:52
+(epstopdf)                    size: 25536 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_2-eps-converted-
+to.pdf ../../figures/longrange/Poisson_2.eps>
+(epstopdf)             \includegraphics on input line 644.
 Package epstopdf Info: Output file is already uptodate.
 
-<./comparison-eps-converted-to.pdf, id=3206, 722.7pt x 722.7pt>
-File: ./comparison-eps-converted-to.pdf Graphic file (type pdf)
+<./Poisson_2-eps-converted-to.pdf, id=3093, 867.24pt x 361.35pt>
+File: ./Poisson_2-eps-converted-to.pdf Graphic file (type pdf)
 
-<use ./comparison-eps-converted-to.pdf>
-Package pdftex.def Info: ./comparison-eps-converted-to.pdf used on input line 6
-70.
-(pdftex.def)             Requested size: 199.16928pt x 199.16766pt.
+<use ./Poisson_2-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_2-eps-converted-to.pdf used on input line 64
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [61
 
-Overfull \vbox (12.99174pt too high) detected at line 670
- []
-
-[65
-
- <./comparison-eps-converted-to.pdf>] [66
-
-]
-Package epstopdf Info: Source file: <../../figures/other/ETAS.eps>
-(epstopdf)                    date: 2019-09-16 12:47:25
-(epstopdf)                    size: 605948 bytes
-(epstopdf)             Output file: <./ETAS-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-09-19 10:36:39
-(epstopdf)                    size: 55167 bytes
-(epstopdf)             Command: <repstopdf --outfile=./ETAS-eps-converted-to.pd
-f ../../figures/other/ETAS.eps>
-(epstopdf)             \includegraphics on input line 691.
+ <./Poisson_2-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_3.eps>
+(epstopdf)                    date: 2019-09-19 16:45:24
+(epstopdf)                    size: 60309 bytes
+(epstopdf)             Output file: <./Poisson_3-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:08:53
+(epstopdf)                    size: 22902 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_3-eps-converted-
+to.pdf ../../figures/longrange/Poisson_3.eps>
+(epstopdf)             \includegraphics on input line 654.
 Package epstopdf Info: Output file is already uptodate.
 
-<./ETAS-eps-converted-to.pdf, id=3329, 2601.72pt x 722.7pt>
-File: ./ETAS-eps-converted-to.pdf Graphic file (type pdf)
+<./Poisson_3-eps-converted-to.pdf, id=3173, 867.24pt x 361.35pt>
+File: ./Poisson_3-eps-converted-to.pdf Graphic file (type pdf)
 
-<use ./ETAS-eps-converted-to.pdf>
-Package pdftex.def Info: ./ETAS-eps-converted-to.pdf used on input line 691.
-(pdftex.def)             Requested size: 312.9803pt x 86.92978pt.
+<use ./Poisson_3-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_3-eps-converted-to.pdf used on input line 65
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [62
 
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 691--691
- [] 
- []
-
-[67
-
- <./ETAS-eps-converted-to.pdf>] [68
-
-] [69
-
-] [70
-
-] [71
-
-] [72
-
-]
-Package epstopdf Info: Source file: <../../figures/other/comparison.eps>
-(epstopdf)                    date: 2019-09-16 12:47:25
-(epstopdf)                    size: 29442 bytes
-(epstopdf)             Output file: <./comparison-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-09-19 10:36:38
-(epstopdf)                    size: 22804 bytes
-(epstopdf)             Command: <repstopdf --outfile=./comparison-eps-converted
--to.pdf ../../figures/other/comparison.eps>
-(epstopdf)             \includegraphics on input line 738.
+ <./Poisson_3-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_4.eps>
+(epstopdf)                    date: 2019-09-19 16:45:25
+(epstopdf)                    size: 35431 bytes
+(epstopdf)             Output file: <./Poisson_4-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:08:53
+(epstopdf)                    size: 18617 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_4-eps-converted-
+to.pdf ../../figures/longrange/Poisson_4.eps>
+(epstopdf)             \includegraphics on input line 664.
 Package epstopdf Info: Output file is already uptodate.
-File: ./comparison-eps-converted-to.pdf Graphic file (type pdf)
 
-<use ./comparison-eps-converted-to.pdf>
-Package pdftex.def Info: ./comparison-eps-converted-to.pdf used on input line 7
-38.
-(pdftex.def)             Requested size: 199.16928pt x 199.16766pt.
+<./Poisson_4-eps-converted-to.pdf, id=3256, 867.24pt x 361.35pt>
+File: ./Poisson_4-eps-converted-to.pdf Graphic file (type pdf)
 
-Overfull \vbox (12.99174pt too high) detected at line 738
+<use ./Poisson_4-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_4-eps-converted-to.pdf used on input line 66
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [63
+
+ <./Poisson_4-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_5.eps>
+(epstopdf)                    date: 2019-09-19 16:45:25
+(epstopdf)                    size: 27460 bytes
+(epstopdf)             Output file: <./Poisson_5-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:08:53
+(epstopdf)                    size: 18279 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_5-eps-converted-
+to.pdf ../../figures/longrange/Poisson_5.eps>
+(epstopdf)             \includegraphics on input line 674.
+Package epstopdf Info: Output file is already uptodate.
+
+<./Poisson_5-eps-converted-to.pdf, id=3333, 867.24pt x 361.35pt>
+File: ./Poisson_5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./Poisson_5-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_5-eps-converted-to.pdf used on input line 67
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [64
+
+ <./Poisson_5-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/Poisson_6.eps>
+(epstopdf)                    date: 2019-09-19 16:45:25
+(epstopdf)                    size: 24040 bytes
+(epstopdf)             Output file: <./Poisson_6-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:08:54
+(epstopdf)                    size: 17529 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Poisson_6-eps-converted-
+to.pdf ../../figures/longrange/Poisson_6.eps>
+(epstopdf)             \includegraphics on input line 684.
+Package epstopdf Info: Output file is already uptodate.
+
+<./Poisson_6-eps-converted-to.pdf, id=3410, 867.24pt x 361.35pt>
+File: ./Poisson_6-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./Poisson_6-eps-converted-to.pdf>
+Package pdftex.def Info: ./Poisson_6-eps-converted-to.pdf used on input line 68
+4.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [65
+
+ <./Poisson_6-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/comparison_1.eps>
+(epstopdf)                    date: 2019-09-20 10:32:38
+(epstopdf)                    size: 21589 bytes
+(epstopdf)             Output file: <./comparison_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:33:17
+(epstopdf)                    size: 17208 bytes
+(epstopdf)             Command: <repstopdf --outfile=./comparison_1-eps-convert
+ed-to.pdf ../../figures/longrange/comparison_1.eps>
+(epstopdf)             \includegraphics on input line 710.
+Package epstopdf Info: Output file is already uptodate.
+
+<./comparison_1-eps-converted-to.pdf, id=3486, 722.7pt x 722.7pt>
+File: ./comparison_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./comparison_1-eps-converted-to.pdf>
+Package pdftex.def Info: ./comparison_1-eps-converted-to.pdf used on input line
+ 710.
+(pdftex.def)             Requested size: 199.16928pt x 190.6594pt.
+
+Overfull \vbox (4.48347pt too high) detected at line 710
  []
 
-[73
+[66
 
-] [74
+ <./comparison_1-eps-converted-to.pdf>] [67
 
 ]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_1.eps>
+(epstopdf)                    date: 2019-09-19 16:46:41
+(epstopdf)                    size: 338719 bytes
+(epstopdf)             Output file: <./ETAS_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:23:29
+(epstopdf)                    size: 35782 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_1-eps-converted-to.
+pdf ../../figures/longrange/ETAS_1.eps>
+(epstopdf)             \includegraphics on input line 733.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_1-eps-converted-to.pdf, id=3600, 867.24pt x 361.35pt>
+File: ./ETAS_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_1-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_1-eps-converted-to.pdf used on input line 733.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [68
+
+ <./ETAS_1-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_2.eps>
+(epstopdf)                    date: 2019-09-19 16:46:43
+(epstopdf)                    size: 131044 bytes
+(epstopdf)             Output file: <./ETAS_2-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:24:13
+(epstopdf)                    size: 25700 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_2-eps-converted-to.
+pdf ../../figures/longrange/ETAS_2.eps>
+(epstopdf)             \includegraphics on input line 743.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_2-eps-converted-to.pdf, id=3676, 867.24pt x 361.35pt>
+File: ./ETAS_2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_2-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_2-eps-converted-to.pdf used on input line 743.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [69
+
+ <./ETAS_2-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_3.eps>
+(epstopdf)                    date: 2019-09-19 16:46:44
+(epstopdf)                    size: 58091 bytes
+(epstopdf)             Output file: <./ETAS_3-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:24:13
+(epstopdf)                    size: 20446 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_3-eps-converted-to.
+pdf ../../figures/longrange/ETAS_3.eps>
+(epstopdf)             \includegraphics on input line 753.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_3-eps-converted-to.pdf, id=3753, 867.24pt x 361.35pt>
+File: ./ETAS_3-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_3-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_3-eps-converted-to.pdf used on input line 753.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [70
+
+ <./ETAS_3-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_4.eps>
+(epstopdf)                    date: 2019-09-19 16:46:44
+(epstopdf)                    size: 34441 bytes
+(epstopdf)             Output file: <./ETAS_4-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:24:13
+(epstopdf)                    size: 18288 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_4-eps-converted-to.
+pdf ../../figures/longrange/ETAS_4.eps>
+(epstopdf)             \includegraphics on input line 763.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_4-eps-converted-to.pdf, id=3830, 867.24pt x 361.35pt>
+File: ./ETAS_4-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_4-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_4-eps-converted-to.pdf used on input line 763.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [71
+
+ <./ETAS_4-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_5.eps>
+(epstopdf)                    date: 2019-09-19 16:46:44
+(epstopdf)                    size: 27649 bytes
+(epstopdf)             Output file: <./ETAS_5-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:24:14
+(epstopdf)                    size: 19121 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_5-eps-converted-to.
+pdf ../../figures/longrange/ETAS_5.eps>
+(epstopdf)             \includegraphics on input line 773.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_5-eps-converted-to.pdf, id=3906, 867.24pt x 361.35pt>
+File: ./ETAS_5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_5-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_5-eps-converted-to.pdf used on input line 773.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [72
+
+ <./ETAS_5-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/ETAS_6.eps>
+(epstopdf)                    date: 2019-09-19 16:46:44
+(epstopdf)                    size: 25075 bytes
+(epstopdf)             Output file: <./ETAS_6-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:24:14
+(epstopdf)                    size: 18352 bytes
+(epstopdf)             Command: <repstopdf --outfile=./ETAS_6-eps-converted-to.
+pdf ../../figures/longrange/ETAS_6.eps>
+(epstopdf)             \includegraphics on input line 783.
+Package epstopdf Info: Output file is already uptodate.
+
+<./ETAS_6-eps-converted-to.pdf, id=3985, 867.24pt x 361.35pt>
+File: ./ETAS_6-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./ETAS_6-eps-converted-to.pdf>
+Package pdftex.def Info: ./ETAS_6-eps-converted-to.pdf used on input line 783.
+(pdftex.def)             Requested size: 256.0748pt x 122.81326pt.
+ [73
+
+ <./ETAS_6-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../figures/longrange/comparison_2.eps>
+(epstopdf)                    date: 2019-09-20 10:32:38
+(epstopdf)                    size: 25063 bytes
+(epstopdf)             Output file: <./comparison_2-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-09-20 10:33:18
+(epstopdf)                    size: 19691 bytes
+(epstopdf)             Command: <repstopdf --outfile=./comparison_2-eps-convert
+ed-to.pdf ../../figures/longrange/comparison_2.eps>
+(epstopdf)             \includegraphics on input line 809.
+Package epstopdf Info: Output file is already uptodate.
+
+<./comparison_2-eps-converted-to.pdf, id=4064, 722.7pt x 722.7pt>
+File: ./comparison_2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./comparison_2-eps-converted-to.pdf>
+Package pdftex.def Info: ./comparison_2-eps-converted-to.pdf used on input line
+ 809.
+(pdftex.def)             Requested size: 199.16928pt x 190.6594pt.
+
+Overfull \vbox (4.48347pt too high) detected at line 809
+ []
+
+[74
+
+ <./comparison_2-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../figures/other/cascadia.eps>
 (epstopdf)                    date: 2019-09-16 12:47:25
 (epstopdf)                    size: 662908 bytes
@@ -1946,15 +2126,16 @@ Package epstopdf Info: Source file: <../../figures/other/cascadia.eps>
 (epstopdf)                    size: 124388 bytes
 (epstopdf)             Command: <repstopdf --outfile=./cascadia-eps-converted-t
 o.pdf ../../figures/other/cascadia.eps>
-(epstopdf)             \includegraphics on input line 754.
+(epstopdf)             \includegraphics on input line 816.
 Package epstopdf Info: Output file is already uptodate.
 File: ./cascadia-eps-converted-to.pdf Graphic file (type pdf)
- <use ./cascadia-eps-converted-to.pdf>
-Package pdftex.def Info: ./cascadia-eps-converted-to.pdf used on input line 754
+
+<use ./cascadia-eps-converted-to.pdf>
+Package pdftex.def Info: ./cascadia-eps-converted-to.pdf used on input line 816
 .
 (pdftex.def)             Requested size: 142.26378pt x 203.25793pt.
 
-Overfull \vbox (19.08202pt too high) detected at line 754
+Overfull \vbox (19.08202pt too high) detected at line 816
  []
 
 [75
@@ -1968,17 +2149,17 @@ Package epstopdf Info: Source file: <../../figures/other/guerrero.eps>
 (epstopdf)                    size: 65543 bytes
 (epstopdf)             Command: <repstopdf --outfile=./guerrero-eps-converted-t
 o.pdf ../../figures/other/guerrero.eps>
-(epstopdf)             \includegraphics on input line 761.
+(epstopdf)             \includegraphics on input line 823.
 Package epstopdf Info: Output file is already uptodate.
- <./guerrero-eps-converted-to.pdf, id=3687, 597.23125pt x 845.1575pt>
+ <./guerrero-eps-converted-to.pdf, id=4180, 597.23125pt x 845.1575pt>
 File: ./guerrero-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./guerrero-eps-converted-to.pdf>
-Package pdftex.def Info: ./guerrero-eps-converted-to.pdf used on input line 761
+Package pdftex.def Info: ./guerrero-eps-converted-to.pdf used on input line 823
 .
 (pdftex.def)             Requested size: 142.26378pt x 200.36382pt.
 
-Overfull \vbox (16.1879pt too high) detected at line 761
+Overfull \vbox (16.1879pt too high) detected at line 823
  []
 
 [76
@@ -1992,12 +2173,12 @@ Package epstopdf Info: Source file: <../../figures/other/sanandreas.eps>
 (epstopdf)                    size: 21587 bytes
 (epstopdf)             Command: <repstopdf --outfile=./sanandreas-eps-converted
 -to.pdf ../../figures/other/sanandreas.eps>
-(epstopdf)             \includegraphics on input line 768.
+(epstopdf)             \includegraphics on input line 830.
 Package epstopdf Info: Output file is already uptodate.
 File: ./sanandreas-eps-converted-to.pdf Graphic file (type pdf)
  <use ./sanandreas-eps-converted-to.pdf>
-Package pdftex.def Info: ./sanandreas-eps-converted-to.pdf used on input line 7
-68.
+Package pdftex.def Info: ./sanandreas-eps-converted-to.pdf used on input line 8
+30.
 (pdftex.def)             Requested size: 142.26378pt x 177.5734pt.
 
 [77
@@ -2009,51 +2190,51 @@ Package pdftex.def Info: ./sanandreas-eps-converted-to.pdf used on input line 7
 ] [80
 
 ]
-<../../figures/articles/wallace_eberhart-phillips_2013_1.png, id=3869, 552.0625
+<../../figures/articles/wallace_eberhart-phillips_2013_1.png, id=4364, 552.0625
 pt x 501.875pt>
 File: ../../figures/articles/wallace_eberhart-phillips_2013_1.png Graphic file 
 (type png)
 
 <use ../../figures/articles/wallace_eberhart-phillips_2013_1.png>
 Package pdftex.def Info: ../../figures/articles/wallace_eberhart-phillips_2013_
-1.png used on input line 804.
+1.png used on input line 872.
 (pdftex.def)             Requested size: 199.16928pt x 181.06541pt.
  [81
 
  <../../figures/articles/wallace_eberhart-phillips_2013_1.png>]
-<../../figures/articles/wallace_eberhart-phillips_2013_3a.png, id=3904, 401.5pt
+<../../figures/articles/wallace_eberhart-phillips_2013_3a.png, id=4399, 401.5pt
  x 351.3125pt>
 File: ../../figures/articles/wallace_eberhart-phillips_2013_3a.png Graphic file
  (type png)
 
 <use ../../figures/articles/wallace_eberhart-phillips_2013_3a.png>
 Package pdftex.def Info: ../../figures/articles/wallace_eberhart-phillips_2013_
-3a.png used on input line 811.
+3a.png used on input line 879.
 (pdftex.def)             Requested size: 199.16928pt x 174.27814pt.
  [82
 
  <../../figures/articles/wallace_eberhart-phillips_2013_3a.png>]
-<../../figures/articles/wallace_eberhart-phillips_2013_3b.png, id=3939, 401.5pt
+<../../figures/articles/wallace_eberhart-phillips_2013_3b.png, id=4434, 401.5pt
  x 351.3125pt>
 File: ../../figures/articles/wallace_eberhart-phillips_2013_3b.png Graphic file
  (type png)
 
 <use ../../figures/articles/wallace_eberhart-phillips_2013_3b.png>
 Package pdftex.def Info: ../../figures/articles/wallace_eberhart-phillips_2013_
-3b.png used on input line 818.
+3b.png used on input line 886.
 (pdftex.def)             Requested size: 199.16928pt x 174.27814pt.
  [83
 
  <../../figures/articles/wallace_eberhart-phillips_2013_3b.png>]
-<../../figures/articles/todd_schwartz_2016_6.png, id=3974, 1254.6875pt x 652.43
+<../../figures/articles/todd_schwartz_2016_6.png, id=4469, 1254.6875pt x 652.43
 75pt>
 File: ../../figures/articles/todd_schwartz_2016_6.png Graphic file (type png)
  <use ../../figures/articles/todd_schwartz_2016_6.png>
 Package pdftex.def Info: ../../figures/articles/todd_schwartz_2016_6.png used o
-n input line 825.
+n input line 893.
 (pdftex.def)             Requested size: 312.9803pt x 162.75058pt.
 
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 825--825
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 893--893
  [] 
  []
 
@@ -2066,42 +2247,42 @@ Missing character: There is no ™ in font cmss10!
  [85
 
 ]
-<../../figures/articles/wech_creager_2011_3.png, id=4042, 652.4375pt x 451.6875
+<../../figures/articles/wech_creager_2011_3.png, id=4537, 652.4375pt x 451.6875
 pt>
 File: ../../figures/articles/wech_creager_2011_3.png Graphic file (type png)
  <use ../../figures/articles/wech_creager_2011_3.png>
 Package pdftex.def Info: ../../figures/articles/wech_creager_2011_3.png used on
- input line 841.
+ input line 909.
 (pdftex.def)             Requested size: 284.52756pt x 196.9856pt.
 
-Overfull \vbox (12.80968pt too high) detected at line 841
+Overfull \vbox (12.80968pt too high) detected at line 909
  []
 
 [86
 
  <../../figures/articles/wech_creager_2011_3.png>]
-<../../figures/articles/wei_al_2012_1.png, id=4077, 752.8125pt x 702.625pt>
+<../../figures/articles/wei_al_2012_1.png, id=4572, 752.8125pt x 702.625pt>
 File: ../../figures/articles/wei_al_2012_1.png Graphic file (type png)
 
 <use ../../figures/articles/wei_al_2012_1.png>
 Package pdftex.def Info: ../../figures/articles/wei_al_2012_1.png used on input
- line 848.
+ line 916.
 (pdftex.def)             Requested size: 199.16928pt x 185.89453pt.
 
-Overfull \vbox (1.71861pt too high) detected at line 848
+Overfull \vbox (1.71861pt too high) detected at line 916
  []
 
 [87
 
  <../../figures/articles/wei_al_2012_1.png>]
-<../../figures/slowslip/Prequake_level_changes_shallow_thrust.png, id=4113, 466
+<../../figures/slowslip/Prequake_level_changes_shallow_thrust.png, id=4608, 466
 .25807pt x 164.74452pt>
 File: ../../figures/slowslip/Prequake_level_changes_shallow_thrust.png Graphic 
 file (type png)
 
 <use ../../figures/slowslip/Prequake_level_changes_shallow_thrust.png>
 Package pdftex.def Info: ../../figures/slowslip/Prequake_level_changes_shallow_
-thrust.png used on input line 855.
+thrust.png used on input line 923.
 (pdftex.def)             Requested size: 284.52756pt x 100.53423pt.
 Missing character: There is no â in font cmss12!
 Missing character: There is no € in font cmss12!
@@ -2109,14 +2290,14 @@ Missing character: There is no ™ in font cmss12!
  [88
 
  <../../figures/slowslip/Prequake_level_changes_shallow_thrust.png>]
-<../../figures/slowslip/Postquake_level_changes_shallow_thrust.png, id=4148, 46
+<../../figures/slowslip/Postquake_level_changes_shallow_thrust.png, id=4643, 46
 6.25807pt x 164.74452pt>
 File: ../../figures/slowslip/Postquake_level_changes_shallow_thrust.png Graphic
  file (type png)
 
 <use ../../figures/slowslip/Postquake_level_changes_shallow_thrust.png>
 Package pdftex.def Info: ../../figures/slowslip/Postquake_level_changes_shallow
-_thrust.png used on input line 862.
+_thrust.png used on input line 930.
 (pdftex.def)             Requested size: 284.52756pt x 100.53423pt.
 Missing character: There is no â in font cmss12!
 Missing character: There is no € in font cmss12!
@@ -2133,18 +2314,18 @@ Package epstopdf Info: Source file: <../../figures/Hikurangi/studyarea.eps>
 (epstopdf)                    size: 132698 bytes
 (epstopdf)             Command: <repstopdf --outfile=./studyarea-eps-converted-
 to.pdf ../../figures/Hikurangi/studyarea.eps>
-(epstopdf)             \includegraphics on input line 869.
+(epstopdf)             \includegraphics on input line 937.
 Package epstopdf Info: Output file is already uptodate.
 
-<./studyarea-eps-converted-to.pdf, id=4183, 597.23125pt x 845.1575pt>
+<./studyarea-eps-converted-to.pdf, id=4678, 597.23125pt x 845.1575pt>
 File: ./studyarea-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./studyarea-eps-converted-to.pdf>
-Package pdftex.def Info: ./studyarea-eps-converted-to.pdf used on input line 86
-9.
+Package pdftex.def Info: ./studyarea-eps-converted-to.pdf used on input line 93
+7.
 (pdftex.def)             Requested size: 170.71652pt x 196.46529pt.
 
-Overfull \vbox (12.28937pt too high) detected at line 869
+Overfull \vbox (12.28937pt too high) detected at line 937
  []
 
 [90
@@ -2158,18 +2339,18 @@ Package epstopdf Info: Source file: <../../figures/../slowslip/Figure1.eps>
 (epstopdf)                    size: 53754 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figure1-eps-converted-to
 .pdf ../../figures/../slowslip/Figure1.eps>
-(epstopdf)             \includegraphics on input line 876.
+(epstopdf)             \includegraphics on input line 944.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figure1-eps-converted-to.pdf, id=4224, 2168.1pt x 722.7pt>
+<./Figure1-eps-converted-to.pdf, id=4719, 2168.1pt x 722.7pt>
 File: ./Figure1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figure1-eps-converted-to.pdf>
-Package pdftex.def Info: ./Figure1-eps-converted-to.pdf used on input line 876.
+Package pdftex.def Info: ./Figure1-eps-converted-to.pdf used on input line 944.
 
 (pdftex.def)             Requested size: 312.9803pt x 104.32014pt.
 
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 876--876
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 944--944
  [] 
  []
 
@@ -2185,18 +2366,18 @@ Package epstopdf Info: Source file: <../../figures/../slowslip/Figure2_CKID.eps
 (epstopdf)                    size: 99456 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figure2_CKID-eps-convert
 ed-to.pdf ../../figures/../slowslip/Figure2_CKID.eps>
-(epstopdf)             \includegraphics on input line 883.
+(epstopdf)             \includegraphics on input line 951.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figure2_CKID-eps-converted-to.pdf, id=4314, 1445.4pt x 722.7pt>
+<./Figure2_CKID-eps-converted-to.pdf, id=4809, 1445.4pt x 722.7pt>
 File: ./Figure2_CKID-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figure2_CKID-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figure2_CKID-eps-converted-to.pdf used on input line
- 883.
+ 951.
 (pdftex.def)             Requested size: 312.9803pt x 156.49124pt.
 
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 883--883
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 951--951
  [] 
  []
 
@@ -2214,25 +2395,25 @@ Overfull \hbox (5.69043pt too wide) in paragraph at lines 883--883
 \tf@snm=\write8
 \openout8 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 899.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 899.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 967.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 967.
  (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 899.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 899.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 967.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 967.
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: 2273D6F47DA9BD3E2E89E0F9D7C9598C;1282.
+(rerunfilecheck)             Checksum: 8F8AA44465C028850E833C0A1EE2F957;1368.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 899.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 967.
  ) 
 Here is how much of TeX's memory you used:
- 18085 strings out of 493014
- 351262 string characters out of 6133351
- 402405 words of memory out of 5000000
- 20917 multiletter control sequences out of 15000+600000
+ 18146 strings out of 493014
+ 353076 string characters out of 6133351
+ 403003 words of memory out of 5000000
+ 20964 multiletter control sequences out of 15000+600000
  17858 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,65p,386b,638s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2250,10 +2431,10 @@ ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/l
 ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on slides.pdf (93 pages, 6752139 bytes).
+Output written on slides.pdf (93 pages, 6905010 bytes).
 PDF statistics:
- 4521 PDF objects out of 5155 (max. 8388607)
- 3572 compressed objects within 36 object streams
- 205 named destinations out of 1000 (max. 500000)
- 760 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 5016 PDF objects out of 5155 (max. 8388607)
+ 3670 compressed objects within 37 object streams
+ 206 named destinations out of 1000 (max. 500000)
+ 883 words of extra memory for PDF output out of 10000 (max. 10000000)
 

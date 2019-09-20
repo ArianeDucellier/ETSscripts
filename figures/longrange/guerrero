@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-set output = guerrero.eps
+set output = guerrero_d.eps
 
 # Small map
 set x1 = -101
@@ -12,11 +12,13 @@ set Jop = m-99.75/17.75/4.5
 
 gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -P -K >! $output
 
+gmt psxy frank.txt -R$Rop -J$Jop -Sc -Crgb -O -K >> $output
+
 #gmt psxy frank0.txt -R$Rop -J$Jop -Sc0.2 -Ggrey -O -K >> $output
-gmt psxy frank1.txt -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
-gmt psxy frank2.txt -R$Rop -J$Jop -Sc0.2 -Gorange -O -K >> $output
-gmt psxy frank3.txt -R$Rop -J$Jop -Sc0.2 -Ggreen -O -K >> $output
-gmt psxy frank4.txt -R$Rop -J$Jop -Sc0.2 -Gcyan -O -K >> $output
+#gmt psxy frank1.txt -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
+#gmt psxy frank2.txt -R$Rop -J$Jop -Sc0.2 -Gorange -O -K >> $output
+#gmt psxy frank3.txt -R$Rop -J$Jop -Sc0.2 -Ggreen -O -K >> $output
+#gmt psxy frank4.txt -R$Rop -J$Jop -Sc0.2 -Gcyan -O -K >> $output
 #gmt psxy frank5.txt -R$Rop -J$Jop -Sc0.2 -Gblue -O -K >> $output
 
 # Large map

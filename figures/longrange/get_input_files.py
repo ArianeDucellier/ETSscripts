@@ -22,44 +22,16 @@ for n in range(0, nt):
 
 # Open result file
 results = pickle.load(open('../../longrange/Chestler_2017.pkl', 'rb'))[0]
-		
+
 # Create dataframe
 data = pd.DataFrame(data={'longitude': longitude, \
                           'latitude': latitude})
-data['d_var'] = results['d_var']
-
-data0 = data.loc[(data['d_var'] <= 0.0) | (data['d_var'] >= 0.5)]
-data1 = data.loc[(data['d_var'] > 0.0) & (data['d_var'] <= 0.1)]
-data2 = data.loc[(data['d_var'] > 0.1) & (data['d_var'] <= 0.2)]
-data3 = data.loc[(data['d_var'] > 0.2) & (data['d_var'] <= 0.3)]
-data4 = data.loc[(data['d_var'] > 0.3) & (data['d_var'] <= 0.4)]
-data5 = data.loc[(data['d_var'] > 0.4) & (data['d_var'] < 0.5)]
-
-data0 = data0.drop(columns=['d_var'])
-data1 = data1.drop(columns=['d_var'])
-data2 = data2.drop(columns=['d_var'])
-data3 = data3.drop(columns=['d_var'])
-data4 = data4.drop(columns=['d_var'])
-data5 = data5.drop(columns=['d_var'])
+data['color'] = results['d_var']
+data['size'] = results['d_var']
 
 # Write input files
-tfile = open('chestler0.txt', 'w')
-tfile.write(data0.to_string(header=False, index=False))
-tfile.close()
-tfile = open('chestler1.txt', 'w')
-tfile.write(data1.to_string(header=False, index=False))
-tfile.close()
-tfile = open('chestler2.txt', 'w')
-tfile.write(data2.to_string(header=False, index=False))
-tfile.close()
-tfile = open('chestler3.txt', 'w')
-tfile.write(data3.to_string(header=False, index=False))
-tfile.close()
-tfile = open('chestler4.txt', 'w')
-tfile.write(data4.to_string(header=False, index=False))
-tfile.close()
-tfile = open('chestler5.txt', 'w')
-tfile.write(data5.to_string(header=False, index=False))
+tfile = open('chestler.txt', 'w')
+tfile.write(data.to_string(header=False, index=False))
 tfile.close()
 
 # Frank's catalog
@@ -82,44 +54,16 @@ for n in range(0, len(families)):
 
 # Open result file
 results = pickle.load(open('../../longrange/Frank_2014.pkl', 'rb'))[0]
-		
+
 # Create dataframe
 data = pd.DataFrame(data={'longitude': longitude, \
                           'latitude': latitude})
-data['d_var'] = results['d_var']
-
-data0 = data.loc[(data['d_var'] <= 0.0) | (data['d_var'] >= 0.5)]
-data1 = data.loc[(data['d_var'] > 0.0) & (data['d_var'] <= 0.1)]
-data2 = data.loc[(data['d_var'] > 0.1) & (data['d_var'] <= 0.2)]
-data3 = data.loc[(data['d_var'] > 0.2) & (data['d_var'] <= 0.3)]
-data4 = data.loc[(data['d_var'] > 0.3) & (data['d_var'] <= 0.4)]
-data5 = data.loc[(data['d_var'] > 0.4) & (data['d_var'] < 0.5)]
-
-data0 = data0.drop(columns=['d_var'])
-data1 = data1.drop(columns=['d_var'])
-data2 = data2.drop(columns=['d_var'])
-data3 = data3.drop(columns=['d_var'])
-data4 = data4.drop(columns=['d_var'])
-data5 = data5.drop(columns=['d_var'])
+data['color'] = results['d_var']
+data['size'] = results['d_var']
 
 # Write input files
-tfile = open('frank0.txt', 'w')
-tfile.write(data0.to_string(header=False, index=False))
-tfile.close()
-tfile = open('frank1.txt', 'w')
-tfile.write(data1.to_string(header=False, index=False))
-tfile.close()
-tfile = open('frank2.txt', 'w')
-tfile.write(data2.to_string(header=False, index=False))
-tfile.close()
-tfile = open('frank3.txt', 'w')
-tfile.write(data3.to_string(header=False, index=False))
-tfile.close()
-tfile = open('frank4.txt', 'w')
-tfile.write(data4.to_string(header=False, index=False))
-tfile.close()
-tfile = open('frank5.txt', 'w')
-tfile.write(data5.to_string(header=False, index=False))
+tfile = open('frank.txt', 'w')
+tfile.write(data.to_string(header=False, index=False))
 tfile.close()
 
 # Plourde's catalog
@@ -135,44 +79,16 @@ LFEloc = np.loadtxt('../../data/Plourde_2015/templates_list.txt', \
 
 # Open result file
 results = pickle.load(open('../../longrange/Plourde_2015.pkl', 'rb'))[0]
-		
+
 # Create dataframe
 data = pd.DataFrame(data={'longitude': LFEloc['lon'], \
                           'latitude': LFEloc['lat']})
-data['d_var'] = results['d_var']
-
-data0 = data.loc[(data['d_var'] <= 0.0) | (data['d_var'] >= 0.5)]
-data1 = data.loc[(data['d_var'] > 0.0) & (data['d_var'] <= 0.1)]
-data2 = data.loc[(data['d_var'] > 0.1) & (data['d_var'] <= 0.2)]
-data3 = data.loc[(data['d_var'] > 0.2) & (data['d_var'] <= 0.3)]
-data4 = data.loc[(data['d_var'] > 0.3) & (data['d_var'] <= 0.4)]
-data5 = data.loc[(data['d_var'] > 0.4) & (data['d_var'] < 0.5)]
-
-data0 = data0.drop(columns=['d_var'])
-data1 = data1.drop(columns=['d_var'])
-data2 = data2.drop(columns=['d_var'])
-data3 = data3.drop(columns=['d_var'])
-data4 = data4.drop(columns=['d_var'])
-data5 = data5.drop(columns=['d_var'])
+data['color'] = results['d_var']
+data['size'] = results['d_var']
 
 # Write input files
-tfile = open('plourde0.txt', 'w')
-tfile.write(data0.to_string(header=False, index=False))
-tfile.close()
-tfile = open('plourde1.txt', 'w')
-tfile.write(data1.to_string(header=False, index=False))
-tfile.close()
-tfile = open('plourde2.txt', 'w')
-tfile.write(data2.to_string(header=False, index=False))
-tfile.close()
-tfile = open('plourde3.txt', 'w')
-tfile.write(data3.to_string(header=False, index=False))
-tfile.close()
-tfile = open('plourde4.txt', 'w')
-tfile.write(data4.to_string(header=False, index=False))
-tfile.close()
-tfile = open('plourde5.txt', 'w')
-tfile.write(data5.to_string(header=False, index=False))
+tfile = open('plourde.txt', 'w')
+tfile.write(data.to_string(header=False, index=False))
 tfile.close()
 
 # Shelly's catalog
@@ -196,44 +112,16 @@ for n in range(0, len(families)):
 
 # Open result file
 results = pickle.load(open('../../longrange/Shelly_2017.pkl', 'rb'))[0]
-		
+
 # Create dataframe
 data = pd.DataFrame(data={'longitude': longitude, \
                           'latitude': latitude})
-data['d_var'] = results['d_var']
-
-data0 = data.loc[(data['d_var'] <= 0.0) | (data['d_var'] >= 0.5)]
-data1 = data.loc[(data['d_var'] > 0.0) & (data['d_var'] <= 0.1)]
-data2 = data.loc[(data['d_var'] > 0.1) & (data['d_var'] <= 0.2)]
-data3 = data.loc[(data['d_var'] > 0.2) & (data['d_var'] <= 0.3)]
-data4 = data.loc[(data['d_var'] > 0.3) & (data['d_var'] <= 0.4)]
-data5 = data.loc[(data['d_var'] > 0.4) & (data['d_var'] < 0.5)]
-
-data0 = data0.drop(columns=['d_var'])
-data1 = data1.drop(columns=['d_var'])
-data2 = data2.drop(columns=['d_var'])
-data3 = data3.drop(columns=['d_var'])
-data4 = data4.drop(columns=['d_var'])
-data5 = data5.drop(columns=['d_var'])
+data['color'] = results['d_var']
+data['size'] = results['d_var']
 
 # Write input files
-tfile = open('shelly0.txt', 'w')
-tfile.write(data0.to_string(header=False, index=False))
-tfile.close()
-tfile = open('shelly1.txt', 'w')
-tfile.write(data1.to_string(header=False, index=False))
-tfile.close()
-tfile = open('shelly2.txt', 'w')
-tfile.write(data2.to_string(header=False, index=False))
-tfile.close()
-tfile = open('shelly3.txt', 'w')
-tfile.write(data3.to_string(header=False, index=False))
-tfile.close()
-tfile = open('shelly4.txt', 'w')
-tfile.write(data4.to_string(header=False, index=False))
-tfile.close()
-tfile = open('shelly5.txt', 'w')
-tfile.write(data5.to_string(header=False, index=False))
+tfile = open('shelly.txt', 'w')
+tfile.write(data.to_string(header=False, index=False))
 tfile.close()
 
 # Sweet's catalog
@@ -253,42 +141,14 @@ for n in range(0, nf):
 
 # Open result file
 results = pickle.load(open('../../longrange/Sweet_2014.pkl', 'rb'))[0]
-		
+
 # Create dataframe
 data = pd.DataFrame(data={'longitude': longitude, \
                           'latitude': latitude})
-data['d_var'] = results['d_var']
-
-data0 = data.loc[(data['d_var'] <= 0.0) | (data['d_var'] >= 0.5)]
-data1 = data.loc[(data['d_var'] > 0.0) & (data['d_var'] <= 0.1)]
-data2 = data.loc[(data['d_var'] > 0.1) & (data['d_var'] <= 0.2)]
-data3 = data.loc[(data['d_var'] > 0.2) & (data['d_var'] <= 0.3)]
-data4 = data.loc[(data['d_var'] > 0.3) & (data['d_var'] <= 0.4)]
-data5 = data.loc[(data['d_var'] > 0.4) & (data['d_var'] < 0.5)]
-
-data0 = data0.drop(columns=['d_var'])
-data1 = data1.drop(columns=['d_var'])
-data2 = data2.drop(columns=['d_var'])
-data3 = data3.drop(columns=['d_var'])
-data4 = data4.drop(columns=['d_var'])
-data5 = data5.drop(columns=['d_var'])
+data['color'] = results['d_var']
+data['size'] = results['d_var']
 
 # Write input files
-tfile = open('sweet0.txt', 'w')
-tfile.write(data0.to_string(header=False, index=False))
-tfile.close()
-tfile = open('sweet1.txt', 'w')
-tfile.write(data1.to_string(header=False, index=False))
-tfile.close()
-tfile = open('sweet2.txt', 'w')
-tfile.write(data2.to_string(header=False, index=False))
-tfile.close()
-tfile = open('sweet3.txt', 'w')
-tfile.write(data3.to_string(header=False, index=False))
-tfile.close()
-tfile = open('sweet4.txt', 'w')
-tfile.write(data4.to_string(header=False, index=False))
-tfile.close()
-tfile = open('sweet5.txt', 'w')
-tfile.write(data5.to_string(header=False, index=False))
+tfile = open('sweet.txt', 'w')
+tfile.write(data.to_string(header=False, index=False))
 tfile.close()

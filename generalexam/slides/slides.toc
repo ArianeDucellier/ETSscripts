@@ -14,6 +14,7 @@
 \beamer@sectionintoc {3}{A low-frequency earthquakes catalog for southern Cascadia}{40}{0}{3}
 \beamer@subsectionintoc {3}{1}{Extension of an LFE catalog for southern Cascadia}{41}{0}{3}
 \beamer@subsectionintoc {3}{2}{Effect of nearby earthquakes on LFE activity}{55}{0}{3}
-\beamer@subsectionintoc {3}{3}{Statistical analysis of LFE catalogs}{59}{0}{3}
+\beamer@subsectionintoc {3}{3}{Characterization of LFE clustering}{59}{0}{3}
+\beamer@subsectionintoc {3}{4}{Temporal model of LFE occurrence rate}{78}{0}{3}
 \beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{79}{0}{4}
 \beamer@sectionintoc {5}{Time line}{93}{0}{5}
