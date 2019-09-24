@@ -5,21 +5,14 @@ set output = guerrero_d.eps
 # Small map
 set x1 = -101
 set x2 = -98.5
-set y1 = 16
-set y2 = 19.5
+set y1 = 17.5
+set y2 = 19.6
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-99.75/17.75/4.5
+set Jop = m-99.75/18.55/5.0
 
-gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -P -K >! $output
+gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X6 -Y5 -P -K >! $output
 
 gmt psxy frank.txt -R$Rop -J$Jop -Sc -Crgb -O -K >> $output
-
-#gmt psxy frank0.txt -R$Rop -J$Jop -Sc0.2 -Ggrey -O -K >> $output
-#gmt psxy frank1.txt -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
-#gmt psxy frank2.txt -R$Rop -J$Jop -Sc0.2 -Gorange -O -K >> $output
-#gmt psxy frank3.txt -R$Rop -J$Jop -Sc0.2 -Ggreen -O -K >> $output
-#gmt psxy frank4.txt -R$Rop -J$Jop -Sc0.2 -Gcyan -O -K >> $output
-#gmt psxy frank5.txt -R$Rop -J$Jop -Sc0.2 -Gblue -O -K >> $output
 
 # Large map
 set x1 = -107
@@ -27,22 +20,25 @@ set x2 = -93
 set y1 = 12
 set y2 = 25
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-99.75/17.75/0.4
+set Jop = m-99.75/18.5/0.4
 
-gmt pscoast -R$Rop -J$Jop -Ba5f2.5::wEsN -W0.1p -S224/255/255 -G255/255/224 -Dl -Na -X0.5 -Y0.5 -O -K >> $output
+gmt pscoast -R$Rop -J$Jop -Ba5f2.5::WESN -W0.1p -S224/255/255 -G255/255/224 -Dl -Na -X-4 -Y-1 -O -K >> $output
 
 # Location of small map
 cat << END >> zoom.dat
--99.75 17.75
+-101.0 17.5
+-101.0 19.5
+-98.5  19.5
+-98.5  17.5
+-101.0 17.5
 END
+
+gmt psxy zoom.dat -R$Rop -J$Jop -Wthicker,black -O -K >> $output
 
 cat << END >> names.dat
--99.75 16.75 Guerrero
+-99.75 16 Guerrero
 END
 
-gmt psxy zoom.dat -R$Rop -J$Jop -Sc0.3 -Gblack -O -K >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O >> $output
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f15p,black -O >> $output
-
-rm names.dat
-rm zoom.dat
+rm *.dat

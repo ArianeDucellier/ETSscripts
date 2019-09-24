@@ -20,7 +20,7 @@ from stacking import linstack, powstack, PWstack
 
 def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         Tmax, RMSmin, RMSmax, xmax, ymax, typecluster, nc, palette, amp, \
-        n1, n2):
+        n1, n2, draw_scatter=True, draw_hist=True, draw_cc=True):
     """
     Sort the tremor windows into several clusters and stack cross and
     autocorrelation inside each cluster
@@ -64,6 +64,12 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         n1 = Index of first tremor to be plotted
         type n2 = integer
         n2 = Index of last tremor to be plotted
+        type draw_scatter = boolean
+        draw_scatter = Scatter plot of criteria for k-means clustering
+        type draw_hist = boolean
+        draw_hist = Histograms of time delays per cluster
+        type draw_cc = boolean
+        draw_cc = Cross correlation functions colored by cluster
     Output:
         type clusters = 1D numpy array
         clusters = List of cluster index to which the tremor window belongs
@@ -125,10 +131,12 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     nt = len(EW_UD)
     ccmaxEW = np.zeros(nt)
     cc0EW = np.zeros(nt)
+    timelagEW = np.zeros(nt)
     timedelayEW = np.zeros(nt)
     rmsEW = np.zeros(nt)
     ccmaxNS = np.zeros(nt)
     cc0NS = np.zeros(nt)
+    timelagNS = np.zeros(nt)
     timedelayNS = np.zeros(nt)
     rmsNS = np.zeros(nt)
     # Windows of the cross correlation to look at
@@ -137,6 +145,10 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
     iend = i0 + int(Tmax / EW_UD_stack.stats.delta) + 1
     rmsb = i0 + int(RMSmin / EW_UD_stack.stats.delta)
     rmse = i0 + int(RMSmax / EW_UD_stack.stats.delta) + 1
+    # Time function
+    dt = EW_UD_stack.stats.delta
+    imax = int((EW_UD_stack.stats.npts - 1) / 2)
+    t = dt * np.arange(- imax, imax + 1)
     for i in range(0, nt):
         rmsEW[i] = np.max(np.abs(EW_UD[i][ibegin:iend])) / \
             np.sqrt(np.mean(np.square(EW_UD[i][rmsb:rmse])))
@@ -154,6 +166,11 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         ccmaxNS[i] = np.max(cc_NS)
         cc0NS[i] = cc_NS[ncor]
         timedelayNS[i] = (np.argmax(cc_NS) - ncor) * NS_UD_stack.stats.delta
+        # Time lags
+        i0 = np.argmax(np.abs(EW_UD[i].data[ibegin:iend]))
+        timelagEW[i] = t[ibegin:iend][i0]
+        i0 = np.argmax(np.abs(NS_UD[i].data[ibegin:iend]))
+        timelagNS[i] = t[ibegin:iend][i0]
     # Clustering
     df = pd.DataFrame({'ccmaxEW' : ccmaxEW, 'ccmaxNS' : ccmaxNS, \
         'cc0EW' : cc0EW, 'cc0NS' : cc0NS, 'timedelayEW' : timedelayEW, \
@@ -171,53 +188,69 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
         raise ValueError( \
             'Type of clustering must be kmeans or agglo')
     # Scatter plot
-    colors = [palette[c] for c in clusters]
-    pd.plotting.scatter_matrix(df, c=colors, figsize=(20, 20))
-    plt.savefig( \
-        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'. \
-        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
-        int(y0), type_stack, cc_stack), format='eps')
-    plt.close()
-    # Plot histogram of timelags
-    plt.figure(1, figsize=(10 * nc, 16))
-    # EW / Vertical
-    std_clust_EW = []
+    if (draw_scatter == True):
+        colors = [palette[c] for c in clusters]
+        pd.plotting.scatter_matrix(df, c=colors, figsize=(20, 20))
+        plt.savefig( \
+            'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_scatter.eps'. \
+            format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+            int(y0), type_stack, cc_stack), format='eps')
+        plt.close()
+    # Compute width of timelags distribution
+    timelags = pd.DataFrame({'timelagEW' : timelagEW, 'timelagNS' = timelagNS})
+    width_clust_EW = []
+    width_clust_NS = []
     timelag_clust_EW = []
-    for j in range(0, nc):
-        plt.subplot2grid((2, nc), (0, j))
-        times = df['timedelayEW'].iloc[clusters == j]
-        plt.hist(times)
-        plt.title('EW / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
-            len(times)), fontsize=24)
-        plt.xlabel('Lag time difference (s)', fontsize=24)
-        std_clust_EW.append(np.std(times))
-        timelag_clust_EW.append(times)
-    # NS / Vertical
-    std_clust_NS = []
     timelag_clust_NS = []
     for j in range(0, nc):
-        plt.subplot2grid((2, nc), (1, j))
-        times = df['timedelayNS'].iloc[clusters == j]
-        plt.hist(times)
-        plt.title('NS / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
-            len(times)), fontsize=24)
-        plt.xlabel('Lag time difference (s)', fontsize=24)
-        std_clust_NS.append(np.std(times))
+        times = timelags['timelagEW'].iloc[clusters == j]
+        width_clust_EW.append(np.std(times))
+        timelag_clust_EW.append(times)
+        times = timelags['timelagNS'].iloc[clusters == j]
+        width_clust_NS.append(np.std(times))
         timelag_clust_NS.append(times)
-    # End figure
-    plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
-        type_stack, cc_stack), fontsize=24)
-    plt.savefig( \
-        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_timelags.eps'. \
-        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
-            int(y0), type_stack, cc_stack), format='eps')
-    plt.close(1)
     # Save timelags into file
     filename = 'cc/{}/{}_{:03d}_{:03d}/'.format(arrayName, arrayName, \
         int(x0), int(y0)) + '{}_{:03d}_{:03d}_{}_{}_cluster_timelags.pkl'. \
         format(arrayName, int(x0), int(y0), type_stack, cc_stack)
     pickle.dump([timelag_clust_EW, timelag_clust_NS], open(filename, 'wb'))
+    # Plot histogram of timelags
+    if (draw_hist == True):
+        plt.figure(1, figsize=(10 * nc, 16))
+        # EW / Vertical
+        for j in range(0, nc):
+            plt.subplot2grid((2, nc), (0, j))
+            times = timelags['timelagEW'].iloc[clusters == j]
+            m = np.mean(times)
+            s = np.std(times)
+            plt.hist(times)
+            plt.axvline(m + s, color='grey', linestyle='--')
+            plt.axvline(m - s, color='grey', linestyle='--')
+            plt.title('EW / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
+                len(times)), fontsize=24)
+            plt.xlabel('Time lag (s)', fontsize=24)
+        # NS / Vertical
+        for j in range(0, nc):
+            plt.subplot2grid((2, nc), (1, j))
+            times = timelags['timelagNS'].iloc[clusters == j]
+            m = np.mean(times)
+            s = np.std(times)
+            plt.hist(times)
+            plt.title('NS / UD - Cluster {:d} ({:d} tremor windows)'.format(j, \
+                len(times)), fontsize=24)
+            plt.axvline(m + s, color='grey', linestyle='--')
+            plt.axvline(m - s, color='grey', linestyle='--')
+            plt.xlabel('Lag time difference (s)', fontsize=24)
+        # End figure
+        plt.suptitle('{} at {} km, {} km ({} - {})'.format(arrayName, x0, y0, \
+            type_stack, cc_stack), fontsize=24)
+        plt.savefig( \
+            'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_timelags.eps'. \
+            format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+                int(y0), type_stack, cc_stack), format='eps')
+        plt.close(1)
     # Plot cross correlation
+    if (draw_cc == True):
     plt.figure(2, figsize=(10 * nc, 16))
     npts = int((EW_UD_stack.stats.npts - 1) / 2)
     dt = EW_UD_stack.stats.delta
@@ -404,46 +437,46 @@ def cluster_select(arrayName, x0, y0, type_stack, w, cc_stack, ncor, Tmin, \
 #        int(y0), type_stack, cc_stack), format='eps')
 #    plt.close(3)
     # Plot colored cross correlation windows
-    plt.figure(4, figsize=(20, 16))
-    # EW - UD cross correlation
-    ax1 = plt.subplot(121)
-    for i in range(n1, n2):
-        dt = EW_UD[i].stats.delta
-        ncor = int((EW_UD[i].stats.npts - 1) / 2)
-        t = dt * np.arange(- ncor, ncor + 1)
-        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, \
-            color=colors[i])
-    plt.xlim(0, xmax)
-    plt.ylim(0.0, 2.0 * (n2 - n1))
-    plt.title('East / Vertical component', fontsize=24)
-    plt.xlabel('Lag time (s)', fontsize=24)
-    plt.ylabel('Cross correlation', fontsize=24)
-    ax1.set_yticklabels([])
-    ax1.tick_params(labelsize=20)
-    # NS - UD cross correlation
-    ax2 = plt.subplot(122)
-    for i in range(n1, n2):
-        dt = NS_UD[i].stats.delta
-        ncor = int((NS_UD[i].stats.npts - 1) / 2)
-        t = dt * np.arange(- ncor, ncor + 1)
-        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, \
-            color=colors[i])
-    plt.xlim(0, xmax)
-    plt.ylim(0.0, 2.0 * (n2 - n1))
-    plt.title('North / Vertical component', fontsize=24)
-    plt.xlabel('Lag time (s)', fontsize=24)
-    plt.ylabel('Cross correlation', fontsize=24)
-    ax2.set_yticklabels([])
-    ax2.tick_params(labelsize=20)
-    # End figure
-    plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
-    plt.savefig( \
-        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'. \
-        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
-        int(y0), type_stack, cc_stack), format='eps')
-    ax1.clear()
-    ax2.clear()
-    plt.close(4)
+#    plt.figure(4, figsize=(20, 16))
+#    # EW - UD cross correlation
+#    ax1 = plt.subplot(121)
+#    for i in range(n1, n2):
+#        dt = EW_UD[i].stats.delta
+#        ncor = int((EW_UD[i].stats.npts - 1) / 2)
+#        t = dt * np.arange(- ncor, ncor + 1)
+#        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, \
+#            color=colors[i])
+#    plt.xlim(0, xmax)
+#    plt.ylim(0.0, 2.0 * (n2 - n1))
+#    plt.title('East / Vertical component', fontsize=24)
+#    plt.xlabel('Lag time (s)', fontsize=24)
+#    plt.ylabel('Cross correlation', fontsize=24)
+#    ax1.set_yticklabels([])
+#    ax1.tick_params(labelsize=20)
+#    # NS - UD cross correlation
+#    ax2 = plt.subplot(122)
+#    for i in range(n1, n2):
+#        dt = NS_UD[i].stats.delta
+#        ncor = int((NS_UD[i].stats.npts - 1) / 2)
+#        t = dt * np.arange(- ncor, ncor + 1)
+#        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, \
+#            color=colors[i])
+#    plt.xlim(0, xmax)
+#    plt.ylim(0.0, 2.0 * (n2 - n1))
+#    plt.title('North / Vertical component', fontsize=24)
+#    plt.xlabel('Lag time (s)', fontsize=24)
+#    plt.ylabel('Cross correlation', fontsize=24)
+#    ax2.set_yticklabels([])
+#    ax2.tick_params(labelsize=20)
+#    # End figure
+#    plt.suptitle('{} at {} km, {} km'.format(arrayName, x0, y0), fontsize=24)
+#    plt.savefig( \
+#        'cc/{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}_{}_{}_cluster_ccwin.eps'. \
+#        format(arrayName, arrayName, int(x0), int(y0), arrayName, int(x0), \
+#        int(y0), type_stack, cc_stack), format='eps')
+#    ax1.clear()
+#    ax2.clear()
+#    plt.close(4)
     # Plot colored autocorrelation windows
 #    plt.figure(5, figsize=(20, 24))
 #    # EW autocorrelation

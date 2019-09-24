@@ -18,7 +18,7 @@ from plot_stack_ccorr import plot_stack_ccorr
 from stacking import linstack, powstack, PWstack
 
 # Set parameters
-arrayName = 'BH'
+arrayName = 'TB'
 w = 2.0
 Tmax = 15.0
 ds = 5.0
@@ -37,8 +37,8 @@ depth = pd.read_csv('depth/' + arrayName + '_depth.txt', sep=' ', header=None)
 depth.columns = ['x', 'y', 'depth']
 
 # Loop on tremor location
-for i in range(-3, -2):
-    for j in range(-1, 1):
+for i in range(0, 1):
+    for j in range(0, 1):
         x0 = i * ds
         y0 = j * ds
         filename = '{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}'.format( \
@@ -84,35 +84,35 @@ for i in range(-3, -2):
             iend = int(ncor + tend / dt)
 
             # Plot auto and cross-correlation for linear stack
-            type_stack = 'lin'
-            amp = 10.0
-            amp_lin = 100.0
-            amp_pow = 2.0
-            amp_PWS = 200.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            type_stack = 'lin'
+#            amp = 10.0
+#            amp_lin = 100.0
+#            amp_pow = 2.0
+#            amp_PWS = 200.0
+#            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 #            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
 #                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for power stack
-            type_stack = 'pow'
-            amp = 2.0
-            amp_lin = 15.0
-            amp_pow = 1.0
-            amp_PWS = 100.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            type_stack = 'pow'
+#            amp = 2.0
+#            amp_lin = 15.0
+#            amp_pow = 1.0
+#            amp_PWS = 100.0
+#            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 #            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
 #                amp_lin, amp_pow, amp_PWS, n1, n2)
 
             # Plot auto and cross-correlation for phase-weighted stack
-            type_stack = 'PWS'
-            amp = 20.0
-            amp_lin = 200.0
-            amp_pow = 10.0
-            amp_PWS = 1000.0
-            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
-                amp_lin, amp_pow, amp_PWS, n1, n2)
+#            type_stack = 'PWS'
+#            amp = 20.0
+#            amp_lin = 200.0
+#            amp_pow = 10.0
+#            amp_PWS = 1000.0
+#            plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
+#                amp_lin, amp_pow, amp_PWS, n1, n2)
 #            plot_stack_acorr(arrayName, x0, y0, type_stack, w, Tmax, amp, \
 #                amp_lin, amp_pow, amp_PWS, n1, n2)
 

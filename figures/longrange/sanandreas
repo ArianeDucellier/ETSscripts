@@ -1,46 +1,45 @@
 #!/bin/csh -f
 
-set output = sanandreas.eps
+set output = sanandreas_d.eps
 
 # Small map
-set x1 = -121.5
-set x2 = -119.5
-set y1 = 35
+set x1 = -121.3
+set x2 = -119.9
+set y1 = 35.4
 set y2 = 36.5
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-120.5/35.75/8.0
+set Jop = m-120.6/35.95/10.0
 
-gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -P -K >! $output
+# Coastline
+gmt pscoast -R$Rop -J$Jop -Ba0.5f0.25:a0.25f0.125:WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X5 -Y5 -P -K >! $output
 
-#gmt psxy shelly0.txt -R$Rop -J$Jop -Sc0.2 -Ggrey -O -K >> $output
-gmt psxy shelly1.txt -R$Rop -J$Jop -Sc0.2 -Gred -O -K >> $output
-gmt psxy shelly2.txt -R$Rop -J$Jop -Sc0.2 -Gorange -O -K >> $output
-gmt psxy shelly3.txt -R$Rop -J$Jop -Sc0.2 -Ggreen -O -K >> $output
-#gmt psxy shelly4.txt -R$Rop -J$Jop -Sc0.2 -Gcyan -O -K >> $output
-#gmt psxy shelly5.txt -R$Rop -J$Jop -Sc0.2 -Gblue -O -K >> $output
+gmt psxy shelly.txt -R$Rop -J$Jop -Sc -Crgb -O -K >> $output
 
 # Large map
 set x1 = -127
-set x2 = -115
+set x2 = -113
 set y1 = 32
 set y2 = 42
 set Rop = $x1/$x2/$y1/$y2
-set Jop = m-120.5/35.75/0.6
+set Jop = m-120.6/35.95/0.5
 
-gmt pscoast -R$Rop -J$Jop -Ba5f2.5::wEsN -W0.1p -S224/255/255 -G255/255/224 -Dl -Na -X0.5 -Y0.5 -O -K >> $output
+gmt pscoast -R$Rop -J$Jop -Ba5f2.5:a2.5f1.25:WESN -W0.1p -S224/255/255 -G255/255/224 -Dl -Na -X-3 -Y-1 -O -K >> $output
 
 # Location of small map
 cat << END >> zoom.dat
--120.5 35.75
+-121.3 35.4
+-121.3 36.6
+-119.9 36.6
+-119.9 35.4
+-121.3 35.4
 END
+
+gmt psxy zoom.dat -R$Rop -J$Jop -Wthicker,black -O -K >> $output
 
 cat << END >> names.dat
--123 35.75 Parkfield
+-124.5 36 Parkfield
 END
 
-gmt psxy zoom.dat -R$Rop -J$Jop -Sc0.3 -Gblack -O -K >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O >> $output
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f15p,black -O >> $output
-
-rm names.dat
-rm zoom.dat
+rm *.dat
