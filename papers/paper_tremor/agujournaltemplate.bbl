@@ -1,11 +1,152 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
-Ghosh%
+Audet%
+, Bostock%
+, Christensen%
+\BCBL {}\ \BBA {} Peacock%
+}{%
+Audet%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+AUD_2009}
+\APACinsertmetastar {%
+AUD_2009}%
+\begin{APACrefauthors}%
+Audet, P.%
+, Bostock, M.%
+, Christensen, N.%
+\BCBL {}\ \BBA {} Peacock, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Seismic evidence for overpressured subducted oceanic
+  crust and megathrust fault sealing} {Seismic evidence for overpressured
+  subducted oceanic crust and megathrust fault sealing}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{457}{}{76-78}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Audet%
+\ \BBA {} B\"urgmann%
+}{%
+Audet%
+\ \BBA {} B\"urgmann%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+AUD_2014}
+\APACinsertmetastar {%
+AUD_2014}%
+\begin{APACrefauthors}%
+Audet, P.%
+\BCBT {}\ \BBA {} B\"urgmann, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Possible control of subduction zone slow-earthquake
+  periodicity by silica enrichment} {Possible control of subduction zone
+  slow-earthquake periodicity by silica enrichment}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{510}{}{389-393}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bostock%
+, Royer%
+, Hearn%
+\BCBL {}\ \BBA {} Peacock%
+}{%
+Bostock%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+BOS_2012}
+\APACinsertmetastar {%
+BOS_2012}%
+\begin{APACrefauthors}%
+Bostock, M.%
+, Royer, A.%
+, Hearn, E.%
+\BCBL {}\ \BBA {} Peacock, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Low frequency earthquakes below southern {Vancouver}
+  {Island}} {Low frequency earthquakes below southern {Vancouver}
+  {Island}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry Geophysics Geosystems}{13}{}{Q11007}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fagereng%
+\ \BBA {} Diener%
+}{%
+Fagereng%
+\ \BBA {} Diener%
+}{%
+{\protect \APACyear {2011}}%
+}]{%
+FAG_2011}
+\APACinsertmetastar {%
+FAG_2011}%
+\begin{APACrefauthors}%
+Fagereng, �.%
+\BCBT {}\ \BBA {} Diener, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Non‐volcanic tremor and discontinuous slab
+  dehydration} {Non‐volcanic tremor and discontinuous slab
+  dehydration}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{38}{}{L15302}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fagereng%
+, G.W.B.%
+\BCBL {}\ \BBA {} Diener%
+}{%
+Fagereng%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+FAG_2014}
+\APACinsertmetastar {%
+FAG_2014}%
+\begin{APACrefauthors}%
+Fagereng, �.%
+, G.W.B., H.%
+\BCBL {}\ \BBA {} Diener, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Brittle‐viscous deformation, slow slip, and tremor}
+  {Brittle‐viscous deformation, slow slip, and tremor}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{41}{12}{4159-4167}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+A.~Ghosh%
 , Vidale%
 \BCBL {}\ \BBA {} Creager%
 }{%
-Ghosh%
+A.~Ghosh%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2012}}%
 }]{%
@@ -29,9 +170,9 @@ Ghosh, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Ghosh%
+A.~Ghosh%
 \ \protect \BOthers {.}}{%
-Ghosh%
+A.~Ghosh%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2010}}%
 }]{%
@@ -58,6 +199,161 @@ Ghosh, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+J.~Ghosh A.~Vidale%
+, Sweet%
+, Creager%
+, Wech%
+\BCBL {}\ \BBA {} Houston%
+}{%
+J.~Ghosh A.~Vidale%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2010}}%
+}]{%
+GHO_2010_GRL}
+\APACinsertmetastar {%
+GHO_2010_GRL}%
+\begin{APACrefauthors}%
+Ghosh, J., A.~Vidale%
+, Sweet, J.%
+, Creager, K.%
+, Wech, A.%
+\BCBL {}\ \BBA {} Houston, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Tremor bands sweep {Cascadia}} {Tremor bands sweep
+  {Cascadia}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{37}{}{L08301}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Hyndman%
+, McCrory%
+, Wech%
+, Kao%
+\BCBL {}\ \BBA {} J.%
+}{%
+Hyndman%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+HYN_2015}
+\APACinsertmetastar {%
+HYN_2015}%
+\begin{APACrefauthors}%
+Hyndman, R.%
+, McCrory, P.%
+, Wech, A.%
+, Kao, H.%
+\BCBL {}\ \BBA {} J., A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Cascadia} subducting plate fluids channelled to
+  fore-arc mantle corner: {ETS} and silica deposition} {{Cascadia} subducting
+  plate fluids channelled to fore-arc mantle corner: {ETS} and silica
+  deposition}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research Solid
+  Earth}{120}{}{4344-4358}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ide%
+, Shelly%
+\BCBL {}\ \BBA {} Beroza%
+}{%
+Ide%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+}]{%
+IDE_2007_GRL}
+\APACinsertmetastar {%
+IDE_2007_GRL}%
+\begin{APACrefauthors}%
+Ide, S.%
+, Shelly, D.%
+\BCBL {}\ \BBA {} Beroza, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Mechanism of deep low frequency earthquakes: Further
+  evidence that deep non-volcanic tremor is generated by shear slip on the
+  plate interface} {Mechanism of deep low frequency earthquakes: Further
+  evidence that deep non-volcanic tremor is generated by shear slip on the
+  plate interface}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{34}{}{L03308}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kao%
+, Shan%
+, Dragert%
+\BCBL {}\ \BBA {} Rogers%
+}{%
+Kao%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+KAO_2009}
+\APACinsertmetastar {%
+KAO_2009}%
+\begin{APACrefauthors}%
+Kao, H.%
+, Shan, S\BHBI J.%
+, Dragert, H.%
+\BCBL {}\ \BBA {} Rogers, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Northern {Cascadia} episodic tremor and slip: A decade
+  of tremor observations from 1997 to 2007} {Northern {Cascadia} episodic
+  tremor and slip: A decade of tremor observations from 1997 to 2007}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{114}{}{B00A12}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kao%
+\ \protect \BOthers {.}}{%
+Kao%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+KAO_2006}
+\APACinsertmetastar {%
+KAO_2006}%
+\begin{APACrefauthors}%
+Kao, H.%
+, Shan, S\BHBI J.%
+, Dragert, H.%
+, Rogers, G.%
+, Cassidy, J.%
+, Wang, K.%
+\BDBL {}Ramachandran, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Spatialtemporal patterns of seismic tremors in northern
+  {Cascadia}} {Spatialtemporal patterns of seismic tremors in northern
+  {Cascadia}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{111}{}{B03309}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 La~Rocca%
 \ \protect \BOthers {.}}{%
 La~Rocca%
@@ -78,7 +374,7 @@ La~Rocca, M.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2009}{January}{}.
+\APACrefYearMonthDay{2009}{}{}.
 \newblock
 {\BBOQ}\APACrefatitle {{Cascadia} tremor located near plate interface
   constrained by {S} minus {P} wave times} {{Cascadia} tremor located near
@@ -116,6 +412,278 @@ McCrory, P.%
   sorting earthquakes}\ \APACbVolEdTR{}{\BTR{}\ \BNUM\ Series 91}.
 \newblock
 \APACaddressInstitution{}{U.S. Geological Survey}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Nakata%
+, Suda%
+\BCBL {}\ \BBA {} Tsuruoka%
+}{%
+Nakata%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2008}}%
+}]{%
+NAK_2008}
+\APACinsertmetastar {%
+NAK_2008}%
+\begin{APACrefauthors}%
+Nakata, R.%
+, Suda, N.%
+\BCBL {}\ \BBA {} Tsuruoka, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Non-volcanic tremor resulting from the combined effect
+  of {Earth} tides and slow slip events} {Non-volcanic tremor resulting from
+  the combined effect of {Earth} tides and slow slip events}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature Geoscience}{1}{}{676-678}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Obara%
+}{%
+Obara%
+}{%
+{\protect \APACyear {2002}}%
+}]{%
+OBA_2002}
+\APACinsertmetastar {%
+OBA_2002}%
+\begin{APACrefauthors}%
+Obara, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2002}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Nonvolcanic deep tremor associated with subduction in
+  southwest {Japan}} {Nonvolcanic deep tremor associated with subduction in
+  southwest {Japan}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Science}{296}{5573}{1679-1681}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rogers%
+\ \BBA {} Dragert%
+}{%
+Rogers%
+\ \BBA {} Dragert%
+}{%
+{\protect \APACyear {2003}}%
+}]{%
+ROG_2003}
+\APACinsertmetastar {%
+ROG_2003}%
+\begin{APACrefauthors}%
+Rogers, G.%
+\BCBT {}\ \BBA {} Dragert, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Tremor and slip on the {Cascadia} subduction zone: The
+  chatter of silent slip} {Tremor and slip on the {Cascadia} subduction zone:
+  The chatter of silent slip}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Science}{300}{5627}{1942-1943}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rowe%
+\ \BBA {} Moore%
+}{%
+Rowe%
+\ \BBA {} Moore%
+}{%
+{\protect \APACyear {2013}}%
+}]{%
+ROW_2013}
+\APACinsertmetastar {%
+ROW_2013}%
+\begin{APACrefauthors}%
+Rowe, C.%
+\BCBT {}\ \BBA {} Moore, F., J.~Remitti.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The thickness of subduction plate boundary faults from
+  the seafloor into the seismogenic zone} {The thickness of subduction plate
+  boundary faults from the seafloor into the seismogenic zone}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geology}{41}{}{991-994}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Royer%
+\ \BBA {} Rostock%
+}{%
+Royer%
+\ \BBA {} Rostock%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+ROY_2014}
+\APACinsertmetastar {%
+ROY_2014}%
+\begin{APACrefauthors}%
+Royer, A.%
+\BCBT {}\ \BBA {} Rostock, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A comparative study of low frequency earthquake
+  templates in northern {Cascadia}} {A comparative study of low frequency
+  earthquake templates in northern {Cascadia}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Earth and Planetary Science Letters}{402}{}{247-256}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rubin%
+\ \BBA {} Armbruster%
+}{%
+Rubin%
+\ \BBA {} Armbruster%
+}{%
+{\protect \APACyear {2013}}%
+}]{%
+RUB_2013}
+\APACinsertmetastar {%
+RUB_2013}%
+\begin{APACrefauthors}%
+Rubin, A.%
+\BCBT {}\ \BBA {} Armbruster, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Imaging slow slip fronts in {Cascadia} with high
+  precision cross-station tremor locations} {Imaging slow slip fronts in
+  {Cascadia} with high precision cross-station tremor locations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry Geophysics Geosystems}{14}{}{5371-5392}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Shelly%
+, Beroza%
+\BCBL {}\ \BBA {} Ide%
+}{%
+Shelly%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+}]{%
+SHE_2007_nature}
+\APACinsertmetastar {%
+SHE_2007_nature}%
+\begin{APACrefauthors}%
+Shelly, D.%
+, Beroza, G.%
+\BCBL {}\ \BBA {} Ide, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Non-volcanic tremor and low-frequency earthquake swarms}
+  {Non-volcanic tremor and low-frequency earthquake swarms}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{446}{}{305-307}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Shelly%
+, Beroza%
+, Ide%
+\BCBL {}\ \BBA {} Nakamula%
+}{%
+Shelly%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+SHE_2006}
+\APACinsertmetastar {%
+SHE_2006}%
+\begin{APACrefauthors}%
+Shelly, D.%
+, Beroza, G.%
+, Ide, S.%
+\BCBL {}\ \BBA {} Nakamula, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Low-frequency earthquakes in {Shikoku}, {Japan}, and
+  their relationship to episodic tremor and slip} {Low-frequency earthquakes in
+  {Shikoku}, {Japan}, and their relationship to episodic tremor and
+  slip}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{442}{}{188-192}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Thomas%
+, Nadeau%
+\BCBL {}\ \BBA {} B\"urgmann%
+}{%
+Thomas%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+THO_2009}
+\APACinsertmetastar {%
+THO_2009}%
+\begin{APACrefauthors}%
+Thomas, A.%
+, Nadeau, R.%
+\BCBL {}\ \BBA {} B\"urgmann, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Tremor-tide correlations and near-lithostatic pore
+  pressure on the deep {San} {Andreas} fault} {Tremor-tide correlations and
+  near-lithostatic pore pressure on the deep {San} {Andreas} fault}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Nature}{462}{}{1048-1051}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wech%
+\ \BBA {} Creager%
+}{%
+Wech%
+\ \BBA {} Creager%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+WEC_2008}
+\APACinsertmetastar {%
+WEC_2008}%
+\begin{APACrefauthors}%
+Wech, A.%
+\BCBT {}\ \BBA {} Creager, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Automated detection and location of {Cascadia} tremor}
+  {Automated detection and location of {Cascadia} tremor}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{35}{}{L20302}.
 \PrintBackRefs{\CurrentBib}
 
 \end{thebibliography}

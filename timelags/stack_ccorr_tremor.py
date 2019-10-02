@@ -358,14 +358,14 @@ if __name__ == '__main__':
 #    lat0 = 48.0056818181818
 #    lon0 = -123.084354545455
 
-    arrayName = 'BS'
-    staNames = ['BS01', 'BS02', 'BS03', 'BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
-    staCodes = 'BS01,BS02,BS03,BS04,BS05,BS06,BS11,BS20,BS21,BS22,BS23,BS24,BS25,BS26,BS27'
-    chaNames = ['SHE', 'SHN', 'SHZ']
-    chans = 'SHE,SHN,SHZ'
-    network = 'XU'
-    lat0 = 47.95728
-    lon0 = -122.92866
+#    arrayName = 'BS'
+#    staNames = ['BS01', 'BS02', 'BS03', 'BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
+#    staCodes = 'BS01,BS02,BS03,BS04,BS05,BS06,BS11,BS20,BS21,BS22,BS23,BS24,BS25,BS26,BS27'
+#    chaNames = ['SHE', 'SHN', 'SHZ']
+#    chans = 'SHE,SHN,SHZ'
+#    network = 'XU'
+#    lat0 = 47.95728
+#    lon0 = -122.92866
 
 #    arrayName = 'CL'
 #    staNames = ['CL01', 'CL02', 'CL03', 'CL04', 'CL05', 'CL06', 'CL07', 'CL08', 'CL09', 'CL10', 'CL11', 'CL12', 'CL13', 'CL14', 'CL15', 'CL16', 'CL17', 'CL18', 'CL19', 'CL20']
@@ -394,14 +394,14 @@ if __name__ == '__main__':
 #    lat0 = 47.9321857142857
 #    lon0 = -123.045528571429
 
-#    arrayName = 'LC'
-#    staNames = ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14']
-#    staCodes = 'LC01,LC02,LC03,LC04,LC05,LC06,LC07,LC08,LC09,LC10,LC11,LC12,LC13,LC14'
-#    chaNames = ['SHE', 'SHN', 'SHZ']
-#    chans = 'SHE,SHN,SHZ'
-#    network = 'XG'
-#    lat0 = 48.0554071428571
-#    lon0 = -123.210035714286
+    arrayName = 'LC'
+    staNames = ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14']
+    staCodes = 'LC01,LC02,LC03,LC04,LC05,LC06,LC07,LC08,LC09,LC10,LC11,LC12,LC13,LC14'
+    chaNames = ['SHE', 'SHN', 'SHZ']
+    chans = 'SHE,SHN,SHZ'
+    network = 'XG'
+    lat0 = 48.0554071428571
+    lon0 = -123.210035714286
 
 #    arrayName = 'PA'
 #    staNames = ['PA01', 'PA02', 'PA03', 'PA04', 'PA05', 'PA06', 'PA07', 'PA08', 'PA09', 'PA10', 'PA11', 'PA12', 'PA13']
@@ -431,9 +431,9 @@ if __name__ == '__main__':
     nattempts = 10
     waittime = 10
 
-    for i in range(0, 1):
+    for i in range(3, 4):
         x0 = i * 5.0
-        for j in range(0, 1):
+        for j in [-3, 0, 1, 2, 3, 4, 5]: #range(1, 2):
             y0 = j * 5.0
 
             # Linear stack
