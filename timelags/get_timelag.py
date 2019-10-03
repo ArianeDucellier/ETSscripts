@@ -18,7 +18,7 @@ from plot_stack_ccorr import plot_stack_ccorr
 from stacking import linstack, powstack, PWstack
 
 # Set parameters
-arrayName = 'TB'
+arrayName = 'BS'
 w = 2.0
 Tmax = 15.0
 ds = 5.0
@@ -37,8 +37,8 @@ depth = pd.read_csv('depth/' + arrayName + '_depth.txt', sep=' ', header=None)
 depth.columns = ['x', 'y', 'depth']
 
 # Loop on tremor location
-for i in range(0, 1):
-    for j in range(0, 1):
+for i in range(-5, 6):
+    for j in range(-5, 6):
         x0 = i * ds
         y0 = j * ds
         filename = '{}/{}_{:03d}_{:03d}/{}_{:03d}_{:03d}'.format( \
@@ -214,21 +214,24 @@ for i in range(0, 1):
                 std_lin_lin_EW, std_lin_lin_NS) = \
                 cluster_select(arrayName, x0, y0, 'lin', w, 'lin', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.1, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_lin_pow_EW_cluster, t_lin_pow_NS_cluster, \
                 cc_lin_pow_EW, cc_lin_pow_NS, \
                 ratio_lin_pow_EW, ratio_lin_pow_NS,
                 std_lin_pow_EW, std_lin_pow_NS) = \
                 cluster_select(arrayName, x0, y0, 'lin', w, 'pow', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_lin_PWS_EW_cluster, t_lin_PWS_NS_cluster, \
                 cc_lin_PWS_EW, cc_lin_PWS_NS, \
                 ratio_lin_PWS_EW, ratio_lin_PWS_NS,
                 std_lin_PWS_EW, std_lin_PWS_NS) = \
                 cluster_select(arrayName, x0, y0, 'lin', w, 'PWS', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.05, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
 
             # Power stack
             amp = 2.0
@@ -238,21 +241,24 @@ for i in range(0, 1):
                 std_pow_lin_EW, std_pow_lin_NS) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'lin', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_pow_pow_EW_cluster, t_pow_pow_NS_cluster, \
                 cc_pow_pow_EW, cc_pow_pow_NS, \
                 ratio_pow_pow_EW, ratio_pow_pow_NS,
                 std_pow_pow_EW, std_pow_pow_NS) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'pow', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 1.0, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_pow_PWS_EW_cluster, t_pow_PWS_NS_cluster, 
                 cc_pow_PWS_EW, cc_pow_PWS_NS, \
                 ratio_pow_PWS_EW, ratio_pow_PWS_NS,
                 std_pow_PWS_EW, std_pow_PWS_NS) = \
                 cluster_select(arrayName, x0, y0, 'pow', w, 'PWS', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.15, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
 
             # Phase-weighted stack
             amp = 20.0
@@ -262,21 +268,24 @@ for i in range(0, 1):
                 std_PWS_lin_EW, std_PWS_lin_NS) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'lin', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.02, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_PWS_pow_EW_cluster, t_PWS_pow_NS_cluster, \
                 cc_PWS_pow_EW, cc_PWS_pow_NS, \
                 ratio_PWS_pow_EW, ratio_PWS_pow_NS,
                 std_PWS_pow_EW, std_PWS_pow_NS) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'pow', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.2, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
             (clusters, t_PWS_PWS_EW_cluster, t_PWS_PWS_NS_cluster, \
                 cc_PWS_PWS_EW, cc_PWS_PWS_NS, \
                 ratio_PWS_PWS_EW, ratio_PWS_PWS_NS,
                 std_PWS_PWS_EW, std_PWS_PWS_NS) = \
                 cluster_select(arrayName, x0, y0, 'PWS', w, 'PWS', \
                 ncor_cluster, Tmin, Tmax, RMSmin, RMSmax, xmax, 0.01, \
-                'kmeans', nc, palette, amp, n1, n2)
+                'kmeans', nc, palette, amp, n1, n2, \
+                False, True, True, True, False, False, False)
 
             # Store results in pandas dataframe
             namefile = arrayName + '_timelag.pkl'

@@ -113,11 +113,13 @@ slowslip/PTAA/*
 slowslip/PUKE/*
 slowslip/SQIM/*
 slowslip/synthetics/*
+timelags/*.pkl
 timelags/ac/*
 timelags/ac_new/*
 timelags/cc/*
-timelags/cc_new/*
+timelags/cc_old/*
 timelags/error/*
+timelags/map/BH/*
 timelags/plot_cc/*
 utils/__pycache__/*
 visualization/.ipynb_checkpoints

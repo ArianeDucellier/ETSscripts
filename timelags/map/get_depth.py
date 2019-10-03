@@ -11,9 +11,9 @@ import pickle
 
 from math import atan2, cos, pi, sin, sqrt
 
-arrayName = 'BS'
-lat0 = 47.95728
-lon0 = -122.92866
+arrayName = 'BH'
+lat0 = 48.0056818181818
+lon0 = -123.084354545455
 stackStation = 'PWS'
 stackTremor = 'PWS'
 Vs = 3.6
@@ -85,10 +85,10 @@ for n in range(0, len(df)):
 table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, \
     'depth':depth, 'cc':cc, 'd_to_pb':d_to_pb, 'ratio':ratio, \
     'thickness':thickness, 'ntremor':df['ntremor'], 'azimuth':azimuth})
-enough = table['ntremor'] > 10
-table = table[enough]
-positive = table['depth'] > 0.0
-table = table[positive]
+enough = table['ntremor'] <= 10
+table['depth'][enough] = np.nan
+positive = table['depth'] <= 0.0
+table['depth'][positive] = np.nan
 
 # Normalize cross correlation and ratio
 table['cc'] = table['cc'] / table['cc'].max()
@@ -97,31 +97,31 @@ table['ratio'] = table['ratio'] / table['ratio'].max()
 # Write to file
 table1 = table.drop(columns=['cc', 'd_to_pb', 'ratio', 'thickness', \
     'ntremor', 'azimuth'])
-tfile = open('depth_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile = open(arrayName + '/depth_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table1.to_string(header=False, index=False))
 tfile.close()
 
 table2 = table.drop(columns=['depth', 'd_to_pb', 'ratio', 'thickness', \
     'ntremor', 'azimuth'])
-tfile = open('cc_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile = open(arrayName + '/cc_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table2.to_string(header=False, index=False))
 tfile.close()
 
 table3 = table.drop(columns=['depth', 'cc', 'ratio', 'thickness', \
     'ntremor', 'azimuth'])
-tfile = open('d_to_pb_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile = open(arrayName + '/d_to_pb_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table3.to_string(header=False, index=False))
 tfile.close()
 
 table4 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'thickness', \
     'ntremor', 'azimuth'])
-tfile = open('ratio_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile = open(arrayName + '/ratio_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table4.to_string(header=False, index=False))
 tfile.close()
 
 table5 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'ratio', \
     'ntremor', 'azimuth'])
-tfile = open('thickness_' + stackStation + '_' + stackTremor + '.txt', 'w')
+tfile = open(arrayName + '/thickness_' + stackStation + '_' + stackTremor + '.txt', 'w')
 tfile.write(table5.to_string(header=False, index=False))
 tfile.close()
 
@@ -144,5 +144,5 @@ ax2 = plt.subplot(133)
 plt.plot(table['azimuth'], table['d_to_pb'], 'ko')
 plt.title('Distance to plate boundary', fontsize=16)
 plt.xlabel('Azimuth', fontsize=16)
-plt.savefig('quality_{}_{}.eps'.format(stackStation, stackTremor), format='eps')
+plt.savefig(arrayName + '/quality_{}_{}.eps'.format(stackStation, stackTremor), format='eps')
 plt.close(1)
