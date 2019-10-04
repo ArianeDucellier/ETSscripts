@@ -11,11 +11,37 @@ S.~Angiboust, J.~Kirsch, O.~Oncken, J.~Glodny, P.~Moni\'e, and E.~Rybacki.
   segments along an ancient subduction interface.
 \newblock {\em Geochemistry, Geophysics, Geosystems}, 16:1905--1922, 2015.
 
+\bibitem{AUD_2009}
+P.~Audet, M.G. Bostock, N.I. Christensen, and S.M. Peacock.
+\newblock Seismic evidence for overpressured subducted oceanic crust and
+  megathrust fault sealing.
+\newblock {\em Nature}, 457:76--78, 2009.
+
+\bibitem{AUD_2014}
+P.~Audet and R.~B\"urgmann.
+\newblock Possible control of subduction zone slow-earthquake periodicity by
+  silica enrichment.
+\newblock {\em Nature}, 510:389--393, 2014.
+
 \bibitem{AUD_2016}
 P.~Audet and Y.H. Kim.
 \newblock Teleseismic constraints on the geological environment of deep
   episodic slow earthquakes in subduction zone forearcs: A review.
 \newblock {\em Tectonophysics}, 670:1--15, 2016.
+
+\bibitem{BARANI_2018}
+S.~Barani, C.~Mascandola, E.~Riccomagno, D.~Spallarossa, D.~Albarello,
+  G.~Ferretti, D.~Scafidi, P.~Augliera, and M.~Massa.
+\newblock Long-range dependence in earthquake-moment release and implications
+  for earthquake occurrence probability.
+\newblock {\em Scientific Reports}, 8(1):1--11, 2018.
+
+\bibitem{BARATIN_2018}
+L.-M. Baratin, C.J. Chamberlain, J.~Townend, and M.K. Savage.
+\newblock Focal mechanisms and inter-event times of low-frequency earthquakes
+  reveal quasi-continuous deformation and triggered slow slip on the deep
+  {Alpine} {Fault}.
+\newblock {\em Earth and Planetary Science Letters}, 484:111--123, 2018.
 
 \bibitem{BER_2011}
 G.C. Beroza and S.~Ide.
@@ -23,12 +49,22 @@ G.C. Beroza and S.~Ide.
 \newblock {\em Annual Review of Earth and Planetary Sciences}, 39:271--296,
   2011.
 
+\bibitem{BOS_2012}
+M.G. Bostock, A.A. Royer, E.H. Hearn, and S.M. Peacock.
+\newblock Low frequency earthquakes below southern {Vancouver} {Island}.
+\newblock {\em Geochemistry Geophysics Geosystems}, 13:Q11007, 2012.
+
 \bibitem{BOS_2015}
 M.G. Bostock, A.M. Thomas, G.~Savard, L.~Chuang, and A.M. Rubin.
 \newblock Magnitudes and moment-duration scaling of low-frequency earthquakes
   beneath southern {Vancouver} {Island}.
 \newblock {\em Journal of Geophysical Research Solid Earth}, 120:6329--6350,
   2015.
+
+\bibitem{BUN_2012}
+A.~Bunde and S.~Lennartz.
+\newblock Long-term correlations in {Earth} sciences.
+\newblock {\em Acta Geophysica}, 60(3):562--588, 2012.
 
 \bibitem{CHE_2017_JGR}
 S.R. Chestler and K.C. Creager.
@@ -48,6 +84,29 @@ E.J. Delahaye, J.~Townend, M.E. Reyners, and G.~Rogers.
 \newblock Microseismicity but no tremor accompanying slow slip in the
   {Hikurangi} subduction zone, {New} {Zealand}.
 \newblock {\em Earth and Planetary Science Letters}, 277:21--28, 2009.
+
+\bibitem{DIE_2007}
+J.H. Dieterich.
+\newblock {\em Applications of rate- and state-dependent friction to models of
+  fault slip and earthquake occurrence}, volume~4 of {\em Treatise on
+  Geophysics}, chapter~4, pages 107--129.
+\newblock Elsevier, 2007.
+
+\bibitem{ENE_2006}
+B.~Enescu, K.~Ito, and Z.R. Struzik.
+\newblock Wavelet-based multiscale resolution analysis of real and simulated
+  time-series of earthquakes.
+\newblock {\em Geophysical Journal International}, 64:63--74, 2006.
+
+\bibitem{FAG_2011}
+\r{A}. Fagereng and J.F.A. Diener.
+\newblock Non-volcanic tremor and discontinuous slab dehydration.
+\newblock {\em Geophysical Research Letters}, 38:L15302, 2011.
+
+\bibitem{FAG_2014}
+\r{A}. Fagereng, Hillary G.W.B., and J.F.A. Diener.
+\newblock Brittle-viscous deformation, slow slip, and tremor.
+\newblock {\em Geophysical Research Letters}, 41(12):4159--4167, 2014.
 
 \bibitem{FRA_2015}
 W.~B. Frank, M.~Radiguet, B.~Rousset, N.M. Shapiro, A.L. Husker,
@@ -88,6 +147,17 @@ A.~Ghosh, J.E. Vidale, J.R. Sweet, K.C. Creager, A.G. Wech, H.~Houston, and
 \newblock Rapid, continuous streaking of tremor in {Cascadia}.
 \newblock {\em Geochemistry, Geophysics, Geosystems}, 11:Q12010, 2010.
 
+\bibitem{GHO_2010_GRL}
+J.E. Ghosh, A.~Vidale, J.R. Sweet, K.C. Creager, A.G. Wech, and H.~Houston.
+\newblock Tremor bands sweep {Cascadia}.
+\newblock {\em Geophysical Research Letters}, 37:L08301, 2010.
+
+\bibitem{GKA_2017}
+C.~Gkarlaouni, S.~Lasocki, E.~Papadimitriou, and T.~George.
+\newblock Hurst analysis of seismicity in {Corinth} rift and {Mygdonia} graben
+  ({Greece}).
+\newblock {\em Chaos, Solitons and Fractals}, 96:30--42, 2017.
+
 \bibitem{GUI_2010}
 A.~Guilhem, Z.~Peng, and R.M. Nadeau.
 \newblock High-frequency identification of non-volcanic tremor triggered by
@@ -96,7 +166,7 @@ A.~Guilhem, Z.~Peng, and R.M. Nadeau.
 
 \bibitem{GUT_1944}
 B.~Gutenberg and C.F. Richter.
-\newblock Frequency of earthquakes in california.
+\newblock Frequency of earthquakes in {California}.
 \newblock {\em Bulletin of the Seismological Society of America},
   34(4):185--188, 1944.
 
@@ -112,6 +182,13 @@ D.~Harte.
   indexed by time.
 \newblock {\em Journal of Statistical Software}, 35(8):1--32, 2010.
 
+\bibitem{HYN_2015}
+R.D. Hyndman, P.A. McCrory, A.~Wech, H.~Kao, and Ague J.
+\newblock {Cascadia} subducting plate fluids channelled to fore-arc mantle
+  corner: {ETS} and silica deposition.
+\newblock {\em Journal of Geophysical Research Solid Earth}, 120:4344--4358,
+  2015.
+
 \bibitem{IDE_2012}
 S.~Ide.
 \newblock Variety and spatial heterogeneity of tectonic tremor worldwide.
@@ -123,22 +200,78 @@ S.~Ide, D.R. Shelly, and G.C. Beroza.
   deep non-volcanic tremor is generated by shear slip on the plate interface.
 \newblock {\em Geophysical Research Letters}, 34:L03308, 2007.
 
+\bibitem{JIM_2006}
+A.~Jim\'enez, K.F. Tiampo, S.~Levin, and A.M. Posadas.
+\newblock Testing the persistence in earthquake catalogs: The {Iberian}
+  {Peninsula}.
+\newblock {\em Europhysics Letters}, 73(2):171--177, 2006.
+
+\bibitem{KAO_2009}
+H.~Kao, S.-J. Shan, H.~Dragert, and G.~Rogers.
+\newblock Northern {Cascadia} episodic tremor and slip: A decade of tremor
+  observations from 1997 to 2007.
+\newblock {\em Journal of Geophysical Research}, 114:B00A12, 2009.
+
+\bibitem{KAO_2006}
+H.~Kao, S.-J. Shan, H.~Dragert, G.~Rogers, J.F. Cassidy, K.~Wang, T.S. James,
+  and K.~Ramachandran.
+\newblock Spatial-temporal patterns of seismic tremors in northern {Cascadia}.
+\newblock {\em Journal of Geophysical Research}, 111:B03309, 2006.
+
 \bibitem{KIM_2011}
 M.J. Kim, S.Y. Schwartz, and S.~Bannister.
-\newblock Non‐volcanic tremor associated with the {March} 2010 {Gisborne}
-  slow slip event at the {Hikurangi} subduction margin, {New} {Zealand}.
+\newblock Non-volcanic tremor associated with the {March} 2010 {Gisborne} slow
+  slip event at the {Hikurangi} subduction margin, {New} {Zealand}.
 \newblock {\em Geophysical Research Letters}, 38:L14301, 2011.
+
+\bibitem{LAR_2009}
+M.~La~Rocca, K.C. Creager, D.~Galluzzo, S.~Malone, J.E. Vidale, J.R. Sweet, and
+  A.G. Wech.
+\newblock {Cascadia} tremor located near plate interface constrained by {S}
+  minus {P} wave times.
+\newblock {\em Science}, 323:620--623, 2009.
+
+\bibitem{LI_2002}
+J.~Li, Y.~Chen, and H.~Mi.
+\newblock $1/f^\beta$ temporal fluctuation: Detecting scale-invariance
+  properties of seismic activity in {North} {China}.
+\newblock {\em Chaos, Solitons and Fractals}, 14:1487--1494, 2002.
 
 \bibitem{MAL_1993}
 S.G. Mallat and Z.~Zhang.
 \newblock Matching pursuits with time-frequency dictionaries.
 \newblock {\em IEEE Transactions on Signal Processing}, 41:3397--3415, 1993.
 
+\bibitem{MAT_2018}
+T.~Matcharashvili, T.~Hatano, T.~Chelidze, and N.~Zhukova.
+\newblock Simple statistics for complex {Earthquake} time distributions.
+\newblock {\em Nonlinear Processes in Geophysics}, 25:497--510, 2018.
+
 \bibitem{MCC_2006}
 P.A. McCrory, J.L. Blair, D.H. Oppenheimer, and S.R. Walter.
 \newblock Depth to the {Juan} de {Fuca} slab beneath the {Cascadia} subduction
   margin - a {3-D} model sorting earthquakes.
 \newblock Technical Report Series 91, U.S. Geological Survey, 2006.
+
+\bibitem{MUK_2018}
+B.~Mukhopadhyay and D.~Sengupta.
+\newblock Seismic moment release data in earthquake catalogue: Application of
+  {Hurst} statistics in delineating temporal clustering and seismic
+  vulnerability.
+\newblock {\em Journal Geological Society of India}, 91:15--24, 2018.
+
+\bibitem{NAK_2008}
+R.~Nakata, N.~Suda, and H.~Tsuruoka.
+\newblock Non-volcanic tremor resulting from the combined effect of {Earth}
+  tides and slow slip events.
+\newblock {\em Nature Geoscience}, 1:676--678, 2008.
+
+\bibitem{NUY_2017}
+C.~Nuyen and D.~A. Schmidt.
+\newblock Exploring low-amplitude, long-duration deformational transients on
+  the {Cascadia} {Subduction} {Zone}.
+\newblock In {\em American Geophysical Union, Fall Meeting}, pages S41C--0790,
+  December 2017.
 
 \bibitem{OBA_2002}
 K.~Obara.
@@ -152,6 +285,12 @@ Y.~Ogata.
   for point processes.
 \newblock {\em Journal of the American Statistical Association}, 83(401):9--27,
   1988.
+
+\bibitem{OGA_1991}
+Y.~Ogata and K.~Abe.
+\newblock Some statistical features of the long-term variation of the global
+  and regional seismic activity.
+\newblock {\em International Statistical Review}, 59(2):139--161, 1991.
 
 \bibitem{OMO_1894}
 F.~Omori.
@@ -190,12 +329,37 @@ G.J. Ross.
   \href{http://www.gordonjross.co.uk/bayesianetas.pdf}{http://www.gordonjross.co.uk/bayesianetas.pdf},
   2016.
 
+\bibitem{ROW_2013}
+C.~Rowe and F.~Moore, J.~Remitti.
+\newblock The thickness of subduction plate boundary faults from the seafloor
+  into the seismogenic zone.
+\newblock {\em Geology}, 41:991--994, 2013.
+
+\bibitem{ROY_2014}
+A.A. Royer and M.G. Rostock.
+\newblock A comparative study of low frequency earthquake templates in northern
+  {Cascadia}.
+\newblock {\em Earth and Planetary Science Letters}, 402:247--256, 2014.
+
+\bibitem{RUB_2013}
+A.M. Rubin and J.G. Armbruster.
+\newblock Imaging slow slip fronts in {Cascadia} with high precision
+  cross-station tremor locations.
+\newblock {\em Geochemistry Geophysics Geosystems}, 14:5371--5392, 2013.
+
 \bibitem{RUB_2009}
 J.L. Rubinstein, J.~Gomberg, J.E. Vidale, A.G. Wech, H.~Kao, K.C. Creager, and
   G.~Rogers.
 \newblock Seismic wave triggering of nonvolcanic tremor, episodic tremor and
   slip, and earthquakes on {Vancouver} {Island}.
 \newblock {\em Journal of Geophysical Research Solid Earth}, 114:B00A01, 2009.
+
+\bibitem{SAR_2018}
+N.~Sarlis, E.~Skordas, A.~Mintzelas, and K.~Papadopoulou.
+\newblock Micro-scale, mid-scale, and macroscale in global seismicity
+  identified by empirical mode decomposition and their multifractal
+  characteristics.
+\newblock {\em Scientific Reports}, 8:1--15, 2018.
 
 \bibitem{SHE_2017}
 D.R. Shelly.
@@ -210,6 +374,12 @@ D.R. Shelly, G.C. Beroza, and S.~Ide.
 \newblock Non-volcanic tremor and low-frequency earthquake swarms.
 \newblock {\em Nature}, 446:305--307, 2007.
 
+\bibitem{SHE_2006}
+D.R. Shelly, G.C. Beroza, S.~Ide, and S.~Nakamula.
+\newblock Low-frequency earthquakes in {Shikoku}, {Japan}, and their
+  relationship to episodic tremor and slip.
+\newblock {\em Nature}, 442:188--192, 2006.
+
 \bibitem{SWE_2014}
 J.R. Sweet, K.C. Creager, and H.~Houston.
 \newblock A family of repeating low-frequency earthquakes at the downdip edge
@@ -218,7 +388,7 @@ J.R. Sweet, K.C. Creager, and H.~Houston.
 
 \bibitem{SWE_2019}
 J.R. Sweet, K.C. Creager, H.~Houston, and S.R. Chestler.
-\newblock Variations in {Cascadia} low‐frequency earthquake behavior with
+\newblock Variations in {Cascadia} low-frequency earthquake behavior with
   downdip distance.
 \newblock {\em Geochemistry, Geophysics, Geosystems}, 20:1202--1217, 2019.
 
@@ -235,6 +405,31 @@ M.~Taqqu and V.~Teverovsky.
 \newblock In R.J. Adler, R.E. Feldman, and M.S. Taqqu, editors, {\em A
   {Practical} {Guide} to {Heavy} {Tails}: {Statistical} {Techniques} and
   {Application}}. Birkh\"auser, Boston, MA, USA, 1998.
+
+\bibitem{TEL_2000}
+L.~Telesca, V.~Cuomo, V.~Lapenna, and F.~Vallianatos.
+\newblock Self-similarity properties of seismicity in the {Southern} {Aegean}
+  area.
+\newblock {\em Tectonophysics}, 321:179--188, 2000.
+
+\bibitem{TEL_2017}
+L.~Telesca, F.~Kadirov, G.~Yetirmishli, G.~Safarov, R.~Babayev, and
+  S.~Ismaylova.
+\newblock Statistical analysis of the 2003-2016 seismicity of {Azerbaijan} and
+  surrounding areas.
+\newblock {\em Journal of Seismology}, 21:14671485, 2017.
+
+\bibitem{TEL_2004}
+L.~Telesca, V.~Lapenna, and M.~Macchiato.
+\newblock Mono- and multi-fractal investigation of scaling properties in
+  temporal patterns of seismic sequences.
+\newblock {\em Chaos, Solitons and Fractals}, 19:1--15, 2004.
+
+\bibitem{THO_2009}
+A.M. Thomas, R.M. Nadeau, and R.~B\"urgmann.
+\newblock Tremor-tide correlations and near-lithostatic pore pressure on the
+  deep {San} {Andreas} fault.
+\newblock {\em Nature}, 462:1048--1051, 2009.
 
 \bibitem{TOD_2016}
 E.K. Todd and S.Y. Schwartz.
@@ -268,10 +463,32 @@ L.M. Wallace and D.~Eberhart-Phillips.
   and tremor, and relationship to seismic structure.
 \newblock {\em Geophysical Research Letters}, 40:5393--5398, 2013.
 
+\bibitem{WAN_2013}
+J.-H. Wang.
+\newblock Memory effect in ${M} \geq 6$ earthquakes of {South}-{North}
+  {Seismic} {Belt}, {Mainland} {China}.
+\newblock {\em Journal of Seismology}, 17:913--924, 2013.
+
+\bibitem{WEC_2008}
+A.G. Wech and K.C. Creager.
+\newblock Automated detection and location of {Cascadia} tremor.
+\newblock {\em Geophysical Research Letters}, 35:L20302, 2008.
+
 \bibitem{WEC_2011}
 A.G. Wech and K.C. Creager.
 \newblock A continuum of stress, strength and slip in the {Cascadia} subduction
   zone.
 \newblock {\em Nature Geoscience}, 4:624--628, 2011.
+
+\bibitem{WEG_2009}
+S.~W\k{e}glarczyk and S.~Lasocki.
+\newblock Studies of short and long memory in mining-induced seismic processes.
+\newblock {\em Acta Geophysica}, 57:696--715, 2009.
+
+\bibitem{XU_2006}
+Y.~Xu and P.W. Burton.
+\newblock Time varying seismicity in {Greece}: {Hurst}'s analysis and {Monte}
+  {Carlo} simulation applied to a new earthquake catalogue for {Greece}.
+\newblock {\em Tectonophysics}, 423:125--136, 2006.
 
 \end{thebibliography}

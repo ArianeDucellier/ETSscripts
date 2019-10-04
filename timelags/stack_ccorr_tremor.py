@@ -358,14 +358,14 @@ if __name__ == '__main__':
 #    lat0 = 48.0056818181818
 #    lon0 = -123.084354545455
 
-    arrayName = 'BS'
-    staNames = ['BS01', 'BS02', 'BS03', 'BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
-    staCodes = 'BS01,BS02,BS03,BS04,BS05,BS06,BS11,BS20,BS21,BS22,BS23,BS24,BS25,BS26,BS27'
-    chaNames = ['SHE', 'SHN', 'SHZ']
-    chans = 'SHE,SHN,SHZ'
-    network = 'XU'
-    lat0 = 47.95728
-    lon0 = -122.92866
+#    arrayName = 'BS'
+#    staNames = ['BS01', 'BS02', 'BS03', 'BS04', 'BS05', 'BS06', 'BS11', 'BS20', 'BS21', 'BS22', 'BS23', 'BS24', 'BS25', 'BS26', 'BS27']
+#    staCodes = 'BS01,BS02,BS03,BS04,BS05,BS06,BS11,BS20,BS21,BS22,BS23,BS24,BS25,BS26,BS27'
+#    chaNames = ['SHE', 'SHN', 'SHZ']
+#    chans = 'SHE,SHN,SHZ'
+#    network = 'XU'
+#    lat0 = 47.95728
+#    lon0 = -122.92866
 
 #    arrayName = 'CL'
 #    staNames = ['CL01', 'CL02', 'CL03', 'CL04', 'CL05', 'CL06', 'CL07', 'CL08', 'CL09', 'CL10', 'CL11', 'CL12', 'CL13', 'CL14', 'CL15', 'CL16', 'CL17', 'CL18', 'CL19', 'CL20']
@@ -412,14 +412,14 @@ if __name__ == '__main__':
 #    lat0 = 48.0549384615385
 #    lon0 = -123.464415384615
 
-#    arrayName = 'TB'
-#    staNames = ['TB01', 'TB02', 'TB03', 'TB04', 'TB05', 'TB06', 'TB07', 'TB08', 'TB09', 'TB10', 'TB11', 'TB12', 'TB13', 'TB14']
-#    staCodes = 'TB01,TB02,TB03,TB04,TB05,TB06,TB07,TB08,TB09,TB10,TB11,TB12,TB13,TB14'
-#    chaNames = ['SHE', 'SHN', 'SHZ']
-#    chans = 'SHE,SHN,SHZ'
-#    network = 'XG'
-#    lat0 = 47.9730357142857
-#    lon0 = -123.138492857143
+    arrayName = 'TB'
+    staNames = ['TB01', 'TB02', 'TB03', 'TB04', 'TB05', 'TB06', 'TB07', 'TB08', 'TB09', 'TB10', 'TB11', 'TB12', 'TB13', 'TB14']
+    staCodes = 'TB01,TB02,TB03,TB04,TB05,TB06,TB07,TB08,TB09,TB10,TB11,TB12,TB13,TB14'
+    chaNames = ['SHE', 'SHN', 'SHZ']
+    chans = 'SHE,SHN,SHZ'
+    network = 'XG'
+    lat0 = 47.9730357142857
+    lon0 = -123.138492857143
 
     ds = 5.0
     TDUR = 10.0
@@ -431,9 +431,9 @@ if __name__ == '__main__':
     nattempts = 10
     waittime = 10
 
-    for i in range(0, 1):
+    for i in range(2, 3):
         x0 = i * 5.0
-        for j in range(0, 1):
+        for j in [-1, 1, 2, 3, 4, 5]: #range(1, 3):
             y0 = j * 5.0
 
             # Linear stack
