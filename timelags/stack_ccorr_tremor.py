@@ -394,14 +394,14 @@ if __name__ == '__main__':
 #    lat0 = 47.9321857142857
 #    lon0 = -123.045528571429
 
-    arrayName = 'LC'
-    staNames = ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14']
-    staCodes = 'LC01,LC02,LC03,LC04,LC05,LC06,LC07,LC08,LC09,LC10,LC11,LC12,LC13,LC14'
-    chaNames = ['SHE', 'SHN', 'SHZ']
-    chans = 'SHE,SHN,SHZ'
-    network = 'XG'
-    lat0 = 48.0554071428571
-    lon0 = -123.210035714286
+#    arrayName = 'LC'
+#    staNames = ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14']
+#    staCodes = 'LC01,LC02,LC03,LC04,LC05,LC06,LC07,LC08,LC09,LC10,LC11,LC12,LC13,LC14'
+#    chaNames = ['SHE', 'SHN', 'SHZ']
+#    chans = 'SHE,SHN,SHZ'
+#    network = 'XG'
+#    lat0 = 48.0554071428571
+#    lon0 = -123.210035714286
 
 #    arrayName = 'PA'
 #    staNames = ['PA01', 'PA02', 'PA03', 'PA04', 'PA05', 'PA06', 'PA07', 'PA08', 'PA09', 'PA10', 'PA11', 'PA12', 'PA13']
@@ -412,14 +412,14 @@ if __name__ == '__main__':
 #    lat0 = 48.0549384615385
 #    lon0 = -123.464415384615
 
-#    arrayName = 'TB'
-#    staNames = ['TB01', 'TB02', 'TB03', 'TB04', 'TB05', 'TB06', 'TB07', 'TB08', 'TB09', 'TB10', 'TB11', 'TB12', 'TB13', 'TB14']
-#    staCodes = 'TB01,TB02,TB03,TB04,TB05,TB06,TB07,TB08,TB09,TB10,TB11,TB12,TB13,TB14'
-#    chaNames = ['SHE', 'SHN', 'SHZ']
-#    chans = 'SHE,SHN,SHZ'
-#    network = 'XG'
-#    lat0 = 47.9730357142857
-#    lon0 = -123.138492857143
+    arrayName = 'TB'
+    staNames = ['TB01', 'TB02', 'TB03', 'TB04', 'TB05', 'TB06', 'TB07', 'TB08', 'TB09', 'TB10', 'TB11', 'TB12', 'TB13', 'TB14']
+    staCodes = 'TB01,TB02,TB03,TB04,TB05,TB06,TB07,TB08,TB09,TB10,TB11,TB12,TB13,TB14'
+    chaNames = ['SHE', 'SHN', 'SHZ']
+    chans = 'SHE,SHN,SHZ'
+    network = 'XG'
+    lat0 = 47.9730357142857
+    lon0 = -123.138492857143
 
     ds = 5.0
     TDUR = 10.0
@@ -431,9 +431,9 @@ if __name__ == '__main__':
     nattempts = 10
     waittime = 10
 
-    for i in range(3, 4):
+    for i in range(2, 3):
         x0 = i * 5.0
-        for j in [-3, 0, 1, 2, 3, 4, 5]: #range(1, 2):
+        for j in [-1, 1, 2, 3, 4, 5]: #range(1, 3):
             y0 = j * 5.0
 
             # Linear stack
