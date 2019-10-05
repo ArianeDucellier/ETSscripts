@@ -46,7 +46,7 @@
 	% Slow slip
 	%----------------------------------------------------------------------------------------------------------------------------------
 
-	\subsection{Sow slip}
+	\subsection{Slow slip}
 
 	\begin{frame}
 		\frametitle{Slow slip}
@@ -58,7 +58,7 @@
 	\begin{frame}
 		\frametitle{Slow slip}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=10cm]{slowslip/slow_slip_GPS.eps}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=8cm]{slowslip/slow_slip_GPS.eps}
 		\end{center}
 	\end{frame}
 
@@ -604,7 +604,7 @@
 		\begin{itemize}
 			\item Event rate before the earthquake
 			\item Event rate after the earthquake
-			\item Comparison between two event rates: Computation of likelihood ratio
+			\item Comparison between two event rates: Likelihood Ratio Test (LRT)
 		\end{itemize}
 	\end{frame}
 
@@ -811,22 +811,30 @@
 	\begin{frame}
 		\frametitle{Northern Cascadia}
 		\begin{center}
-			\includegraphics[width=10cm, trim={1cm 3cm 1cm 14cm}, clip]{longrange/cascadia_d.eps}
+			\includegraphics[width=8cm, trim={1cm 0cm 1cm 14cm}, clip]{longrange/cascadia_d.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Guerrero, Mexico}
 		\begin{center}
-			\includegraphics[width=8cm, trim={1cm 3cm 2cm 13cm}, clip]{longrange/guerrero_d.eps}
+			\includegraphics[width=7cm, trim={1cm 0cm 2cm 13cm}, clip]{longrange/guerrero_d.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{San Andreas Fault}
 		\begin{center}
-			\includegraphics[width=8cm, trim={1cm 3cm 3cm 13cm}, clip]{longrange/sanandreas_d.eps}
+			\includegraphics[width=7cm, trim={1cm 0cm 3cm 13cm}, clip]{longrange/sanandreas_d.eps}
 		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Future work}
+		\begin{itemize}
+			\item Computation of the fractional index for the LFE families in southern Cascadia
+			\item Quantification of uncertainty on the value of the fractional index
+		\end{itemize}
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
@@ -836,10 +844,23 @@
 	\subsection{Temporal model of LFE occurrence rate}
 
 	\begin{frame}
+		\frametitle{ETAS model}
+		Epidemic-Type Aftershock Sequence (ETAS) model:
+		\begin{itemize}
+			\item Magnitude frequency distribution law of Gutemberg and Richter
+			\item Omori-Utsu law of aftershock decay
+			\item Each event, irrespective of whether it is a small or a big event, can trigger its own offspring
+		\end{itemize}
+		\begin{equation}
+		\lambda = \mu + A \sum_{t_i < t} e^{\alpha \left( M_i - M_0 \right)} \left( 1 + \frac{t - t_i}{c} \right) ^{-p}
+		\end{equation}
+	\end{frame}
+
+	\begin{frame}
 		\frametitle{Future work}
 		\begin{itemize}
-			\item Computation of fractional index $d$ for the southern Cascadia catalog
 			\item Fit ETAS model on existing LFE families
+			\item Two available R packages: bayesianETAS and PtProcess
 		\end{itemize}
 	\end{frame}
 		
@@ -861,8 +882,14 @@
 			\item Tremor occurrence rate $\rightarrow$ Moment of slow slip events not detectable in the GPS data (Aguiar, 2009)
 			\item Stacking of GPS data when LFEs are detected (Frank, 2016)
 		\end{itemize}
-		$\rightarrow$ What do we do when tremor is not correlated with slow slip?
+		$\rightarrow$ What can we do when tremor is not correlated with slow slip?
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Tremor and slow slip in New Zealand
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Tremor and slow slip in New Zealand}
 		
 	\begin{frame}
 		\frametitle{Northern New Zealand}
@@ -872,14 +899,14 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Tremor during deep slow slip events}
+		\frametitle{Tremor accompanying deep slow slip events}
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wallace_eberhart-phillips_2013_3a.png}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Tremor during deep slow slip events}
+		\frametitle{Tremor accompanying deep slow slip events}
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wallace_eberhart-phillips_2013_3b.png}
 		\end{center}

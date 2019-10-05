@@ -1,5 +1,5 @@
 """
-Script to compute the depth of the plate boundary using
+Script to compute the depth of the source of the tremor using
 the time lag between the direct P-wave and the direct S-wave
 """
 
@@ -11,7 +11,7 @@ import pickle
 
 from math import atan2, cos, pi, sin, sqrt
 
-arrayName = 'BH'
+arrayName = 'BS'
 lat0 = 48.0056818181818
 lon0 = -123.084354545455
 stackStation = 'PWS'
@@ -47,54 +47,62 @@ thickness = pd.Series(np.zeros(len(df)))
 azimuth = pd.Series(np.zeros(len(df)))
 
 for n in range(0, len(df)):
-    ccEW = df['cc_' + stackStation + '_' + stackTremor + '_EW'][n]
-    ccNS = df['cc_' + stackStation + '_' + stackTremor + '_NS'][n]
-    if (ccEW >= ccNS):
-        time = df['t_' + stackStation + '_' + stackTremor + '_EW_cluster'][n]
-        dt = df['std_' + stackStation + '_' + stackTremor + '_EW'][n]
-        cc[n] = ccEW
-        ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_EW'][n]
+    if (df['ntremor'][n] > 10):
+        # Get the depth of the plate boundary
+        myx = depth_pb['x'] == df['x0'][n]
+        myy = depth_pb['y'] == df['y0'][n]
+        myline = depth_pb[myx & myy]
+        d0 = myline['depth'].iloc[0]
+        # Get values
+        ccEW = df['cc_' + stackStation + '_' + stackTremor + '_EW'][n]
+        ccNS = df['cc_' + stackStation + '_' + stackTremor + '_NS'][n]
+        if (ccEW >= ccNS):
+            time = df['t_' + stackStation + '_' + stackTremor + '_EW_cluster'][n]
+            dt = df['std_' + stackStation + '_' + stackTremor + '_EW'][n]
+            cc[n] = ccEW
+            ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_EW'][n]
+        else:
+            time = df['t_' + stackStation + '_' + stackTremor + '_NS_cluster'][n]
+            dt = df['std_' + stackStation + '_' + stackTremor + '_NS'][n]
+            cc[n] = ccNS
+            ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_NS'][n]
+        # Compute distances
+        distance = (time / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+            - df['y0'][n] ** 2.0
+        d1 = ((time + dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+            - df['y0'][n] ** 2.0
+        d2 = ((time - dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
+            - df['y0'][n] ** 2.0
+        if (distance >= 0.0):
+            depth[n] = sqrt(distance)
+            d_to_pb[n] = d0 + depth[n]
+        else:
+            depth[n] = np.nan
+            d_to_pb[n] = np.nan
+        if ((d1 >= 0.0) and (d2>= 0.0)):
+            thickness[n] = sqrt(d1) - sqrt(d2)
+        else:
+            thickness[n] = np.nan    
     else:
-        time = df['t_' + stackStation + '_' + stackTremor + '_NS_cluster'][n]
-        dt = df['std_' + stackStation + '_' + stackTremor + '_NS'][n]
-        cc[n] = ccNS
-        ratio[n] = df['ratio_' + stackStation + '_' + stackTremor + '_NS'][n]
-    distance = (time / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
-        - df['y0'][n] ** 2.0
-    d1 = ((time + dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
-        - df['y0'][n] ** 2.0
-    d2 = ((time - dt) / (1.0 / Vs - 1.0 / Vp)) ** 2.0 - df['x0'][n] ** 2.0 \
-        - df['y0'][n] ** 2.0
-    if (distance >= 0.0):
-        depth[n] = sqrt(distance)
-    else:
-        depth[n] = 0.0
-    if ((d1 >= 0.0) and (d2>= 0.0)):
-        thickness[n] = sqrt(d1) - sqrt(d2)
-    else:
-        thickness[n] = 0.0
+        cc[n] = np.nan
+        ratio[n] = np.nan
+        depth[n] = np.nan
+        thickness[n] = np.nan
+        d_to_pb[n] = np.nan        
     azimuth[n] = atan2(df['y0'][n], df['x0'][n]) * 180.0 / pi
-    # Get the depth of the plate boundary
-    myx = depth_pb['x'] == df['x0'][n]
-    myy = depth_pb['y'] == df['y0'][n]
-    myline = depth_pb[myx & myy]
-    d0 = myline['depth'].iloc[0]
-    d_to_pb[n] = d0 + depth[n]
-
-# Keep only points with enough tremor
+    
 table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, \
     'depth':depth, 'cc':cc, 'd_to_pb':d_to_pb, 'ratio':ratio, \
     'thickness':thickness, 'ntremor':df['ntremor'], 'azimuth':azimuth})
-enough = table['ntremor'] <= 10
-table['depth'][enough] = np.nan
-positive = table['depth'] <= 0.0
-table['depth'][positive] = np.nan
 
 # Normalize cross correlation and ratio
 table['cc'] = table['cc'] / table['cc'].max()
 table['ratio'] = table['ratio'] / table['ratio'].max()
 
 # Write to file
+namefile = arrayName + '/table_' + stackStation + '_' + stackTremor + '.pkl'
+pickle.dump(table, open(namefile, 'wb'))
+
 table1 = table.drop(columns=['cc', 'd_to_pb', 'ratio', 'thickness', \
     'ntremor', 'azimuth'])
 tfile = open(arrayName + '/depth_' + stackStation + '_' + stackTremor + '.txt', 'w')

@@ -43,6 +43,8 @@ cat << END >> names.dat
 -120 47.5 Peninsula
 END
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
+
+gmt psscale -Crgb -D8/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
 
 rm *.dat

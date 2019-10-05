@@ -40,6 +40,8 @@ cat << END >> names.dat
 -124.5 36 Parkfield
 END
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
+
+gmt psscale -Crgb -D7/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
 
 rm *.dat

@@ -1,0 +1,10 @@
+# GMT 5 Session common arguments shelf
+BEGIN GMT 5.2.1
+B	:Fractional index:
+J	m
+Jm	m-120.6/35.95/0.5
+R	-127/-113/32/42
+X	-3
+Y	-1
+L	6
+END

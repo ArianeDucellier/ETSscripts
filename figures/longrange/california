@@ -36,10 +36,12 @@ END
 gmt psxy zoom.dat -R$Rop -J$Jop -Wthicker,black -O -K >> $output
 
 cat << END >> names.dat
--126 41 Cape
--126 39.5 Mendocino
+-127 41 Cape
+-127 39.5 Mendocino
 END
 
-gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O >> $output
+gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
+
+gmt psscale -Crgb -D7/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
 
 rm *.dat
