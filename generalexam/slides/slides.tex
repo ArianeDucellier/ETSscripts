@@ -86,13 +86,13 @@
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
-	% Low-frequency earthquakes (LFE)
+	% Low-frequency earthquakes (LFEs)
 	%----------------------------------------------------------------------------------------------------------------------------------
 
-	\subsection{Low-frequency earthquakes (LFE)}
+	\subsection{Low-frequency earthquakes (LFEs)}
 
 	\begin{frame}
-		\frametitle{Low-frequency earthquakes (LFE)}
+		\frametitle{Low-frequency earthquakes (LFEs)}
 		\begin{itemize}
 			\item Small magnitude earthquakes (M $\sim$ 1)
 			\item Frequency content (1-10 Hz) lower than for ordinary earthquakes (up to 20 Hz)
@@ -145,29 +145,33 @@
 	\begin{frame}
 		\frametitle{A low-frequency earthquake catalog for southern Cascadia}
 		\begin{itemize}
-			\item LFE grouped into families of events
+			\item LFEs grouped into families of events
 			\item All the earthquakes of a given family originate from the same small patch on the plate interface
-			\item LFE recur more or less episodically in a bursty manner
+			\item LFEs recur more or less episodically in a bursty manner
 			\item Wide range of recurrence behavior between seismic regions, and within the same seismic region
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{LFE in Washington State}
+		\frametitle{LFEs in Washington State}
 		\begin{center}
 			\includegraphics[trim={1cm 3cm 1cm 14cm}, clip, width=9cm]{LFE_catalogs/cascadia.eps}
 		\end{center}
+		\btVFill
+		\tiny{Sweet \textit{et al.} (2019). G3, \textbf{20}, 1202-1217.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{LFE on the San Andreas Fault}
+		\frametitle{LFEs on the San Andreas Fault}
 		\begin{center}
 			\includegraphics[trim={1cm 3cm 1cm 14cm}, clip, width=9cm]{LFE_catalogs/sanandreas.eps}
 		\end{center}
+		\btVFill
+		\tiny{Shelly (2017). JGR Solid Earth, \textbf{122}, 3739-3753.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{A low-frequency earthquakes catalog for southern Cascadia}
+		\frametitle{A low-frequency earthquake catalog for southern Cascadia}
 		\begin{itemize}
 			\item LFE families in southern Cascadia:
 			\begin{itemize}
@@ -178,7 +182,7 @@
 		\end{itemize}
 		
 		\begin{block}{}
-			$\rightarrow$ Do low-frequency earthquakes families behave similarly or differently in southern Cascadia, compared to Washington State and the San Andreas Fault?
+			$\rightarrow$ Do low-frequency earthquake families behave similarly or differently in southern Cascadia, compared to Washington State and the San Andreas Fault?
 		\end{block}
 	\end{frame}
 
@@ -433,13 +437,13 @@
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
-	% A low-frequency earthquakes catalog for southern Cascadia
+	% A low-frequency earthquake catalog for southern Cascadia
 	%----------------------------------------------------------------------------------------------------------------------------------
 
-	\section{A low-frequency earthquakes catalog for southern Cascadia}
+	\section{A low-frequency earthquake catalog for southern Cascadia}
 
 	\begin{frame}
-		\frametitle{A low-frequency earthquakes catalog for southern Cascadia}
+		\frametitle{A low-frequency earthquake catalog for southern Cascadia}
 		\tableofcontents[currentsection,hideothersubsections]
 	\end{frame}
 
@@ -452,8 +456,10 @@
 	\begin{frame}
 		\frametitle{Current catalog}
 		\begin{center}
-			\includegraphics[trim={1cm 3cm 1cm 8cm}, clip, width=7cm]{catalog_SC/families_map.eps}
+			\includegraphics[trim={1cm 3cm 1cm 10cm}, clip, width=7cm]{catalog_SC/families_map.eps}
 		\end{center}
+		\btVFill
+		\tiny{Plourde \textit{et al.}  (2015). GRL, \textbf{42}, 4849-4855.}
 	\end{frame}
 
 	\begin{frame}
@@ -463,20 +469,28 @@
 			\begin{itemize}
 				\item 34 families
 				\item Period covered: April 2008
-				\item One burst of LFE lasting a few days and propagating from south to north
+				\item One burst of LFEs lasting a few days and propagating from south to north
 			\end{itemize}
 			\item Strike-slip fault families
 			\begin{itemize}
 				\item 3 families
 				\item Period covered: March and April 2008
-				\item Active all the time, several bursts of LFE
+				\item Active all the time, several bursts of LFEs
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Creating templates}
-		% here procedure
+		\begin{itemize}
+			\item Download a one-minute-long time window of data around the detection time of each LFE
+			\item Detrend
+			\item Taper the first and last 5 seconds with a Hann window
+			\item Remove the instrument response
+			\item Bandpass filter between 1.5 and 9 Hz
+			\item Resample to 20 Hz
+			\item Linearly stack all the seismograms for each station and each channel
+		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
@@ -487,8 +501,14 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Finding new LFE}
-		% here metod
+		\frametitle{Finding new LFEs}
+		\begin{itemize}
+			\item Download one hour of data
+			\item Cross correlate the one-hour-long signal with the one-minute-long template for the given station and channel
+			\item Stack the cross correlation signal over all the channels and all the stations
+			\item Value of the average cross correlation higher than a threshold $\rightarrow$ LFE detection
+			\item Threshold = 8 times the median absolute deviation (MAD)
+		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
@@ -507,15 +527,15 @@
 
 		\begin{tabular}{| l | c |}
 			\hline
-			Number of LFE in my catalog & 236 \\
+			Number of LFEs in my catalog & 236 \\
 			\hline
-			Number of LFE in the catalog by Plourde \textit{et al.} & 225 \\
+			Number of LFEs in the catalog by Plourde \textit{et al.} & 225 \\
 			\hline
-			Number of LFE added in my catalog & 13 \\
+			Number of LFEs added in my catalog & 13 \\
 			\hline
-			Number of LFE missing in my catalog & 2 \\
+			Number of LFEs missing in my catalog & 2 \\
 			\hline
-			Number of LFE present in both catalogs & 223 \\
+			Number of LFEs present in both catalogs & 223 \\
 			\hline
 		\end{tabular}
 		\end{center}
@@ -536,14 +556,14 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detection of LFE with permanent networks}
+		\frametitle{Detection of LFEs with permanent networks}
 		\begin{center}
 			\includegraphics[width=7cm, trim={0cm 0cm 0cm 2cm}, clip]{catalog_SC/08042114048_permanent.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detection of LFE with permanent networks}
+		\frametitle{Detection of LFEs with permanent networks}
 		\begin{center}
 			\includegraphics[width=7cm, trim={0cm 0cm 0cm 2cm}, clip]{catalog_SC/08032608015_permanent.eps}
 		\end{center}
@@ -602,8 +622,8 @@
 	\begin{frame}
 		\frametitle{Future work}
 		\begin{itemize}
-			\item Event rate before the earthquake
-			\item Event rate after the earthquake
+			\item LFE event rate before the earthquake
+			\item LFE event rate after the earthquake
 			\item Comparison between two event rates: Likelihood Ratio Test (LRT)
 		\end{itemize}
 	\end{frame}
@@ -717,9 +737,9 @@
 			\item Omori-Utsu law of aftershock decay
 			\item Each event, irrespective of whether it is a small or a big event, can trigger its own offspring
 		\end{itemize}
-		\begin{equation}
+		\begin{equation*}
 		\lambda = \mu + A \sum_{t_i < t} e^{\alpha \left( M_i - M_0 \right)} \left( 1 + \frac{t - t_i}{c} \right) ^{-p}
-		\end{equation}
+		\end{equation*}
 	\end{frame}
 
 	\begin{frame}
@@ -811,29 +831,35 @@
 	\begin{frame}
 		\frametitle{Northern Cascadia}
 		\begin{center}
-			\includegraphics[width=8cm, trim={1cm 0cm 1cm 14cm}, clip]{longrange/cascadia_d.eps}
+			\includegraphics[width=7cm, trim={1cm 0cm 1cm 14cm}, clip]{longrange/cascadia_d.eps}
 		\end{center}
+		\btVFill
+		\tiny{Catalogs from Sweet \textit{et al.} (2019). G3, \textbf{20}, 1202-1217 and Chestler and Creager (2017). JGR Solid Earth, \textbf{122}, 3099-3114 and G3, \textbf{18}, 4690-4708.}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Guerrero, Mexico}
 		\begin{center}
-			\includegraphics[width=7cm, trim={1cm 0cm 2cm 13cm}, clip]{longrange/guerrero_d.eps}
+			\includegraphics[width=6cm, trim={1cm 0cm 2cm 13cm}, clip]{longrange/guerrero_d.eps}
 		\end{center}
+		\btVFill
+		\tiny{Catalog from Frank \textit{et al.} (2014). JGR Solid Earth, \textbf{119}, 7686-7700.}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{San Andreas Fault}
 		\begin{center}
-			\includegraphics[width=7cm, trim={1cm 0cm 3cm 13cm}, clip]{longrange/sanandreas_d.eps}
+			\includegraphics[width=6cm, trim={1cm 0cm 3cm 13cm}, clip]{longrange/sanandreas_d.eps}
 		\end{center}
+		\btVFill
+		\tiny{Catalog from Shelly (2017). JGR Solid Earth, \textbf{122}, 3739-3753.}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Future work}
 		\begin{itemize}
 			\item Computation of the fractional index for the LFE families in southern Cascadia
-			\item Quantification of uncertainty on the value of the fractional index
+			\item Quantification of the uncertainty on the value of the fractional index
 		\end{itemize}
 	\end{frame}
 
@@ -851,9 +877,9 @@
 			\item Omori-Utsu law of aftershock decay
 			\item Each event, irrespective of whether it is a small or a big event, can trigger its own offspring
 		\end{itemize}
-		\begin{equation}
+		\begin{equation*}
 		\lambda = \mu + A \sum_{t_i < t} e^{\alpha \left( M_i - M_0 \right)} \left( 1 + \frac{t - t_i}{c} \right) ^{-p}
-		\end{equation}
+		\end{equation*}
 	\end{frame}
 
 	\begin{frame}
@@ -877,12 +903,19 @@
 
 	\begin{frame}
 		\frametitle{Tremor as proxy for slow slip}
+
+		\vspace{3em}
+
 		Episodic Tremor and Slip in Cascadia
 		\begin{itemize}
-			\item Tremor occurrence rate $\rightarrow$ Moment of slow slip events not detectable in the GPS data (Aguiar, 2009)
+			\item Tremor occurrence rate $\rightarrow$ Moment of slow slip events not detectable in the GPS data (Aguiar \textit{et al.}, 2009)
 			\item Stacking of GPS data when LFEs are detected (Frank, 2016)
 		\end{itemize}
-		$\rightarrow$ What can we do when tremor is not correlated with slow slip?
+		$\rightarrow$ How can we detect small slow slip events when tremor is not correlated with slow slip?
+		\btVFill
+		\tiny{Aguiar \textit{et al.} (2009). JGR, \textbf{114}, B00A05.
+
+		Frank (2016). GRL, \textbf{43}, 2774-2779.}
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
@@ -892,10 +925,33 @@
 	\subsection{Tremor and slow slip in New Zealand}
 		
 	\begin{frame}
-		\frametitle{Northern New Zealand}
+		\frametitle{Slow slip events in northern New Zealand}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wallace_eberhart-phillips_2013_1.png}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=6cm]{articles/wallace_eberhart-phillips_2013_1.png}
 		\end{center}
+		\btVFill
+		\tiny{Wallace and Eberhart-Phillips (2013). GRL, \textbf{40}, 5393-5398.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Slow slip events in northern New Zealand}
+
+		\vspace{2em}
+
+		Two types of slow slip events:
+		\begin{itemize}
+			\item  Shallow (10-15 km depth), shorter (1-3 weeks), usually smaller (Mw 6.3-6.8)
+
+			$\rightarrow$ Observed every 18-24 months in the northern part of the margin
+
+			\item Deeper (35-60 km depth), longer (12-18 months) larger (Mw 7.0)
+
+			$\rightarrow$ Observed every 5 years in the southern part of the margin
+		\end{itemize}
+		\btVFill
+		\tiny{Wallace and Beavan (2010). JGR, \textbf{115}, B12402.
+
+		Todd and Schwartz (2016). JGR Solid Earth, \textbf{121}, 8706-8719.}
 	\end{frame}
 
 	\begin{frame}
@@ -903,6 +959,8 @@
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wallace_eberhart-phillips_2013_3a.png}
 		\end{center}
+		\btVFill
+		\tiny{Wallace and Eberhart-Phillips (2013). GRL, \textbf{40}, 5393-5398.}
 	\end{frame}
 
 	\begin{frame}
@@ -910,6 +968,8 @@
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wallace_eberhart-phillips_2013_3b.png}
 		\end{center}
+		\btVFill
+		\tiny{Wallace and Eberhart-Phillips (2013). GRL, \textbf{40}, 5393-5398.}
 	\end{frame}
 
 	\begin{frame}
@@ -917,7 +977,14 @@
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=11cm]{articles/todd_schwartz_2016_6.png}
 		\end{center}
+		\tiny{Todd and Schwartz (2016). JGR Solid Earth, \textbf{121}, 8706-8719.}
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Research questions
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Research questions}
 
 	\begin{frame}
 		\frametitle{Possible questions}
@@ -929,32 +996,113 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detecting smaller, currently undetected slow slip events}
+		\frametitle{Does the fault weakens with increasing depth?}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=10cm]{articles/wech_creager_2011_3.png}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=9cm]{articles/wech_creager_2011_3.png}
 		\end{center}
+		\btVFill
+		\tiny{Wech and Creager (2011). Nature Geoscience, \textbf{4}, 624-628.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detecting longer term slow slip events}
-		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=7cm]{articles/wei_al_2012_1.png}
-		\end{center}
+		\frametitle{Does the fault weakens with increasing depth?}
+		\begin{itemize}
+			\item Tremor: Frequent episodes with small spatial and temporal extent / infrequent episodes with large spatial and temporal extent (Wech and Creager, 2011)
+			\item LFEs: Downdip swarms happen nearly weekly / updip families active only during the yearly ETS events (Sweet \textit{et al.}, 2019).
+			\item Hypothesis: Stable sliding at depth transfers stress to the base of the ETS zone, initiating frequent tremor and small slow slip. In a self-similar process, stress is then transferred updip of the fault, triggering less frequent tremor and larger slow slip, up toward the locked zone (Wech and Creager, 2011).
+		\end{itemize}
+		\begin{block}{}
+			$\rightarrow$ Does the same pattern exist for slow slip?
+		\end{block}
+		\btVFill
+		\tiny{Wech and Creager (2011). Nature Geoscience, \textbf{4}, 624-628.
+
+		Sweet \textit{et al.} (2019). G3, \textbf{20}, 1202-1217.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Better measuring of the vertical displacement at the Earth’s surface during slow slip events}
+		\frametitle{Is there a long term slow slip event accompanying tremor?}
+		\begin{center}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=6cm]{articles/wei_al_2012_1.png}
+		\end{center}
+		\btVFill
+		\tiny{Wei \textit{et al.} (2012). GRL, \textbf{39}, L15309.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Is there a long term slow slip event accompanying tremor?}
+
+		\vspace{2em}
+
+		\begin{itemize}
+			\item Long term slow slip events in Japan, Mexico, Alaska (Wei \textit{et al.}, 2012), and possibly Cascadia (Nuyen and Schmidt, 2017)
+			\item New Zealand: Deep tremor between 20 and 50 km depth with unclear origin (Todd and Schartz, 2016)
+		\end{itemize}
+		\begin{block}{}
+			$\rightarrow$ Is there an undetected deep long-term slow slip event?
+		\end{block}
+		\btVFill
+		\tiny{Wei \textit{et al.} (2012). GRL, \textbf{39}, L15309.
+
+		Nuyen and Schmidt (2017). AGU Fall Meeting.
+
+		Todd and Schwartz (2016). JGR Solid Earth, \textbf{121}, 8706-8719.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Constraining the updip and downdip extent of slow slip}
+
+		\vspace{2em}
+
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=10cm]{slowslip/Prequake_level_changes_shallow_thrust.png}
 		\end{center}
+		\btVFill
+		\tiny{Source: \href{http://all-geo.org/highlyallochthonous/}{http://all-geo.org/highlyallochthonous/}}	
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Better measuring of the vertical displacement at the Earth’s surface during slow slip events}
+		\frametitle{Constraining the updip and downdip extent of slow slip}
+
+		\vspace{2em}
+
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=10cm]{slowslip/Postquake_level_changes_shallow_thrust.png}
 		\end{center}
+		\btVFill
+		\tiny{Source: \href{http://all-geo.org/highlyallochthonous/}{http://all-geo.org/highlyallochthonous/}}	
 	\end{frame}
+
+	\begin{frame}
+		\frametitle{Constraining the updip and downdip extent of slow slip}
+		\begin{itemize}
+			\item Vertical component of the ground displacement is the most useful in constraining the updip and downdip extent of slip (Szeliga \textit{et al.}, 2008)
+			\item Downdip limit of the megathrust earthquake rupture
+			\item Correlation with other geophysical data, such as porosity, temperature, and structure
+			\item Smaller than the horizontal displacement, and generally hard to resolve
+		\end{itemize}
+		\begin{block}{}
+			$\rightarrow$ Can we better resolve the vertical component of the ground displacement?
+		\end{block}
+		\btVFill
+\tiny{Szeliga \textit{et al.} (2008). JGR, \textbf{113}, B04404.}
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Wavelet methods
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Wavelet methods}
+
+	\begin{frame}
+		\frametitle{Wavelet methods}
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Preliminary results
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Preliminary results}
 
 	\begin{frame}
 		\frametitle{GPS stations in New Zealand}
