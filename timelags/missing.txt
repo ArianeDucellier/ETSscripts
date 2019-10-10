@@ -1,0 +1,32 @@
+BH
+
+BS
+
+25 20 0 tremor
+
+CL
+
+25 0 0 tremor
+25 10 0 tremor
+25 25 0 tremor
+
+DR
+
+-20 -25 0 tremor
+-25 -20 0 tremor
+
+GC
+
+LC
+
+PA
+
+-15 -25 0 tremor
+-20 -20 0 tremor
+-20 -25 0 tremor
+-25 -10 0 tremor
+-25 -15 0 tremor
+-25 -20 0 tremor
+-25 -25 0 tremor
+
+TB

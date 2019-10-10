@@ -7,18 +7,18 @@
 \beamer@subsectionintoc {1}{5}{Research questions}{11}{0}{1}
 \beamer@sectionintoc {2}{Depth of the source of the tectonic tremor}{17}{0}{2}
 \beamer@subsectionintoc {2}{1}{Motivation}{18}{0}{2}
-\beamer@subsectionintoc {2}{2}{Data}{26}{0}{2}
-\beamer@subsectionintoc {2}{3}{Method}{28}{0}{2}
-\beamer@subsectionintoc {2}{4}{Results}{33}{0}{2}
-\beamer@subsectionintoc {2}{5}{Discussion and Conclusion}{36}{0}{2}
-\beamer@sectionintoc {3}{A low-frequency earthquake catalog for southern Cascadia}{40}{0}{3}
-\beamer@subsectionintoc {3}{1}{Extension of an LFE catalog for southern Cascadia}{41}{0}{3}
-\beamer@subsectionintoc {3}{2}{Effect of nearby earthquakes on LFE activity}{55}{0}{3}
-\beamer@subsectionintoc {3}{3}{Characterization of LFE clustering}{59}{0}{3}
-\beamer@subsectionintoc {3}{4}{Temporal model of LFE occurrence rate}{79}{0}{3}
-\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{81}{0}{4}
-\beamer@subsectionintoc {4}{1}{Tremor and slow slip in New Zealand}{83}{0}{4}
-\beamer@subsectionintoc {4}{2}{Research questions}{88}{0}{4}
-\beamer@subsectionintoc {4}{3}{Wavelet methods}{96}{0}{4}
-\beamer@subsectionintoc {4}{4}{Preliminary results}{97}{0}{4}
-\beamer@sectionintoc {5}{Time line}{100}{0}{5}
+\beamer@subsectionintoc {2}{2}{Data}{28}{0}{2}
+\beamer@subsectionintoc {2}{3}{Method}{30}{0}{2}
+\beamer@subsectionintoc {2}{4}{Results}{35}{0}{2}
+\beamer@subsectionintoc {2}{5}{Discussion and Conclusion}{38}{0}{2}
+\beamer@sectionintoc {3}{A low-frequency earthquake catalog for southern Cascadia}{42}{0}{3}
+\beamer@subsectionintoc {3}{1}{Extension of an LFE catalog for southern Cascadia}{43}{0}{3}
+\beamer@subsectionintoc {3}{2}{Effect of nearby earthquakes on LFE activity}{57}{0}{3}
+\beamer@subsectionintoc {3}{3}{Characterization of LFE clustering}{61}{0}{3}
+\beamer@subsectionintoc {3}{4}{Temporal model of LFE occurrence rate}{81}{0}{3}
+\beamer@sectionintoc {4}{Detection of slow slip events in New Zealand}{83}{0}{4}
+\beamer@subsectionintoc {4}{1}{Tremor and slow slip in New Zealand}{85}{0}{4}
+\beamer@subsectionintoc {4}{2}{Research questions}{90}{0}{4}
+\beamer@subsectionintoc {4}{3}{Wavelet methods}{98}{0}{4}
+\beamer@subsectionintoc {4}{4}{Preliminary results}{99}{0}{4}
+\beamer@subsectionintoc {4}{5}{Future work}{103}{0}{4}

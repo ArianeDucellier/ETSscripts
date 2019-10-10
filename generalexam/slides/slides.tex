@@ -13,7 +13,7 @@
 
 \newcommand{\btVFill}{\vskip0pt plus 1filll}
 
-\title[Data analysis of recordings of slow earthquakes]{Data analysis of recordings of slow earthquakes: Tectonic tremor, low-frequency earthquakes and slow slip events}
+\title[Tectonic tremor, low-frequency earthquakes and slow slip events]{Slow earthquakes: Tectonic tremor, low-frequency earthquakes and slow slip events}
 \author{Ariane Ducellier}
 \institute{University of Washington}
 \date{General Exam - October 25th 2019}
@@ -74,7 +74,7 @@
 			\item Long (several seconds to many minutes)
 			\item Low amplitude
 			\item Emergent onsets
-			\item Absence of clear impulsive phases
+			\item Absence of clear impulsive phases $\rightarrow$ Difficult to determine the depth of the tremor source
 		\end{itemize}
 	\end{frame}
 
@@ -118,7 +118,7 @@
 		\frametitle{Episodic Tremor and Slip (ETS)}
 		\begin{itemize}
 			\item Tectonic tremor observations spatially and temporally correlated with slow slip observations (Nankai, Cascadia)
-			\item Only biggest tremor episode associated with slow slip
+			\item Only biggest tremor episodes associated with slow slip
 			\item No spatial or temporal correlation in other regions like New Zealand
 		\end{itemize}
 	\end{frame}
@@ -217,27 +217,67 @@
 	\subsection{Motivation}
 
 	\begin{frame}
-		\frametitle{Tremor and LFEs}
-		\begin{itemize}
-			\item Tremor can be explained as a swarm of LFEs
-			\item LFE occur as shear faulting on the subduction-zone plate interface
-		\end{itemize}
+		\frametitle{Tectonic tremor and low-frequency earthquakes}
+		\vspace{2em}
 
-		Shelly et al. (2007), Ide et al. (2007)
+		\begin{itemize}
+			\item Long (several seconds to many minutes), low amplitude seismic signal, with emergent onsets, and an absence of clear impulsive phases
+			\item Swarm of small, low-frequency earthquakes (LFEs)
+			\item LFE source located on the plate boundary
+			\item LFE focal mechanism: Shear slip on a low-angle thrust fault
+
+			\vspace{2em}
+
+			$\rightarrow$ Tremor source assumed to be also located close to the plate boundary
+		\end{itemize}
+		\btVFill
+		\tiny{Ide \textit{et al.} (2007). GRL, \textbf{34}, L03308.
+
+		Shelly \textit{et al.} (2007) Nature, \textbf{446}, 305-307.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{High pore fluid pressure in the oceanic crust}
+		\frametitle{High pore fluid pressure near the source of the tremor}
 		\begin{center}
 			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=11cm]{articles/shelly_al_2006_4d.png}
 		\end{center}
+		\btVFill
+		\tiny{Shelly \textit{et al.} (2006). Nature, \textbf{442}, 188-192.}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{High pore fluid pressure in the oceanic crust}
+		\frametitle{High pore fluid pressure near the source of the tremor}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=9cm]{articles/audet_burgmann_2014_1b.png}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=8cm]{articles/audet_burgmann_2014_1b.png}
 		\end{center}
+		\btVFill
+		\tiny{Audet and B\"urgmann (2014). Nature, \textbf{510}, 389-393.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Link between tremor occurrence and tidal cycles}
+		\begin{center}
+			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=8cm]{articles/nakata_al_2008_2.png}
+		\end{center}
+		\btVFill
+		\tiny{Nakata \textit{et al.} (2008). Nature Geoscience, \textbf{1}, 676-678.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{How could fluids generate tectonic tremor?}
+		\vspace{1em}
+
+		\begin{enumerate}
+			\item Hydraulic fracturing or coupling between rock and fluid flow $\rightarrow$ Fluid movement $\rightarrow$ Tremor generation
+			\item[] Slip triggered by the same fluid movement / Fluid flow is a response to changes in stress and strain induced by the slip
+
+			\vspace{2em}
+
+			\item Irregularities on the plate interface $\rightarrow$ Slip acceleration $\rightarrow$ Tremor generation
+			\item[] Fluids alter the conditions on the plate interface to enable transient slip events
+		\end{enumerate}
+		\btVFill
+		\tiny{Shelly \textit{et al.} (2006). Nature, \textbf{442}, 188-192.}
 	\end{frame}
 
 	\begin{frame}
@@ -1096,6 +1136,23 @@
 
 	\begin{frame}
 		\frametitle{Wavelet methods}
+		Time series $X_t$ $\rightarrow$ Wavelet coefficients $W_j (j = 1, ... , J)$
+
+		\vspace{1em}
+
+		Wavelet vector $W_j$ associated with changes on scale $\tau_j = dt 2^{j-1}$
+
+		\vspace{1em}
+
+		Scaling vector $V_J$ associated with averages in scale $\lambda_J = dt 2^J$
+
+		\vspace{1em}
+
+		$\rightarrow$ Compute wavelet details $D_j (j = 1, ... , J)$ and wavelet smooth $S_J$
+
+		\vspace{1em}
+
+		Multiresolution analysis (MRA): $X = \sum_{j = 1}^J D_j + S_J$
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
@@ -1112,24 +1169,77 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Denoising of GPS data}
+		\frametitle{6th level detail of GPS times series in New Zealand}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=11cm]{../slowslip/Figure1.eps}
+			\includegraphics[trim={2cm 0cm 5cm 3cm}, clip, width=11cm]{../slowslip/allstations/D6_e_LA8.eps}
+		\end{center}
+		\btVFill
+		\tiny{Timing of slow slip events by Todd and Schwartz (2016). JGR Solid Earth, \textbf{121}, 8706-8719.}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Denoising of synthetic GPS data}
+		\begin{center}
+			\includegraphics[trim={9cm 1cm 7cm 2cm}, clip, width=11cm]{../slowslip/Figure1.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Denoising of GPS data}
+		\frametitle{Denoising of GPS time series in New Zealand}
 		\begin{center}
-			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=11cm]{../slowslip/Figure2_CKID.eps}
+			\includegraphics[trim={5cm 1cm 5cm 2cm}, clip, width=11cm]{../slowslip/Figure2_CKID.eps}
 		\end{center}
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Future work
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Future work}
+
+	\begin{frame}
+		\frametitle{Future work}
+		\begin{itemize}
+			\item \textbf{Detecting smaller, currently undetected slow slip events:} Combine MRA of several channels and several stations, and stack them with some time shift.
+			\item \textbf{Detecting longer term slow slip events:} Replace the missing data points by synthetic data points obtained by a combination of linear or more complex interpolation and random Gaussian noise.
+			\item \textbf{Better measuring of the vertical displacement at the Earth’s surface during slow slip events:} Improve wavelet-based methods of denoising, by applying thresholding, scaling, or shrinkage of the wavelet coefficients.
+		\end{itemize}
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
 	% Time line
 	%----------------------------------------------------------------------------------------------------------------------------------
 
-	\section{Time line}
+	\section*{Time line}
+
+	\begin{frame}
+		\frametitle{Time line}
+		\begin{center}
+		\tiny{
+		\begin{tabular}{| p{1.5cm} p{5cm} p{3cm} |}
+			\hline
+			\textbf{Time} & \textbf{PhD Work} & \textbf{Other Activities} \\
+			\hline
+			Fall 2019 & General exam & Present slow slip work at AGU Fall Meeting \\
+			\hline
+			Winter 2020 & Write paper on tremor in northern Cascadia & \\
+			\hline
+			Spring 2020 & Write paper on LFE catalogs in southern Cascadia & \\
+			\hline
+			Summer 2020 & & \\
+			\hline
+			Fall 2020 & Write paper on statistical analysis of LFE catalog & \\
+			\hline
+			Winter 2021 & & \\
+			\hline
+			Spring 2021 & Write paper on wavelet analysis of slow slip & \\
+			\hline
+			Summer 2021 & Defend by mid-summer & Present work on statistical analysis of LFEs catalog at Workshop on Statistical Seismology \\
+			\hline
+		\end{tabular}
+		}
+		\end{center}
+	\end{frame}
 
 	\begin{frame}
 		\begin{Huge}
