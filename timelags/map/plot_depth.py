@@ -11,10 +11,30 @@ import numpy as np
 import pandas as pd
 import pickle
 
-arrayName = 'BS'
+arrayName = 'TB'
 stackStation = 'PWS'
 stackTremor = 'PWS'
-variable = 'd_to_pb'
+variable = 'ntremor'
+#title = 'Depth (km)'
+#title = 'Cross correlation'
+#title = 'Distance to plate boundary (km)'
+#title = 'Ratio cc peak to RMS'
+#title = 'Thickness (km)'
+title = 'Number of tremor'
+
+# Data range
+#vmin = 20
+#vmax = 50
+#vmin = 0.0
+#vmax = 0.01
+#vmin = -15
+#vmax = 15
+#vmin = 0
+#vmax = 200
+#vmin = 0
+#vmax = 20
+vmin = 0
+vmax = 300
 
 # Set matplotlib style
 plt.style.use('bmh')
@@ -72,26 +92,25 @@ Y = np.hstack((2.0 * Y[:, 0:1] - Y[:, 1:2], Y, 2.0 * Y[:, 9:10] - Y[:, 8:9]))
 Y = np.vstack((Y, Y[0:1, :]))
 
 # Plot tremor related variable
-#norm = matplotlib.colors.Normalize(vmin=np.min(Z),vmax=np.max(Z))
-mesh = plt.pcolormesh(X, Y, Z, transform=ccrs.PlateCarree())
+mesh = plt.pcolormesh(X, Y, Z, vmin=vmin, vmax=vmax, transform=ccrs.PlateCarree())
 
 # If we have plotted the depth
-#if (variable == 'depth'):
-#    ax.scatter(df_sweet['longitude'], df_sweet['latitude'], c=df_sweet['depth'], marker='o', s=100, \
-#        norm=norm, edgecolor='k', transform=ccrs.PlateCarree())
-#    ax.scatter(df_chestler['longitude'], df_chestler['latitude'], c=df_chestler['depth'], marker='o', s=100, \
-#        norm=norm, edgecolor='k', transform=ccrs.PlateCarree())
+if (variable == 'depth'):
+    ax.scatter(df_sweet['longitude'], df_sweet['latitude'], c=df_sweet['depth'], marker='o', s=100, \
+        vmin=vmin, vmax=vmax, edgecolor='k', transform=ccrs.PlateCarree())
+    ax.scatter(df_chestler['longitude'], df_chestler['latitude'], c=df_chestler['depth'], marker='o', s=100, \
+        vmin=vmin, vmax=vmax, edgecolor='k', transform=ccrs.PlateCarree())
 
 # If we have plotted the distance to the plate boundary
-#if (variable == 'd_to_pb'):
-#    p_sweet = ax.scatter(df_sweet['longitude'], df_sweet['latitude'], c=df_sweet['depth_pb'] - df_sweet['depth'], \
-#        marker='o', s=100, vmin=np.min(Z), vmax=np.max(Z), edgecolor='k', transform=ccrs.PlateCarree())
-#    p_chestler = ax.scatter(df_chestler['longitude'], df_chestler['latitude'], c=df_chestler['depth_pb'] - df_chestler['depth'], \
-#        marker='o', s=100, vmin=np.min(Z),vmax=np.max(Z), edgecolor='k', transform=ccrs.PlateCarree())
+if (variable == 'd_to_pb'):
+    p_sweet = ax.scatter(df_sweet['longitude'], df_sweet['latitude'], c=df_sweet['depth_pb'] - df_sweet['depth'], \
+        marker='o', s=100, vmin=vmin, vmax=vmax, edgecolor='k', transform=ccrs.PlateCarree())
+    p_chestler = ax.scatter(df_chestler['longitude'], df_chestler['latitude'], c=df_chestler['depth_pb'] - df_chestler['depth'], \
+        marker='o', s=100, vmin=vmin,vmax=vmax, edgecolor='k', transform=ccrs.PlateCarree())
 
 # Colorbar
 cb = fig.colorbar(mesh, orientation='vertical', shrink=0.5)
-cb.set_label(label='Distance to plate boundary (km)', size=20)
+cb.set_label(label=title, size=20)
 cb.ax.tick_params(labelsize=16)
 
 # Save figure

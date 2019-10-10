@@ -18,7 +18,7 @@ from plot_stack_ccorr import plot_stack_ccorr
 from stacking import linstack, powstack, PWstack
 
 # Set parameters
-arrayName = 'GC'
+arrayName = 'TB'
 w = 2.0
 Tmax = 15.0
 ds = 5.0

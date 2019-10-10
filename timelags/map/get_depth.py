@@ -11,9 +11,9 @@ import pickle
 
 from math import atan2, cos, pi, sin, sqrt
 
-arrayName = 'BS'
-lat0 = 48.0056818181818
-lon0 = -123.084354545455
+arrayName = 'TB'
+lat0 = 47.9730357142857
+lon0 = -123.138492857143
 stackStation = 'PWS'
 stackTremor = 'PWS'
 Vs = 3.6
@@ -95,43 +95,12 @@ table = pd.DataFrame(data={'longitude':longitude, 'latitude':latitude, \
     'depth':depth, 'cc':cc, 'd_to_pb':d_to_pb, 'ratio':ratio, \
     'thickness':thickness, 'ntremor':df['ntremor'], 'azimuth':azimuth})
 
-# Normalize cross correlation and ratio
-table['cc'] = table['cc'] / table['cc'].max()
-table['ratio'] = table['ratio'] / table['ratio'].max()
-
 # Write to file
 namefile = arrayName + '/table_' + stackStation + '_' + stackTremor + '.pkl'
 pickle.dump(table, open(namefile, 'wb'))
 
-table1 = table.drop(columns=['cc', 'd_to_pb', 'ratio', 'thickness', \
-    'ntremor', 'azimuth'])
-tfile = open(arrayName + '/depth_' + stackStation + '_' + stackTremor + '.txt', 'w')
-tfile.write(table1.to_string(header=False, index=False))
-tfile.close()
-
-table2 = table.drop(columns=['depth', 'd_to_pb', 'ratio', 'thickness', \
-    'ntremor', 'azimuth'])
-tfile = open(arrayName + '/cc_' + stackStation + '_' + stackTremor + '.txt', 'w')
-tfile.write(table2.to_string(header=False, index=False))
-tfile.close()
-
-table3 = table.drop(columns=['depth', 'cc', 'ratio', 'thickness', \
-    'ntremor', 'azimuth'])
-tfile = open(arrayName + '/d_to_pb_' + stackStation + '_' + stackTremor + '.txt', 'w')
-tfile.write(table3.to_string(header=False, index=False))
-tfile.close()
-
-table4 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'thickness', \
-    'ntremor', 'azimuth'])
-tfile = open(arrayName + '/ratio_' + stackStation + '_' + stackTremor + '.txt', 'w')
-tfile.write(table4.to_string(header=False, index=False))
-tfile.close()
-
-table5 = table.drop(columns=['depth', 'cc', 'd_to_pb', 'ratio', \
-    'ntremor', 'azimuth'])
-tfile = open(arrayName + '/thickness_' + stackStation + '_' + stackTremor + '.txt', 'w')
-tfile.write(table5.to_string(header=False, index=False))
-tfile.close()
+# Normalize ratio for plotting
+table['ratio'] = table['ratio'] / table['ratio'].max()
 
 # Plot of distance to plate boundary
 # versus number of tremor, ratio cc / RMS, and azimuth
