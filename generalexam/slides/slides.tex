@@ -214,6 +214,10 @@
 		\tableofcontents[currentsection,hideothersubsections]
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Motivation
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Motivation}
 
 	\begin{frame}
@@ -307,12 +311,7 @@
 		\tiny{Hyndman \textit{et al.} (2015). JGR Solid Earth, \textbf{120}, 4344-4358.}
 	\end{frame}
 
-%	\begin{frame}
-%		\frametitle{Fracture network}
-%		\begin{center}
-%			\includegraphics[trim={0cm 0cm 0cm 0cm}, clip, width=10cm]{articles/fagereng_harris_2014_8b.png}
-%		\end{center}
-%	\end{frame}
+%	Here include something about quartz veins in exhumed subduction zones
 
 	\begin{frame}
 		\frametitle{Large vertical extent of the source of the tremor}
@@ -335,6 +334,10 @@
 		\end{block}
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Data
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Data}
 
 	\begin{frame}
@@ -343,17 +346,8 @@
 			\begin{column}{5cm}
 				\begin{itemize}
 					\item Cascadia Array of Arrays experiment (2009-2010)
-
-					%\vspace{1em}
-
 					\item Eight arrays of seismic stations in the Olympic Peninsula
-
-					%\vspace{1em}
-
 					\item Recorded the main ETS event in August 2010, and the 2011 ETS event
-
-					%\vspace{1em}
-
 					\item Tremor located just under the arrays
 				\end{itemize}
 			\end{column}
@@ -370,54 +364,65 @@
 		\begin{itemize}
 			\vspace{1em}
 
-			\item 28902 one-minute-long time windows where tectonic tremor is recorded
+			\item Two data sets:
+			\begin{itemize}
+				\item From June 20th 2009 to September 30th 2010: 28902 one-minute-long time windows where tectonic tremor is recorded
+				\item From August 10th 2011 to September 6th 2011: 5600 one-minute-long time windows where tectonic tremor is recorded
+			\end{itemize}
 
 			\vspace{1em}
 
-			\item For each tremor window: Beginning time, latitude, longitude, and depth of the tremor source
-
-			\vspace{1em}
-
-			\item Start date: June 20\textsuperscript{th} 2009
-
-			\vspace{1em}
-
-			\item End date: September 30\textsuperscript{th} 2010
+			\item For each tremor window: Beginning time, end time, latitude and longitude of the source of the tremor
 		\end{itemize}
 		\btVFill
 		\tiny{Ghosh A., Vidale J.E., Creager K.C. (2012). \textit{JGR}, \textbf{117}, B10301.}
 	\end{frame}
 
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Method
+	%----------------------------------------------------------------------------------------------------------------------------------
+
 	\subsection{Method}
 
 	\begin{frame}
-		\frametitle{Stacking of tremor recordings}
+		\frametitle{Cross-correlation of tremor recordings}
 		\begin{itemize}
 			\item Tectonic tremor recorded at the Big Skidder array and which source is located in a 5x5 km cell just under the array
-			\item 70 one-minute-second-long time windows
+			\item 82 one-minute-second-long time windows
 			\item For each time window:
 			\begin{itemize}
 				\item For each station, cross-correlate the horizontal component with the vertical component
-				\item Stack (linearly) the cross-correlation over all the stations of the array
+				\item Stack the cross-correlation over all the stations of the array
 			\end{itemize}
-			\item Plot all the 70 stacked cross-correlation
-			\item Stack the 70 signals with a linear, power, or phase-weighted stack
+			\item Plot all the 82 stacked cross-correlation
+			\item Stack the 82 signals with a linear, power, or phase-weighted stack
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Stacking of tremor recordings}
+		\frametitle{Cross-correlation of tremor recordings (linear stack)}
 		\begin{center}
-			\includegraphics[width=8cm, trim={5cm 2cm 5cm 3.5cm}, clip]{BS_000_000/BS_000_000_lin.eps}
+			\includegraphics[width=8cm, trim={5cm 2cm 5cm 3.5cm}, clip]{BS/BS_000_000_lin.eps}
 		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Cross-correlation of tremor recordings (linear stack)}
+		\begin{itemize}
+			\item Peak at about 4.7 s
+			\item P-wave energy higher on the vertical component
+			\item S-wave energy higher on the horizontal component
+			\item Time lag between the direct P-wave arrival and the direct S-wave arrival
+			\item For $V_P = 6.4 km/s$ and $V_S = 3.6 km/s$, and a source located on the plate boundary ($d = 42 km$), we expect $t_{lag} = 5.1 s$
+		\end{itemize}
 	\end{frame}
 		
 	\begin{frame}
-		\frametitle{Clustering of cross correlation functions} 
+		\frametitle{Clustering of cross-correlation functions} 
 		Does the cross-correlation for a given one-minute-long time windows look like the stack over all time windows?
 
 		\begin{itemize}
-			\item Ratio RMS between 4 and 6 s / RMS between 12 and 14 s
+			\item Ratio cross-correlation peak / RMS between 12 and 14 s
 			\item Cross-correlation between one cross-correlation and the stack:
 			\begin{itemize}
 				\item Maximum cross-correlation value
@@ -426,69 +431,76 @@
 			\end{itemize}
 		\end{itemize}
 
-		$\rightarrow$ K-means clustering $\rightarrow$ Two clusters (good time windows / bad time windows)
+		$\rightarrow$ K-means clustering$\rightarrow$ Two clusters (good time windows / bad time windows)
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Clustering of cross correlation functions}
+		\frametitle{Selected tremor recordings (phase-weighted stack)}
 		\begin{center}
-			\includegraphics[width=7.5cm, trim={5cm 2.5cm 5cm 4cm}, clip]{BS_000_000/BS_000_000_PWS_PWS_cluster_ccwin.eps}
+			\includegraphics[width=7.5cm, trim={5cm 2.5cm 5cm 4cm}, clip]{BS/BS_000_000_PWS_PWS_cluster_ccwin.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Stacked cross correlation}
+		\frametitle{Stacking for the two clusters (phase-weighted stack)}
 		\begin{center}
-			\includegraphics[width=8cm, trim={4.5cm 2.5cm 5cm 4cm}, clip]{BS_000_000/BS_000_000_PWS_PWS_cluster_stackcc.eps}
+			\includegraphics[width=8cm, trim={4.5cm 2.5cm 5cm 4cm}, clip]{BS/BS_000_000_PWS_PWS_cluster_stackcc.eps}
 		\end{center}
 	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Results
+	%----------------------------------------------------------------------------------------------------------------------------------
 
 	\subsection{Results}
 
 	\begin{frame}
-		\frametitle{Distance to plate boundary}
-		\begin{center}
-			\includegraphics[width=6cm, trim={1cm 3cm 2cm 6cm}, clip]{other/d_to_pb_PWS_PWS.eps}
-		\end{center}
-	\end{frame}
+		\frametitle{Where is the method applicable?}
+		\vspace{1em}
 
-	\begin{frame}
-		\frametitle{Interpolation}
 		\begin{itemize}
-			\item Number of tremor
-			\item ratio peak cc / RMS
-			\item Distance to array (strike / dip)
+			\item Areas badly covered, only a few tremor were recorded
+
+			\vspace{1em}
+
+			\item Moving tremor source (tremor streaks): Method will not work for stations located more than 18km updip of the tremor source
+
+			\vspace{1em}
+
+			$\rightarrow$ We keep only the grid cells with more than 30 tremor, and a ratio max envelope / RMS higher than 100
 		\end{itemize}
-
-		$\rightarrow$ Weights for interpolation of results from 8 arrays
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Distance to plate boundary}
-		% here map with all the arrays
-	\end{frame}
-
-	\subsection{Discussion and Conclusion}
-
-	\begin{frame}
-		\frametitle{Distribution of time lags}
-		% Here histograms
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Width of the distribution}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Thickness of the tremor zone}
+		\frametitle{Tremor streaks}
 		\begin{center}
-			\includegraphics[width=6cm, trim={1cm 3cm 2cm 6cm}, clip]{other/thickness_PWS_PWS.eps}
+			\includegraphics[width=7cm, trim={0cm 0cm 0cm 0cm}, clip]{raypaths/tremor_disp.eps}
 		\end{center}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Conclusion}
-		% ???
+		\frametitle{Ratio max envelope / RMS $>$ 100 (Big Skidder array)}
+		\begin{center}
+			\includegraphics[width=11cm, trim={26cm 44cm 53cm 15cm}, clip]{BS/BS_PWS_PWS.eps}
+		\end{center}
+	\end{frame}
+
+	%----------------------------------------------------------------------------------------------------------------------------------
+	% Future work
+	%----------------------------------------------------------------------------------------------------------------------------------
+
+	\subsection{Future work}
+
+%	Here add possible results obtained in the next two weeks
+
+	\begin{frame}
+		\frametitle{Future work}
+		\begin{itemize}
+			\item Check for possible anisotropy in the continental crust $\rightarrow$ Compare time lags for the EW and the NS components
+			\item Evaluate the uncertainty on the depth of the tremor source $\rightarrow$ Use the half-width of the envelope to compute the uncertainty on the time lag
+			\item Interpolate the results from the 8 arrays, using the ratios max envelope / RMS as weights
+			\item Compute the histogram of the time lags for each grid cell, and the associated width to determine the thickness of the tremor zone
+		\end{itemize}
 	\end{frame}
 
 	%----------------------------------------------------------------------------------------------------------------------------------
