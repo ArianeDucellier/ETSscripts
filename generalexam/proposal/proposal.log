@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.15)  3 OCT 2019 22:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.15)  17 OCT 2019 21:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -478,87 +478,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--126
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--131
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
 [18]
-Underfull \hbox (badness 2856) in paragraph at lines 208--209
+Underfull \hbox (badness 2856) in paragraph at lines 207--208
 []\T1/ptm/m/n/12 Present slow slip work at
  []
 
 
-Underfull \hbox (badness 2626) in paragraph at lines 222--223
+Underfull \hbox (badness 3568) in paragraph at lines 211--212
+[]\T1/ptm/m/n/12 Present work on LFEs at
+ []
+
+
+Underfull \hbox (badness 2626) in paragraph at lines 221--222
 []\T1/ptm/m/n/12 Present work on sta-tis-ti-cal
  []
 
 
-Overfull \hbox (21.48906pt too wide) in paragraph at lines 204--225
+Overfull \hbox (21.48906pt too wide) in paragraph at lines 203--224
  [] 
  []
 
@@ -591,12 +596,12 @@ l.440
 ge.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.233 \newpage
+l.232 \newpage
                [6]pdfTeX warning (ext4): destination with the same identifier (
 name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.256 \newpage
+l.255 \newpage
                [1]
 Package epstopdf Info: Source file: <figures/arrays_location.eps>
 (epstopdf)                    date: 2019-08-23 20:49:14
@@ -607,15 +612,15 @@ df>
 (epstopdf)                    size: 1937357 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/arrays_location-ep
 s-converted-to.pdf figures/arrays_location.eps>
-(epstopdf)             \includegraphics on input line 262.
+(epstopdf)             \includegraphics on input line 261.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/arrays_location-eps-converted-to.pdf, id=406, 597.23125pt x 845.1575pt
+<figures/arrays_location-eps-converted-to.pdf, id=407, 597.23125pt x 845.1575pt
 >
 File: figures/arrays_location-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/arrays_location-eps-converted-to.pdf>
 Package pdftex.def Info: figures/arrays_location-eps-converted-to.pdf used on i
-nput line 262.
+nput line 261.
 (pdftex.def)             Requested size: 469.75502pt x 396.20856pt.
 Package epstopdf Info: Source file: <figures/BS_000_000_PWS.eps>
 (epstopdf)                    date: 2019-10-03 08:31:13
@@ -626,21 +631,21 @@ f>
 (epstopdf)                    size: 383778 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/BS_000_000_PWS-eps
 -converted-to.pdf figures/BS_000_000_PWS.eps>
-(epstopdf)             \includegraphics on input line 268.
+(epstopdf)             \includegraphics on input line 267.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/BS_000_000_PWS-eps-converted-to.pdf, id=410, 1445.4pt x 1084.05pt>
+<figures/BS_000_000_PWS-eps-converted-to.pdf, id=411, 1445.4pt x 1084.05pt>
 File: figures/BS_000_000_PWS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/BS_000_000_PWS-eps-converted-to.pdf>
 Package pdftex.def Info: figures/BS_000_000_PWS-eps-converted-to.pdf used on in
-put line 268.
+put line 267.
 (pdftex.def)             Requested size: 469.75502pt x 375.34833pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 ...S component with the vertical component.}
+l.269 ...S component with the vertical component.}
                                                    [1 <./figures/arrays_locatio
 n-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/BS_000_000_PWS_PWS_cluster_stackcc
@@ -654,23 +659,23 @@ Package epstopdf Info: Source file: <figures/BS_000_000_PWS_PWS_cluster_stackcc
 (epstopdf)             Command: <repstopdf --outfile=figures/BS_000_000_PWS_PWS
 _cluster_stackcc-eps-converted-to.pdf figures/BS_000_000_PWS_PWS_cluster_stackc
 c.eps>
-(epstopdf)             \includegraphics on input line 274.
+(epstopdf)             \includegraphics on input line 273.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf, id=424, 1445.
+<figures/BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf, id=425, 1445.
 4pt x 1156.32pt>
 File: figures/BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf Graphic f
 ile (type pdf)
 
 <use figures/BS_000_000_PWS_PWS_cluster_stackcc-eps-converted-to.pdf>
 Package pdftex.def Info: figures/BS_000_000_PWS_PWS_cluster_stackcc-eps-convert
-ed-to.pdf used on input line 274.
+ed-to.pdf used on input line 273.
 (pdftex.def)             Requested size: 469.75502pt x 388.30681pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276 ...S component with the vertical component.}
+l.275 ...S component with the vertical component.}
                                                    [2 <./figures/BS_000_000_PWS
 -eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/two_year_long_catalog.eps>
@@ -682,22 +687,22 @@ d-to.pdf>
 (epstopdf)                    size: 39411 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/two_year_long_cata
 log-eps-converted-to.pdf figures/two_year_long_catalog.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/two_year_long_catalog-eps-converted-to.pdf, id=469, 1445.4pt x 722.7pt
+<figures/two_year_long_catalog-eps-converted-to.pdf, id=470, 1445.4pt x 722.7pt
 >
 File: figures/two_year_long_catalog-eps-converted-to.pdf Graphic file (type pdf
 )
  <use figures/two_year_long_catalog-eps-converted-to.pdf>
 Package pdftex.def Info: figures/two_year_long_catalog-eps-converted-to.pdf use
-d on input line 280.
+d on input line 279.
 (pdftex.def)             Requested size: 400.0pt x 214.3496pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.282 ...w the timing of the main bursts of LFEs.}
+l.281 ...w the timing of the main bursts of LFEs.}
                                                    [3 <./figures/BS_000_000_PWS
 _PWS_cluster_stackcc-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/california.eps>
@@ -708,21 +713,21 @@ Package epstopdf Info: Source file: <figures/california.eps>
 (epstopdf)                    size: 21142 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/california-eps-con
 verted-to.pdf figures/california.eps>
-(epstopdf)             \includegraphics on input line 286.
+(epstopdf)             \includegraphics on input line 285.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/california-eps-converted-to.pdf, id=525, 597.23125pt x 845.1575pt>
+<figures/california-eps-converted-to.pdf, id=526, 597.23125pt x 845.1575pt>
 File: figures/california-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/california-eps-converted-to.pdf>
 Package pdftex.def Info: figures/california-eps-converted-to.pdf used on input 
-line 286.
+line 285.
 (pdftex.def)             Requested size: 400.0pt x 495.3152pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.288 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+l.287 ...Cyan dots correspond to $0.3 < d < 0.4$.}
                                                    [4 <./figures/two_year_long_
 catalog-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/cascadia.eps>
@@ -733,21 +738,21 @@ Package epstopdf Info: Source file: <figures/cascadia.eps>
 (epstopdf)                    size: 307093 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/cascadia-eps-conve
 rted-to.pdf figures/cascadia.eps>
-(epstopdf)             \includegraphics on input line 292.
+(epstopdf)             \includegraphics on input line 291.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/cascadia-eps-converted-to.pdf, id=581, 597.23125pt x 845.1575pt>
+<figures/cascadia-eps-converted-to.pdf, id=582, 597.23125pt x 845.1575pt>
 File: figures/cascadia-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/cascadia-eps-converted-to.pdf>
 Package pdftex.def Info: figures/cascadia-eps-converted-to.pdf used on input li
-ne 292.
+ne 291.
 (pdftex.def)             Requested size: 400.0pt x 404.76665pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.294 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+l.293 ...Cyan dots correspond to $0.3 < d < 0.4$.}
                                                    [5 <./figures/california-eps
 -converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/guerrero.eps>
@@ -758,21 +763,21 @@ Package epstopdf Info: Source file: <figures/guerrero.eps>
 (epstopdf)                    size: 65543 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/guerrero-eps-conve
 rted-to.pdf figures/guerrero.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             \includegraphics on input line 297.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/guerrero-eps-converted-to.pdf, id=601, 597.23125pt x 845.1575pt>
+<figures/guerrero-eps-converted-to.pdf, id=602, 597.23125pt x 845.1575pt>
 File: figures/guerrero-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/guerrero-eps-converted-to.pdf>
 Package pdftex.def Info: figures/guerrero-eps-converted-to.pdf used on input li
-ne 298.
+ne 297.
 (pdftex.def)             Requested size: 400.0pt x 545.15956pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.300 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+l.299 ...Cyan dots correspond to $0.3 < d < 0.4$.}
                                                    [6 <./figures/cascadia-eps-c
 onverted-to.pdf>]
 Package epstopdf Info: Source file: <figures/sanandreas.eps>
@@ -783,21 +788,21 @@ Package epstopdf Info: Source file: <figures/sanandreas.eps>
 (epstopdf)                    size: 17117 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/sanandreas-eps-con
 verted-to.pdf figures/sanandreas.eps>
-(epstopdf)             \includegraphics on input line 304.
+(epstopdf)             \includegraphics on input line 303.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sanandreas-eps-converted-to.pdf, id=617, 597.23125pt x 845.1575pt>
+<figures/sanandreas-eps-converted-to.pdf, id=618, 597.23125pt x 845.1575pt>
 File: figures/sanandreas-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/sanandreas-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sanandreas-eps-converted-to.pdf used on input 
-line 304.
+line 303.
 (pdftex.def)             Requested size: 400.0pt x 365.68575pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.306 ...Cyan dots correspond to $0.3 < d < 0.4$.}
+l.305 ...Cyan dots correspond to $0.3 < d < 0.4$.}
                                                    [7 <./figures/guerrero-eps-c
 onverted-to.pdf>]
 Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
@@ -809,21 +814,21 @@ Package epstopdf Info: Source file: <figures/slowslip_MRA.eps>
 (epstopdf)                    size: 63965 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_MRA-eps-c
 onverted-to.pdf figures/slowslip_MRA.eps>
-(epstopdf)             \includegraphics on input line 310.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/slowslip_MRA-eps-converted-to.pdf, id=632, 1445.4pt x 722.7pt>
+<figures/slowslip_MRA-eps-converted-to.pdf, id=633, 1445.4pt x 722.7pt>
 File: figures/slowslip_MRA-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_MRA-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_MRA-eps-converted-to.pdf used on inpu
-t line 310.
+t line 309.
 (pdftex.def)             Requested size: 400.0pt x 225.39464pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.312 ... (2016 ~\cite{TOD_2016}, their Table 1).}
+l.311 ... (2016 ~\cite{TOD_2016}, their Table 1).}
                                                    [8 <./figures/sanandreas-eps
 -converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/slowslip_synthetics.eps>
@@ -835,15 +840,15 @@ to.pdf>
 (epstopdf)                    size: 53754 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_synthetic
 s-eps-converted-to.pdf figures/slowslip_synthetics.eps>
-(epstopdf)             \includegraphics on input line 316.
+(epstopdf)             \includegraphics on input line 315.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/slowslip_synthetics-eps-converted-to.pdf, id=647, 2168.1pt x 722.7pt>
+<figures/slowslip_synthetics-eps-converted-to.pdf, id=648, 2168.1pt x 722.7pt>
 File: figures/slowslip_synthetics-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_synthetics-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_synthetics-eps-converted-to.pdf used 
-on input line 316.
+on input line 315.
 (pdftex.def)             Requested size: 450.0pt x 167.436pt.
 Package epstopdf Info: Source file: <figures/slowslip_denoising.eps>
 (epstopdf)                    date: 2019-06-18 16:46:11
@@ -854,38 +859,38 @@ o.pdf>
 (epstopdf)                    size: 99456 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/slowslip_denoising
 -eps-converted-to.pdf figures/slowslip_denoising.eps>
-(epstopdf)             \includegraphics on input line 322.
+(epstopdf)             \includegraphics on input line 321.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/slowslip_denoising-eps-converted-to.pdf, id=649, 1445.4pt x 722.7pt>
+<figures/slowslip_denoising-eps-converted-to.pdf, id=650, 1445.4pt x 722.7pt>
 File: figures/slowslip_denoising-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/slowslip_denoising-eps-converted-to.pdf>
 Package pdftex.def Info: figures/slowslip_denoising-eps-converted-to.pdf used o
-n input line 322.
+n input line 321.
 (pdftex.def)             Requested size: 450.0pt x 247.0549pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.324 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
+l.323 ...dd and Schwartz (2016 ~\cite{TOD_2016}).}
                                                    [9 <./figures/slowslip_MRA-e
 ps-converted-to.pdf> <./figures/slowslip_synthetics-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 327.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
 pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 \end{document}
+l.326 \end{document}
                      [10 <./figures/slowslip_denoising-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 327.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
 
 (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 327.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 327.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 326.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 326.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 9A4184562DC38B5E4CF15AB7BA235DA8;808.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 327.
+(rerunfilecheck)             Checksum: ACDD41FC95D11CE91ACD47BCAF1A5970;813.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 326.
  ) 
 Here is how much of TeX's memory you used:
  7496 strings out of 493117
@@ -894,7 +899,7 @@ Here is how much of TeX's memory you used:
  10741 multiletter control sequences out of 15000+600000
  27129 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,41p,2571b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,8n,41p,2707b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
@@ -908,10 +913,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on proposal.pdf (36 pages, 3217629 bytes).
+Output written on proposal.pdf (36 pages, 3217823 bytes).
 PDF statistics:
- 897 PDF objects out of 1000 (max. 8388607)
- 562 compressed objects within 6 object streams
+ 898 PDF objects out of 1000 (max. 8388607)
+ 563 compressed objects within 6 object streams
  146 named destinations out of 1000 (max. 500000)
  210 words of extra memory for PDF output out of 10000 (max. 10000000)
 
