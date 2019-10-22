@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
+from matplotlib.patches import Rectangle
+
 from stacking import linstack, powstack, PWstack
 
 def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
@@ -65,7 +67,16 @@ def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
         dt = EW_UD[i].stats.delta
         ncor = int((EW_UD[i].stats.npts - 1) / 2)
         t = dt * np.arange(- ncor, ncor + 1)
-        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'k-')
+        if (i == 36):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'r-')
+        elif (i == 51):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'b-')
+        elif (i == 19):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'g-')
+        else:
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * EW_UD[i].data, 'k-')
+    wave = Rectangle((4.0, 5), 1.4, 86, facecolor = 'c', fill=True, alpha=0.5)
+    ax1.add_patch(wave)
     plt.plot(t, - 2.0 + amp_lin * EW_lin.data, 'r-')
     plt.plot(t, - 2.0 + amp_pow * EW_pow.data, 'b-')
     plt.plot(t, - 2.0 + amp_PWS * EW_PWS.data, 'g-')
@@ -82,7 +93,16 @@ def plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
         dt = NS_UD[i].stats.delta
         ncor = int((NS_UD[i].stats.npts - 1) / 2)
         t = dt * np.arange(- ncor, ncor + 1)
-        plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'k-')
+        if (i == 36):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'r-')
+        elif (i == 51):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'b-')
+        elif (i == 19):
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'g-')
+        else:
+            plt.plot(t, (2.0 * i + 1) - 2 * n1 + amp * NS_UD[i].data, 'k-')
+    wave = Rectangle((4.0, 5), 1.4, 86, facecolor = 'c', fill=True, alpha=0.5)
+    ax2.add_patch(wave)
     plt.plot(t, - 2.0 + amp_lin * NS_lin.data, 'r-')
     plt.plot(t, - 2.0 + amp_pow * NS_pow.data, 'b-')
     plt.plot(t, - 2.0 + amp_PWS * NS_PWS.data, 'g-')
@@ -123,19 +143,19 @@ if __name__ == '__main__':
     amp_pow, amp_PWS, n1, n2)
 
     # Power stack
-    type_stack = 'pow'
-    amp = 2.0
-    amp_lin = 15.0
-    amp_pow = 1.0
-    amp_PWS = 100.0
-    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-    amp_pow, amp_PWS, n1, n2)
+#    type_stack = 'pow'
+#    amp = 2.0
+#    amp_lin = 15.0
+#    amp_pow = 1.0
+#    amp_PWS = 100.0
+#    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+#    amp_pow, amp_PWS, n1, n2)
 
     # Phase-weighted stack
-    type_stack = 'PWS'
-    amp = 20.0
-    amp_lin = 200.0
-    amp_pow = 10.0
-    amp_PWS = 1000.0
-    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
-    amp_pow, amp_PWS, n1, n2)
+#    type_stack = 'PWS'
+#    amp = 20.0
+#    amp_lin = 200.0
+#    amp_pow = 10.0
+#    amp_PWS = 1000.0
+#    plot_stack_ccorr(arrayName, x0, y0, type_stack, w, Tmax, amp, amp_lin, \
+#    amp_pow, amp_PWS, n1, n2)

@@ -57,7 +57,7 @@ def plot_envelopes(arrayName, type_stack, cc_stack, mintremor, minratio, Tmax, a
                 EW = data[0]
                 NS = data[1]
                 # Plot
-                plt.subplot2grid((11, 11), (i + 5, j + 5))
+                plt.subplot2grid((11, 11), (5 - j, i + 5))
                 npts = int((EW.stats.npts - 1) / 2)
                 dt = EW.stats.delta
                 t = dt * np.arange(- npts, npts + 1)
@@ -76,19 +76,19 @@ def plot_envelopes(arrayName, type_stack, cc_stack, mintremor, minratio, Tmax, a
 
 if __name__ == '__main__':
 
-    arrayName = 'TB'
+    arrayName = 'BS'
     mintremor = 30
     Tmax = 15.0
     Vs = 3.6
     Vp = 6.4
     ds = 5.0
 
-    amp = plot_envelopes(arrayName, 'lin', 'lin', mintremor, 10.0, Tmax, 0.1, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'lin', 'pow', mintremor, 10.0, Tmax, 3.0, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'lin', 'PWS', mintremor, 50.0, Tmax, 0.05, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'pow', 'lin', mintremor, 10.0, Tmax, 0.5, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'pow', 'pow', mintremor, 30.0, Tmax, 10.0, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'pow', 'PWS', mintremor, 50.0, Tmax, 0.2, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'PWS', 'lin', mintremor, 15.0, Tmax, 0.05, Vs, Vp, ds)
-    amp = plot_envelopes(arrayName, 'PWS', 'pow', mintremor, 40.0, Tmax, 1.0, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'lin', 'lin', mintremor, 10.0, Tmax, 0.1, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'lin', 'pow', mintremor, 10.0, Tmax, 3.0, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'lin', 'PWS', mintremor, 50.0, Tmax, 0.05, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'pow', 'lin', mintremor, 10.0, Tmax, 0.5, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'pow', 'pow', mintremor, 30.0, Tmax, 10.0, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'pow', 'PWS', mintremor, 50.0, Tmax, 0.2, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'PWS', 'lin', mintremor, 15.0, Tmax, 0.05, Vs, Vp, ds)
+#    amp = plot_envelopes(arrayName, 'PWS', 'pow', mintremor, 40.0, Tmax, 1.0, Vs, Vp, ds)
     amp = plot_envelopes(arrayName, 'PWS', 'PWS', mintremor, 100.0, Tmax, 0.01, Vs, Vp, ds)
