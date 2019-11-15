@@ -42,10 +42,10 @@ names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \
 #for name in names:
 #    for station in stations:
 #        (times, disps, gaps) = get_MODWT_GeoNet.read_data(station, direction)
-#
+
 #        (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, disps, gaps, J, \
-#        name, station, direction, False, False, False)
-#
+#            name, station, direction, False, False, False)
+
 #        (Ds, Ss) = get_MODWT_GeoNet.compute_details(times, disps, gaps, Ws, \
 #            J, name, station, direction, True, False, False)
 
@@ -58,7 +58,7 @@ for name in names:
         fdisps = get_MODWT_GeoNet.median_filtering(disps, 11)
 
         (Ws, Vs) = get_MODWT_GeoNet.compute_wavelet(times, fdisps, gaps, J, \
-        name, station, direction, False, False, False)
+            name, station, direction, False, False, False)
 
         dispts = get_MODWT_GeoNet.thresholding(times, disps, gaps, Ws, Vs, J, \
             name, station, direction, events, locations, True, False, True)
