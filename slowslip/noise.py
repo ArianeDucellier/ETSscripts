@@ -28,7 +28,8 @@ for name in names:
     (W, V) = pyramid(X, name, J)
     if ((name[0 : 2] == 'LA') or (name[0 : 1] == 'C')):
         (nuH, nuG) = DWT.get_nu(name, J)
-    # Maxima
+    (D, S) = get_DS(X, W, name, J)
+    # Maxima wavelet coefficients
     maxvalue = [np.max(np.abs(X))]
     for j in range(0, J):
         maxvalue.append(np.max(np.abs(W[j])))
@@ -75,3 +76,38 @@ for name in names:
     plt.legend(loc=1)
     plt.title('MODWT of random noise')
     plt.savefig('noise/' + name + '_WV.eps', format='eps')
+    plt.close(1)
+    # Maxima details
+    maxvalue = [np.max(np.abs(X))]
+    for j in range(0, J):
+        maxvalue.append(np.max(np.abs(D[j])))
+    maxvalue.append(np.max(np.abs(S[J])))
+    ymax = max(maxvalue)
+    # Plot details and smooth
+    plt.figure(2, figsize=(15, (J + 2) * 4))
+    plt.subplot2grid((J + 2, 1), (J + 1, 0))
+    t = np.arange(0, N)
+    plt.plot(t, X, 'k', label='X')
+    plt.xlim([np.min(t), np.max(t)])
+    plt.ylim([- ymax, ymax])
+    plt.legend(loc=1)
+    for j in range(0, J):
+        plt.subplot2grid((J + 2, 1), (J - j, 0))
+        plt.plot(t, D[j], 'k', label='D' + str(j + 1))
+        Lj = (2 ** (j + 1) - 1) * (L - 1) + 1
+        plt.axvline(Lj - 2, linewidth=1, color='red')
+        plt.axvline(N - Lj + 1, linewidth=1, color='red')
+        plt.xlim([np.min(t), np.max(t)])
+        plt.ylim([- ymax, ymax])
+        plt.legend(loc=1)
+    plt.subplot2grid((J + 2, 1), (0, 0))
+    plt.plot(t, S[J], 'k', label='S' + str(J))
+    Lj = (2 ** 6 - 1) * (L - 1) + 1
+    plt.axvline(Lj - 2, linewidth=1, color='red')
+    plt.axvline(N - Lj + 1, linewidth=1, color='red')
+    plt.xlim([np.min(t), np.max(t)])
+    plt.ylim([- ymax, ymax])
+    plt.legend(loc=1)
+    plt.title('MODWT of random noise')
+    plt.savefig('noise/' + name + '_DS.eps', format='eps')
+    plt.close(2)
