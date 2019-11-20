@@ -42,7 +42,12 @@ name = 'LA8'
 g = MODWT.get_scaling(name)
 L = len(g)
 J = 6
-nmax = 15
+nmax = 42
+nstep = 3
+filling = 'both'
+
+# Set random seed
+np.random.seed(0)
 
 # Compute MODWT
 [W0, V0] = pyramid(disp, name, J)
@@ -59,14 +64,24 @@ for j in range(1, J + 1):
 dispt = inv_pyramid(W0t, V0t, name, J)
 
 # Loop on missing values
-gaps = [614, 797]
+gaps = [605, 790]
 for gap in gaps:
     # Loop on length of gap
-    for n in range(1, nmax):
+    for n in range(1, nmax, nstep):
         disp_interp = np.copy(disp)
-        # Remove points, replace by interpolation
-        for i in range(0, n):
-            disp_interp[gap + i] = disp_interp[gap - 1] + (disp_interp[gap + n] - disp_interp[gap - 1]) * (i + 1) / (n + 1)
+        # Remove points, replace by interpolation or noise
+        if (filling == 'interpolation'):
+            for i in range(0, n):
+                disp_interp[gap + i] = disp_interp[gap - 1] + (disp_interp[gap + n] \
+                    - disp_interp[gap - 1]) * (i + 1) / (n + 1)
+        elif (filling == 'noise'):
+            sigma = np.std(disp)
+            disp_interp[gap : (gap + n)] = np.random.normal(0.0, sigma, n)
+        else:
+            sigma = np.std(disp)
+            for i in range(0, n):
+                disp_interp[gap + i] = disp_interp[gap - 1] + (disp_interp[gap + n] \
+                    - disp_interp[gap - 1]) * (i + 1) / (n + 1) + np.random.normal(0.0, sigma, 1)
         # Compute MODWT
         [W, V] = pyramid(disp_interp, name, J)
         (D, S) = get_DS(disp_interp, W, name, J)
@@ -108,7 +123,7 @@ for gap in gaps:
         plt.axvline(time[N - abs(nuG[J - 1])], linewidth=1, color='blue')
         plt.xlim(np.min(time[gap - 50]), np.max(time[gap + n + 49]))
         plt.legend(loc=1)
-        plt.savefig('missing_values/WV_' + str(gap) + '_' + str(n) + '.eps', format='eps')
+        plt.savefig('missing_values/' + filling + '/WV_' + str(gap) + '_' + str(n) + '.eps', format='eps')
         plt.close(1)
         # Figure wavelet details
         plt.figure(2, figsize=(15, 24))
@@ -118,9 +133,9 @@ for gap in gaps:
         plt.plot(time, disp, 'k', label='Data')
         plt.xlim(np.min(time[gap - 50]), np.max(time[gap + n + 49]))
         plt.legend(loc=1)
-        # Plot wavelet coefficients at each level
+        # Plot details at each level
         for j in range(0, J):
-            plt.subplot2grid((J + 2, 1), (J + 1 - j, 0))
+            plt.subplot2grid((J + 2, 1), (J - j, 0))
             plt.plot(time, D[j], 'r')
             plt.plot(time, D0[j], 'k', label='D' + str(j + 1))
             Lj = (2 ** (j + 1) - 1) * (L - 1) + 1
@@ -137,10 +152,10 @@ for gap in gaps:
         plt.axvline(time[N - Lj + 1], linewidth=1, color='blue')
         plt.xlim(np.min(time[gap - 50]), np.max(time[gap + n + 49]))
         plt.legend(loc=1)
-        plt.savefig('missing_values/DS_' + str(gap) + '_' + str(n) + '.eps', format='eps')
+        plt.savefig('missing_values/' + filling + '/DS_' + str(gap) + '_' + str(n) + '.eps', format='eps')
         plt.close(2)
         # Figure denoising
-        plt.figure(2, figsize=(15, 6))
+        plt.figure(3, figsize=(15, 6))
         # Plot data
         plt.subplot2grid((2, 1), (1, 0))
         plt.plot(time, disp_interp, 'r')
@@ -153,5 +168,5 @@ for gap in gaps:
         plt.plot(time, dispt, 'k', label='Denoised')
         plt.xlim(np.min(time[gap - 150]), np.max(time[gap + n + 149]))
         plt.legend(loc=1)
-        plt.savefig('missing_values/denoised_' + str(gap) + '_' + str(n) + '.eps', format='eps')
+        plt.savefig('missing_values/' + filling + '/denoised_' + str(gap) + '_' + str(n) + '.eps', format='eps')
         plt.close(3)

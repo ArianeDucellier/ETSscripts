@@ -11,7 +11,7 @@ np.random.seed(0)
 
 # Generate random noise time series
 N = 2048
-X = noise = np.random.normal(0.0, 1.0, N)
+X = np.random.normal(0.0, 1.0, N)
 
 # Parameters
 names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \

@@ -9,7 +9,7 @@ import numpy as np
 
 import get_MODWT_GeoNet
 
-station = 'CKID'
+station = 'PUKE'
 direction1 = 'e'
 direction2 = 'u'
 named1 = 'East'
@@ -166,5 +166,5 @@ plt.ylim(min(ymin), max(ymax))
 plt.xlabel('Time (years)', fontsize=16)
 plt.legend(loc=2, fontsize=16)
 
-plt.savefig('Figure2_CKID.eps', format='eps')
+plt.savefig('Figure2_' + station + '.eps', format='eps')
 plt.close(1)

@@ -11,7 +11,7 @@ import numpy as np
 import get_MODWT_GeoNet
 
 stations = ['PUKE', 'ANAU', 'GISB', 'MAHI', 'CKID']
-direction = 'e'
+direction = 'n'
 
 lats = [-38.07141492, -38.268212852, -38.635336932, -39.152563727, \
     -39.65787439]
