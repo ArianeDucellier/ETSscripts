@@ -11,7 +11,7 @@ import numpy as np
 import get_MODWT_GeoNet
 
 stations = ['PUKE', 'ANAU', 'GISB', 'MAHI', 'CKID']
-direction = 'u'
+direction = 'e'
 
 lats = [-38.07141492, -38.268212852, -38.635336932, -39.152563727, \
     -39.65787439]
@@ -65,7 +65,7 @@ names = ['Haar', 'D4', 'D6', 'D8', 'D10', 'D12', 'D14', 'D16', 'D18', 'D20', \
 
 # Plot the wavelet details as function of latitude
 J = 8
-level = 6
+level = 8
 amp = 0.05
 #
 for name in names:
