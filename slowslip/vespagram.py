@@ -6,15 +6,24 @@ import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
 
+from math import cos, pi, sin, sqrt
+
+import date
 import DWT
 from MODWT import get_DS, get_scaling, pyramid
 
-stations = ['CHCM', 'CLRS', 'CUSH', 'ELSR', 'ESM1', 'FRID', 'PGC5', 'PNCL', 'SQIM', 'UFDA']
+#stations = ['ALBH', 'CHCM', 'COUP', 'PGC5', 'PTAA', 'SACH', 'SC02', 'SC03', 'SEQM', 'UFDA', 'FRID', 'PNCL', 'POUL', 'SQIM']
+stations = ['ALBH', 'CHCM', 'COUP', 'PGC5', 'SC02', 'SC03', 'UFDA', 'FRID', 'PNCL', 'SQIM']
 direction = 'lon'
 dataset = 'cleaned'
-lats = [48.8203, 47.4233, 48.5350, 48.6485, 48.1014, 48.1168, 48.0825]
-lons = [-124.1309, -123.2199, -123.0180, -123.4511, -123.4152, -123.4943, \
-    -123.1018]
+#lats = [48.2323, 48.0106, 48.2173, 48.6483, 48.1168, 48.5667, 48.5462, 47.8166, 48.0914, 47.7550, 48.5352, 48.1014, 47.7546, 48.0823]
+#lons = [-123.2915, -122.7759, -122.6856, -123.4511, -123.4943, -123.4207, -123.0076, -123.7057, -123.1135, -122.6670, -123.0180, -123.4152, -122.6672, -123.1020]
+lats = [48.2323, 48.0106, 48.2173, 48.6483, 48.5462, 47.8166, 47.7550, 48.5352, 48.1014, 48.0823]
+lons = [-123.2915, -122.7759, -122.6856, -123.4511, -123.0076, -123.7057, -122.6670, -123.0180, -123.4152, -123.1020]
+lat0 = 48.1168
+lon0 = -123.4943
+
+events = [2009.78, 2009.86, 2010.06, 2010.085, 2010.21, 2010.24, 2010.65, 2011, 2011.07, 2011.2, 2011.32, 2011.38, 2011.6]
 
 # Parameters
 name = 'LA8'
@@ -31,7 +40,7 @@ Vs = []
 Ds = []
 Ss = []
 
-# Data
+# GPS data
 for station in stations:
     filename = '../data/PANGA/' + dataset + '/' + station + '.' + direction
     # Load the data
@@ -84,6 +93,35 @@ for time in times:
 tmin = max(tbegin)
 tmax = min(tend)
 
+# Load tremor data from the catalog downloaded from the PNSN
+filename = '../data/timelags/08_01_2009_09_05_2018.txt'
+day = np.loadtxt(filename, dtype=np.str, usecols=[0], skiprows=16)
+hour = np.loadtxt(filename, dtype=np.str, usecols=[1], skiprows=16)
+nt = np.shape(day)[0]
+time_tremor = np.zeros(nt)
+for i in range(0, nt):
+    time_tremor[i] = date.string2day(day[i], hour[i])
+location = np.loadtxt('../data/timelags/08_01_2009_09_05_2018.txt', usecols=[2, 3], skiprows=16)
+lat_tremor = location[:, 0]
+lon_tremor = location[:, 1]
+
+# Compute the tremor time for sources located less than 75 km from the origin
+a = 6378.136
+e = 0.006694470
+dx = (pi / 180.0) * a * cos(lat0 * pi / 180.0) / sqrt(1.0 - e * e * sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0))
+dy = (3.6 * pi / 648.0) * a * (1.0 - e * e) / ((1.0 - e * e * sin(lat0 * pi / 180.0) * sin(lat0 * pi / 180.0)) ** 1.5)
+dist = np.sqrt(np.power((lat_tremor - lat0) * dy, 2.0) + np.power((lon_tremor - lon0) * dx, 2.0))
+k = (dist <= 100.0)
+time_tremor = time_tremor[k]
+
+# Number of tremors per day
+ntremor = np.zeros(len(times[0]))
+for i in range(0, len(times[0])):
+    for j in range (0, len(time_tremor)):
+        if ((time_tremor[j] >= times[0][i] - 0.5 / 365.0) and \
+            (time_tremor[j] <= times[0][i] + 0.5 / 365.0)):
+            ntremor[i] = ntremor[i] + 1
+
 # Loop on details
 for j in range(0, J):
     times_subset = []
@@ -99,12 +137,16 @@ for j in range(0, J):
     latmin = min(lats)
     for i in range(0, len(slowness)):
         for (time, Dj, lat) in zip(times_subset, Dj_subset, lats):
-            Dj_interp = np.interp(time + slowness[i] * (lat - latmin), time, Dj)
+            Dj_interp = np.interp(time + slowness[i] * (lat - lat0), time, Dj)
             vespagram[i, :] = vespagram[i, :] + Dj_interp
 
-    plt.figure(1, figsize=(15, 5))
+    plt.figure(1, figsize=(15, 10))
+    plt.subplot(211)
     plt.contourf(times_subset[0], slowness, vespagram, cmap=plt.get_cmap('seismic'))
     plt.colorbar(orientation='horizontal')
+    plt.subplot(212)
+    plt.plot(times[0], ntremor, 'k', label='Number of tremor / day')
+    plt.xlim(tmin, tmax)
     plt.savefig('vespagram/D' + str(j + 1) + '.eps', format='eps')
     plt.close(1)
 
