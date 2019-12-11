@@ -2,11 +2,13 @@
 Script to plot a vespagram-like figure of slow slip
 """
 
+import datetime
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import numpy as np
 
 from math import cos, pi, sin, sqrt
+from scipy.io import loadmat
 
 import date
 import DWT
@@ -23,7 +25,13 @@ lons = [-123.2915, -122.7759, -122.6856, -123.4511, -123.0076, -123.7057, -122.6
 lat0 = 48.1168
 lon0 = -123.4943
 
-events = [2009.78, 2009.86, 2010.06, 2010.085, 2010.21, 2010.24, 2010.65, 2011, 2011.07, 2011.2, 2011.32, 2011.38, 2011.6]
+#good_events = [2009.86448, 2010.0616, 2010.08624, 2010.20945, 2011.06092, 2011.32101, 2011.46886, 2011.95072]
+
+good_events = [2009.86174, 2010.05886, 2010.08624, 2010.20671, 2011.06092, 2011.32101, 2011.46886, 2011.95072]
+
+#bad_events = [2009.77687, 2010.23682, 2010.6475, 2011.00068, 2011.19507, 2011.38398, 2011.44422, 2011.49076, 2011.95072]
+
+bad_events = [2007.78097, 2008.07392, 2008.1807, 2008.35592, 2009.10883, 2009.19644, 2009.3525, 2009.77413, 2010.23682, 2010.63655, 2011.00068, 2011.19507, 2011.38398, 2011.44148, 2011.49624, 2011.6167, 2011.95072]
 
 # Parameters
 name = 'LA8'
@@ -94,16 +102,34 @@ tmin = max(tbegin)
 tmax = min(tend)
 
 # Load tremor data from the catalog downloaded from the PNSN
-filename = '../data/timelags/08_01_2009_09_05_2018.txt'
-day = np.loadtxt(filename, dtype=np.str, usecols=[0], skiprows=16)
-hour = np.loadtxt(filename, dtype=np.str, usecols=[1], skiprows=16)
+#filename = '../data/timelags/08_01_2009_09_05_2018.txt'
+#day = np.loadtxt(filename, dtype=np.str, usecols=[0], skiprows=16)
+#hour = np.loadtxt(filename, dtype=np.str, usecols=[1], skiprows=16)
+#nt = np.shape(day)[0]
+#time_tremor = np.zeros(nt)
+#for i in range(0, nt):
+#    time_tremor[i] = date.string2day(day[i], hour[i])
+#location = np.loadtxt('../data/timelags/08_01_2009_09_05_2018.txt', usecols=[2, 3], skiprows=16)
+#lat_tremor = location[:, 0]
+#lon_tremor = location[:, 1]
+
+filename = '../data/timelags/SummaryLatest.mat'
+data = loadmat(filename)
+TREMall = data['TREMall']
+day = TREMall[0][0][0]
+latitude = TREMall[0][0][1]
+longitude = TREMall[0][0][2]
 nt = np.shape(day)[0]
 time_tremor = np.zeros(nt)
+lat_tremor = np.zeros(nt)
+lon_tremor = np.zeros(nt)
 for i in range(0, nt):
-    time_tremor[i] = date.string2day(day[i], hour[i])
-location = np.loadtxt('../data/timelags/08_01_2009_09_05_2018.txt', usecols=[2, 3], skiprows=16)
-lat_tremor = location[:, 0]
-lon_tremor = location[:, 1]
+    myday = date.matlab2ymdhms(day[i][0])
+    t1 = datetime.date(myday[0], myday[1], myday[2])
+    t2 = datetime.date(myday[0], 1, 1)
+    time_tremor[i] = myday[0] + (t1 - t2).days / 365.25
+    lat_tremor[i] = latitude[i][0]
+    lon_tremor[i] = longitude[i][0]
 
 # Compute the tremor time for sources located less than 75 km from the origin
 a = 6378.136
@@ -139,18 +165,207 @@ for j in range(0, J):
         for (time, Dj, lat) in zip(times_subset, Dj_subset, lats):
             Dj_interp = np.interp(time + slowness[i] * (lat - lat0), time, Dj)
             vespagram[i, :] = vespagram[i, :] + Dj_interp
+    if (j == 2):
+        vesp3 = vespagram
+    if (j == 3):
+        vesp4 = vespagram
+    if (j == 4):
+        vesp5 = vespagram
+    if (j == 5):
+        vesp6 = vespagram
 
     plt.figure(1, figsize=(15, 10))
     plt.subplot(211)
-    plt.contourf(times_subset[0], slowness, vespagram, cmap=plt.get_cmap('seismic'))
+    plt.contourf(times_subset[0], slowness * 365.25 / dy, vespagram, cmap=plt.get_cmap('seismic'), vmin=-10.0, vmax=10.0)
+    for event in good_events:
+        plt.axvline(event, linewidth=1, color='grey')
+    for event in bad_events:
+        plt.axvline(event, linewidth=1, color='grey')
+    plt.xlabel('Time (year)')
+    plt.ylabel('Slowness (day / km)')
     plt.colorbar(orientation='horizontal')
     plt.subplot(212)
-    plt.plot(times[0], ntremor, 'k', label='Number of tremor / day')
+    plt.axvline(good_events[0], linewidth=1, color='red')
+    plt.axvline(good_events[1], linewidth=1, color='green')
+    plt.axvline(good_events[2], linewidth=1, color='blue')
+    plt.axvline(good_events[3], linewidth=1, color='magenta')
+    plt.axvline(good_events[4], linewidth=1, color='cyan')
+    plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+    plt.axvline(good_events[6], linewidth=1, color='sienna')
+    plt.axvline(good_events[7], linewidth=1, color='tan')
+    for event in bad_events:
+        plt.axvline(event, linewidth=1, color='grey')
+    plt.plot(times[0], ntremor, 'k')
     plt.xlim(tmin, tmax)
+    plt.xlabel('Time (year)')
+    plt.ylabel('Number of tremor per day')
     plt.savefig('vespagram/D' + str(j + 1) + '.eps', format='eps')
     plt.close(1)
 
-    plt.figure(2, figsize=(15, 5))
-    plt.plot(times_subset[0], vespagram[int((len(slowness) - 1) / 2), :], 'k')
-    plt.savefig('vespagram/times_D' + str(j + 1) + '.eps', format='eps')
-    plt.close(2)
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp3 + vesp4, cmap=plt.get_cmap('seismic'), vmin=-20.0, vmax=20.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D34.eps', format='eps')
+plt.close(1)
+
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp3 + vesp4 + vesp5, cmap=plt.get_cmap('seismic'), vmin=-20.0, vmax=20.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D345.eps', format='eps')
+plt.close(1)
+
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp3 + vesp4 + vesp5 + vesp6, cmap=plt.get_cmap('seismic'), vmin=-30.0, vmax=30.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D3456.eps', format='eps')
+plt.close(1)
+
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp4 + vesp5 + vesp6, cmap=plt.get_cmap('seismic'), vmin=-24.0, vmax=24.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D456.eps', format='eps')
+plt.close(1)
+
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp4 + vesp5, cmap=plt.get_cmap('seismic'), vmin=-16.0, vmax=16.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D45.eps', format='eps')
+plt.close(1)
+
+plt.figure(1, figsize=(15, 10))
+plt.subplot(211)
+plt.contourf(times_subset[0], slowness * 365.25 / dy, vesp5 + vesp6, cmap=plt.get_cmap('seismic'), vmin=-25.0, vmax=25.0)
+for event in good_events:
+    plt.axvline(event, linewidth=1, color='grey')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.xlabel('Time (year)')
+plt.ylabel('Slowness (day / km)')
+plt.colorbar(orientation='horizontal')
+plt.subplot(212)
+plt.axvline(good_events[0], linewidth=1, color='red')
+plt.axvline(good_events[1], linewidth=1, color='green')
+plt.axvline(good_events[2], linewidth=1, color='blue')
+plt.axvline(good_events[3], linewidth=1, color='magenta')
+plt.axvline(good_events[4], linewidth=1, color='cyan')
+plt.axvline(good_events[5], linewidth=1, color='darkorchid')
+plt.axvline(good_events[6], linewidth=1, color='sienna')
+plt.axvline(good_events[7], linewidth=1, color='tan')
+for event in bad_events:
+    plt.axvline(event, linewidth=1, color='grey')
+plt.plot(times[0], ntremor, 'k')
+plt.xlim(tmin, tmax)
+plt.xlabel('Time (year)')
+plt.ylabel('Number of tremor per day')
+plt.savefig('vespagram/D56.eps', format='eps')
+plt.close(1)

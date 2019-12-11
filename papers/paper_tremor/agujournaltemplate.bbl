@@ -88,6 +88,64 @@ Bostock, M.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Chestler%
+\ \BBA {} Creager%
+}{%
+Chestler%
+\ \BBA {} Creager%
+}{%
+{\protect \APACyear {2017}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+CHE_2017_JGR}
+\APACinsertmetastar {%
+CHE_2017_JGR}%
+\begin{APACrefauthors}%
+Chestler, S.%
+\BCBT {}\ \BBA {} Creager, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017{\protect \BCnt {1}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Evidence for a scale-limited low-frequecny earthquake
+  source process} {Evidence for a scale-limited low-frequecny earthquake source
+  process}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research. Solid
+  Earth}{122}{}{3099-3114}.
+\newblock
+\APACrefnote{doi:10.1002/2016jb013717}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Chestler%
+\ \BBA {} Creager%
+}{%
+Chestler%
+\ \BBA {} Creager%
+}{%
+{\protect \APACyear {2017}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+CHE_2017_G3}
+\APACinsertmetastar {%
+CHE_2017_G3}%
+\begin{APACrefauthors}%
+Chestler, S.%
+\BCBT {}\ \BBA {} Creager, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017{\protect \BCnt {2}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A model for low-frequency earthquake slip} {A model for
+  low-frequency earthquake slip}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{18}{}{4690-4708}.
+\newblock
+\APACrefnote{doi:10.1002/2017gc007253}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Fagereng%
 \ \BBA {} Diener%
 }{%
@@ -100,7 +158,7 @@ FAG_2011}
 \APACinsertmetastar {%
 FAG_2011}%
 \begin{APACrefauthors}%
-Fagereng, Â.%
+Fagereng, r.%
 \BCBT {}\ \BBA {} Diener, J.%
 \end{APACrefauthors}%
 \unskip\
@@ -127,7 +185,7 @@ FAG_2014}
 \APACinsertmetastar {%
 FAG_2014}%
 \begin{APACrefauthors}%
-Fagereng, Â.%
+Fagereng, r.%
 , G.W.B., H.%
 \BCBL {}\ \BBA {} Diener, J.%
 \end{APACrefauthors}%
@@ -630,6 +688,36 @@ Shelly, D.%
   slip}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Nature}{442}{}{188-192}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sweet%
+, Creager%
+, Houston%
+\BCBL {}\ \BBA {} Chestler%
+}{%
+Sweet%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+SWE_2019}
+\APACinsertmetastar {%
+SWE_2019}%
+\begin{APACrefauthors}%
+Sweet, J.%
+, Creager, K.%
+, Houston, H.%
+\BCBL {}\ \BBA {} Chestler, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Variations in {Cascadia} low-frequency earthquake
+  behavior with downdip distance} {Variations in {Cascadia} low-frequency
+  earthquake behavior with downdip distance}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{20}{}{1202-1217}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
