@@ -34,11 +34,11 @@ The instrument response can be obtained from here: \\
 
 \paragraph{get\_stations.py} We look at all the stations from the BK, NC and PB permanent network, and keep the stations that are less than 100 km from the epicenter of the LFE family. For each family, we get the stations where we hope to see an LFE in the seismic waveforms.
 
-\paragraph{save\_waveforms.py} We download the waveform for each LFE and each permanent station less than 100 km from the epicenter of the LFE family. We save all the waveforms into a file for future data analysis.
+\paragraph{save\_waveforms.py} We download the waveform for each LFE and each permanent station less than 100 km from the epicenter of the LFE family. We save all the waveforms into a file for future data analysis. NOT USED ANYMORE
 
-\paragraph{draw\_waveforms.py}
+\paragraph{draw\_waveforms.py} We plot the waveform with or without preprocessing (MODWT or wavelet-based-denoising). NOT USED ANYMORE
 
-\paragraph{compute\_stats.py}
+\paragraph{compute\_stats.py} Compute histogram of cross-correlation of each waveform with the template for each station and each channel.
 
 \paragraph{find\_LFEs.py} We download the seismic waveforms for each station and each channel for the whole time period when we look for LFEs. Then, for each seismic station and each channel, we detrend the data, taper the first and last 5 seconds of the data with a Hann window, remove the instrument response, bandpass filter between 1.5 and 9 Hz, and resample the data to 20 Hz. We then select a time window of the same length as the template. We compute the cross correlation value for each station and each channel. Then we move the selected time window from one sample point, and we compute again the cross correlation. We move the time window sample point by sample point until we have covered the whole time period that we have downloaded. We thus have the stacked cross correlation in function of time for the whole time period. We compute the median absolute deviation (MAD) of the stacked cross correlation function, and whenever the cross correlation is higher that eight times the MAD, we decide that there is an LFE. We marge the LFEs that are within one second of each other, as they are probably the same LFE. We thus obtain a new catalog of LFEs.
 
