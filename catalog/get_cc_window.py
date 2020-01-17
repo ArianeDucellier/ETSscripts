@@ -113,12 +113,14 @@ def get_cc_window(filename, TDUR, filt, dt, nattempts, waittime, \
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
             if (station[0 : 2] == 'ME' or station == 'B039'):
-                D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_IRIS(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
             # Second case: we get the data from NCEDC
             else:
-                D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_NCEDC(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
             if (type(D) == obspy.core.stream.Stream):
                 # Add to stream
                 if (station == 'B039'):
