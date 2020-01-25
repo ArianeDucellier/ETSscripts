@@ -1,6 +1,6 @@
 """
 This module contains functions to download seismic data
-from the IRIS DMC or the NCEDC web site
+from the IRIS DMC or the NCEDC website
 """
 
 import obspy
@@ -46,6 +46,8 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
         deconvolved, filtered, and resampled
+        type orientation = list of dictionnaries
+        orientation = azimuth, dip for 3 channels
     """
     # Create client
     fdsn_client = fdsn.Client('IRIS')
@@ -65,14 +67,27 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
             # Remove instrument response
             D.remove_response(output='VEL', \
                 pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
+            # Filter
             D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
                 zerophase=True)
+            # Resample
             freq = D[0].stats.sampling_rate
             ratio = Fraction(int(freq), int(1.0 / dt))
             D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
             D.decimate(ratio.numerator, no_filter=True)
+            # Get station orientation
+            filename = '../data/response/' + network + '_' + station + '.xml'
+            inventory = read_inventory(filename, format='STATIONXML')
+            orientation = []
+            for channel in range(0, len(D)):
+                angle = inventory.get_orientation(D[channel].stats.network + \
+                    '.' + D[channel].stats.station + '.' + \
+                    D[channel].stats.location + '.' + \
+                    D[channel].stats.channel, Tstart + D[channel].stats.delta \
+                    * D[channel].stats.npts * 0.5)
+                orientation.append(angle)
             success = True
-            return(D)
+            return(D, orientation)
         except:
             message = 'Could not download data for station {} '.format( \
                 station) + 'at time {}/{}/{} - {}:{}:{}\n'.format( \
@@ -86,7 +101,7 @@ def get_from_IRIS(station, network, channels, location, Tstart, Tend, \
                 with open(errorfile, 'a') as file:
                     file.write('Failed to download data after {} attempts\n'. \
                         format(nattempts))
-                return(0)
+                return((0, 0))
 
 def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
     filt, dt, nattempts, waittime, errorfile):
@@ -120,6 +135,8 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
         type D = obspy Stream
         D = Stream with data detrended, tapered, instrument response
         deconvolved, filtered, and resampled
+        type orientation = list of dictionnaries
+        orientation = azimuth, dip for 3 channels
     """
     # Write waveform request
     file = open('waveform.request', 'w')
@@ -152,14 +169,25 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
             D.attach_response(inventory)
             D.remove_response(output='VEL', \
                 pre_filt=(0.2, 0.5, 10.0, 15.0), water_level=80.0)
+            # Filter
             D.filter('bandpass', freqmin=filt[0], freqmax=filt[1], \
                 zerophase=True)
+            # Resample
             freq = D[0].stats.sampling_rate
             ratio = Fraction(int(freq), int(1.0 / dt))
             D.interpolate(ratio.denominator * freq, method='lanczos', a=10)
             D.decimate(ratio.numerator, no_filter=True)
+            # Get station orientation
+            orientation = []
+            for channel in range(0, len(D)):
+                angle = inventory.get_orientation(D[channel].stats.network + \
+                    '.' + D[channel].stats.station + '.' + \
+                    D[channel].stats.location + '.' + \
+                    D[channel].stats.channel, Tstart + D[channel].stats.delta \
+                    * D[channel].stats.npts * 0.5)
+                orientation.append(angle)
             success = True
-            return(D)
+            return(D, orientation)
         except:
             message = 'Could not download data for station {} '.format( \
                 station) + 'at time {}/{}/{} - {}:{}:{}\n'.format( \
@@ -173,4 +201,4 @@ def get_from_NCEDC(station, network, channels, location, Tstart, Tend, \
                 with open(errorfile, 'a') as file:
                     file.write('Failed to download data after {} attempts\n'. \
                         format(nattempts))
-                return(0)
+                return((0, 0))

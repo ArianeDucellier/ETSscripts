@@ -105,12 +105,14 @@ def get_waveform(filename, TDUR, filt, nattempts, waittime, method='RMS'):
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
-                D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_IRIS(station, network, channels, \
+                    location, Tstart, Tend, filt, ndt, nattempts, waittime, \
+                    errorfile)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
-                D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, ndt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_NCEDC(station, network, channels, \
+                    location, Tstart, Tend, filt, ndt, nattempts, waittime, \
+                    errorfile)
             else:
                 raise ValueError( \
                     'You can only download data from IRIS and NCEDC')

@@ -114,7 +114,7 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
     errorfile = 'error/' + filename + '.txt'
 
     # Loop over stations
-    for station in ['WDC']:
+    for station in staNames:
         # Create streams
         EW = Stream()
         NS = Stream()
@@ -150,12 +150,14 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
             Tend = Tori + 60.0 + TDUR
             # First case: we can get the data from IRIS
             if (server == 'IRIS'):
-                D = get_from_IRIS(station, network, channels, location, \
-                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_IRIS(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
             # Second case: we get the data from NCEDC
             elif (server == 'NCEDC'):
-                D = get_from_NCEDC(station, network, channels, location, \
-                    Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+                (D, orientation) = get_from_NCEDC(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
             else:
                 raise ValueError( \
                     'You can only download data from IRIS and NCEDC')
@@ -282,8 +284,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                 plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('East - West component', fontsize=24)
-            #plt.xlabel('Time (s)', fontsize=24)
-            #plt.legend(loc=1)
+            plt.xlabel('Time (s)', fontsize=24)
+            plt.legend(loc=1)
             # North - South component
             ax2 = plt.subplot(312)
             dt = NSstack[0].stats.delta
@@ -316,8 +318,8 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
                 plt.axvline(Tmax, linewidth=2, color='grey')
             plt.xlim([np.min(t), np.max(t)])
             plt.title('North - South component', fontsize=24)
-            #plt.xlabel('Time (s)', fontsize=24)
-            #plt.legend(loc=1)
+            plt.xlabel('Time (s)', fontsize=24)
+            plt.legend(loc=1)
             # Vertical component
             ax3 = plt.subplot(313)
             dt = UDstack[0].stats.delta
@@ -351,7 +353,7 @@ def compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
             plt.xlim([np.min(t), np.max(t)])
             plt.title('Vertical component', fontsize=24)
             plt.xlabel('Time (s)', fontsize=24)
-            #plt.legend(loc=1)
+            plt.legend(loc=1)
             # End figure
             plt.suptitle(station, fontsize=24)
             plt.savefig(namedir + '/' + station + '.eps', format='eps')
@@ -378,7 +380,7 @@ if __name__ == '__main__':
     # Set the parameters
     TDUR = 10.0
     filt = (1.5, 9.0)
-    ratios = [] #[50.0, 60.0, 70.0, 80.0, 90.0]
+    ratios = [50.0, 60.0, 70.0, 80.0, 90.0]
     dt = 0.05
     ncor = 400
     window = False
@@ -393,7 +395,7 @@ if __name__ == '__main__':
              'formats': ('S13', 'S3', np.float, np.float, np.float, \
         np.float, np.float, np.int)}, \
         skiprows=1)
-    for ie in range(42, 43): #0, len(LFEloc)):
+    for ie in range(0, len(LFEloc)):
         filename = LFEloc[ie][0].decode('utf-8')
         compute_templates(filename, TDUR, filt, ratios, dt, ncor, window, \
             winlength, nattempts, waittime, method)

@@ -4,6 +4,8 @@ temporary stations or with the permanent stations
 using the templates from Plourde et al. (2015)
 """
 import obspy
+from obspy import read
+from obspy import read_inventory
 from obspy import UTCDateTime
 from obspy.core.stream import Stream
 from obspy.core.trace import Trace
@@ -17,7 +19,7 @@ import pandas as pd
 import pickle
 
 from datetime import timedelta
-from math import ceil, floor
+from math import ceil, cos, floor, pi
 
 import correlate
 from get_data import get_from_IRIS, get_from_NCEDC
@@ -71,6 +73,81 @@ def clean_LFEs(index, times, meancc, dt, freq0):
         cc[i] = maxcc
         time[i] = list_times[i][imax]
     return(time, cc)
+
+def fill_data(D, orientation, station, channels, reference):
+    """
+    Return the data that must be cross correlated with the template
+
+    Input:
+        type D = obspy Stream
+        D = Data downloaded
+        type orientation = list of dictionnaries
+        orientation = azimuth, dip for 3 channels (for data)
+        type station = string
+        station = Name of station
+        type channels = string
+        channels = Names of channels
+        type reference = list of dictionnaries
+        reference = azimuth, dip for 3 channels (for template)
+    Output:
+        type data = list of obspy Stream
+        data = Data to be analyzed with correct azimuth
+    """
+    # Orientation of the data
+    dE = orientation[0]['azimuth'] * pi / 180.0
+    dN = orientation[1]['azimuth'] * pi / 180.0
+    # Orientation of the template
+    tE = reference[0]['azimuth'] * pi / 180.0
+    tN = reference[1]['azimuth'] * pi / 180.0   
+    # East-West channel
+    EW = Stream()
+    if (channels == 'EH1,EH2,EHZ'):
+        if (len(D.select(channel='EH1')) > 0):
+            EW = D.select(channel='EH1')
+    else:
+        if (len(D.select(component='E')) > 0):
+            EW = D.select(component='E')
+    # North-South channel
+    NS = Stream()
+    if (channels == 'EH1,EH2,EHZ'):
+         if (len(D.select(channel='EH2')) > 0):
+            NS = D.select(channel='EH2')
+    else:
+         if (len(D.select(component='N')) > 0):
+            NS = D.select(component='N')
+    # Vertical channel
+    UD = Stream()
+    if (channels == 'EH1,EH2,EHZ'):
+        if (len(D.select(channel='EHZ')) > 0):
+             UD = D.select(channel='EHZ')
+    else:
+         if (len(D.select(component='Z')) > 0):
+            UD = D.select(component='Z')
+    # Rotation of the data
+    data = []
+    if ((len(EW) > 0) and (len(NS) > 0) and (len(EW) == len(NS))):
+        EWrot = Stream()
+        NSrot = Stream()
+        for i in range(0, len(EW)):
+            if (len(EW[i].data) == len(NS[i].data)):
+                EWrot0 = EW[i].copy()
+                NSrot0 = NS[i].copy()
+                EWrot0.data = cos(dE - tE) * EW[i].data + cos(dN - tE) * NS[i].data
+                NSrot0.data = cos(dE - tN) * EW[i].data + cos(dN - tN) * NS[i].data
+                EWrot0.stats.station = station
+                EWrot0.stats.channel = 'E'
+                NSrot0.stats.station = station
+                NSrot0.stats.channel = 'N'
+                EWrot.append(EWrot0)
+                NSrot.append(NSrot0)
+        data.append(EWrot)
+        data.append(NSrot)
+    if (len(UD) > 0):
+        for i in range(0, len(UD)):
+            UD[i].stats.station = station
+            UD[i].stats.channel = 'Z'
+        data.append(UD)
+    return(data)
 
 def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
         freq0, nattempts, waittime, draw=False, type_threshold='MAD', \
@@ -169,57 +246,44 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
         duration = (nt - 1) * dt   
         Tstart = t1 - TDUR
         Tend = t2 + duration + TDUR
+        delta = t2 + duration - t1
+        ndata = int(delta / dt) + 1
+
+        # Orientation of template
+        # Date chosen: April 1st 2008
+        mychannels = channels.split(',')
+        mylocation = location
+        if (mylocation == '--'):
+            mylocation = ''
+        response = '../data/response/' + network + '_' + station + '.xml'
+        inventory = read_inventory(response, format='STATIONXML')
+        reference = []
+        for channel in mychannels:
+            angle = inventory.get_orientation(network + '.' + \
+                station + '.' + mylocation + '.' + channel, \
+                UTCDateTime(2008, 4, 1, 0, 0, 0))
+            reference.append(angle)
 
         # First case: we can get the data from IRIS
         if (server == 'IRIS'):
-            D = get_from_IRIS(station, network, channels, location, \
-                Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+            (D, orientation) = get_from_IRIS(station, network, channels, \
+                location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                errorfile)
         # Second case: we get the data from NCEDC
         elif (server == 'NCEDC'):
-            D = get_from_NCEDC(station, network, channels, location, \
-                Tstart, Tend, filt, dt, nattempts, waittime, errorfile)
+            (D, orientation) = get_from_NCEDC(station, network, channels, \
+                location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                errorfile)
         else:
             raise ValueError('You can only download data from IRIS and NCEDC')
 
         # Append data to stream
         if (type(D) == obspy.core.stream.Stream):
-            # East-West channel
-            if (channels == 'EH1,EH2,EHZ'):
-                if (len(D.select(channel='EH1')) > 0):
-                    EW = D.select(channel='EH1')
-                    for i in range(0, len(EW)):
-                        EW[i].stats.station = station
-                        EW[i].stats.channel = 'E'
-                        data.append(EW)
-            else:
-                if (len(D.select(component='E')) > 0):
-                    EW = D.select(component='E')
-                    for i in range(0, len(EW)):
-                        EW[i].stats.station = station
-                        EW[i].stats.channel = 'E'
-                    data.append(EW)
-            # North-South channel
-            if (channels == 'EH1,EH2,EHZ'):
-                if (len(D.select(channel='EH2')) > 0):
-                    NS = D.select(channel='EH2')
-                    for i in range(0, len(NS)):
-                        NS[i].stats.station = station
-                        NS[i].stats.channel = 'N'
-                    data.append(NS)
-            else:
-                if (len(D.select(component='N')) > 0):
-                    NS = D.select(component='N')
-                    for i in range(0, len(NS)):
-                        NS[i].stats.station = station
-                        NS[i].stats.channel = 'N'
-                    data.append(NS)
-            # Vertical channel
-            if (len(D.select(component='Z')) > 0):
-                UD = D.select(component='Z')
-                for i in range(0, len(UD)):
-                    UD[i].stats.station = station
-                    UD[i].stats.channel = 'Z'
-                data.append(UD)
+            stationdata = fill_data(D, orientation, station, channels, t1, t2, \
+                duration, ndata, reference)
+            if (len(stationdata) > 0):
+                for stream in stationdata:
+                    data.append(stream)
 
     # Number of hours of data to analyze
     nhour = int(ceil((t2 - t1) / 3600.0))
@@ -232,32 +296,30 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
     for hour in range(0, nhour):
         nchannel = 0
         Tstart = t1 + hour * 3600.0
-        Tend = t1 + (hour + 1) * 3600.0 + duration
-        delta = Tend - Tstart
-        ndata = int(delta / dt) + 1
+        Tend = t1 + (hour + 1) * 3600.0
 
         # Loop on channels
         for channel in range(0, len(data)):
             # Cut the data
             subdata = data[channel]
+            if (Tend > subdata.stats.endtime):
+                tend = subdata.stats.endtime
             subdata = subdata.slice(Tstart, Tend)
-            # Check whether we have a complete one-hour-long recording
-            if (len(subdata) == 1):
-                if (len(subdata[0].data) == ndata):
-                    # Get the template
-                    station = subdata[0].stats.station
-                    component = subdata[0].stats.channel
-                    template = templates.select(station=station, component=component)[0]
-                    # Cross correlation
-                    cctemp = correlate.optimized(template, subdata[0])
-                    if (nchannel > 0):
-                        cc = np.vstack((cc, cctemp))
-                    else:
-                        cc = cctemp
-                    nchannel = nchannel + 1
-
+            # Get the template
+            station = subdata.stats.station
+            component = subdata.stats.channel
+            template = templates.select(station=station, component=component)[0]
+            dt = template.stats.delta
+            # Cross correlation
+            cctemp = correlate.optimized(template, subdata)
+            if (nchannel > 0):
+                cc = np.vstack((cc, cctemp))
+            else:
+                cc = cctemp
+            nchannel = nchannel + 1
+    
         if (nchannel > 0):
-
+   
             # Compute average cross-correlation across channels
             meancc = np.mean(cc, axis=0)
             if (type_threshold == 'MAD'):
@@ -284,8 +346,8 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
 
             # Draw figure
             if (draw == True):
-                params = {'xtick.labelsize':20,
-                          'ytick.labelsize':20}
+                params = {'xtick.labelsize':16,
+                          'ytick.labelsize':16}
                 pylab.rcParams.update(params) 
                 plt.figure(1, figsize=(20, 8))
                 if np.shape(index)[1] > 0:
@@ -311,7 +373,7 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
                 plt.savefig('LFEs/' + filename + '/' + \
                     '{:04d}{:02d}{:02d}_{:02d}{:02d}{:02d}'.format( \
                     Tstart.year, Tstart.month, Tstart.day, Tstart.hour, \
-                    Tstart.minute, Tstart.second) + '.eps', format='eps')
+                    Tstart.minute, Tstart.second) + '.png', format='png')
                 plt.close(1)
 
     # Add to pandas dataframe and save
@@ -335,107 +397,40 @@ if __name__ == '__main__':
     freq0 = 1.0
     nattempts = 10
     waittime = 10.0
-    draw = True
+    draw = False
     type_threshold = 'MAD'
     
-    # Using the same stations as in Plourde's catalog
-    file = open('../data/Plourde_2015/detections/' + filename + \
-        '_detect5_cull.txt')
-    first_line = file.readline().strip()
-    stations = first_line.split()
-    second_line = file.readline().strip()
-    if (type_threshold == 'MAD'):
-        threshold = float(second_line.split()[1])
-    file.close()
-
     # Using only the permanent stations
-#    stations = ['GCK', 'GFC', 'GHL', 'GSN', 'GWR', 'HOPS', 'KCPB']   
-#    threshold = 8 
-    
-    # Known LFEs
-    year = 2008
-    month = 4
-    for day in range(21, 22):
-        for hour in range(13, 14):
-            tbegin = (year, month, day, hour, 0, 0)
-            tend = (year, month, day, hour + 1, 0, 0)
-
-            find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-                freq0, nattempts, waittime, draw, type_threshold, threshold)
+    stations = ['KSXB', 'YBH', 'KRMB', 'B039', 'KHBB', 'WDC']
+    threshold = 8 
 
     # Unknown LFEs
-    # 2007
-#    year = 2007
-#    for month in range(9, 13):
-#        if (month == 2):
-#            if (year % 4 == 0):
-#                endday = 29
-#            else:
-#                endday = 28
-#        elif (month in [4, 6, 9, 11]):
-#            endday = 30
-#        else:
-#            endday = 31
-#        for day in range(1, endday + 1):
-#            tbegin = (year, month, day, 0, 0, 0)
-#            if (day == endday):
-#                if (month == 12):
-#                    tend = (year + 1, 1, 1, 0, 0, 0)
-#                else:
-#                    tend = (year, month + 1, 1, 0, 0, 0)
-#            else:
-#                tend = (year, month, day + 1, 0, 0, 0)
-#            find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-#                freq0, nattempts, waittime, draw, type_threshold, threshold)
-#        os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
-#            '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
-    # 2008
-#    year = 2008
-#    for month in range(1, 13):
-#        if (month == 2):
-#            if (year % 4 == 0):
-#                endday = 29
-#            else:
-#                endday = 28
-#        elif (month in [4, 6, 9, 11]):
-#            endday = 30
-#        else:
-#            endday = 31
-#        for day in range(1, endday + 1):
-#            tbegin = (year, month, day, 0, 0, 0)
-#            if (day == endday):
-#                if (month == 12):
-#                    tend = (year + 1, 1, 1, 0, 0, 0)
-#                else:
-#                    tend = (year, month + 1, 1, 0, 0, 0)
-#            else:
-#                tend = (year, month, day + 1, 0, 0, 0)
-#            find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-#                freq0, nattempts, waittime, draw, type_threshold, threshold)
-#        os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
-#            '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
-    # 2009
-#    year = 2009
-#    for month in range(1, 7):
-#        if (month == 2):
-#            if (year % 4 == 0):
-#                endday = 29
-#            else:
-#                endday = 28
-#        elif (month in [4, 6, 9, 11]):
-#            endday = 30
-#        else:
-#            endday = 31
-#        for day in range(1, endday + 1):
-#            tbegin = (year, month, day, 0, 0, 0)
-#            if (day == endday):
-#                if (month == 12):
-#                    tend = (year + 1, 1, 1, 0, 0, 0)
-#                else:
-#                    tend = (year, month + 1, 1, 0, 0, 0)
-#            else:
-#                tend = (year, month, day + 1, 0, 0, 0)
-#            find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
-#                freq0, nattempts, waittime, draw, type_threshold, threshold)
-#        os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
-#            '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
+    # 2010
+    year = 2010
+    for month in range(1, 13):
+        if (month == 2):
+            if (year % 4 == 0):
+                endday = 29
+            else:
+                endday = 28
+        elif (month in [4, 6, 9, 11]):
+            endday = 30
+        else:
+            endday = 31
+        for day in range(1, endday + 1):
+            for hour in range(0, 4):
+                tbegin = (year, month, day, 6 * hour, 0, 0)
+                if (hour == 3):
+                    if (day == endday):
+                        if (month == 12):
+                            tend = (year + 1, 1, 1, 0, 0, 0)
+                        else:
+                            tend = (year, month + 1, 1, 0, 0, 0)
+                    else:
+                        tend = (year, month, day + 1, 0, 0, 0)
+                else:
+                    tend = (year, month, day, 6 * (hour + 1), 0, 0)
+                find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
+                    freq0, nattempts, waittime, draw, type_threshold, threshold)
+        os.rename('LFEs/' + filename + '/catalog.pkl', 'LFEs/' + filename + \
+            '/catalog_{:04d}_{:02d}'.format(year, month) + '.pkl')
