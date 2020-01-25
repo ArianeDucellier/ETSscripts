@@ -1,0 +1,135 @@
+#!/bin/csh -f
+
+set output = Figure3_2020_v1.eps
+
+# Small map
+set x1 = -125
+set x2 = -122
+set y1 = 47
+set y2 = 49.2
+set Rop = $x1/$x2/$y1/$y2
+set Jop = m-123.5/48.1/1.5
+
+# Locations of GPS stations
+cat << END >> GPS.dat
+-123.2915 48.2323
+-122.7759 48.0106
+-122.6856 48.2173
+-123.4511 48.6483
+-123.0076 48.5462
+-123.7057 47.8166
+-122.6670 47.7550
+-123.0180 48.5352
+-123.4152 48.1014
+-123.1020 48.0823
+END
+
+# May 2008 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:WeSN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -Y5 -K >! $output
+
+gmt psxy may_2008.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:WeSN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 May 2008
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O -K >> $output
+
+rm mytext.dat
+
+# May 2009 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X4 -O -K >> $output
+
+gmt psxy may_2009.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 May 2009
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O -K >> $output
+
+rm mytext.dat
+
+# Winter 2010 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X4 -O -K >> $output
+
+gmt psxy winter_2010.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 Winter 2010
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O -K >> $output
+
+rm mytext.dat
+
+# August 2010 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X4 -O -K >> $output
+
+gmt psxy august_2010.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 August 2010
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O -K >> $output
+
+rm mytext.dat
+
+# Winter 2011 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X4 -O -K >> $output
+
+gmt psxy winter_2011.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:weSN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 Winter 2011
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O -K >> $output
+
+rm mytext.dat
+
+# August 2011 tremor episode
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:wESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X4 -O -K >> $output
+
+gmt psxy august_2011.txt -R$Rop -J$Jop -Sc0.03 -Gred -O -K >> $output
+
+gmt pscoast -R$Rop -J$Jop -Ba1.0f0.5:a2.0f1.0:wESN -W0.1p -Df -Na -O -K >> $output
+
+gmt psxy GPS.dat -R$Rop -J$Jop -St0.2 -Gblack -O -K >> $output
+
+cat << END >> mytext.dat
+-124.0 47.2 August 2011
+END
+
+gmt pstext mytext.dat -R$Rop -J$Jop -F+f10p -O >> $output
+
+rm mytext.dat
+
+rm GPS.dat
