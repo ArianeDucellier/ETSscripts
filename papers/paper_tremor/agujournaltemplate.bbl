@@ -200,11 +200,11 @@ Fagereng, r.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-A.~Ghosh%
+Ghosh%
 , Vidale%
 \BCBL {}\ \BBA {} Creager%
 }{%
-A.~Ghosh%
+Ghosh%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2012}}%
 }]{%
@@ -228,9 +228,37 @@ Ghosh, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-A.~Ghosh%
+Ghosh%
 \ \protect \BOthers {.}}{%
-A.~Ghosh%
+Ghosh%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2010}}%
+}]{%
+GHO_2010_GRL}
+\APACinsertmetastar {%
+GHO_2010_GRL}%
+\begin{APACrefauthors}%
+Ghosh, A.%
+, Vidale, J.%
+, Sweet, J.%
+, Creager, K.%
+, Wech, A.%
+\BCBL {}\ \BBA {} Houston, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Tremor bands sweep {Cascadia}} {Tremor bands sweep
+  {Cascadia}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{37}{}{L08301}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ghosh%
+\ \protect \BOthers {.}}{%
+Ghosh%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2010}}%
 }]{%
@@ -254,37 +282,6 @@ Ghosh, A.%
   {Rapid, continuous streaking of tremor in {Cascadia}}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{11}{}{Q12010}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-J.~Ghosh A.~Vidale%
-, Sweet%
-, Creager%
-, Wech%
-\BCBL {}\ \BBA {} Houston%
-}{%
-J.~Ghosh A.~Vidale%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2010}}%
-}]{%
-GHO_2010_GRL}
-\APACinsertmetastar {%
-GHO_2010_GRL}%
-\begin{APACrefauthors}%
-Ghosh, J., A.~Vidale%
-, Sweet, J.%
-, Creager, K.%
-, Wech, A.%
-\BCBL {}\ \BBA {} Houston, H.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2010}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Tremor bands sweep {Cascadia}} {Tremor bands sweep
-  {Cascadia}}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Geophysical Research Letters}{37}{}{L08301}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
