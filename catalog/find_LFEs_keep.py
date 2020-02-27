@@ -93,6 +93,12 @@ def fill_data(D, orientation, station, channels, reference):
         type data = list of obspy Stream
         data = Data to be analyzed with correct azimuth
     """
+    # Orientation of the data
+    dE = orientation[0]['azimuth'] * pi / 180.0
+    dN = orientation[1]['azimuth'] * pi / 180.0
+    # Orientation of the template
+    tE = reference[0]['azimuth'] * pi / 180.0
+    tN = reference[1]['azimuth'] * pi / 180.0   
     # East-West channel
     EW = Stream()
     if (channels == 'EH1,EH2,EHZ'):
@@ -120,12 +126,6 @@ def fill_data(D, orientation, station, channels, reference):
     # Rotation of the data
     data = []
     if ((len(EW) > 0) and (len(NS) > 0) and (len(EW) == len(NS))):
-        # Orientation of the data
-        dE = orientation[0]['azimuth'] * pi / 180.0
-        dN = orientation[1]['azimuth'] * pi / 180.0
-        # Orientation of the template
-        tE = reference[0]['azimuth'] * pi / 180.0
-        tN = reference[1]['azimuth'] * pi / 180.0   
         EWrot = Stream()
         NSrot = Stream()
         for i in range(0, len(EW)):
@@ -133,9 +133,9 @@ def fill_data(D, orientation, station, channels, reference):
                 EWrot0 = EW[i].copy()
                 NSrot0 = NS[i].copy()
                 EWrot0.data = cos(dE - tE) * EW[i].data + \
-                              cos(dN - tE) * NS[i].data
+                    cos(dN - tE) * NS[i].data
                 NSrot0.data = cos(dE - tN) * EW[i].data + \
-                              cos(dN - tN) * NS[i].data
+                    cos(dN - tN) * NS[i].data
                 EWrot0.stats.station = station
                 EWrot0.stats.channel = 'E'
                 NSrot0.stats.station = station
@@ -199,9 +199,6 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
         os.makedirs(namedir)
 
     # File to write error messages
-    namedir = 'error'
-    if not os.path.exists(namedir):
-        os.makedirs(namedir)
     errorfile = 'error/' + filename + '.txt'
 
     # Read the templates
@@ -300,30 +297,27 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
     for hour in range(0, nhour):
         nchannel = 0
         Tstart = t1 + hour * 3600.0
-        Tend = t1 + (hour + 1) * 3600.0 + duration
-        delta = Tend - Tstart
-        ndata = int(delta / dt) + 1
+        Tend = t1 + (hour + 1) * 3600.0
 
         # Loop on channels
         for channel in range(0, len(data)):
             # Cut the data
             subdata = data[channel]
+            if (Tend > subdata.stats.endtime):
+                tend = subdata.stats.endtime
             subdata = subdata.slice(Tstart, Tend)
-            # Check whether we have a complete one-hour-long recording
-            if (len(subdata) == 1):
-                if (len(subdata[0].data) == ndata):
-                    # Get the template
-                    station = subdata[0].stats.station
-                    component = subdata[0].stats.channel
-                    template = templates.select(station=station, \
-                        component=component)[0]
-                    # Cross correlation
-                    cctemp = correlate.optimized(template, subdata[0])
-                    if (nchannel > 0):
-                        cc = np.vstack((cc, cctemp))
-                    else:
-                        cc = cctemp
-                    nchannel = nchannel + 1
+            # Get the template
+            station = subdata.stats.station
+            component = subdata.stats.channel
+            template = templates.select(station=station, component=component)[0]
+            dt = template.stats.delta
+            # Cross correlation
+            cctemp = correlate.optimized(template, subdata)
+            if (nchannel > 0):
+                cc = np.vstack((cc, cctemp))
+            else:
+                cc = cctemp
+            nchannel = nchannel + 1
     
         if (nchannel > 0):
    
@@ -398,7 +392,7 @@ def find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
 if __name__ == '__main__':
 
     # Set the parameters
-    filename = '080328.09.029'
+    filename = '080401.05.050'
     TDUR = 10.0
     filt = (1.5, 9.0)
     freq0 = 1.0
@@ -420,7 +414,7 @@ if __name__ == '__main__':
     # Known LFEs
     year = 2008
     month = 3
-    for day in range(21, 32):
+    for day in range(25, 32):
         for hour in range(0, 24):
             tbegin = (year, month, day, hour, 0, 0)
             if (hour == 23):
@@ -433,7 +427,7 @@ if __name__ == '__main__':
                 find_LFEs(filename, stations, tbegin, tend, TDUR, filt, \
                     freq0, nattempts, waittime, draw, type_threshold, threshold)
     month = 4
-    for day in range(1, 31):
+    for day in range(1, 5):
         for hour in range(0, 24):
             tbegin = (year, month, day, hour, 0, 0)
             if (hour == 23):
