@@ -16,43 +16,43 @@ apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No address in MCC_2006
 You've used 27 entries,
             6951 wiz_defined-function locations,
-            1456 strings with 15313 characters,
-and the built_in function-call counts, 56426 in all, are:
-= -- 6707
-> -- 533
-< -- 2913
-+ -- 2949
+            1456 strings with 15317 characters,
+and the built_in function-call counts, 56143 in all, are:
+= -- 6687
+> -- 537
+< -- 2908
++ -- 2919
 - -- 55
-* -- 3860
-:= -- 10711
+* -- 3839
+:= -- 10644
 add.period$ -- 108
 call.type$ -- 27
 change.case$ -- 475
 chr.to.int$ -- 0
 cite$ -- 55
-duplicate$ -- 1576
-empty$ -- 2117
-format.name$ -- 954
-if$ -- 10377
+duplicate$ -- 1549
+empty$ -- 2109
+format.name$ -- 946
+if$ -- 10358
 int.to.chr$ -- 0
 int.to.str$ -- 85
 missing$ -- 0
-newline$ -- 722
+newline$ -- 719
 num.names$ -- 216
 pop$ -- 720
 preamble$ -- 1
 purify$ -- 108
 quote$ -- 0
-skip$ -- 3528
+skip$ -- 3527
 stack$ -- 0
-substring$ -- 3166
-swap$ -- 956
+substring$ -- 3121
+swap$ -- 940
 text.length$ -- 64
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 2160
 warning$ -- 1
-while$ -- 326
+while$ -- 315
 width$ -- 0
-write$ -- 955
+write$ -- 949
 (There was 1 warning)
