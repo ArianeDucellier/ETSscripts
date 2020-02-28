@@ -181,54 +181,54 @@ def find_LFEs(family_file, station_file, template_dir, tbegin, tend, \
         os.makedirs(namedir)
 
     # Download the data from the stations
-#    for ir in range(0, len(staloc)):
-#        station = staloc['station'][ir]
-#        network = staloc['network'][ir]
-#        channels = staloc['channels'][ir]
-#        location = staloc['location'][ir]
-#        server = staloc['server'][ir]
-#        time_on = staloc['time_on'][ir]
-#        time_off = staloc['time_off'][ir]
+    for ir in range(0, len(staloc)):
+        station = staloc['station'][ir]
+        network = staloc['network'][ir]
+        channels = staloc['channels'][ir]
+        location = staloc['location'][ir]
+        server = staloc['server'][ir]
+        time_on = staloc['time_on'][ir]
+        time_off = staloc['time_off'][ir]
 
         # File to write error messages
-#        namedir = 'error'
-#        if not os.path.exists(namedir):
-#            os.makedirs(namedir)
-#        errorfile = 'error/' + station + '.txt'
+        namedir = 'error'
+        if not os.path.exists(namedir):
+            os.makedirs(namedir)
+        errorfile = 'error/' + station + '.txt'
 
         # Check whether there are data for this period of time
-#        year_on = int(time_on[0:4])
-#        month_on = int(time_on[5:7])
-#        day_on = int(time_on[8:10])
-#        year_off = int(time_off[0:4])
-#        month_off = int(time_off[5:7])
-#        day_off = int(time_off[8:10])
-#        if ((Tstart > UTCDateTime(year=year_on, month=month_on, day=day_on)) \
-#           and (Tend < UTCDateTime(year=year_off, month=month_off, day=day_off))):
+        year_on = int(time_on[0:4])
+        month_on = int(time_on[5:7])
+        day_on = int(time_on[8:10])
+        year_off = int(time_off[0:4])
+        month_off = int(time_off[5:7])
+        day_off = int(time_off[8:10])
+        if ((Tstart > UTCDateTime(year=year_on, month=month_on, day=day_on)) \
+           and (Tend < UTCDateTime(year=year_off, month=month_off, day=day_off))):
 
             # First case: we can get the data from IRIS
-#            if (server == 'IRIS'):
-#                (D, orientation) = get_from_IRIS(station, network, channels, \
-#                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
-#                    errorfile)
+            if (server == 'IRIS'):
+                (D, orientation) = get_from_IRIS(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
             # Second case: we get the data from NCEDC
-#            elif (server == 'NCEDC'):
-#                (D, orientation) = get_from_NCEDC(station, network, channels, \
-#                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
-#                    errorfile)
-#            else:
-#                raise ValueError('You can only download data from IRIS and NCEDC')
+            elif (server == 'NCEDC'):
+                (D, orientation) = get_from_NCEDC(station, network, channels, \
+                    location, Tstart, Tend, filt, dt, nattempts, waittime, \
+                    errorfile)
+            else:
+                raise ValueError('You can only download data from IRIS and NCEDC')
 
             # Store the data into temporary files
-#            D.write('tmp/' + station + '.mseed', format='MSEED')
-#            namefile = 'tmp/' + station + '.pkl'
-#            pickle.dump(orientation, open(namefile, 'wb'))
+            if (type(D) == obspy.core.stream.Stream):
+                D.write('tmp/' + station + '.mseed', format='MSEED')
+                namefile = 'tmp/' + station + '.pkl'
+                pickle.dump(orientation, open(namefile, 'wb'))
 
     # Loop on families
     families = pd.read_csv(family_file, sep=r'\s{1,}', header=None, engine='python')
     families.columns = ['family', 'stations']
     for i in range(0, len(families)):
-        print(families['family'].iloc[i])
 
         # Create directory to store the LFEs times
         namedir = 'LFEs/' + families['family'].iloc[i]
@@ -265,10 +265,7 @@ def find_LFEs(family_file, station_file, template_dir, tbegin, tend, \
                 UD = data[0]
             UD.stats.station = station
             UD.stats.channel = 'Z'
-            templates.append(UD)
-        for template in templates:
-            print(template.stats.station, template.stats.channel)
-                        
+            templates.append(UD)                       
 
         # Loop on hours of data
         for hour in range(0, nhour):
@@ -366,17 +363,17 @@ def find_LFEs(family_file, station_file, template_dir, tbegin, tend, \
                             int(timeLFE.minute), timeLFE.second + \
                             timeLFE.microsecond / 1000000.0, cc[j], nchannel]
 
-            # Add to pandas dataframe and save
-            namefile = 'LFEs/' + families['family'].iloc[i] + '/catalog.pkl'
-            if os.path.exists(namefile):
-                df_all = pickle.load(open(namefile, 'rb'))
-                df_all = pd.concat([df_all, df], ignore_index=True)
-            else:
-                df_all = df    
-            df_all = df_all.astype(dtype={'year':'int32', 'month':'int32', \
-                'day':'int32', 'hour':'int32', 'minute':'int32', \
-                'second':'float', 'cc':'float', 'nchannel':'int32'})
-            pickle.dump(df_all, open(namefile, 'wb'))
+        # Add to pandas dataframe and save
+        namefile = 'LFEs/' + families['family'].iloc[i] + '/catalog.pkl'
+        if os.path.exists(namefile):
+            df_all = pickle.load(open(namefile, 'rb'))
+            df_all = pd.concat([df_all, df], ignore_index=True)
+        else:
+            df_all = df    
+        df_all = df_all.astype(dtype={'year':'int32', 'month':'int32', \
+            'day':'int32', 'hour':'int32', 'minute':'int32', \
+            'second':'float', 'cc':'float', 'nchannel':'int32'})
+        pickle.dump(df_all, open(namefile, 'wb'))
     
 if __name__ == '__main__':
 
