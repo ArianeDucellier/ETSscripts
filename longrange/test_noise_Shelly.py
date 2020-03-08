@@ -7,9 +7,12 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from ACVF import ACVF, ACF
-from test_noise import portmanteau
+from math import sqrt
 
+from ACVF import ACVF, ACF
+from test_noise import remove_seasonality, portmanteau
+
+dmax = 6
 h = 21
 alpha = 0.05
 p = 0
@@ -31,7 +34,7 @@ def aggregate(X, m):
     N2 = int(N / m)
     X2 = X[0 : N2 * m]
     X2 = np.reshape(X2, (N2, int(m)))
-    Xm = np.mean(X2, axis=1)
+    Xm = np.sum(X2, axis=1)
     return Xm
 
 # Read the LFE file
@@ -50,31 +53,40 @@ params = {'legend.fontsize': 24, \
           'ytick.labelsize':24}
 pylab.rcParams.update(params)
 
-for i in range(0, 1): #len(families)):
+for i in range(0, len(families)):
     filename = families[i]
     data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
-    X_1 = data[3]
-    X_2 = aggregate(X_1, 60)
-    X_3 = aggregate(X_2, 24)
-    X_4 = aggregate(X_3, 7)
+    X = data[3]
+    X = aggregate(X, 60 * 24)
 
-    # Portmanteau test
-    plt.figure(1, figsize=(9, 24))
+    plt.figure(1, figsize=(18, (dmax - 1) * 4))
 
-    N = np.shape(X_1)[0]
-    acvf = ACVF(X_1, h)
-    acf = ACF(acvf)
-    (QLB, quantiles) = portmanteau(acf, N, alpha, p)
-    plt.subplot2grid((4, 1), (1, 0))
-    plt.plot(np.arange(p + 1, h), QLB[p : h], 'bo', label='QLB - 1 min')
-    for i in range(p + 1, h):
-        if (i == p + 1):
-            plt.plot(np.linspace(i - 0.25, i + 0.25, 2), np.repeat(quantiles[i - 1], 2), 'r-', \
-                label='{} quantile'.format(100 * (1 - alpha)))
-        else:
-            plt.plot(np.linspace(i - 0.25, i + 0.25, 2), np.repeat(quantiles[i - 1], 2), 'r-')
-    plt.ylabel('', fontsize=24)
-    plt.legend(loc=1)
+    # Loop on periodicity
+    for d in range(2, (dmax + 1)):
+        Xres = remove_seasonality(X, d)
+
+        # Portmanteau test
+        N = np.shape(Xres)[0]
+        acvf = ACVF(Xres, h)
+        acf = ACF(acvf)
+        plt.subplot2grid((dmax - 1, 2), (d - 2, 0))
+        plt.plot(np.arange(0, h), acf, 'bo', label='{} days'.format(d))
+        plt.axhline(1.96 / sqrt(N), linewidth=2, linestyle='--', color='red')
+        plt.axhline(-1.96 / sqrt(N), linewidth=2, linestyle='--', color='red')
+        plt.ylabel('ACF', fontsize=24)
+        plt.legend(loc=1)
+        (QLB, quantiles) = portmanteau(acf, N, alpha, p)
+        plt.subplot2grid((dmax - 1, 2), (d - 2, 1))
+        plt.plot(np.arange(p + 1, h), QLB[p : h], 'bo')
+        for j in range(p + 1, h):
+            if (j == p + 1):
+                plt.plot(np.linspace(j - 0.25, j + 0.25, 2), np.repeat(quantiles[j - 1], 2), 'r-', \
+                    label='{} quantile'.format(100 * (1 - alpha)))
+            else:
+                plt.plot(np.linspace(j - 0.25, j + 0.25, 2), np.repeat(quantiles[j - 1], 2), 'r-')
+        plt.ylabel('QLB', fontsize=24)
+        if (d == dmax):
+            plt.xlabel('Time lag', fontsize=24)
 
     # Finalize plot
     plt.suptitle('Family ' + filename, fontsize=30)

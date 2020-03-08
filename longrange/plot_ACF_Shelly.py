@@ -30,7 +30,7 @@ def aggregate(X, m):
     N2 = int(N / m)
     X2 = X[0 : N2 * m]
     X2 = np.reshape(X2, (N2, int(m)))
-    Xm = np.mean(X2, axis=1)
+    Xm = np.sum(X2, axis=1)
     return Xm
 
 # Read the LFE file
