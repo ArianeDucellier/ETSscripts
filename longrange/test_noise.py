@@ -3,7 +3,8 @@
 
 import numpy as np
 
-from scipy.stats import chi2
+from math import sqrt
+from scipy.stats import chi2, norm
 
 def remove_seasonality(X, d):
     """
@@ -56,12 +57,65 @@ def turning_point(X):
     """
     """
     N = np.shape(X)[0]
-    mu = 2.0 * (N - 2) / 3.0
+    mu = 2.0 * (N - 2.0) / 3.0
     var = (16.0 * N - 29.0) / 90.0
-    x <- embed(ts, 3)
+    xtm1 = X[0 : (N - 2)]
+    xt = X[1 : (N - 1)]
+    xtp1 = X[2 : N]
     # Compute the number of turning points
-    test.sum <- sum((x[,2] > x[,1] & x[,2] > x[,3]) | (x[,2] < x[,1] & x[,2] < x[,3]))
+    test_sum = np.sum(((xt > xtm1) & (xt > xtp1)) | ((xt < xtm1) & (xt < xtp1)))
     # Normalize
-    test <- abs(test.sum - mu) / sqrt(var)
-    p.value <- 2 * (1 - pnorm(test))
-    structure(list(test.sum=test.sum, test=test, p.value=p.value, mu=mu, var=var))
+    test = abs(test_sum - mu) / sqrt(var)
+    p_value = 2.0 * (1.0 - norm.cdf(test))
+    return(test_sum, p_value)
+
+def difference_sign(X):
+    """
+    """
+    N = np.shape(X)[0]
+    mu = (N - 1.0) / 2.0
+    var = (N + 1.0) / 12.0
+    xtm1 = X[0 : (N - 1)]
+    xt = X[1 : N]
+    # Number of times where X_t > X_t-1
+    test_sum = np.sum(xt > xtm1)
+    # Normalize
+    test = abs(test_sum - mu) / sqrt(var)
+    p_value = 2.0 * (1.0 - norm.cdf(test))
+    return(test_sum, p_value)
+
+def rank(X):
+    """
+    """
+    N = np.shape(X)[0]
+    mu = N * (N - 1.0) / 4.0
+    var = N * (N - 1.0) * (2.0 * N + 5.0) / 72.0
+    Xr = np.tile(X, N).reshape((N, -1))
+    Xc = np.transpose(Xr)
+    ir = np.tile(np.arange(0, N), N).reshape((N, -1))
+    ic = np.transpose(ir)
+    # Number of times where X_r > X_s and r > s
+    test_sum = np.sum((Xr < Xc) & (ir < ic))    
+    # Normalize
+    test = abs(test_sum - mu) / sqrt(var)
+    p_value = 2.0 * (1.0 - norm.cdf(test))
+    return(test_sum, p_value)
+
+def runs(X):
+    """
+    """
+    Xnorm = X - np.mean(X)
+    N = np.shape(Xnorm)[0]
+    Npos = np.sum(Xnorm > 0)
+    Nneg = N - Npos
+    mu = 2.0 * Npos * Nneg / N + 1
+    var = (mu - 1.0) * (mu - 2.0) / (N - 1)   
+    Xbinary = np.copy(Xnorm)
+    Xbinary[Xnorm > 0] = 1
+    Xbinary[Xnorm < 0] = -1
+    # Number of runs
+    test_sum = np.sum(np.abs(np.diff(Xbinary)) > 0) + 1
+    # Normalize
+    test = abs(test_sum - mu) / sqrt(var)
+    p_value = 2.0 * (1.0 - norm.cdf(test))
+    return(test_sum, p_value)

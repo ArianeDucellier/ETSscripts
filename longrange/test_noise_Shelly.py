@@ -10,7 +10,7 @@ import pickle
 from math import sqrt
 
 from ACVF import ACVF, ACF
-from test_noise import remove_seasonality, portmanteau
+from test_noise import remove_seasonality, portmanteau, turning_point, difference_sign, rank, runs
 
 dmax = 6
 h = 21
@@ -59,7 +59,14 @@ for i in range(0, len(families)):
     X = data[3]
     X = aggregate(X, 60 * 24)
 
+    # Create figure for portmanteau test
     plt.figure(1, figsize=(18, (dmax - 1) * 4))
+
+    # Create output files for other tests
+    turning_file = open('Noise/' + filename + '_turningpoint.txt', 'a')
+    difference_file = open('Noise/' + filename + '_differencesign.txt', 'a')
+    rank_file = open('Noise/' + filename + '_rank.txt', 'a')
+    runs_file = open('Noise/' + filename + '_runs.txt', 'a')
 
     # Loop on periodicity
     for d in range(2, (dmax + 1)):
@@ -88,7 +95,37 @@ for i in range(0, len(families)):
         if (d == dmax):
             plt.xlabel('Time lag', fontsize=24)
 
+        # Turning point test
+        (test_sum, p_value) = turning_point(Xres)
+        turning_file.write('Deseasonalized data with period {:d} days\n'.format(d))
+        turning_file.write('Probability of having more than {:d} turning points is {:f}\n'.format(test_sum, p_value))
+        turning_file.write('\n')
+
+        # Difference sign test
+        (test_sum, p_value) = difference_sign(Xres)
+        difference_file.write('Deseasonalized data with period {:d} days\n'.format(d))
+        difference_file.write('Probability of having more than {:d} positive differences is {:f}\n'.format(test_sum, p_value))
+        difference_file.write('\n')
+
+        # Rank test
+        (test_sum, p_value) = rank(Xres)
+        rank_file.write('Deseasonalized data with period {:d} days\n'.format(d))
+        rank_file.write('Probability of having more than {:d} pairs with same rank is {:f}\n'.format(test_sum, p_value))
+        rank_file.write('\n')
+
+        # Runs test
+        (test_sum, p_value) = runs(Xres)
+        runs_file.write('Deseasonalized data with period {:d} days\n'.format(d))
+        runs_file.write('Probability of having more than {:d} runs is {:f}\n'.format(test_sum, p_value))
+        runs_file.write('\n')
+
     # Finalize plot
     plt.suptitle('Family ' + filename, fontsize=30)
     plt.savefig('Noise/' + filename + '.eps', format='eps')
     plt.close(1)
+
+    # Close files
+    turning_file.close()
+    difference_file.close()
+    rank_file.close()
+    runs_file.close()
