@@ -39,8 +39,10 @@ def draw_absolutevalue(filename):
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (absolute moment)', fontsize=24)
-    plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-        nLFE, H, R2), fontsize=24)
+#    plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
+#        nLFE, H, R2), fontsize=24)
+    plt.title('H = {:4.2f} - R2 = {:4.2f}'.format( \
+        H, R2), fontsize=24)
     plt.savefig('absolutevalue/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -73,8 +75,10 @@ def draw_variance(filename):
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (sample variance)', fontsize=24)
-    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-        nLFE, d, R2), fontsize=24)
+#    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+#        nLFE, d, R2), fontsize=24)
+    plt.title('d = {:4.2f} - R2 = {:4.2f}'.format( \
+        d, R2), fontsize=24)
     plt.savefig('variance/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -107,8 +111,10 @@ def draw_variance_moulines(filename):
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (variance / aggregation size)', fontsize=24)
-    plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-        nLFE, H, R2), fontsize=24)
+#    plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
+#        nLFE, H, R2), fontsize=24)
+    plt.title('H = {:4.2f} - R2 = {:4.2f}'.format( \
+        H, R2), fontsize=24)
     plt.savefig('variancemoulines/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -150,12 +156,16 @@ def draw_varianceresiduals(filename, method):
     plt.xlabel('Log (block size)', fontsize=24)
     if (method == 'median'):
         plt.ylabel('Log (median variance residuals)', fontsize=24)
-        plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
-            nLFE, H, R2), fontsize=24)
+#        plt.title('{:d} LFEs - H = {:4.2f} - R2 = {:4.2f}'.format( \
+#            nLFE, H, R2), fontsize=24)
+        plt.title('H = {:4.2f} - R2 = {:4.2f}'.format( \
+            H, R2), fontsize=24)
     else:
         plt.ylabel('Log (mean variance residuals)', fontsize=24)
-        plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-            nLFE, d, R2), fontsize=24)
+#        plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+#            nLFE, d, R2), fontsize=24)
+        plt.title('d = {:4.2f} - R2 = {:4.2f}'.format( \
+            d, R2), fontsize=24)
     plt.savefig('varianceresiduals/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -187,8 +197,10 @@ def draw_RSstatistic(filename):
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (aggregation size)', fontsize=24)
     plt.ylabel('Log (R/S statistic)', fontsize=24)
-    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-        nLFE, d, R2), fontsize=24)
+#    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+#        nLFE, d, R2), fontsize=24)
+    plt.title('d = {:4.2f} - R2 = {:4.2f}'.format( \
+        d, R2), fontsize=24)
     plt.savefig('RS/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -221,7 +233,9 @@ def draw_periodogram(filename):
     plt.plot(x, y_pred, 'r-')
     plt.xlabel('Log (frequency)', fontsize=24)
     plt.ylabel('Log (spectral density)', fontsize=24)
-    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
-        nLFE, d, R2), fontsize=24)
+#    plt.title('{:d} LFEs - d = {:4.2f} - R2 = {:4.2f}'.format( \
+#        nLFE, d, R2), fontsize=24)
+    plt.title('d = {:4.2f} - R2 = {:4.2f}'.format( \
+        d, R2), fontsize=24)
     plt.savefig('periodogram/' + filename + '.eps', format='eps')
     plt.close(1)
