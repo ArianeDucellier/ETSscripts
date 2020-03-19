@@ -48,3 +48,7 @@ def PACF(ACVF):
             # v_k = v_k-1 (1 - phi_k,k^2)
             v[k + 1] = v[k] * (1 - phis[k]**2)
     return(PACF, v)
+
+def levinson_durbin(phi):
+    """
+    """

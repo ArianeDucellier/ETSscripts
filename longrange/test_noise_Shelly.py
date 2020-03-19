@@ -80,6 +80,8 @@ for i in range(0, len(families)):
         plt.plot(np.arange(0, h), acf, 'bo', label='{} days'.format(d))
         plt.axhline(1.96 / sqrt(N), linewidth=2, linestyle='--', color='red')
         plt.axhline(-1.96 / sqrt(N), linewidth=2, linestyle='--', color='red')
+        if (d == dmax):
+            plt.xlabel('Time lag', fontsize=24)
         plt.ylabel('ACF', fontsize=24)
         plt.legend(loc=1)
         (QLB, quantiles) = portmanteau(acf, N, alpha, p)
@@ -120,7 +122,7 @@ for i in range(0, len(families)):
         runs_file.write('\n')
 
     # Finalize plot
-    plt.suptitle('Family ' + filename, fontsize=30)
+    plt.tight_layout()
     plt.savefig('Noise/' + filename + '.eps', format='eps')
     plt.close(1)
 

@@ -146,10 +146,11 @@ for i in range(0, len(families)):
     plt.legend(loc=1)
     plt.subplot2grid((4, 3), (3, 2))
     plt.plot(np.arange(1, h), 1.0 / pacf, 'bo', label='1 week')
+    plt.xlabel('Time lag', fontsize=24)
     plt.ylabel('1/PACF', fontsize=24)
     plt.legend(loc=1)
 
     # Finalize plot
-    plt.suptitle('Family ' + filename, fontsize=30)
+    plt.tight_layout()
     plt.savefig('ACVF/' + filename + '.eps', format='eps')
     plt.close(1)
