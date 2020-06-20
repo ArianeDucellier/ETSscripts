@@ -59,6 +59,29 @@ Audet, P.%
 
 \bibitem [\protect \citeauthoryear {%
 Bostock%
+}{%
+Bostock%
+}{%
+{\protect \APACyear {2013}}%
+}]{%
+BOS_2013}
+\APACinsertmetastar {%
+BOS_2013}%
+\begin{APACrefauthors}%
+Bostock, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The {Moho} in subduction zones} {The {Moho} in
+  subduction zones}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Tectonophysics}{609}{}{547-557}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bostock%
 , Royer%
 , Hearn%
 \BCBL {}\ \BBA {} Peacock%
@@ -95,7 +118,7 @@ Chestler%
 \ \BBA {} Creager%
 }{%
 {\protect \APACyear {2017}}%
-{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+}]{%
 CHE_2017_JGR}
 \APACinsertmetastar {%
 CHE_2017_JGR}%
@@ -105,7 +128,7 @@ Chestler, S.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2017{\protect \BCnt {1}}}{}{}.
+\APACrefYearMonthDay{2017}{}{}.
 \newblock
 {\BBOQ}\APACrefatitle {Evidence for a scale-limited low-frequecny earthquake
   source process} {Evidence for a scale-limited low-frequecny earthquake source
@@ -115,34 +138,6 @@ Chestler, S.%
   Earth}{122}{}{3099-3114}.
 \newblock
 \APACrefnote{doi:10.1002/2016jb013717}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Chestler%
-\ \BBA {} Creager%
-}{%
-Chestler%
-\ \BBA {} Creager%
-}{%
-{\protect \APACyear {2017}}%
-{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
-CHE_2017_G3}
-\APACinsertmetastar {%
-CHE_2017_G3}%
-\begin{APACrefauthors}%
-Chestler, S.%
-\BCBT {}\ \BBA {} Creager, K.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2017{\protect \BCnt {2}}}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {A model for low-frequency earthquake slip} {A model for
-  low-frequency earthquake slip}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{18}{}{4690-4708}.
-\newblock
-\APACrefnote{doi:10.1002/2017gc007253}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -158,7 +153,7 @@ FAG_2011}
 \APACinsertmetastar {%
 FAG_2011}%
 \begin{APACrefauthors}%
-Fagereng, r.%
+Fagereng, {\r A}.%
 \BCBT {}\ \BBA {} Diener, J.%
 \end{APACrefauthors}%
 \unskip\
@@ -185,7 +180,7 @@ FAG_2014}
 \APACinsertmetastar {%
 FAG_2014}%
 \begin{APACrefauthors}%
-Fagereng, r.%
+Fagereng, {\r A}.%
 , G.W.B., H.%
 \BCBL {}\ \BBA {} Diener, J.%
 \end{APACrefauthors}%
@@ -316,6 +311,30 @@ Hyndman, R.%
 \newblock
 \APACjournalVolNumPages{Journal of Geophysical Research Solid
   Earth}{120}{}{4344-4358}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ide%
+}{%
+Ide%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+IDE_2012}
+\APACinsertmetastar {%
+IDE_2012}%
+\begin{APACrefauthors}%
+Ide, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Variety and spatial heterogeneity of tectonic tremor
+  worldwide} {Variety and spatial heterogeneity of tectonic tremor
+  worldwide}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{117}{}{B03302}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -498,6 +517,34 @@ Nakata, R.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Nikulin%
+, Levin%
+\BCBL {}\ \BBA {} Park%
+}{%
+Nikulin%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+NIK_2009}
+\APACinsertmetastar {%
+NIK_2009}%
+\begin{APACrefauthors}%
+Nikulin, A.%
+, Levin, V.%
+\BCBL {}\ \BBA {} Park, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Receiver function study of the {Cascadia} megathrust:
+  Evidence for localized serpentinization} {Receiver function study of the
+  {Cascadia} megathrust: Evidence for localized serpentinization}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geochemistry, Geophysics, Geosystems}{10}{}{Q07004}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Obara%
 }{%
 Obara%
@@ -519,6 +566,30 @@ Obara, K.%
   southwest {Japan}}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Science}{296}{5573}{1679-1681}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Peacock%
+}{%
+Peacock%
+}{%
+{\protect \APACyear {2009}}%
+}]{%
+PEA_2009}
+\APACinsertmetastar {%
+PEA_2009}%
+\begin{APACrefauthors}%
+Peacock, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Thermal and metamorphic environment of subduction zone
+  episodic tremor and slip} {Thermal and metamorphic environment of subduction
+  zone episodic tremor and slip}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{114}{}{B00A07}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -549,6 +620,33 @@ Rogers, G.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Rousseeuw%
+\ \BBA {} Croux%
+}{%
+Rousseeuw%
+\ \BBA {} Croux%
+}{%
+{\protect \APACyear {1993}}%
+}]{%
+ROU_1993}
+\APACinsertmetastar {%
+ROU_1993}%
+\begin{APACrefauthors}%
+Rousseeuw, P.%
+\BCBT {}\ \BBA {} Croux, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1993}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Alternatives to the median absolute deviation}
+  {Alternatives to the median absolute deviation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of the American Statistical
+  Association}{88}{424}{1273-1283}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Rowe%
 \ \BBA {} Moore%
 }{%
@@ -572,15 +670,15 @@ Rowe, C.%
   the seafloor into the seismogenic zone} {The thickness of subduction plate
   boundary faults from the seafloor into the seismogenic zone}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{Geology}{41}{}{991-994}.
+\APACjournalVolNumPages{Geology}{41}{9}{991-994}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
 Royer%
-\ \BBA {} Rostock%
+\ \BBA {} Bostock%
 }{%
 Royer%
-\ \BBA {} Rostock%
+\ \BBA {} Bostock%
 }{%
 {\protect \APACyear {2014}}%
 }]{%
@@ -589,7 +687,7 @@ ROY_2014}
 ROY_2014}%
 \begin{APACrefauthors}%
 Royer, A.%
-\BCBT {}\ \BBA {} Rostock, M.%
+\BCBT {}\ \BBA {} Bostock, M.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
@@ -627,6 +725,33 @@ Rubin, A.%
   {Cascadia} with high precision cross-station tremor locations}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Geochemistry Geophysics Geosystems}{14}{}{5371-5392}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Schimmel%
+\ \BBA {} Paulssen%
+}{%
+Schimmel%
+\ \BBA {} Paulssen%
+}{%
+{\protect \APACyear {1997}}%
+}]{%
+SCH_1997}
+\APACinsertmetastar {%
+SCH_1997}%
+\begin{APACrefauthors}%
+Schimmel, M.%
+\BCBT {}\ \BBA {} Paulssen, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1997}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Noise reduction and detection of weak, coherent signals
+  through phase-weighted stacks} {Noise reduction and detection of weak,
+  coherent signals through phase-weighted stacks}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Journal International}{130}{}{487-505}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
