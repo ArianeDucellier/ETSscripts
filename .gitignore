@@ -95,6 +95,7 @@ longrange/*.pkl
 notebooks/.ipynb_checkpoints
 notebooks/timelags/data/*
 notebooks/timelags/results/*
+papers/paper_tremor/figures/*.jpg
 raytracing/.ipynb_checkpoints
 raytracing/__pycache__/*
 report/Figures/longrange/*.pdf
@@ -132,6 +133,7 @@ timelags/map/GC/*
 timelags/map/LC/*
 timelags/map/PA/*
 timelags/map/TB/*
+timelags/matlab/*
 timelags/plot_cc/*
 utils/__pycache__/*
 visualization/.ipynb_checkpoints

@@ -1,6 +1,6 @@
 """
 This script looks at the catalog from southern Cascadia (2007-2009) and plots
-for each family the daily number of LFEs in function of time
+the hourly number of LFEs in function of time in function of latitude
 """
 
 import matplotlib.pylab as pylab
@@ -38,8 +38,17 @@ dt = tend - tbegin
 duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
 nw = int(duration / window)
 
+# Amplitude coefficients
+amp = 0.01
+
+# Start figure
+plt.figure(1, figsize=(20, 10))
+
 # Loop on templates
 for i in range(0, np.shape(templates)[0]):
+
+    # Get latitude
+    latitude = templates[i][2]
 
     # Open LFE catalog
     namedir = 'catalogs/' + templates[i][0].astype(str)
@@ -47,7 +56,8 @@ for i in range(0, np.shape(templates)[0]):
     df = pickle.load(open(namefile, 'rb'))
 
     # Filter LFEs
-    #df = df.loc[df['cc'] >= 0.07]
+    maxc = np.max(df['nchannel'])
+    df = df.loc[df['cc'] * df['nchannel'] >= 0.1 * maxc]
 
     # Get time series
     X = np.zeros(nw, dtype=int)
@@ -69,14 +79,16 @@ for i in range(0, np.shape(templates)[0]):
                 0.000001
             index = int(duration / window)
             X[index] = X[index] + 1
-            
-    # Plot figure
-    plt.figure(1, figsize=(20, 10))
-    plt.stem(np.arange(0, len(X)), X, 'k-', markerfmt=' ', basefmt=' ')
-    plt.xlim([-0.5, len(X) - 0.5])
-    plt.xlabel('Time (days) since 2007/07/01', fontsize=24)
-    plt.ylabel('Number of LFEs', fontsize=24)
-    plt.title('Family {} ({:d} LFEs)'.format(templates[i][0].astype(str), np.sum(X)), \
-        fontsize=24)
-    plt.savefig('LFEdistribution/' + templates[i][0].astype(str) + '_2007_2009.eps', format='eps')
-    plt.close(1)
+
+    days = np.arange(0, len(X))[X >= 1]
+    Xpos = X[X >= 1]
+    plt.stem(days, latitude + amp * Xpos, 'k-', markerfmt=' ', basefmt=' ', bottom=latitude)
+    plt.axhline(latitude, linewidth=1, color='k')
+
+plt.xlim([-0.5, len(X) - 0.5])
+plt.xlabel('Time (days) since 2007/07/01', fontsize=24)
+plt.ylabel('Number of LFEs', fontsize=24)
+plt.title('Daily LFEs for all families', fontsize=24)
+plt.savefig('LFEdistribution/all_families.eps', format='eps')
+plt.close(1)
+    
